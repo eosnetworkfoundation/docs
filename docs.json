@@ -1,0 +1,70 @@
+{
+  "name": "welcome",
+  "generators": [
+    {
+      "name": "collate_markdown",
+      "options": {
+        "docs_dir": "docs",
+        "disable_indices": true,
+        "exclude": ["get-involved", "05_community-developer-tools", "06_eosio-blockchain-networks"]
+      }
+    },
+    {
+      "name": "directory",
+      "options": {
+        "directory_source": "manuals-directory.yaml",
+        "directory_markdown_output": "manuals",
+        "directory_nav_parent": "Software Manuals"
+      }
+    },
+    {
+      "name": "directory",
+      "options": {
+        "directory_source": "reference-directory.yaml",
+        "directory_markdown_output": "reference",
+        "directory_nav_parent": "Reference"
+      }
+    },
+    {
+      "name": "directory",
+      "options": {
+        "directory_source": "resource-directory.yaml",
+        "directory_markdown_output": "resources",
+        "directory_nav_parent": "Resources"
+      }
+    },
+
+
+    {
+      "name": "collate_markdown",
+      "options": {
+        "docs_dir": "docs/05_community-developer-tools",
+        "output_dir": "05_community-developer-tools"
+      }
+    },
+
+    {
+      "name": "collate_markdown",
+      "options": {
+        "docs_dir": "docs/06_eosio-blockchain-networks",
+        "output_dir": "06_eosio-blockchain-networks"
+      }
+    },
+
+
+    {
+      "name": "collate_markdown",
+      "options": {
+        "docs_dir": "docs/get-involved",
+        "output_dir": "get-involved"
+      }
+    },
+    {
+      "name": "glossary",
+      "options": {
+        "glossary_markdown_output": "glossary",
+        "glossary_source": "glossary.yaml"
+      }
+    }
+  ]
+}
