@@ -1,3 +1,8 @@
+---
+content_title: "V1 History Alternatives"
+link_text: "V1 History Alternatives"
+---
+
 # V1 History Alternatives
 
 The latest EOSIO v3.1 release officially ends support for the legacy V1 History plugin. Therefore, block producers and node operators who have integrations that rely on V1 History must seek alternative solutions.

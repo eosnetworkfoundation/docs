@@ -2,3 +2,4 @@
 docgen_output
 node_modules
 tmp
+.idea
