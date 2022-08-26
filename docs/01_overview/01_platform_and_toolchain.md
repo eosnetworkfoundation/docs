@@ -41,7 +41,9 @@ You can read detailed documentation about `keosd` [here](http://docs.eosnetwork.
 <!-- The link will be updated once the initial site is live -->
 
 ## Antelope CDT
+
 Antelope CDT is a toolchain for WebAssembly (Wasm) and a set of tools to facilitate contract writing for the Antelope framework. In addition to being a general-purpose WebAssembly toolchain, Antelope-specific optimizations are available to support building Antelope smart contracts. This new toolchain is built around Clang 7, which means that Antelope CDT has most of the current optimizations and analyses from LLVM.
 
 ## EOSJS
+
 A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API.

@@ -36,15 +36,14 @@ RAM, in a Antelope-based blockchain, is one of the important system resources co
 
 More details about RAM as a system resource can be found [here](https://docs.eosnetwork.com/manuals/eosio.contracts/index/#ram).
 
-
 ### CPU
 
 CPU, in a Antelope-based blockchain, represents the processing time of an action and is measured in microseconds (μs). CPU is referred to as `cpu bandwidth` in the cleos `get account` command output and indicates the amount of processing time an account has at its disposal when pushing actions to a contract. CPU is a transient system resource and falls under the staking mechanism of Antelope.
 
 More details about CPU as a system resource can be found [here](https://docs.eosnetwork.com/manuals/eosio.contracts/index/#cpu).
 
-
 ### Network (NET)
+
 Besides CPU and RAM, NET is also a very important resource in Antelope-based blockchains. NET is the network bandwidth, measured in bytes, of transactions and is referred to as `net bandwidth` on the cleos `get account` command. NET is a also a transient system resource and falls under the staking mechanism of Antelope.
 
 More details about NET as a system resource can be found [here](https://docs.eosnetwork.com/manuals/eosio.contracts/index/#net).
