@@ -121,4 +121,4 @@ curl http://localhost:8888/v1/chain/get_info
 ```
 
 ## What's Next?
-- [Create Test Accounts](./07_create-test-accounts.md): Learn how to create test accounts in the EOSIO blockchain along with troubleshooting steps. 
+- [Create Test Accounts](./07_create-test-accounts.md): Learn how to create test accounts in the Antelope blockchain along with troubleshooting steps. 

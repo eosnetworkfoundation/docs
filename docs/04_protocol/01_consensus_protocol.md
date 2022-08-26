@@ -5,22 +5,22 @@ content_title: Consensus Protocol
 
 # 1. Overview
 
-An EOSIO blockchain is a highly efficient, deterministic, distributed state machine that can operate in a decentralized fashion. The blockchain keeps track of transactions within a sequence of interchanged blocks. Each block cryptographically commits to the  previous blocks along the same chain. It is therefore intractable to modify a transaction recorded on a given block without breaking the cryptographic checks of successive blocks. This simple fact makes blockchain transactions immutable and secure.
+An Antelope blockchain is a highly efficient, deterministic, distributed state machine that can operate in a decentralized fashion. The blockchain keeps track of transactions within a sequence of interchanged blocks. Each block cryptographically commits to the  previous blocks along the same chain. It is therefore intractable to modify a transaction recorded on a given block without breaking the cryptographic checks of successive blocks. This simple fact makes blockchain transactions immutable and secure.
 
 
 ## 1.1. Block Producers
 
-In the EOSIO ecosystem, block production and block validation are performed by special nodes called "block producers". Producers are elected by EOSIO stakeholders (see [4. Producer Voting/Scheduling](#4-producer-votingscheduling)). Each producer runs an instance of an EOSIO node through the `nodeos` service. For this reason, producers that are on the active schedule to produce blocks are also called "active" or "producing" nodes.
+In the Antelope ecosystem, block production and block validation are performed by special nodes called "block producers". Producers are elected by Antelope stakeholders (see [4. Producer Voting/Scheduling](#4-producer-votingscheduling)). Each producer runs an instance of an Antelope node through the `nodeos` service. For this reason, producers that are on the active schedule to produce blocks are also called "active" or "producing" nodes.
 
 
 ## 1.2. The Need for Consensus
 
-Block validation presents a challenge among any group of distributed nodes. A consensus model must be in place to validate such blocks in a fault tolerant way within the decentralized system. Consensus is the way for such distributed nodes and users to agree upon the current state of the blockchain (see [3. EOSIO Consensus (DPoS + aBFT)](#3-eosio-consensus-dpos--abft)).
+Block validation presents a challenge among any group of distributed nodes. A consensus model must be in place to validate such blocks in a fault tolerant way within the decentralized system. Consensus is the way for such distributed nodes and users to agree upon the current state of the blockchain (see [3. Antelope Consensus (DPoS + aBFT)](#3-eosio-consensus-dpos--abft)).
 
 
 # 2. Consensus Models
 
-There are various ways to reach consensus among a group of distributed parties in a decentralized system. Most consensus models reach agreement through some proof. Two of the most popular ones are Proof of Work (PoW) and Proof of Stake (PoS), although other types of proof-based schemes exist, such as Proof of Activity (a hybrid between PoW and PoS), Proof of Burn, Proof of Capacity, Proof of Elapsed Time, etc. Other consensus schemes also exist, such as Paxos and Raft. This document focuses mainly on the EOSIO consensus model.
+There are various ways to reach consensus among a group of distributed parties in a decentralized system. Most consensus models reach agreement through some proof. Two of the most popular ones are Proof of Work (PoW) and Proof of Stake (PoS), although other types of proof-based schemes exist, such as Proof of Activity (a hybrid between PoW and PoS), Proof of Burn, Proof of Capacity, Proof of Elapsed Time, etc. Other consensus schemes also exist, such as Paxos and Raft. This document focuses mainly on the Antelope consensus model.
 
 
 ## 2.1. Proof of Work (PoW)
@@ -33,14 +33,14 @@ Two of the most common consensus models used in blockchains are Proof of Work an
 In Proof-of-Stake, nodes that own the largest stake or percentage of some asset have equivalent decision power. In other words, voting power is proportional to the stake held. One interesting variant is Delegated Proof-of-Stake (DPoS) in which a large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them.
 
 
-# 3. EOSIO Consensus (DPoS + aBFT)
+# 3. Antelope Consensus (DPoS + aBFT)
 
-EOSIO-based blockchains use delegated proof of stake (DPoS) to elect the active producers who will be authorized to sign valid blocks in the network. However, this is only one half of the EOSIO consensus process. The other half is involved in the actual process of confirming each block until it becomes final (irreversible), which is performed in an asynchronous byzantine fault tolerant (aBFT) way. Therefore, there are two layers involved in the EOSIO consensus model:
+Antelope-based blockchains use delegated proof of stake (DPoS) to elect the active producers who will be authorized to sign valid blocks in the network. However, this is only one half of the Antelope consensus process. The other half is involved in the actual process of confirming each block until it becomes final (irreversible), which is performed in an asynchronous byzantine fault tolerant (aBFT) way. Therefore, there are two layers involved in the Antelope consensus model:
 
 *   Layer 1 - The Native Consensus Model (aBFT).
 *   Layer 2 - Delegated Proof of Stake (DPoS).
 
-The actual native consensus model used in EOSIO has no concept of delegations/voting, stake, or even tokens. These are used by the DPoS layer to generate the first schedule of block producers and, if applicable, update the set at most every schedule round after each producer has cycled through. These two layers are functionally separate in the EOSIO software.
+The actual native consensus model used in Antelope has no concept of delegations/voting, stake, or even tokens. These are used by the DPoS layer to generate the first schedule of block producers and, if applicable, update the set at most every schedule round after each producer has cycled through. These two layers are functionally separate in the Antelope software.
 
 
 ## 3.1. Layer 1: Native Consensus (aBFT)
@@ -48,8 +48,8 @@ The actual native consensus model used in EOSIO has no concept of delegations/vo
 This layer ultimately decides which blocks, received and synced among the elected producers, eventually become final, and hence permanently recorded in the blockchain. It gets a schedule of producers proposed by the second layer (see [3.2. Layer 2: Delegated PoS](#32-layer-2-delegated-pos-dpos)) and uses that schedule to determine which blocks are correctly signed by the appropriate producer. For byzantine fault tolerance, the layer uses a two-stage block confirmation process by which a two-thirds supermajority of producers from the current scheduled set confirm each block twice. The first confirmation stage proposes a last irreversible block (LIB). The second stage confirms the proposed LIB as final. At this point, the block becomes irreversible. This layer is also used to signal producer schedule changes, if any, at the beginning of every schedule round.
 
 
-### 3.1.1. EOSIO Algorithmic Finality
-The EOSIO consensus model achieves algorithmic finality (differing from the merely probabilistic finality that at best can be achieved in Proof of Work models) through the signatures from the chosen set of special participants (active producers) that are arranged in a schedule to determine which party is authorized to sign the block at a particular time slot. Changes to this schedule can be initiated by privileged smart contracts running on the EOSIO blockchain, but any initiated changes to the schedule do not take effect until after the block that initiated the schedule change has been finalized by two stages of confirmations. Each stage of confirmations is performed by a supermajority of producers from the current scheduled set of active producers.
+### 3.1.1. Antelope Algorithmic Finality
+The Antelope consensus model achieves algorithmic finality (differing from the merely probabilistic finality that at best can be achieved in Proof of Work models) through the signatures from the chosen set of special participants (active producers) that are arranged in a schedule to determine which party is authorized to sign the block at a particular time slot. Changes to this schedule can be initiated by privileged smart contracts running on the Antelope blockchain, but any initiated changes to the schedule do not take effect until after the block that initiated the schedule change has been finalized by two stages of confirmations. Each stage of confirmations is performed by a supermajority of producers from the current scheduled set of active producers.
 
 
 ## 3.2. Layer 2: Delegated PoS (DPoS)
@@ -59,12 +59,12 @@ The Delegated PoS layer introduces the concepts of tokens, staking, voting/proxy
 
 ### 3.2.1. Stakeholders and Delegates
 
-The actual selection of the active producers (the producer schedule) is open for voting every schedule round and it involves all EOSIO stakeholders who exercise their right to participate. In practice, the rankings of the active producers do not change often, though. The stakeholders are regular EOSIO account holders who vote for their block producers of preference to act on their behalf as DPoS delegates. A major departure from regular DPoS, however, is that once elected, all block producers have equal power regardless of the ranking of votes obtained. In other DPoS models, voting power is proportional to the number of votes obtained by each delegate.
+The actual selection of the active producers (the producer schedule) is open for voting every schedule round and it involves all Antelope stakeholders who exercise their right to participate. In practice, the rankings of the active producers do not change often, though. The stakeholders are regular Antelope account holders who vote for their block producers of preference to act on their behalf as DPoS delegates. A major departure from regular DPoS, however, is that once elected, all block producers have equal power regardless of the ranking of votes obtained. In other DPoS models, voting power is proportional to the number of votes obtained by each delegate.
 
 
 ## 3.3. The Consensus Process
 
-The EOSIO consensus process consists of two parts:
+The Antelope consensus process consists of two parts:
 
 *   Producer voting/scheduling - performed by the the DPoS layer 2
 *   Block production/validation - performed by the native consensus layer 1
@@ -79,12 +79,12 @@ The voting of the active producers to be included in the next schedule is implem
 
 ## 4.1. Voting Process
 
-Each EOSIO stakeholder can vote for up to 30 block producers in one voting action. The top 21 elected producers will then act as DPoS delegates to produce and sign blocks on behalf of the stakeholders. The remaining producers are placed in a standby list in the order of votes obtained. The voting process repeats every schedule round by adding up the number of votes obtained by each producer. Producers not voted on get to keep their old votes, albeit depreciated due to vote decay. Producers voted on also get to keep their old votes, except for the contribution of the last voting weight for each voter, which gets replaced by their new voting weight.
+Each Antelope stakeholder can vote for up to 30 block producers in one voting action. The top 21 elected producers will then act as DPoS delegates to produce and sign blocks on behalf of the stakeholders. The remaining producers are placed in a standby list in the order of votes obtained. The voting process repeats every schedule round by adding up the number of votes obtained by each producer. Producers not voted on get to keep their old votes, albeit depreciated due to vote decay. Producers voted on also get to keep their old votes, except for the contribution of the last voting weight for each voter, which gets replaced by their new voting weight.
 
 
 ### 4.1.1. Voting Weight
 
-The voting weight of each stakeholder is computed as a function of the number of tokens staked and the time elapsed since the EOSIO block timestamp epoch, defined as January 1, 2000. In the current implementation, the voting weight is directly proportional to the number of tokens staked and base-2 exponentially proportional to the time elapsed in years since the year 2000. The actual weight increases at a rate of $2^{1/52} = 1.013419$ per week. This means that the voting weight changes weekly and doubles each year for the same amount of tokens staked.
+The voting weight of each stakeholder is computed as a function of the number of tokens staked and the time elapsed since the Antelope block timestamp epoch, defined as January 1, 2000. In the current implementation, the voting weight is directly proportional to the number of tokens staked and base-2 exponentially proportional to the time elapsed in years since the year 2000. The actual weight increases at a rate of $2^{1/52} = 1.013419$ per week. This means that the voting weight changes weekly and doubles each year for the same amount of tokens staked.
 
 
 ### 4.1.2. Vote Decay
@@ -102,7 +102,7 @@ After the producers are voted on and selected for the next schedule, they are si
 
 ### 4.2.1. Production Parameters
 
-The EOSIO block production schedule is divided equally among the elected producers. The producers are scheduled to produce an expected number of blocks each schedule round, based on the following parameters (per schedule round):
+The Antelope block production schedule is divided equally among the elected producers. The producers are scheduled to produce an expected number of blocks each schedule round, based on the following parameters (per schedule round):
 
 Parameter | Description | Default | Layer
 -|-|-|-
@@ -120,7 +120,7 @@ Variable | Description | Equation
 **Tp** (s/producer) | Production time per producer | Tb (s/block) x Bp (blocks/producer)
 **T** (s) | Total production time | Tp (s/producer) x P (producers)
 
-Therefore, the value of P, being defined at layer 2, can change dynamically in an EOSIO blockchain. In practice, however, N is strategically set to 21 producers, which means that 15 producers are required for a two-thirds supermajority of producers plus one to reach consensus.
+Therefore, the value of P, being defined at layer 2, can change dynamically in an Antelope blockchain. In practice, however, N is strategically set to 21 producers, which means that 15 producers are required for a two-thirds supermajority of producers plus one to reach consensus.
 
 
 ### 4.2.2. Production Default Values
@@ -137,7 +137,7 @@ When a block is not produced by a given producer during its assigned time slot, 
 
 # 5. Block Lifecycle
 
-Blocks are created by the active producer on schedule during its assigned timeslot, then relayed to other producer nodes for syncing and validation. This process continues from producer to producer until a new schedule of producers is approved at a later schedule round. When a valid block meets the consensus requirements (see [3. EOSIO Consensus](#3-eosio-consensus-dpos--abft)), the block becomes final and is considered irreversible. Therefore, blocks undergo three major phases during their lifespan: production, validation, and finality. Each phase goes through various stages as well.
+Blocks are created by the active producer on schedule during its assigned timeslot, then relayed to other producer nodes for syncing and validation. This process continues from producer to producer until a new schedule of producers is approved at a later schedule round. When a valid block meets the consensus requirements (see [3. Antelope Consensus](#3-eosio-consensus-dpos--abft)), the block becomes final and is considered irreversible. Therefore, blocks undergo three major phases during their lifespan: production, validation, and finality. Each phase goes through various stages as well.
 
 
 ## 5.1. Block Structure
@@ -180,7 +180,7 @@ Blocks go through various stages during production: apply, finalize, sign, and c
 
 ### 5.2.1. Apply Block
 
-Apply block essentially pushes the transactions received and validated by the producing node into a block. Internally, this step involves the creation and initialization of the block header and the signed block instance. The signed block instance simply extends the block header with a signature field. This field eventually holds the signature of the producer that signs the block. Furthermore, recent changes in EOSIO allow multiple signatures to be included, which are stored in a header extensions field.
+Apply block essentially pushes the transactions received and validated by the producing node into a block. Internally, this step involves the creation and initialization of the block header and the signed block instance. The signed block instance simply extends the block header with a signature field. This field eventually holds the signature of the producer that signs the block. Furthermore, recent changes in Antelope allow multiple signatures to be included, which are stored in a header extensions field.
 
 
 ### 5.2.2. Finalize Block
@@ -200,7 +200,7 @@ After the block is signed, it is committed to the local chain. This pushes the b
 
 ## 5.3. Block Validation
 
-Block validation is a fundamental operation necessary to reach consensus within an EOSIO blockchain. During block validation, producers receive incoming blocks from other peers and confirm the transactions included within each block. Block validation is about reaching enough quorum among active producers to agree upon:
+Block validation is a fundamental operation necessary to reach consensus within an Antelope blockchain. During block validation, producers receive incoming blocks from other peers and confirm the transactions included within each block. Block validation is about reaching enough quorum among active producers to agree upon:
 
 *   The integrity of the block and the transactions it contains.
 *   The deterministic, chronological order of transactions within each block.
@@ -233,7 +233,7 @@ In light validation mode, blocks signed by trusted producers (which can be confi
 
 ## 5.4. Block Finality
 
-Block finality is the final outcome of EOSIO consensus. It is achieved after a supermajority of active producers have validated the block according to the consensus rules (see [3.1. Layer 1: Native Consensus (aBFT)](#31-layer-1-native-consensus-abft)). Blocks that reach finality are permanently recorded in the blockchain and cannot be undone. In this regard, the last irreversible block (LIB) in the chain refers to the most recent block that has become final. Therefore, from that point backwards the transactions that have been recorded on the blockchain cannot be reversed, tampered, or erased.
+Block finality is the final outcome of Antelope consensus. It is achieved after a supermajority of active producers have validated the block according to the consensus rules (see [3.1. Layer 1: Native Consensus (aBFT)](#31-layer-1-native-consensus-abft)). Blocks that reach finality are permanently recorded in the blockchain and cannot be undone. In this regard, the last irreversible block (LIB) in the chain refers to the most recent block that has become final. Therefore, from that point backwards the transactions that have been recorded on the blockchain cannot be reversed, tampered, or erased.
 
 
 ### 5.4.1. Goal of Finality

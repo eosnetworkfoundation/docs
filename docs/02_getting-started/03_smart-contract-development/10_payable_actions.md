@@ -3,7 +3,7 @@ content_title: "2.9: Payable actions"
 link_text: "2.9: Payable actions"
 ---
 ## Goal
-This tutorial illustrates how to write a smart contract that has payable actions. Payable actions are actions that require you to transfer some tokens to actions prior to use other functionality of the smart contract. Also, the EOSIO `asset` type is covered in this tutorial.
+This tutorial illustrates how to write a smart contract that has payable actions. Payable actions are actions that require you to transfer some tokens to actions prior to use other functionality of the smart contract. Also, the Antelope `asset` type is covered in this tutorial.
 
 As for the logic of this smart contract, we're going to write a contract that accepts a particular token but will not allow the tokens to be withdrawn for a specific amount of time.
 
@@ -139,7 +139,7 @@ The important thing to note is the deposit function will actually be triggered b
 ```cpp
 [[eosio::on_notify("eosio.token::transfer")]]
 ```
-The `on_notify` attribute is one of the EOSIO.CDT [attributes](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/abi-code-generator-attributes-explained) that annotates a smart contract action.
+The `on_notify` attribute is one of the Antelope CDT [attributes](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/abi-code-generator-attributes-explained) that annotates a smart contract action.
 
 Annotating an action with an [`on_notify`](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/abi-code-generator-attributes-explained/#eosioon_notifyvalid_eosio_account_namevalid_eosio_action_name) attribute ensures any incoming notification is forwarded to the annotated action if and only if the notification is dispatched from a specified contract and from a specified action.
 
@@ -310,4 +310,4 @@ Party time!
 
 
 ## What's Next?
-- [Elemental Battles](https://battles.eos.io): Build a blockchain game based on EOSIO and continue building your EOSIO knowledge!
+- [Elemental Battles](https://battles.eos.io): Build a blockchain game based on Antelope and continue building your Antelope knowledge!
