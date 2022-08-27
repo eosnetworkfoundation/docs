@@ -15,5 +15,5 @@ link_text: "Getting Started"
 
 ## What's next?
 
-- [Try EOSIO](./01_try-eosio.md): Try EOSIO in your browser with Gitpod.
-- [Get Started](./02_development-environment/introduction.md): Install EOSIO in your local development environment.
+- [Try EOSIO](01_try-eosio.md): Try EOSIO in your browser with Gitpod.
+- [Get Started](02_development-environment/introduction.md): Install EOSIO in your local development environment.
