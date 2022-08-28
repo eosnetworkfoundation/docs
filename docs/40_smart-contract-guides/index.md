@@ -3,7 +3,7 @@ content_title: Smart Contract Guides
 link_text: Smart Contract Guides
 ---
 
-This section introduces you to the EOSIO smart contracts development workflow. You build your first basic Hello World smart contract to lay the groundwork to implement additional smart contracts such as token contracts, address book, payable actions, and more. You will gain advanced understanding on how data persistence works in the context of a smart contract and also how inline actions are implemented in a smart contract. 
+This section introduces you to the Antelope smart contracts development workflow. You build your first basic Hello World smart contract to lay the groundwork to implement additional smart contracts such as token contracts, address book, payable actions, and more. You will gain advanced understanding on how data persistence works in the context of a smart contract and also how inline actions are implemented in a smart contract. 
 
 ### Before you Begin
 Before you begin with the smart contracts development workflow, make sure the following prerequisites	are met:

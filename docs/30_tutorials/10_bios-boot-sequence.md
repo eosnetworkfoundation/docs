@@ -17,20 +17,20 @@ The information in this section walk you through the preparatory steps for the f
 
 * Set up your `EOSIO` environment
 * Start your genesis `EOSIO` node
-* Set up additional, interconnected EOSIO nodes with connectivity to the genesis node
+* Set up additional, interconnected Antelope nodes with connectivity to the genesis node
 
-At the end of this tutorial, you will have a fully functional **EOSIO based blockchain** which runs locally.
+At the end of this tutorial, you will have a fully functional **Antelope based blockchain** which runs locally.
 
 [[info | Python Script]]
-| Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional EOSIO blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
+| Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional Antelope blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
 
 If your goal is to go beyond and understand what the script does in depth, you can follow this tutorial which will get you through the outcome and also explains along the way each step.
 
 ### 1.1. Install the binaries
 
-#### 1.1.1. Pre-compiled EOSIO Binaries
+#### 1.1.1. Pre-compiled Antelope Binaries
 
-For instructions to install the `nodeos` binaries, see the [Install EOSIO pre-compiled binaries](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries) tutorial but do not start `nodeos` at this stage.
+For instructions to install the `nodeos` binaries, see the [Install Antelope pre-compiled binaries](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries) tutorial but do not start `nodeos` at this stage.
 
 #### 1.1.2. EOSIO.CDT Binaries
 
@@ -635,7 +635,7 @@ You are now ready to stake and expand the network of producers.
 
 ### 2.4. Create staked accounts
 
-To stake is the process through which you allocate tokens to an account within the EOSIO system.  Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated to their accounts and ready for use, and get the vote process started so that producers can get elected and the blockchain in running "live" state.
+To stake is the process through which you allocate tokens to an account within the Antelope system.  Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated to their accounts and ready for use, and get the vote process started so that producers can get elected and the blockchain in running "live" state.
 
 The following recommendation is given for the initial staking process:
 

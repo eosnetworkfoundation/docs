@@ -5,7 +5,7 @@ link_text: "Data Persistence"
 This tutorial shows how to persist data used by smart contracts.
 
 ## Introduction
-This section demonstrates data persistence and builds a simple addressbook smart contract. The implementation is not a full production smart contract, however it is a good smart contract to learn how data persistence works on EOSIO without being distracted by business logic not related to eosio's `multi_index API` functionality.
+This section demonstrates data persistence and builds a simple addressbook smart contract. The implementation is not a full production smart contract, however it is a good smart contract to learn how data persistence works on Antelope without being distracted by business logic not related to eosio's `multi_index API` functionality.
 
 ## Step 1: Create a new directory
 
@@ -80,7 +80,7 @@ struct person {
 
 Great. The basic data structure is now complete.
 
-Next, define a `primary_key` method. Every `multi_index` struct requires a *primary key* method. Behind the scenes, this method is used according to the index specification of your `multi_index` instantiation. EOSIO `multi_index` wraps [boost::multi_index](https://www.boost.org/doc/libs/1_59_0/libs/multi_index/doc/index.html)
+Next, define a `primary_key` method. Every `multi_index` struct requires a *primary key* method. Behind the scenes, this method is used according to the index specification of your `multi_index` instantiation. Antelope `multi_index` wraps [boost::multi_index](https://www.boost.org/doc/libs/1_59_0/libs/multi_index/doc/index.html)
 
 Create a method `primary_key()` and return a struct member, in this case, the `key` member as previously discussed.
 
@@ -147,7 +147,7 @@ When working with C++ classes, the first public method you should create is a co
 
 Our constructor will be responsible for initially setting up the contract.
 
-EOSIO contracts extend the *contract* class. Initialize our parent *contract* class with the code name of the contract and the receiver. The important parameter here is the `code` parameter which is the account on the blockchain that the contract is being deployed to.
+Antelope contracts extend the *contract* class. Initialize our parent *contract* class with the code name of the contract and the receiver. The important parameter here is the `code` parameter which is the account on the blockchain that the contract is being deployed to.
 
 ```cpp
 addressbook(name receiver, name code, datastream<const char*> ds):contract(receiver, code, ds) {}
@@ -161,7 +161,7 @@ Previously, the primary key of the multi-index table was defined to enforce that
 2. The **primary_key** of our table is unique, based on username
 3. For usability, the contract should have the ability to both create and modify a table row with a single action.
 
-On a EOSIO blockchain an account name is unique, therefore the `name` type is an ideal candidate as a **primary_key**. Behind the scenes, the [name](https://developers.eos.io/manuals/eosio.cdt/latest/structeosio_1_1name) type is an `uint64_t` integer.
+On a Antelope blockchain an account name is unique, therefore the `name` type is an ideal candidate as a **primary_key**. Behind the scenes, the [name](https://developers.eos.io/manuals/eosio.cdt/latest/structeosio_1_1name) type is an `uint64_t` integer.
 
 Next, define an action for the user to add or update a record. This action will need to accept any values that this action needs to be able to emplace (create) or modify.
 

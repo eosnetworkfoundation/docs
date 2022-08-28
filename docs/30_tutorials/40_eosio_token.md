@@ -1,9 +1,9 @@
 ---
-content_title: EOSIO Token Tutorial
-link_text: EOSIO Token Tutorial
+content_title: Antelope Token Tutorial
+link_text: Antelope Token Tutorial
 ---
 
-This tutorial explores the *sample* EOSIO token smart contract and it helps you acquire the basic knowledge needed to build your own EOSIO token. To learn how to create and manage your own token please read the [Build Your Own EOSIO Token Tutorial](50_build_your_own_eosio_token.md) after you have completed the current tutorial.
+This tutorial explores the *sample* Antelope token smart contract and it helps you acquire the basic knowledge needed to build your own Antelope token. To learn how to create and manage your own token please read the [Build Your Own Antelope Token Tutorial](50_build_your_own_eosio_token.md) after you have completed the current tutorial.
 
 ## Introduction
 
@@ -23,7 +23,7 @@ The learning objectives for this tutorial are:
 
 ## Concepts
 
-This section introduces basic concepts related to tokens and coins and how they specifically relate to the EOSIO platform.
+This section introduces basic concepts related to tokens and coins and how they specifically relate to the Antelope platform.
 
 ### Token
 
@@ -96,17 +96,17 @@ Therefore they have the incentive to go and `grab` them.
 The following knowledge and tools are required to develop and run this tutorial:
 
 * Medium knowledge of the C++ programming language
-* Basic knowledge of the EOSIO platform
+* Basic knowledge of the Antelope platform
 * C++ editor already installed
-* EOSIO development environment including nodeos
+* Antelope development environment including nodeos
 
 If you need to set up your environment, follow the steps in the [Getting Started Guide](https://developers.eos.io/welcome/latest/getting-started-guide/local-development-environment/index). This guide provides instructions on how to start a local node with nodeos that produces blocks, creates a wallet that keeps your keys, and creates test accounts used later in this tutorial.
 
-## EOSIO Token Smart Contract Reference
+## Antelope Token Smart Contract Reference
 
-The EOSIO platform provides the ‘eosio.token’ smart contract, also known as the reference token smart contract. This smart contract implementation provides guidelines for a minimum set of basic mandatory and optional items that make up a token contract. Use this smart contract as it is provided or as a starting point for the implementation of your own token that contains customized business logic that meets your requirements.
+The Antelope platform provides the ‘eosio.token’ smart contract, also known as the reference token smart contract. This smart contract implementation provides guidelines for a minimum set of basic mandatory and optional items that make up a token contract. Use this smart contract as it is provided or as a starting point for the implementation of your own token that contains customized business logic that meets your requirements.
 
-**Note**: For more information, consult the [Proposed EOSIO Token Standard](https://github.com/EOSIO/EEPs/blob/master/EEPS/eep-3.md) in the EOSIO EEP system.
+**Note**: For more information, consult the [Proposed Antelope Token Standard](https://github.com/EOSIO/EEPs/blob/master/EEPS/eep-3.md) in the Antelope EEP system.
 
 
 The `eosio.token` is implemented in two files:
@@ -130,7 +130,7 @@ Both tables are uniquely indexed by the token symbol therefore two entries with 
 
 ### The eosio.token.cpp File
 
-The  eosio.token.cpp file is the source file that contains public and private methods implementation. The actions of the smart contract are the public methods marked by the EOSIO `[[eosio::action]]` specific attribute.
+The  eosio.token.cpp file is the source file that contains public and private methods implementation. The actions of the smart contract are the public methods marked by the Antelope `[[eosio::action]]` specific attribute.
 
 The `eosio.token` smart contract contains the following actions and private methods:
 
@@ -288,7 +288,7 @@ The issue action takes three parameters:
 2. The code modifies the supply for the newly issued token which is recorded in the `statstable` instance
 3. The modify method accepts two parameters `st` and `same_payer`:
     - `st` is the existing updated table entry
-    - `same_payer` is a constant expression defined by the EOSIO framework in the `multi_index.hpp` file.
+    - `same_payer` is a constant expression defined by the Antelope framework in the `multi_index.hpp` file.
     
     **Note**: When used, if the new stored value requires more RAM, the extra needed RAM is paid by the same account that originally paid for the table entry. If the new value requires less RAM, a new fee is not incurred.
 
@@ -518,7 +518,7 @@ void token::open(const name &owner, const symbol &symbol, const name &ram_payer)
   }
 ```
 
-The `open` action requires a valid authorization of the `ram_payer` and checks if the `owner` is a valid EOSIO account. The code checks for a valid symbol.
+The `open` action requires a valid authorization of the `ram_payer` and checks if the `owner` is a valid Antelope account. The code checks for a valid symbol.
 
 If all checks pass, the ‘open’ action creates a new zero balance record in the `acnts` table for the `owner` account. If a record already exists for the `owner`, the action does nothing.
 
@@ -560,7 +560,7 @@ The next section of the tutorial shows how to create a new token. It uses the `e
 ## Summary
 
 This tutorial demonstrated:
-* The main concept revolving around EOSIO coin and tokens
+* The main concept revolving around Antelope coin and tokens
 * How the `eosio.token` smart contract code is structured
 * How the `eosio.token` smart contract works
 

@@ -4,17 +4,17 @@ link_text: "Read-Only Queries"
 ---
 
 
-External clients were limited to accessing chain state data through the get_tables APIs for chainbase or KV tables or through various history solutions. In version 2.2 of EOSIO there is now an API to invoke contract-defined read-only queries and return the results. Smart contracts can be written to include actions which are read-only queries using the `read-only` attribute. This tutorial will show you how to create a simple smart contract with a read-only query, and how to call this query from the cleos CLI. 
+External clients were limited to accessing chain state data through the get_tables APIs for chainbase or KV tables or through various history solutions. In version 2.2 of Antelope there is now an API to invoke contract-defined read-only queries and return the results. Smart contracts can be written to include actions which are read-only queries using the `read-only` attribute. This tutorial will show you how to create a simple smart contract with a read-only query, and how to call this query from the cleos CLI. 
 
 Once the tutorial is completed you should be able to create and call a read-only query.
 
 ## Before you begin
 This tutorial requires the following:
 
-* The EOSIO platform software, version 2.2. or greater, click on this link for instructions on [installing EOSIO](https://developers.eos.io/manuals/eos/v2.2/install/index)
+* The Antelope platform software, version 2.2. or greater, click on this link for instructions on [installing EOSIO](https://developers.eos.io/manuals/eos/v2.2/install/index)
 * The EOSIO.CDT (Contract Development Toolkit), version 1.9. or greater, click on this link for instructions on [installing the EOSIO.CDT](https://developers.eos.io/manuals/eos/v2.2/install/index)
 * Access to a running blockchain. Click on this link for instructions on [running a blockchain](01_before-you-begin/10_running-a-blockchain.md)
-* An EOSIO account and access to the account keys. Click on this link for information on [Accounts and Permissions](01_before-you-begin/20_accounts-and-permissions.md)
+* An Antelope account and access to the account keys. Click on this link for information on [Accounts and Permissions](01_before-you-begin/20_accounts-and-permissions.md)
 * You understand how to build and deploy smart contracts. Follow this link for more information [hello world tutorial.](../30_getting-started-guide/25_hello-world.md)
 
 

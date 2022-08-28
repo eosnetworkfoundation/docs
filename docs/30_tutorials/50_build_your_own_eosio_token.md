@@ -1,9 +1,9 @@
 ---
-content_title: Build Your Own EOSIO Token Tutorial
-link_text: Build Your Own EOSIO Token Tutorial
+content_title: Build Your Own Antelope Token Tutorial
+link_text: Build Your Own Antelope Token Tutorial
 ---
 
-This tutorial provides explanations and a step-by-step procedure to create and deploy an EOSIO blockchain token starting with the *sample* EOSIO token smart contract. It is recommended, for understanding the *sample* EOSIO token smart contract,  to read the [EOSIO Token Tutorial](40_eosio_token.md).
+This tutorial provides explanations and a step-by-step procedure to create and deploy an Antelope blockchain token starting with the *sample* Antelope token smart contract. It is recommended, for understanding the *sample* Antelope token smart contract,  to read the [Antelope Token Tutorial](40_eosio_token.md).
 
 ## Introduction
 
@@ -15,8 +15,8 @@ The learning objectives for this tutorial are:
 
   * Create a new token starting with the `eosio.token` sample smart contract
   * Customize the `eosio.token` sample smart contract
-  * Build and deploy a smart contract to a blockchain that uses EOSIO tokens
-  * Create, issue, and transfer EOSIO tokens
+  * Build and deploy a smart contract to a blockchain that uses Antelope tokens
+  * Create, issue, and transfer Antelope tokens
   * Create and use the airgrab action
 
 ## Create A New Token
@@ -101,7 +101,7 @@ to
 class [[eosio::contract("newt")]] token : public contract {
 ```
 
-This change tells the compiler that the customized smart contract name is `newt`. The attribute `[[eosio::contract]]`, if it has no parameter specified, uses by default the contract `token` *class name*. The EOSIO framework uses the name of the contract to logically connect actions, tables and notification handlers to a specific compiled smart contract. The contract name if specified in the `[[eosio::contract]]` attribute must meet the [restrictions of an EOSIO account name](https://developers.eos.io/welcome/latest/glossary/index/#account-name) whereas the contract *class name* is free of those constraints.
+This change tells the compiler that the customized smart contract name is `newt`. The attribute `[[eosio::contract]]`, if it has no parameter specified, uses by default the contract `token` *class name*. The Antelope framework uses the name of the contract to logically connect actions, tables and notification handlers to a specific compiled smart contract. The contract name if specified in the `[[eosio::contract]]` attribute must meet the [restrictions of an Antelope account name](https://developers.eos.io/welcome/latest/glossary/index/#account-name) whereas the contract *class name* is free of those constraints.
 
 Change this line from newt.cpp
 

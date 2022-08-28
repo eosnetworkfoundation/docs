@@ -3,11 +3,11 @@ content_title: "Tic-tac-toe Game Contract Using Testnet"
 link_text: "Tic-tac-toe Game Contract Using Testnet"
 ---
 
-# Tic-tac-toe on EOSIO 
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an EOSIO blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an EOSIO blockchain. In this tutorial we use the EOSIO Testnet blockchain and show you how to play the game by calling the smart contract.
+# Tic-tac-toe on Antelope 
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an Antelope blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an Antelope blockchain. In this tutorial we use the Antelope Testnet blockchain and show you how to play the game by calling the smart contract.
 
 [[info]]
-| EOSIO is a blockchain software platform developed by Block.one. Smart contracts which run on the EOSIO platform should run on any blockchain which using the EOSIO platform. EOS is a digital token, though it also refers to the first public blockchain run on the EOSIO platform, EOS or the public mainnet. In this tutorial we will use the Block.one testnet, which is a blockchain operated by Block.one for testing.
+| Antelope is a blockchain software platform developed by Block.one. Smart contracts which run on the Antelope platform should run on any blockchain which using the Antelope platform. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope platform, EOS or the public mainnet. In this tutorial we will use the Block.one testnet, which is a blockchain operated by Block.one for testing.
 
 
 We explain the purpose of each step and why it is important.
@@ -20,19 +20,19 @@ This tutorial requires the following:
 
 and
 
-* An EOSIO Testnet account, click on the following link for the [EOSIO Testnet quick start guide](../70_quick-start-guides/10_testnet-quick-start-guide) 
-* Familiarity with the EOSIO tools `cleos` and `keosd`.
-* The EOSIO Contract Development Toolkit or eosio.cdt. See the [Getting Started Guide](../30_getting-started-guide) for details on how to install and set up the required EOSIO components.
+* An Antelope Testnet account, click on the following link for the [Antelope Testnet quick start guide](../70_quick-start-guides/10_testnet-quick-start-guide) 
+* Familiarity with the Antelope tools `cleos` and `keosd`.
+* The Antelope Contract Development Toolkit or eosio.cdt. See the [Getting Started Guide](../30_getting-started-guide) for details on how to install and set up the required Antelope components.
 * Familiarity with the `eosio.cdt` which is used to compile smart contracts. 
 
-Click on this link for an [overview of the EOSIO platform.](../20_introduction-to-eosio)
+Click on this link for an [overview of the Antelope platform.](../20_introduction-to-eosio)
 
 Click on this link to [get started with EOSIO.](../30_getting-started-guide "Getting Started with EOSIO")
    
 ### Tutorial Workflow
 
 ```sequence
-Understand\n Game->Understand\n EOSIO : What?
+Understand\n Game->Understand\n Antelope : What?
 Understand\n EOSIO->Create\nAccounts  : Accounts
 Understand\n EOSIO->Create\nAccounts  : Actions
 Understand\n EOSIO->Create\nAccounts  : Resources
@@ -45,17 +45,17 @@ Play\nGame -> Play\nGame : Get
 
 
 ## The Rules of the Game
-The EOSIO tic-tac-toe rules are:
+The Antelope tic-tac-toe rules are:
 
 * Player one (the host) makes the first move, followed by player two (the challenger). 
 * The first player to complete a row or diagonal of either X’s or O’s wins the game.
 * If no player completes a row or diagonal of either X’s or O’s, the game is a draw. 
 
 ## Understanding the Game
-The smart contract contains the game logic, therefore this section introduces how the game works and some of the EOSIO concepts needed to build a smart contract.
+The smart contract contains the game logic, therefore this section introduces how the game works and some of the Antelope concepts needed to build a smart contract.
 
 ### The Game logic
-The game is played by two players, so we need two blockchain accounts. This tutorial explains how to create and use these blockchain accounts on the [EOSIO Tesnet](https://testnet.eos.io/) in the next step. [**Ensure you have a EOSIO Testnet developer account before you continue**](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#getting-started-with-testnet). Use these accounts to "push actions" to the blockchain. These actions start, restart, and close the game. Pushing a move action will place a 'marker' on the game 'board'.    
+The game is played by two players, so we need two blockchain accounts. This tutorial explains how to create and use these blockchain accounts on the [Antelope Tesnet](https://testnet.eos.io/) in the next step. [**Ensure you have a Antelope Testnet developer account before you continue**](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#getting-started-with-testnet). Use these accounts to "push actions" to the blockchain. These actions start, restart, and close the game. Pushing a move action will place a 'marker' on the game 'board'.    
 
 One player is the host, who starts the game, and one player is the challenger. The game board is nine squares, and each player takes a turn to place their marker in a square. A player wins the game when three markers are placed in a row.
 
@@ -70,15 +70,15 @@ In the example below the player who placed x has won.
 When all the squares contain a marker and no player has three markers in a row, then the game is a draw.
 
 ### Accounts and Key Pairs
-A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. Loading a smart contracts requires an account; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. EOSIO blockchains use account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../60_protocol-guides/40_accounts_and_permissions.md "Accounts and Permissions Overview")
+A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. Loading a smart contracts requires an account; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. Antelope blockchains use account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../60_protocol-guides/40_accounts_and_permissions.md "Accounts and Permissions Overview")
 
 ### Smart Contract Actions
 A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](../60_protocol-guides/20_transactions_protocol.md "Tranasctions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
 
 ![Transactions and Actions](images/tictactoe/transactions-and-actions-temp.png "Transactions and Actions")
 
-### EOSIO Resources 
-The EOSIO blockchain accounts own and consume three resources:
+### Antelope Resources 
+The Antelope blockchain accounts own and consume three resources:
 
 * RAM - This resource is the amount of RAM available to an account. RAM stores smart contracts loaded on the blockchain. Smart contacts use RAM via the multi-index table to store smart contract state. Spend TNT to purchase more RAM, RAM can be sold.
 * CPU - This resource is the amount of CPU which can be used by an account in each 24 hour period. Transactions consume CPU. Stake TNT for more CPU. Unstaking returns CPU. 
@@ -90,9 +90,9 @@ For more information click on this link [Core Concepts](../20_introduction-to-eo
 The game requires at least two blockchain accounts, one for each player. The tutorial also creates a blockchain account to load the smart contract.  
 
 ### Procedure for Accounts
-Follow this link for a guide on [creating EOSIO Testnet accounts.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#blockchain-account-configuration)
+Follow this link for a guide on [creating Antelope Testnet accounts.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#blockchain-account-configuration)
 
-Go to the EOSIO Testnet [Blockchain Accounts](https://testnet.eos.io/user/blockchain-accounts "Testnet - blockchain accounts") page:
+Go to the Antelope Testnet [Blockchain Accounts](https://testnet.eos.io/user/blockchain-accounts "Testnet - blockchain accounts") page:
 
 ![Testnet blockchain accounts screen](images/tictactoe/testnet-blockchain-accounts.png "Testnet Title Panel - Blockchain Accounts")
 
@@ -158,7 +158,7 @@ Game Representation
 |     2     |   o   |   x   |   x   |
 
 ### Create tictactoe.hpp file
-This section creates the tictactoe.hpp file. This header file contains the declarations of the tictactoe class, the definitions of tictactoe game data structures, and the declarations of tictactoe game methods, known as actions in EOSIO smart contracts.
+This section creates the tictactoe.hpp file. This header file contains the declarations of the tictactoe class, the definitions of tictactoe game data structures, and the declarations of tictactoe game methods, known as actions in Antelope smart contracts.
 
 
 #### Game Data Structures
@@ -519,7 +519,7 @@ The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe
 
 
 ## Compile and Deploy
-To deploy the smart contract to the blockchain first use the EOSIO.CDT (EOSIO Contract Development Toolkit) `eosio-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [eosio-cpp tool](https://developers.eos.io/manuals/eosio.cdt/v1.7/command-reference/eosio-cpp "eosio-cdt reference eosio-cpp tool") and click on this link for details about the [EOSIO.CDT](https://developers.eos.io/manuals/eosio.cdt/v1.7/index "Contract Development Toolkit")
+To deploy the smart contract to the blockchain first use the EOSIO.CDT (Antelope Contract Development Toolkit) `eosio-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [eosio-cpp tool](https://developers.eos.io/manuals/eosio.cdt/v1.7/command-reference/eosio-cpp "eosio-cdt reference eosio-cpp tool") and click on this link for details about the [EOSIO.CDT](https://developers.eos.io/manuals/eosio.cdt/v1.7/index "Contract Development Toolkit")
 
 The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/EOSIO/eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../40_smart-contract-guides/30_understanding-ABI-files.md "Getting Started - ABI files") for more information.     
 
@@ -546,9 +546,9 @@ For this tutorial we ignore these warnings. Click on the following link for a tu
 The tictactoe directory now contains two new files, `tictactoe.wasm` and `tictactoe.abi`.
 
 ### Deploy to the Testnet
-Follow this link for a guide on [deploying smart contracts on the EOSIO Testnet.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#smart-contract-deployment)
+Follow this link for a guide on [deploying smart contracts on the Antelope Testnet.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#smart-contract-deployment)
 
-Go to the EOSIO Testnet [Deploy](https://testnet.eos.io/deployment "Testnet - deploy") page:
+Go to the Antelope Testnet [Deploy](https://testnet.eos.io/deployment "Testnet - deploy") page:
 
 ![Testnet deploy screen](images/tictactoe/testnet-deploy.png "Testnet Title Panel - Deploy")
 
@@ -560,9 +560,9 @@ Follow these steps to deploy the smart contract to the testnet:
 4. Press the deploy button. The deployment results are shown in the “Deployment Result” window. In the case below deployment failed due to lack of memory. Fix this in the Blockchain Accounts Request Resources section. 
 
 ## Play The Game
-Now that the smart contract has been successfully deployed push smart contract actions to the blockchain to play the game. Follow this link for a guide on [pushing actions on the EOSIO Testnet.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#push-actions)
+Now that the smart contract has been successfully deployed push smart contract actions to the blockchain to play the game. Follow this link for a guide on [pushing actions on the Antelope Testnet.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#push-actions)
   
-Go to the EOSIO Testnet [Push Action](https://testnet.eos.io/push-action "Testnet - push action") page:
+Go to the Antelope Testnet [Push Action](https://testnet.eos.io/push-action "Testnet - push action") page:
 
 ![Testnet push action screen](images/tictactoe/testnet-pushaction.png "Testnet Title Panel - Push Action")
 
@@ -622,7 +622,7 @@ Sign the push action with `vswlkiegwdsk@active` - the challenger.
 Continue to make moves until the game ends with a win or a draw.
 
 ### Check Game Status 
-Look at the data in the multi index table to check the game status. Follow this link for a guide on [viewing actions data in multi index tables on the EOSIO Testnet.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#view-actions-data-in-multi-index-table) 
+Look at the data in the multi index table to check the game status. Follow this link for a guide on [viewing actions data in multi index tables on the Antelope Testnet.](../70_quick-start-guides/10_testnet-quick-start-guide/index.md#view-actions-data-in-multi-index-table) 
 
 The following steps show you how:
 1. Go to the “Blockchain Accounts” page, select the account you used to push the smart contract to the blockchain. 
@@ -663,4 +663,4 @@ Check the game status to see that game data has been removed.
 
 ## Next Steps
 
-- Visit the [EOSIO Developer Portal](https://developers.eos.io/ "eosio developers portal") to learn more about EOSIO
+- Visit the [Antelope Developer Portal](https://developers.eos.io/ "eosio developers portal") to learn more about EOSIO
