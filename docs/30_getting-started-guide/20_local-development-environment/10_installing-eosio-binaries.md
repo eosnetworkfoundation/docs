@@ -1,12 +1,12 @@
 ---
-content_title: Install EOSIO Binaries
-link_text: Install EOSIO Binaries 
+content_title: Install Antelope Binaries
+link_text: Install Antelope Binaries 
 ---
 
-To get started as quickly as possible, we recommend using EOSIO pre-built binaries. You also have an advanced option to build from source but that would consume an hour or more. 
+To get started as quickly as possible, we recommend using Antelope pre-built binaries. You also have an advanced option to build from source but that would consume an hour or more. 
 
 [[info]]
-| You can find how to build EOSIO from source [here](https://developers.eos.io/manuals/eos/v2.2/install/build-from-source/).
+| You can find how to build Antelope from source [here](https://developers.eos.io/manuals/eos/v2.2/install/build-from-source/).
 
 
 
@@ -70,4 +70,4 @@ Enter the absolute path to your contract directory below, and it will be inserte
 </div>
 
 ## What's Next?
-[Install the CDT](20_installing-eosiocdt.md): Steps to install the EOSIO Contract Development Toolkit (CDT) on your system.
+[Install the CDT](20_installing-eosiocdt.md): Steps to install the Antelope Contract Development Toolkit (CDT) on your system.

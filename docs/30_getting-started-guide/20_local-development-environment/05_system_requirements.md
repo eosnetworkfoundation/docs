@@ -4,9 +4,9 @@ link_text: "System Requirements"
 ---
 
 
-## EOSIO versions
+## Antelope versions
 
-The component versions of the `EOSIO platform` used in this version are:
+The component versions of the `Antelope platform` used in this version are:
 
 | Component | Version |
 | ------ | ------ |
@@ -18,7 +18,7 @@ The component versions of the `EOSIO platform` used in this version are:
 
 ## Supported Operating Systems
 
-The EOSIO platform is supported on the following environments:
+The Antelope platform is supported on the following environments:
 
 **Linux Distributions**
 * Amazon Linux 2
@@ -31,7 +31,7 @@ The EOSIO platform is supported on the following environments:
 * MacOS 10.15 (Catalina)
 
 [[info | Note]]
-| It may be possible to install EOSIO on other Unix-based operating systems. This is not officially supported, though.
+| It may be possible to install Antelope on other Unix-based operating systems. This is not officially supported, though.
 
 ## Next
-[Install EOSIO Binaries](10_installing-eosio-binaries.md)
+[Install Antelope Binaries](10_installing-eosio-binaries.md)

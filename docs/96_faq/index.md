@@ -3,7 +3,7 @@ content_title: FAQ
 link_text: FAQ
 ---
 
-This FAQ contains frequent questions and requests from the EOSIO community. If you don't see what you need here, search for the topic on the Developers Portal, visit the [EOSIO Stack Exchange](https://eosio.stackexchange.com/) forum, or join our [community Telegram](https://t.me/EOSproject) chat.
+This FAQ contains frequent questions and requests from the Antelope community. If you don't see what you need here, search for the topic on the Developers Portal, visit the [Antelope Stack Exchange](https://eosio.stackexchange.com/) forum, or join our [community Telegram](https://t.me/EOSproject) chat.
 
 ## Blockchain
 
@@ -36,7 +36,7 @@ To set up a local single-node blockchain configuration, follow the instructions 
 
 [Local Single-node Testnet](https://developers.eos.io/manuals/eos/v2.0/nodeos/usage/development-environment/local-single-node-testnet)
 
-You can also use the [Block.one's official EOSIO Testnet.](https://testnet.eos.io/) To learn how to set up an account and use the EOSIO Testnet click here [EOSIO Testnet Quick Start Guide.](https://developers.eos.io/welcome/v2.2/quick-start-guides/testnet-quick-start-guide/index)
+You can also use the [Block.one's official Antelope Testnet.](https://testnet.eos.io/) To learn how to set up an account and use the Antelope Testnet click here [Antelope Testnet Quick Start Guide.](https://developers.eos.io/welcome/v2.2/quick-start-guides/testnet-quick-start-guide/index)
 
 ### What happens when there is a fork and how does this manifest itself in State History Plugin (SHiP)?
 
@@ -46,7 +46,7 @@ As a SHiP consumer, if you see the block numbers going backwards, it means a for
 
 ### What is the relationship between keys, eosio accounts, and smart contracts?
 
-EOSIO accounts identify unique individuals or entities within an EOSIO blockchain. Keys in EOSIO are binary strings represented in Base58 used for signing and verification of transactions, blocks, and other messages. Keys are created within a digital wallet associated with an account. Since account ownership is defined solely by the account name, the keys associated with an account can be updated without compromising security. A novel permission scheme involving accounts, permissions, and authority tables determine what accounts can do and how the actions that make a transaction are authorized. To that end, each account is assigned a hierarchical permission structure and each permission is assigned a pair of keys (a public key and a private key) used for signing and verification. 
+Antelope accounts identify unique individuals or entities within an Antelope blockchain. Keys in Antelope are binary strings represented in Base58 used for signing and verification of transactions, blocks, and other messages. Keys are created within a digital wallet associated with an account. Since account ownership is defined solely by the account name, the keys associated with an account can be updated without compromising security. A novel permission scheme involving accounts, permissions, and authority tables determine what accounts can do and how the actions that make a transaction are authorized. To that end, each account is assigned a hierarchical permission structure and each permission is assigned a pair of keys (a public key and a private key) used for signing and verification. 
 
 A smart contract is a low-level software library that contains the implementation of the actions that make a transaction. It also defines how the data that is accessed and processed by the actions are stored. A smart contract is implemented in a high-level language such as C++ and compiled into a WebAssembly (WASM) binary. Thereafter, smart contracts can be deployed and run within an account’s sandbox on the blockchain.
 
@@ -103,7 +103,7 @@ For guidelines on how to build a performant smart contract, see the following re
 
 ### What are the onboarded system smart contracts and their versions? What other smart contracts are included with the deployment?
 
-EOSIO offers a few smart contracts which should be used as reference smart contracts, namely:
+Antelope offers a few smart contracts which should be used as reference smart contracts, namely:
 
 * eosio.bios
 * eosio.boot
@@ -120,7 +120,7 @@ Further Reading
 ### Can we assign control of the eosio.token contract to any account?
 Yes, you can deploy the eosio.token smart contract to any account for which you have at least the active private key.
 
-### Why is the onblock() action callable on certain EOSIO system contracts?
+### Why is the onblock() action callable on certain Antelope system contracts?
 
 You should not call `onblock()` action yourself, but as a blockchain developer you can define its semantics by changing its implementation to fit your blockchain business requirements. The `onblock()` action is called by the system on every block. In this way, the `onblock()` acts as a heart beat for the system contract and allows it to always execute all necessary actions (i.e. producer pay) to ensure a healthy system behavior.
 
@@ -144,7 +144,7 @@ During congestion mode, transactions sent to the blockchain will likely be place
 
 ### Are there any plans to include transaction failure tracing in state history (github feature request)?
 
-Yes, this is already supported in the upcoming EOSIO release. The original `transaction_tracing` logger has been replaced with two new loggers: 1. `transaction_success_tracing` and 2. `transaction_failure_tracing` logger, which provides detailed logs for successful or failed transaction confirmations from relay nodes on the P2P network, respectively. The node operator can selectively choose which logger to enable based on whether successful or failed transaction logs are desired.
+Yes, this is already supported in the upcoming Antelope release. The original `transaction_tracing` logger has been replaced with two new loggers: 1. `transaction_success_tracing` and 2. `transaction_failure_tracing` logger, which provides detailed logs for successful or failed transaction confirmations from relay nodes on the P2P network, respectively. The node operator can selectively choose which logger to enable based on whether successful or failed transaction logs are desired.
 
 ### Are there any metrics for dropped transactions?
 
@@ -176,7 +176,7 @@ Here are a few ways to check if a transaction made it to a block:
 
 Finality of a transaction can be determined when the transaction ID is part of an irreversible block.
 
-For more information on the EOSIO consensus model, see [Consensus Protocol.](https://developers.eos.io/welcome/v2.2/protocol/consensus_protocol/)
+For more information on the Antelope consensus model, see [Consensus Protocol.](https://developers.eos.io/welcome/v2.2/protocol/consensus_protocol/)
 
 ### How to reliably determine when to do a transaction retry?
 

@@ -3,7 +3,7 @@ content_title: Smart Contract Guides
 link_text: Smart Contract Guides
 ---
 
-The Smart Contract Guides section introduces many EOSIO concepts used in smart contract development. Follow these tutorials and learn the core features of smart contract development. The tutorials take you step by step through each topic and at the end of each tutorial you will have the knowledge to apply these to your own smart contract. 
+The Smart Contract Guides section introduces many Antelope concepts used in smart contract development. Follow these tutorials and learn the core features of smart contract development. The tutorials take you step by step through each topic and at the end of each tutorial you will have the knowledge to apply these to your own smart contract. 
 
 Topics include how create your own token; how to store and update smart contract state and how to call actions from within a smart contract. 
 

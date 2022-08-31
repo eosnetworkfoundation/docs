@@ -1,22 +1,22 @@
 ---
-content_title: EOSIO Testnet Quick Start Guide
-link_text: EOSIO Testnet Quick Start Guide
+content_title: Antelope Testnet Quick Start Guide
+link_text: Antelope Testnet Quick Start Guide
 ---
 
 
 # **Overview**
 
-This guide is for users who intend to use the EOSIO Testnet as a testing environment for deploying smart contracts and building blockchain applications on EOSIO. The EOSIO Testnet allows developers to quickly onboard by creating new blockchain accounts and test smart contracts on the latest builds of the EOSIO software. You can deploy smart contracts, push transactions, and view the multi-index table in a user-friendly GUI.
+This guide is for users who intend to use the Antelope Testnet as a testing environment for deploying smart contracts and building blockchain applications on EOSIO. The Antelope Testnet allows developers to quickly onboard by creating new blockchain accounts and test smart contracts on the latest builds of the Antelope software. You can deploy smart contracts, push transactions, and view the multi-index table in a user-friendly GUI.
 
-The EOSIO Testnet is a web application that you can access using your login credentials. You don't have to download binaries to install the system as no external installation or configuration is required.
+The Antelope Testnet is a web application that you can access using your login credentials. You don't have to download binaries to install the system as no external installation or configuration is required.
 
 [[info]]
 | This guide also supports EOSIO-based documentation tutorials that use the Testnet to perform various smart contract operations including pushing permission-based actions.
 
 # Getting Started with Testnet
-This chapter provides instructions for registering a new EOSIO Testnet developer account and steps to log in to the Testnet web interface.
+This chapter provides instructions for registering a new Antelope Testnet developer account and steps to log in to the Testnet web interface.
 
-When you register on the EOSIO Testnet, we will create a new developer account for you - a login credential for you to log in to the Testnet. With the new developer account, a new blockchain account is also provisioned to interact with the blockchain by deploying smart contracts, pushing actions, reading blockchain data, and other related operations.
+When you register on the Antelope Testnet, we will create a new developer account for you - a login credential for you to log in to the Testnet. With the new developer account, a new blockchain account is also provisioned to interact with the blockchain by deploying smart contracts, pushing actions, reading blockchain data, and other related operations.
 
 [[info | Note]]
 | The developer account is only used for login purposes and should not be confused with a blockchain account.
@@ -49,21 +49,21 @@ After you click **Log In**, the welcome page invites you to a getting started to
       ![Sign Up](./images/signup-welcome.png)
 
 ## Testnet Login
-If you already have a Developer Testnet account, log in at [EOSIO Testnet Login](https://testnet.eos.io/user#login).
+If you already have a Developer Testnet account, log in at [Antelope Testnet Login](https://testnet.eos.io/user#login).
 
 # Blockchain Account Configuration
 This section provides instructions on creating new blockchain accounts within the Testnet and additional administrative actions such as requesting new Temporary Network Tokens (TNTs) for staking and unstaking system resources.
 
 An account is a collection of authorizations, is stored on the blockchain, and is used to identify a sender/recipient. The flexible authorization structure of an account enables it to be owned either by an individual or group of individuals dependant on how permissions are configured. An account sends or receives a valid transaction to the blockchain.
 
-For more information on EOSIO accounts and associated permissions, see the [Accounts and Permissions](../../../60_protocol-guides/40_accounts_and_permissions.md) page on the _EOSIO Developers Portal_.
+For more information on Antelope accounts and associated permissions, see the [Accounts and Permissions](../../../60_protocol-guides/40_accounts_and_permissions.md) page on the _EOSIO Developers Portal_.
 
 ## Create New Account
-The EOSIO Testnet provisions a new EOSIO blockchain account every time you sign up for a new EOSIO Testnet developer account. If you require more EOSIO blockchain accounts, follow the steps below.
+The Antelope Testnet provisions a new Antelope blockchain account every time you sign up for a new Antelope Testnet developer account. If you require more Antelope blockchain accounts, follow the steps below.
 
 **Complete the following steps to create a new account:**
 
-1. Log in to [EOSIO Testnet](https://testnet.eos.io/user#login) and navigate to **Blockchain Accounts** from the top navigation menu.
+1. Log in to [Antelope Testnet](https://testnet.eos.io/user#login) and navigate to **Blockchain Accounts** from the top navigation menu.
 
      ![new account](./images/new-bc-account-1.png)
 2. To create a new account, click **create another account** next to the existing account name as shown below.
@@ -80,7 +80,7 @@ The EOSIO Testnet provisions a new EOSIO blockchain account every time you sign 
 After creating new accounts, request Temporary Network Tokens (TNTs) as outlined in the next section **Request Tokens**.
 
 ## Request Tokens
-Temporary Network Tokens (TNTs) are the native tokens of the EOSIO Testnet. By default, each account contains 32 TNTs. Tokens allow you to get more system resources on Testnet to deploy contracts, interact with smart contracts, and store data on the blockchain.
+Temporary Network Tokens (TNTs) are the native tokens of the Antelope Testnet. By default, each account contains 32 TNTs. Tokens allow you to get more system resources on Testnet to deploy contracts, interact with smart contracts, and store data on the blockchain.
 
 **To request new TNTs**, In the **Balances (TNT)** block, click the **Request Tokens** button to replenish your account by 10 tokens.
 
@@ -95,7 +95,7 @@ Temporary Network Tokens (TNTs) are the native tokens of the EOSIO Testnet. By d
 
 ## Buy and Stake Resources
 
-For more information on staking, see the [Staking on EOSIO Based Blockchains](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/stake) section on the *EOSIO Developers Portal*.
+For more information on staking, see the [Staking on Antelope Based Blockchains](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/stake) section on the *Antelope Developers Portal*.
 
 Complete the following steps to buy and stake system resources:
 
@@ -110,7 +110,7 @@ Complete the following steps to buy and stake system resources:
 
    ![Stake NET](./images/stake-net.png)
 
-To learn more about ***EOSIO system resources***, see the following documentation on the *EOSIO Developers Portal*:
+To learn more about ***Antelope system resources***, see the following documentation on the *Antelope Developers Portal*:
 
 
 * [RAM as Resource](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/ram)
@@ -135,7 +135,7 @@ Once your new blockchain account is created, you can view the following account 
 
 **Complete the following steps to view account details:**
 
-1. Log in to [EOSIO Testnet](https://testnet.eos.io/user#login) and navigate to **Blockchain Accounts** from the top navigation menu.
+1. Log in to [Antelope Testnet](https://testnet.eos.io/user#login) and navigate to **Blockchain Accounts** from the top navigation menu.
 
    ![bc account](./images/bcaccount-nav.png)
 2. From the drop-down menu, select the blockchain account.
@@ -156,16 +156,16 @@ This chapter provides instructions on how to upload and deploy a compiled smart 
 ## Prerequisites
 You must have the following prerequisites before uploading and deploying a smart contract:
 
-1. EOSIO CDT-compiled smart contract files. 
+1. Antelope CDT-compiled smart contract files. 
     1. The WASM file
     2. The ABI file
 1. Testnet blockchain account with sufficient system resources. See the previous section of this guide **Buy and Stake System Resources** for information on staking and unstaking in the Testnet.
 
 [[info | Info]]
-| For more information on how to build and compile smart contract source files, see the [Hello World Contract](../../../30_getting-started-guide/25_hello-world.md) section on the *EOSIO Developer Portal*. 
+| For more information on how to build and compile smart contract source files, see the [Hello World Contract](../../../30_getting-started-guide/25_hello-world.md) section on the *Antelope Developer Portal*. 
 
 ## Upload and Deploy
-Upload and deploy your smart contract on the EOSIO blockchain in a 3-step sequential process.
+Upload and deploy your smart contract on the Antelope blockchain in a 3-step sequential process.
 
 **Complete the following steps to upload and deploy your smart contract:**
 
@@ -189,7 +189,7 @@ Upload and deploy your smart contract on the EOSIO blockchain in a 3-step sequen
 # Push Actions
 An action is authorized by one or more actors created on the blockchain. Actions are created explicitly within a smart contract, or generated implicitly by application code.
 
-For more information on Actions in EOSIO, see the [Actions](../../../60_protocol-guides/20_transactions_protocol.md#11-Actions) section in Transaction Protocol on the *EOSIO Developers Portal*.
+For more information on Actions in EOSIO, see the [Actions](../../../60_protocol-guides/20_transactions_protocol.md#11-Actions) section in Transaction Protocol on the *Antelope Developers Portal*.
 
 **Complete the following steps to push actions on the Testnet:**
 
@@ -214,7 +214,7 @@ View the push actions data that is populated in the multi-Index table.
 
 **Complete the following steps to view multi-index table data:**
 
-1. Log in to [EOSIO Testnet](https://testnet.eos.io/user#login) and navigate to **Blockchain Accounts** from the top navigation menu.
+1. Log in to [Antelope Testnet](https://testnet.eos.io/user#login) and navigate to **Blockchain Accounts** from the top navigation menu.
 
    ![bc account](./images/bcaccount-nav.png)
 2. Select the blockchain account that has a smart contract deployed from the drop-down.
@@ -245,7 +245,7 @@ The type of key in **Key Type**.
 # View Transactions
 A transaction instance contains a transaction header and the list of action instances and transaction extensions that make the actual transaction.
 
-For more information on Transactions in EOSIO, see the [Transactions Protocol](../../../60_protocol-guides/20_transactions_protocol.md) section on the *EOSIO Developers Portal*.
+For more information on Transactions in EOSIO, see the [Transactions Protocol](../../../60_protocol-guides/20_transactions_protocol.md) section on the *Antelope Developers Portal*.
 
 **Complete the following steps to view transactions on the Testnet:**
 

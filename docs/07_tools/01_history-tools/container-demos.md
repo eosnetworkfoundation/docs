@@ -24,7 +24,7 @@ docker run --rm -it -p 127.0.0.1:8881:80 eosio/history-tools:demo-talk
 ## Partial History
 
 Here's a demonstration of using wasm-ql's chain and token queries. This docker container
-is populated with partial history data drawn from one of the public EOSIO networks.
+is populated with partial history data drawn from one of the public Antelope networks.
 It uses RocksDB.
 
 To start the demo, run the following, then point your browser to http://127.0.0.1:8882

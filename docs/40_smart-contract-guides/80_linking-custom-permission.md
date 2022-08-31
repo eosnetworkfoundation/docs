@@ -3,20 +3,20 @@ content_title: "Creating and Linking Custom Permissions"
 link_text: "Creating and Linking Custom Permissions"
 ---
 
-EOSIO permissions control what an account is authorized to execute on an EOSIO blockchain. EOSIO permissions are powerful, flexible, and customizable. This tutorial explains custom permissions and illustrates how to use them. In the tutorial you will create a custom permission,  link a permission to an action, unlink a permission from an action, and delete a custom permission.
+Antelope permissions control what an account is authorized to execute on an Antelope blockchain. Antelope permissions are powerful, flexible, and customizable. This tutorial explains custom permissions and illustrates how to use them. In the tutorial you will create a custom permission,  link a permission to an action, unlink a permission from an action, and delete a custom permission.
 ## Before You Begin
 
 This tutorial requires the following:
 
 * Access to a running blockchain. Click on this link for instructions on [running a blockchain](01_before-you-begin/10_running-a-blockchain.md)
-* An EOSIO account and access to the account keys. Click on this link for information on [Accounts and Permissions](01_before-you-begin/20_accounts-and-permissions.md)
+* An Antelope account and access to the account keys. Click on this link for information on [Accounts and Permissions](01_before-you-begin/20_accounts-and-permissions.md)
 * Some knowledge of smart contracts. Follow this link for more information [hello world tutorial.](../30_getting-started-guide/25_hello-world.md)
 
 ## What is a Custom Permission
-A custom permission is an arbitrarily named permission created and associated with an EOSIO account. When an account is created two permissions are created by default; `owner` and `active`. You can create a new permission, a custom permission, as a child permission of `owner`, `active` or another custom permission. Custom permissions require a public and private key pair. Custom permissions may be linked to smart contract actions to specify the permission required to execute that action. EOSIO accounts and permissions enable flexible and highly granular control over accounts and smart contract actions.
+A custom permission is an arbitrarily named permission created and associated with an Antelope account. When an account is created two permissions are created by default; `owner` and `active`. You can create a new permission, a custom permission, as a child permission of `owner`, `active` or another custom permission. Custom permissions require a public and private key pair. Custom permissions may be linked to smart contract actions to specify the permission required to execute that action. Antelope accounts and permissions enable flexible and highly granular control over accounts and smart contract actions.
 
 [[info]]
-| The permission `eosio.code` is a special permission that allows smart contracts to call inline actions. The EOSIO blockchain performs an authorization check when an inline action is called from a smart contract. Smart contracts do not have access to account keys so cannot add authorization. Adding `eosio.code` to an account permission provides explicit permission for that account permission to execute an inline action. For information on how to add the `eosio.code` see [cleos set account permission](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission).
+| The permission `eosio.code` is a special permission that allows smart contracts to call inline actions. The Antelope blockchain performs an authorization check when an inline action is called from a smart contract. Smart contracts do not have access to account keys so cannot add authorization. Adding `eosio.code` to an account permission provides explicit permission for that account permission to execute an inline action. For information on how to add the `eosio.code` see [cleos set account permission](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission).
 
 ## Why use a Custom Permission
 

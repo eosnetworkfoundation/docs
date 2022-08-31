@@ -3,7 +3,7 @@ content_title: "Code Editors and IDE's"
 link_text: "Code Editors and IDE's"
 ---
 
-Use a code editor or IDE to help facilitate wrting smart contract code, some options that we know are used to build EOSIO smart contracts are:
+Use a code editor or IDE to help facilitate wrting smart contract code, some options that we know are used to build Antelope smart contracts are:
 
 - [Sublime Text](https://www.sublimetext.com/)
 - [Atom Editor](https://atom.io/)

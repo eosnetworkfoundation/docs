@@ -5,7 +5,7 @@ content_title: Accounts and Permissions
 
 # 1. Overview
 
-An account identifies a participant in an EOSIO blockchain. A participant can be an individual or a group depending on the assigned permissions within the account. Accounts also represent the smart contract actors that push and receive actions to and from other accounts in the blockchain. Actions are always contained within transactions. A transaction can be one or more atomic actions.
+An account identifies a participant in an Antelope blockchain. A participant can be an individual or a group depending on the assigned permissions within the account. Accounts also represent the smart contract actors that push and receive actions to and from other accounts in the blockchain. Actions are always contained within transactions. A transaction can be one or more atomic actions.
 
 Permissions associated with an account are used to authorize actions and transactions to other accounts. Each permission is linked to an authority table which contains a threshold that must be reached in order to allow the action associated with the given permission to be authorized for execution. The following diagram illustrates the relationship between accounts, permissions, and authorities.
 
@@ -90,7 +90,7 @@ $$
 
 which is in the order of $1 \times 10^{18}$.
 
-Ownership of each account on an EOSIO blockchain is solely determined by the account name. Therefore, an account can update its keys without having to redistribute them to other parties.
+Ownership of each account on an Antelope blockchain is solely determined by the account name. Therefore, an account can update its keys without having to redistribute them to other parties.
 
 
 ## 2.1. Account Schema
@@ -126,14 +126,14 @@ The `name` type consists of a 64-bit value that encodes alphanumeric characters 
 
 ## 2.2. Actions and Transactions
 
-Besides identifying participants in an EOSIO blockchain, actions and transactions are the other reason for accounts to exist. An action requires one or more actors to push or send the action, and a receiver account to whom the action is directed. A receiver account is also needed when leaving proof, in an action receipt, that the action was pushed to the intended recipient.
+Besides identifying participants in an Antelope blockchain, actions and transactions are the other reason for accounts to exist. An action requires one or more actors to push or send the action, and a receiver account to whom the action is directed. A receiver account is also needed when leaving proof, in an action receipt, that the action was pushed to the intended recipient.
 
 In contrast, transactions are agnostic to accounts, although there is an indirect link to them through their associated keys. Transactions are signed using one or more signing keys belonging to the one or more actors involved in the actions that form the transaction. This can be the receiving account itself or other authorized actors specified on the authority table from the receiving account's permission.
 
 
 # 3. Permissions
 
-Permissions control what EOSIO accounts can do and how actions are authorized. This is accomplished through a flexible permission structure that links each account to a list of hierarchical named permissions, and each named permission to an authority table (see `permission` schema below).
+Permissions control what Antelope accounts can do and how actions are authorized. This is accomplished through a flexible permission structure that links each account to a list of hierarchical named permissions, and each named permission to an authority table (see `permission` schema below).
 
 ## permission schema
 
@@ -163,10 +163,10 @@ The owner permission sits at the root of the permission hierarchy for every acco
 
 ### 3.1.2. Active permission
 
-In the current EOSIO implementation, the implicit default permission linked to all actions is `active`, which sits one level below the `owner` permission within the hierarchy structure. As a result, the `active` permission can do anything the `owner` permission can, except changing the keys associated with the owner. The `active` permission is typically used for voting, transferring funds, and other account operations. For more specific actions, custom permissions are typically created below the `active` permission and mapped to specific contracts or actions. Refer to the [Creating and Linking Custom Permissions](../../40_smart-contract-guides/80_linking-custom-permission.md) for more details.
+In the current Antelope implementation, the implicit default permission linked to all actions is `active`, which sits one level below the `owner` permission within the hierarchy structure. As a result, the `active` permission can do anything the `owner` permission can, except changing the keys associated with the owner. The `active` permission is typically used for voting, transferring funds, and other account operations. For more specific actions, custom permissions are typically created below the `active` permission and mapped to specific contracts or actions. Refer to the [Creating and Linking Custom Permissions](../../40_smart-contract-guides/80_linking-custom-permission.md) for more details.
 
 [[info | Custom Permissions]]
-| EOSIO allows to create custom hierarchical permissions that stem from the owner permission. This allows finer control over action authorizations. It also strengthens security in case the `active` permission gets compromised.
+| Antelope allows to create custom hierarchical permissions that stem from the owner permission. This allows finer control over action authorizations. It also strengthens security in case the `active` permission gets compromised.
 
 
 ## 3.2. Authority Table
@@ -257,12 +257,12 @@ Any given account can define a mapping between any of its named permissions and 
 
 ## 3.4. Permission Evaluation
 
-When determining whether an action is authorized to be executed, the EOSIO software first checks whether the signatures provided in the transaction are valid (see [3.4.2. Signature Validation](#342-signature-validation)). Then it proceeds to check the authorization of all the actions included in the transaction. This is where permissions are evaluated. If there is at least one action that fails to be authorized (by not meeting the authority threshold (see [3.2.2. Authority Threshold](#322-authority-threshold)), the transaction fails.
+When determining whether an action is authorized to be executed, the Antelope software first checks whether the signatures provided in the transaction are valid (see [3.4.2. Signature Validation](#342-signature-validation)). Then it proceeds to check the authorization of all the actions included in the transaction. This is where permissions are evaluated. If there is at least one action that fails to be authorized (by not meeting the authority threshold (see [3.2.2. Authority Threshold](#322-authority-threshold)), the transaction fails.
 
 
 ### 3.4.1. Custom Permissions
 
-By default every account on the EOSIO blockchain is linked to the `active` permission. Again, this can be customized by creating children permissions under `active` or by creating alternate permissions under `owner` (see [3.1. Permission Levels](#31-permission-levels)). Creating custom permissions under `owner` (separate from `active`) is recommended. This is because if the keys associated with the `active` permission are compromised, the security of the account will not be compromised.
+By default every account on the Antelope blockchain is linked to the `active` permission. Again, this can be customized by creating children permissions under `active` or by creating alternate permissions under `owner` (see [3.1. Permission Levels](#31-permission-levels)). Creating custom permissions under `owner` (separate from `active`) is recommended. This is because if the keys associated with the `active` permission are compromised, the security of the account will not be compromised.
 
 [[info | Use Case: Social Media]]
 | Say we have a `publish` permission created for message posting on a social media application. However, we do not want to associate that permission with sensitive actions, such as transferring or withdrawing funds. Under this scenario, it makes sense to link the `social::post` action to the `publish` permission. This allows to define an authority structure which can authorize `post`, but cannot satisfy the default `active` permission for all other actions. That authority structure could delegate itself to a different account at any named permission level. If it did so to another `publish` permission on another account, that would be purely coincidental.

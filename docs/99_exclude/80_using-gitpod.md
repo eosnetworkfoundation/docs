@@ -1,5 +1,5 @@
 ---
-content_title: "Try EOSIO in your web browser"
+content_title: "Try Antelope in your web browser"
 link_text: "Using Gitpod"
 ---
 
@@ -7,7 +7,7 @@ If you do not want to install `EOSIO` binaries on your local machine, or if you 
 
 You can give it a try in a matter of seconds [right now](https://gitpod.io/#https://github.com/EOSIO/eosio-web-ide) and you can read more details about it [on the eosio-web-ide project page](https://github.com/EOSIO/eosio-web-ide).
 
-## EOSIO Testnet
+## Antelope Testnet
 
-Experiment on the EOSIO Testnet with the latest stable release of the EOSIO software. Deploy your smart contracts, push actions, inspect your transactions and much more from an easy to use web interface. To start testing, [register](https://testnet.eos.io/user?utm_source=devportal#signup) for an EOSIO Developer Account.
+Experiment on the Antelope Testnet with the latest stable release of the Antelope software. Deploy your smart contracts, push actions, inspect your transactions and much more from an easy to use web interface. To start testing, [register](https://testnet.eos.io/user?utm_source=devportal#signup) for an Antelope Developer Account.
 

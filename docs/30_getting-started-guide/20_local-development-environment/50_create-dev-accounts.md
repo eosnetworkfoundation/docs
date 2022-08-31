@@ -5,7 +5,7 @@ link_text: "Create Development Accounts"
 
 An account is a collection of authorizations; accounts are stored on the blockchain; accounts identify individual users. Some accounts identify smart contracts; a smart contract is deployed to an account; an account can have only one smart contract. 
 
-EOSIO accounts have a flexible authorization structure which enables it to be controlled by an individual or group of individuals (multisig) depending on **how** permissions have been configured. An account is required to send or receive a valid transaction to the blockchain
+Antelope accounts have a flexible authorization structure which enables it to be controlled by an individual or group of individuals (multisig) depending on **how** permissions have been configured. An account is required to send or receive a valid transaction to the blockchain
 
 This tutorial series uses two "user" accounts, `bob` and `alice`, as well as the default `eosio` account for configuration. Additionally accounts are made for various contracts throughout this tutorial series.
 
@@ -31,9 +31,9 @@ warning: transaction executed locally, but may not be confirmed by the network y
 ```
 
 ## Public Key
-Note in `cleos` command a public key is associated with account `alice`. Each EOSIO account is associated with a public key.
+Note in `cleos` command a public key is associated with account `alice`. Each Antelope account is associated with a public key.
 
-Be aware that the account name is the only identifier for ownership. You can change the public key but it would not change the ownership of your EOSIO account.
+Be aware that the account name is the only identifier for ownership. You can change the public key but it would not change the ownership of your Antelope account.
 
 Check which public key is associated with `alice` using [cleos get account](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/get/account)
 
@@ -59,7 +59,7 @@ cpu bandwidth:
      available:          unlimited
      limit:              unlimited
 ```
-Notice that actually `alice` has both `owner` and `active` public keys. EOSIO has a unique authorization structure that has added security for your account. You can minimize the exposure of your account by keeping the owner key stored in a [cold wallet](https://developers.eos.io/welcome/v2.2/faq/index/#what-is-a-cold-wallet), while using the key associated with your `active` permission. This way, if your `active` key were ever compromised, you could regain control over your account with your `owner` key.
+Notice that actually `alice` has both `owner` and `active` public keys. Antelope has a unique authorization structure that has added security for your account. You can minimize the exposure of your account by keeping the owner key stored in a [cold wallet](https://developers.eos.io/welcome/v2.2/faq/index/#what-is-a-cold-wallet), while using the key associated with your `active` permission. This way, if your `active` key were ever compromised, you could regain control over your account with your `owner` key.
 
 In terms of authorization, if you have a `owner` permission you can change the private key of `active` permission. But you cannot do so the other way around.
 

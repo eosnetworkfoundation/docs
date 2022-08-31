@@ -8,14 +8,14 @@ You deploy and execute smart contracts on the blockchain. A record of each trans
 Let's start with a simple smart contract that produces the traditional **_Hello World_**. 
 
 This tutorial introduces the following key concepts:
-* [EOSIO Contract Development Toolkit](https://developers.eos.io/manuals/eosio.cdt/latest/index) - Toolchain and libraries used to build smart contracts
+* [Antelope Contract Development Toolkit](https://developers.eos.io/manuals/eosio.cdt/latest/index) - Toolchain and libraries used to build smart contracts
 * [Webassembly](../glossary/index#webassembly) (WASM) - The virtual machine used to execute a portable binary-code format. Hosted in [nodeos.](../glossary/index#nodeos)
 * [Application Binary Interfaces](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/understanding-abi-files) (ABI) - The interface that defines how data is marshalled to and from the webassembly virtual machine
 * [Smart Contracts](../../../glossary/index/#smart-contract) - Code that defines actions and transactions which may be executed on a blockchain
 
 This tutorial shows how to:
 * Create a simple smart contract with a simple "hi" [action](../../../glossary/index/#action) to the smart contract
-* Compile and deploy the smart contract to an EOSIO blockchain
+* Compile and deploy the smart contract to an Antelope blockchain
 * Use the command line to call the "hi" action of the smart contract
 
 ## Before you begin
@@ -26,9 +26,9 @@ This tutorial requires the following:
 
 Once you complete the tutorial, you should have created a **_Hello World_** smart contract and deployed the smart contract on a blockchain.
 
-## EOSIO Contract Development Toolkit
+## Antelope Contract Development Toolkit
 
-Create EOSIO smart contracts using the C++ programming language. The EOSIO Contract Development Toolkit or [EOSIO.CDT](../glossary/index/#eosio.cdt) provides the libraries and tools required to build a smart contract. See the [EOSIO.CDT](https://developers.eos.io/manuals/eosio.cdt/latest/index) manual for more details on how to get started with the `EOSIO.CDT`.
+Create Antelope smart contracts using the C++ programming language. The Antelope Contract Development Toolkit or [EOSIO.CDT](../glossary/index/#eosio.cdt) provides the libraries and tools required to build a smart contract. See the [EOSIO.CDT](https://developers.eos.io/manuals/eosio.cdt/latest/index) manual for more details on how to get started with the `EOSIO.CDT`.
 
 To deploy the smart contract to the blockchain, first use the [eosio-cpp](https://developers.eos.io/manuals/eosio.cdt/v1.7/command-reference/eosio-cpp) tool to compile the smart contract. The compilation builds a webassembly file and a corresponding application binary interface (ABI) file.
 
@@ -179,7 +179,7 @@ executed transaction: 28d92256c8ffd8b0255be324e4596b7c745f50f85722d0c4400471bc18
 This version of the **_Hello World_** smart contract is a simple example. The `hi` action may be called by any user. Smart contracts should be secure so extend the code to add authorization. This forces the smart contract to check which account is used to call the action.
 
 ## Authorization
-The EOSIO blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. EOSIO blockchains use account authority tables to check the account has the required authority to perform an action. Using authorization is the first step towards [securing your smart contract.](https://developers.eos.io/manuals/eosio.cdt/v1.7/best-practices/securing_your_contract) Follow this link [for more information about authorization checks.](https://developers.eos.io/manuals/eosio.cdt/v1.8/how-to-guides/authorization/how_to_restrict_access_to_an_action_by_user)
+The Antelope blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. Antelope blockchains use account authority tables to check the account has the required authority to perform an action. Using authorization is the first step towards [securing your smart contract.](https://developers.eos.io/manuals/eosio.cdt/v1.7/best-practices/securing_your_contract) Follow this link [for more information about authorization checks.](https://developers.eos.io/manuals/eosio.cdt/v1.8/how-to-guides/authorization/how_to_restrict_access_to_an_action_by_user)
 
 Add [require_auth](https://developers.eos.io/manuals/eosio.cdt/latest/group__action#function-require_auth) to the smart contract, the `require_auth` function checks authorization and ensures the name parameter matches the user executing and authorizing the action. 
 

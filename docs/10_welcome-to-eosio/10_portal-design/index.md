@@ -56,10 +56,10 @@ For example, in the below screen, you can see responsive design in action on one
 
 ## Home Page
 
-The **Home** page of the EOSIO Developer Portal is refactored into logical groupings around topics such as getting started, learning about the EOSIO stack, API reference, and helpful developer resources. Below is a screenshot of the Home page:
+The **Home** page of the Antelope Developer Portal is refactored into logical groupings around topics such as getting started, learning about the Antelope stack, API reference, and helpful developer resources. Below is a screenshot of the Home page:
 
 ![Developers Portal Page Layout](dev-portal-home.png "dev portal home")
-*Fig 3. The Home page of the EOSIO Developer Portal*
+*Fig 3. The Home page of the Antelope Developer Portal*
 
 [[info | Note]]
 | The _EOSIO Developer Portal_ is constantly evolving in terms of UI design and UI content to improve readability and usability. The screens illustrated here or elsewhere on the Developer Portal may change over time. We endeavour to keep all the screens duly updated, but if you see any outdated screens, please report it to us by clicking the **Edit** button at the upper-right of a given page.
@@ -87,7 +87,7 @@ The Developer Portal processes multiple source repositories in Github and produc
 
 # Portal Search 
 
-The EOSIO Developer Portal integrates the Algolia DocSearch application into the search feature, which provides a professional search experience with highly relevant search results. An example search result from the Developer Portal is shown in the below screenshot:
+The Antelope Developer Portal integrates the Algolia DocSearch application into the search feature, which provides a professional search experience with highly relevant search results. An example search result from the Developer Portal is shown in the below screenshot:
 
 ![Developers Portal Search](search-page-result.png "portal search")
 *Fig 6. Sample search result page*

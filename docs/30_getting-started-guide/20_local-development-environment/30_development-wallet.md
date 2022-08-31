@@ -85,7 +85,7 @@ Created new private key with a public key of: "EOS8PEJ5FM42xLpHK...X6PymQu97KrGD
 ```
 
 ## Import the Development Key
-Every new EOSIO chain has a default "system" user called "eosio". This account is used to setup the chain by loading system contracts that dictate the governance and consensus of the EOSIO chain. Every new EOSIO chain comes with a development key, and this key is the same. Load this key to sign transactions on behalf of the system user (eosio)
+Every new Antelope chain has a default "system" user called "eosio". This account is used to setup the chain by loading system contracts that dictate the governance and consensus of the Antelope chain. Every new Antelope chain comes with a development key, and this key is the same. Load this key to sign transactions on behalf of the system user (eosio)
 
 ```shell
 cleos wallet import

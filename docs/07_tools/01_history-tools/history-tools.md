@@ -1,13 +1,13 @@
-# EOSIO History Tools ![EOSIO Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
+# Antelope History Tools ![Antelope Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
 
-The EOSIO History Tools is a legacy, proof-of-concept (PoC) application that demonstrates scalable and efficient access to finalized blockchain data via the nodeos state-history plugin.
+The Antelope History Tools is a legacy, proof-of-concept (PoC) application that demonstrates scalable and efficient access to finalized blockchain data via the nodeos state-history plugin.
 
 [[info | Disclaimer]]
-| History Tools was originally devised as a PoC to request community feedback. Therefore, some of its components have been or will be integrated with future versions of the EOSIO software.
+| History Tools was originally devised as a PoC to request community feedback. Therefore, some of its components have been or will be integrated with future versions of the Antelope software.
 
 ## Migration Notice
 
-The following History Tools components have been migrated to the following EOSIO repositories:
+The following History Tools components have been migrated to the following Antelope repositories:
 * `wasm-ql`:
   * nodeos support: https://github.com/EOSIO/eos
   * cdt support: https://github.com/EOSIO/eosio.cdt
@@ -37,7 +37,7 @@ Note: by default, `history-tools` does nothing; use the `--plugin` option to sel
 
 ## Alpha Release
 
-This is an alpha release of the EOSIO History Tools. It includes database fillers
+This is an alpha release of the Antelope History Tools. It includes database fillers
 (`fill-pg`, `fill-rocksdb`) which pull data from nodeos's State History Plugin, and a new
 query engine (`wasm-ql-pg`, `wasm-ql-rocksdb`) which supports queries defined by wasm, along
 with an emulation of the legacy `/v1/` RPC API.
@@ -66,7 +66,7 @@ like to test rocksdb support or wasm-ql support, stick with Nodeos 1.8 and the A
 
 * There are now 2 self-contained demonstrations in public Docker images. See [container-demos](container-demos.md) for details.
   * Talk: this demonstrates using wasm-ql to provide messages from on-chain conversations to clients in threaded order.
-  * Partial history: this demonstrates some of wasm-ql's chain and token queries on data drawn from one of the public EOSIO networks.
+  * Partial history: this demonstrates some of wasm-ql's chain and token queries on data drawn from one of the public Antelope networks.
 * Added RocksDB and removed LMDB. This has the following advantages:
   * Filling outperforms both PostgreSQL and LMDB by considerable margins, both for partial history
     and for full history on large well-known chains.
@@ -120,7 +120,7 @@ history of the chain, or save space by only covering recent history.
 
 ### wasm-ql-pg
 
-EOSIO contracts store their data in a format which is convenient for them, but hard
+Antelope contracts store their data in a format which is convenient for them, but hard
 on general-purpose query engines. e.g. the `/v1/get_table_rows` RPC API struggles to provide 
 all the necessary query options that applications need. `wasm-ql-pg` allows contract authors
 and application authors to design their own queries using the same 

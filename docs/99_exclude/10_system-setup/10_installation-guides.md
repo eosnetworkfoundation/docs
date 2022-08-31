@@ -3,10 +3,10 @@ content_title: Installation Guides
 link_text: Installation Guides
 ---
 
-The `EOSIO platform` can be installed using binary files released by Block.one or you can get the open source code and build the binary files locally. This section provides installation instructions using binary files. 
+The `Antelope platform` can be installed using binary files released by Block.one or you can get the open source code and build the binary files locally. This section provides installation instructions using binary files. 
 
 [[info]]
-| If you are new to EOSIO, we recommended you install the [EOSIO Prebuilt Binaries.](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries)
+| If you are new to EOSIO, we recommended you install the [Antelope Prebuilt Binaries.](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries)
 
 
 ### Installing Nodeos, Cleos and Keosd
@@ -20,13 +20,13 @@ Follow this link [Installation Guide](https://developers.eos.io/manuals/eos/v2.2
 
 ### Installing the EOSIO.CDT
 
-The `EOSIO Contract Development Toolkit`, `CDT` for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
+The `Antelope Contract Development Toolkit`, `CDT` for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
 
 Follow this link [Installation Guide](https://developers.eos.io/manuals/eosio.cdt/latest/installation) for detailed instructions on how to install the `CDT.`
 
 
-### EOSIO Source Code
-For advanced users seeking to customise installation or the `EOSIO platform` there is the option of [Building EOSIO from Source.](https://developers.eos.io/manuals/eos/v2.2/install/build-from-source/index)
+### Antelope Source Code
+For advanced users seeking to customise installation or the `Antelope platform` there is the option of [Building Antelope from Source.](https://developers.eos.io/manuals/eos/v2.2/install/build-from-source/index)
 
 
 

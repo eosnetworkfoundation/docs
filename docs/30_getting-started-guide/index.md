@@ -3,9 +3,9 @@ content_title: "Getting Started Guide"
 link_text: "Getting Started Guide"
 ---
 
-The purpose of the _EOSIO Getting Started Guide_ is to provide guided instructions to set up your local EOSIO development environment and use the environment to build and deploy a basic **_Hello World_** Smart Contract. The _Getting Started Guide_ high-level workflow is illustrated in the following diagram: 
+The purpose of the _EOSIO Getting Started Guide_ is to provide guided instructions to set up your local Antelope development environment and use the environment to build and deploy a basic **_Hello World_** Smart Contract. The _Getting Started Guide_ high-level workflow is illustrated in the following diagram: 
 
-![EOSIO Getting Started Workflow](eosio-gsg-workflow.png)
+![Antelope Getting Started Workflow](eosio-gsg-workflow.png)
 
 The diagram identifies the following two workflows: 
 
@@ -13,40 +13,40 @@ The diagram identifies the following two workflows:
 2. **Build and deploy a basic Hello World smart contract**
 
 [[info | Note]]
-| Before you begin with the getting started workflow, make sure you familiarize yourself with [EOSIO Platform and Toolchain](../20_introduction-to-eosio/10_platform_and_toolchain.md), [Core Concepts](../20_introduction-to-eosio/20_core_concepts.md), and some of the [Technical Features](../20_introduction-to-eosio/30_technical_features.md).
+| Before you begin with the getting started workflow, make sure you familiarize yourself with [Antelope Platform and Toolchain](../20_introduction-to-eosio/10_platform_and_toolchain.md), [Core Concepts](../20_introduction-to-eosio/20_core_concepts.md), and some of the [Technical Features](../20_introduction-to-eosio/30_technical_features.md).
 
 # Set Up Local Development Environment
-As a developer, begin with setting up your [local development environment](../30_getting-started-guide/20_local-development-environment/index.md) that involves satisfying system requirements, installing OS-specific EOSIO binaries, and creating test blockchain accounts. Once the local development environment is set up, you can progress to smart contracts development workflow and build your first basic **Hello World** smart contract.
+As a developer, begin with setting up your [local development environment](../30_getting-started-guide/20_local-development-environment/index.md) that involves satisfying system requirements, installing OS-specific Antelope binaries, and creating test blockchain accounts. Once the local development environment is set up, you can progress to smart contracts development workflow and build your first basic **Hello World** smart contract.
 
 [[info | Note]]
-| Installing EOSIO prebuilt binaries is a convenient method for beginners. If you want to try advanced build methods, see [Installing from Source](https://developers.eos.io/manuals/eos/v2.1/install/build-from-source/index).
+| Installing Antelope prebuilt binaries is a convenient method for beginners. If you want to try advanced build methods, see [Installing from Source](https://developers.eos.io/manuals/eos/v2.1/install/build-from-source/index).
 
 # Build and Deploy Hello World Smart Contract
-After your local development environment is fully configured, you are ready to build and deploy your first Hello World Smart Contract on the EOSIO blockchain platform.
+After your local development environment is fully configured, you are ready to build and deploy your first Hello World Smart Contract on the Antelope blockchain platform.
 
 
 ### Use Pre-configured Web Environment
 Optionally, you can use a pre-configured web environment as your local development environment without the need of binary installation. Use a pre-configured web environmennt if you have system constraints. See the following items for more information:
 
-* [EOSIO Quickstart Web IDE](30_pre-configured-development-environment): Use the Gitpod pre-configured EOSIO development environment
-* [The EOSIO Testnet](../70_quick-start-guides): Use the EOSIO Testnet as a testing environment to deploy smart contracts and build blockchain applications on EOSIO.
+* [Antelope Quickstart Web IDE](30_pre-configured-development-environment): Use the Gitpod pre-configured Antelope development environment
+* [The Antelope Testnet](../70_quick-start-guides): Use the Antelope Testnet as a testing environment to deploy smart contracts and build blockchain applications on EOSIO.
 
 
 # Further Reading
-The following documentation resources will help you gain advanced technical knowledge and functional understanding of the EOSIO platform. Additionally, you can explore advanced configuration options available for development environments.
+The following documentation resources will help you gain advanced technical knowledge and functional understanding of the Antelope platform. Additionally, you can explore advanced configuration options available for development environments.
 
 ## Training and Certification 
-Developed for [EOSIO for Business,](https://eos.io/eosio-for-business/) these comprehensive courses cover the foundations of EOSIO, smart contract programming, application development and security best practices for integrations. The courses are currently available to all the EOSIO community. [Sign up for free access until January 31, 2021.](https://training.eos.io/)
+Developed for [Antelope for Business,](https://eos.io/eosio-for-business/) these comprehensive courses cover the foundations of EOSIO, smart contract programming, application development and security best practices for integrations. The courses are currently available to all the Antelope community. [Sign up for free access until January 31, 2021.](https://training.eos.io/)
 
 ## Protocol Guides
-In this section, we describe the base components and protocols used in the EOSIO platform. `EOSIO Core` provides the basic building blocks for the `system` layer and because they are not implemented as smart contracts they do not provide the same level of flexibility. Nevertheless, the `core` implementation is also open source and thus it can be modified as well to suit custom business requirements. Follow this link [Protocol Guides](../60_protocol-guides) to read more about `EOSIO Core.`
+In this section, we describe the base components and protocols used in the Antelope platform. `Antelope Core` provides the basic building blocks for the `system` layer and because they are not implemented as smart contracts they do not provide the same level of flexibility. Nevertheless, the `core` implementation is also open source and thus it can be modified as well to suit custom business requirements. Follow this link [Protocol Guides](../60_protocol-guides) to read more about `Antelope Core.`
 
 ## Configuration Guides
 
 The configuration guides section will show you how to configure [Nodeos.](../glossary/index/#nodeos) How `Nodeos` is configured will depend on your desired usage. `Nodeos` configuration controls which [plugins](../glossary/index/#plugin) are used and how those `plugins` are configured. The `plugins` are used to specify `Nodeos` behaviour for specific purposes. 
 
 ### Smart Contracts and blockchain configuration
-The `EOSIO platform` provides a blockchain platform and a key feature of the `EOSIO platform` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
+The `Antelope platform` provides a blockchain platform and a key feature of the `Antelope platform` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
 
 ### Development and Testing
 There are several ways to configure a [Nodeos](../glossary/index/#nodeos) environment for development and testing. Which option to use largely depends on what the project goals are. Some practical options are provided below.
@@ -77,12 +77,12 @@ Use plugins to extend, or specialize, the behaviour of nodeos and kleosd. See th
 
 
 ## Core Components
-The main components of the EOSIO platform.
-* [nodeos](https://developers.eos.io/manuals/eos/v2.1/nodeos/index) : The core service daemon that runs on every EOSIO node.
+The main components of the Antelope platform.
+* [nodeos](https://developers.eos.io/manuals/eos/v2.1/nodeos/index) : The core service daemon that runs on every Antelope node.
 * [cleos](https://developers.eos.io/manuals/eos/v2.1/cleos/index) : A command line interface to interact with the blockchain and manage wallets.
 * [keosd](https://developers.eos.io/manuals/eos/v2.1/keosd/index) : A key manager service daemon for storing private keys and signing digital messages.
-* [eosio.cdt](https://developers.eos.io/manuals/eosio.cdt/v1.8/index) : Contract Development Toolkit is a suite of tools used to build EOSIO contracts.
-* [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) : Smart contracts that provide some of the basic functions of the EOSIO blockchain.
+* [eosio.cdt](https://developers.eos.io/manuals/eosio.cdt/v1.8/index) : Contract Development Toolkit is a suite of tools used to build Antelope contracts.
+* [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) : Smart contracts that provide some of the basic functions of the Antelope blockchain.
 
 
 

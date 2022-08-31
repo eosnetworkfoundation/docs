@@ -3,7 +3,7 @@ content_title: "Accounts and Permissions"
 link_text: "Accounts and Permissions"
 ---
 
-To use an EOSIO blockchain, you need an account. This tutorial introduces accounts, permissions, and authorities. Accounts identify participants in the blockchain. You deploy a smart contract to an account and use account permissions to authorize smart contract transactions.
+To use an Antelope blockchain, you need an account. This tutorial introduces accounts, permissions, and authorities. Accounts identify participants in the blockchain. You deploy a smart contract to an account and use account permissions to authorize smart contract transactions.
 
 
 This tutorial introduces the following key concepts:
@@ -28,7 +28,7 @@ This tutorial requires the following:
 
 ## About Accounts and Permissions
 
-A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the permissions of that participant. Permissions control what EOSIO accounts can do and how actions are authorized.
+A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the permissions of that participant. Permissions control what Antelope accounts can do and how actions are authorized.
 
 
 [[info]]
