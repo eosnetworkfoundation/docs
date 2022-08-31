@@ -115,7 +115,7 @@ Antelope offers a few smart contracts which should be used as reference smart co
 You can customize them to your business needs and deploy any number of them when you launch your EOSIO-based blockchain. We recommend using the latest released versions of the smart contracts.
 
 Further Reading
-[EOSIO.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index)
+[eos-system-contracts](https://developers.eos.io/manuals/eos-system-contracts/latest/index)
 
 ### Can we assign control of the eosio.token contract to any account?
 Yes, you can deploy the eosio.token smart contract to any account for which you have at least the active private key.
@@ -124,7 +124,7 @@ Yes, you can deploy the eosio.token smart contract to any account for which you 
 
 You should not call `onblock()` action yourself, but as a blockchain developer you can define its semantics by changing its implementation to fit your blockchain business requirements. The `onblock()` action is called by the system on every block. In this way, the `onblock()` acts as a heart beat for the system contract and allows it to always execute all necessary actions (i.e. producer pay) to ensure a healthy system behavior.
 
-See [onblock](https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.system/index/?query=onblock&page=1#onblock)
+See [onblock](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.system/index/?query=onblock&page=1#onblock)
 
 ### What are the supported data types that can be used for actions parameters?
 

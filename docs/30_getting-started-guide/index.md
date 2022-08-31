@@ -46,7 +46,7 @@ In this section, we describe the base components and protocols used in the Antel
 The configuration guides section will show you how to configure [Nodeos.](../glossary/index/#nodeos) How `Nodeos` is configured will depend on your desired usage. `Nodeos` configuration controls which [plugins](../glossary/index/#plugin) are used and how those `plugins` are configured. The `plugins` are used to specify `Nodeos` behaviour for specific purposes. 
 
 ### Smart Contracts and blockchain configuration
-The `Antelope framework` provides a blockchain framework and a key feature of the `Antelope framework` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
+The `Antelope framework` provides a blockchain framework and a key feature of the `Antelope framework` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eos-system-contracts](https://developers.eos.io/manuals/eos-system-contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
 
 ### Development and Testing
 There are several ways to configure a [Nodeos](../glossary/index/#nodeos) environment for development and testing. Which option to use largely depends on what the project goals are. Some practical options are provided below.
@@ -82,7 +82,7 @@ The main components of the Antelope framework.
 * [cleos](https://developers.eos.io/manuals/eos/v2.1/cleos/index) : A command line interface to interact with the blockchain and manage wallets.
 * [keosd](https://developers.eos.io/manuals/eos/v2.1/keosd/index) : A key manager service daemon for storing private keys and signing digital messages.
 * [cdt](https://developers.eos.io/manuals/cdt/v1.8/index) : Contract Development Toolkit is a suite of tools used to build Antelope contracts.
-* [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) : Smart contracts that provide some of the basic functions of the Antelope blockchain.
+* [eos-system-contracts](https://developers.eos.io/manuals/eos-system-contracts/latest/index) : Smart contracts that provide some of the basic functions of the Antelope blockchain.
 
 
 

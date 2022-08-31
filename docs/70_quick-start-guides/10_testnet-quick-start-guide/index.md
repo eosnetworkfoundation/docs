@@ -95,7 +95,7 @@ Temporary Network Tokens (TNTs) are the native tokens of the Antelope Testnet. B
 
 ## Buy and Stake Resources
 
-For more information on staking, see the [Staking on Antelope Based Blockchains](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/stake) section on the *Antelope Developers Portal*.
+For more information on staking, see the [Staking on Antelope Based Blockchains](https://developers.eos.io/manuals/eos-system-contracts/latest/key-concepts/stake) section on the *Antelope Developers Portal*.
 
 Complete the following steps to buy and stake system resources:
 
@@ -113,9 +113,9 @@ Complete the following steps to buy and stake system resources:
 To learn more about ***Antelope system resources***, see the following documentation on the *Antelope Developers Portal*:
 
 
-* [RAM as Resource](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/ram)
-* [CPU as Resource](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/cpu)
-* [NET as Resource](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/net)
+* [RAM as Resource](https://developers.eos.io/manuals/eos-system-contracts/latest/key-concepts/ram)
+* [CPU as Resource](https://developers.eos.io/manuals/eos-system-contracts/latest/key-concepts/cpu)
+* [NET as Resource](https://developers.eos.io/manuals/eos-system-contracts/latest/key-concepts/net)
 
 ## View Account Details
 Once your new blockchain account is created, you can view the following account details in the Testnet:

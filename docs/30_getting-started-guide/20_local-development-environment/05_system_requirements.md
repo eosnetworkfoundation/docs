@@ -12,7 +12,7 @@ The component versions of the `Antelope framework` used in this version are:
 | ------ | ------ |
 | eosio | 2.2-rc |
 | cdt | 1.8 |
-| eosio.contracts | 1.9 |
+| eos-system-contracts | 1.9 |
 | eosjs | 22.2 |
 
 

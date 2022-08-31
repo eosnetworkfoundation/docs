@@ -9,10 +9,10 @@ to a .csv file:
 * Pending stake refunds
 
 It automatically determines the system token from the system contract's `rammarket` table. This example makes the following assumptions:
-* The example `eosio.system` contract in https://github.com/EOSIO/eosio.contracts is installed and initialized on the `eosio` account.
-* The example `eosio.token` contract in https://github.com/EOSIO/eosio.contracts is installed on the `eosio.token` account and manages the system token.
+* The example `eosio.system` contract in https://github.com/eosnetworkfoundation/eos-system-contracts is installed and initialized on the `eosio` account.
+* The example `eosio.token` contract in https://github.com/eosnetworkfoundation/eos-system-contracts is installed on the `eosio.token` account and manages the system token.
 
-Note: use the `update_eosio_token_to_cdt1.6` branch (temporary) of `eosio.contracts` during build.
+Note: use the `update_eosio_token_to_cdt1.6` branch (temporary) of `eos-system-contracts` during build.
 
 ## balance.snap.hpp
 
@@ -277,8 +277,8 @@ export HT_TOOLS_DIR=~/history-tools
 # Location of the CDT
 export CDT_DIR=/usr/local/cdt
 
-# Location of eosio.contracts
-export CONTRACTS_DIR=~/eosio.contracts
+# Location of eos-system-contracts
+export CONTRACTS_DIR=~/eos-system-contracts
 
 $CDT_DIR/bin/eosio-cpp                                                      \
     -Os                                                                     \

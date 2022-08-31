@@ -523,8 +523,8 @@ The `open` action requires a valid authorization of the `ram_payer` and checks i
 If all checks pass, the ‘open’ action creates a new zero balance record in the `acnts` table for the `owner` account. If a record already exists for the `owner`, the action does nothing.
 
 The `open` action complements the `close` action. For more details consult these two github entries:
-* [Github issue #61](https://github.com/EOSIO/eosio.contracts/issues/61)
-* [Github issue #62](https://github.com/EOSIO/eosio.contracts/issues/62)
+* [Github issue #61](https://github.com/eosnetworkfoundation/eos-system-contracts/issues/61)
+* [Github issue #62](https://github.com/eosnetworkfoundation/eos-system-contracts/issues/62)
 
 ### Close Action
 

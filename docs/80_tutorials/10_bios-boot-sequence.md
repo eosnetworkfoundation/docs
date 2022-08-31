@@ -391,18 +391,18 @@ executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea
 
 To have a functional EOSIO-based blockchain you have to install a few system smart contracts:
 
-* the `eosio.system`, `eosio.msig`and `eosio.token` located in `eosio.contracts`repository, and
+* the `eosio.system`, `eosio.msig`and `eosio.token` located in `eos-system-contracts`repository, and
 * the `eosio.boot` located in `eos` repository.
 
-#### 1.8.1. Build eosio.contracts
+#### 1.8.1. Build eos-system-contracts
 
-To build `eosio.contracts`, create a dedicated directory for `eosio.contracts`, clone the `eosio.contracts` repository. checkout the appropriate branch and build the source code. Print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`.
+To build `eos-system-contracts`, create a dedicated directory for `eos-system-contracts`, clone the `eos-system-contracts` repository. checkout the appropriate branch and build the source code. Print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`.
 
 ```shell
 cd ~
-git clone https://github.com/EOSIO/eosio.contracts.git
+git clone https://github.com/eosnetworkfoundation/eos-system-contracts.git
 git checkout develop
-cd ./eosio.contracts/
+cd ./eos-system-contracts/
 ./build.sh
 cd ./build/contracts/
 pwd
