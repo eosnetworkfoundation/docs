@@ -7,7 +7,7 @@ link_text: Welcome to the Developer Portal
 
 The *Antelope Developer Portal* is an Antelope documentation platform that hosts a rich array of technical product documentation resources created and curated for the Antelope blockchain developers community. These resources empower developers from all technology backgrounds to build enterprise-grade, secure, and scalable blockchain applications using the open-source Antelope software.
 
-We recognize our community developers to be an important part of the Antelope blockchain ecosystem. Using the open source development model, we have a shared mission of leveraging the power of open source technologies to further mature the Antelope platform.
+We recognize our community developers to be an important part of the Antelope blockchain ecosystem. Using the open source development model, we have a shared mission of leveraging the power of open source technologies to further mature the Antelope framework.
 
 > *The advancement of blockchain is the result of passionate developers like you building platforms that will inject trust and security back into our institutional systems*
 
@@ -15,8 +15,8 @@ Are you a new entrant to the blockchain space? If yes, no worries, we have learn
 
 This portal supports your Antelope learning and development journey through the following curated technical documentation resources:
 
-* [**Antelope Concepts**](../20_introduction-to-eosio): Learn the core concepts of the Antelope platform
-* [**Antelope Protocols**](../60_protocol-guides): Gain a deeper understanding of the various protocols such as [Accounts and Permissions](../60_protocol-guides/40_accounts_and_permissions.md) implemented in the Antelope platform
+* [**Antelope Concepts**](../20_introduction-to-eosio): Learn the core concepts of the Antelope framework
+* [**Antelope Protocols**](../60_protocol-guides): Gain a deeper understanding of the various protocols such as [Accounts and Permissions](../60_protocol-guides/40_accounts_and_permissions.md) implemented in the Antelope framework
 * [**Antelope Getting Started**](../30_getting-started-guide): Orient yourself with the Antelope development environment and basic smart contract development. Best suited for new developers onboarding the Antelope blockchain ecosystem
 * **API and SDK Reference**: Browse our API catalogue and discover what kinds of APIs we provide
 Glossary: Browse through a curated list of Antelope terminologies.
@@ -45,7 +45,7 @@ To become familiar with the *Antelope Developer Portal* design, standard page la
 
 ## New to Blockchain Development?
 
-The Antelope Developer Portal has documentation and onboarding resources to help you get started with the Antelope blockchain platform. Explore the following learning resources to acquire functional knowledge of the Antelope platform.
+The Antelope Developer Portal has documentation and onboarding resources to help you get started with the Antelope blockchain platform. Explore the following learning resources to acquire functional knowledge of the Antelope framework.
 
 ### Antelope Getting Started Guide 
 Orient yourself with the Antelope development environment and basic smart contract development. For detailed instructions on setting up your development environment and deploying your first smart contract, see the [_EOSIO Getting Started Guide_](../30_getting-started-guide). 
@@ -70,7 +70,7 @@ From platform fundamentals to application development, we have a hands-on traini
 
 The technical content developers at Developer Relations endeavor to provide trusted, authoritative, and bug-free documentation on the Antelope Developer Portal. However, we may inadvertently miss detecting documentation bugs making their way to production.  
 
-As part of our development community, if you detect a typographical error, or any erroneous representation of the Antelope platform, please submit a [Pull Request (PR)](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) and report the bug to us. 
+As part of our development community, if you detect a typographical error, or any erroneous representation of the Antelope framework, please submit a [Pull Request (PR)](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) and report the bug to us. 
 
 See the [Community Contributions](20_community-contributions) section of this portal for detailed instructions on submitting a PR and also filing a new Github issue in the relevant repository. Be assured, we appropriately deal with incoming PRs for the enhancement of your developer experience! 
 

@@ -7,7 +7,7 @@ link_text: "Tic-tac-toe Game Contract Using Testnet"
 This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an Antelope blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an Antelope blockchain. In this tutorial we use the Antelope Testnet blockchain and show you how to play the game by calling the smart contract.
 
 [[info]]
-| Antelope is a blockchain software platform developed by Block.one. Smart contracts which run on the Antelope platform should run on any blockchain which using the Antelope platform. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope platform, EOS or the public mainnet. In this tutorial we will use the Block.one testnet, which is a blockchain operated by Block.one for testing.
+| Antelope is a blockchain software platform developed by Block.one. Smart contracts which run on the Antelope framework should run on any blockchain which using the Antelope framework. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope framework, EOS or the public mainnet. In this tutorial we will use the Block.one testnet, which is a blockchain operated by Block.one for testing.
 
 
 We explain the purpose of each step and why it is important.
@@ -25,7 +25,7 @@ and
 * The Antelope Contract Development Toolkit or eosio.cdt. See the [Getting Started Guide](../30_getting-started-guide) for details on how to install and set up the required Antelope components.
 * Familiarity with the `eosio.cdt` which is used to compile smart contracts. 
 
-Click on this link for an [overview of the Antelope platform.](../20_introduction-to-eosio)
+Click on this link for an [overview of the Antelope framework.](../20_introduction-to-eosio)
 
 Click on this link to [get started with EOSIO.](../30_getting-started-guide "Getting Started with EOSIO")
    

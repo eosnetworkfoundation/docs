@@ -33,20 +33,20 @@ Optionally, you can use a pre-configured web environment as your local developme
 
 
 # Further Reading
-The following documentation resources will help you gain advanced technical knowledge and functional understanding of the Antelope platform. Additionally, you can explore advanced configuration options available for development environments.
+The following documentation resources will help you gain advanced technical knowledge and functional understanding of the Antelope framework. Additionally, you can explore advanced configuration options available for development environments.
 
 ## Training and Certification 
 Developed for [Antelope for Business,](https://eos.io/eosio-for-business/) these comprehensive courses cover the foundations of EOSIO, smart contract programming, application development and security best practices for integrations. The courses are currently available to all the Antelope community. [Sign up for free access until January 31, 2021.](https://training.eos.io/)
 
 ## Protocol Guides
-In this section, we describe the base components and protocols used in the Antelope platform. `Antelope Core` provides the basic building blocks for the `system` layer and because they are not implemented as smart contracts they do not provide the same level of flexibility. Nevertheless, the `core` implementation is also open source and thus it can be modified as well to suit custom business requirements. Follow this link [Protocol Guides](../60_protocol-guides) to read more about `Antelope Core.`
+In this section, we describe the base components and protocols used in the Antelope framework. `Antelope Core` provides the basic building blocks for the `system` layer and because they are not implemented as smart contracts they do not provide the same level of flexibility. Nevertheless, the `core` implementation is also open source and thus it can be modified as well to suit custom business requirements. Follow this link [Protocol Guides](../60_protocol-guides) to read more about `Antelope Core.`
 
 ## Configuration Guides
 
 The configuration guides section will show you how to configure [Nodeos.](../glossary/index/#nodeos) How `Nodeos` is configured will depend on your desired usage. `Nodeos` configuration controls which [plugins](../glossary/index/#plugin) are used and how those `plugins` are configured. The `plugins` are used to specify `Nodeos` behaviour for specific purposes. 
 
 ### Smart Contracts and blockchain configuration
-The `Antelope platform` provides a blockchain platform and a key feature of the `Antelope platform` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
+The `Antelope framework` provides a blockchain platform and a key feature of the `Antelope framework` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
 
 ### Development and Testing
 There are several ways to configure a [Nodeos](../glossary/index/#nodeos) environment for development and testing. Which option to use largely depends on what the project goals are. Some practical options are provided below.
@@ -77,7 +77,7 @@ Use plugins to extend, or specialize, the behaviour of nodeos and kleosd. See th
 
 
 ## Core Components
-The main components of the Antelope platform.
+The main components of the Antelope framework.
 * [nodeos](https://developers.eos.io/manuals/eos/v2.1/nodeos/index) : The core service daemon that runs on every Antelope node.
 * [cleos](https://developers.eos.io/manuals/eos/v2.1/cleos/index) : A command line interface to interact with the blockchain and manage wallets.
 * [keosd](https://developers.eos.io/manuals/eos/v2.1/keosd/index) : A key manager service daemon for storing private keys and signing digital messages.

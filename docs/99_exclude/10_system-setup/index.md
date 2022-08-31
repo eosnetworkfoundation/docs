@@ -11,6 +11,6 @@ To get started as quickly as possible we recommend using pre-built binaries. Bui
 ## Antelope Plugins
 Plugins extend the core functionality of [Nodeos](../../glossary/index#nodeos) and [Keosd.](../../glossary/index#keosd). See the [Plugin Guides](15_plugin-guides.md) for more information.
 
-## Configuring the Antelope platform
-The Antelope platform is flexible. You can easily run a local blockchain, or you may want to connect to a blockchain network, see the [Configurations Guides](20_configuration-guides.md) for more information.  
+## Configuring the Antelope framework
+The Antelope framework is flexible. You can easily run a local blockchain, or you may want to connect to a blockchain network, see the [Configurations Guides](20_configuration-guides.md) for more information.  
 

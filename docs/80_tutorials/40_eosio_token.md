@@ -23,7 +23,7 @@ The learning objectives for this tutorial are:
 
 ## Concepts
 
-This section introduces basic concepts related to tokens and coins and how they specifically relate to the Antelope platform.
+This section introduces basic concepts related to tokens and coins and how they specifically relate to the Antelope framework.
 
 ### Token
 
@@ -96,7 +96,7 @@ Therefore they have the incentive to go and `grab` them.
 The following knowledge and tools are required to develop and run this tutorial:
 
 * Medium knowledge of the C++ programming language
-* Basic knowledge of the Antelope platform
+* Basic knowledge of the Antelope framework
 * C++ editor already installed
 * Antelope development environment including nodeos
 
@@ -104,7 +104,7 @@ If you need to set up your environment, follow the steps in the [Getting Started
 
 ## Antelope Token Smart Contract Reference
 
-The Antelope platform provides the ‘eosio.token’ smart contract, also known as the reference token smart contract. This smart contract implementation provides guidelines for a minimum set of basic mandatory and optional items that make up a token contract. Use this smart contract as it is provided or as a starting point for the implementation of your own token that contains customized business logic that meets your requirements.
+The Antelope framework provides the ‘eosio.token’ smart contract, also known as the reference token smart contract. This smart contract implementation provides guidelines for a minimum set of basic mandatory and optional items that make up a token contract. Use this smart contract as it is provided or as a starting point for the implementation of your own token that contains customized business logic that meets your requirements.
 
 **Note**: For more information, consult the [Proposed Antelope Token Standard](https://github.com/EOSIO/EEPs/blob/master/EEPS/eep-3.md) in the Antelope EEP system.
 

@@ -6,7 +6,7 @@ link_text: "System Requirements"
 
 ## Antelope versions
 
-The component versions of the `Antelope platform` used in this version are:
+The component versions of the `Antelope framework` used in this version are:
 
 | Component | Version |
 | ------ | ------ |
@@ -18,7 +18,7 @@ The component versions of the `Antelope platform` used in this version are:
 
 ## Supported Operating Systems
 
-The Antelope platform is supported on the following environments:
+The Antelope framework is supported on the following environments:
 
 **Linux Distributions**
 * Amazon Linux 2

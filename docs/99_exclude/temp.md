@@ -3,7 +3,7 @@
 - [Get Involved](../96_get-involved/index.md): Learn how to get involved and contribute to the Antelope ecosystem.
 
 # Next Steps
-Want to [get involved in the Antelope platform?](80_next-steps) 
+Want to [get involved in the Antelope framework?](80_next-steps) 
 
 
 ### Versions and Operating Systems

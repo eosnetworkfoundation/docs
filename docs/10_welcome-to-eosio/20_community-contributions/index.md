@@ -3,7 +3,7 @@ content_title: Community Contributions
 link_text: Community Contributions
 ---
 
-We appreciate your interest in contributing to the Antelope platform! We always welcome contributions from our community to make our code and docs better. You can contribute to Antelope in the following ways:
+We appreciate your interest in contributing to the Antelope framework! We always welcome contributions from our community to make our code and docs better. You can contribute to Antelope in the following ways:
 
 * [Contribute to Antelope Developer Portal Docs](#contribute-to-eosio-developer-portal-docs)
 * [Contribute to Antelope Community and Code](#contribute-to-eosio-community-and-code)

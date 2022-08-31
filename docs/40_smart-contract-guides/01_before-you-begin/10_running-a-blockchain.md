@@ -21,7 +21,7 @@ Once the tutorial is completed you should be able to run a local single node tes
 ## Before you begin
 This tutorial requires the following:
 
-* The Antelope platform software, Click on this link for instructions on [installing Antelope binaries](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries)
+* The Antelope framework software, Click on this link for instructions on [installing Antelope binaries](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries)
 
 ## Run a Local Single-Node Blockchain
 Run a local nodeos instance which produces blocks, creating a local single-node testnet, using these [instructions](https://developers.eos.io/manuals/eos/v2.2/nodeos/usage/development-environment/local-single-node-testnet).
