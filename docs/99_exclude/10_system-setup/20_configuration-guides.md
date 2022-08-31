@@ -23,9 +23,9 @@ A local single node testnet is a great place to start, but a blockchain running 
 * [Configure Nodeos as a Local 21-Node Testnet](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/README.md)
 
 ### Antelope Testnet
-The Antelope Testnet is Block.one's offical testnet and uses the latest Antelope software. 
+The Antelope Testnet is EOS Network Foundation's offical testnet and uses the latest Antelope software. 
 
-* [Antelope Testnet](https://testnet.eos.io/) Block.one's official Antelope Testnet.
+* [Antelope Testnet](https://testnet.eos.io/) EOS Network Foundation's official Antelope Testnet.
 * [Antelope Testnet Quick Start Guide.](https://developers.eos.io/welcome/v2.2/quick-start-guides/testnet-quick-start-guide/index) 
 
 ## Block Producers

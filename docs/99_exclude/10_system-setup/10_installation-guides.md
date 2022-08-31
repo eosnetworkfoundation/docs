@@ -3,7 +3,7 @@ content_title: Installation Guides
 link_text: Installation Guides
 ---
 
-The `Antelope framework` can be installed using binary files released by Block.one or you can get the open source code and build the binary files locally. This section provides installation instructions using binary files. 
+The `Antelope framework` can be installed using binary files released by EOS Network Foundationor you can get the open source code and build the binary files locally. This section provides installation instructions using binary files. 
 
 [[info]]
 | If you are new to EOSIO, we recommended you install the [Antelope Prebuilt Binaries.](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries)

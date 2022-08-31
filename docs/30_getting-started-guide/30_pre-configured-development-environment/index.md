@@ -9,4 +9,4 @@ The [Quickstart Web IDE](10_gitpod.md) uses Gitpod.io and Docker. This easy to s
 
 ## Antelope Testnet
 
-Confidently test your Antelope apps with the [Antelope Testnet](20_testnet.md), brought to you by Block.one. Experiment in a sandbox running the latest stable release of EOSIO, push actions to live smart contracts, and much more. To start testing follow the [Testnet Quick Start Guide](../../70_quick-start-guides/10_testnet-quick-start-guide) and register for a free Antelope Developer account.
+Confidently test your Antelope apps with the [Antelope Testnet](20_testnet.md), brought to you by EOS Network Foundation. Experiment in a sandbox running the latest stable release of EOSIO, push actions to live smart contracts, and much more. To start testing follow the [Testnet Quick Start Guide](../../70_quick-start-guides/10_testnet-quick-start-guide) and register for a free Antelope Developer account.

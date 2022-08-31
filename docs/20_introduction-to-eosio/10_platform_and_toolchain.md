@@ -4,7 +4,7 @@ content_title: Framework and Toolchain
 
 The Antelope framework provides a number of components and libraries which are used to operate blockchain nodes, collect blockchain data, to interact with these nodes, and to build smart contracts. The main component is `nodeos` (node + Antelope = nodeos). This is the core Antelope node daemon that can be configured with plugins to run a node. Example uses are block production, dedicated API endpoints, and local development. `Cleos` (CLI + Antelope = cleos) is a command line interface which interacts with `nodeos`, allowing you to send commands and actions to a blockchain. `Cleos` also interacts with `keosd` (key + Antelope = keosd), a local component that securely stores Antelope keys.     
 
-To build smart contracts you require `Antelope CDT`, the Block.one developed toolchain and libraries, which generate the `WebAssembly` binary instructions or `bytecode` into `wasm` files. The generated `wasm` files are the smart contracts which can be deployed to Antelope blockchains.
+To build smart contracts you require `Antelope CDT`, the EOS Network Foundation developed toolchain and libraries, which generate the `WebAssembly` binary instructions or `bytecode` into `wasm` files. The generated `wasm` files are the smart contracts which can be deployed to Antelope blockchains.
 
 The basic relationship between these components is illustrated in the following diagram:
 

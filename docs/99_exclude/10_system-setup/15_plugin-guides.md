@@ -3,7 +3,7 @@ content_title: Plugin Guides
 link_text: Plugin Guides
 ---
 
-Plugins extend the core functionality implemented in each tool. Plugins published by block.one are available in the standard binaries installation. 
+Plugins extend the core functionality implemented in each tool. Plugins published by EOS Network Foundation are available in the standard binaries installation. 
 
 There are currently two Antelope components which use plugins:
 

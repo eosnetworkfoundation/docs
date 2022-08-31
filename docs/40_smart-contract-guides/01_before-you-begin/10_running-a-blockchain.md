@@ -4,7 +4,7 @@ link_text: "Running a blockchain"
 ---
 
 
-Smart contracts are [deployed](https://developers.eos.io/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) to a blockchain and smart contract transactions are executed on a blockchain. Testing a smart contract requires a blockchain. You can run a local blockchain for testing smart contracts or use the [official Block.one testnet](https://testnet.eos.io/). See the [testnet quick start guide](../../70_quick-start-guides/testnet-quick-start-guide/index.md) for more information on how to use the official Block.one testnet. This tutorial shows how to run a blockchain on your local machine. This is commonly known as a `local single node testnet`.
+Smart contracts are [deployed](https://developers.eos.io/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) to a blockchain and smart contract transactions are executed on a blockchain. Testing a smart contract requires a blockchain. You can run a local blockchain for testing smart contracts or use the [official EOS Network Foundationtestnet](https://testnet.eos.io/). See the [testnet quick start guide](../../70_quick-start-guides/testnet-quick-start-guide/index.md) for more information on how to use the official EOS Network Foundationtestnet. This tutorial shows how to run a blockchain on your local machine. This is commonly known as a `local single node testnet`.
 
 
 This tutorial introduces the [Antelope Blockchain.](../../20_introduction-to-eosio/index.md), the core components used in this tutorial are:

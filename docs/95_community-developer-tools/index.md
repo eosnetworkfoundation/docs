@@ -4,7 +4,7 @@ content_title: Community Developer Tools
 
 ## Overview
 
-This is a list of developer tools which are built by members of the Antelope community, curated by the Developer Relations team at Block.one.
+This is a list of developer tools which are built by members of the Antelope community, curated by the Developer Relations team at EOS Network Foundation.
 
 If you would like to submit a tool to be added to the list, please fill in [this form](https://blockone.typeform.com/to/gA4F0Q).
 
@@ -56,7 +56,7 @@ If you would like to submit a tool to be added to the list, please fill in [this
 
 * [Jungle Testnet](https://github.com/EOS-Jungle-Testnet): A live Antelope testnet with network monitor.
 
-* [The Antelope Testnet](https://testnet.eos.io/): Block.one's Antelope Testnet to test Antelope smart contracts before deploying on production networks.
+* [The Antelope Testnet](https://testnet.eos.io/): EOS Network Foundation's Antelope Testnet to test Antelope smart contracts before deploying on production networks.
 
 ### Block Explorers and Dashboards
 

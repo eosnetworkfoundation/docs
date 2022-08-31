@@ -5,7 +5,7 @@ link_text: Antelope Blockchain Networks
 
 Antelope blockchain software is flexible and highly configurable. It can be used to launch entire blockchain networks to suit particular business use cases and processes. 
 
-This is a list of blockchain networks which are operated using Antelope software, curated by the Developer Relations team at Block.one. If you would like to submit a blockchain network to be added to the list, please fill in [this form](https://blockone.typeform.com/to/ZsBWsL).
+This is a list of blockchain networks which are operated using Antelope software, curated by the Developer Relations team at EOS Network Foundation. If you would like to submit a blockchain network to be added to the list, please fill in [this form](https://blockone.typeform.com/to/ZsBWsL).
 
 ## Antelope Blockchain Networks
 * [EOS](https://t.me/EOSproject): The first global public Antelope blockchain network started by a community of block producers and thousands of enterprising individuals in 2018 upon the release of the Antelope blockchain software. The EOS network is one of the most developed Antelope networks and is one of the most widely adopted, performant, and decentralized public blockchain networks leveraging the Delegated Proof Of Stake (DPoS) consensus mechanism.

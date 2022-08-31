@@ -76,7 +76,7 @@ See the [Community Contributions](20_community-contributions) section of this po
 
 ## Build Something Profound
 
-We hope that you greatly benefit from the _EOSIO Developer Portal_ and build profound Antelope applications that will inject trust and integrity around us. For any thoughts or comments regarding EOSIO, you can reach out to us at [_developers@block.one_](mailto:developers@block.one).
+We hope that you greatly benefit from the _EOSIO Developer Portal_ and build profound Antelope applications that will inject trust and integrity around us. For any thoughts or comments regarding EOSIO, you can reach out to us at [_developers@eosnetwork.com_](mailto:developers@eosnetwork.com).
 
 > May the **Force of EOSIO** be with you!
 
