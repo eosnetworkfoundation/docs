@@ -71,14 +71,14 @@ cleos create account eosio ama EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GD
 
 #### Step 1: Duplicate The *eosio.token* Sources
 
-Clone the [eosio.token repo](https://github.com/eosio/eosio.token) from GitHub and copy its sources to a new folder *newt*.
+Clone the [eos-system-contracts repo](https://github.com/eosnetworkfoundation/eos-system-contracts/) from GitHub and copy its sources to a new folder *newt*.
 
 ```sh
 cd ~
-git clone https://github.com/EOSIO/eosio.token.git
+git clone https://github.com/eosnetworkfoundation/eos-system-contracts.git
 mkdir newt
-cp eosio.token/contracts/eosio.token/include/eosio.token/eosio.token.hpp newt
-cp eosio.token/contracts/eosio.token/src/eosio.token.cpp newt
+cp contracts/eosio.token/contracts/eosio.token/include/eosio.token/eosio.token.hpp newt
+cp contracts/eosio.token/contracts/eosio.token/src/eosio.token.cpp newt
 cd newt
 ```
 
