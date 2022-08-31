@@ -9,24 +9,20 @@ Building distributed applications on Antelope follows familiar development patte
 
 The Antelope framework provides functionalities such as accounts, authentication, databases, asynchronous communication, and the scheduling of applications across multiple CPU cores and clusters. These functionalities are also common in non-blockchain software development environments.
 
-`youtube: https://youtu.be/ldoj7XHSP5g`
-
 ### About Blockchain
+
 A blockchain is a decentralized infrastructure software without a centralized entity controlling the blockchain. Blockchains are defined in many ways but they all share the common attributes of being decentralized, immutable, traceable, and transparent.
 
 The transactions recorded on the blockchain form an immutable history of the blockchain. Any transaction or change in the blockchain history is traceable and can be audited, thus, making the blockchain history transparent.
-
-`youtube: https://www.youtube.com/watch?v=MqSE5WLusko`
 
 Learn about Antelope's available tools, the core concepts and underlying technical features
 
 - [Framework and Toolchain](10_platform_and_toolchain.md)
 - [Core Concepts](20_core_concepts.md)
 - [Technical Features](30_technical_features.md)
-- [Community Developer Tools](https://docs.eosnetwork.com/welcome/v2.2/community-developer-tools)
+- [Community Developer Tools](../10_welcome-to-eosio/20_community-contributions/index.md)
 
 ## What's Next?
+
 - [Get Started](../30_getting-started-guide/index.md): Learn how to develop on an Antelope blockchain
 - [Protocol](../60_protocol-guides/index.md): Understand the protocols that makes up an Antelope blockchain
-
-
