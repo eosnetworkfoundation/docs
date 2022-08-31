@@ -32,9 +32,9 @@ If your goal is to go beyond and understand what the script does in depth, you c
 
 For instructions to install the `nodeos` binaries, see the [Install Antelope pre-compiled binaries](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries) tutorial but do not start `nodeos` at this stage.
 
-#### 1.1.2. EOSIO.CDT Binaries
+#### 1.1.2. Antelope CDT Binaries
 
-For instructions to install the EOSIO.CDT binaries, see the [Install EOSIO.CDT binaries](https://developers.eos.io/manuals/eosio.cdt/latest/installation) tutorial.
+For instructions to install the Antelope CDT binaries, see the [Install Antelope CDT binaries](https://developers.eos.io/manuals/eosio.cdt/latest/installation) tutorial.
 
 ### 1.2. Create a development wallet
 

@@ -12,7 +12,7 @@ Once the tutorial is completed you should be able to create and call a read-only
 This tutorial requires the following:
 
 * The Antelope framework software, version 2.2. or greater, click on this link for instructions on [installing EOSIO](https://developers.eos.io/manuals/eos/v2.2/install/index)
-* The EOSIO.CDT (Contract Development Toolkit), version 1.9. or greater, click on this link for instructions on [installing the EOSIO.CDT](https://developers.eos.io/manuals/eos/v2.2/install/index)
+* The Antelope CDT (Contract Development Toolkit), version 1.9. or greater, click on this link for instructions on [installing the Antelope CDT](https://developers.eos.io/manuals/eos/v2.2/install/index)
 * Access to a running blockchain. Click on this link for instructions on [running a blockchain](01_before-you-begin/10_running-a-blockchain.md)
 * An Antelope account and access to the account keys. Click on this link for information on [Accounts and Permissions](01_before-you-begin/20_accounts-and-permissions.md)
 * You understand how to build and deploy smart contracts. Follow this link for more information [hello world tutorial.](../30_getting-started-guide/25_hello-world.md)

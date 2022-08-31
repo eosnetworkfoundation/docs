@@ -1,6 +1,6 @@
 ---
-content_title: Install the EOSIO.CDT
-link_text: Install the EOSIO.CDT
+content_title: Install the Antelope CDT
+link_text: Install the Antelope CDT
 ---
 
 The Antelope Contract Development Toolkit, CDT for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.

@@ -141,7 +141,7 @@ The important thing to note is the deposit function will actually be triggered b
 ```cpp
 [[eosio::on_notify("eosio.token::transfer")]]
 ```
-The `on_notify` attribute is one of the EOSIO.CDT [attributes](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/abi-code-generator-attributes-explained) that annotates a smart contract action.
+The `on_notify` attribute is one of the Antelope CDT [attributes](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/abi-code-generator-attributes-explained) that annotates a smart contract action.
 
 Annotating an action with an [`on_notify`](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/abi-code-generator-attributes-explained/#eosioon_notifyvalid_eosio_account_namevalid_eosio_action_name) attribute ensures any incoming notification is forwarded to the annotated action if and only if the notification is dispatched from a specified contract and from a specified action.
 

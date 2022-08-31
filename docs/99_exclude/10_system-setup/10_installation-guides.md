@@ -18,7 +18,7 @@ The installation process will install `nodeos`, `cleos`, and `keosd`, the compon
 
 Follow this link [Installation Guide](https://developers.eos.io/manuals/eos/v2.2/install/index) for more information.
 
-### Installing the EOSIO.CDT
+### Installing the Antelope CDT
 
 The `Antelope Contract Development Toolkit`, `CDT` for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
 

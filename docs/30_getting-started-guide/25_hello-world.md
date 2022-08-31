@@ -28,7 +28,7 @@ Once you complete the tutorial, you should have created a **_Hello World_** smar
 
 ## Antelope Contract Development Toolkit
 
-Create Antelope smart contracts using the C++ programming language. The Antelope Contract Development Toolkit or [EOSIO.CDT](../glossary/index/#eosio.cdt) provides the libraries and tools required to build a smart contract. See the [EOSIO.CDT](https://developers.eos.io/manuals/eosio.cdt/latest/index) manual for more details on how to get started with the `EOSIO.CDT`.
+Create Antelope smart contracts using the C++ programming language. The Antelope Contract Development Toolkit or [Antelope CDT](../glossary/index/#eosio.cdt) provides the libraries and tools required to build a smart contract. See the [Antelope CDT](https://developers.eos.io/manuals/eosio.cdt/latest/index) manual for more details on how to get started with the `Antelope CDT`.
 
 To deploy the smart contract to the blockchain, first use the [eosio-cpp](https://developers.eos.io/manuals/eosio.cdt/v1.7/command-reference/eosio-cpp) tool to compile the smart contract. The compilation builds a webassembly file and a corresponding application binary interface (ABI) file.
 
@@ -69,7 +69,7 @@ Add the line:
 #include <eosio/eosio.hpp>
 ```
 
-b. The `eosio.hpp` contains classes required to write a smart contract, including `eosio::contract`. Create a standard C++11 class and inherit from the `eosio::contract` class. Use the `[[eosio::contract]]` attribute to inform the EOSIO.CDT compiler this is a smart contract. 
+b. The `eosio.hpp` contains classes required to write a smart contract, including `eosio::contract`. Create a standard C++11 class and inherit from the `eosio::contract` class. Use the `[[eosio::contract]]` attribute to inform the Antelope CDT compiler this is a smart contract. 
 
 Add the line:
 
@@ -77,7 +77,7 @@ Add the line:
 class [[eosio::contract]] hello : public eosio::contract {};
 ```
 
-The `EOSIO.CDT` compiler automatically generates the main dispatcher and the `ABI file`.
+The `Antelope CDT` compiler automatically generates the main dispatcher and the `ABI file`.
 The [dispatcher](https://developers.eos.io/manuals/eosio.cdt/v1.7/group__dispatcher/?query=dispatcher&page=1#dispatcher) routes action calls to the correct smart contract action. The compiler will create one when using the `eosio::contract` attribute. Advanced programmers can customize this behaviour by defining their own dispatcher.
 
 c. Add a public access specifier and a using-declaration to introduce base class members from `eosio::contract`. You can now use the default base class constructor.
@@ -120,7 +120,7 @@ class [[eosio::contract]] hello : public eosio::contract {
 ## Compile and Deploy
 
 Now that the smart contract is successfully created, follow this section to
-compile and deploy the smart contract to the blockchain. Use the EOSIO.CDT [eosio-cpp](https://developers.eos.io/manuals/eosio.cdt/latest/command-reference/eosio-cpp) command to build the `.wasm` file and a corresponding `.abi` file. 
+compile and deploy the smart contract to the blockchain. Use the Antelope CDT [eosio-cpp](https://developers.eos.io/manuals/eosio.cdt/latest/command-reference/eosio-cpp) command to build the `.wasm` file and a corresponding `.abi` file. 
 
 ### Procedure to Compile and Deploy
 
