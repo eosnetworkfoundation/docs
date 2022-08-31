@@ -23,22 +23,22 @@ brew install eosio
 
 ### Ubuntu 20.04 Package Install
 ```sh
-wget https://github.com/eosio/eos/releases/download/v2.2.0-rc1/eosio_2.2.0-rc1-ubuntu-20.04_amd64.deb
+wget https://github.com/AntelopeIO/leap/releases/download/v2.2.0-rc1/eosio_2.2.0-rc1-ubuntu-20.04_amd64.deb
 sudo apt install ./eosio_2.2.0-rc1-ubuntu-20.04_amd64.deb
 ```
 ### Ubuntu 18.04 Package Install
 ```sh
-wget https://github.com/eosio/eos/releases/download/v2.2.0-rc1/eosio_2.2.0-rc1-ubuntu-18.04_amd64.deb
+wget https://github.com/AntelopeIO/leap/releases/download/v2.2.0-rc1/eosio_2.2.0-rc1-ubuntu-18.04_amd64.deb
 sudo apt install ./eosio_2.2.0-rc1-ubuntu-18.04_amd64.deb
 ```
 ### RPM-based (CentOS, Amazon Linux, etc.) Package Install
 ```sh
-wget https://github.com/eosio/eos/releases/download/v2.2.0-rc1/eosio-2.2.0-rc1.el7.x86_64.rpm
+wget https://github.com/AntelopeIO/leap/releases/download/v2.2.0-rc1/eosio-2.2.0-rc1.el7.x86_64.rpm
 sudo yum install ./eosio-2.2.0-rc1.el7.x86_64.rpm
 ```
 
 [[warning]]
-| If you have previous versions of eosio installed on your system, please uninstall before proceeding. For detailed instructions, see [here](https://github.com/EOSIO/eos/blob/master/README.md).
+| If you have previous versions of eosio installed on your system, please uninstall before proceeding. For detailed instructions, see [here](https://github.com/AntelopeIO/leap/blob/master/README.md).
 
 [[Note]]
 | The installation process will install `nodeos`, `cleos`, and `keosd`, the components required to run and interact with a blockchain.

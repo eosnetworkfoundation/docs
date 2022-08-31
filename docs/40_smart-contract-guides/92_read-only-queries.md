@@ -19,7 +19,7 @@ This tutorial requires the following:
 
 
 ## Run a Local Single-Node Blockchain
-Run a local nodeos instance which produces blocks, creating a local single-node testnet, using these [instructions](https://developers.eos.io/manuals/eosio.cdt/latest/installation/index).
+Run a local nodeos instance which produces blocks, creating a local single-node testnet, using these [instructions](https://developers.eos.io/manuals/cdt/latest/installation/index).
  
 
 ## Build a Smart Contract with a Read-Only Query 
@@ -29,7 +29,7 @@ Create a simple smart contract which contains three read-only actions:
 - `getComp` - Will return a complex value
 - `getMore` - Will return a vector of values
 
-Define the actions as read-only with the `eosio::read_only` attribute. Click on the follwing link for more information [ABI code generator attributes explained](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/abi/abi-code-generator-attributes-explained)   
+Define the actions as read-only with the `eosio::read_only` attribute. Click on the follwing link for more information [ABI code generator attributes explained](https://developers.eos.io/manuals/cdt/latest/best-practices/abi/abi-code-generator-attributes-explained)   
 
 
 ```cpp
@@ -82,7 +82,7 @@ class [[eosio::contract]] hello : public eosio::contract {
 };
 ```
 
-Build the smart contract and deploy the smart contract to the local single-node testnet using [how to compile a smart contract via the CLI](https://developers.eos.io/manuals/eosio.cdt/latest/how-to-guides/compile/compile-a-contract-via-cli) and [how to deploy a smart contract.](https://developers.eos.io/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) 
+Build the smart contract and deploy the smart contract to the local single-node testnet using [how to compile a smart contract via the CLI](https://developers.eos.io/manuals/cdt/latest/how-to-guides/compile/compile-a-contract-via-cli) and [how to deploy a smart contract.](https://developers.eos.io/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) 
 
 ## Call the Read-Only Query 
 Once you have deployed the smart contract you can test it by calling the actions and seeing the data returned. Assuming the smart contract is deployed to an account called _scholder_ and that you have an account named _bob_ to authorise calling the actions. 
@@ -338,4 +338,4 @@ The output should be similar to:
 ```
 
 ## What's next?
-Try using the [KV-API](https://developers.eos.io/manuals/eosio.cdt/latest/how-to-guides/key-value-api/index) or [Multi-Index-Tables API](https://developers.eos.io/manuals/eosio.cdt/latest/how-to-guides/multi-index/index) to store data then return this data in a read-only query.
+Try using the [KV-API](https://developers.eos.io/manuals/cdt/latest/how-to-guides/key-value-api/index) or [Multi-Index-Tables API](https://developers.eos.io/manuals/cdt/latest/how-to-guides/multi-index/index) to store data then return this data in a read-only query.

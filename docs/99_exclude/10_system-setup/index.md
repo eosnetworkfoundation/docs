@@ -3,7 +3,7 @@ content_title: System Setup
 link_text: System setup
 ---
 
-Antelope based blockchains execute smart contracts which are written in `C++` and then compiled to `bytecode` using the `Antelope Contract Development Toolkit` or `CDT.` The resulting `WebAssembly` or `WASM` files are then executed by a virtual stack machine (see [eos vm](https://github.com/EOSIO/eos-vm)). WASM is an emerging web standard with widespread support from Google, Microsoft, Apple, and industry leading companies. In this section we discuss the options for setting up a local development environment.
+Antelope based blockchains execute smart contracts which are written in `C++` and then compiled to `bytecode` using the `Antelope Contract Development Toolkit` or `CDT.` The resulting `WebAssembly` or `WASM` files are then executed by a virtual stack machine (see [eos vm](https://github.com/AntelopeIO/leap-vm)). WASM is an emerging web standard with widespread support from Google, Microsoft, Apple, and industry leading companies. In this section we discuss the options for setting up a local development environment.
 
 ## Installing EOSIO
 To get started as quickly as possible we recommend using pre-built binaries. Building from source is a more advanced option but will set you back an hour or more and you may encounter build errors. See the [Installation Guides](10_installation-guides.md) for information on how to install the required Antelope components.

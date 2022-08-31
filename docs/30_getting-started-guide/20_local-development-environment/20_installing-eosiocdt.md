@@ -8,52 +8,52 @@ The Antelope Contract Development Toolkit, CDT for short, is a collection of too
 Starting from 1.3.x, CDT supports Mac OS X brew, Linux Debian and RPM packages. The easiest option to install would be using one of these package systems. Pick one installation method only.
 
 [[warning]]
-| If you have versions of eosio.cdt prior to 1.3.0 installed on your system, please uninstall before proceeding
+| If you have versions of cdt prior to 1.3.0 installed on your system, please uninstall before proceeding
 
 # Mac OS X
 ## Install
 ```shell
-brew tap eosio/eosio.cdt
-brew install eosio.cdt
+brew tap AntelopeIO/cdt
+brew install cdt
 ```
 ## Uninstall
 ```shell
-brew remove eosio.cdt
+brew remove cdt
 ```
 # Ubuntu (Debian)
 
 ## Install
 ```shell
-wget https://github.com/eosio/eosio.cdt/releases/download/v1.8.1/eosio.cdt_1.8.1-1-ubuntu-18.04_amd64.deb
+wget https://github.com/AntelopeIO/cdt/releases/download/v1.8.1/cdt_1.8.1-1-ubuntu-18.04_amd64.deb
 
-sudo apt install ./eosio.cdt_1.8.1-1-ubuntu-18.04_amd64.deb
+sudo apt install ./cdt_1.8.1-1-ubuntu-18.04_amd64.deb
 ```
 ## Uninstall
 ```shell
-sudo apt remove eosio.cdt
+sudo apt remove cdt
 ```
 # CentOS/Redhat (RPM)
 ## Install
 ```shell
-wget https://github.com/eosio/eosio.cdt/releases/download/v1.8.1/eosio.cdt-1.8.1-1.el7.x86_64.rpm
+wget https://github.com/AntelopeIO/cdt/releases/download/v1.8.1/cdt-1.8.1-1.el7.x86_64.rpm
 
-sudo yum install ./eosio.cdt-1.8.1-1.el7.x86_64.rpm
+sudo yum install ./cdt-1.8.1-1.el7.x86_64.rpm
 ```
 ## Uninstall
 ```shell
-$ sudo yum remove eosio.cdt
+$ sudo yum remove cdt
 ```
 # Install from Source
 
-The location where `eosio.cdt` is cloned is not that important because you will be installing `eosio.cdt` as a local binary in later steps. For now, you can clone `eosio.cdt` to your "contracts" directory previously created, or really anywhere else on your local system you see fit.
+The location where `cdt` is cloned is not that important because you will be installing `cdt` as a local binary in later steps. For now, you can clone `cdt` to your "contracts" directory previously created, or really anywhere else on your local system you see fit.
 ```text
 cd CONTRACTS_DIR
 ```
 ## Download
-Clone the `eosio.cdt` repository.
+Clone the `cdt` repository.
 ```shell
-git clone --recursive https://github.com/eosio/eosio.cdt
-cd eosio.cdt
+git clone --recursive https://github.com/AntelopeIO/cdt
+cd cdt
 ```
 It may take up to 30 minutes to clone the repository
 
@@ -71,14 +71,14 @@ make -j8
 ```shell
 sudo make install
 ```
-The above command needs to be ran with `sudo` because `eosio.cdt`'s various binaries will be installed locally. You will be asked for your computer's account password.
+The above command needs to be ran with `sudo` because `cdt`'s various binaries will be installed locally. You will be asked for your computer's account password.
 
-Installing `eosio.cdt` will make the compiled binary global so it can be accessable anywhere. For this tutorial, **it is strongly suggested that you do not skip the install step for eosio.cdt**, failing to install will make it more difficult to follow this and other tutorials, and make usage in general more difficult.
+Installing `cdt` will make the compiled binary global so it can be accessable anywhere. For this tutorial, **it is strongly suggested that you do not skip the install step for cdt**, failing to install will make it more difficult to follow this and other tutorials, and make usage in general more difficult.
 
 ### Uninstall after manual installation
 ```shell
-sudo rm -fr /usr/local/eosio.cdt
-sudo rm -fr /usr/local/lib/cmake/eosio.cdt
+sudo rm -fr /usr/local/cdt
+sudo rm -fr /usr/local/lib/cmake/cdt
 sudo rm /usr/local/bin/eosio-*
 ```
 

@@ -22,7 +22,7 @@ Follow this link [Installation Guide](https://developers.eos.io/manuals/eos/v2.2
 
 The `Antelope Contract Development Toolkit`, `CDT` for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
 
-Follow this link [Installation Guide](https://developers.eos.io/manuals/eosio.cdt/latest/installation) for detailed instructions on how to install the `CDT.`
+Follow this link [Installation Guide](https://developers.eos.io/manuals/cdt/latest/installation) for detailed instructions on how to install the `CDT.`
 
 
 ### Antelope Source Code

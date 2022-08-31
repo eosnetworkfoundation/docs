@@ -87,7 +87,7 @@ class [[eosio::contract]] hello : public eosio::contract {
 Deploy this smart contract to your running blockchain.
 
 [[info]]
-| This simple sample  smart contract does not do any authorization checking, i.e. does not use  `require_auth`. This tutorial demonstrates **native authorization checking**. Click on this link for more information on [securing your contract.](https://developers.eos.io/manuals/eosio.cdt/latest/best-practices/securing_your_contract/#1-authorization-checks)
+| This simple sample  smart contract does not do any authorization checking, i.e. does not use  `require_auth`. This tutorial demonstrates **native authorization checking**. Click on this link for more information on [securing your contract.](https://developers.eos.io/manuals/cdt/latest/best-practices/securing_your_contract/#1-authorization-checks)
 
 ## Create Custom Permissions
 To use a custom permission you need to create a custom permission. 

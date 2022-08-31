@@ -60,7 +60,7 @@ This runs a blockchain, with a single node, locally. The local single-node testn
 A local single node testnet is a great place to start, but a blockchain running on a single node is not much of a blockchain. To run many nodes locally see the guides listed below. Often multi node testnets will be used for advanced development and testing giving a more realistic blockchain environment. Other uses for a a multi node testnet are benchmarking, optimization and experimentation, or to increase your knowledge. 
 
 * [Configure Nodeos as a Local Two-Node Testnet](https://developers.eos.io/manuals/eos/v2.1/nodeos/usage/development-environment/local-multi-node-testnet)
-* [Configure Nodeos as a Local 21-Node Testnet](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/README.md)
+* [Configure Nodeos as a Local 21-Node Testnet](https://github.com/AntelopeIO/leap/blob/master/tutorials/bios-boot-tutorial/README.md)
 
 ### Block Producers
 Block producers operate in a distributed and/or decentralised environment. A [block producer](../glossary/index/#block-producer) may run many instances of [Nodeos](../glossary/index/#nodeos) and these may be in one of two modes:
@@ -81,7 +81,7 @@ The main components of the Antelope framework.
 * [nodeos](https://developers.eos.io/manuals/eos/v2.1/nodeos/index) : The core service daemon that runs on every Antelope node.
 * [cleos](https://developers.eos.io/manuals/eos/v2.1/cleos/index) : A command line interface to interact with the blockchain and manage wallets.
 * [keosd](https://developers.eos.io/manuals/eos/v2.1/keosd/index) : A key manager service daemon for storing private keys and signing digital messages.
-* [eosio.cdt](https://developers.eos.io/manuals/eosio.cdt/v1.8/index) : Contract Development Toolkit is a suite of tools used to build Antelope contracts.
+* [cdt](https://developers.eos.io/manuals/cdt/v1.8/index) : Contract Development Toolkit is a suite of tools used to build Antelope contracts.
 * [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) : Smart contracts that provide some of the basic functions of the Antelope blockchain.
 
 

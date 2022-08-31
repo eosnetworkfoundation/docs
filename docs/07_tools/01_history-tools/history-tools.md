@@ -9,10 +9,10 @@ The Antelope History Tools is a legacy, proof-of-concept (PoC) application that 
 
 The following History Tools components have been migrated to the following Antelope repositories:
 * `wasm-ql`:
-  * nodeos support: https://github.com/EOSIO/eos
-  * cdt support: https://github.com/EOSIO/eosio.cdt
+  * nodeos support: https://github.com/AntelopeIO/leap
+  * cdt support: https://github.com/AntelopeIO/cdt
 * `abi-wasm`:
-  * cdt support: https://github.com/EOSIO/eosio.cdt
+  * cdt support: https://github.com/AntelopeIO/cdt
   * eosjs support: https://github.com/EOSIO/eosjs
 
 ## Components
@@ -124,7 +124,7 @@ Antelope contracts store their data in a format which is convenient for them, bu
 on general-purpose query engines. e.g. the `/v1/get_table_rows` RPC API struggles to provide 
 all the necessary query options that applications need. `wasm-ql-pg` allows contract authors
 and application authors to design their own queries using the same 
-[toolset](https://github.com/EOSIO/eosio.cdt) that they use to design contracts. This
+[toolset](https://github.com/AntelopeIO/cdt) that they use to design contracts. This
 gives them full access to current contract state, a history of contract state, and the
 history of actions for that contract. `fill-pg` preserves this data in its original
 format to support `wasm-ql-pg`.

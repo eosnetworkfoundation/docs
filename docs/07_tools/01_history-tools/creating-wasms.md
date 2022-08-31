@@ -199,7 +199,7 @@ Use the CDT to build the WASMs:
 export HT_TOOLS_DIR=~/history-tools
 
 # Location of the CDT
-export CDT_DIR=/usr/local/eosio.cdt
+export CDT_DIR=/usr/local/cdt
 
 $CDT_DIR/bin/eosio-cpp                                                      \
     -Os                                                                     \

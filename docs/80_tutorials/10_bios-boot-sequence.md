@@ -22,7 +22,7 @@ The information in this section walk you through the preparatory steps for the f
 At the end of this tutorial, you will have a fully functional **Antelope based blockchain** which runs locally.
 
 [[info | Python Script]]
-| Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional Antelope blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
+| Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap/blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional Antelope blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap/blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
 
 If your goal is to go beyond and understand what the script does in depth, you can follow this tutorial which will get you through the outcome and also explains along the way each step.
 
@@ -34,7 +34,7 @@ For instructions to install the `nodeos` binaries, see the [Install Antelope pre
 
 #### 1.1.2. Antelope CDT Binaries
 
-For instructions to install the Antelope CDT binaries, see the [Install Antelope CDT binaries](https://developers.eos.io/manuals/eosio.cdt/latest/installation) tutorial.
+For instructions to install the Antelope CDT binaries, see the [Install Antelope CDT binaries](https://developers.eos.io/manuals/cdt/latest/installation) tutorial.
 
 ### 1.2. Create a development wallet
 
@@ -416,7 +416,7 @@ Follow the steps below:
 
 ```shell
 cd ~
-git clone https://github.com/EOSIO/eos.git
+git clone https://github.com/AntelopeIO/leap.git
 git checkout develop
 cd ./eos/contracts/contracts/eosio.boot/
 mkdir build

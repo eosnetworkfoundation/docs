@@ -12,4 +12,4 @@ There are currently two Antelope components which use plugins:
 
 ## Community plugins
 
-To use additional community plugins requires you to recompile the binaries linked to the appropriate plugin see [Community Plugin List](https://github.com/EOSIO/eos/blob/master/plugins/COMMUNITY.md) for more information. 
+To use additional community plugins requires you to recompile the binaries linked to the appropriate plugin see [Community Plugin List](https://github.com/AntelopeIO/leap/blob/master/plugins/COMMUNITY.md) for more information. 
