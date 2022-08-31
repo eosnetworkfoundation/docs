@@ -100,7 +100,7 @@ The following knowledge and tools are required to develop and run this tutorial:
 * C++ editor already installed
 * Antelope development environment including nodeos
 
-If you need to set up your environment, follow the steps in the [Getting Started Guide](https://developers.eos.io/welcome/latest/getting-started-guide/local-development-environment/index). This guide provides instructions on how to start a local node with nodeos that produces blocks, creates a wallet that keeps your keys, and creates test accounts used later in this tutorial.
+If you need to set up your environment, follow the steps in the [Getting Started Guide](https://docs.eosnetwork.com/welcome/latest/getting-started-guide/local-development-environment/index). This guide provides instructions on how to start a local node with nodeos that produces blocks, creates a wallet that keeps your keys, and creates test accounts used later in this tutorial.
 
 ## Antelope Token Smart Contract Reference
 
@@ -126,7 +126,7 @@ These structures are the underlying data structures for two multi-index tables u
 
 Both tables are uniquely indexed by the token symbol therefore two entries with the same token symbol cannot exist in any of the two tables.
 
-**Note**: Refer to the [Mullti-Index How Tos](https://developers.eos.io/manuals/cdt/latest/how-to-guides/multi-index/index) section for details on how to define and instantiate a multi-index table with code and scope and how to define indexes for multi-index tables.
+**Note**: Refer to the [Mullti-Index How Tos](https://docs.eosnetwork.com/manuals/cdt/latest/how-to-guides/multi-index/index) section for details on how to define and instantiate a multi-index table with code and scope and how to define indexes for multi-index tables.
 
 ### The eosio.token.cpp File
 
@@ -224,8 +224,8 @@ The action implementation does the following:
     **Note**: The smart contract account owner is obtained by the `get_self()` method call or a higher authority,
 
     Refer to these guidelines for more details to authorize the execution of a current action:
-        * [How to implement authorization checks](https://developers.eos.io/manuals/cdt/v1.7/best-practices/securing_your_contract/#1-authorization-checks)
-        * [Permissions](https://developers.eos.io/welcome/latest/smart-contract-guides/linking-custom-permission) tutorial for more details on how permissions work
+        * [How to implement authorization checks](https://docs.eosnetwork.com/manuals/cdt/v1.7/best-practices/securing_your_contract/#1-authorization-checks)
+        * [Permissions](https://docs.eosnetwork.com/welcome/latest/smart-contract-guides/linking-custom-permission) tutorial for more details on how permissions work
 2. Checks for the maximum supply amount and the token symbol
 3. Determines whether the token already exists
 4. Instantiates the `statstable` with the `code` parameter as the contract owner and the `scope` parameter as the token symbol; an important consequence is that there is *one instante table* created for each pair defined by a contract owner and a token symbol.

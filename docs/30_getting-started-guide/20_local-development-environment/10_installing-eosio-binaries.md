@@ -6,7 +6,7 @@ link_text: Install Antelope Binaries
 To get started as quickly as possible, we recommend using Antelope pre-built binaries. You also have an advanced option to build from source but that would consume an hour or more. 
 
 [[info]]
-| You can find how to build Antelope from source [here](https://developers.eos.io/manuals/eos/v2.2/install/build-from-source/).
+| You can find how to build Antelope from source [here](https://docs.eosnetwork.com/manuals/eos/v2.2/install/build-from-source/).
 
 
 

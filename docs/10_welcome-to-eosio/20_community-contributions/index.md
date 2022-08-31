@@ -63,7 +63,7 @@ To file a new issue:
 
 ## Contribute to Antelope Community and Code
 
-The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](https://developers.eos.io/welcome/v2.2/manuals/index) and on the [Antelope Organization](https://github.com/EOSIO) on GitHub.
+The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](https://docs.eosnetwork.com/welcome/v2.2/manuals/index) and on the [Antelope Organization](https://github.com/EOSIO) on GitHub.
 
 For more information about the contribution guidelines of a particular repository, look for the "Contributing" link in the right-hand sidebar of the documentation.
 

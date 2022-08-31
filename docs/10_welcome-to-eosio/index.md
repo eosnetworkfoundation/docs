@@ -25,7 +25,7 @@ And more!
 
 ## Antelope Docs is Open Source
 
-The *Antelope Developer Portal* generates documentation from source files hosted on Github, alongside the [EOSIO](https://github.com/EOSIO) codebase. All documentation assets on [*developers.eos.io*](https://developers.eos.io/) is open sourced and designed to allow community contributions. We leverage the power of open source to deliver trusted content to support your Antelope onboarding and advanced development journey.
+The *Antelope Developer Portal* generates documentation from source files hosted on Github, alongside the [EOSIO](https://github.com/EOSIO) codebase. All documentation assets on [*docs.eosnetwork.com*](https://docs.eosnetwork.com/) is open sourced and designed to allow community contributions. We leverage the power of open source to deliver trusted content to support your Antelope onboarding and advanced development journey.
 
 ### A Bit of History
 

@@ -46,14 +46,14 @@ Make sure the following prerequisites are met before starting this procedure.
 
 ##### Nodeos and Wallet Prerequisites
 
-* There is a local *nodeos* started with the default connection port. Refer to instructions on how to start one in this [how to](https://developers.eos.io/manuals/eos/latest/nodeos/usage/development-environment/local-single-node-testnet).
-* Your public and private key pair are in your [wallet](https://developers.eos.io/welcome/latest/getting-started-guide/local-development-environment/development-wallet) and the wallet is opened before executing the commands presented in the following sections.
+* There is a local *nodeos* started with the default connection port. Refer to instructions on how to start one in this [how to](https://docs.eosnetwork.com/manuals/eos/latest/nodeos/usage/development-environment/local-single-node-testnet).
+* Your public and private key pair are in your [wallet](https://docs.eosnetwork.com/welcome/latest/getting-started-guide/local-development-environment/development-wallet) and the wallet is opened before executing the commands presented in the following sections.
 
 ##### Test Accounts Prerequisites
 
 Make sure you have test accounts ready in your development environment for testing purposes. The tutorial uses *newt* and *ama* accounts. You can create them, or use the ones you already have and substitute them accordingly.
 
-You can learn [here](https://developers.eos.io/welcome/latest/getting-started/development-environment/create-test-accounts) how to create accounts with the *cleos* command line tool. Or you can execute the following commands and replace the public key with your own:
+You can learn [here](https://docs.eosnetwork.com/welcome/latest/getting-started/development-environment/create-test-accounts) how to create accounts with the *cleos* command line tool. Or you can execute the following commands and replace the public key with your own:
 
 ```sh
 cleos create account eosio newt EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
@@ -101,7 +101,7 @@ to
 class [[eosio::contract("newt")]] token : public contract {
 ```
 
-This change tells the compiler that the customized smart contract name is `newt`. The attribute `[[eosio::contract]]`, if it has no parameter specified, uses by default the contract `token` *class name*. The Antelope framework uses the name of the contract to logically connect actions, tables and notification handlers to a specific compiled smart contract. The contract name if specified in the `[[eosio::contract]]` attribute must meet the [restrictions of an Antelope account name](https://developers.eos.io/welcome/latest/glossary/index/#account-name) whereas the contract *class name* is free of those constraints.
+This change tells the compiler that the customized smart contract name is `newt`. The attribute `[[eosio::contract]]`, if it has no parameter specified, uses by default the contract `token` *class name*. The Antelope framework uses the name of the contract to logically connect actions, tables and notification handlers to a specific compiled smart contract. The contract name if specified in the `[[eosio::contract]]` attribute must meet the [restrictions of an Antelope account name](https://docs.eosnetwork.com/welcome/latest/glossary/index/#account-name) whereas the contract *class name* is free of those constraints.
 
 Change this line from newt.cpp
 

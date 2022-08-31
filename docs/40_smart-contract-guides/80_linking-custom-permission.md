@@ -16,7 +16,7 @@ This tutorial requires the following:
 A custom permission is an arbitrarily named permission created and associated with an Antelope account. When an account is created two permissions are created by default; `owner` and `active`. You can create a new permission, a custom permission, as a child permission of `owner`, `active` or another custom permission. Custom permissions require a public and private key pair. Custom permissions may be linked to smart contract actions to specify the permission required to execute that action. Antelope accounts and permissions enable flexible and highly granular control over accounts and smart contract actions.
 
 [[info]]
-| The permission `eosio.code` is a special permission that allows smart contracts to call inline actions. The Antelope blockchain performs an authorization check when an inline action is called from a smart contract. Smart contracts do not have access to account keys so cannot add authorization. Adding `eosio.code` to an account permission provides explicit permission for that account permission to execute an inline action. For information on how to add the `eosio.code` see [cleos set account permission](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission).
+| The permission `eosio.code` is a special permission that allows smart contracts to call inline actions. The Antelope blockchain performs an authorization check when an inline action is called from a smart contract. Smart contracts do not have access to account keys so cannot add authorization. Adding `eosio.code` to an account permission provides explicit permission for that account permission to execute an inline action. For information on how to add the `eosio.code` see [cleos set account permission](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission).
 
 ## Why use a Custom Permission
 
@@ -87,12 +87,12 @@ class [[eosio::contract]] hello : public eosio::contract {
 Deploy this smart contract to your running blockchain.
 
 [[info]]
-| This simple sample  smart contract does not do any authorization checking, i.e. does not use  `require_auth`. This tutorial demonstrates **native authorization checking**. Click on this link for more information on [securing your contract.](https://developers.eos.io/manuals/cdt/latest/best-practices/securing_your_contract/#1-authorization-checks)
+| This simple sample  smart contract does not do any authorization checking, i.e. does not use  `require_auth`. This tutorial demonstrates **native authorization checking**. Click on this link for more information on [securing your contract.](https://docs.eosnetwork.com/manuals/cdt/latest/best-practices/securing_your_contract/#1-authorization-checks)
 
 ## Create Custom Permissions
 To use a custom permission you need to create a custom permission. 
 
-Create custom permission _customp1_, with the parent `active`, on the _bob_ account using the command [cleos set account permission](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission):
+Create custom permission _customp1_, with the parent `active`, on the _bob_ account using the command [cleos set account permission](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission):
 
 
 ```shell
@@ -244,7 +244,7 @@ The output will be similar to:
 ## Link the Custom Permissions
 Once you have a custom permission you can link this custom permission to a smart contract action, requiring that permission level authorization, or higher, to execute the action.
 
-Link the custom permission _customp1_, to the _what_ action using the command [cleos set action permission](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-action-permission):
+Link the custom permission _customp1_, to the _what_ action using the command [cleos set action permission](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/command-reference/set/set-action-permission):
 
 ```shell
 cleos set action permission bob scholder what customp1 -p bob@active
@@ -422,7 +422,7 @@ We see that the _customp2_ permission can sucessfully call the _how_ action, but
 ## Unlink The Permission
 You can unlink permissions to a smart contract action.
 
-Now we will unlink the _customp2_ permission from the _how_ action using the command [cleos set action permission](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-action-permission):
+Now we will unlink the _customp2_ permission from the _how_ action using the command [cleos set action permission](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/command-reference/set/set-action-permission):
 
 ```shell
 cleos set action permission bob scholder how NULL -p bob@active
@@ -492,7 +492,7 @@ action declares irrelevant authority '{"actor":"bob","permission":"customp2"}'; 
 ```
 
 ## Delete Custom Permissions
-Now you have unlinked the _customp2_ permission you can delete this permission using the command [cleos set account permission](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission):
+Now you have unlinked the _customp2_ permission you can delete this permission using the command [cleos set account permission](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/command-reference/set/set-account-permission):
 
 ```shell
 cleos set account permission bob customp2 NULL active -p bob@active
@@ -604,10 +604,10 @@ This tutorial demonstrates how to create, link, and delete custom permissions. T
 
 Custom permissions can also be controlled directly using the JavaScript SDK. For examples follow these links:
 
-* [How to create permissions](https://developers.eos.io/manuals/eosjs/latest/how-to-guides/how-to-create-permissions)
-* [How to link permissions](https://developers.eos.io/manuals/eosjs/latest/how-to-guides/how-to-link-permissions)
-* [How to unlink permissions](https://developers.eos.io/manuals/eosjs/latest/how-to-guides/how-to-unlink-permissions)
-* [How to delete permissions](https://developers.eos.io/manuals/eosjs/latest/how-to-guides/how-to-delete-permissions)
+* [How to create permissions](https://docs.eosnetwork.com/manuals/eosjs/latest/how-to-guides/how-to-create-permissions)
+* [How to link permissions](https://docs.eosnetwork.com/manuals/eosjs/latest/how-to-guides/how-to-link-permissions)
+* [How to unlink permissions](https://docs.eosnetwork.com/manuals/eosjs/latest/how-to-guides/how-to-unlink-permissions)
+* [How to delete permissions](https://docs.eosnetwork.com/manuals/eosjs/latest/how-to-guides/how-to-delete-permissions)
 
 ## What's Next
 

@@ -7,7 +7,7 @@ The Smart Contract Guides section introduces many Antelope concepts used in smar
 
 Topics include how create your own token; how to store and update smart contract state and how to call actions from within a smart contract. 
 
-The reference guide, best practices and many how to guides are available in the [cdt manual.](https://developers.eos.io/manuals/cdt/latest/index)
+The reference guide, best practices and many how to guides are available in the [cdt manual.](https://docs.eosnetwork.com/manuals/cdt/latest/index)
 
 ### Before you Begin
 

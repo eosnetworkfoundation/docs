@@ -89,9 +89,9 @@ In the `eosio.token` contract, there's a number of structs that require definiti
 
 ## Implicit Structs
 
-The following structs are implicit in that a struct was never explicitly defined in the contract. Looking at the [create](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#create) action, you'll find two parameters, `issuer` of type `name ` and `maximum_supply` of type `asset`. For brevity this tutorial won't break down every struct, but applying the same logic, you will end up with the following:
+The following structs are implicit in that a struct was never explicitly defined in the contract. Looking at the [create](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#create) action, you'll find two parameters, `issuer` of type `name ` and `maximum_supply` of type `asset`. For brevity this tutorial won't break down every struct, but applying the same logic, you will end up with the following:
 
-### [create](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#create)
+### [create](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#create)
 
 ```json
 {
@@ -110,7 +110,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [issue](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#issue)
+### [issue](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#issue)
 
 ```json
 {
@@ -133,7 +133,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [retire](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#retire)
+### [retire](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#retire)
 
 ```json
 {
@@ -152,7 +152,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [transfer](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#transfer)
+### [transfer](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#transfer)
 
 ```json
 {
@@ -179,7 +179,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [close](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#close)
+### [close](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/action-reference/eosio.token/index/#close)
 
 ```json
 {

@@ -31,7 +31,7 @@ Antelope Helm Charts can be installed and run locally with a Docker Desktop back
 
 ### Local Deployment
 
-To install Antelope Helm Charts for local deployment via Docker Desktop, follow the instructions below. You may also follow the [Tutorial](https://developers.eos.io/welcome/v2.2/tools/eosio-helm/tutorial) for step-by-step instructions.
+To install Antelope Helm Charts for local deployment via Docker Desktop, follow the instructions below. You may also follow the [Tutorial](https://docs.eosnetwork.com/welcome/v2.2/tools/eosio-helm/tutorial) for step-by-step instructions.
 
 1. Install Docker Desktop:
     * [Docker Official: Desktop](https://docs.docker.com/desktop)
@@ -84,4 +84,4 @@ You can customize specific values to be passed to the Antelope Helm charts. You 
 
 ## Tutorial
 
-Check the [Antelope Helm Tutorial](https://developers.eos.io/welcome/v2.2/tools/eosio-helm/tutorial), which demonstrates how to install Antelope Helm Charts for local deployment, how to use them to launch an Antelope node, and how to use Antelope Helm repositories.
+Check the [Antelope Helm Tutorial](https://docs.eosnetwork.com/welcome/v2.2/tools/eosio-helm/tutorial), which demonstrates how to install Antelope Helm Charts for local deployment, how to use them to launch an Antelope node, and how to use Antelope Helm repositories.

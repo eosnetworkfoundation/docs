@@ -4,7 +4,7 @@ link_text: "Running a blockchain"
 ---
 
 
-Smart contracts are [deployed](https://developers.eos.io/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) to a blockchain and smart contract transactions are executed on a blockchain. Testing a smart contract requires a blockchain. You can run a local blockchain for testing smart contracts or use the [official EOS Network Foundationtestnet](https://testnet.eos.io/). See the [testnet quick start guide](../../70_quick-start-guides/testnet-quick-start-guide/index.md) for more information on how to use the official EOS Network Foundationtestnet. This tutorial shows how to run a blockchain on your local machine. This is commonly known as a `local single node testnet`.
+Smart contracts are [deployed](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) to a blockchain and smart contract transactions are executed on a blockchain. Testing a smart contract requires a blockchain. You can run a local blockchain for testing smart contracts or use the [official EOS Network Foundationtestnet](https://testnet.eos.io/). See the [testnet quick start guide](../../70_quick-start-guides/testnet-quick-start-guide/index.md) for more information on how to use the official EOS Network Foundationtestnet. This tutorial shows how to run a blockchain on your local machine. This is commonly known as a `local single node testnet`.
 
 
 This tutorial introduces the [Antelope Blockchain.](../../20_introduction-to-eosio/index.md), the core components used in this tutorial are:
@@ -21,12 +21,12 @@ Once the tutorial is completed you should be able to run a local single node tes
 ## Before you begin
 This tutorial requires the following:
 
-* The Antelope framework software, Click on this link for instructions on [installing Antelope binaries](https://developers.eos.io/manuals/eos/v2.2/install/install-prebuilt-binaries)
+* The Antelope framework software, Click on this link for instructions on [installing Antelope binaries](https://docs.eosnetwork.com/manuals/eos/v2.2/install/install-prebuilt-binaries)
 
 ## Run a Local Single-Node Blockchain
-Run a local nodeos instance which produces blocks, creating a local single-node testnet, using these [instructions](https://developers.eos.io/manuals/eos/v2.2/nodeos/usage/development-environment/local-single-node-testnet).
+Run a local nodeos instance which produces blocks, creating a local single-node testnet, using these [instructions](https://docs.eosnetwork.com/manuals/eos/v2.2/nodeos/usage/development-environment/local-single-node-testnet).
 
-You can use this local single-node testnet to follow the smart contract guides and for testing your own smart contracts. You can create more advanced local single node testnet with consensus protocols and multi node blockchain configurations [here](https://developers.eos.io/manuals/eos/v2.1/nodeos/usage/development-environment/index) and then look at the [Bios Boot Sequence Tutorial](../../80_tutorials/10_bios-boot-sequence.md) to see how real blockchains are bootstrapped.
+You can use this local single-node testnet to follow the smart contract guides and for testing your own smart contracts. You can create more advanced local single node testnet with consensus protocols and multi node blockchain configurations [here](https://docs.eosnetwork.com/manuals/eos/v2.1/nodeos/usage/development-environment/index) and then look at the [Bios Boot Sequence Tutorial](../../80_tutorials/10_bios-boot-sequence.md) to see how real blockchains are bootstrapped.
  
 ### The *eosio* default system account
 To use a blockchain requires blockchain accounts, when you launch a new Antelope blockchain it creates a default system account called *eosio*. The *eosio* account is a special account that is used to bootstrap a blockchain. To use the *eosio* account on a local single node blockchain you must add the private key of the *eosio* account to a [wallet.](../../glossary/index/#wallet) You can then authorize transactions for the *eosio* account. Here we use [keosd](../../glossary/index#keosd). If you have not already created a wallet then follow this guide to [create a development wallet](../../30_getting-started-guide/20_local-development-environment/30_development-wallet.md). 

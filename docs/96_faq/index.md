@@ -21,7 +21,7 @@ Yes, you can wipe a blockchain by the following actions:
 2. Remove the content of data folder
 3. Restart the `nodeos` service 
 
-See the [nodeos manual](https://developers.eos.io/manuals/eos/v2.2/nodeos/index) for detailed information on how to use `nodeos`.  
+See the [nodeos manual](https://docs.eosnetwork.com/manuals/eos/v2.2/nodeos/index) for detailed information on how to use `nodeos`.  
 
 Nodeos stores runtime data (e.g., shared memory and log content) in a data folder which can be optionally specified with the `-d` option when invoking nodeos. The default location of the data folder depends on your operating system.. The location of the data folder depends on your system:
 * Mac OS -  ~/Library/Application\ Support/eosio/nodeos/data
@@ -34,9 +34,9 @@ The way to set up a local development environment that replicates a production e
 
 To set up a local single-node blockchain configuration, follow the instructions in the below topic:
 
-[Local Single-node Testnet](https://developers.eos.io/manuals/eos/v2.0/nodeos/usage/development-environment/local-single-node-testnet)
+[Local Single-node Testnet](https://docs.eosnetwork.com/manuals/eos/v2.0/nodeos/usage/development-environment/local-single-node-testnet)
 
-You can also use the [EOS Network Foundation's official Antelope Testnet.](https://testnet.eos.io/) To learn how to set up an account and use the Antelope Testnet click here [Antelope Testnet Quick Start Guide.](https://developers.eos.io/welcome/v2.2/quick-start-guides/testnet-quick-start-guide/index)
+You can also use the [EOS Network Foundation's official Antelope Testnet.](https://testnet.eos.io/) To learn how to set up an account and use the Antelope Testnet click here [Antelope Testnet Quick Start Guide.](https://docs.eosnetwork.com/welcome/v2.2/quick-start-guides/testnet-quick-start-guide/index)
 
 ### What happens when there is a fork and how does this manifest itself in State History Plugin (SHiP)?
 
@@ -51,11 +51,11 @@ Antelope accounts identify unique individuals or entities within an Antelope blo
 A smart contract is a low-level software library that contains the implementation of the actions that make a transaction. It also defines how the data that is accessed and processed by the actions are stored. A smart contract is implemented in a high-level language such as C++ and compiled into a WebAssembly (WASM) binary. Thereafter, smart contracts can be deployed and run within an account’s sandbox on the blockchain.
 
 Further Reading
-For more information on this topic, see the [Accounts and Permissions](https://developers.eos.io/welcome/v2.2/protocol/accounts_and_permissions) section.
+For more information on this topic, see the [Accounts and Permissions](https://docs.eosnetwork.com/welcome/v2.2/protocol/accounts_and_permissions) section.
 
 ### How can I change private keys for accounts?
 
-Use the [cleos set account](https://developers.eos.io/manuals/eos/v2.2/cleos/command-reference/set/set-account) command.
+Use the [cleos set account](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/command-reference/set/set-account) command.
 
 `cleos set account permission <accountname - account name> <permission - permission name> <authority - json structure> <parent - owner?> -p authorizing permission`
 
@@ -69,7 +69,7 @@ which can be simplified to
 cleos set account permission <accountname> <permission> NEW_ACTIVE_PUBLIC_KEY owner -p accountname@owner
 ```
 
-to update the key pairs associated with an account permission. This command replaces the existing authority structure associated with the permission. Keys are stored in the authority, which is referenced by the permission, which is referenced by the account. See [Account and Permissions](https://developers.eos.io/welcome/v2.2/protocol/accounts_and_permissions) for details.
+to update the key pairs associated with an account permission. This command replaces the existing authority structure associated with the permission. Keys are stored in the authority, which is referenced by the permission, which is referenced by the account. See [Account and Permissions](https://docs.eosnetwork.com/welcome/v2.2/protocol/accounts_and_permissions) for details.
 
 If you are using a third party wallet with a UI, it may provide the ability to update your account's public and private key pairs.
 
@@ -97,9 +97,9 @@ A hot wallet is a type of digital cryptocurrency wallet stored on a framework th
 
 For guidelines on how to build a performant smart contract, see the following resources:
 
-* [For resource planning](https://developers.eos.io/manuals/cdt/latest/best-practices/resource-planning)
-* [For data design and migration](https://developers.eos.io/manuals/cdt/latest/best-practices/data-design-and-migration)
-* [For securing your smart contract](https://developers.eos.io/manuals/cdt/latest/best-practices/securing_your_contract)
+* [For resource planning](https://docs.eosnetwork.com/manuals/cdt/latest/best-practices/resource-planning)
+* [For data design and migration](https://docs.eosnetwork.com/manuals/cdt/latest/best-practices/data-design-and-migration)
+* [For securing your smart contract](https://docs.eosnetwork.com/manuals/cdt/latest/best-practices/securing_your_contract)
 
 ### What are the onboarded system smart contracts and their versions? What other smart contracts are included with the deployment?
 
@@ -115,7 +115,7 @@ Antelope offers a few smart contracts which should be used as reference smart co
 You can customize them to your business needs and deploy any number of them when you launch your EOSIO-based blockchain. We recommend using the latest released versions of the smart contracts.
 
 Further Reading
-[eos-system-contracts](https://developers.eos.io/manuals/eos-system-contracts/latest/index)
+[eos-system-contracts](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/index)
 
 ### Can we assign control of the eosio.token contract to any account?
 Yes, you can deploy the eosio.token smart contract to any account for which you have at least the active private key.
@@ -124,17 +124,17 @@ Yes, you can deploy the eosio.token smart contract to any account for which you 
 
 You should not call `onblock()` action yourself, but as a blockchain developer you can define its semantics by changing its implementation to fit your blockchain business requirements. The `onblock()` action is called by the system on every block. In this way, the `onblock()` acts as a heart beat for the system contract and allows it to always execute all necessary actions (i.e. producer pay) to ensure a healthy system behavior.
 
-See [onblock](https://developers.eos.io/manuals/eos-system-contracts/latest/action-reference/eosio.system/index/?query=onblock&page=1#onblock)
+See [onblock](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/action-reference/eosio.system/index/?query=onblock&page=1#onblock)
 
 ### What are the supported data types that can be used for actions parameters?
 
 An action parameter type can be a built-in type or it can be a user-defined type.
-More details can be found on [Understanding ABI Files](https://developers.eos.io/manuals/cdt/v1.8/best-practices/abi/understanding-abi-files) documentation chapter and pay special attention to the [Types](https://developers.eos.io/manuals/cdt/v1.8/best-practices/abi/understanding-abi-files#types) section. The list of supported built-in types can be found [here](https://github.com/AntelopeIO/leap/blob/release/2.1.x/libraries/chain/abi_serializer.cpp#L85).
+More details can be found on [Understanding ABI Files](https://docs.eosnetwork.com/manuals/cdt/v1.8/best-practices/abi/understanding-abi-files) documentation chapter and pay special attention to the [Types](https://docs.eosnetwork.com/manuals/cdt/v1.8/best-practices/abi/understanding-abi-files#types) section. The list of supported built-in types can be found [here](https://github.com/AntelopeIO/leap/blob/release/2.1.x/libraries/chain/abi_serializer.cpp#L85).
 Be aware that EOSIO, although is doing the best it can to support user-defined types, if they are too complex it might not be possible to be supported and you will see errors generated; if that is the case you have to simplify the definition of the user-defined type.
 
 ### How to turn off the empty ricardian clause file warnings
 
-To accomplish this pass the `-no-missing-ricardian-clause` as a compile option to the `eosio-cpp` tool. For details see the [`eosio-cpp`](https://developers.eos.io/manuals/cdt/latest/command-reference/eosio-cpp) reference documentation page.
+To accomplish this pass the `-no-missing-ricardian-clause` as a compile option to the `eosio-cpp` tool. For details see the [`eosio-cpp`](https://docs.eosnetwork.com/manuals/cdt/latest/command-reference/eosio-cpp) reference documentation page.
 
 ## Transactions
 
@@ -168,15 +168,15 @@ There are a few ways to confirm if a transaction made to a block; you can find t
 
 Here are a few ways to check if a transaction made it to a block:
 
-* Poll [get_block](https://developers.eos.io/manuals/eos/v2.2/nodeos/plugins/chain_api_plugin/api-reference/index#operation/get_block) of the Chain API and search for the transaction ID in the list of transactions included in the block. If the transaction expiration time is reached and your transaction ID was not found in any block, then you have to resend the transaction. Otherwise, if you find the transaction ID in a block then you can wait for the block to become irreversible. Only then you are 100% sure the transaction will make it in the blockchain.
-* Poll [get_block](https://developers.eos.io/manuals/eos/v2.2/nodeos/plugins/trace_api_plugin/api-reference/index) of the Trace API and search for the transaction ID in the list of transactions included in the block. If the transaction expiration time is reached and your transaction ID was not found in any block then you have to resend the transaction. Otherwise, if you find the transaction ID in a block then you can wait for the block to become irreversible. Only then you are 100% sure the transaction will make it in the blockchain.
+* Poll [get_block](https://docs.eosnetwork.com/manuals/eos/v2.2/nodeos/plugins/chain_api_plugin/api-reference/index#operation/get_block) of the Chain API and search for the transaction ID in the list of transactions included in the block. If the transaction expiration time is reached and your transaction ID was not found in any block, then you have to resend the transaction. Otherwise, if you find the transaction ID in a block then you can wait for the block to become irreversible. Only then you are 100% sure the transaction will make it in the blockchain.
+* Poll [get_block](https://docs.eosnetwork.com/manuals/eos/v2.2/nodeos/plugins/trace_api_plugin/api-reference/index) of the Trace API and search for the transaction ID in the list of transactions included in the block. If the transaction expiration time is reached and your transaction ID was not found in any block then you have to resend the transaction. Otherwise, if you find the transaction ID in a block then you can wait for the block to become irreversible. Only then you are 100% sure the transaction will make it in the blockchain.
 * Use third party tools which allow you to do that. One example is dfuse which provides an [end-point](https://docs.dfuse.io/eosio/public-apis/reference/rest/post-chain-push_transaction/) allowing you to probe the transactions. 
 
 ### How to reliably determine finality of transaction?
 
 Finality of a transaction can be determined when the transaction ID is part of an irreversible block.
 
-For more information on the Antelope consensus model, see [Consensus Protocol.](https://developers.eos.io/welcome/v2.2/protocol/consensus_protocol/)
+For more information on the Antelope consensus model, see [Consensus Protocol.](https://docs.eosnetwork.com/welcome/v2.2/protocol/consensus_protocol/)
 
 ### How to reliably determine when to do a transaction retry?
 

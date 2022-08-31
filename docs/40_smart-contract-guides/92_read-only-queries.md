@@ -11,15 +11,15 @@ Once the tutorial is completed you should be able to create and call a read-only
 ## Before you begin
 This tutorial requires the following:
 
-* The Antelope framework software, version 2.2. or greater, click on this link for instructions on [installing EOSIO](https://developers.eos.io/manuals/eos/v2.2/install/index)
-* The Antelope CDT (Contract Development Toolkit), version 1.9. or greater, click on this link for instructions on [installing the Antelope CDT](https://developers.eos.io/manuals/eos/v2.2/install/index)
+* The Antelope framework software, version 2.2. or greater, click on this link for instructions on [installing EOSIO](https://docs.eosnetwork.com/manuals/eos/v2.2/install/index)
+* The Antelope CDT (Contract Development Toolkit), version 1.9. or greater, click on this link for instructions on [installing the Antelope CDT](https://docs.eosnetwork.com/manuals/eos/v2.2/install/index)
 * Access to a running blockchain. Click on this link for instructions on [running a blockchain](01_before-you-begin/10_running-a-blockchain.md)
 * An Antelope account and access to the account keys. Click on this link for information on [Accounts and Permissions](01_before-you-begin/20_accounts-and-permissions.md)
 * You understand how to build and deploy smart contracts. Follow this link for more information [hello world tutorial.](../30_getting-started-guide/25_hello-world.md)
 
 
 ## Run a Local Single-Node Blockchain
-Run a local nodeos instance which produces blocks, creating a local single-node testnet, using these [instructions](https://developers.eos.io/manuals/cdt/latest/installation/index).
+Run a local nodeos instance which produces blocks, creating a local single-node testnet, using these [instructions](https://docs.eosnetwork.com/manuals/cdt/latest/installation/index).
  
 
 ## Build a Smart Contract with a Read-Only Query 
@@ -29,7 +29,7 @@ Create a simple smart contract which contains three read-only actions:
 - `getComp` - Will return a complex value
 - `getMore` - Will return a vector of values
 
-Define the actions as read-only with the `eosio::read_only` attribute. Click on the follwing link for more information [ABI code generator attributes explained](https://developers.eos.io/manuals/cdt/latest/best-practices/abi/abi-code-generator-attributes-explained)   
+Define the actions as read-only with the `eosio::read_only` attribute. Click on the follwing link for more information [ABI code generator attributes explained](https://docs.eosnetwork.com/manuals/cdt/latest/best-practices/abi/abi-code-generator-attributes-explained)   
 
 
 ```cpp
@@ -82,7 +82,7 @@ class [[eosio::contract]] hello : public eosio::contract {
 };
 ```
 
-Build the smart contract and deploy the smart contract to the local single-node testnet using [how to compile a smart contract via the CLI](https://developers.eos.io/manuals/cdt/latest/how-to-guides/compile/compile-a-contract-via-cli) and [how to deploy a smart contract.](https://developers.eos.io/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) 
+Build the smart contract and deploy the smart contract to the local single-node testnet using [how to compile a smart contract via the CLI](https://docs.eosnetwork.com/manuals/cdt/latest/how-to-guides/compile/compile-a-contract-via-cli) and [how to deploy a smart contract.](https://docs.eosnetwork.com/manuals/eos/v2.2/cleos/how-to-guides/how-to-deploy-a-smart-contract) 
 
 ## Call the Read-Only Query 
 Once you have deployed the smart contract you can test it by calling the actions and seeing the data returned. Assuming the smart contract is deployed to an account called _scholder_ and that you have an account named _bob_ to authorise calling the actions. 
@@ -338,4 +338,4 @@ The output should be similar to:
 ```
 
 ## What's next?
-Try using the [KV-API](https://developers.eos.io/manuals/cdt/latest/how-to-guides/key-value-api/index) or [Multi-Index-Tables API](https://developers.eos.io/manuals/cdt/latest/how-to-guides/multi-index/index) to store data then return this data in a read-only query.
+Try using the [KV-API](https://docs.eosnetwork.com/manuals/cdt/latest/how-to-guides/key-value-api/index) or [Multi-Index-Tables API](https://docs.eosnetwork.com/manuals/cdt/latest/how-to-guides/multi-index/index) to store data then return this data in a read-only query.
