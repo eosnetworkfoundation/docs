@@ -5,7 +5,7 @@ link_text: Welcome to the Developer Portal
 
 ## Welcome to the Antelope Developer Portal!
 
-The *Antelope Developer Portal* is an Antelope documentation platform that hosts a rich array of technical product documentation resources created and curated for the Antelope blockchain developers community. These resources empower developers from all technology backgrounds to build enterprise-grade, secure, and scalable blockchain applications using the open-source Antelope software.
+The *Antelope Developer Portal* is an Antelope documentation framework that hosts a rich array of technical product documentation resources created and curated for the Antelope blockchain developers community. These resources empower developers from all technology backgrounds to build enterprise-grade, secure, and scalable blockchain applications using the open-source Antelope software.
 
 We recognize our community developers to be an important part of the Antelope blockchain ecosystem. Using the open source development model, we have a shared mission of leveraging the power of open source technologies to further mature the Antelope framework.
 
@@ -29,7 +29,7 @@ The *Antelope Developer Portal* generates documentation from source files hosted
 
 ### A Bit of History
 
-The Developer Relations team (responsible for authoring the Antelope developer documentation) spearheaded an audacious endeavor on the Antelope product documentation spectrum. Due to the inherently intricate nature of the Antelope software platform, the Developer Relations team collaborates closely with the Antelope engineering division to receive authoritative, firsthand knowledge and inputs from the creators of the platform. The Developer Relations team conducted a sweeping tech reconnaissance of the then docs-engineering collaboration framework and ideated an environment to foster productive collaboration with the internal engineering division and the external Antelope developer community. We discarded the then-existing, proprietary CMS platform, and implemented a new developer docs toolchain, where you produce documentation in the same ecosystem as code, in close proximity with the developers - [*Docs-as-Code*](https://www.docslikecode.com/).
+The Developer Relations team (responsible for authoring the Antelope developer documentation) spearheaded an audacious endeavor on the Antelope product documentation spectrum. Due to the inherently intricate nature of the Antelope software framework, the Developer Relations team collaborates closely with the Antelope engineering division to receive authoritative, firsthand knowledge and inputs from the creators of the framework. The Developer Relations team conducted a sweeping tech reconnaissance of the then docs-engineering collaboration framework and ideated an environment to foster productive collaboration with the internal engineering division and the external Antelope developer community. We discarded the then-existing, proprietary CMS framework, and implemented a new developer docs toolchain, where you produce documentation in the same ecosystem as code, in close proximity with the developers - [*Docs-as-Code*](https://www.docslikecode.com/).
 
 The Developer Relations team further executed a conscientious and concerted effort of designing and deploying the Developer Portal that generates developer documentation by parsing source files in GitHub. The result of this effort was a developer portal that allows internal and external community contributions to the documentation.
 
@@ -45,7 +45,7 @@ To become familiar with the *Antelope Developer Portal* design, standard page la
 
 ## New to Blockchain Development?
 
-The Antelope Developer Portal has documentation and onboarding resources to help you get started with the Antelope blockchain platform. Explore the following learning resources to acquire functional knowledge of the Antelope framework.
+The Antelope Developer Portal has documentation and onboarding resources to help you get started with the Antelope blockchain framework. Explore the following learning resources to acquire functional knowledge of the Antelope framework.
 
 ### Antelope Getting Started Guide 
 Orient yourself with the Antelope development environment and basic smart contract development. For detailed instructions on setting up your development environment and deploying your first smart contract, see the [_EOSIO Getting Started Guide_](../30_getting-started-guide). 
@@ -54,7 +54,7 @@ Orient yourself with the Antelope development environment and basic smart contra
 We hosted a series of webinars with topics ranging from foundational knowledge of the blockchain technology to advanced demos featuring hands-on exposure to smart contract development and app building on EOSIO.
 
 1. [**Learn about Blockchain & EOSIO**](https://eos.io/webinars/learn-about-blockchain-eosio/):
-Learn the basic concepts of Blockchain technology and get introduced to the Antelope blockchain platform. 
+Learn the basic concepts of Blockchain technology and get introduced to the Antelope blockchain framework. 
 
 2. [**Build Your First Smart Contract on EOSIO**](https://eos.io/webinars/build-your-first-smart-contract-on-eosio/): 
 Learn important Antelope protocols such as Accounts and Transactions with a hands-on demo on how to build and deploy your first smart contract. 
@@ -63,7 +63,7 @@ Learn important Antelope protocols such as Accounts and Transactions with a hand
 Learn how to build a full stack app using Antelope in a hands-on demo! 
 
 ### Training and Certification
-From platform fundamentals to application development, we have a hands-on training and practical certification path to fit your training and educational goals. Take part in the Antelope [training and certification](https://eos.io/eosio-for-business/training-certification/) programs.
+From framework fundamentals to application development, we have a hands-on training and practical certification path to fit your training and educational goals. Take part in the Antelope [training and certification](https://eos.io/eosio-for-business/training-certification/) programs.
 
 
 ## Community Contributions

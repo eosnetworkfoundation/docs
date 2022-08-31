@@ -22,7 +22,7 @@ As a developer, begin with setting up your [local development environment](../30
 | Installing Antelope prebuilt binaries is a convenient method for beginners. If you want to try advanced build methods, see [Installing from Source](https://developers.eos.io/manuals/eos/v2.1/install/build-from-source/index).
 
 # Build and Deploy Hello World Smart Contract
-After your local development environment is fully configured, you are ready to build and deploy your first Hello World Smart Contract on the Antelope blockchain platform.
+After your local development environment is fully configured, you are ready to build and deploy your first Hello World Smart Contract on the Antelope blockchain framework.
 
 
 ### Use Pre-configured Web Environment
@@ -46,7 +46,7 @@ In this section, we describe the base components and protocols used in the Antel
 The configuration guides section will show you how to configure [Nodeos.](../glossary/index/#nodeos) How `Nodeos` is configured will depend on your desired usage. `Nodeos` configuration controls which [plugins](../glossary/index/#plugin) are used and how those `plugins` are configured. The `plugins` are used to specify `Nodeos` behaviour for specific purposes. 
 
 ### Smart Contracts and blockchain configuration
-The `Antelope framework` provides a blockchain platform and a key feature of the `Antelope framework` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
+The `Antelope framework` provides a blockchain framework and a key feature of the `Antelope framework` is flexibility. Smart Contracts are part of this flexibility. Many features are implemented using smart contracts, and smart contracts can customize blockchain behavior. Some examples are consensus, governance, and resource models. For more information see [eosio.contracts](https://developers.eos.io/manuals/eosio.contracts/latest/index) and the [bios boot sequence tutorial.](../80_tutorials/10_bios-boot-sequence.md)    
 
 ### Development and Testing
 There are several ways to configure a [Nodeos](../glossary/index/#nodeos) environment for development and testing. Which option to use largely depends on what the project goals are. Some practical options are provided below.
