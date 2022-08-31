@@ -20,7 +20,7 @@ The transactions recorded on the blockchain form an immutable history of the blo
 
 Learn about EOSIO's available tools, the core concepts and underlying technical features
 
-- [Platform and Toolchain](10_platform_and_toolchain.md)
+- [Framework and Toolchain](10_platform_and_toolchain.md)
 - [Core Concepts](20_core_concepts.md)
 - [Technical Features](30_technical_features.md)
 - [Community Developer Tools](https://developers.eos.io/welcome/v2.2/community-developer-tools)

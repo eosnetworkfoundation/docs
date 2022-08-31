@@ -13,7 +13,7 @@ This is a list of blockchain networks which are operated using Antelope software
 prosperity in trustless commerce.
 * [COFFE network](https://coffe.io/): COFFE is an Antelope framework fork (an independent software development branch) that features modified DPoS-based consensus algorithms.
 * [eosfinex](https://www.eosfinex.com/): eosfinex is a scalable and transparent framework for digital asset trading, industry-leading security, and instant execution.
-* [EOSForce](https://eosforce.io/index/en): A Decentralized High-Performance Smart Contract Platform.
+* [EOSForce](https://eosforce.io/index/en): A Decentralized High-Performance Smart Contract Framework.
 * [Europechain](https://europechain.io/): Europechain is a GDPR-supported enterprise blockchain framework managed and governed by experienced validators registered in the European Union.
 * [LACChain EOSIO](https://eosio.lacchain.net/en/): The Antelope Blockchain Network for Latin America and the Caribbean. LACChain Antelope enables organizations and developers to build blockchain applications on the LACChain network powered by Antelope technology.
 * [Meet.one](https://meet.one/): Based on the concept of *open and sharing*, the MEET.ONE team will build a blockchain infrastructure based on EOSIO, work with block producers and developers to promote the development of trusted Internet, and work together to empower the internet with blockchain.
