@@ -32,7 +32,7 @@ An implicit (inline) action is generated as a result of an explicit caller actio
 
 ## 1.2. Smart Contracts
 
-In EOSIO, smart contracts consist of a set of actions, usually grouped by functionality, and a set of type definitions which those actions depend on. Therefore, actions specify and define the actual behaviors of the contract. Several actions are implemented in the standard Antelope contracts for account creation, producer voting, token operations, etc. Application developers can extend, replace, or disable this functionality altogether by creating custom actions within their own smart contracts and applications. Transactions, on the other hand, are typically created at the application level. Smart contracts are agnostic to them.
+In Antelope, smart contracts consist of a set of actions, usually grouped by functionality, and a set of type definitions which those actions depend on. Therefore, actions specify and define the actual behaviors of the contract. Several actions are implemented in the standard Antelope contracts for account creation, producer voting, token operations, etc. Application developers can extend, replace, or disable this functionality altogether by creating custom actions within their own smart contracts and applications. Transactions, on the other hand, are typically created at the application level. Smart contracts are agnostic to them.
 
 
 ### 1.2.1. Implementation
@@ -228,7 +228,7 @@ After the transaction is signed, a packed transaction instance is created from t
 
 ## 3.4. Verify Transaction
 
-The process to verify a transaction is twofold. First, the public keys associated with the accounts that signed the transaction are recovered from the set of signatures provided in the transaction. Such a recovery is cryptographically possible for ECDSA, the elliptic curve digital signature algorithm used in EOSIO. Second, the public key of each actor specified in the list of action authorizations (actor:permission) from each action included in the transaction is checked against the set of recovered keys to see if it is satisfied. Third, each satisfied `actor:permission` is checked against the associated minimum permission required for that `actor:contract::action` pair to see if it meets or exceeds that minimum. This last check is performed at the action level before any action is executed (see [3.4.2. Permission Check](#342-permission-check)).
+The process to verify a transaction is twofold. First, the public keys associated with the accounts that signed the transaction are recovered from the set of signatures provided in the transaction. Such a recovery is cryptographically possible for ECDSA, the elliptic curve digital signature algorithm used in Antelope. Second, the public key of each actor specified in the list of action authorizations (actor:permission) from each action included in the transaction is checked against the set of recovered keys to see if it is satisfied. Third, each satisfied `actor:permission` is checked against the associated minimum permission required for that `actor:contract::action` pair to see if it meets or exceeds that minimum. This last check is performed at the action level before any action is executed (see [3.4.2. Permission Check](#342-permission-check)).
 
 
 ### 3.4.1. Transaction Context

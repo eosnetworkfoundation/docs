@@ -51,15 +51,15 @@ The Antelope Developer Portal has documentation and onboarding resources to help
 Orient yourself with the Antelope development environment and basic smart contract development. For detailed instructions on setting up your development environment and deploying your first smart contract, see the [_EOSIO Getting Started Guide_](../30_getting-started-guide). 
 
 ### Antelope Webinars
-We hosted a series of webinars with topics ranging from foundational knowledge of the blockchain technology to advanced demos featuring hands-on exposure to smart contract development and app building on EOSIO.
+We hosted a series of webinars with topics ranging from foundational knowledge of the blockchain technology to advanced demos featuring hands-on exposure to smart contract development and app building on Antelope.
 
-1. [**Learn about Blockchain & EOSIO**](https://eos.io/webinars/learn-about-blockchain-eosio/):
+1. [**Learn about Blockchain & Antelope**](https://eos.io/webinars/learn-about-blockchain-eosio/):
 Learn the basic concepts of Blockchain technology and get introduced to the Antelope blockchain framework. 
 
-2. [**Build Your First Smart Contract on EOSIO**](https://eos.io/webinars/build-your-first-smart-contract-on-eosio/): 
+2. [**Build Your First Smart Contract on Antelope**](https://eos.io/webinars/build-your-first-smart-contract-on-eosio/): 
 Learn important Antelope protocols such as Accounts and Transactions with a hands-on demo on how to build and deploy your first smart contract. 
 
-3. [**Build a Full-stack Web Application Using EOSIO**](https://eos.io/webinars/build-a-full-stack-web-application-using-eosio/): 
+3. [**Build a Full-stack Web Application Using Antelope**](https://eos.io/webinars/build-a-full-stack-web-application-using-eosio/): 
 Learn how to build a full stack app using Antelope in a hands-on demo! 
 
 ### Training and Certification
@@ -76,8 +76,8 @@ See the [Community Contributions](20_community-contributions) section of this po
 
 ## Build Something Profound
 
-We hope that you greatly benefit from the _EOSIO Developer Portal_ and build profound Antelope applications that will inject trust and integrity around us. For any thoughts or comments regarding EOSIO, you can reach out to us at [_developers@eosnetwork.com_](mailto:developers@eosnetwork.com).
+We hope that you greatly benefit from the _EOSIO Developer Portal_ and build profound Antelope applications that will inject trust and integrity around us. For any thoughts or comments regarding Antelope, you can reach out to us at [_developers@eosnetwork.com_](mailto:developers@eosnetwork.com).
 
-> May the **Force of EOSIO** be with you!
+> May the **Force of Antelope** be with you!
 
 ***The Antelope Developer Relations Team*** 

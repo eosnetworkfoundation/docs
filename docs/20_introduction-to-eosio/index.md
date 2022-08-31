@@ -1,6 +1,6 @@
 ---
-content_title: Introduction To EOSIO
-link_text: Introduction To EOSIO
+content_title: Introduction To Antelope
+link_text: Introduction To Antelope
 ---
 
 The Antelope blockchain framework is the next-generation, open-source framework with industry-leading transaction speed and a flexible utility. As a blockchain framework, Antelope is designed for enterprise-grade use cases and built for both public and private blockchain deployments. Antelope is customizable to suit a wide range of business needs across industries with role-based permissions system and secure application transactions processing.
@@ -18,7 +18,7 @@ The transactions recorded on the blockchain form an immutable history of the blo
 
 `youtube: https://www.youtube.com/watch?v=MqSE5WLusko`
 
-Learn about EOSIO's available tools, the core concepts and underlying technical features
+Learn about Antelope's available tools, the core concepts and underlying technical features
 
 - [Framework and Toolchain](10_platform_and_toolchain.md)
 - [Core Concepts](20_core_concepts.md)

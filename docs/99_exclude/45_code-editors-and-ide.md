@@ -11,7 +11,7 @@ Use a code editor or IDE to help facilitate wrting smart contract code, some opt
 - [Eclipse](http://www.eclipse.org/downloads/packages/release/oxygen/1a/eclipse-ide-cc-developers)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-Alternatively, you can use IDEs specifically developed for EOSIO:
+Alternatively, you can use IDEs specifically developed for Antelope:
 
 - [EOS Studio](https://www.eosstudio.io/)
 

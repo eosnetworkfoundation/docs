@@ -15,8 +15,8 @@ prosperity in trustless commerce.
 * [eosfinex](https://www.eosfinex.com/): eosfinex is a scalable and transparent framework for digital asset trading, industry-leading security, and instant execution.
 * [EOSForce](https://eosforce.io/index/en): A Decentralized High-Performance Smart Contract Framework.
 * [Europechain](https://europechain.io/): Europechain is a GDPR-supported enterprise blockchain framework managed and governed by experienced validators registered in the European Union.
-* [LACChain EOSIO](https://eosio.lacchain.net/en/): The Antelope Blockchain Network for Latin America and the Caribbean. LACChain Antelope enables organizations and developers to build blockchain applications on the LACChain network powered by Antelope technology.
-* [Meet.one](https://meet.one/): Based on the concept of *open and sharing*, the MEET.ONE team will build a blockchain infrastructure based on EOSIO, work with block producers and developers to promote the development of trusted Internet, and work together to empower the internet with blockchain.
+* [LACChain Antelope](https://eosio.lacchain.net/en/): The Antelope Blockchain Network for Latin America and the Caribbean. LACChain Antelope enables organizations and developers to build blockchain applications on the LACChain network powered by Antelope technology.
+* [Meet.one](https://meet.one/): Based on the concept of *open and sharing*, the MEET.ONE team will build a blockchain infrastructure based on Antelope, work with block producers and developers to promote the development of trusted Internet, and work together to empower the internet with blockchain.
 * [Proton](https://www.protonchain.com/): Proton is a new public blockchain and smart contract framework designed for both consumer applications and peer-peer payments.
 * [RemChain](https://remme.io/protocol-pkid/remchain): The first public blockchain built on top of [Remme's Public Key Infrastructure](https://remme.io/protocol-pkid) Protocol.
 * [Telos](https://www.telos.net/): Telos is a smart contract blockchain built to support the economies of the future.

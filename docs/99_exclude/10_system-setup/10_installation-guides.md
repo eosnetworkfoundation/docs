@@ -6,7 +6,7 @@ link_text: Installation Guides
 The `Antelope framework` can be installed using binary files released by EOS Network Foundationor you can get the open source code and build the binary files locally. This section provides installation instructions using binary files. 
 
 [[info]]
-| If you are new to EOSIO, we recommended you install the [Antelope Prebuilt Binaries.](https://docs.eosnetwork.com/manuals/eos/v2.2/install/install-prebuilt-binaries)
+| If you are new to Antelope, we recommended you install the [Antelope Prebuilt Binaries.](https://docs.eosnetwork.com/manuals/eos/v2.2/install/install-prebuilt-binaries)
 
 
 ### Installing Nodeos, Cleos and Keosd

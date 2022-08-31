@@ -28,15 +28,15 @@ and
 
 Click on this link for an [overview of the Antelope framework.](../20_introduction-to-eosio)
 
-Click on this link to [get started with EOSIO.](../30_getting-started-guide "Getting Started with EOSIO")
+Click on this link to [get started with Antelope.](../30_getting-started-guide "Getting Started with Antelope")
 
 ### Tutorial Workflow
 
 ```sequence
 Understand\n Game->Understand\n Antelope : What?
-Understand\n EOSIO->Create\nAccounts  : Accounts
-Understand\n EOSIO->Create\nAccounts  : Actions
-Understand\n EOSIO->Create\nAccounts  : Resources
+Understand\n Antelope->Create\nAccounts  : Accounts
+Understand\n Antelope->Create\nAccounts  : Actions
+Understand\n Antelope->Create\nAccounts  : Resources
 Create\nAccounts->Create\nSmart Contract : How?
 Create\nSmart Contract -> Compile\nDeploy : Code
 Compile\nDeploy -> Play\nGame : Load
@@ -789,4 +789,4 @@ cleos get table tictactoe host games
 
 ## Next Steps
 
-- Visit the [Antelope Developer Portal](https://docs.eosnetwork.com/ "eosio developers portal") to learn more about EOSIO
+- Visit the [Antelope Developer Portal](https://docs.eosnetwork.com/ "eosio developers portal") to learn more about Antelope

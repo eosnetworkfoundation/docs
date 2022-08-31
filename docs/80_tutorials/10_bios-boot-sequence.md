@@ -389,7 +389,7 @@ executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea
 
 ### 1.8. Build the system contracts
 
-To have a functional EOSIO-based blockchain you have to install a few system smart contracts:
+To have a functional Antelope-based blockchain you have to install a few system smart contracts:
 
 * the `eosio.system`, `eosio.msig`and `eosio.token` located in `eos-system-contracts`repository, and
 * the `eosio.boot` located in `eos` repository.
@@ -534,10 +534,10 @@ executed transaction: 2150ed87e4564cd3fe98ccdea841dc9ff67351f9315b6384084e8572a3
 
 #### 1.12.3. Enable Protocol Features
 
-After you deploy the `eosio.boot` contract, run the following commands to enable the rest of the features which are highly recommended to enable an EOSIO-based blockchain.
+After you deploy the `eosio.boot` contract, run the following commands to enable the rest of the features which are highly recommended to enable an Antelope-based blockchain.
 
 [[info | Optional Step]]
-| These features are optional. You can choose to enable or continue without these features, however they are highly recommended for an EOSIO-based blockchain.
+| These features are optional. You can choose to enable or continue without these features, however they are highly recommended for an Antelope-based blockchain.
 
 ```shell
 # KV_DATABASE

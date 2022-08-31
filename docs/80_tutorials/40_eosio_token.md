@@ -7,7 +7,7 @@ This tutorial explores the *sample* Antelope token smart contract and it helps y
 
 ## Introduction
 
-An EOSIO-based blockchain allows you to create tokens. Tokens serve various purposes which you will learn about later in this tutorial.
+An Antelope-based blockchain allows you to create tokens. Tokens serve various purposes which you will learn about later in this tutorial.
 
 ## Learning Objectives
 
@@ -33,7 +33,7 @@ A token is a digital representation of stored value that enables you to exchange
 
 A digital coin, or coin, is a special** token** of a blockchain. It is special because it is used to pay for the system resources of that blockchain and it is also named **system token**. A blockchain can have one system token, that is, one digital coin. There are very rare occasions when a blockchain has more than one system token. 
 
-An EOSIO-based blockchain can be configured to have no system token, or one system token. Once you configured the system token you can not change it, that is, you can not change its symbol or name. The following table provides examples of EOSIO-based blockchains and their system tokens:
+An Antelope-based blockchain can be configured to have no system token, or one system token. Once you configured the system token you can not change it, that is, you can not change its symbol or name. The following table provides examples of Antelope-based blockchains and their system tokens:
 
 
 <table>

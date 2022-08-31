@@ -5,7 +5,7 @@ link_text: "Set Up Development Environment"
 
 # Prepare Your Development Environment
 
-In EOSIO, a local development environment is a local machine that satisfies the system requirements where you install the Antelope software with the related dependencies. Therefore, you can run a local blockchain instance and deploy smart contracts. The local blockchain instance run `nodeos`. 
+In Antelope, a local development environment is a local machine that satisfies the system requirements where you install the Antelope software with the related dependencies. Therefore, you can run a local blockchain instance and deploy smart contracts. The local blockchain instance run `nodeos`. 
 
 Before you begin, check your [System Requirements](05_system_requirements.md).
 

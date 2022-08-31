@@ -7,7 +7,7 @@ This tutorial provides explanations and a step-by-step procedure to create and d
 
 ## Introduction
 
-An EOSIO-based blockchain allows you to create tokens. There are many ways in which you can create tokens. One way is to leverage the existing `eosio.token` sample smart contract and build on top of it a token that meets your requirements.
+An Antelope-based blockchain allows you to create tokens. There are many ways in which you can create tokens. One way is to leverage the existing `eosio.token` sample smart contract and build on top of it a token that meets your requirements.
 
 ## Learning Objectives
 

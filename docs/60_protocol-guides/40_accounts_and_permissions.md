@@ -143,7 +143,7 @@ Name | Type | Description
 `parent` | `name` | parent's named permission
 `required_auth` | `authority` | associated [authority](#32-authority-table) table
 
-The `parent` field links the named permission level to its parent permission. This is what allows hierarchical permission levels in EOSIO.
+The `parent` field links the named permission level to its parent permission. This is what allows hierarchical permission levels in Antelope.
 
 
 ## 3.1. Permission Levels

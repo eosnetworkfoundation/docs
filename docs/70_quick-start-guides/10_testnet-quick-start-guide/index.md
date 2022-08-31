@@ -6,12 +6,12 @@ link_text: Antelope Testnet Quick Start Guide
 
 # **Overview**
 
-This guide is for users who intend to use the Antelope Testnet as a testing environment for deploying smart contracts and building blockchain applications on EOSIO. The Antelope Testnet allows developers to quickly onboard by creating new blockchain accounts and test smart contracts on the latest builds of the Antelope software. You can deploy smart contracts, push transactions, and view the multi-index table in a user-friendly GUI.
+This guide is for users who intend to use the Antelope Testnet as a testing environment for deploying smart contracts and building blockchain applications on Antelope. The Antelope Testnet allows developers to quickly onboard by creating new blockchain accounts and test smart contracts on the latest builds of the Antelope software. You can deploy smart contracts, push transactions, and view the multi-index table in a user-friendly GUI.
 
 The Antelope Testnet is a web application that you can access using your login credentials. You don't have to download binaries to install the system as no external installation or configuration is required.
 
 [[info]]
-| This guide also supports EOSIO-based documentation tutorials that use the Testnet to perform various smart contract operations including pushing permission-based actions.
+| This guide also supports Antelope-based documentation tutorials that use the Testnet to perform various smart contract operations including pushing permission-based actions.
 
 # Getting Started with Testnet
 This chapter provides instructions for registering a new Antelope Testnet developer account and steps to log in to the Testnet web interface.
@@ -189,7 +189,7 @@ Upload and deploy your smart contract on the Antelope blockchain in a 3-step seq
 # Push Actions
 An action is authorized by one or more actors created on the blockchain. Actions are created explicitly within a smart contract, or generated implicitly by application code.
 
-For more information on Actions in EOSIO, see the [Actions](../../../60_protocol-guides/20_transactions_protocol.md#11-Actions) section in Transaction Protocol on the *Antelope Developers Portal*.
+For more information on Actions in Antelope, see the [Actions](../../../60_protocol-guides/20_transactions_protocol.md#11-Actions) section in Transaction Protocol on the *Antelope Developers Portal*.
 
 **Complete the following steps to push actions on the Testnet:**
 
@@ -245,7 +245,7 @@ The type of key in **Key Type**.
 # View Transactions
 A transaction instance contains a transaction header and the list of action instances and transaction extensions that make the actual transaction.
 
-For more information on Transactions in EOSIO, see the [Transactions Protocol](../../../60_protocol-guides/20_transactions_protocol.md) section on the *Antelope Developers Portal*.
+For more information on Transactions in Antelope, see the [Transactions Protocol](../../../60_protocol-guides/20_transactions_protocol.md) section on the *Antelope Developers Portal*.
 
 **Complete the following steps to view transactions on the Testnet:**
 

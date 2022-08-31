@@ -112,7 +112,7 @@ Antelope offers a few smart contracts which should be used as reference smart co
 * eosio.wrap
 * eosio.msig
 
-You can customize them to your business needs and deploy any number of them when you launch your EOSIO-based blockchain. We recommend using the latest released versions of the smart contracts.
+You can customize them to your business needs and deploy any number of them when you launch your Antelope-based blockchain. We recommend using the latest released versions of the smart contracts.
 
 Further Reading
 [eos-system-contracts](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/index)
@@ -130,7 +130,7 @@ See [onblock](https://docs.eosnetwork.com/manuals/eos-system-contracts/latest/ac
 
 An action parameter type can be a built-in type or it can be a user-defined type.
 More details can be found on [Understanding ABI Files](https://docs.eosnetwork.com/manuals/cdt/v1.8/best-practices/abi/understanding-abi-files) documentation chapter and pay special attention to the [Types](https://docs.eosnetwork.com/manuals/cdt/v1.8/best-practices/abi/understanding-abi-files#types) section. The list of supported built-in types can be found [here](https://github.com/AntelopeIO/leap/blob/release/2.1.x/libraries/chain/abi_serializer.cpp#L85).
-Be aware that EOSIO, although is doing the best it can to support user-defined types, if they are too complex it might not be possible to be supported and you will see errors generated; if that is the case you have to simplify the definition of the user-defined type.
+Be aware that Antelope, although is doing the best it can to support user-defined types, if they are too complex it might not be possible to be supported and you will see errors generated; if that is the case you have to simplify the definition of the user-defined type.
 
 ### How to turn off the empty ricardian clause file warnings
 

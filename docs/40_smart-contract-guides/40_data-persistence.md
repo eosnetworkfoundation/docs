@@ -31,7 +31,7 @@ touch addressbook.cpp
 
 Open the file in your favorite editor.
 
-## Step 3: Write an Extended Standard Class and Include EOSIO
+## Step 3: Write an Extended Standard Class and Include Antelope
 
 Create a class named `addressbook`:
 
