@@ -38,7 +38,7 @@ Start with an empty ABI, name it `eosio.token.abi`
 An ABI enables any client or interface to interpret and even generate a GUI for your contract. For this to work consistently, describe the custom types that are used as a parameter in any public action or struct that needs to be described in the ABI.
 
 [[info | Built-in Types]]
-| EOSIO implements a number of custom built-ins. Built-in types don't need to be described in an ABI file. If you would like to familiarize yourself with EOSIO's built-ins, they are defined [here](https://github.com/eosnetworkfoundation/mandel/blob/main/libraries/chain/abi_serializer.cpp)
+| EOSIO implements a number of custom built-ins. Built-in types don't need to be described in an ABI file. If you would like to familiarize yourself with EOSIO's built-ins, they are defined [here](https://github.com/EOSIO/eos/blob/de78b49b5765c88f4e005046d1489c3905985b94/libraries/chain/abi_serializer.cpp#L89-L127)
 
 ```json
 {
@@ -91,9 +91,9 @@ In the `eosio.token` contract, there's a number of structs that require definiti
 
 ## Implicit Structs
 
-The following structs are implicit in that a struct was never explicitly defined in the contract. Looking at the [create](http://docs.eosnetwork.com/reference/mandel-contracts/classeosio_1_1token.html#a5277670549e2458dd4a4fab4c56a9599) action, you'll find two parameters, `issuer` of type `name ` and `maximum_supply` of type `asset`. For brevity this tutorial won't break down every struct, but applying the same logic, you will end up with the following:
+The following structs are implicit in that a struct was never explicitly defined in the contract. Looking at the [create](https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.token/index/#create) action, you'll find two parameters, `issuer` of type `name ` and `maximum_supply` of type `asset`. For brevity this tutorial won't break down every struct, but applying the same logic, you will end up with the following:
 
-### [create](http://docs.eosnetwork.com/reference/mandel-contracts/classeosio_1_1token.html#a5277670549e2458dd4a4fab4c56a9599)
+### [create](https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.token/index/#create)
 
 ```json
 {
@@ -112,7 +112,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [issue](http://docs.eosnetwork.com/reference/mandel-contracts/classeosio_1_1token.html#a3a62d2a7493710b3e34fbdfd4fe81d59)
+### [issue](https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.token/index/#issue)
 
 ```json
 {
@@ -135,7 +135,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [retire](http://docs.eosnetwork.com/reference/mandel-contracts/classeosio_1_1token.html#a4bf7770086ab81931c6c5a22265bae4f)
+### [retire](https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.token/index/#retire)
 
 ```json
 {
@@ -154,7 +154,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [transfer](http://docs.eosnetwork.com/reference/mandel-contracts/classeosio_1_1token.html#a8a9d08a9791d818797dc5f70ed8f826f)
+### [transfer](https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.token/index/#transfer)
 
 ```json
 {

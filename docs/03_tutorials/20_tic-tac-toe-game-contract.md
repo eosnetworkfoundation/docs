@@ -43,7 +43,7 @@ cleos create account eosio tic.tac.toe YOUR_PUBLIC_KEY
 Ensure that you have your wallet unlocked and the creator's private active key in the wallet imported, otherwise the above command will fail.
 
 [[info | Wallet Unlocking]]
-| For instructions on wallet unlocking and keys importing, see section [Create Development Wallet](/eosdocs/developer-tools/cleos/how-to-guides/how-to-create-a-wallet.md).
+| For instructions on wallet unlocking and keys importing, see section [Create Development Wallet](../02_development-environment/05_create-development-wallet.md). 
 
 In the above step, if you see `YOUR_PUBLIC_KEY` instead of the public key value, you can either go back to section **1.4 Create Development Wallet** and persist the value or replace `YOUR_PUBLIC_KEY` with the public key value manually.
 
@@ -107,7 +107,7 @@ class tic_tac_toe : public eosio::contract {
 
         static constexpr uint16_t board_width = 3;
         static constexpr uint16_t board_height = board_width;
-
+        
         game() : board(board_width * board_height, 0){}
 
         name challenger;
@@ -178,7 +178,7 @@ To make a move, we need host account name and challenger's account name to ident
 void move(const name &challenger, const name &host, const name &by, const uint16_t &row, const uint16_t &column);
 ```
 
-#### Action Handlers Recap
+#### Action Handlers Recap 
 
 To recap, we should have declared the following action handlers which will be defined in **tic.tac.toe.cpp** later.
 
@@ -203,7 +203,7 @@ public:
 
         static constexpr uint16_t board_width = 3;
         static constexpr uint16_t board_height = board_width;
-
+        
         game() : board(board_width * board_height, 0){}
 
         name challenger;
@@ -235,13 +235,13 @@ public:
 
     [[eosio::action]]
     void create(const name &challenger, name &host);
-
+    
     [[eosio::action]]
     void restart(const name &challenger, const name &host, const name &by);
-
+    
     [[eosio::action]]
     void close(const name &challenger, const name &host);
-
+ 
     [[eosio::action]]   
     void move(const name &challenger, const name &host, const name &by, const uint16_t &row, const uint16_t &column);
 };
@@ -313,7 +313,7 @@ void tic_tac_toe::move(const name &challenger, const name &host, const name &by,
 
     // Check if this game hasn't ended yet
     check(itr->winner == tic_tac_toe::none, "the game has ended!");
-
+    
     // Check if this game belongs to the action sender
     check(by == itr->host || by == itr->challenger, "this is not your game!");
     // Check if this is the  action sender's turn
@@ -413,7 +413,7 @@ name get_winner(const tic_tac_toe::game &current_game)
 }
 ```
 
-### Action Handler - restart
+### Action Handler - restart 
 
 For the ***restart*** action handler, we want to:
 
@@ -553,7 +553,7 @@ void tic_tac_toe::move(const name &challenger, const name &host, const name &by,
 
     // Check if this game hasn't ended yet
     check(itr->winner == tic_tac_toe::none, "the game has ended!");
-
+    
     // Check if this game belongs to the action sender
     check(by == itr->host || by == itr->challenger, "this is not your game!");
     // Check if this is the  action sender's turn
@@ -652,7 +652,7 @@ Ensure that your wallet is unlocked and you have `tic.tac.toe` key imported.
 After the deployment and the transaction is confirmed, the contract is already available in the blockchain. You can play with it now!
 
 [[info | Test Account]]
-| If you have not created these accounts already, refer to this article for creating test accounts [Create Test Accounts](/eosdocs/developer-tools/cleos/how-to-guides/how-to-create-an-account.md)
+| If you have not created these accounts already, refer to this article for creating test accounts [Create Test Accounts](../02_development-environment/07_create-test-accounts.md)
 
 ### Create a Game
 
