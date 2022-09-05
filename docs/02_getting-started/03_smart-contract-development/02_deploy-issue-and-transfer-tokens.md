@@ -11,7 +11,7 @@ Navigate to your contracts directory.
 cd CONTRACTS_DIR
 ```
 
-Pull the [latest release](https://github.com/eosnetworkfoundation/mandel-contracts/releases)
+Pull the [latest release](https://github.com/eosnetworkfoundation/mandel-contracts/releases).
 
 This repository contains several contracts, but it's the [`eosio.token`](https://github.com/eosnetworkfoundation/mandel-contracts/tree/main/contracts/eosio.token) contract that is important for this section.
 
