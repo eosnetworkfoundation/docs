@@ -10,13 +10,9 @@ Navigate to your contracts directory.
 cd CONTRACTS_DIR
 ```
 
-Pull the source
+Pull the [latest release](https://github.com/eosnetworkfoundation/eos-system-contracts/releases)
 
-```shell
-git clone https://github.com/EOSIO/eosio.contracts --branch v1.7.0 --single-branch
-```
-
-This repository contains several contracts, but it's the `eosio.token` contract that is important for this section. Navigate to the `eosio.contracts/contracts/eosio.token` directory.
+This repository contains several contracts, but it's the [`eosio.token`](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.token) contract that is important for this section.
 
 ```shell
 cd eosio.contracts/contracts/eosio.token
