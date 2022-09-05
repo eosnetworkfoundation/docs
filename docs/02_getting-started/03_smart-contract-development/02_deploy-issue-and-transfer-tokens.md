@@ -2,6 +2,7 @@
 content_title: "2.2: Deploy, Issue and Transfer Tokens"
 link_text: "2.2: Deploy, Issue and Transfer Tokens"
 ---
+
 ## Step 1: Obtain Contract Source
 
 Navigate to your contracts directory.
@@ -13,7 +14,6 @@ cd CONTRACTS_DIR
 Pull the [latest release](https://github.com/eosnetworkfoundation/mandel-contracts/releases)
 
 This repository contains several contracts, but it's the [`eosio.token`](https://github.com/eosnetworkfoundation/mandel-contracts/tree/main/contracts/eosio.token) contract that is important for this section.
-
 
 ## Step 2: Create Account for Contract
 
@@ -102,6 +102,7 @@ cleos push action eosio.token issue '["alice", "100.0000 SYS", "memo"]' -p alice
 ```
 
 ## Step 7: Transfer Tokens
+
 Now that account `alice` has been issued tokens, transfer some of them to account `bob`.
 
 ```shell
@@ -139,4 +140,5 @@ cleos get currency balance eosio.token alice SYS
 Excellent! Everything adds up.
 
 ## What's Next?
+
 - [Understanding ABI Files](./03_understanding-ABI-files.md): Introduction to Application Binary Files (ABI) and how the ABI file correlates to the `eosio.token` contract.
