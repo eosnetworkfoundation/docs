@@ -10,17 +10,10 @@ Navigate to your contracts directory.
 cd CONTRACTS_DIR
 ```
 
-Pull the source
+Pull the [latest release](https://github.com/eosnetworkfoundation/mandel-contracts/releases)
 
-```shell
-git clone https://github.com/EOSIO/eosio.contracts --branch v1.7.0 --single-branch
-```
+This repository contains several contracts, but it's the [`eosio.token`](https://github.com/eosnetworkfoundation/mandel-contracts/tree/main/contracts/eosio.token) contract that is important for this section.
 
-This repository contains several contracts, but it's the `eosio.token` contract that is important for this section. Navigate to the `eosio.contracts/contracts/eosio.token` directory.
-
-```shell
-cd eosio.contracts/contracts/eosio.token
-```
 
 ## Step 2: Create Account for Contract
 
@@ -123,7 +116,7 @@ executed transaction: 800835f28659d405748f4ac0ec9e327335eae579a0d8e8ef6330e78c9e
 warning: transaction executed locally, but may not be confirmed by the network yet         ]
 ```
 
-Now check if `bob` received the tokens using [cleos get currency balance](https://developers.eos.io/manuals/eos/latest/cleos/command-reference/get/currency-balance)
+Now check if `bob` received the tokens using [cleos get currency balance](http://docs.eosnetwork.com/eosdocs/developer-tools/cleos/command-reference/get/currency-balance)
 
 ```shell
 cleos get currency balance eosio.token bob SYS
