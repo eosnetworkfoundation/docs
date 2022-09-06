@@ -57,7 +57,7 @@ class [[eosio::contract]] hello : public contract {
 This contract needs to do something. In the spirit of **hello world** write an action that accepts a "name" parameter, and then prints that parameter out:
 
 <!--Links to virtual directory created by glossary generator-->
-[Actions](../../glossary/index/#action) implement the behavior of a contract
+[Actions](/glossary.md#action) implement the behavior of a contract
 
 ```cpp
 #include <eosio/eosio.hpp>
