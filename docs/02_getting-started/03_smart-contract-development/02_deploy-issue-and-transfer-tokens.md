@@ -2,6 +2,7 @@
 content_title: "2.2: Deploy, Issue and Transfer Tokens"
 link_text: "2.2: Deploy, Issue and Transfer Tokens"
 ---
+
 ## Step 1: Obtain Contract Source
 
 Navigate to your contracts directory.
@@ -105,6 +106,7 @@ cleos push action eosio.token issue '["alice", "100.0000 SYS", "memo"]' -p alice
 ```
 
 ## Step 7: Transfer Tokens
+
 Now that account `alice` has been issued tokens, transfer some of them to account `bob`.
 
 ```shell
@@ -119,7 +121,7 @@ executed transaction: 800835f28659d405748f4ac0ec9e327335eae579a0d8e8ef6330e78c9e
 warning: transaction executed locally, but may not be confirmed by the network yet         ]
 ```
 
-Now check if `bob` received the tokens using [cleos get currency balance](https://developers.eos.io/manuals/eos/latest/cleos/command-reference/get/currency-balance)
+Now check if `bob` received the tokens using [cleos get currency balance](http://docs.eosnetwork.com/eosdocs/developer-tools/cleos/command-reference/get/currency-balance)
 
 ```shell
 cleos get currency balance eosio.token bob SYS
@@ -142,4 +144,5 @@ cleos get currency balance eosio.token alice SYS
 Excellent! Everything adds up.
 
 ## What's Next?
+
 - [Understanding ABI Files](./03_understanding-ABI-files.md): Introduction to Application Binary Files (ABI) and how the ABI file correlates to the `eosio.token` contract.

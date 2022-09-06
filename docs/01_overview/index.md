@@ -1,6 +1,5 @@
 ---
 content_title: Overview
-link_text: Overview
 ---
 
 Learn about EOSIO's available tools, the core concepts and underlying technical features
