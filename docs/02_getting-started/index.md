@@ -15,5 +15,5 @@ link_text: "Getting Started"
 
 ## What's next?
 
-- [Try EOSIO](01_try-eosio.md): Try EOSIO in your browser with Gitpod.
+- [Try Antelope](01_try-antelope-in-dune.md): Try Antelope in DUNE (Docker Utilities for Node Execution).
 - [Get Started](02_development-environment/introduction.md): Install EOSIO in your local development environment.
