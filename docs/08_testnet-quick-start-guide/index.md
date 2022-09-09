@@ -89,7 +89,7 @@ Temporary Network Tokens (TNTs) are the native tokens of the EOSIO Testnet. By d
 
 ## Buy and Stake Resources
 
-For more information on staking, see the [Staking on EOSIO Based Blockchains](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/stake) section on the *EOSIO Developers Portal*.
+For more information on staking, see the [Staking on EOSIO Based Blockchains](http://docs.eosnetwork.com/system-contracts/latest/key-concepts/stake) section on the *EOSIO Developers Portal*.
 
 Complete the following steps to buy and stake system resources:
 
@@ -107,9 +107,9 @@ Complete the following steps to buy and stake system resources:
 To learn more about ***EOSIO system resources***, see the following documentation on the *EOSIO Developers Portal*:
 
 
-* [RAM as Resource](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/ram)
-* [CPU as Resource](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/cpu)
-* [NET as Resource](https://developers.eos.io/manuals/eosio.contracts/latest/key-concepts/net)
+* [RAM as Resource](http://docs.eosnetwork.com/system-contracts/latest/key-concepts/ram)
+* [CPU as Resource](http://docs.eosnetwork.com/system-contracts/latest/key-concepts/cpu)
+* [NET as Resource](http://docs.eosnetwork.com/system-contracts/latest/key-concepts/net)
 
 ## View Account Details
 Once your new blockchain account is created, you can view the following account details in the Testnet:
@@ -183,7 +183,7 @@ Upload and deploy your smart contract on the EOSIO blockchain in a 3-step sequen
 # Push Actions
 An action is authorized by one or more actors created on the blockchain. Actions are created explicitly within a smart contract, or generated implicitly by application code.
 
-For more information on Actions in EOSIO, see the [Actions](https://developers.eos.io/welcome/latest/protocol/transactions_protocol/#11-actions) section in Transaction Protocol on the *EOSIO Developers Portal*.
+For more information on Actions in EOSIO, see the [Actions](http://docs.eosnetwork.com/welcome/latest/protocol/transactions_protocol#11-actions) section in Transaction Protocol on the *EOSIO Developers Portal*.
 
 **Complete the following steps to push actions on the Testnet:**
 
