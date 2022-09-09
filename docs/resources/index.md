@@ -1,4 +1,4 @@
-# Reasources
+# Resources
 
 ## Test Nets
 

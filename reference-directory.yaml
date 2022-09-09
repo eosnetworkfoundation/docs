@@ -3,47 +3,44 @@ sections:
     listings:
       - title: Nodeos Chain API
         description: Provides access to the blockchain information and interaction with the blockchain
-        link: https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index
+        link: http://docs.eosnetwork.com/leap-plugins/latest/chain.api/
       - title: Nodeos Producer API
         description: Provides access to a producer node
-        link: https://developers.eos.io/manuals/eos/latest/nodeos/plugins/producer_api_plugin/api-reference/index
+        link: http://docs.eosnetwork.com/leap-plugins/latest/producer.api/
       - title: Nodeos Net API
         description: Provides access to the blockchain's network
-        link: https://developers.eos.io/manuals/eos/latest/nodeos/plugins/net_api_plugin/api-reference
+        link: http://docs.eosnetwork.com/leap-plugins/latest/net.api/
       - title: Nodeos DB Size API
         description: Provides access to the blockchain's database
-        link: https://developers.eos.io/manuals/eos/latest/nodeos/plugins/db_size_api_plugin/api-reference
-      - title: Nodeos Test Control API
-        description: Provides control of nodeos shutdown if some test conditions are met, for testing purposes
-        link: https://developers.eos.io/manuals/eos/latest/nodeos/plugins/test_control_api_plugin/api-reference
+        link: http://docs.eosnetwork.com/leap-plugins/latest/db_size.api/
       - title: Nodeos Trace API
         description: Provides access to retired actions and related metadata from a specified block
-        link: https://developers.eos.io/manuals/eos/latest/nodeos/plugins/trace_api_plugin/api-reference/index
+        link: http://docs.eosnetwork.com/leap-plugins/latest/trace.api/
   - title: SDK API References
     listings:
       - title: eosjs Javascript API
         description: Provides integration with EOSIO-based blockchains using the EOSIO Nodeos RPC API
-        link: https://developers.eos.io/manuals/eosjs/latest/API-Reference/index
+        link: http://docs.eosnetwork.com/eosjs/latest/
       - title: eosio-swift Swift API
         description: Provides integration with EOSIO-based blockchains using the EOSIO Nodeos RPC API
-        link: http://eosio.github.io/eosio-swift
+        link: http://docs.eosnetwork.com/swift-sdk/latest/
       - title: eosio-java Java API
         description: Provides integration with EOSIO-based blockchains using the EOSIO Nodeos RPC API
-        link: http://eosio.github.io/eosio-java
+        link: https://docs.eosnetwork.com/reference/javadocs
   - title: Smart Contract Action References
     listings:
       - title: eosio.system
         description: Contract defines the structures and actions needed for blockchain's core functionality
-        link: https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.system
+        link: http://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosiosystem_1_1system__contract
       - title: eosio.token
         description: Contract defines the structures and actions that allow users to create, issue, and manage tokens on eosio based blockchains
-        link: https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.token
+        link: http://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1token
       - title: eosio.msig
         description: Contract defines the structures and actions needed to manage the proposals and approvals on blockchain
-        link: https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.msig
+        link: http://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1multisig
       - title: eosio.wrap
         description: Contract simplifies Block Producer superuser actions by making them more readable and easier to audit
-        link: https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.wrap
+        link: http://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1wrap
       - title: eosio.bios
         description: Contract defines the structures and actions needed for blockchain's basic core functionality
-        link: https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.bios
+        link: http://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosiobios_1_1bios

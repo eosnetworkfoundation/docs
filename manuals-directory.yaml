@@ -3,27 +3,27 @@ sections:
     listings:
       - title: nodeos
         description: The core service daemon that runs on every EOSIO node
-        link: https://developers.eos.io/manuals/eos/latest/nodeos/index
+        link: http://docs.eosnetwork.com/leap/latest/
 
       - title: cleos
         description: A command line interface to interact with the blockchain and manage wallets
-        link: https://developers.eos.io/manuals/eos/latest/cleos/index
+        link: http://docs.eosnetwork.com/leap/latest/cleos/
 
       - title: keosd
         description: A key manager service daemon for storing private keys and signing digital messages
-        link: https://developers.eos.io/manuals/eos/latest/keosd/index
+        link: http://docs.eosnetwork.com/leap/latest/keosd/
 
       - title: eosio.cdt
         description: Contract Development Toolkit is a suite of tools used to build EOSIO contracts
-        link: https://developers.eos.io/manuals/eosio.cdt/latest/index
+        link: http://docs.eosnetwork.com/cdt/latest/
 
       - title: eosio.contracts
         description: Smart contracts that provide some of the basic functions of the EOSIO blockchain
-        link: https://developers.eos.io/manuals/eosio.contracts/latest/index
+        link: http://docs.eosnetwork.com/system-contracts/latest/
 
       - title: eos-vm
         description: EOS VM - A Low-Latency, High Performance and Extensible WebAssembly Engine
-        link: https://github.com/EOSIO/eos-vm
+        link: https://github.com/eosnetworkfoundation/mandel-eos-vm
 
   - title: Examples
     listings:
@@ -59,13 +59,13 @@ sections:
         
       - title: history-tools
         description: Set of tools built to facilitate highly performant searches, written in C++, that can efficiently and scalably sift through terabytes of data from the full history of EOSIO blockchains.
-        link: https://eosio.github.io/history-tools/
+        link: http://docs.eosnetwork.com/welcome/latest/tools/history-tools/
 
   - title: Javascript SDK
     listings:
       - title: eosjs
         description: A Javascript library which provides an API for integrating with EOSIO-based blockchains using the EOSIO Nodeos RPC API
-        link: https://developers.eos.io/manuals/eosjs/latest/index
+        link: https://github.com/eosnetworkfoundation/mandel-eosjs
 
       - title: eosjs-keygen
         description: A Javascript library for managing keys in local storage
@@ -73,9 +73,9 @@ sections:
 
   - title: Swift SDK
     listings:
-      - title: eosio-swift
+      - title: mandel-swift
         description: An API for integrating with EOSIO-based blockchains using the EOSIO RPC API
-        link: https://github.com/EOSIO/eosio-swift
+        link: https://github.com/eosnetworkfoundation/mandel-swift
 
       - title: eosio-swift-abieos-serialization-provider
         description: A pluggable serialization provider for EOSIO SDK for Swift.
@@ -97,9 +97,9 @@ sections:
         description: A pluggable signature provider for EOSIO SDK for Swift
         link: https://github.com/EOSIO/eosio-swift-vault-signature-provider
 
-      - title: eosio-swift-vault
+      - title: mandel-swift-vault
         description: An utility library for working with public/private keys and signing with Apple's Keychain and Secure Enclave
-        link: https://github.com/EOSIO/eosio-swift-vault
+        link: https://github.com/eosnetworkfoundation/mandel-swift-vault
 
   - title: Java SDK
     listings:

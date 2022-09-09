@@ -181,7 +181,7 @@ The following structs are implicit in that a struct was never explicitly defined
 }
 ```
 
-### [close](https://developers.eos.io/manuals/eosio.contracts/latest/action-reference/eosio.token/index/#close)
+### [close](http://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1token#function-close)
 
 ```json
 {
