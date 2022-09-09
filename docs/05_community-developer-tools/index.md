@@ -52,8 +52,6 @@ If you would like to submit a tool to be added to the list, please fill in [this
 
 * [Jungle Testnet](https://github.com/EOS-Jungle-Testnet): A live EOSIO testnet with network monitor.
 
-* [The EOSIO Testnet](https://testnet.eos.io/): Block.one's EOSIO Testnet to test EOSIO smart contracts before deploying on production networks.
-
 ### Block Explorers and Dashboards
 
 * [Bloks.io](https://bloks.io/): Block explorer with several features across many EOSIO blockchain networks.
