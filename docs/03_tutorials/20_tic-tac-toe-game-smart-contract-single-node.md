@@ -8,7 +8,7 @@ This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game wh
 
 
 [[info]]
-| Antelope is a blockchain software platform developed by block.one. Smart contracts which run on the Antelope platform should run on any blockchain which using the Antelope platform. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope platform, EOS or the public mainnet. In this tutorial we will use the Antelope platform to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
+| Antelope is a blockchain software platform developed by EOS Network Foundation. Smart contracts which run on the Antelope platform should run on any blockchain which using the Antelope platform. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope platform, EOS or the public mainnet. In this tutorial we will use the Antelope platform to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
 
 
 We explain the purpose of each step and why it is important.

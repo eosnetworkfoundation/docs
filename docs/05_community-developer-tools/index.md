@@ -1,6 +1,6 @@
 ## Overview
 
-This is a list of developer tools which are built by members of the Antelope community, curated by the Developer Relations team at Block.one.
+This is a list of developer tools which are built by members of the Antelope community, curated by the Developer Relations team at EOS Network Foundation.
 
 If you would like to submit a tool to be added to the list, please fill in [this form](https://blockone.typeform.com/to/gA4F0Q).
 
