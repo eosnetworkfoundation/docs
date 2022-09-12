@@ -10,9 +10,9 @@ Actions define atomic behaviors within a smart contract. At a higher level, tran
 
 ## 1.1. Actions
 
-An action can be authorized by one or more actors previously created on the blockchain. Actions can be created explicitly within a smart contract, or generated implicitly by application code. For any given `actor:action` pair there is at most one explicit associated minimum permission. If there are no explicit minimum permissions set, the implicit default is `actor@active`. Each actor can independently set their personal minimum permission for a given action. Also, a complex but flexible authorization structure is in place within the EOSIO software to allow actors to push actions on behalf of other accounts. Thus, further checks are enforced to authorize an actor to send an action (see [3.4.2. Permission Check](#342-permission-check)).
+An action can be authorized by one or more actors previously created on the blockchain. Actions can be created explicitly within a smart contract, or generated implicitly by application code. For any given `actor:action` pair there is at most one explicit associated minimum permission. If there are no explicit minimum permissions set, the implicit default is `actor@active`. Each actor can independently set their personal minimum permission for a given action. Also, a complex but flexible authorization structure is in place within the Antelope software to allow actors to push actions on behalf of other accounts. Thus, further checks are enforced to authorize an actor to send an action (see [3.4.2. Permission Check](#342-permission-check)).
 
-There are two types of actions involved in a transaction. They mainly differ in the way they are executed by the EOSIO software:
+There are two types of actions involved in a transaction. They mainly differ in the way they are executed by the Antelope software:
 
 1. Explicit actions, which are present in a signed transaction (see [2. Transaction Instance](#2-transaction-instance)).
 2. Implicit (inline) actions, which are created as a side effect of processing a transaction.
@@ -32,12 +32,12 @@ An implicit (inline) action is generated as a result of an explicit caller actio
 
 ## 1.2. Smart Contracts
 
-In EOSIO, smart contracts consist of a set of actions, usually grouped by functionality, and a set of type definitions which those actions depend on. Therefore, actions specify and define the actual behaviors of the contract. Several actions are implemented in the standard EOSIO contracts for account creation, producer voting, token operations, etc. Application developers can extend, replace, or disable this functionality altogether by creating custom actions within their own smart contracts and applications. Transactions, on the other hand, are typically created at the application level. Smart contracts are agnostic to them.
+In EOSIO, smart contracts consist of a set of actions, usually grouped by functionality, and a set of type definitions which those actions depend on. Therefore, actions specify and define the actual behaviors of the contract. Several actions are implemented in the standard Antelope contracts for account creation, producer voting, token operations, etc. Application developers can extend, replace, or disable this functionality altogether by creating custom actions within their own smart contracts and applications. Transactions, on the other hand, are typically created at the application level. Smart contracts are agnostic to them.
 
 
 ### 1.2.1. Implementation
 
-An EOSIO smart contract is implemented as a C++ class that derives from `eosio::contract`. Actions are implemented as C++ methods within the derived class. Transactions, on the other hand, are generated dynamically (as transaction instances) within an EOSIO application. The EOSIO software processes each transaction instance and keeps track of its state as it evolves from creation, signing, validation, and execution.
+An Antelope smart contract is implemented as a C++ class that derives from `eosio::contract`. Actions are implemented as C++ methods within the derived class. Transactions, on the other hand, are generated dynamically (as transaction instances) within an Antelope application. The Antelope software processes each transaction instance and keeps track of its state as it evolves from creation, signing, validation, and execution.
 
 
 # 2. Transaction Instance
@@ -119,7 +119,7 @@ Name | Type | Description
 
 ## 2.3. Packed Transaction Instance
 
-A packed transaction is an optionally compressed signed transaction with additional housekeeping fields to allow for decompression and quick validation. Packed transactions minimize space footprint and block size in the long run (see `packed_transaction` schema below). A packed transaction forms the most generic type of transaction in an EOSIO blockchain. Consequently, when transactions are pushed to a block, they are actually packed transactions whether compressed or not.
+A packed transaction is an optionally compressed signed transaction with additional housekeeping fields to allow for decompression and quick validation. Packed transactions minimize space footprint and block size in the long run (see `packed_transaction` schema below). A packed transaction forms the most generic type of transaction in an Antelope blockchain. Consequently, when transactions are pushed to a block, they are actually packed transactions whether compressed or not.
 
 ### packed_transaction schema
 
@@ -137,7 +137,7 @@ The `unpacked_trx` field holds the cached unpacked transaction after the transac
 
 # 3. Transaction Lifecycle
 
-Transactions go through various stages during their lifespan. First, a transaction is created in an application or an EOSIO client such as cleos by pushing the associated actions into the transaction. Next, the transaction is sent to the locally connected node, which in turn relays it to the active producing nodes for validation and execution via the peer-to-peer network. Next, the validated transaction is pushed to a block by the active producer on schedule along with other transactions. Finally the block that contains the transaction is pushed to all other nodes for validation. When a supermajority of producers have validated the block, and the block becomes irreversible, the transaction gets permanently recorded in the blockchain and it is considered immutable.
+Transactions go through various stages during their lifespan. First, a transaction is created in an application or an Antelope client such as cleos by pushing the associated actions into the transaction. Next, the transaction is sent to the locally connected node, which in turn relays it to the active producing nodes for validation and execution via the peer-to-peer network. Next, the validated transaction is pushed to a block by the active producer on schedule along with other transactions. Finally the block that contains the transaction is pushed to all other nodes for validation. When a supermajority of producers have validated the block, and the block becomes irreversible, the transaction gets permanently recorded in the blockchain and it is considered immutable.
 
 
 ## 3.1. Create Transaction
@@ -153,14 +153,14 @@ Name | Type | Description
 `authorization` | array of `permission_level` | list of `actor:permission` authorizations
 `data` | `bytes` | action data to send
 
-After the transaction instance is created at the application level, the transaction is arranged for processing. This involves two main steps: signing the transaction and pushing the signed transaction to the local node for actual propagation and execution of the transaction. These steps are typically performed within the EOSIO application.
+After the transaction instance is created at the application level, the transaction is arranged for processing. This involves two main steps: signing the transaction and pushing the signed transaction to the local node for actual propagation and execution of the transaction. These steps are typically performed within the Antelope application.
 
 
 ## 3.2. Sign Transaction
 
 The transaction must be signed by a set of keys sufficient to satisfy the accumulated set of explicit `actor:permission` pairs specified in all the actions enclosed within the transaction. This linkage is done through the authority table for the given permission (see [Accounts and Permissions: 3. Permissions](04_accounts_and_permissions.md#3-permissions)). The actual signing key is obtained by querying the wallet associated with the signing account on the client where the application is run.
 
-The transaction signing process takes three parameters: the transaction instance to sign, the set of public keys from which the associated private keys within the application wallet are retrieved, and the chain ID. The chain ID identifies the actual EOSIO blockchain and consists of a hash of its genesis state, which depends on the blockchain’s initial configuration parameters. Before signing the transaction, the EOSIO software first computes a digest of the transaction. The digest value is a SHA-256 hash of the chain ID, the transaction instance, and the context free data if the transaction has any context free actions. Any instance fields get serialized before computing any cryptographic hashes to avoid including reference fields (memory addresses) in the hash computation. The transaction digest computation and the signing process are depicted below.
+The transaction signing process takes three parameters: the transaction instance to sign, the set of public keys from which the associated private keys within the application wallet are retrieved, and the chain ID. The chain ID identifies the actual Antelope blockchain and consists of a hash of its genesis state, which depends on the blockchain’s initial configuration parameters. Before signing the transaction, the Antelope software first computes a digest of the transaction. The digest value is a SHA-256 hash of the chain ID, the transaction instance, and the context free data if the transaction has any context free actions. Any instance fields get serialized before computing any cryptographic hashes to avoid including reference fields (memory addresses) in the hash computation. The transaction digest computation and the signing process are depicted below.
 
 ```dot-svg
 
@@ -232,7 +232,7 @@ Once the public keys are recovered, a transaction context is created from the tr
 
 ### 3.4.2. Permission Check
 
-Since the sequence of actions contained in the transaction must be executed atomically as a whole, the EOSIO software first checks that the actors specified in each action have the minimum permission required to execute it. To that end, the software checks the following for each action:
+Since the sequence of actions contained in the transaction must be executed atomically as a whole, the Antelope software first checks that the actors specified in each action have the minimum permission required to execute it. To that end, the software checks the following for each action:
 
 *   The named permission of each actor specified in each action instance.
 *   The named permission of the corresponding `actor:contract::action` pair specified in the smart contract.
@@ -377,7 +377,7 @@ The `trx` field holds the transaction ID or the packed transaction itself. The a
 Deferred transactions are generated as a side effect of processing the blockchain, so their state is stored in the chain database, not within a block. Therefore, there is no need to explicitly include their contents in the transaction receipt. All in-sync nodes should be aware of the form of a deferred transaction as a matter of consensus. Deferred transactions issued by a smart contract have no role or effect on the `delayed` status field of the transaction receipt.
 
 [[caution | Deprecation Notice]]
-| Deferred transactions are deprecated as of EOSIO 2.0. For more details on their behavior, refer to the [Deferred Transactions](https://developers.eos.io/manuals/eosio.cdt/v1.7/best-practices/deferred_transactions) section on the `eosio.cdt` documentation.
+| Deferred transactions are deprecated as of Antelope 2.0. For more details on their behavior, refer to the [Deferred Transactions](https://developers.eos.io/manuals/eosio.cdt/v1.7/best-practices/deferred_transactions) section on the `eosio.cdt` documentation.
 
 ### 3.6.3. Delayed User Transactions
 

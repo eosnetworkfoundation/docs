@@ -3,7 +3,7 @@ content_title: "1.3: Install the Contract Dev. Toolkit"
 link_text: "1.3: Install the CDT"
 ---
 
-The EOSIO Contract Development Toolkit, CDT for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
+The Antelope Contract Development Toolkit, CDT for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
 
 Starting from 1.3.x, CDT supports Mac OS X brew, Linux Debian and RPM packages. The easiest option to install would be using one of these package systems. Pick one installation method only.
 [[warning]]

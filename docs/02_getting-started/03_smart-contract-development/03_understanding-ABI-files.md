@@ -38,7 +38,7 @@ Start with an empty ABI, name it `eosio.token.abi`
 An ABI enables any client or interface to interpret and even generate a GUI for your contract. For this to work consistently, describe the custom types that are used as a parameter in any public action or struct that needs to be described in the ABI.
 
 [[info | Built-in Types]]
-| EOSIO implements a number of custom built-ins. Built-in types don't need to be described in an ABI file. If you would like to familiarize yourself with EOSIO's built-ins, they are defined [here](https://github.com/eosnetworkfoundation/mandel/blob/main/libraries/chain/abi_serializer.cpp)
+| Antelope implements a number of custom built-ins. Built-in types don't need to be described in an ABI file. If you would like to familiarize yourself with EOSIO's built-ins, they are defined [here](https://github.com/eosnetworkfoundation/mandel/blob/main/libraries/chain/abi_serializer.cpp)
 
 ```json
 {
@@ -541,4 +541,4 @@ Check that your table is accurately described in the ABI file. For example, If y
 
 ## What's Next
 
-- [Data Persistence](./04_data-persistence.md): Learn how data persistence works on EOSIO by writing a simple smart contract that functions as an address book.
+- [Data Persistence](./04_data-persistence.md): Learn how data persistence works on Antelope by writing a simple smart contract that functions as an address book.

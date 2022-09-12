@@ -7,13 +7,13 @@ link_text: "Getting Started"
 - Using Keosd as a local development wallet
 - Starting the Nodeos daemon
 - Creating accounts
-- EOSIO Smart contract fundamentals
+- Antelope Smart contract fundamentals
 - Tokens
 - Inline actions
 - Custom Permission
-- Payable actions using EOSIO `notify` declarations
+- Payable actions using Antelope `notify` declarations
 
 ## What's next?
 
 - [Try Antelope](01_try-antelope-in-dune.md): Try Antelope in DUNE (Docker Utilities for Node Execution).
-- [Get Started](02_development-environment/introduction.md): Install EOSIO in your local development environment.
+- [Get Started](02_development-environment/introduction.md): Install Antelope in your local development environment.

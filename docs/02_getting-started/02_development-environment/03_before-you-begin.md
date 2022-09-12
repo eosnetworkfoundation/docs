@@ -66,4 +66,4 @@ Enter the absolute path to your contract directory below, and it will be inserte
 </div>
 
 ## What's Next?
-- [Install the CDT](./04_install-the-CDT.md): Steps to install the EOSIO Contract Development Toolkit (CDT) on your system.
+- [Install the CDT](./04_install-the-CDT.md): Steps to install the Antelope Contract Development Toolkit (CDT) on your system.

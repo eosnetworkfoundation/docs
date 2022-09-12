@@ -3,7 +3,7 @@ content_title: "2.9: Payable actions"
 link_text: "2.9: Payable actions"
 ---
 ## Goal
-This tutorial illustrates how to write a smart contract that has payable actions. Payable actions are actions that require you to transfer some tokens to actions prior to use other functionality of the smart contract. Also, the EOSIO `asset` type is covered in this tutorial.
+This tutorial illustrates how to write a smart contract that has payable actions. Payable actions are actions that require you to transfer some tokens to actions prior to use other functionality of the smart contract. Also, the Antelope `asset` type is covered in this tutorial.
 
 As for the logic of this smart contract, we're going to write a contract that accepts a particular token but will not allow the tokens to be withdrawn for a specific amount of time.
 
@@ -310,4 +310,4 @@ Party time!
 
 
 ## What's Next?
-- [Elemental Battles](https://battles.eos.io): Build a blockchain game based on EOSIO and continue building your EOSIO knowledge!
+- [Elemental Battles](https://battles.eos.io): Build a blockchain game based on Antelope and continue building your Antelope knowledge!

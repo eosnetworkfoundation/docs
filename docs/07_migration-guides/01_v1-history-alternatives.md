@@ -5,7 +5,7 @@ link_text: "V1 History Alternatives"
 
 # V1 History Alternatives
 
-The latest EOSIO v3.1 release officially ends support for the legacy V1 History plugin. Therefore, block producers and node operators who have integrations that rely on V1 History must seek alternative solutions.
+The latest Antelope v3.1 release officially ends support for the legacy V1 History plugin. Therefore, block producers and node operators who have integrations that rely on V1 History must seek alternative solutions.
 
 ## Production Ready Alternatives
 The following battle tested and V1 compliant history solutions are available:
@@ -24,7 +24,7 @@ Roborovski History API is implemented and ran by [Greymass Inc.](https://greymas
 
 ## What makes the Roborovski History API safe
 
-Roborovski History API has a high degree of safety because it is created by [Greymass Inc.](https://greymass.com/) which has been a credible and stable block producer and wallet developer (Anchor) company for EOS, WAX, TELOS, PROTON, FIO and other EOSIO based chains.
+Roborovski History API has a high degree of safety because it is created by [Greymass Inc.](https://greymass.com/) which has been a credible and stable block producer and wallet developer (Anchor) company for EOS, WAX, TELOS, PROTON, FIO and other Antelope based chains.
 
 ## Understanding the risks associated with hosted solutions
 
@@ -69,7 +69,7 @@ Hyperion History API provides both V2 and V1 (legacy history plugin) endpoints. 
 
 ## What makes the Hyperion safe
 
-Hyperion is developed and maintained by EOS Rio: https://eosrio.io/hyperion/ and has been battle tested on every EOSIO public network (EOS, WAX, TELOS, PROTON, FIO, etc).
+Hyperion is developed and maintained by EOS Rio: https://eosrio.io/hyperion/ and has been battle tested on every Antelope public network (EOS, WAX, TELOS, PROTON, FIO, etc).
 
 * Github: https://github.com/eosrio/Hyperion-History-API
 * Documentation: https://hyperion.docs.eosrio.io/

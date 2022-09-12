@@ -1,19 +1,19 @@
 ---
-content_title: EOSIO Blockchain Networks
-link_text: EOSIO Blockchain Networks
+content_title: Antelope Blockchain Networks
+link_text: Antelope Blockchain Networks
 ---
 
 ## Overview
 
 EOSIO blockchain software is flexible and highly configurable. It can be used to launch entire blockchain networks to suit particular business use cases and processes. 
 
-This is a list of blockchain networks which are operated using EOSIO software, curated by the Developer Relations team at Block.one. If you would like to submit a blockchain network to be added to the list, please fill in [this form](https://blockone.typeform.com/to/ZsBWsL).
+This is a list of blockchain networks which are operated using Antelope software, curated by the Developer Relations team at Block.one. If you would like to submit a blockchain network to be added to the list, please fill in [this form](https://blockone.typeform.com/to/ZsBWsL).
 
-## EOSIO Blockchain Networks
-* [EOS](https://t.me/EOSproject): The first global public EOSIO blockchain network started by a community of block producers and thousands of enterprising individuals in 2018 upon the release of the EOSIO blockchain software. The EOS network is one of the most developed EOSIO networks and is one of the most widely adopted, performant, and decentralized public blockchain networks leveraging the Delegated Proof Of Stake (DPoS) consensus mechanism.
+## Antelope Blockchain Networks
+* [EOS](https://t.me/EOSproject): The first global public Antelope blockchain network started by a community of block producers and thousands of enterprising individuals in 2018 upon the release of the Antelope blockchain software. The EOS network is one of the most developed Antelope networks and is one of the most widely adopted, performant, and decentralized public blockchain networks leveraging the Delegated Proof Of Stake (DPoS) consensus mechanism.
 * [BOSCore](https://boscore.io/): The BOS Network is committed to providing users with easy-to-access and easy-to-use blockchain services, providing a more user-friendly infrastructure for DApp operations, working to support richer application scenarios, and actively promoting
 prosperity in trustless commerce.
-* [COFFE network](https://coffe.io/): COFFE is an EOSIO platform fork (an independent software development branch) that features modified DPoS-based consensus algorithms.
+* [COFFE network](https://coffe.io/): COFFE is an Antelope platform fork (an independent software development branch) that features modified DPoS-based consensus algorithms.
 * [eosfinex](https://www.eosfinex.com/): eosfinex is a scalable and transparent platform for digital asset trading, industry-leading security, and instant execution.
 * [EOSForce](https://eosforce.io/index/en): A Decentralized High-Performance Smart Contract Platform.
 * [Europechain](https://europechain.io/): Europechain is a GDPR-supported enterprise blockchain platform managed and governed by experienced validators registered in the European Union.

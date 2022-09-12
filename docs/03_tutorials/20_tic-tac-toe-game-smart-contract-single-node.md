@@ -3,12 +3,12 @@ content_title: "Tic-tac-toe Game Contract Using Single Node"
 link_text: "Tic-tac-toe Game Contract Using Single Node"
 ---
 
-# Tic-tac-toe on EOSIO 
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an EOSIO blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an EOSIO blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../getting-started/index.md) section.
+# Tic-tac-toe on Antelope 
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an Antelope blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an Antelope blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../getting-started/index.md) section.
 
 
 [[info]]
-| EOSIO is a blockchain software platform developed by block.one. Smart contracts which run on the EOSIO platform should run on any blockchain which using the EOSIO platform. EOS is a digital token, though it also refers to the first public blockchain run on the EOSIO platform, EOS or the public mainnet. In this tutorial we will use the EOSIO platform to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
+| Antelope is a blockchain software platform developed by block.one. Smart contracts which run on the Antelope platform should run on any blockchain which using the Antelope platform. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope platform, EOS or the public mainnet. In this tutorial we will use the Antelope platform to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
 
 
 We explain the purpose of each step and why it is important.
@@ -21,19 +21,19 @@ This tutorial requires the following:
 
 and
 
-* The EOSIO platform software, Click on this link for instructions on [installing EOSIO binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries") 
-* Familiarity with the EOSIO tools `cleos` and `keosd`.
-* The EOSIO Contract Development Toolkit or eosio.cdt. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions") 
+* The Antelope platform software, Click on this link for instructions on [installing Antelope binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries") 
+* Familiarity with the Antelope tools `cleos` and `keosd`.
+* The Antelope Contract Development Toolkit or eosio.cdt. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions") 
 * Familiarity with the `eosio.cdt` which is used to compile smart contracts. 
 
-Click on this link for an [overview of the EOSIO platform.](../01_overview/index.md)
+Click on this link for an [overview of the Antelope platform.](../01_overview/index.md)
 
 Click on this link to [get started with EOSIO.](../02_getting-started/index.md "Getting Started with EOSIO")
 
 ### Tutorial Workflow
 
 ```sequence
-Understand\n Game->Understand\n EOSIO : What?
+Understand\n Game->Understand\n Antelope : What?
 Understand\n EOSIO->Create\nAccounts  : Accounts
 Understand\n EOSIO->Create\nAccounts  : Actions
 Understand\n EOSIO->Create\nAccounts  : Resources
@@ -45,14 +45,14 @@ Play\nGame -> Play\nGame : Get
 ```
 
 ## The Rules of the Game
-The EOSIO tic-tac-toe rules are:
+The Antelope tic-tac-toe rules are:
 
 * Player one (the host) makes the first move, followed by player two (the challenger). 
 * The first player to complete a row or diagonal of either X’s or O’s wins the game.
 * If no player completes a row or diagonal of either X’s or O’s, the game is a draw. 
 
 ## Understanding the Game
-The smart contract contains the game logic, therefore this section introduces how the game works and some of the EOSIO concepts needed to build a smart contract.
+The smart contract contains the game logic, therefore this section introduces how the game works and some of the Antelope concepts needed to build a smart contract.
 
 ### The Game logic
 The game is played by two players, so we need two blockchain accounts. This tutorial explains how to create and use these blockchain accounts on a local single node blockchain in the next step. Use these accounts to "push actions" to the blockchain. These actions start, restart, and close the game. Pushing a move action will place a 'marker' on the game 'board'.    
@@ -70,15 +70,15 @@ In the example below the player who placed x has won.
 When all the squares contain a marker and no player has three markers in a row, then the game is a draw.
 
 ### Accounts and Key Pairs
-A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. EOSIO blockchains use account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../04_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
+A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. Antelope blockchains use account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../04_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
 
 ### Smart Contract Actions
 A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](../04_protocol/02_transactions_protocol.md "Tranasctions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
 
 ![Transactions and Actions](images/tictactoe/transactions-and-actions-temp.png "Transactions and Actions")
 
-### EOSIO Resources 
-The EOSIO blockchain accounts own and consume three resources. By default a single node testnet does load the smart contract which tracks resources therefore this section is for information only:
+### Antelope Resources 
+The Antelope blockchain accounts own and consume three resources. By default a single node testnet does load the smart contract which tracks resources therefore this section is for information only:
 
 * RAM - This resource is the amount of RAM available to an account. RAM stores smart contracts loaded on the blockchain. Smart contacts use RAM via the multi-index table to store smart contract state. Spend tokens to purchase more RAM, RAM can be sold.
 * CPU - This resource is the amount of CPU which can be used by an account in each 24 hour period. Transactions consume CPU. Stake tokens for more CPU. Unstaking returns CPU. 
@@ -273,7 +273,7 @@ Game Representation
 |     2     |   o   |   x   |   x   |
 
 ### Create tictactoe.hpp file
-This section creates the tictactoe.hpp file. This header file contains the declarations of the tictactoe class, the definitions of tictactoe game data structures, and the declarations of tictactoe game methods, known as actions in EOSIO smart contracts.
+This section creates the tictactoe.hpp file. This header file contains the declarations of the tictactoe class, the definitions of tictactoe game data structures, and the declarations of tictactoe game methods, known as actions in Antelope smart contracts.
 
 
 #### Game Data Structures
@@ -786,4 +786,4 @@ cleos get table tictactoe host games
 ```
 
 ## Next Steps
-Visit the [EOSIO Developer Portal](http://docs.eosnetwork.com/ "eosio developers portal") to learn more about EOSIO and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/) 
+Visit the [EOSIO Developer Portal](http://docs.eosnetwork.com/ "eosio developers portal") to learn more about Antelope and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/) 

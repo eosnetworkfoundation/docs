@@ -1,6 +1,6 @@
 ## Overview
 
-This is a list of developer tools which are built by members of the EOSIO community, curated by the Developer Relations team at Block.one.
+This is a list of developer tools which are built by members of the Antelope community, curated by the Developer Relations team at Block.one.
 
 If you would like to submit a tool to be added to the list, please fill in [this form](https://blockone.typeform.com/to/gA4F0Q).
 
@@ -10,57 +10,57 @@ If you would like to submit a tool to be added to the list, please fill in [this
 
 * [Azakazam](https://github.com/azarusio/azakazam): A development, testing, and deployment framework for EOSIO, aiming to make life easier for developers.
 
-* [Lamington](https://github.com/CoinageCrypto/lamington): The Lamington library includes CLI tools and JavaScript utilities to streamline the EOSIO smart contract building, testing and deployment pipeline.
+* [Lamington](https://github.com/CoinageCrypto/lamington): The Lamington library includes CLI tools and JavaScript utilities to streamline the Antelope smart contract building, testing and deployment pipeline.
 
 * [EOSFactory](https://github.com/tokenika/eosfactory): A Python-based EOS smart-contract development and testing framework.
 
-* [Hydra](https://klevoya.com/hydra/): Hydra is a simple and fast EOSIO smart contract test and execution environment.
+* [Hydra](https://klevoya.com/hydra/): Hydra is a simple and fast Antelope smart contract test and execution environment.
 
 * [Tank](https://github.com/mixbytes/tank): Tank is a console tool which can set up a blockchain cluster in minutes in a cloud and bench it using various transaction loads.
 
 ### Integrated Development Environments (IDEs)
 
-* [EOS Studio](https://www.eosstudio.io/): Integrated with various tools required for EOSIO in a unified graphical application, EOS Studio provides a powerful and easy-to-use environment for dApp development.
+* [EOS Studio](https://www.eosstudio.io/): Integrated with various tools required for Antelope in a unified graphical application, EOS Studio provides a powerful and easy-to-use environment for dApp development.
 
-* [Adappt IDE](https://github.com/eosrapid/adappt): Adappt is a fully featured IDE that allows for the rapid development, testing, and deployment of EOSIO smart contracts.
+* [Adappt IDE](https://github.com/eosrapid/adappt): Adappt is a fully featured IDE that allows for the rapid development, testing, and deployment of Antelope smart contracts.
 
 ### Non-Fungible Token (NFT) Standards
 
 * [dGoods](https://github.com/MythicalGames/dgoods): An open source and free standard for handling the virtual representation of items, both digital and physical.
 
-* [SimpleAssets](https://github.com/CryptoLions/SimpleAssets): A simple standard for digital assets on EOSIO blockchains: Non-Fungible Tokens (NFTs), Fungible Tokens (FTs), and Non-Transferable Tokens (NTTs).
+* [SimpleAssets](https://github.com/CryptoLions/SimpleAssets): A simple standard for digital assets on Antelope blockchains: Non-Fungible Tokens (NFTs), Fungible Tokens (FTs), and Non-Transferable Tokens (NTTs).
 
 * [Marble](https://github.com/Dappetizer/marble-digital-items): Marble is a lightweight, highly customizable digital item standard.
 
-* [Atomic Assets](https://github.com/pinknetworkx/atomicassets-contract): AtomicAssets is a Non Fungible Token (NFT) standard for EOSIO blockchains which focuses heavily on RAM efficiency and usability.
+* [Atomic Assets](https://github.com/pinknetworkx/atomicassets-contract): AtomicAssets is a Non Fungible Token (NFT) standard for Antelope blockchains which focuses heavily on RAM efficiency and usability.
 
 ### Services and Middleware
 
 * [The DAPP Network](https://liquidapps.io/): Live, universal middleware of services for modern decentralized applications.
 
-* [dfuse](https://www.dfuse.io/en): Blockchain data APIs for searching and monitoring EOSIO networks.
+* [dfuse](https://www.dfuse.io/en): Blockchain data APIs for searching and monitoring Antelope networks.
 
 * [Bitquery GraphQL API](https://bitquery.io/labs/graphql ): Single endpoint for 20+ blockchain datasets, including EOS.
 
 ### History Solutions
 
-* [Hyperion History API](https://github.com/eosrio/Hyperion-History-API): A scalable, Full History API Solution for EOSIO based-blockchains.
+* [Hyperion History API](https://github.com/eosrio/Hyperion-History-API): A scalable, Full History API Solution for Antelope based-blockchains.
 
 ### Testnets
 
-* [CryptoKylin Testnet](https://www.cryptokylin.io/): CryptoKylin Testnet is for dApp developers who want to test their EOSIO smart contracts before deploying on production networks.
+* [CryptoKylin Testnet](https://www.cryptokylin.io/): CryptoKylin Testnet is for dApp developers who want to test their Antelope smart contracts before deploying on production networks.
 
-* [Jungle Testnet](https://github.com/EOS-Jungle-Testnet): A live EOSIO testnet with network monitor.
+* [Jungle Testnet](https://github.com/EOS-Jungle-Testnet): A live Antelope testnet with network monitor.
 
 ### Block Explorers and Dashboards
 
-* [Bloks.io](https://bloks.io/): Block explorer with several features across many EOSIO blockchain networks.
+* [Bloks.io](https://bloks.io/): Block explorer with several features across many Antelope blockchain networks.
 
-* [EOSX](https://eosx.io): Explorer and network monitor for multiple EOSIO blockchains, all in one.
+* [EOSX](https://eosx.io): Explorer and network monitor for multiple Antelope blockchains, all in one.
 
-* [EOSIO Dashboard](https://github.com/eoscostarica/eosio-dashboard): EOSIO Dashboard is an open-source tool that helps you visualize relevant data about Block Producer nodes and rewards distribution in the EOS network.
+* [EOSIO Dashboard](https://github.com/eoscostarica/eosio-dashboard): Antelope Dashboard is an open-source tool that helps you visualize relevant data about Block Producer nodes and rewards distribution in the EOS network.
 
-### EOSIO Plugins
+### Antelope Plugins
 
 * [EOSIO Kafka Plugin](https://github.com/TP-Lab/kafka_plugin): This plugin allows you to utilize all of Kafka's rich real-time features for building date pipelines and streaming apps.
 
@@ -72,7 +72,7 @@ If you would like to submit a tool to be added to the list, please fill in [this
 
 ## Wallets
 
-* [Greymass Anchor](https://github.com/greymass/anchor): A feature rich, open-source, EOSIO Wallet.
+* [Greymass Anchor](https://github.com/greymass/anchor): A feature rich, open-source, Antelope Wallet.
 
 * [Scatter](https://github.com/GetScatter/ScatterDesktop): Scatter desktop is a cutting-edge wallet as well as a global local-machine authentication provider.
 

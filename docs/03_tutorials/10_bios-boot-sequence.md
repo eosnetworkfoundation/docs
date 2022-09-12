@@ -29,9 +29,9 @@ If your goal is to go beyond and understand what the script is doing, you can fo
 
 ### 1.1. Install the binaries
 
-**Pre-compiled EOSIO Binaries**
+**Pre-compiled Antelope Binaries**
 
-For instructions to install the `nodeos` binaries, see the [Install EOSIO pre-compiled binaries](http://docs.eosnetwork.com/leap/latest/install/install-prebuilt-binaries) tutorial but do not start `nodeos` at this stage.
+For instructions to install the `nodeos` binaries, see the [Install Antelope pre-compiled binaries](http://docs.eosnetwork.com/leap/latest/install/install-prebuilt-binaries) tutorial but do not start `nodeos` at this stage.
 
 **CDT Binaries**
 
@@ -612,7 +612,7 @@ We are now ready to begin staking accounts and expanding the network of producer
 
 ### **2.4. Create staked accounts**
 
-Staking is the process of allocating tokens acquired by an entity in the "real world" (e.g., an individual purchasing something at a Crowdsale or some other means) to an account within the EOSIO system.  Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated to their accounts and ready for use, and get the voting process going so that producers can get elected and the blockchain is running "live".
+Staking is the process of allocating tokens acquired by an entity in the "real world" (e.g., an individual purchasing something at a Crowdsale or some other means) to an account within the Antelope system.  Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated to their accounts and ready for use, and get the voting process going so that producers can get elected and the blockchain is running "live".
 
 The following recommendation is given for the initial staking process:
 
