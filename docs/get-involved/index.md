@@ -5,7 +5,7 @@ We appreciate your interest in contributing to the Antelope platform! We always 
 
 ## Get Involved with Antelope Community and Code
 
-The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [EOSIO Organization](https://github.com/EOSIO) on GitHub.
+The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [Antelope Organization](https://github.com/Antelope) on GitHub.
 
 For more information about the contribution guidelines of a particular repository, look for the "Contributing" link in the right-hand sidebar of the documentation.
 
@@ -14,14 +14,14 @@ For more information about the contribution guidelines of a particular repositor
 ### Developers Community Involvement
 
 #### Antelope Stack Exchange
-Engage the Antelope developer community over [EOSIO Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to Antelope or answer questions and share your Antelope knowledge with the community.
+Engage the Antelope developer community over [Antelope Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to Antelope or answer questions and share your Antelope knowledge with the community.
 
 #### Antelope Developer Telegram
-Instantly engage the Antelope developer community over [EOSIO Telegram](https://t.me/joinchat/EaEnSUPktgfoI-XPfMYtcQ) instant messenger. Get involved by sharing your expertise in Antelope development discussions, sharing community tools and projects that can assist Antelope developers, and more.
+Instantly engage the Antelope developer community over [Antelope Telegram](https://t.me/joinchat/EaEnSUPktgfoI-XPfMYtcQ) instant messenger. Get involved by sharing your expertise in Antelope development discussions, sharing community tools and projects that can assist Antelope developers, and more.
 
 ### Get Involved with Antelope Code
 
-EOSIO is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [EOSIO Organization](https://github.com/EOSIO) on Github and start contributing to the code base.
+Antelope is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [Antelope Organization](https://github.com/Antelope) on Github and start contributing to the code base.
 
 There are many ways you can contribute to Antelope code. You can report an issue, submit a pull request, and review pull requests.
 

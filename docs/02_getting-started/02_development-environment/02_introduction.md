@@ -17,7 +17,7 @@ The subsequent tutorials are up to date with the following Antelope components.
 
 ## Development Experience
 
-EOSIO based blockchains execute user-generated applications and code using WebAssembly (WASM). WASM is an emerging web standard with widespread support from Google, Microsoft, Apple, and industry leading companies.
+Antelope based blockchains execute user-generated applications and code using WebAssembly (WASM). WASM is an emerging web standard with widespread support from Google, Microsoft, Apple, and industry leading companies.
 
 At the moment the most mature toolchain for building applications that compile to WASM is clang/llvm with their C/C++ compiler. For best compatibility, it is recommended that you use the Antelope C++ toolchain.
 
@@ -55,7 +55,7 @@ We can use any text editor that, preferably, supports C++ syntax highlighting. S
 [[info]]
 | The resources listed above are developed, offered, and maintained by third-parties and not by block.one. Providing information, material, or commentaries about such third-party resources does not mean we endorse or recommend any of these resources. We are not responsible, and disclaim any responsibility or liability, for your use of or reliance on any of these resources. Third-party resources may be updated, changed or terminated at any time, so the information below may be out of date or inaccurate. USAGE AND RELIANCE IS ENTIRELY AT YOUR OWN RISK
 
-Alternatively, you can try out some community driven IDEs specifically developed for EOSIO:
+Alternatively, you can try out some community driven IDEs specifically developed for Antelope:
 
 - [EOS Studio](https://www.eosstudio.io/)
 

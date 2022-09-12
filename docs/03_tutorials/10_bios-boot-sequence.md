@@ -23,7 +23,7 @@ After performing these steps, you will have a fully functional **eos blockchain*
 
 **Python Script**
 
-Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional EOS blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/EOSIO/eos/blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
+Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/Antelope/eos/blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional EOS blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/Antelope/eos/blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
 
 If your goal is to go beyond and understand what the script is doing, you can follow this tutorial which will get you through the same steps explaining also along the way each step needed to go through.
 
@@ -388,7 +388,7 @@ In order to build `eosio.contracts`, create a dedicated directory for `eosio.con
 
 ```shell
 cd ~
-git clone https://github.com/EOSIO/eosio.contracts.git
+git clone https://github.com/Antelope/eosio.contracts.git
 cd ./eosio.contracts/
 ./build.sh
 cd ./build/contracts/
@@ -398,13 +398,13 @@ pwd
 You will also need an older version of `eosio.contracts`, specifically v1.8.0. Follow the instructions below to build it and remember the path where it is built:
 
 1. To install eosio.cdt version 1.6.3 binaries, see the
-[Install eosio.cdt binaries](https://github.com/EOSIO/eosio.cdt/tree/release/1.6.x#binary-releases) tutorial.
+[Install eosio.cdt binaries](https://github.com/Antelope/eosio.cdt/tree/release/1.6.x#binary-releases) tutorial.
 
 2. After the eosio.cdt 1.6.3 version is installed, you can compile the older version of eosio.contracts:
 
 ```shell
 cd ~
-git clone https://github.com/EOSIO/eosio.contracts.git eosio.contracts-1.8.x
+git clone https://github.com/Antelope/eosio.contracts.git eosio.contracts-1.8.x
 cd ./eosio.contracts-1.8.x/
 git checkout release/1.8.x
 ./build.sh
@@ -522,7 +522,7 @@ executed transaction: 2150ed87e4564cd3fe98ccdea841dc9ff67351f9315b6384084e8572a3
 
 **Enable Features**
 
-After you set the `eosio.system` contract, run the following commands to enable the rest of the features which are highly recommended to be enabled for an EOSIO-based blockchain.
+After you set the `eosio.system` contract, run the following commands to enable the rest of the features which are highly recommended to be enabled for an Antelope-based blockchain.
 
 ---
 NOTE: Enabling these features are optional. You can choose to enable or continue without these features.

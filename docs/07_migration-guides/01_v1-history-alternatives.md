@@ -80,7 +80,7 @@ Hyperion History requires the following components for a fully functional Hyperi
 - **Elasticsearch Cluster** - stores all indexed data
 - **RabbitMQ** - message/data transport/queue for indexer stages
 - **Redis** - used as predictive temporary database
-- **EOSIO State History plugin** - feeds action traces and state deltas to indexer via websocket
+- **Antelope State History plugin** - feeds action traces and state deltas to indexer via websocket
 - **Hyperion Indexer** - indexes State History data (launched from PM2 Node.js manager)
 - **Hyperion API** - API server that listens to V1/V2 requests
 

@@ -11,7 +11,7 @@ The Antelope platform is made up of the following components and toolchain:
 
 The basic relationship between these components is illustrated in the following diagram:
 
-![EOSIO Development Lifecycle](./images/EOSIO-Overview-dev.svg)
+![Antelope Development Lifecycle](./images/Antelope-Overview-dev.svg)
 
 
 [[info | Note]]
@@ -43,7 +43,7 @@ You can read detailed documentation about `keosd` [here](http://docs.eosnetwork.
 <!-- The link will be updated once the initial site is live -->
 
 ## CDT
-CDT is a toolchain for WebAssembly (Wasm) and a set of tools to facilitate contract writing for the Antelope platform. In addition to being a general-purpose WebAssembly toolchain, EOSIO-specific optimizations are available to support building Antelope smart contracts. This new toolchain is built around Clang 7, which means that CDT has most of the current optimizations and analyses from LLVM.
+CDT is a toolchain for WebAssembly (Wasm) and a set of tools to facilitate contract writing for the Antelope platform. In addition to being a general-purpose WebAssembly toolchain, Antelope-specific optimizations are available to support building Antelope smart contracts. This new toolchain is built around Clang 7, which means that CDT has most of the current optimizations and analyses from LLVM.
 
 ## EOSJS
-A Javascript API SDK for integration with EOSIO-based blockchains using the Antelope RPC API.
+A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API.

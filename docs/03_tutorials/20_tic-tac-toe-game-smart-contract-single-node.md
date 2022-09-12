@@ -28,15 +28,15 @@ and
 
 Click on this link for an [overview of the Antelope platform.](../01_overview/index.md)
 
-Click on this link to [get started with EOSIO.](../02_getting-started/index.md "Getting Started with EOSIO")
+Click on this link to [get started with Antelope.](../02_getting-started/index.md "Getting Started with Antelope")
 
 ### Tutorial Workflow
 
 ```sequence
 Understand\n Game->Understand\n Antelope : What?
-Understand\n EOSIO->Create\nAccounts  : Accounts
-Understand\n EOSIO->Create\nAccounts  : Actions
-Understand\n EOSIO->Create\nAccounts  : Resources
+Understand\n Antelope->Create\nAccounts  : Accounts
+Understand\n Antelope->Create\nAccounts  : Actions
+Understand\n Antelope->Create\nAccounts  : Resources
 Create\nAccounts->Create\nSmart Contract : How?
 Create\nSmart Contract -> Compile\nDeploy : Code
 Compile\nDeploy -> Play\nGame : Load
@@ -411,7 +411,7 @@ public:
     name getWinner(const game &currentGame);
 ```
 
-The complete tictactoe.hpp file can be downloaded from github here: [Tic-tac-toe tutorial hpp source.](https://github.com/EOSIO/welcome/blob/release/2.0.x/src/tictactoe/tictactoe.hpp  "tic-tac-toe example hpp")  
+The complete tictactoe.hpp file can be downloaded from github here: [Tic-tac-toe tutorial hpp source.](https://github.com/Antelope/welcome/blob/release/2.0.x/src/tictactoe/tictactoe.hpp  "tic-tac-toe example hpp")  
 
 ### Create tictactoe.cpp file
 This section creates the tictactoe.cpp file. This file contains the implementations of the tic-tac-toe smart contract actions and the private methods used by the smart contract actions, based the declarations in the header file.
@@ -634,7 +634,7 @@ The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe
 
 
 ## Compile and Deploy
-To deploy the smart contract to the blockchain first use the CDT (EOSIO Contract Development Toolkit) `eosio-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [eosio-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/eosio-cpp "eosio-cdt reference eosio-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
+To deploy the smart contract to the blockchain first use the CDT (Antelope Contract Development Toolkit) `eosio-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [eosio-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/eosio-cpp "eosio-cdt reference eosio-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
 
 The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.     
 
@@ -786,4 +786,4 @@ cleos get table tictactoe host games
 ```
 
 ## Next Steps
-Visit the [EOSIO Developer Portal](http://docs.eosnetwork.com/ "eosio developers portal") to learn more about Antelope and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/) 
+Visit the [Antelope Developer Portal](http://docs.eosnetwork.com/ "eosio developers portal") to learn more about Antelope and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/) 

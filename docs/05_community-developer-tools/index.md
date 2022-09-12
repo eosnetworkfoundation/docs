@@ -8,7 +8,7 @@ If you would like to submit a tool to be added to the list, please fill in [this
 
 ### Testing Tools and Frameworks
 
-* [Azakazam](https://github.com/azarusio/azakazam): A development, testing, and deployment framework for EOSIO, aiming to make life easier for developers.
+* [Azakazam](https://github.com/azarusio/azakazam): A development, testing, and deployment framework for Antelope, aiming to make life easier for developers.
 
 * [Lamington](https://github.com/CoinageCrypto/lamington): The Lamington library includes CLI tools and JavaScript utilities to streamline the Antelope smart contract building, testing and deployment pipeline.
 
@@ -58,11 +58,11 @@ If you would like to submit a tool to be added to the list, please fill in [this
 
 * [EOSX](https://eosx.io): Explorer and network monitor for multiple Antelope blockchains, all in one.
 
-* [EOSIO Dashboard](https://github.com/eoscostarica/eosio-dashboard): Antelope Dashboard is an open-source tool that helps you visualize relevant data about Block Producer nodes and rewards distribution in the EOS network.
+* [Antelope Dashboard](https://github.com/eoscostarica/eosio-dashboard): Antelope Dashboard is an open-source tool that helps you visualize relevant data about Block Producer nodes and rewards distribution in the EOS network.
 
 ### Antelope Plugins
 
-* [EOSIO Kafka Plugin](https://github.com/TP-Lab/kafka_plugin): This plugin allows you to utilize all of Kafka's rich real-time features for building date pipelines and streaming apps.
+* [Antelope Kafka Plugin](https://github.com/TP-Lab/kafka_plugin): This plugin allows you to utilize all of Kafka's rich real-time features for building date pipelines and streaming apps.
 
 ## Software Development Kits (SDKs)
 

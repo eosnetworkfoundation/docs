@@ -24,7 +24,7 @@ touch addressbook.cpp
 ```
 Open the file in your favorite editor.
 
-## Step 3: Write an Extended Standard Class and Include EOSIO
+## Step 3: Write an Extended Standard Class and Include Antelope
 If you followed the previous tutorial, you created a hello world contract and learned the basics. The code snippet uses a similiar structure with a class named `addressbook`:
 
 ```cpp
@@ -133,7 +133,7 @@ When working with C++ classes, the first public method you should create is a co
 
 Our constructor will be responsible for initially setting up the contract.
 
-EOSIO contracts extend the *contract* class. Initialize our parent *contract* class with the code name of the contract and the receiver. The important parameter here is the `code` parameter which is the account on the blockchain that the contract is being deployed to.
+Antelope contracts extend the *contract* class. Initialize our parent *contract* class with the code name of the contract and the receiver. The important parameter here is the `code` parameter which is the account on the blockchain that the contract is being deployed to.
 
 ```cpp
 addressbook(name receiver, name code, datastream<const char*> ds):contract(receiver, code, ds) {}

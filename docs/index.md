@@ -1,5 +1,5 @@
 ---
-content_title: What is EOSIO
+content_title: What is Antelope
 ---
 
 The Antelope blockchain platform is the next-generation, open-source platform with industry-leading transaction speed and a flexible utility. As a blockchain platform, Antelope is designed for enterprise-grade use cases and built for both public and private blockchain deployments. Antelope is customizable to suit a wide range of business needs across industries with role-based permissions system and secure application transactions processing.

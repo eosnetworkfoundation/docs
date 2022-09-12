@@ -28,7 +28,7 @@ In Proof-of-Stake, nodes that own the largest stake or percentage of some asset 
 
 # 3. Antelope Consensus (DPoS + aBFT)
 
-EOSIO-based blockchains use delegated proof of stake (DPoS) to elect the active producers who will be authorized to sign valid blocks in the network. However, this is only one half of the Antelope consensus process. The other half is involved in the actual process of confirming each block until it becomes final (irreversible), which is performed in an asynchronous byzantine fault tolerant (aBFT) way. Therefore, there are two layers involved in the Antelope consensus model:
+Antelope-based blockchains use delegated proof of stake (DPoS) to elect the active producers who will be authorized to sign valid blocks in the network. However, this is only one half of the Antelope consensus process. The other half is involved in the actual process of confirming each block until it becomes final (irreversible), which is performed in an asynchronous byzantine fault tolerant (aBFT) way. Therefore, there are two layers involved in the Antelope consensus model:
 
 * Layer 1 - The Native Consensus Model (aBFT).
 * Layer 2 - Delegated Proof of Stake (DPoS).

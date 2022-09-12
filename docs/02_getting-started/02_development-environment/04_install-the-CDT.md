@@ -23,7 +23,7 @@ brew remove eosio.cdt
 
 ## Install
 ```shell
-wget https://github.com/EOSIO/eosio.cdt/releases/download/v1.6.3/eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
+wget https://github.com/Antelope/eosio.cdt/releases/download/v1.6.3/eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
 
 sudo apt install ./eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
 ```
@@ -34,7 +34,7 @@ sudo apt remove eosio.cdt
 # CentOS/Redhat (RPM)
 ## Install
 ```shell
-wget https://github.com/EOSIO/eosio.cdt/releases/download/v1.6.3/eosio.cdt-1.6.3-1.el7.x86_64.rpm
+wget https://github.com/Antelope/eosio.cdt/releases/download/v1.6.3/eosio.cdt-1.6.3-1.el7.x86_64.rpm
 
 sudo yum install ./eosio.cdt-1.6.3-1.el7.x86_64.rpm
 ```
