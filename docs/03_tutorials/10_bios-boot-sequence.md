@@ -23,7 +23,7 @@ After performing these steps, you will have a fully functional **eos blockchain*
 
 **Python Script**
 
-Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/Antelope/eos/blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional EOS blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/Antelope/eos/blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
+Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap//blob/master/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional EOS blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap//blob/master/tutorials/bios-boot-tutorial/README.md) instructions.
 
 If your goal is to go beyond and understand what the script is doing, you can follow this tutorial which will get you through the same steps explaining also along the way each step needed to go through.
 
