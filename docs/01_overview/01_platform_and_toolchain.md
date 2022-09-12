@@ -7,7 +7,7 @@ The EOSIO platform is made up of the following components and toolchain:
 1. `nodeos` (node + EOSIO = nodeos):  the core EOSIO node daemon that can be configured with plugins to run a node. Example uses are block production, dedicated API endpoints, and local development.
 2. `cleos` (CLI + EOSIO = cleos): the command line interface to interact with the blockchain and to manage wallets.
 3. `keosd` (key + EOSIO = keosd): the component that securely stores EOSIO keys in wallets.
-4. `EOSIO.CDT`: toolchain for WebAssembly (Wasm)  and a set of tools to facilitate smart contract writing for the EOSIO platform.
+4. `CDT`: toolchain for WebAssembly (Wasm)  and a set of tools to facilitate smart contract writing for the EOSIO platform.
 
 The basic relationship between these components is illustrated in the following diagram:
 
@@ -42,8 +42,8 @@ You can read detailed documentation about `cleos` [here](http://docs.eosnetwork.
 You can read detailed documentation about `keosd` [here](http://docs.eosnetwork.com/eosdocs/developer-tools/keosd/).
 <!-- The link will be updated once the initial site is live -->
 
-## EOSIO.CDT
-EOSIO.CDT is a toolchain for WebAssembly (Wasm) and a set of tools to facilitate contract writing for the EOSIO platform. In addition to being a general-purpose WebAssembly toolchain, EOSIO-specific optimizations are available to support building EOSIO smart contracts. This new toolchain is built around Clang 7, which means that EOSIO.CDT has most of the current optimizations and analyses from LLVM.
+## CDT
+CDT is a toolchain for WebAssembly (Wasm) and a set of tools to facilitate contract writing for the EOSIO platform. In addition to being a general-purpose WebAssembly toolchain, EOSIO-specific optimizations are available to support building EOSIO smart contracts. This new toolchain is built around Clang 7, which means that CDT has most of the current optimizations and analyses from LLVM.
 
 ## EOSJS
 A Javascript API SDK for integration with EOSIO-based blockchains using the EOSIO RPC API.

@@ -33,9 +33,9 @@ If your goal is to go beyond and understand what the script is doing, you can fo
 
 For instructions to install the `nodeos` binaries, see the [Install EOSIO pre-compiled binaries](http://docs.eosnetwork.com/leap/latest/install/install-prebuilt-binaries) tutorial but do not start `nodeos` at this stage.
 
-**EOSIO.CDT Binaries**
+**CDT Binaries**
 
-For instructions to install the EOSIO.CDT binaries, see the [Install EOSIO.CDT binaries](http://docs.eosnetwork.com/cdt/latest/installation/) tutorial.
+For instructions to install the CDT binaries, see the [Install CDT binaries](http://docs.eosnetwork.com/cdt/latest/installation/) tutorial.
 
 ### **1.2. Create a development wallet**
 

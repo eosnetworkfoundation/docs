@@ -23,7 +23,7 @@ and
 
 * The EOSIO platform software, Click on this link for instructions on [installing EOSIO binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries") 
 * Familiarity with the EOSIO tools `cleos` and `keosd`.
-* The EOSIO Contract Development Toolkit or eosio.cdt. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "EOSIO.CDT Installation Instructions") 
+* The EOSIO Contract Development Toolkit or eosio.cdt. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions") 
 * Familiarity with the `eosio.cdt` which is used to compile smart contracts. 
 
 Click on this link for an [overview of the EOSIO platform.](../01_overview/index.md)
@@ -231,7 +231,7 @@ The tictactoe.hpp file (or header file) contains the declarations of the smart c
 
 The tictactoe.cpp file contains implementations of the smart contract actions declared in the tictactoe.hpp header file and uses the data structures declared in the header file.
 
-The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `eosio-cpp` tool from the EOSIO.CDT. Click on this link for more information on the [EOSIO.CDT.](http://docs.eosnetwork.com/cdt/latest/ "EOSIO.CDT documentation") The EOSIO.CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Understand ABI Files") 
+The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `eosio-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Understand ABI Files") 
 
 ### Game Board Representation
 A `std::vector` represents the tic-tac-toe board. The number 0 marks an empty square. The number 1 denotes a movement by the host. The number 2 denotes a movement by the challenger. To make a movement, you push a transaction to the tic-tac-toe smart contract.
@@ -634,7 +634,7 @@ The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe
 
 
 ## Compile and Deploy
-To deploy the smart contract to the blockchain first use the EOSIO.CDT (EOSIO Contract Development Toolkit) `eosio-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [eosio-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/eosio-cpp "eosio-cdt reference eosio-cpp tool") and click on this link for details about the [EOSIO.CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
+To deploy the smart contract to the blockchain first use the CDT (EOSIO Contract Development Toolkit) `eosio-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [eosio-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/eosio-cpp "eosio-cdt reference eosio-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
 
 The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.     
 
