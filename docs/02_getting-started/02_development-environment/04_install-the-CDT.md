@@ -51,7 +51,7 @@ cd CONTRACTS_DIR
 ## Download
 Clone version 1.6.3 of the `eosio.cdt` repository.
 ```text
-git clone --recursive https://github.com/eosio/eosio.cdt --branch v1.6.3 --single-branch
+git clone --recursive https://github.com/antelopeio/cdt --branch v1.6.3 --single-branch
 cd eosio.cdt
 ```
 It may take up to 30 minutes to clone the repository
