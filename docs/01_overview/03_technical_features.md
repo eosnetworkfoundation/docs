@@ -5,7 +5,7 @@ content_title: Technical Features
 ## WebAssembly C++ Compilation
 Antelope uses C++ as the smart contract programming language. If you are a C++ developer, you do not need to learn a new programming language to understand Smart Contract APIs and how Antelope supports smart contract development through C++ classes and structures. With your existing C++ programming capabilities, you can onboard Antelope development faster and be able to program Antelope smart contracts using specific Antelope canonical C++ code constructs and Smart Contract APIs in no time.  
 
-On top of the Antelope core layer, a WebAssembly (Wasm) virtual machine, `EOS VM`, executes smart contract code, and it is designed from the ground up for the high demands of blockchain applications which require far more from a WebAssembly engine than those designed for web browsers or standards development. The design choice of using Wasm enables Antelope to reuse optimized and battle-tested compilers and toolchains which are being maintained and improved by a broader community. In addition, adopting Wasm standard also makes it easier for compiler developers to port other programming languages onto the Antelope platform.
+On top of the Antelope core layer, a WebAssembly (Wasm) virtual machine, `EOS VM`, executes smart contract code, and it is designed from the ground up for the high demands of blockchain applications which require far more from a WebAssembly engine than those designed for web browsers or standards development. The design choice of using Wasm enables Antelope to reuse optimized and battle-tested compilers and toolchains which are being maintained and improved by a broader community. In addition, adopting Wasm standard also makes it easier for compiler developers to port other programming languages onto the Antelope framework.
 
 ## High Throughput, Faster Confirmations and Lower Latency
 
@@ -26,7 +26,7 @@ In Antelope-based blockchains, access to the system resources is regulated by a 
 
 When you stake tokens for CPU and NET, you gain access to system resources proportional to the total amount of tokens staked by all other users for the same resource at the same time. This means you can perform transactions at no cost but in the limitations of the staked tokens. The staked tokens guarantee the proportional amount of resources regardless of any variations in the free market.
 
-You can also allocate the system resources to Antelope accounts in a programmatic manner by customizing the resource allocation model in the system smart contract. This flexibility is provided by the programmable economics of the Antelope platform.
+You can also allocate the system resources to Antelope accounts in a programmatic manner by customizing the resource allocation model in the system smart contract. This flexibility is provided by the programmable economics of the Antelope framework.
 
 ## Business Model Flexibility
 Applications built on Antelope can adopt a freemium model in which application users do not need to pay for the cost of resources needed to execute transactions.
@@ -35,7 +35,7 @@ The execution of the costless transactions under the freemium model is facilitat
 
 ## Comprehensive Permission Schema
 
-The Antelope platform has a comprehensive permission system for creating custom permission schemata for various use cases. For example, you can create a custom permission and use it to protect a specific feature of a smart contract. You can also split the authority required to modify a smart contract across multiple accounts with different levels of authority. This comprehensive permission system allows you to build a permissioned application on top of a flexible infrastructure.
+The Antelope framework has a comprehensive permission system for creating custom permission schemata for various use cases. For example, you can create a custom permission and use it to protect a specific feature of a smart contract. You can also split the authority required to modify a smart contract across multiple accounts with different levels of authority. This comprehensive permission system allows you to build a permissioned application on top of a flexible infrastructure.
 
 
 ## Upgradability

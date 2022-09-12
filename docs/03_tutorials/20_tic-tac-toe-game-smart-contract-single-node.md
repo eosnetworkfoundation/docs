@@ -8,7 +8,7 @@ This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game wh
 
 
 [[info]]
-| Antelope is a blockchain software platform developed by EOS Network Foundation. Smart contracts which run on the Antelope platform should run on any blockchain which using the Antelope platform. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope platform, EOS or the public mainnet. In this tutorial we will use the Antelope platform to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
+| Antelope is a blockchain software framework developed by EOS Network Foundation. Smart contracts which run on the Antelope framework should run on any blockchain which using the Antelope framework. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope framework, EOS or the public mainnet. In this tutorial we will use the Antelope framework to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
 
 
 We explain the purpose of each step and why it is important.
@@ -21,12 +21,12 @@ This tutorial requires the following:
 
 and
 
-* The Antelope platform software, Click on this link for instructions on [installing Antelope binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries") 
+* The Antelope framework software, Click on this link for instructions on [installing Antelope binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries") 
 * Familiarity with the Antelope tools `cleos` and `keosd`.
 * The Antelope Contract Development Toolkit or eosio.cdt. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions") 
 * Familiarity with the `eosio.cdt` which is used to compile smart contracts. 
 
-Click on this link for an [overview of the Antelope platform.](../01_overview/index.md)
+Click on this link for an [overview of the Antelope framework.](../01_overview/index.md)
 
 Click on this link to [get started with Antelope.](../02_getting-started/index.md "Getting Started with Antelope")
 
