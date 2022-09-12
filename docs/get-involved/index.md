@@ -5,7 +5,7 @@ We appreciate your interest in contributing to the Antelope framework! We always
 
 ## Get Involved with Antelope Community and Code
 
-The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [Antelope Organization](https://github.com/Antelope) on GitHub.
+The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [Antelope Organization](https://github.com/AntelopeIO) on GitHub.
 
 For more information about the contribution guidelines of a particular repository, look for the "Contributing" link in the right-hand sidebar of the documentation.
 
@@ -21,7 +21,7 @@ Instantly engage the Antelope developer community over [Antelope Telegram](https
 
 ### Get Involved with Antelope Code
 
-Antelope is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [Antelope Organization](https://github.com/Antelope) on Github and start contributing to the code base.
+Antelope is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [Antelope Organization](https://github.com/AntelopeIO) on Github and start contributing to the code base.
 
 There are many ways you can contribute to Antelope code. You can report an issue, submit a pull request, and review pull requests.
 
