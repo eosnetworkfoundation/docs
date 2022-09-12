@@ -388,7 +388,7 @@ In order to build `eosio.contracts`, create a dedicated directory for `eosio.con
 
 ```shell
 cd ~
-git clone https://github.com/Antelope/eosio.contracts.git
+git clone https://github.com/AntelopeIO/eosio.contracts.git
 cd ./eosio.contracts/
 ./build.sh
 cd ./build/contracts/
@@ -398,13 +398,13 @@ pwd
 You will also need an older version of `eosio.contracts`, specifically v1.8.0. Follow the instructions below to build it and remember the path where it is built:
 
 1. To install eosio.cdt version 1.6.3 binaries, see the
-[Install eosio.cdt binaries](https://github.com/Antelope/eosio.cdt/tree/release/1.6.x#binary-releases) tutorial.
+[Install eosio.cdt binaries](https://github.com/AntelopeIO/cdt/tree/release/1.6.x#binary-releases) tutorial.
 
 2. After the eosio.cdt 1.6.3 version is installed, you can compile the older version of eosio.contracts:
 
 ```shell
 cd ~
-git clone https://github.com/Antelope/eosio.contracts.git eosio.contracts-1.8.x
+git clone https://github.com/AntelopeIO/eosio.contracts.git eosio.contracts-1.8.x
 cd ./eosio.contracts-1.8.x/
 git checkout release/1.8.x
 ./build.sh
