@@ -1,8 +1,8 @@
-# EOSIO Protocol
+# Antelope Protocol
 
 ## Core
 
-`EOSIO Core` provides the basic building blocks for the `system` layer and because they are not implemented as smart contracts they do not provide the same level of flexibility. Nevertheless, the `core` implementation is also open source and thus it can be modified as well to suit custom business requirements.
+`Antelope Core` provides the basic building blocks for the `system` layer and because they are not implemented as smart contracts they do not provide the same level of flexibility. Nevertheless, the `core` implementation is also open source and thus it can be modified as well to suit custom business requirements.
 
 The core protocols are:
 
@@ -13,9 +13,9 @@ The core protocols are:
 
 ## System
 
-The EOSIO blockchain platform is unique in that the features and characteristics of the blockchain built on it are flexible, that is, they can be changed, or be modified completely to suit each business case requirement. Core blockchain features such as consensus, fee schedules, account creation and modification, token economics, block producer registration, voting, multi-sig, etc., are implemented inside smart contracts which are deployed on the blockchain built on the EOSIO platform. These smart contracts are referred to as `system contracts` and the layer as the `EOSIO system` layer, or simply `system` layer.
+The Antelope blockchain framework is unique in that the features and characteristics of the blockchain built on it are flexible, that is, they can be changed, or be modified completely to suit each business case requirement. Core blockchain features such as consensus, fee schedules, account creation and modification, token economics, block producer registration, voting, multi-sig, etc., are implemented inside smart contracts which are deployed on the blockchain built on the Antelope framework. These smart contracts are referred to as `system contracts` and the layer as the `Antelope system` layer, or simply `system` layer.
 
-Block.one implements and maintains these `system contracts`, as samples only, encapsulating the base functionality for an EOSIO based blockchain and they are listed below:
+EOS Network Foundation implements and maintains these `system contracts`, as samples only, encapsulating the base functionality for an Antelope based blockchain and they are listed below:
 
 1. [eosio.bios](action-reference/eosio.bios)
 2. [eosio.system](action-reference/eosio.system)

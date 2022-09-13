@@ -266,7 +266,7 @@ Now, recompile the contract, including the `--abigen` flag since changes have be
 ```shell
 eosio-cpp -o addressbook.wasm addressbook.cpp --abigen
 ```
-Smart contracts on EOSIO are upgradeable so the contract can be redeployed with changes.
+Smart contracts on Antelope are upgradeable so the contract can be redeployed with changes.
 ```shell
 cleos set contract addressbook CONTRACTS_DIR/addressbook
 ```

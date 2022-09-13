@@ -3,7 +3,7 @@ content_title: "1.3: Install the Contract Dev. Toolkit"
 link_text: "1.3: Install the CDT"
 ---
 
-The EOSIO Contract Development Toolkit, CDT for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
+The Antelope Contract Development Toolkit, CDT for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
 
 Starting from 1.3.x, CDT supports Mac OS X brew, Linux Debian and RPM packages. The easiest option to install would be using one of these package systems. Pick one installation method only.
 [[warning]]
@@ -23,7 +23,7 @@ brew remove eosio.cdt
 
 ## Install
 ```shell
-wget https://github.com/EOSIO/eosio.cdt/releases/download/v1.6.3/eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
+wget https://github.com/AntelopeIO/cdt/releases/download/v1.6.3/eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
 
 sudo apt install ./eosio.cdt_1.6.3-1-ubuntu-18.04_amd64.deb
 ```
@@ -34,7 +34,7 @@ sudo apt remove eosio.cdt
 # CentOS/Redhat (RPM)
 ## Install
 ```shell
-wget https://github.com/EOSIO/eosio.cdt/releases/download/v1.6.3/eosio.cdt-1.6.3-1.el7.x86_64.rpm
+wget https://github.com/AntelopeIO/cdt/releases/download/v1.6.3/eosio.cdt-1.6.3-1.el7.x86_64.rpm
 
 sudo yum install ./eosio.cdt-1.6.3-1.el7.x86_64.rpm
 ```
@@ -51,7 +51,7 @@ cd CONTRACTS_DIR
 ## Download
 Clone version 1.6.3 of the `eosio.cdt` repository.
 ```text
-git clone --recursive https://github.com/eosio/eosio.cdt --branch v1.6.3 --single-branch
+git clone --recursive https://github.com/antelopeio/cdt --branch v1.6.3 --single-branch
 cd eosio.cdt
 ```
 It may take up to 30 minutes to clone the repository

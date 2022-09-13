@@ -22,22 +22,22 @@ brew install eosio
 
 ### Ubuntu 18.04 Debian Package Install:
 ```shell
-wget https://github.com/EOSIO/eos/releases/download/v2.0.0/eosio_2.0.0-1-ubuntu-18.04_amd64.deb
+wget https://github.com/AntelopeIO/leap//releases/download/v2.0.0/eosio_2.0.0-1-ubuntu-18.04_amd64.deb
 sudo apt install ./eosio_2.0.0-1-ubuntu-18.04_amd64.deb
 ```
 ### Ubuntu 16.04 Debian Package Install:
 ```shell
-wget https://github.com/EOSIO/eos/releases/download/v2.0.0/eosio_2.0.0-1-ubuntu-16.04_amd64.deb
+wget https://github.com/AntelopeIO/leap//releases/download/v2.0.0/eosio_2.0.0-1-ubuntu-16.04_amd64.deb
 sudo apt install ./eosio_2.0.0-1-ubuntu-16.04_amd64.deb
 ```
 ### CentOS RPM Package Install:
 ```shell
-wget https://github.com/EOSIO/eos/releases/download/v2.0.0/eosio-2.0.0-1.el7.x86_64.rpm
+wget https://github.com/AntelopeIO/leap//releases/download/v2.0.0/eosio-2.0.0-1.el7.x86_64.rpm
 sudo yum install ./eosio-2.0.0-1.el7.x86_64.rpm
 ```
 
 [[warning]]
-| If you have previous versions of eosio installed on your system, please uninstall before proceeding. For detailed instructions, see [here](https://github.com/EOSIO/eos/blob/master/README.md).
+| If you have previous versions of eosio installed on your system, please uninstall before proceeding. For detailed instructions, see [here](https://github.com/AntelopeIO/leap//blob/master/README.md).
 
 ## Step 2: Setup a development directory, stick to it.
 You're going to need to pick a directory to work from, it's suggested to create a `contracts` directory somewhere on your local drive.
@@ -66,4 +66,4 @@ Enter the absolute path to your contract directory below, and it will be inserte
 </div>
 
 ## What's Next?
-- [Install the CDT](./04_install-the-CDT.md): Steps to install the EOSIO Contract Development Toolkit (CDT) on your system.
+- [Install the CDT](./04_install-the-CDT.md): Steps to install the Antelope Contract Development Toolkit (CDT) on your system.

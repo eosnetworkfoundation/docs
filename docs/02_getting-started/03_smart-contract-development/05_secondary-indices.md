@@ -2,7 +2,7 @@
 content_title: "2.5: Secondary Indices"
 link_text: "2.5: Secondary Indices"
 ---
-EOSIO has the ability to sort tables by up to 16 indices. In the following section, we're going to add another index to the `addressbook` contract, so we can iterate through the records in a different way.
+Antelope has the ability to sort tables by up to 16 indices. In the following section, we're going to add another index to the `addressbook` contract, so we can iterate through the records in a different way.
 
 ## Step 1: Remove existing data from table
 

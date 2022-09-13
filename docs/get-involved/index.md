@@ -1,11 +1,11 @@
-We appreciate your interest in contributing to the EOSIO platform! We always welcome contributions from our community to make our code and docs better.
+We appreciate your interest in contributing to the Antelope framework! We always welcome contributions from our community to make our code and docs better.
 
-* [Get Involved with EOSIO Community and Code](#get-involved-with-eosio-code)
-* [Get Involved with EOSIO Documentation](#get-involved-with-eosio-documentation)
+* [Get Involved with Antelope Community and Code](#get-involved-with-eosio-code)
+* [Get Involved with Antelope Documentation](#get-involved-with-eosio-documentation)
 
-## Get Involved with EOSIO Community and Code
+## Get Involved with Antelope Community and Code
 
-The following are different ways you can get involved with the EOSIO developers community and EOSIO repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [EOSIO Organization](https://github.com/EOSIO) on GitHub.
+The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [Antelope Organization](https://github.com/AntelopeIO) on GitHub.
 
 For more information about the contribution guidelines of a particular repository, look for the "Contributing" link in the right-hand sidebar of the documentation.
 
@@ -13,17 +13,17 @@ For more information about the contribution guidelines of a particular repositor
 
 ### Developers Community Involvement
 
-#### EOSIO Stack Exchange
-Engage the EOSIO developer community over [EOSIO Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to EOSIO or answer questions and share your EOSIO knowledge with the community.
+#### Antelope Stack Exchange
+Engage the Antelope developer community over [Antelope Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to Antelope or answer questions and share your Antelope knowledge with the community.
 
-#### EOSIO Developer Telegram
-Instantly engage the EOSIO developer community over [EOSIO Telegram](https://t.me/joinchat/EaEnSUPktgfoI-XPfMYtcQ) instant messenger. Get involved by sharing your expertise in EOSIO development discussions, sharing community tools and projects that can assist EOSIO developers, and more.
+#### Antelope Developer Telegram
+Instantly engage the Antelope developer community over [Antelope Telegram](https://t.me/joinchat/EaEnSUPktgfoI-XPfMYtcQ) instant messenger. Get involved by sharing your expertise in Antelope development discussions, sharing community tools and projects that can assist Antelope developers, and more.
 
-### Get Involved with EOSIO Code
+### Get Involved with Antelope Code
 
-EOSIO is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [EOSIO Organization](https://github.com/EOSIO) on Github and start contributing to the code base.
+Antelope is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [Antelope Organization](https://github.com/AntelopeIO) on Github and start contributing to the code base.
 
-There are many ways you can contribute to EOSIO code. You can report an issue, submit a pull request, and review pull requests.
+There are many ways you can contribute to Antelope code. You can report an issue, submit a pull request, and review pull requests.
 
 ### Reporting an Issue
 If you're about to raise an issue because you think you've found a problem with the stack, or you'd like to make a request for a new feature in the codebase, or any other reason, please read this first.
@@ -57,14 +57,14 @@ Feature requests are welcome. Before you submit one be sure to have:
 1. Take a moment to think about whether your idea fits with the scope and aims of the project.
 1. Remember, it's up to *you* to make a strong case to convince the project's leaders of the merits of this feature. Please provide as much detail and context as possible, this means explaining the use case and why it is likely to be common.
 
-## Get Involved with EOSIO Documentation
+## Get Involved with Antelope Documentation
 
-The EOSIO documentation is written in Markdown. You can either submit a Pull Request for quick edits or file a new docs issue. For Markdown syntax usage, see the [Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax).
+The Antelope documentation is written in Markdown. You can either submit a Pull Request for quick edits or file a new docs issue. For Markdown syntax usage, see the [Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax).
 
 ### Quick Edits
 Quick edits allow for faster reporting of minor content issues from typographical errors to omissions.
 
-Most of the pages on the EOSIO developer portal provide an **Edit** link which redirects you to the source file on Github. If you don't see the **Edit** button on the documentation page, that means the specific page is not available to be changed.
+Most of the pages on the Antelope developer portal provide an **Edit** link which redirects you to the source file on Github. If you don't see the **Edit** button on the documentation page, that means the specific page is not available to be changed.
 
 To make a quick edit:
 
