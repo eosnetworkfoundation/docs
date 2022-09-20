@@ -4,10 +4,10 @@ content_title: Framework and Toolchain
 
 The Antelope framework is made up of the following components and toolchain:
 
-1. `nodeos` (node + Antelope = nodeos):  the core Antelope node daemon that can be configured with plugins to run a node. Example uses are block production, dedicated API endpoints, and local development.
-2. `cleos` (CLI + Antelope = cleos): the command line interface to interact with the blockchain and to manage wallets.
-3. `keosd` (key + Antelope = keosd): the component that securely stores Antelope keys in wallets.
-4. `CDT`: toolchain for WebAssembly (Wasm)  and a set of tools to facilitate smart contract writing for the Antelope framework.
+1. `nodeos`:  the core Antelope node daemon that can be configured with plugins to run a node. Example uses are block production, dedicated API endpoints, and local development.
+2. `cleos`: the command line interface to interact with the blockchain and to manage wallets.
+3. `keosd`: the component that securely stores Antelope keys in wallets.
+4. `CDT`: the Contract Development Toolkit is a C/C++ toolchain targeting WebAssembly (WASM) and a set of tools to facilitate development of smart contracts written in C/C++ that are meant to be deployed to an Antelope blockchain..
 
 The basic relationship between these components is illustrated in the following diagram:
 
@@ -44,6 +44,8 @@ You can read detailed documentation about `keosd` [here](http://docs.eosnetwork.
 
 ## CDT
 CDT is a toolchain for WebAssembly (Wasm) and a set of tools to facilitate contract writing for the Antelope framework. In addition to being a general-purpose WebAssembly toolchain, Antelope-specific optimizations are available to support building Antelope smart contracts. This new toolchain is built around Clang 7, which means that CDT has most of the current optimizations and analyses from LLVM.
+
+You can read more about `CDT` [here](https://github.com/AntelopeIO/cdt).
 
 ## EOSJS
 A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API.
