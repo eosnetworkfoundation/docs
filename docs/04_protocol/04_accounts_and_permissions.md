@@ -9,70 +9,7 @@ An account identifies a participant in an Antelope blockchain. A participant can
 
 Permissions associated with an account are used to authorize actions and transactions to other accounts. Each permission is linked to an authority table which contains a threshold that must be reached in order to allow the action associated with the given permission to be authorized for execution. The following diagram illustrates the relationship between accounts, permissions, and authorities.
 
-```dot-svg
-
-#accounts, permissions, authorities - accts_perms_auths.dot
-#
-#notes: * to see image copy/paste to https://dreampuf.github.io/GraphvizOnline
-#       * image will be rendered by gatsby-remark-graphviz plugin in eosio docs.
-
-digraph {
-    rankdir=LR  #sets rank direction (left to right)
-    newrank=true  #allows ranks inside subgraphs (important!)
-    compound=true  #allows edges connecting nodes with subgraphs
-
-    graph [style=dashed, nodesep=.2, ranksep=.8, splines=ortho]
-    node [shape=box, height=.25]
-    edge [arrowsize=.5]
-
-    subgraph cluster_accts {
-        label=Accounts
-        rank=same
-        "@alice", "@bob"
-        more_accts [label="...", color=invis]
-    }
-
-    subgraph cluster_perms {
-        label=Permissions
-        rank=same
-        subgraph cluster_alice_perm {
-            label="@alice\npermissions"
-            graph [style=solid]
-            active -> owner
-            family -> active
-            friends -> family
-            lawyer -> active  #disable permission sibling lawyer (w.r.t. family) for now
-        }
-        more_perms [label="...", color=invis]
-    }
-
-    "@alice" -> owner [lhead=cluster_alice_perm]
-
-    subgraph cluster_auths {
-        label=Authorities
-        rank=same
-        active_auth [
-            shape=plaintext
-            label=<
-                <table border='0' cellborder='1' cellspacing='0'>
-                    <tr><td colspan='2'>@alice active authority</td></tr>
-                    <tr><td bgcolor='lightgray' colspan='2'>threshold</td></tr>
-                    <tr><td colspan='2'>2</td></tr>
-                    <tr><td bgcolor='lightgray'>accounts/keys</td><td bgcolor='lightgray'>weights</td></tr>
-                    <tr><td>bob@active</td><td>2</td></tr>
-                    <tr><td>stacy@active</td><td>2</td></tr>
-                    <tr><td>EOS7Hnv4...</td><td>1</td></tr>
-                    <tr><td>EOS3Wo1p...</td><td>1</td></tr>
-                </table>
-            >
-        ]
-        more_auths [label="...", color=invis]
-    }
-
-    active -> active_auth
-}
-
-```
+![](images/accts_perms_auths.png "Accounts, Permissions, Authorities")
 
 The example above depicts `alice`'s account, her named permissions along with their hierarchical dependencies, and her linked `active` authority table. It also shows that a weight threshold of two must be reached in `alice`'s `active` authority in order to allow an action associated with the active permission to be executed by or on behalf of `alice`.
 
