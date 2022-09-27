@@ -31,74 +31,7 @@ The main goal of the p2p protocol is to synchronize nodes securely and efficient
 
 The interaction between the above components is depicted in the diagram below:
 
-```dot-svg
-
-#nodeos components - p2p_system_arch.dot
-#
-#notes: * to see image copy/paste to https://dreampuf.github.io/GraphvizOnline
-#       * image will be rendered by gatsby-remark-graphviz plugin in eosio docs.
-
-digraph {
-    newrank=true  #allows ranks inside subgraphs (important!)
-    compound=true  #allows edges connecting nodes with subgraphs
-    graph [rankdir=TB]
-    node [style=filled, fillcolor=lightgray]
-    edge [arrowsize=.6]
-
-    subgraph cluster_node {
-        label="Node A (node)"
-        graph [style=solid]
-
-        net_plugin [label="Net\nPlugin"]
-        controller [label="Chain\nController", shape=box]
-        serializer [label="Net\nSerializer", shape=box]
-
-        subgraph cluster_chain {
-            rank=same
-            label="local chain"; labelloc="b"
-            graph [style=dashed]
-            node [shape=square, width=.3]
-            edge [dir=back, arrowsize=.5]
-            b0 [label="...", color=invis, style=""]
-            b1 [label=""]; b2 [label=""]; b3 [label=""]; b4 [label=""]
-            b0 -> b1 -> b2 -> b3 -> b4
-        } //cluster_chain
-
-        net_plugin -> { controller; serializer }
-        controller -> b1 [lhead=cluster_chain]
-    } //cluster_node
-
-    subgraph cluster_peer {
-        label="Node B (peer)"
-        graph [style=solid]
-
-        net_plugin2 [label="Net\nPlugin"]
-        serializer2 [label="Net\nSerializer", shape=box]
-        controller2 [label="Chain\nController", shape=box]
-
-        subgraph cluster_chain2 {
-            rank=same
-            label="local chain"; labelloc="b"
-            graph [style=dashed]
-            node [shape=square, width=.3]
-            edge [dir=back, arrowsize=.5]
-            a0 [label="...", color=invis, style=""]
-            a1 [label=""]; a2 [label=""]; a3 [label=""]; a4 [label=""]
-            a0 -> a1 -> a2 -> a3 -> a4
-        } //cluster_chain2
-
-        net_plugin2 -> { serializer2; controller2 }
-        controller2 -> a3 [lhead=cluster_chain2]
-    } //cluster_peer
-
-    {
-        rank=same
-        serializer -> serializer2 [style=dashed, dir=both, minlen=4]
-    }
-
-} //digraph
-
-```
+![](images/p2p_system_arch.png "Peer-to-peer Architecture")
 
 At the highest level sits the Net Plugin, which exchanges messages between the node and its peers to sync blocks and transactions. A typical message flow goes as follows:
 
@@ -113,49 +46,7 @@ At the highest level sits the Net Plugin, which exchanges messages between the n
 
 The local chain is the node’s local copy of the blockchain. It consists of both irreversible and reversible blocks received by the node, each block being cryptographically linked to the previous one. The list of irreversible blocks contains the actual copy of the immutable blockchain. The list of reversible blocks is typically shorter in length and it is managed by the Fork Database as the Chain Controller pushes blocks to it. The local chain is depicted below.
 
-```dot-svg
-
-#p2p_local_chain.dot - local chain
-#
-#notes: * to see image copy/paste to https://dreampuf.github.io/GraphvizOnline
-#       * image will be rendered by gatsby-remark-graphviz plugin in eosio docs.
-
-digraph {
-    newrank=true  #allows ranks inside subgraphs (important!)
-    compound=true  #allows edges connecting nodes with subgraphs
-    graph [rankdir=LR]
-    node [style=filled, fillcolor=lightgray, shape=square, fixedsize=true, width=.33, fontsize=11]
-    edge [arrowsize=.6]
-
-    subgraph cluster_chain {
-        label="irreversible blocks"; labelloc="b"
-        graph [color=invis]
-        edge [dir=back, arrowsize=.5]
-        b0 [label="...", color=invis, style=""]
-        b1 [label="49"]; b2 [label="50"]; b3 [label="51\n(lib)"]
-        b0 -> b1 -> b2 -> b3
-    } //cluster_chain
-
-    subgraph cluster_forkdb {
-        label="reversible blocks"; labelloc="b"
-        graph [style=dashed]
-        edge [dir=back, arrowsize=.5]
-        a1b [label="52b"];
-        a1c [label="52c"];
-        a2d [label="53c"]; a3d [label="54d"]
-        a3e [label="54c"]; a4e [label="55c\n(hb)"]
-        a2c [label="53b"]
-        a2b [label="53a"]; #a3b [label="54a"]
-        a1b -> a2b #-> a3b
-        a1b -> a2c
-        a2d -> a3d
-        a1c -> a2d -> a3e -> a4e
-        b3 -> {a1b; a1c }
-    } //cluster_forkdb
-
-} //digraph
-
-```
+![](images/p2p_local_chain.png "Local Chain (before pruning)")
 
 Each node constructs its own local copy of the blockchain as it receives blocks and transactions and syncs their state with other peers. The reversible blocks are those new blocks received that have not yet reached finality. As such, they are likely to form branches that stem from a main common ancestor, which is the LIB (last irreversible block). Other common ancestors different from the LIB are also possible for reversible blocks. In fact, any two sibling branches always have a nearest common ancestor. For instance, in the diagram above, block 52b is the nearest common ancestor for the branches starting at block 53a and 53b that is different from the LIB. Every active branch in the local chain has the potential to become part of the blockchain.
 
@@ -334,56 +225,7 @@ The Fork Database (Fork DB) provides an internal interface for the Chain Control
 
 In essence, the Fork DB contains all the candidate block branches within a node that may become the actual branch that continues to grow the blockchain. The root block always marks the beginning of the reversible block tree, and will match the LIB block, except when the LIB advances, in which case the root block must catch up. The calculation of the LIB block as it advances through the new blocks within the Fork DB will ultimately decide which branch gets selected. As the LIB block advances, the root block catches up with the new LIB, and any candidate branch whose ancestor node is behind the LIB gets pruned. This is depicted below.
 
-```dot-svg
-
-#p2p_local_chain_prunning.dot - local chain prunning
-#
-#notes: * to see image copy/paste to https://dreampuf.github.io/GraphvizOnline
-#       * image will be rendered by gatsby-remark-graphviz plugin in eosio docs.
-
-digraph {
-    newrank=true  #allows ranks inside subgraphs (important!)
-    compound=true  #allows edges connecting nodes with subgraphs
-    graph [rankdir=LR]
-    node [style=filled, fillcolor=lightgray, shape=square, fixedsize=true, width=.33, fontsize=11]
-    edge [dir=back, arrowsize=.5, weight=100]
-    splines=false
-
-    subgraph cluster_chain {
-        label="irreversible blocks"; labelloc="b"
-        graph [color=invis]
-        b0 [label="...", color=invis, style=""]
-        b1 [label="49"]; b2 [label="50"]; b3 [label="51"]
-        b0 -> b1 -> b2 -> b3
-        a1b [label="52b\n(inv)"];
-        a2c [label="53b\n(inv)"]
-        a2b [label="53a\n(inv)"]; #a3b [label="54a\n(inv)"]
-        a1c [label="52c"];
-        a2d [label="53c\n(lib)"]
-        b3 -> a1b [label=<<font color="red">X</font>>]
-        b3 -> a1c [label=" "]
-        { rank=same; a1c -> a1b [style=invis] }
-        a1b -> a2b [label=<<font color="red">X</font>>]
-        a1b -> a2c [label=<<font color="red">X</font>>]
-        a1c -> a2d
-    } //cluster_chain
-
-    subgraph cluster_forkdb {
-        label="reversible blocks"; labelloc="b"
-        graph [style=dashed]
-        a3d [label="54d"];
-        a3e [label="54c"]; a4e [label="55c\n(hb)"]
-        { rank=same; a3d -> a3e [style=invis] }
-        a3e -> a4e
-    } //cluster_forkdb
-
-    a2c -> a3e [style=invis, weight=200]
-    a2d -> a3e
-    a2d -> a3d [weight=300]
-
-} //digraph
-
-```
+![](images/p2p_local_chain_prunning.png "Local Chain (after pruning)")
 
 In the diagram above, the branch starting at block 52b gets pruned (blocks 52b, 53a, 53b are invalid) after the LIB advances from node 51 to block 52c then 53c. As the LIB moves through the reversible blocks, they are moved from the Fork DB to the local chain as they now become part of the immutable blockchain. Finally, block 54d is kept in the Fork DB since new blocks might still be built off from it.
 
@@ -533,64 +375,7 @@ Therefore, the node’s LIB block is updated first, followed by the node’s hea
 
 Case 1 above, where the node’s LIB block needs to catch up with the peer’s LIB block, is depicted in the below diagram, before and after the sync (Note: inapplicable branches have been removed for clarity):
 
-```dot-svg
-
-#p2p_lib_catchup.dot - LIB catchup mode
-#
-#notes: * to see image copy/paste to https://dreampuf.github.io/GraphvizOnline
-#       * image will be rendered by gatsby-remark-graphviz plugin in eosio docs.
-
-digraph {
-    rankdir=LR
-
-    graph [labeljust=l, ranksep=.3]
-    node [shape=box, style=filled, fillcolor=lightgray, fixedsize=true, width=.5]
-    edge [dir=back, arrowsize=.7]
-
-    subgraph cluster_node_afr {
-        label="Node (after):"
-        "87a" [label="...", color=invis, style=""]
-        "88a" [label="88"]
-        "89a" [label="89"]
-        "90a" [label="90"]
-        "91a" [label="91"]
-        "92a" [label="92\nlib/hb", fontsize=12.75]
-        "87a" -> "88a" -> "89a" -> "90a" -> "91a" -> "92a"
-        node [label="", color=invis, style=""]
-        "92a" -> "93a" -> "94a" [style=invis]
-    } //cluster_node_afr
-
-    subgraph cluster_peer {
-        label="Peer:"
-        graph [color=invis]
-        "87p" [label="...", color=invis, style=""]
-        "88p" [label="88"]
-        "89p" [label="89"]
-        "90p" [label="90"]
-        "91p" [label="91"]
-        "92p" [label="92\n(lib)"]
-        "93p" [label="93p", fillcolor=white]
-        "94p" [label="94p\n(hb)", fillcolor=white]
-        "87p" -> "88p" -> "89p" -> "90p" -> "91p" -> "92p" -> "93p" -> "94p"
-    } //cluster_peer
-
-    subgraph cluster_node_bfr {
-        label="Node (before):"
-        "87b" [label="...", color=invis, style=""]
-        "88b" [label="88"]
-        "89b" [label="89"]
-        "90b" [label="90\n(lib)"]
-        "91b" [label="91n", fillcolor=white]
-        "92b" [label="92n", fillcolor=white]
-        "93b" [label="93n\n(hb)", fillcolor=white]
-        "87b" -> "88b" -> "89b" -> "90b" -> "91b" -> "92b" -> "93b"
-        node [label="", color=invis, style=""]
-        "93b" -> "94b" [style=invis]
-    } //cluster_node_bfr
-
-} //digraph
-
-```
+![](images/p2p_lib_catchup.png "LIB Catch-Up Mode")
 
 In the above diagram, the node’s local chain syncs up with the peer’s local chain by appending finalized blocks 91 and 92 (the peer’s LIB) to the node’s LIB (block 90). Note that this discards the temporary fork consisting of blocks 91n, 92n, 93n. Also note that these nodes have an “n” suffix (short for node) to indicate that they are not finalized, and therefore, might be different from the peer’s. The same applies to unfinalized blocks on the peer; they end in “p” (short for peer). After syncing, note that both the LIB (lib) and the head block (hb) have the same block number on the node.
 
@@ -599,61 +384,7 @@ In the above diagram, the node’s local chain syncs up with the peer’s local 
 
 After the node’s LIB block is synced with the peer’s, there will be new blocks pushed to either chain. Case 2 above covers the case where the peer’s chain is longer than the node’s chain. This is depicted in the following diagram, which shows the node and the peer’s local chains before and after the sync:
 
-```dot-svg
-
-#p2p_head_catchup.dot - HEAD catch up
-#
-#notes: * to see image copy/paste to https://dreampuf.github.io/GraphvizOnline
-#       * image will be rendered by gatsby-remark-graphviz plugin in eosio docs.
-
-digraph {
-    rankdir=LR
-
-    graph [labeljust=l, ranksep=.3]
-    node [shape=box, style=filled, fillcolor=lightgray, fixedsize=true, width=.5]
-    edge [dir=back, arrowsize=.7]
-
-    subgraph cluster_node_afr {
-        label="Node (after):"
-        "89a" [label="...", color=invis, style=""]
-        "90a" [label="90"]
-        "91a" [label="91"]
-        "92a" [label="92\n(lib)"]
-        "93a" [label="93n,p", fillcolor=white]
-        "94a" [label="94p", fillcolor=white]
-        "95a" [label="95p\n(hb)", fillcolor=white]
-        "89a" -> "90a" -> "91a" -> "92a" -> "93a" -> "94a" -> "95a"
-    } //cluster_node_afr
-
-    subgraph cluster_peer {
-        label="Peer:"
-        graph [color=invis]
-        "89p" [label="...", color=invis, style=""]
-        "90p" [label="90"]
-        "91p" [label="91"]
-        "92p" [label="92\n(lib)"]
-        "93p" [label="93p", fillcolor=white]
-        "94p" [label="94p", fillcolor=white]
-        "95p" [label="95p\n(hb)", fillcolor=white]
-        "89p" -> "90p" -> "91p" -> "92p" -> "93p" -> "94p" -> "95p"
-    } //cluster_peer
-
-    subgraph cluster_node_bfr {
-        label="Node (before):"
-        "89b" [label="...", color=invis, style=""]
-        "90b" [label="90"]
-        "91b" [label="91"]
-        "92b" [label="92\n(lib)"]
-        "93b" [label="93n", fillcolor=white]
-        "94b" [label="94n\n(hb)", fillcolor=white]
-        "89b" -> "90b" -> "91b" -> "92b" -> "93b" -> "94b"
-        node [label="", color=invis, style=""]
-        "94b" -> "95b" [style=invis]
-    } //cluster_node_bfr
-
-} //digraph
-
-```
+![](images/p2p_head_catchup.png "Head Catch-Up Mode")
 
 In either case 1 or 2 above, the syncing process in the node involves locating the first common ancestor block starting from the node’s head block, traversing the chains back, and ending in the LIB blocks, which are now in sync (see [3.3.1. LIB Catch-Up Mode](#331-lib-catch-up-mode)). In the worst case scenario, the synced LIBs are the nearest common ancestor. In the above diagram, the node’s chain is traversed from head block 94n, 93n, etc. trying to match blocks 94p, 93p, etc. in the peer’s chain. The first block that matches is the nearest common ancestor (block 93n and 93p in the diagram). Therefore, the following blocks 94p and 95p are retrieved and appended to the node’s chain right after the nearest common ancestor, now re-labeled 93n,p (see [3.3.3. Block Retrieval](#333-block-retrieval) process). Finally, block 95p becomes the node’s head block and, since the node is fully synced with the peer, the node switches to in-sync mode.
 
