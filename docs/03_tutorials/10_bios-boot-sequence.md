@@ -388,7 +388,7 @@ In order to build `eosio.contracts`, create a dedicated directory for `eosio.con
 
 ```shell
 cd ~
-git clone https://github.com/AntelopeIO/eosio.contracts.git
+git clone https://github.com/AntelopeIO/reference-contracts.git
 cd ./reference-contracts/
 ./build.sh
 cd ./build/contracts/
