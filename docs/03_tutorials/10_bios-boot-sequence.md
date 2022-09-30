@@ -389,7 +389,7 @@ In order to build `eosio.contracts`, create a dedicated directory for `eosio.con
 ```shell
 cd ~
 git clone https://github.com/AntelopeIO/eosio.contracts.git
-cd ./eosio.contracts/
+cd ./reference-contracts/
 ./build.sh
 cd ./build/contracts/
 pwd

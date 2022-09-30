@@ -203,7 +203,7 @@ The following structs are implicit in that a struct was never explicitly defined
 ## Explicit Structs
 These structs are explicitly defined, as they are a requirement to instantiate a multi-index table. Describing them is no different than defining the implicit structs as demonstrated above.
 
-### [account](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L120)
+### [account](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L120)
 
 ```json
 {
@@ -230,13 +230,13 @@ An action's JSON object definition looks like the following:
 }
 ```
 
-Describe the actions of the `eosio.token` contract by aggregating all the public functions described in the `eosio.token` contract's [header file](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L1).
+Describe the actions of the `eosio.token` contract by aggregating all the public functions described in the `eosio.token` contract's [header file](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L1).
 
 Then describe each action's *type* according to its previously described struct. In most situations, the function name and the struct name will be equal, but are not required to be equal.
 
 Below is a list of actions that link to their source code with example JSON provided for how each action would be described.
 
-### [create](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L35-L37)
+### [create](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L35-L37)
 
 ```json
 {
@@ -246,7 +246,7 @@ Below is a list of actions that link to their source code with example JSON prov
 }
 ```
 
-### [issue](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L45-L46)
+### [issue](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L45-L46)
 
 ```json
 {
@@ -256,7 +256,7 @@ Below is a list of actions that link to their source code with example JSON prov
 }
 ```
 
-### [retire](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L55-L56)
+### [retire](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L55-L56)
 
 ```json
 {
@@ -266,7 +266,7 @@ Below is a list of actions that link to their source code with example JSON prov
 }
 ```
 
-### [transfer](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L67-L71)
+### [transfer](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L67-L71)
 
 ```json
 {
@@ -276,7 +276,7 @@ Below is a list of actions that link to their source code with example JSON prov
 }
 ```
 
-### [close](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L96-L97)
+### [close](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L96-L97)
 
 ```json
 {
@@ -300,9 +300,9 @@ Here's a table's JSON object definition:
 }
 ```
 
-The eosio.token contract instantiates two tables, [accounts](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L134) and [stat](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L135).
+The eosio.token contract instantiates two tables, [accounts](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L134) and [stat](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L135).
 
-The `accounts` table is an i64 index, based on the [`account` struct](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L120-L124), has a [`uint64` as it's primary key](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L123)
+The `accounts` table is an i64 index, based on the [`account` struct](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L120-L124), has a [`uint64` as it's primary key](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L123)
 
 Here's how the accounts table would be described in the ABI
 
@@ -316,7 +316,7 @@ Here's how the accounts table would be described in the ABI
 }
 ```
 
-The `stat` table is an i64 index, based on the [`currency_stats` struct](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L126-L132), has a [`uint64` as it's primary key](https://github.com/AntelopeIO/eosio.contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L131)
+The `stat` table is an i64 index, based on the [`currency_stats` struct](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L126-L132), has a [`uint64` as it's primary key](https://github.com/AntelopeIO/reference-contracts/blob/f6578c45c83ec60826e6a1eeb9ee71de85abe976/contracts/eosio.token/include/eosio.token/eosio.token.hpp#L131)
 
 Here's how the stat table would be described in the ABI
 
@@ -515,7 +515,7 @@ When describing a vector in your ABI file, simply append the type with `[]`, so 
 
 It's a rarely used property worth mentioning. You can use **base** ABI struct property to reference another struct for inheritance, as long as that struct is also described in the same ABI file. Base will do nothing or potentially throw an error if your smart contract logic does not support inheritance.
 
-You can see an example of base in use in the system contract [source code](https://github.com/AntelopeIO/eosio.contracts/blob/4e4a3ca86d5d3482dfac85182e69f33c49e62fa9/eosio.system/include/eosio.system/eosio.system.hpp#L46) and [ABI](https://github.com/AntelopeIO/eosio.contracts/blob/4e4a3ca86d5d3482dfac85182e69f33c49e62fa9/eosio.system/abi/eosio.system.abi#L262)
+You can see an example of base in use in the system contract [source code](https://github.com/AntelopeIO/reference-contracts/blob/4e4a3ca86d5d3482dfac85182e69f33c49e62fa9/eosio.system/include/eosio.system/eosio.system.hpp#L46) and [ABI](https://github.com/AntelopeIO/reference-contracts/blob/4e4a3ca86d5d3482dfac85182e69f33c49e62fa9/eosio.system/abi/eosio.system.abi#L262)
 
 ### Extra ABI Properties
 
