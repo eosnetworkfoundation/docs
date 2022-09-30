@@ -24,7 +24,7 @@ and
 * The Antelope framework software, Click on this link for instructions on [installing Antelope binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries") 
 * Familiarity with the Antelope tools `cleos` and `keosd`.
 * The Antelope Contract Development Toolkit or eosio.cdt. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions") 
-* Familiarity with the `eosio.cdt` which is used to compile smart contracts. 
+* Familiarity with the `cdt` which is used to compile smart contracts. 
 
 Click on this link for an [overview of the Antelope framework.](../01_overview/index.md)
 

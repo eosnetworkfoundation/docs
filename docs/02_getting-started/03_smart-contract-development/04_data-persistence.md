@@ -163,7 +163,7 @@ void upsert(
 ) {}
 ```
 
-Earlier, it was mentioned that only the user has control over their own record, as this contract is opt-in. To do this, utilize the [require_auth](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__action#function-require-auth) method provided by the `eosio.cdt`. This method accepts an `name` type argument and asserts that the account executing the transaction equals the provided value and has the proper permissions to do so.
+Earlier, it was mentioned that only the user has control over their own record, as this contract is opt-in. To do this, utilize the [require_auth](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__action#function-require-auth) method provided by the `cdt`. This method accepts an `name` type argument and asserts that the account executing the transaction equals the provided value and has the proper permissions to do so.
 
 ```cpp
 void upsert(name user, std::string first_name, std::string last_name, std::string street, std::string city, std::string state) {
