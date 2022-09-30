@@ -264,7 +264,7 @@ Great, let's deploy it.
 First, create an account and deploy to it:
 ```shell
 cleos create account eosio hodl YOUR_PUBLIC_KEY
-eosio-cpp hodl.cpp -o hodl.wasm
+cdt-cpp hodl.cpp -o hodl.wasm
 cleos set contract hodl ./ -p hodl@active
 ```
 As mentioned in a previous tutorial, this contract needs an eosio.code permission:

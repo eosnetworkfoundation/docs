@@ -500,7 +500,7 @@ icon:
 Execute the following command from your terminal.
 
 ```shell
-eosio-cpp addressbook.cpp -o addressbook.wasm
+cdt-cpp addressbook.cpp -o addressbook.wasm
 ```
 
 If you created a Ricardian contract and Ricardian clauses, the definitions will appear in the .abi file. An example for the addressbook.cpp, built including the contract and clause definitions described above is shown below.

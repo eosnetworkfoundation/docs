@@ -264,7 +264,7 @@ cd CONTRACTS_DIR/addressbook
 ```
 Now, recompile the contract, including the `--abigen` flag since changes have been made to the contract that affects the ABI. If you've followed the instructions carefully, you shouldn't see any errors.
 ```shell
-eosio-cpp -o addressbook.wasm addressbook.cpp --abigen
+cdt-cpp -o addressbook.wasm addressbook.cpp --abigen
 ```
 Smart contracts on Antelope are upgradeable so the contract can be redeployed with changes.
 ```shell

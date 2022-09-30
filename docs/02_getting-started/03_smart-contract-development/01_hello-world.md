@@ -121,7 +121,7 @@ class [[eosio::contract]] hello : public contract {
 Compile your code to web assembly (.wasm) as follows:
 
 ```shell
-eosio-cpp hello.cpp -o hello.wasm
+cdt-cpp hello.cpp -o hello.wasm
 ```
 
 ## Deploy the Contract
@@ -191,7 +191,7 @@ void hi( name user ) {
 Recompile the contract
 
 ```shell
-eosio-cpp -abigen -o hello.wasm hello.cpp
+cdt-cpp -abigen -o hello.wasm hello.cpp
 ```
 
 And then update it
