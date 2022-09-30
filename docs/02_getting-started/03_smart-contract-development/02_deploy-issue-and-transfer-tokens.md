@@ -16,7 +16,7 @@ Pull the [latest release](https://github.com/eosnetworkfoundation/eos-system-con
 This repository contains several contracts, but it's the [`eosio.token`](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.token) contract that is important for this section.
 
 ```shell
-cd eosio.contracts/contracts/eosio.token
+cd reference-contracts/contracts/eosio.token
 ```
 
 ## Step 2: Create Account for Contract
