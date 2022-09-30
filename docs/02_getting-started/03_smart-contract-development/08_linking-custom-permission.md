@@ -2,7 +2,9 @@
 content_title: "2.8: Creating and Linking Custom Permissions"
 link_text: "2.8: Creating and Linking Custom Permissions"
 ---
+
 ## Introduction
+
 On an Antelope blockchain, you can create various custom permissions for accounts.  A custom permission can later be linked to an action of a contract.  This permission system enables smart contracts to have a flexible authorization scheme.
 
 This tutorial illustrates the creation of a custom permission, and subsequently, how to link the permission to an action. Upon completion of the steps, the contract's action will be prohibited from executing unless the authorization of the newly linked permission is provided. This allows you to have greater granularity of control over an account and its various actions.
@@ -15,11 +17,13 @@ With great power comes great responsibility. This functionality poses some chall
 If you have the authority of a parent permission which a custom permission was created under, you can always execute an action which requires that custom permission.
 
 ## Step 1. Create a Custom Permission
+
 Firstly, let's create a new permission level on the `alice` account:
 
 ```shell
 cleos set account permission alice upsert YOUR_PUBLIC_KEY owner -p alice@owner
 ```
+
 A few things to note:
 
 1. A new permission called **upsert** was created
@@ -27,19 +31,25 @@ A few things to note:
 3. This permission was created on the `alice` account
 
 You can also specify authorities other than a public key for this permission, for example, a set of other accounts. Check [account permission](http://docs.eosnetwork.com/leap/latest/cleos/command-reference/set/set-account) for more details.
+
 ## Step 2. Link Authorization to Your Custom Permission
+
 Link the authorization to invoke the `upsert` action with the newly created permission:
 
 ```shell
 cleos set action permission alice addressbook upsert upsert
 ```
+
 In this example, we link the authorization to the `upsert` action created earlier in the addressbook contract.
+
 ## Step 3. Test it
+
 Let's try to invoke the action with an `active` permission:
 
 ```shell
 cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"]' -p alice@active
 ```
+
 You should see an error like the one below:
 
 ```text
@@ -48,11 +58,13 @@ Please remove the unnecessary authority from your action!
 Error Details:
 action declares irrelevant authority '{"actor":"alice","permission":"active"}'; minimum authority is {"actor":"alice","permission":"upsert"}
 ```
+
 Now, try the **upsert** permission, this time, explicitly declaring the **upsert** permission we just created: (e.g. `-p alice@upsert`)
 
 ```text
 cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"]' -p alice@upsert
 ```
+
 Now it works:
 
 ```text
@@ -67,4 +79,5 @@ executed transaction:
 ```
 
 ## What's Next?
+
 - [Payable Actions](./10_payable_actions.md): Learn how write a smart contract that has payable actions. 

@@ -2,13 +2,17 @@
 content_title: "2.9: Payable actions"
 link_text: "2.9: Payable actions"
 ---
+
 ## Goal
+
 This tutorial illustrates how to write a smart contract that has payable actions. Payable actions are actions that require you to transfer some tokens to actions prior to use other functionality of the smart contract. Also, the Antelope `asset` type is covered in this tutorial.
 
 As for the logic of this smart contract, we're going to write a contract that accepts a particular token but will not allow the tokens to be withdrawn for a specific amount of time.
 
 ## The token to HODL
+
 First create a standard C++ class called "hodl" that extends `eosio::contract`.
+
 ```cpp
 #include <eosio/eosio.hpp>
 
@@ -19,6 +23,7 @@ class [[eosio::contract("hodl")]] hodl : public eosio::contract{
   public:
 };
 ```
+
 This contract needs to set up a few constraints:
 
 - What symbol/token does this contract accept?
@@ -28,6 +33,7 @@ Let us now define these constraints as constants:
 
 - `hodl_symbol`: the symbol of tokens this contract accepts. In this case, we use the "SYS" symbol.
 - `the_party` constant sets the hodl to end on Tuesday, February 22, 2022 10:22:22 PM.
+
 ```cpp
 #include <eosiolib/eosio.hpp>
 
@@ -41,7 +47,9 @@ class [[eosio::contract("hodl")]] hodl : public eosio::contract {
 
 }
 ```
+
 Next, let's define a table to track the number of tokens the `hodl` contract has received.
+
 ```cpp
 struct [[eosio::table]] balance
 {
@@ -49,12 +57,14 @@ struct [[eosio::table]] balance
   uint64_t primary_key() const { return funds.symbol.raw(); }
 };
 ```
+
 In this multiple index table declaration, a new type called `asset` is used.  An `asset` is a type designed to represent a digital token asset. See more details in the [asset reference documentation](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1asset).
 
 The `symbol` member of an asset instance will be used as the primary key.  By calling the `raw()` function the `symbol` variable will be converted into an unsigned integer so it can be used as a primary key.
 
 ## Constructor
 The constructor initializes the hodl_symbol as “SYS”, which is a token created in the [Deploy, Issue and Transfer Tokens](./02_deploy-issue-and-transfer-tokens.md#step-5-create-the-token) section.
+
 ```cpp
 public:
   using contract::contract;
@@ -62,15 +72,21 @@ public:
 ```
 
 ## Get current UTC time
+
 In order to get time in UTC timezone throughout the code, create a function to easily access the current UTC time.
+
 ```cpp
 uint32_t now() {
   return current_time_point().sec_since_epoch();
 }
 ```
+
 Next, we'll write the actions of the contract.
+
 ## Deposit
+
 To accept a transfer we need to have a deposit action.
+
 ```cpp
 [[eosio::on_notify("eosio.token::transfer")]]
 void deposit(name hodler, name to, eosio::asset quantity, std::string memo)
@@ -98,15 +114,18 @@ void deposit(name hodler, name to, eosio::asset quantity, std::string memo)
     });
 }
 ```
+
 This action should not introduce many new concepts if you have followed this tutorial from the beginning.
 
 Firstly, the action checks that the contract is not transferring to itself:
+
 ```cpp
 if (to != get_self() || hodler == get_self()) {
   print("These are not the droids you are looking for.");
   return;
 }
 ```
+
 The contract needs to do so because transferring to the contract account itself would create an invalid booking situation in which an account could have more tokens than the account has in the `eosio.token` contract.
 
 Then this action checks a few other conditions:
@@ -114,12 +133,15 @@ Then this action checks a few other conditions:
 * The time to withdraw has not already passed
 * The incoming transfer has a valid amount of tokens
 * The incoming transfer uses the token we specify in the constructor
+
 ```cpp
 check(now() < the_party, "You're way late");
 check(quantity.amount > 0, "When pigs fly");
 check(quantity.symbol == hodl_symbol, "These are not the droids you are looking for.");
 ```
+
 If all constraints are passed, the action updates the balances accordingly:
+
 ```cpp
 balance_table balance(get_self(), hodler.value);
 auto hodl_it = balance.find(hodl_symbol.raw());
@@ -133,12 +155,15 @@ else
     row.funds = quantity;
   });
 ```
+
 The important thing to note is the deposit function will actually be triggered by the `eosio.token` contract. To understand this behaviour we need to understand the `on_notify` attribute.
+
 ## The on_notify attribute
 
 ```cpp
 [[eosio::on_notify("eosio.token::transfer")]]
 ```
+
 The `on_notify` attribute is one of the CDT [attributes](http://docs.eosnetwork.com/cdt/latest/best-practices/abi/abi-code-generator-attributes-explained) that annotates a smart contract action.
 
 Annotating an action with an [`on_notify`](http://docs.eosnetwork.com/cdt/latest/best-practices/abi/abi-code-generator-attributes-explained#eosioon_notifyvalid_eosio_account_namevalid_eosio_action_name) attribute ensures any incoming notification is forwarded to the annotated action if and only if the notification is dispatched from a specified contract and from a specified action.
@@ -146,12 +171,15 @@ Annotating an action with an [`on_notify`](http://docs.eosnetwork.com/cdt/latest
 In this case, the `on_notify` attribute ensures the incoming notification is forward to the deposit action only if the notification comes from the `eosio.token` contract and is from the `eosio.token`'s `transfer` action.
 
 This is also why we don't need to check if the hodler actually has the appropriate amount of tokens he or she claimed, as the `eosio.token` contract would have done this check prior to the transfer notification reaching the `hodl` `deposit` action.
+
 ## Party!
+
 The party action will only allow withdrawals after the configured `the_party` time has elapsed. The party action has a similar construct as the deposit action with the following conditions:
 
 * check the withdrawing account is the account which made the deposit initially
 * find the locked balance
 * transfer the token from the `hodl` contract to the account itself
+
 ```cpp
 [[eosio::action]]
 void party(name hodler)
@@ -178,7 +206,9 @@ void party(name hodler)
   balance.erase(hodl_it);
 }
 ```
+
 The complete code listing is the following:
+
 ```cpp
 #include <eosio/eosio.hpp>
 #include <eosio/print.hpp>
@@ -259,33 +289,47 @@ class [[eosio::contract("hodl")]] hodl : public eosio::contract {
     }
 };
 ```
+
 Great, let's deploy it.
+
 ## Test deposit
+
 First, create an account and deploy to it:
+
 ```shell
 cleos create account eosio hodl YOUR_PUBLIC_KEY
 cdt-cpp hodl.cpp -o hodl.wasm
 cleos set contract hodl ./ -p hodl@active
 ```
+
 As mentioned in a previous tutorial, this contract needs an eosio.code permission:
+
 ```shell
 cleos set account permission hodl active --add-code
 ```
+
 Next, create a testing account:
+
 ```shell
 cleos create account eosio han YOUR_PUBLIC_KEY
 ```
+
 Let's transfer some SYS tokens issued in the previous section to `han`:
+
 ```shell
 cleos push action eosio.token transfer '[ "alice", "han", "100.0000 SYS", "Slecht geld verdrijft goed" ]' -p alice@active
 ```
+
 Finally, transfer some SYS tokens to the `hodl` contract from `han`'s account.
+
 ```shell
 cleos transfer han hodl '0.0001 SYS' 'Hodl!' -p han@active
 ```
 
 ## Test withdraw
+
 To test the withdrawal feature, the `the_party` variable needs to be updated. Update the `the_party` variable to a point in time in the past so the withdrawal functionality can be tested.
+
 ```cpp
 
 CONTRACT hodl : public eosio::contract {
@@ -293,21 +337,19 @@ CONTRACT hodl : public eosio::contract {
     // 9 June 2018 01:00:00
     static const uint32_t the_party = 1528549200;
 ```
+
 Withdrawing the funds:
+
 ```text
 cleos push action hodl party '["han"]' -p han@active
 ```
+
 Should produce the following response:
+
 ```shell
 executed transaction: 62b1e6848c8c5e6458b9a0f7600e65574eaf60445be114d224adccc5a962a09a  104 bytes  383 us
 #          hodl <= hodl::party                  {"hodler":"han"}
 #   eosio.token <= eosio.token::transfer        {"from":"hodl","to":"han","quantity":"0.0001 SYS","memo":"Party! Your hodl is free."}
 #          hodl <= eosio.token::transfer        {"from":"hodl","to":"han","quantity":"0.0001 SYS","memo":"Party! Your hodl is free."}
 #           han <= eosio.token::transfer        {"from":"hodl","to":"han","quantity":"0.0001 SYS","memo":"Party! Your hodl is free."}
-
 ```
-Party time!
-
-
-## What's Next?
-- [Elemental Battles](https://battles.eos.io): Build a blockchain game based on Antelope and continue building your Antelope knowledge!

@@ -2,6 +2,7 @@
 content_title: "2.7: Inline Actions to External Contracts"
 link_text: "2.7: Inline Actions to External Contracts"
 ---
+
 Previously, we sent an inline action to an action that was defined in the contract. In this part of the tutorial, we'll explore sending actions to an external contract. Since we've already gone over quite a bit of contract authoring, we'll keep this contract extremely simple. We'll author a contract that counts actions written by the contract. This contract has very little real-world use, but will demonstrate inline action calls to an external contract
 
 ## Step 1: The Addressbook Counter Contract
@@ -14,6 +15,7 @@ mkdir abcounter
 cd abcounter
 touch abcounter.cpp
 ```
+
 Open the `abcounter.cpp` file in your favorite editor and paste the following code into the file. This contract is very basic, and for the most part does not cover much that we haven't already covered up until this point. There are a few exceptions though, and they are covered in full below.
 
 ```cpp
@@ -63,20 +65,26 @@ class [[eosio::contract("abcounter")]] abcounter : public eosio::contract {
     using count_index = eosio::multi_index<"counts"_n, counter>;
 };
 ```
+
 The first new concept in the code above is that we are explicitly restricting calls to the one action to a **specific account** in this contract using [require_auth](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__action#function-require-auth) to the `addressbook` contract, as seen below.
+
 ```cpp
 //Only the addressbook account/contract can authorize this command.
 require_auth( name("addressbook"));
 ```
+
 Previously, a dynamic value was used with `require_auth`.
 
 Another new concept in the code above, is [action wrapper](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1action__wrapper). As shown below the first template parameter is the 'action' we are going to call and the second one should point to the action function
+
 ```text
 using count_action = action_wrapper<"count"_n, &abcounter::count>;
 ```
 
 ## Step 2: Create Account for abcounter Contract
+
 Open your terminal and execute the following command to create the **abcounter** user.
+
 ```shell
 cleos create account eosio abcounter YOUR_PUBLIC_KEY
 ```
@@ -94,6 +102,7 @@ cleos set contract abcounter CONTRACTS_DIR/abcounter
 ```
 
 ## Step 4: Modify addressbook contract to send inline-action to abcounter
+
 Navigate to your addressbook directory now.
 
 ```shell
@@ -105,12 +114,14 @@ Open the `addressbook.cpp` file in your favorite editor if not already open.
 In the last part of this series, we went over inline actions to our own contract. This time, we are going to send an inline action to another contract, our new `abcounter` contract.
 
 Create another helper called `increment_counter` under the `private` declaration of the contract as below:
+
 ```cpp
 void increment_counter(name user, std::string type) {
     abcounter::count_action count("abcounter"_n, {get_self(), "active"_n});
     count.send(user, type);
 }
 ```
+
 Let's go through the code listing above.
 
 This time we use the [action wrapper](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1action__wrapper) instead of calling a function. To do that, we firstly initialised the count_action object defined earlier. The first parameter we pass is the callee contract name, in this case `abcounter`. The second parameter is the permission struct.
@@ -131,7 +142,9 @@ increment_counter(user, "modify");
 //Erase
 increment_counter(user, "erase");
 ```
+
 Now your `addressbook.cpp` contract should look like this.
+
 ```cpp
 #include <eosio/eosio.hpp>
 #include "abcounter.cpp"
@@ -234,17 +247,23 @@ private:
 ```
 
 ## Step 5: Recompile and redeploy the addressbook contract
+
 Recompile the `addressbook.cpp` contract, we don't need to regenerate the ABI, because none of our changes have affected the ABI. Note here we include the abcounter contract folder with the -I option.
+
 ```shell
 cdt-cpp -o addressbook.wasm addressbook.cpp -I ../abcounter/
 ```
+
 Redeploy the contract
+
 ```shell
 cleos set contract addressbook CONTRACTS_DIR/addressbook
 ```
 
 ## Step 6: Test It.
+
 Now that we have the `abcounter` deployed and `addressbook` redeployed, we're ready for some testing.
+
 ```shell
 cleos push action addressbook upsert '["alice", "alice", "liddell", 19, "123 drink me way", "wonderland", "amsterdam"]' -p alice@active
 ```
@@ -256,7 +275,9 @@ executed transaction: cc46f20da7fc431124e418ecff90aa882d9ca017a703da78477b381a02
 #         alice <= addressbook::notify          {"user":"alice","msg":"alice successfully modified record in addressbook"}
 #     abcounter <= abcounter::count             {"user":"alice","type":"modify"}
 ```
+
 As you can see, the counter was successfully notified. Let's check the table now.
+
 ```shell
 cleos get table abcounter abcounter counts --lower alice --limit 1
 ```
@@ -273,7 +294,9 @@ cleos get table abcounter abcounter counts --lower alice --limit 1
   "more": false
 }
 ```
+
 Test each of the actions and check the counter. There's already a row for alice, so upsert _should_ **modify** the record.
+
 ```shell
 cleos push action addressbook upsert '["alice", "alice", "liddell", 21,"1 there we go", "wonderland", "amsterdam"]' -p alice@active
 ```
@@ -287,7 +310,9 @@ executed transaction: c819ffeade670e3b44a40f09cf4462384d6359b5e44dd211f4367ac6d3
 #     abcounter <= abcounter::count             {"user":"alice","type":"emplace"}
 warning: transaction executed locally, but may not be confirmed by the network yet    ]
 ```
+
 To erase:
+
 ```shell
 cleos push action addressbook erase '["alice"]' -p alice@active
 ```
@@ -303,11 +328,15 @@ executed transaction: aa82577cb1efecf7f2871eac062913218385f6ab2597eaf31a4c0d25ef
 warning: transaction executed locally, but may not be confirmed by the network yet    ]
 Toaster:addressbook sandwich$
 ```
+
 Next, we'll test if we can manipulate the data in `abcounter` contract by calling it directly.
+
 ```shell
 cleos push action abcounter count '["alice", "erase"]' -p alice@active
 ```
+
 Checking the table in `abcounter` we'll see the following:
+
 ```shell
 cleos get table abcounter abcounter counts --lower alice
 ```
@@ -324,9 +353,13 @@ cleos get table abcounter abcounter counts --lower alice
   "more": false
 }
 ```
+
 Wonderful! Since we require_auth for `name("addressbook")`, only the `addressbook` contract can successfully execute this action, the call by alice to fudge the numbers had no affect on the table.
+
 ## Extra Credit: More Verbose Receipts
+
 The following modification sends custom receipts based on changes made, and if no changes are made during a modification, the receipt will reflect this situation.
+
 ```cpp
 #include <eosio/eosio.hpp>
 #include "abcounter.cpp"
@@ -461,4 +494,5 @@ private:
 ```
 
 ## What's Next?
+
 - [Linking Custom Permissions](./08_linking-custom-permission.md): Learn how create a custom permission and how to link the permission to an action of a contract.
