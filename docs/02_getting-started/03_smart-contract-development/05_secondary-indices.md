@@ -2,6 +2,7 @@
 content_title: "2.5: Secondary Indices"
 link_text: "2.5: Secondary Indices"
 ---
+
 Antelope has the ability to sort tables by up to 16 indices. In the following section, we're going to add another index to the `addressbook` contract, so we can iterate through the records in a different way.
 
 ## Step 1: Remove existing data from table
@@ -47,6 +48,7 @@ indexed_by<"byage"_n, const_mem_fun<person, uint64_t, &person::get_secondary_1>>
 ```
 
 ## Step 4: Modify code
+
 With all the changes in previous steps, we can now update the `upsert` function. Change the function parameter list to the following:
 
 ```cpp
@@ -93,7 +95,7 @@ void upsert(name user, std::string first_name, std::string last_name, uint64_t a
 Compile
 
 ```shell
-eosio-cpp --abigen addressbook.cpp -o addressbook.wasm
+cdt-cpp --abigen addressbook.cpp -o addressbook.wasm
 ```
 
 Deploy
@@ -174,6 +176,7 @@ It should return
 ```
 
 ## Wrapping Up
+
 The complete `addressbook` contract up to this point:
 
 ```cpp
@@ -250,4 +253,5 @@ private:
 ```
 
 ## What's Next?
+
 - [Adding Inline Actions](./06_adding-inline-actions.md): Learn how to construct actions and send those actions from within a contract.

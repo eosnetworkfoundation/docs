@@ -630,10 +630,10 @@ name get_winner(const tic_tac_toe::game &current_game)
 
 ## Compile
 
-Let's compile our contract, using eosio-cpp:
+Let's compile our contract, using cdt-cpp:
 
 ```bash
-eosio-cpp -I tic_tac_toe.hpp tic_tac_toe.cpp
+cdt-cpp -I tic_tac_toe.hpp tic_tac_toe.cpp
 ```
 
 ## Deploy

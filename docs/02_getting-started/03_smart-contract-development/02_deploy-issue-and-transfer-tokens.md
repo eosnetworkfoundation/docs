@@ -16,7 +16,7 @@ Pull the [latest release](https://github.com/eosnetworkfoundation/eos-system-con
 This repository contains several contracts, but it's the [`eosio.token`](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.token) contract that is important for this section.
 
 ```shell
-cd eosio.contracts/contracts/eosio.token
+cd reference-contracts/contracts/eosio.token
 ```
 
 ## Step 2: Create Account for Contract
@@ -33,17 +33,17 @@ cleos create account eosio eosio.token EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHu
 ## Step 3: Compile the Contract
 
 ```shell
-eosio-cpp -I include -o eosio.token.wasm src/eosio.token.cpp --abigen
+cdt-cpp -I include -o eosio.token.wasm src/eosio.token.cpp --abigen
 ```
 
 ## Step 4: Deploy the Token Contract
 
 ```shell
-cleos set contract eosio.token CONTRACTS_DIR/eosio.contracts/contracts/eosio.token --abi eosio.token.abi -p eosio.token@active
+cleos set contract eosio.token CONTRACTS_DIR/reference-contracts/contracts/eosio.token --abi eosio.token.abi -p eosio.token@active
 ```
 
 ```shell
-Reading WASM from ...eosio.contracts/contracts/eosio.token/eosio.token.wasm...
+Reading WASM from ...reference-contracts/contracts/eosio.token/eosio.token.wasm...
 Publishing contract...
 executed transaction: a68299112725b9f2233d56e58b5392f3b37d2a4564bdf99172152c21c7dc323f  6984 bytes  6978 us
 #         eosio <= eosio::setcode               {"account":"eosio.token","vmtype":0,"vmversion":0,"code":"0061736d0100000001a0011b60000060017e006002...
