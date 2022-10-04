@@ -3,17 +3,17 @@ content_title: "Tic-tac-toe Game Contract Using Single Node"
 link_text: "Tic-tac-toe Game Contract Using Single Node"
 ---
 
-# Tic-tac-toe on Antelope 
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an Antelope blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an Antelope blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../getting-started/index.md) section.
+# Tic-tac-toe on Antelope
 
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an Antelope blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an Antelope blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../getting-started/index.md) section.
 
 [[info]]
 | Antelope is a blockchain software framework developed by EOS Network Foundation. Smart contracts which run on the Antelope framework should run on any blockchain which using the Antelope framework. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope framework, EOS or the public mainnet. In this tutorial we will use the Antelope framework to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
 
-
 We explain the purpose of each step and why it is important.
 
 ## Prerequisites
+
 This tutorial requires the following:
 
 * Knowledge of the C++ programming language.
@@ -45,6 +45,7 @@ Play\nGame -> Play\nGame : Get
 ```
 
 ## The Rules of the Game
+
 The Antelope tic-tac-toe rules are:
 
 * Player one (the host) makes the first move, followed by player two (the challenger). 
@@ -52,10 +53,12 @@ The Antelope tic-tac-toe rules are:
 * If no player completes a row or diagonal of either X’s or O’s, the game is a draw. 
 
 ## Understanding the Game
+
 The smart contract contains the game logic, therefore this section introduces how the game works and some of the Antelope concepts needed to build a smart contract.
 
 ### The Game logic
-The game is played by two players, so we need two blockchain accounts. This tutorial explains how to create and use these blockchain accounts on a local single node blockchain in the next step. Use these accounts to "push actions" to the blockchain. These actions start, restart, and close the game. Pushing a move action will place a 'marker' on the game 'board'.    
+
+The game is played by two players, so we need two blockchain accounts. This tutorial explains how to create and use these blockchain accounts on a local single node blockchain in the next step. Use these accounts to "push actions" to the blockchain. These actions start, restart, and close the game. Pushing a move action will place a 'marker' on the game 'board'.
 
 One player is the host, who starts the game, and one player is the challenger. The game board is nine squares, and each player takes a turn to place their marker in a square. A player wins the game when three markers are placed in a row.
 
@@ -70,14 +73,17 @@ In the example below the player who placed x has won.
 When all the squares contain a marker and no player has three markers in a row, then the game is a draw.
 
 ### Accounts and Key Pairs
+
 A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. Antelope blockchains use account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../04_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
 
 ### Smart Contract Actions
+
 A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](../04_protocol/02_transactions_protocol.md "Tranasctions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
 
 ![Transactions and Actions](images/tictactoe/transactions-and-actions-temp.png "Transactions and Actions")
 
-### Antelope Resources 
+### Antelope Resources
+
 The Antelope blockchain accounts own and consume three resources. By default a single node testnet does load the smart contract which tracks resources therefore this section is for information only:
 
 * RAM - This resource is the amount of RAM available to an account. RAM stores smart contracts loaded on the blockchain. Smart contacts use RAM via the multi-index table to store smart contract state. Spend tokens to purchase more RAM, RAM can be sold.
@@ -87,6 +93,7 @@ The Antelope blockchain accounts own and consume three resources. By default a s
 For more information click on this link [Core Concepts](../01_overview/02_core_concepts.md)
 
 ## Run a local single node testnet
+
 Run [nodeos](http://docs.eosnetwork.com/leap/latest/nodeos/) locally to start a blockchain running on a single node. [Configure nodeos](http://docs.eosnetwork.com/leap/latest/nodeos/usage/nodeos-configuration) with [plugins](http://docs.eosnetwork.com/leap/latest/nodeos/plugins/) to produce blocks, store a history of the blockchain in memory, provide HTTP RPC access to these plugins and to output running information to a file.
 
 ```shell
@@ -109,9 +116,11 @@ info
 ```
 
 ## Create Accounts and Key Pairs
-The game requires at least two blockchain accounts, one for each player. The tutorial also creates a blockchain account to load the smart contract. 
+
+The game requires at least two blockchain accounts, one for each player. The tutorial also creates a blockchain account to load the smart contract.
 
 ### Procedure for Accounts
+
 1. Create a wallet - [How To Create A Wallet](http://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-create-a-wallet)
 2. Create key pair - [How To Create Key Pairs](http://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-create-key-pairs)
 3. Create the account - [How To Create An Account](http://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-create-an-account)
@@ -123,6 +132,7 @@ For this tutorial we need to create two player accounts and an account for the s
 3. The tictactoe account - the smart contract is loaded to this account.
 
 #### Cleos Commands
+
 To use the command line to create the accounts run the following commands. Make sure that the local wallet is [open](http://docs.eosnetwork.com/leap/latest/cleos/command-reference/wallet/open) and [unlocked](http://docs.eosnetwork.com/leap/latest/cleos/command-reference/wallet/unlock) and run these commands to create the accounts with the private keys stored in the local wallet.
 
 Create a wallet called 'local'.
@@ -132,6 +142,7 @@ cleos wallet create --name local --to-console
 ```
 
 This command outputs to stdout
+
 ```console
 Creating wallet: local
 Save password to use in the future to unlock this wallet.
@@ -142,11 +153,13 @@ Without password imported keys will not be retrievable.
 Save the password, you will need this to unlock the wallet later.
 
 To check the wallet run
+
 ```shell 
 cleos wallet list
 ```
 
 The output shows two wallets, one for each version of this tutorial, and * shows that the local wallet is unlocked.
+
 ```console
 Wallets:
 [
@@ -158,11 +171,11 @@ Wallets:
 [[info]]
 | Account creation requires a creator account; every new blockchain is created with an account called "eosio". The "eosio" account is a special account that can be used to bootstrap a blockchain, click the following link for more information about [bootstrapping a blockchain for real world use.](../03_tutorials/10_bios-boot-sequence.md) In a production blockchain the eosio account keys are [resigned](../03_tutorials/10_bios-boot-sequence.md#3-resign-eosio-account-and-system-accounts).  To use our local single node testnet we need to add the private key of the eosio account to our wallet so that we can create other accounts. **The private key is well known and so any blockchain where the eosio acount has not been resigned is not secure.**
 
-
 [[info]]
 | The eosio private key is **5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3**
 
 #### Import the eosio private key
+
 ```shell
 cleos wallet import --name local 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
 ``` 
@@ -172,50 +185,62 @@ Create three key pairs, one for the smart contract, and two separate accounts fo
 ```shell
 cleos create key --to-console
 ```
+
 ```console
 Private key: 5JSRUrUVbRsV2yJ2XSMtRtPzQ5UKbSYEGEjdKfGMS1xsvRZj7FH
 Public key: EOS5p55prHwrN6KosqF4NdRayVW2mqwA8RGNEbaZXRBs2SQHwBWSf
 ```
+
 ```shell
 cleos create key --to-console
 ```
+
 ```console
 Private key: 5JReVMTiiztAUyQGp9w7BMMm1HVUurDmEKuSL53DQww3JKVZjot
 Public key: EOS7qkiVnptc8wbHzHPC9jj1YECKJgQeUktBTm8RDA64oH3e75QW5
 ```
+
 ```shell
 cleos create key --to-console
 ```
+
 ```console
 Private key: 5JyC1kXq3WSpsyBc7rYpkBQBSc9GjLvVQ2QHFnS1iojiYNmKifX
 Public key: EOS7RGhr3mEvHm66Rter6vj8ZSGJ1uV8wZSEUuaeRj1Ywvi9YqFZn
 ```
 
 Create the host account.  
+
 ```shell
 cleos create account eosio host EOS5p55prHwrN6KosqF4NdRayVW2mqwA8RGNEbaZXRBs2SQHwBWSf
 ```
+
 Import the matching private key to the local wallet
+
 ```shell
 cleos wallet import --name local --private-key 5JSRUrUVbRsV2yJ2XSMtRtPzQ5UKbSYEGEjdKfGMS1xsvRZj7FH
 ```
 
-Create the challenger account and import a private key into the local wallet. 
+Create the challenger account and import a private key into the local wallet.
+
 ```shell
 cleos create account eosio challenger EOS7qkiVnptc8wbHzHPC9jj1YECKJgQeUktBTm8RDA64oH3e75QW5
 ```
 
 Import the matching private key to the local wallet
+
 ```shell
 cleos wallet import --name local --private-key 5JReVMTiiztAUyQGp9w7BMMm1HVUurDmEKuSL53DQww3JKVZjot
 ```
 
-Create the tictactoe smart contract account.  
+Create the tictactoe smart contract account.
+
 ```shell
 cleos create account eosio tictactoe EOS7RGhr3mEvHm66Rter6vj8ZSGJ1uV8wZSEUuaeRj1Ywvi9YqFZn
 ```
 
 Import the matching private key to the local wallet
+
 ```shell
 cleos wallet import --name local --private-key 5JyC1kXq3WSpsyBc7rYpkBQBSc9GjLvVQ2QHFnS1iojiYNmKifX
 ```
@@ -224,9 +249,11 @@ cleos wallet import --name local --private-key 5JyC1kXq3WSpsyBc7rYpkBQBSc9GjLvVQ
 | Use a wallet to securely store private keys. Keep your private keys private and do not share your private keys with anyone. A private key provides full access to a blockchain account.
 
 ## Tic-tac-toe Smart Contract
+
 Once you have your eosio accounts you can create the smart contract. Use your favorite text editor of IDE to create the .hpp and .cpp files.
 
 ### Smart Contract Requirements
+
 The tictactoe.hpp file (or header file) contains the declarations of the smart contract. Declarations inform the smart contract compiler what data structures to use in the smart contract to represent the game board and track game play. The header file also declares the smart contract actions that operate the game.
 
 The tictactoe.cpp file contains implementations of the smart contract actions declared in the tictactoe.hpp header file and uses the data structures declared in the header file.
@@ -234,6 +261,7 @@ The tictactoe.cpp file contains implementations of the smart contract actions de
 The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `cdt-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Understand ABI Files") 
 
 ### Game Board Representation
+
 A `std::vector` represents the tic-tac-toe board. The number 0 marks an empty square. The number 1 denotes a movement by the host. The number 2 denotes a movement by the challenger. To make a movement, you push a transaction to the tic-tac-toe smart contract.
 
 Logically the board looks like:
@@ -273,16 +301,19 @@ Game Representation
 |     2     |   o   |   x   |   x   |
 
 ### Create tictactoe.hpp file
+
 This section creates the tictactoe.hpp file. This header file contains the declarations of the tictactoe class, the definitions of tictactoe game data structures, and the declarations of tictactoe game methods, known as actions in Antelope smart contracts.
 
 
 #### Game Data Structures
+
 The tic-tac-toe smart contract hpp file defines the following public data structures to store game information.  
 
 * game - The game data structure contains game data. The structure has variables of type `eosio::name`, for challenger, host, turn and winner. Click on this link for a definition of [eosio::name](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1name "eosio.cdt reference - name structure") . The structure has a `std::vector` representing the game board  
 * Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](../02_getting-started/03_smart-contract-development/04_data-persistence.md) 
 
 #### Game Actions
+
 The tic-tac-toe smart contract .hpp file defines the following four public actions to operate the game logic.  
 
 * create - This action launches a new game and creates a new game board array. The host may use this command.
@@ -291,6 +322,7 @@ The tic-tac-toe smart contract .hpp file defines the following four public actio
 * move - This action sets a marker on the gameboard and updates the game board array. The host or the challenger may use this command.
 
 #### Procedure for tictactoe.hpp file
+
 Complete the following steps to create the tictactoe.hpp file:
 
 1. Create a tictactoe folder on your local drive containing tictactoe.hpp
@@ -414,9 +446,11 @@ public:
 The complete tictactoe.hpp file can be downloaded from github here: [Tic-tac-toe tutorial hpp source.](https://github.com/AntelopeIO/welcome/blob/release/2.0.x/src/tictactoe/tictactoe.hpp  "tic-tac-toe example hpp")  
 
 ### Create tictactoe.cpp file
+
 This section creates the tictactoe.cpp file. This file contains the implementations of the tic-tac-toe smart contract actions and the private methods used by the smart contract actions, based the declarations in the header file.
 
 #### Procedure for tictactoe.cpp file
+
 Complete the following steps to create the tictactoe.cpp file:
 
 1. Create a tictactoe.cpp file in the tictactoe folder. 
@@ -632,13 +666,14 @@ void tictactoe::move(const name &challenger, const name &host, const name &by, c
 
 The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe tutorial cpp source.](https://github.com/eosnetworkfoundation/welcome/tree/main/src/tictactoe/tictactoe.cpp  "tic-tac-toe example cpp")
 
-
 ## Compile and Deploy
-To deploy the smart contract to the blockchain first use the CDT (Antelope Contract Development Toolkit) `cdt-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "eosio-cdt reference cdt-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
 
-The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.     
+To deploy the smart contract to the blockchain first use the CDT (Antelope Contract Development Toolkit) `cdt-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "cdt reference cdt-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
+
+The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.
 
 ### Compilation
+
 To compile the smart contract change to the tictactoe folder  and run `cdt-cpp`. Click on this link for more information about using the [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "cdt-cpp command reference") .
 
 ```shell
@@ -661,18 +696,21 @@ For this tutorial we ignore these warnings. Click on the following link for a tu
 The tictactoe directory now contains two new files, `tictactoe.wasm` and `tictactoe.abi`.
 
 ### Deploy the Single Node Testnet
+
 [Deploy the smart contract](http://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-deploy-a-smart-contract) on the single node testnet tictactoe account with the following command.
 
 In the same directory as the generated `wasm` and `ABI` files run
+
 ```shell
 cleos set contract tictactoe ./ tictactoe.wasm tictactoe.abi -p tictactoe@active
 ```
 
 ## Play The Game
+
 Now that the smart contract has been successfully deployed [push smart contract actions](http://docs.eosnetwork.com/leap/latest/cleos/command-reference/push/push-action) to the blockchain to play the game.  
 
-
 ### Create a Game
+
 A game requires a host and a challenger. Use the accounts created earlier in the [Create the necessary accounts and key pairs](#create-accounts-and-key-pairs) section of the tutorial for these. These accounts can use arbitrary names. In this example assume the host has the account name of `host` and the challenger has the account name of `challenger`.
 
 The create action takes two parameters, the "challenger" and the "host". The required payload in `json` format is:
@@ -691,6 +729,7 @@ cleos push action tictactoe create '{"challenger":"challenger", "host":"host"}' 
 ```
 
 ### Making Game Moves
+
 Players make moves in turn by pushing ‘move’ actions to the blockchain. The host moves first, and each move must be signed by the appropriate account.
 
 The move action takes five parameters, the "challenger", the "host", the player who makes the move or "by" and "row" and "column" parameters to show where the marker is placed.
@@ -733,7 +772,8 @@ cleos push action tictactoe move '{"challenger":"challenger", "host":"host", "by
 
 Continue to make moves until the game ends with a win or a draw.
 
-### Check Game Status 
+### Check Game Status
+
 Look at the data in the multi index table to check the game status. 
 
 ```shell
@@ -741,6 +781,7 @@ cleos get table tictactoe host games
 ```
 
 ### Restart the Game
+
 The restart action takes three parameters, the "challenger", the "host", and "by". The required payload in `json` format is:
 
 ```json
@@ -764,6 +805,7 @@ cleos get table tictactoe host games
 ```
 
 ### Close the Game
+
 The close action takes two parameters, the "challenger" and the "host". The required payload in `json` format is:
 
 ```json
@@ -786,4 +828,5 @@ cleos get table tictactoe host games
 ```
 
 ## Next Steps
+
 Visit the [Antelope Developer Portal](http://docs.eosnetwork.com/ "eosio developers portal") to learn more about Antelope and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/) 
