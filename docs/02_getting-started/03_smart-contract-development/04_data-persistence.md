@@ -1,6 +1,5 @@
 ---
-title: "2.4: Data Persistence"
-link_text: "2.4: Data Persistence"
+title: "Data Persistence"
 ---
 
 To learn about data persistence, you write a simple smart contract that functions as an address book. While this use case is not very practical as a production smart contract, it is a good contract to start with to learn how data persistence works on Antelope without being distracted by business logic that does not pertain to the `multi_index` functionality.

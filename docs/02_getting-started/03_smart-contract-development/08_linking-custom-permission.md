@@ -1,6 +1,5 @@
 ---
-title: "2.8: Creating and Linking Custom Permissions"
-link_text: "2.8: Creating and Linking Custom Permissions"
+title: "Creating and Linking Custom Permissions"
 ---
 
 ## Introduction
