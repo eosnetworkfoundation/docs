@@ -1,5 +1,5 @@
 ---
-content_title: "1.5: Start keosd and nodeos"
+title: "1.5: Start keosd and nodeos"
 link_text: "1.5: Start keosd and nodeos"
 ---
 

@@ -1,5 +1,5 @@
 ---
-content_title: "2.9: Payable actions"
+title: "2.9: Payable actions"
 link_text: "2.9: Payable actions"
 ---
 

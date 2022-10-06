@@ -1,5 +1,5 @@
 ---
-content_title: BIOS Boot Sequence
+title: BIOS Boot Sequence
 link_text: BIOS Boot Sequence
 ---
 

@@ -1,5 +1,5 @@
 ---
-content_title: "Getting Started"
+title: "Getting Started"
 link_text: "Getting Started"
 sidebar_position: 3
 sidebar_label: "Getting Started"

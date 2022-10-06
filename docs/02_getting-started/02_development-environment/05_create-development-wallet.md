@@ -1,5 +1,5 @@
 ---
-content_title: "1.4: Create Development Wallet"
+title: "1.4: Create Development Wallet"
 link_text: "1.4 Create Development Wallet"
 ---
 

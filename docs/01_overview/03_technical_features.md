@@ -1,5 +1,5 @@
 ---
-content_title: Technical Features
+title: Technical Features
 ---
 
 ## WebAssembly C++ Compilation

@@ -1,5 +1,5 @@
 ---
-content_title: "Tic-Tac-Toe Game Contract"
+title: "Tic-Tac-Toe Game Contract"
 link_text: "Tic-Tac-Toe Game Contract"
 ---
 

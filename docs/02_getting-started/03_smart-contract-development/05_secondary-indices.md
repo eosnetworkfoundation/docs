@@ -1,5 +1,5 @@
 ---
-content_title: "2.5: Secondary Indices"
+title: "2.5: Secondary Indices"
 link_text: "2.5: Secondary Indices"
 ---
 

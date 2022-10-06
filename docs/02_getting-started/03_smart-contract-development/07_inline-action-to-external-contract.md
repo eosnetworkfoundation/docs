@@ -1,5 +1,5 @@
 ---
-content_title: "2.7: Inline Actions to External Contracts"
+title: "2.7: Inline Actions to External Contracts"
 link_text: "2.7: Inline Actions to External Contracts"
 ---
 

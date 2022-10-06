@@ -1,5 +1,5 @@
 ---
-content_title: "Tic-tac-toe Game Contract Using Single Node"
+title: "Tic-tac-toe Game Contract Using Single Node"
 link_text: "Tic-tac-toe Game Contract Using Single Node"
 ---
 

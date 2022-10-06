@@ -1,5 +1,5 @@
 ---
-content_title: Antelope Blockchain Networks
+title: Antelope Blockchain Networks
 link_text: Antelope Blockchain Networks
 ---
 

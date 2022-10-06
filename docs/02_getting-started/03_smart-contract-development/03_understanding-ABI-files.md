@@ -1,5 +1,5 @@
 ---
-content_title: "2.3: Understanding ABI Files"
+title: "2.3: Understanding ABI Files"
 link_text: "2.3: Understanding ABI Files"
 ---
 

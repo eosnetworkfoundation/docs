@@ -1,5 +1,5 @@
 ---
-content_title: Framework and Toolchain
+title: Framework and Toolchain
 ---
 
 The Antelope framework is made up of the following components and toolchain:

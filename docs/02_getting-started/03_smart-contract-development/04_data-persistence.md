@@ -1,5 +1,5 @@
 ---
-content_title: "2.4: Data Persistence"
+title: "2.4: Data Persistence"
 link_text: "2.4: Data Persistence"
 ---
 

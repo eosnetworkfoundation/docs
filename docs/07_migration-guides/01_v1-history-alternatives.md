@@ -1,5 +1,5 @@
 ---
-content_title: "V1 History Alternatives"
+title: "V1 History Alternatives"
 link_text: "V1 History Alternatives"
 ---
 

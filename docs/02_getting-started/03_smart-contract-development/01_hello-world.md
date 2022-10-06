@@ -1,5 +1,5 @@
 ---
-content_title: "2.1: Hello World Contract"
+title: "2.1: Hello World Contract"
 link_text: "2.1: Hello World Contract"
 ---
 

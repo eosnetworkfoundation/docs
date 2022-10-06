@@ -1,5 +1,5 @@
 ---
-content_title: "1.2: Before You Begin"
+title: "1.2: Before You Begin"
 link_text: "1.2: Before You Begin"
 ---
 

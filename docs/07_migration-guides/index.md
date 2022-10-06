@@ -1,5 +1,5 @@
 ---
-content_title: Migration Guides
+title: Migration Guides
 link_text: Migration Guides
 ---
 

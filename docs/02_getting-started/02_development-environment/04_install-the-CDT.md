@@ -1,5 +1,5 @@
 ---
-content_title: "1.3: Install the Contract Dev. Toolkit"
+title: "1.3: Install the Contract Dev. Toolkit"
 link_text: "1.3: Install the CDT"
 ---
 
