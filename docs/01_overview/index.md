@@ -1,6 +1,6 @@
 ---
 content_title: Overview
-sidebar_position: 1
+sidebar_position: 2
 sidebar_label: Overview
 sidebar_class_name: green
 ---
