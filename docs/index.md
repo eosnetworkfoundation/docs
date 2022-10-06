@@ -1,5 +1,5 @@
 ---
-content_title: Welcome
+title: Welcome
 sidebar_position: 1
 ---
 
