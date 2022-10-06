@@ -1,6 +1,5 @@
 ---
-title: "1.4: Create Development Wallet"
-link_text: "1.4 Create Development Wallet"
+title: "Create Development Wallet"
 ---
 
 Wallets are repositories of public-private key pairs. Private keys are needed to sign operations performed on the blockchain. Wallets are accessed using cleos.

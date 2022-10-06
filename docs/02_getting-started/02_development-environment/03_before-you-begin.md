@@ -1,6 +1,5 @@
 ---
-title: "1.2: Before You Begin"
-link_text: "1.2: Before You Begin"
+title: "Before You Begin"
 ---
 
 ## Step 1: Install binaries

@@ -1,6 +1,5 @@
 ---
-title: "1.6: Create Test Accounts"
-link_text: "1.6: Create Test Accounts"
+title: "Create Test Accounts"
 ---
 
 ## What is an account?

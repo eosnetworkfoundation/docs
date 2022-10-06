@@ -1,6 +1,5 @@
 ---
-title: "1.5: Start keosd and nodeos"
-link_text: "1.5: Start keosd and nodeos"
+title: "Start keosd and nodeos"
 ---
 
 ## Step 1: Boot Node and Wallet
