@@ -1,3 +1,6 @@
+---
+title: Core Concepts
+---
 
 ## Accounts, Wallets and Permissions
 

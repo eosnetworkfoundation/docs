@@ -1,8 +1,6 @@
 ---
 title: Overview
 sidebar_position: 2
-sidebar_label: Overview
-sidebar_class_name: green
 ---
 
 Learn about Antelope's available tools, the core concepts and underlying technical features:

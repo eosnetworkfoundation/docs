@@ -1,7 +1,6 @@
 ---
 title: Migration Guides
-link_text: Migration Guides
+sidebar_position: 8
 ---
 
-## Migration Guides
-
+### TO DO - add TOC
