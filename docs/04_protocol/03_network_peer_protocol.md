@@ -1,5 +1,5 @@
 ---
-content_title: Network Peer Protocol
+title: Network Peer Protocol
 ---
 
 

@@ -1,5 +1,6 @@
 ---
-content_title: Overview
+title: Overview
+sidebar_position: 2
 ---
 
 Learn about Antelope's available tools, the core concepts and underlying technical features:

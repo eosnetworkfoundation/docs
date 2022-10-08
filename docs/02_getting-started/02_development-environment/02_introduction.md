@@ -1,6 +1,5 @@
 ---
-content_title: "1.1: Prerequisites"
-link_text: "1.1: Prerequisites"
+title: "Prerequisites"
 ---
 
 ## Antelope versions

@@ -1,3 +1,8 @@
+---
+title: Community Developer Tools
+sidebar_position: 6
+---
+
 ## Overview
 
 This is a list of developer tools which are built by members of the Antelope community, curated by the Developer Relations team at EOS Network Foundation.

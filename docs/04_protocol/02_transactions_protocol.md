@@ -1,5 +1,5 @@
 ---
-content_title: Transactions Protocol
+title: Transactions Protocol
 ---
 
 

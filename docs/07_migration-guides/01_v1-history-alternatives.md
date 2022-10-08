@@ -1,6 +1,6 @@
 ---
-content_title: "V1 History Alternatives"
-link_text: "V1 History Alternatives"
+title: "V1 History Alternatives"
+sidebar_position: 1
 ---
 
 # V1 History Alternatives
@@ -8,6 +8,7 @@ link_text: "V1 History Alternatives"
 The latest Antelope v3.1 release officially ends support for the legacy V1 History plugin. Therefore, block producers and node operators who have integrations that rely on V1 History must seek alternative solutions.
 
 ## Production Ready Alternatives
+
 The following battle tested and V1 compliant history solutions are available:
 - Hyperion History Solution
 - Roborovski History API
@@ -158,6 +159,3 @@ Some examples to illustrate usage of V1 History endpoints:
 
 For a list of endpoint servers using Hyperion, check:
 https://hyperion.docs.eosrio.io/endpoint/
-
-
-

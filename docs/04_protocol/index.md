@@ -1,4 +1,7 @@
-# Antelope Protocol
+---
+title: Antelope Protocol
+sidebar_position: 5
+---
 
 ## Core
 

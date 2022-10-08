@@ -1,5 +1,5 @@
 ---
-content_title: Consensus Protocol
+title: Consensus Protocol
 ---
 
 # 1. Overview

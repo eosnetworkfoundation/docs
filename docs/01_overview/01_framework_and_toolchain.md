@@ -1,5 +1,5 @@
 ---
-content_title: Framework and Toolchain
+title: Framework and Toolchain
 ---
 
 The Antelope framework is made up of the following components and toolchain:
@@ -12,7 +12,6 @@ The Antelope framework is made up of the following components and toolchain:
 The basic relationship between these components is illustrated in the following diagram:
 
 ![Antelope Development Lifecycle](./images/Antelope-Overview-dev.svg)
-
 
 [[info | Note]]
 | Antelope also provides a frontend library for javascript development called EOSJS along with Swift and Java SDKs for native mobile applications development.
@@ -43,9 +42,15 @@ You can read detailed documentation about `keosd` [here](http://docs.eosnetwork.
 <!-- The link will be updated once the initial site is live -->
 
 ## CDT
+
 CDT is a toolchain for WebAssembly (Wasm) and a set of tools to facilitate contract writing for the Antelope framework. In addition to being a general-purpose WebAssembly toolchain, Antelope-specific optimizations are available to support building Antelope smart contracts. This new toolchain is built around Clang 7, which means that CDT has most of the current optimizations and analyses from LLVM.
 
 You can read more about `CDT` [here](https://github.com/AntelopeIO/cdt).
 
 ## EOSJS
+
 A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API.
+
+## What's Next?
+
+- [Core Concepts](02_core_concepts.md): Learn about Antelope's core concepts

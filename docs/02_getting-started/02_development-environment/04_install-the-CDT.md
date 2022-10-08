@@ -1,6 +1,5 @@
 ---
-content_title: "1.3: Install the Contract Dev. Toolkit"
-link_text: "1.3: Install the CDT"
+title: "Install the Contract Dev. Toolkit"
 ---
 
 The Antelope Contract Development Toolkit, CDT for short, is a collection of tools related to contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.

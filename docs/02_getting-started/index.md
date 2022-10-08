@@ -1,6 +1,6 @@
 ---
-content_title: "Getting Started"
-link_text: "Getting Started"
+title: Getting Started
+sidebar_position: 3
 ---
 
 - Installing eosio.cdt

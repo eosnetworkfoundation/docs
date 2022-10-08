@@ -1,5 +1,5 @@
 ---
-content_title: Accounts and Permissions
+title: Accounts and Permissions
 ---
 
 

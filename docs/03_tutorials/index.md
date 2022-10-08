@@ -1,3 +1,8 @@
+---
+title: Tutorials
+sidebar_position: 4
+---
+
 1. [BIOS Boot Sequence](10_bios-boot-sequence.md): Demonstrates how to bootstrap a new Antelope blockchain.
 2. Tic-tac-toe Game Contract: Build a simple tic-tac-toe game on Antelope to apply the knowledge you acquired earlier. Two versions are available:
    - [Tic-tac-toe using local single node](20_tic-tac-toe-game-smart-contract-single-node.md)

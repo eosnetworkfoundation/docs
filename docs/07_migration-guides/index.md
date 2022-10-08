@@ -1,7 +1,8 @@
 ---
-content_title: Migration Guides
-link_text: Migration Guides
+title: Migration Guides
+sidebar_position: 8
 ---
 
-## Migration Guides
+Learn about Antelope's History Alternative:
 
+- [V1 History Alternatives](01_v1-history-alternatives.md)

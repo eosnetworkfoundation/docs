@@ -1,3 +1,8 @@
+---
+title: Testnet Quick Start Guide
+sidebar_position: 9
+---
+
 # **Overview**
 
 This guide is for users who intend to use the Antelope Testnet as a testing environment for deploying smart contracts and building blockchain applications on Antelope. The Antelope Testnet allows developers to quickly onboard by creating new blockchain accounts and test smart contracts on the latest builds of the Antelope software. You can deploy smart contracts, push transactions, and view the multi-index table in a user-friendly GUI.
