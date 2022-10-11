@@ -20,9 +20,9 @@ sidebar_position: 11
 - [Jungle](https://jungletestnet.io/)
 - [CryptoKylin](https://www.cryptokylin.io/)
 
-### EOSIO
+### Antelope
 
-- [Telos](telos.net)
-- [WAX](waxsweden.org/testnet/)
-- [FIO](fioprotocol.io)
-- [Proton](protonchain.com)
+- [Telos](https://testnet.telos.net/)
+- [WAX](https://waxsweden.org/testnet/)
+- [FIO](https://monitor.testnet.fioprotocol.io/)
+- [Proton](https://testnet.protonscan.io/)
