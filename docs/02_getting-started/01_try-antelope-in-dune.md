@@ -11,4 +11,4 @@ Experiment on the Antelope Testnet with the latest stable release of the Antelop
 -->
 
 ## What's Next?
-- [Get Started](./02_development-environment/02_introduction.md): Install Antelope in your local development environment.
+- [Get Started](./02_development-environment/02_prerequisites.md): Install Antelope in your local development environment.

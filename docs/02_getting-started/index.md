@@ -16,4 +16,4 @@ sidebar_position: 3
 ## What's next?
 
 - [Try Antelope](01_try-antelope-in-dune.md): Try Antelope in DUNE (Docker Utilities for Node Execution).
-- [Get Started](02_development-environment/introduction.md): Install Antelope in your local development environment.
+- [Get Started](02_development-environment/prerequisites.md): Install Antelope in your local development environment.
