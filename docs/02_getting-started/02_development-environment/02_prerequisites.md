@@ -8,9 +8,9 @@ The subsequent tutorials are up to date with the following Antelope components.
 
 | Component | Version |
 | ------ | ------ |
-| eosio | 2.0.0 |
-| eosio.cdt | 1.7.0 |
-| eosio.contracts | 1.9.0 |
+| [Leap](https://github.com/AntelopeIO/leap) | 3.1 |
+| [CDT](https://github.com/AntelopeIO/cdt) | 3.0 |
+| [eos-system-contracts](https://github.com/eosnetworkfoundation/eos-system-contracts) | 3.1 |
 
 
 
