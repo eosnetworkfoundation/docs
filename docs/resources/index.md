@@ -12,7 +12,6 @@ sidebar_position: 11
 - [Github EOS Foundation](https://github.com/eosnetworkfoundation)
 - [Github Antelope Frameowrk](https://github.com/antelopeio)
 - [Twitter](https://twitter.com/EOSnFoundation)
-- 
 
 ## Test Nets
 
