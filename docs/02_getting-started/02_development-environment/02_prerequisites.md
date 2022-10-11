@@ -12,8 +12,6 @@ The subsequent tutorials are up to date with the following Antelope components.
 | [CDT](https://github.com/AntelopeIO/cdt) | 3.0 |
 | [eos-system-contracts](https://github.com/eosnetworkfoundation/eos-system-contracts) | 3.1 |
 
-
-
 ## Development Experience
 
 Antelope based blockchains execute user-generated applications and code using WebAssembly (WASM). WASM is an emerging web standard with widespread support from Google, Microsoft, Apple, and industry leading companies.
@@ -26,14 +24,12 @@ Other toolchains in development by 3rd parties include: Rust, Python, and Solidi
 
 The Antelope software supports the following environments for development and/or deployment:
 
-* Amazon Linux 2
-* Centos 7
-* Ubuntu 16.04
 * Ubuntu 18.04
-* MacOS 10.14 (Mojave) and higher
+* Ubuntu 20.04
+* Ubuntu 22.04
 
 [[info | Note]]
-| if you are developing on __Windows__, unfortunately we do not provide PowerShell ports and instructions at this time. In the future we may append PowerShell commands. In the mean-time your best bet is to use a VM with Ubuntu, and set up your development environment inside this VM. If you're an advanced Window's developer familiar with porting Linux instructions, you should encounter minimal issues.
+| if you are developing on __Windows__, unfortunately we do not provide PowerShell ports and instructions at this time. In the future we may append PowerShell commands. In the mean-time your best bet is to use [DUNE](https://github.com/AntelopeIO/DUNE) or a VM with Ubuntu, and set up your development environment inside this VM. If you're an advanced Window's developer familiar with porting Linux instructions, you should encounter minimal issues.
 
 ### Command Line Knowledge
 
@@ -54,9 +50,11 @@ We can use any text editor that, preferably, supports C++ syntax highlighting. S
 [[info]]
 | The resources listed above are developed, offered, and maintained by third-parties and not by EOS Network Foundation. Providing information, material, or commentaries about such third-party resources does not mean we endorse or recommend any of these resources. We are not responsible, and disclaim any responsibility or liability, for your use of or reliance on any of these resources. Third-party resources may be updated, changed or terminated at any time, so the information below may be out of date or inaccurate. USAGE AND RELIANCE IS ENTIRELY AT YOUR OWN RISK
 
+<!-- validate this, or add an alternate IDE for Antelope, if any...
 Alternatively, you can try out some community driven IDEs specifically developed for Antelope:
 
 - [EOS Studio](https://www.eosstudio.io/)
+-->
 
 ## What you'll learn
 
