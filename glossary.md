@@ -22,8 +22,6 @@ Functionality exposed by a smart contract that is exercised by passing the corre
 
 ## Antelope
 The technology that powers EOS, WAX, Telos, UX, Ultra
-70% or EOSIO development funded by EOS
-30% of EOSIO development funded by Telos, WAX, and UX
 
 ## API
 Application Programming Interface. A computer interface that enables two computer applications to interact with each other.
