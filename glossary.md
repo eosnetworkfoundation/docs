@@ -1,7 +1,15 @@
 # Glossary and Acronyms
 
+## ABI
+Application Binary Interface. A JSON-based description on how to convert user actions between their JSON and binary representations. The ABI may also describe how to convert the database state to/from JSON. Once you have described your contract via an ABI this allows developers and users to interact with your contract seamlessly via JSON.
+**Abbreviation**: ABI
+
 ## Account
-An account is a unique identifier and a requirement to interact with an EOSIO blockchain. Unlike most other cryptocurrencies, transfers are sent to a human readable account name instead of a public key, while keys attributed to the account are used to sign transactions.
+An account is a unique identifier and a requirement to interact with an EOSIO blockchain. Unlike most other cryptocurrencies, transfers are sent to a human readable account name instead of a public key, while keys attributed to the account are used to sign transactions.  
+
+An account is a participant in an Antelope blockchain. 
+
+An account is a collection of authorizations, stored on the blockchain, and is used to identify a sender/recipient. It has a flexible authorization structure that enables it to be owned either by an individual or group of individuals depending on how permissions have been configured. An account is required to send or receive a valid transaction to the blockchain. Ownership of each account on an Antelope blockchain is solely determined by the account name.
 
 ## Account Name
 An account name is a human-readable identifier that is stored on the blockchain. Standard account names can only contain the characters .abcdefghijklmnopqrstuvwxyz12345. a-z (lowercase), 1-5 and . (period), must start with a letter and must be 12 characters in length. Non-standard account names have all restrictions of the standard ones except they can have less than 12 characters in length.
@@ -9,20 +17,19 @@ An account name is a human-readable identifier that is stored on the blockchain.
 ## Account Name Bidding
 For non-standards accounts, those under 12 characters, EOSIO based blockchains provide a system where blockchain users can bid on accounts by submitting the bids via an auction process. Only one account name with the highest bidding price can be auctioned off every 24 hours among all submitted account names, that is, the system considers a bidding to be successful only when the bidding price is the highest among all other account bidding prices submitted.
 
-## Airdrop (cryptocurrency airdrop)
-A marketing implementation that involves sending free coins or tokens to wallet addresses to promote awareness of a new currency.
-
-## Application Binary Interface
-A JSON-based description on how to convert user actions between their JSON and binary representations. The ABI may also describe how to convert the database state to/from JSON. Once you have described your contract via an ABI this allows developers and users to interact with your contract seamlessly via JSON.
-**Abbreviation**: ABI
-
 ## Action
 Functionality exposed by a smart contract that is exercised by passing the correct parameters via an approved transaction to an EOSIO network.
 **Related**: [Account](#Account)
 
+## Airdrop (cryptocurrency airdrop)
+A marketing implementation that involves sending free coins or tokens to wallet addresses to promote awareness of a new currency.
+
+## Airgrab
+A method to deploy tokens for dApp developers. Use your personal RAM to receive airgrab tokens.
+
 ## Antelope
-The technology that powers EOS, WAX, Telos, UX, Ultra
-70% or EOSIO development funded by EOS
+The technology that powers EOS, WAX, Telos, UX, Ultra  
+70% or EOSIO development funded by EOS  
 30% of EOSIO development funded by Telos, WAX, and UX
 
 ## API
@@ -69,14 +76,23 @@ Blockchain Producer
 In the context of distributed systems, Byzantine Fault Tolerance (BFT) is the ability of a distributed computer network to function as desired and correctly reach a sufficient consensus despite malicious components (nodes) of the system failing or propagating incorrect information to other peers. In an EOSIO based blockchain BFT is achieved using a combination of Delegated Proof of Stake, the last irreversible block, and the fact that a producer cannot sign two blocks with the same block number.
 **Related**: [Account](#Account) [Account](#Account)
 
+## CDT
+Contract Development Toolkit. A toolchain for WebAssembly (Wasm). A set of tools to facilitate smart contract writing for the Antelope framework, such as a debugger, profiler, and smart contract development tools.
+
+## Chainbase
+A version controlled, fast, transactional database.
+
 ## Chain State
 The chain state (or "database" as it is often called) is a memory mapped file, which stores the blockchain state of each block (account details, deferred transactions, transactions, data stored using multi index tables in smart contracts, etc.). Once a block becomes irreversible the chain state is no longer cached.
 
 ## Cleos
-cleos is a command line tool that interfaces with the REST api exposed by nodeos, in other words cleos is the command line tool through which you can interface with an EOSIO based blockchain; cleos contains documentation for all of its commands. For a list of all commands known to cleos, simply run it with no arguments. cleos = command line + eos
+cleos is a command line tool that interfaces with the REST api exposed by nodeos. In other words cleos is the command line tool through which you can interface with an EOSIO based blockchain. cleos is used to deploy and test Antelope smart contracts. cleos contains documentation for all of its commands. For a list of all commands known to cleos, simply run it with no arguments. cleos = command line + eos
 
 ## Coalition
 EOS, WAX, Telos, UX (Origin)
+
+## Consensus / DPoS
+A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus_protocol.md)
 
 ## Confirmed Transaction
 On completion of the transaction, a transaction receipt is generated. Receiving a transaction hash does not mean that the transaction has been confirmed, it only means that the node accepted it without error, which also means that there is a high probability other producers will accept it. A transaction is considered confirmed when a nodeos instance has received, processed, and written it to a block on the blockchain, i.e. it is in the head block or an earlier block.
@@ -107,7 +123,7 @@ An entity that utilizes a combination of automation and input from stakeholders,
 Deferred actions are actions sent to a peer action that are scheduled to run, at best, at a later time, at a block producer's discretion. There is no guarantee that a deferred action will be executed. From the perspective of the originating action, i.e., the action that creates the deferred action, it can only determine whether the create request was submitted successfully or whether it failed (if it fails, it will fail immediately). Deferred actions carry the authority of the contract that sends them. A deferred action can also be cancelled by another action.
 
 ## Delegated Proof of Stake
-'A consensus algorithm initially developed by Daniel Larimer in 2013 for Bitshares. It is sometimes referred to as "Democracy as Proof of Stake"'
+A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus_protocol.md)
 **Abbreviation**: DPoS
 
 ## Deserialization
@@ -126,6 +142,10 @@ A consensus of replicated, shared, and synchronized digital data geographically 
 ## Digital Signature
 A digital signature is a mathematical scheme for verifying the authenticity of digital messages or documents. A valid digital signature, where the prerequisites are satisfied, gives a recipient very strong reason to believe that the message was created by a known sender (authentication), and that the message was not altered in transit (integrity). Digital signatures are a standard element of most cryptographic protocol suites, and are commonly used for software distribution, financial transactions, contract management software, and in other cases where it is important to detect forgery or tampering.
 
+## Dune
+Docker Utilities for Node Execution. A personal container for Antelope blockchain management, smart contract development, and testing purposes.
+
+
 ## EA
 Employment Agreement
 
@@ -134,6 +154,9 @@ EOS Network Foundation
 
 ## EOSIO Types
 EOSIO source code defines a list of types which ease the developer's work when writing smart contracts, plugins, or when extending the EOSIO source code. Example types include `account_name`, `permission_name`, `table_name`, `action_name`, `scope_name`, `weight_type`, `public_key`, etc.
+
+## EOSJS
+A frontend library for javascript development for native mobile applications development, in addition to Swift and Java SDKs. A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API. 
 
 ## EVM
 Earned Value Management. EVM is a project management methodology that integrates schedule, costs, and scope to measure project performance.
