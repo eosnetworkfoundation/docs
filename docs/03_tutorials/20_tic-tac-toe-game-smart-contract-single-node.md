@@ -144,13 +144,12 @@ To check the wallet run
 cleos wallet list
 ```
 
-The output shows two wallets, one for each version of this tutorial, and * shows that the local wallet is unlocked.
+The output shows at least one wallet, and * shows that the local wallet is unlocked.
 
 ```console
 Wallets:
 [
   "local *",
-  "testnet"
 ]
 ```
 
@@ -163,8 +162,10 @@ Wallets:
 #### Import the eosio private key
 
 ```shell
-cleos wallet import --name local 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
-``` 
+cleos wallet import --name local
+```
+
+and then copy and paste the eosio private key **5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3** to the console.
 
 Create three key pairs, one for the smart contract, and two separate accounts for the host and the challenger.
 
@@ -390,17 +391,17 @@ public:
 ```
 
 12. Define the games type which uses the game data structure with the multi-index table template. Click on this link for more information about the multi-index table template used to define multi index table types [function multi_index.](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex#function-multi-index) Set the name to "games" and use the [eosio::name](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1name) operator [_n](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__name#function-operator%22%22-n) to construct an [eosio::name](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1name) with a string. The value is stored as a `uint64_t`. 
-    
-	Add this code to the .hpp file inside the public section of the class, after the declaration of the game structure:
+
+Add this code to the .hpp file inside the public section of the class, after the declaration of the game structure:
 
 ```c++
     // 15. Define the game data structure using the multi-index table template.
     typedef eosio::multi_index<"games"_n, game> games;
 ```
 
-13. Declare class methods and use the `[[eosio::action]]` attribute to let the compiler know this is a smart contract action. Click on this link for more information on [generator attributes.](http://docs.eosnetwork.com/cdt/latest/best-practices/abi/abi-code-generator-attributes-explained) 
-    
-	Add this code to the .hpp file inside the public section of the class:
+13. Declare class methods and use the `[[eosio::action]]` attribute to let the compiler know this is a smart contract action. Click on this link for more information on [generator attributes.](http://docs.eosnetwork.com/cdt/latest/best-practices/abi/abi-code-generator-attributes-explained)
+
+Add this code to the .hpp file inside the public section of the class:
 
 ```c++
     [[eosio::action]]
@@ -429,7 +430,7 @@ public:
     name getWinner(const game &currentGame);
 ```
 
-The complete tictactoe.hpp file can be downloaded from github here: [Tic-tac-toe tutorial hpp source.](https://github.com/AntelopeIO/welcome/blob/release/2.0.x/src/tictactoe/tictactoe.hpp  "tic-tac-toe example hpp")  
+The complete tictactoe.hpp file can be downloaded from github here: [Tic-tac-toe tutorial hpp source.](https://github.com/eosnetworkfoundation/docs/blob/fc2b86fc28293bb909c5971b9948306b0c5d9aad/src/tictactoe/tictactoe.hpp  "tic-tac-toe example hpp")  
 
 ### Create tictactoe.cpp file
 
@@ -650,7 +651,7 @@ void tictactoe::move(const name &challenger, const name &host, const name &by, c
 }
 ```
 
-The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe tutorial cpp source.](https://github.com/eosnetworkfoundation/welcome/tree/main/src/tictactoe/tictactoe.cpp  "tic-tac-toe example cpp")
+The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe tutorial cpp source.](https://raw.githubusercontent.com/eosnetworkfoundation/docs/fc2b86fc28293bb909c5971b9948306b0c5d9aad/src/tictactoe/tictactoe.cpp  "tic-tac-toe example cpp")
 
 ## Compile and Deploy
 
