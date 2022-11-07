@@ -30,20 +30,6 @@ Click on this link for an [overview of the Antelope framework.](../01_overview/i
 
 Click on this link to [get started with Antelope.](../02_getting-started/index.md "Getting Started with Antelope")
 
-### Tutorial Workflow
-
-```sequence
-Understand\n Game->Understand\n Antelope : What?
-Understand\n Antelope->Create\nAccounts  : Accounts
-Understand\n Antelope->Create\nAccounts  : Actions
-Understand\n Antelope->Create\nAccounts  : Resources
-Create\nAccounts->Create\nSmart Contract : How?
-Create\nSmart Contract -> Compile\nDeploy : Code
-Compile\nDeploy -> Play\nGame : Load
-Play\nGame -> Play\nGame : Push
-Play\nGame -> Play\nGame : Get
-```
-
 ## The Rules of the Game
 
 The Antelope tic-tac-toe rules are:
