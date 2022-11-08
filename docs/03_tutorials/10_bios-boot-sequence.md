@@ -3,6 +3,25 @@ title: BIOS Boot Sequence
 link_text: BIOS Boot Sequence
 ---
 
+## Overview
+In this tutorial, you will extend the single node EOS blockchain to use multiple nodes. You will install various Antelope software components to set up your multi node EOS blockchain. Finally, you will perform some node operator tasks on your new EOS blockchain.
+
+## Audience
+This tutorial is useful for any node operator or blockchain developer who wants to understand how a multi node EOS blockchain can be set up and launched locally. Although a typical EOS blockchain will consist of multiple remote nodes, the setup commands are similar.
+
+### Objectives
+In this tutorial, you will learn how to perform the following tasks:
+* Install and build the EOS system contracts.
+* Deploy a multi node blockchain with 21 EOS nodes.
+* Create user accounts on the EOS multi node blockchain.
+* Call an action to transfer tokens among user accounts.
+
+## Prerequisites
+Before you start this tutorial, get familiar with the following concepts:
+* [EOS Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
+* [EOS Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
+* [EOS Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
+
 [[note | Note]]
 | _The steps here can be readily expanded for the networked case. Some assumptions are made here regarding how the parties involved will coordinate with each other. However, there are many ways that the community can choose to coordinate. The technical aspects of the process are objective; assumptions of how the coordination might occur are speculative. Several approaches have already been suggested by the community. You are encouraged to review the various approaches and get involved in the discussions as appropriate._
 
