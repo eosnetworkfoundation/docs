@@ -27,8 +27,8 @@ Before you start this tutorial, get familiar with the following concepts:
 
 The BIOS Boot sequence undergoes two significant workflows:
 
-1. Creating, configuring, and starting the genesis node
-2. Transitioning from single genesis producer to multiple producers
+1. [Create, Configure and Start the Genesis Node](#1-create-configure-and-start-the-genesis-node)
+2. [Transition from single genesis producer to multiple producers](#2-transition-from-single-genesis-producer-to-multiple-producers)
 
 ## 1. Create, Configure and Start the Genesis Node
 
