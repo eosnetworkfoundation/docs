@@ -22,13 +22,15 @@ Before you start this tutorial, get familiar with the following concepts:
 * [EOS Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
 * [EOS Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
 
-[[note | Note]]
-| _The steps here can be readily expanded for the networked case. Some assumptions are made here regarding how the parties involved will coordinate with each other. However, there are many ways that the community can choose to coordinate. The technical aspects of the process are objective; assumptions of how the coordination might occur are speculative. Several approaches have already been suggested by the community. You are encouraged to review the various approaches and get involved in the discussions as appropriate._
+## Workflow
 
 The BIOS Boot sequence undergoes two significant workflows:
 
 1. [Create, Configure and Start the Genesis Node](#1-create-configure-and-start-the-genesis-node)
 2. [Transition from single genesis producer to multiple producers](#2-transition-from-single-genesis-producer-to-multiple-producers)
+
+[[note | Note]]
+| _The steps here can be readily expanded for the networked case. Some assumptions are made here regarding how the parties involved will coordinate with each other. However, there are many ways that the community can choose to coordinate. The technical aspects of the process are objective; assumptions of how the coordination might occur are speculative. Several approaches have already been suggested by the community. You are encouraged to review the various approaches and get involved in the discussions as appropriate._
 
 ## 1. Create, Configure and Start the Genesis Node
 
