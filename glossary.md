@@ -30,7 +30,6 @@ A method to deploy tokens for dApp developers. Use your personal RAM to receive 
 ## Antelope
 The technology that powers EOS, WAX, Telos, UX, Ultra  
 
-
 ## API
 Application Programming Interface. A computer interface that enables two computer applications to interact with each other.
 
