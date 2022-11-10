@@ -4,23 +4,28 @@ link_text: BIOS Boot Sequence
 ---
 
 ## Overview
-In this tutorial, you will extend the single node EOS blockchain to use multiple nodes. You will install various Antelope software components to set up your multi node EOS blockchain. Finally, you will perform some node operator tasks on your new EOS blockchain.
+In this tutorial, you will extend the single node blockchain to use multiple nodes. You will install various Antelope software components to set up your multi node blockchain. Finally, you will perform some node operator tasks on your new blockchain.
 
 ## Audience
-This tutorial is useful for any node operator or blockchain developer who wants to understand how a multi node EOS blockchain can be set up and launched locally. Although a typical EOS blockchain will consist of multiple remote nodes, the setup commands are similar.
+This tutorial is useful for any node operator or blockchain developer who wants to understand how a multi node blockchain can be set up and launched. Although a typical blockchain will consist of multiple remote nodes, the commands to set up each node are to be performed in a similar fashion at each remote location.
+
+[[note | Note]]
+| _The steps here can be readily expanded for the networked case. Some assumptions are made here regarding how the parties involved will coordinate with each other. However, there are many ways that the community can choose to coordinate. The technical aspects of the process are objective; assumptions of how the coordination might occur are speculative. Several approaches have already been suggested by the community. You are encouraged to review the various approaches and get involved in the discussions as appropriate._
 
 ### Objectives
 In this tutorial, you will learn how to perform the following tasks:
-* Install and build the EOS system contracts.
-* Deploy a multi node blockchain with 21 EOS nodes.
-* Create user accounts on the EOS multi node blockchain.
-* Call an action to transfer tokens among user accounts.
+* Install and build the reference system contracts.
+* Deploy a multi node blockchain with various nodes.
+* Create user accounts on the multi node blockchain.
+* Allocate a new SYS currency token in the blockchain.
+* Call an action to transfer SYS tokens among user accounts.
+* Transition from a single node producer to multiple node producers.
 
 ## Prerequisites
 Before you start this tutorial, get familiar with the following concepts:
-* [EOS Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
-* [EOS Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
-* [EOS Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
+* [Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
+* [Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
+* [Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
 
 ## Workflow
 
@@ -29,22 +34,19 @@ The BIOS Boot sequence undergoes two significant workflows:
 1. [Create, Configure and Start the Genesis Node](#1-create-configure-and-start-the-genesis-node)
 2. [Transition from single genesis producer to multiple producers](#2-transition-from-single-genesis-producer-to-multiple-producers)
 
-[[note | Note]]
-| _The steps here can be readily expanded for the networked case. Some assumptions are made here regarding how the parties involved will coordinate with each other. However, there are many ways that the community can choose to coordinate. The technical aspects of the process are objective; assumptions of how the coordination might occur are speculative. Several approaches have already been suggested by the community. You are encouraged to review the various approaches and get involved in the discussions as appropriate._
-
 ## 1. Create, Configure and Start the Genesis Node
 
 The information in this section walk you through the preparatory steps for the following:
 
-* Setting up your `eos` environment
-* Starting your genesis `eos` node
-* Setting up additional, interconnected eos nodes with connectivity to the genesis node
+* Setting up your Leap environment
+* Starting your genesis Leap node
+* Setting up additional, interconnected Leap nodes with connectivity to the genesis node
 
-After performing these steps, you will have a fully functional **eos blockchain** running locally.
+After performing these steps, you will have a fully functional **Antelope-based blockchain** running locally.
 
 **Python Script**
 
-Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional EOS blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/README.md) instructions.
+Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional Antelope-based blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/README.md) instructions.
 
 If your goal is to go beyond and understand what the script is doing, you can follow this tutorial which will get you through the same steps explaining also along the way each step needed to go through.
 
