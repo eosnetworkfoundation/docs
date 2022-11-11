@@ -22,17 +22,18 @@ In this tutorial, you will learn how to perform the following tasks:
 * Transition from a single node producer to multiple node producers.
 
 ## Prerequisites
-
 Before you start this tutorial, get familiar with the following sections:
-- Overview:
-  * [Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
-  * [Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
-  * [Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
+
+### Overview
+* [Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
+* [Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
+* [Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
 
 Also, make sure to learn about the software prerequisites, and install the required software before you continue this tutorial:
-- Development Environment:
-  * [Prerequisites](http://docs.eosnetwork.com/docs/latest/getting-started/development-environment/prerequisites)
-  * [Before You Begin](http://docs.eosnetwork.com/docs/latest/getting-started/development-environment/before-you-begin)
+
+### Development Environment
+* [Software Prerequisites](http://docs.eosnetwork.com/docs/latest/getting-started/development-environment/prerequisites)
+* [Before You Begin](http://docs.eosnetwork.com/docs/latest/getting-started/development-environment/before-you-begin)
 
 ## Workflow
 
@@ -61,11 +62,11 @@ If your goal is to go beyond and understand what the script is doing, you can fo
 
 **Pre-compiled Antelope Binaries**
 
-For instructions to install the `nodeos` binaries, see the [Install Antelope pre-compiled binaries](http://docs.eosnetwork.com/leap/latest/install/install-prebuilt-binaries) tutorial but do not start `nodeos` at this stage.
+For instructions to install the `nodeos` binaries, follow the [Development Environment](#development-environment) instructions in the [Prerequisites](#prerequisites) section, but do not start `nodeos` at this stage.
 
 **CDT Binaries**
 
-For instructions to install the CDT binaries, see the [Install CDT binaries](http://docs.eosnetwork.com/cdt/latest/installation/) tutorial.
+For instructions to install the CDT binaries, follow the [Development Environment](#development-environment) instructions in the [Prerequisites](#prerequisites) section.
 
 ### **1.2. Create a development wallet**
 
