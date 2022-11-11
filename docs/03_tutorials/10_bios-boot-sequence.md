@@ -22,10 +22,17 @@ In this tutorial, you will learn how to perform the following tasks:
 * Transition from a single node producer to multiple node producers.
 
 ## Prerequisites
-Before you start this tutorial, get familiar with the following concepts:
-* [Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
-* [Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
-* [Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
+
+Before you start this tutorial, get familiar with the following sections:
+- Overview:
+  * [Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
+  * [Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
+  * [Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
+
+Also, make sure to learn about the software prerequisites, and install the required software before you continue this tutorial:
+- Development Environment:
+  * [Prerequisites](http://docs.eosnetwork.com/docs/latest/getting-started/development-environment/prerequisites)
+  * [Before You Begin](http://docs.eosnetwork.com/docs/latest/getting-started/development-environment/before-you-begin)
 
 ## Workflow
 
