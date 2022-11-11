@@ -6,12 +6,12 @@ title: "Before You Begin"
 To get started as quickly as possible we recommend using pre-built binaries. Building from source is a more advanced option that will set you back an hour or more, and you may still encounter build errors.
 
 [[info]]
-| You can find how to build Antelope from source [here](https://github.com/AntelopeIO/leap#building-from-source).
+| You can find how to build and install Antelope from source [here](https://github.com/AntelopeIO/leap#build-and-install-from-source).
 
-To install the latest Leap binaries, visit the Leap [Software Installation](https://github.com/antelopeIO/leap/#software-installation) page.
+To install the latest Leap binaries, visit the Leap [Binary Installation](https://github.com/AntelopeIO/leap#binary-installation) page.
 
 [[warning]]
-| If you have previous Leap versions installed on your system, please uninstall before proceeding. For detailed instructions, visit the Leap [Software Installation](https://github.com/antelopeIO/leap/#software-installation) page.
+| If you have previous Leap versions installed on your system, please uninstall before proceeding. For detailed instructions, visit the Leap [Binary Installation](https://github.com/AntelopeIO/leap#binary-installation) page.
 
 ## Step 2: Setup a development directory, stick to it.
 You're going to need to pick a directory to work from, it's suggested to create a `contracts` directory somewhere on your local drive.
