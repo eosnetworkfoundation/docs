@@ -413,16 +413,19 @@ executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea
 #         eosio <= eosio::newaccount            {"creator":"eosio","name":"eosio.bpay","owner":{"threshold":1,"keys":[{"key":"EOS84BLRbGbFahNJEpnnJH...
 ```
 
-### **1.8. Build eosio.contracts**
+### **1.8. Build reference-contracts**
 
-In order to build `eosio.contracts`, create a dedicated directory for `eosio.contracts`, clone the `eosio.contracts` sources and build them. Print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`.
+In order to build `reference-contracts`, clone the `reference-contracts` repository and follow the build instructions in its [README](https://github.com/AntelopeIO/reference-contracts) file. When building with `cmake`, make sure to define `CMAKE_BUILD_TYPE=Release` and `BUILD_TESTS=OFF`. Print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`. The commands should be similar too:
 
 ```shell
 cd ~
 git clone https://github.com/AntelopeIO/reference-contracts.git
 cd ./reference-contracts/
-./build.sh
-cd ./build/contracts/
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF
+make -j $(nproc)
+cd ./contracts/
 pwd
 ```
 
