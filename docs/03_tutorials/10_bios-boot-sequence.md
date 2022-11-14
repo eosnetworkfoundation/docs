@@ -4,7 +4,8 @@ link_text: BIOS Boot Sequence
 ---
 
 ## Overview
-In this tutorial, you will extend the single node blockchain to use multiple nodes. You will install various Antelope software components to set up your multi node blockchain. Finally, you will perform some node operator tasks on your new blockchain.
+
+In this tutorial, you will learn how to boostrap a new Antelope-based blockchain and get familiar with the steps involved in creating a new blockchain. You will start your boot node, load the system contracts, and then add multiple block producers to extend your single node blockcain into a multi node blockchain. Finally, you will perform some node operator tasks on your new blockchain.
 
 ## Audience
 This tutorial is useful for any node operator or blockchain developer who wants to understand how a multi node blockchain can be set up and launched. Although a typical blockchain will consist of multiple remote nodes, the commands to set up each node are to be performed in a similar fashion at each remote location.
