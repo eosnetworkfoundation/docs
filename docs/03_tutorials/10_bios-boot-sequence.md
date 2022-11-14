@@ -415,7 +415,7 @@ executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea
 
 ### **1.8. Build reference-contracts**
 
-In order to build `reference-contracts`, clone the `reference-contracts` repository and follow the build instructions in its [README](https://github.com/AntelopeIO/reference-contracts) file. When building with `cmake`, make sure to define `CMAKE_BUILD_TYPE=Release` and `BUILD_TESTS=OFF`. Print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`. The commands should be similar too:
+In order to build `reference-contracts`, clone the `reference-contracts` repository and follow the build instructions in its [README](https://github.com/AntelopeIO/reference-contracts) file. When building with `cmake`, make sure to define the `CMAKE_BUILD_TYPE=Release` and `BUILD_TESTS=OFF` flags. Print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`. The commands should be similar too:
 
 ```shell
 cd ~
@@ -504,7 +504,7 @@ executed transaction: a53961a566c1faa95531efb422cd952611b17d728edac833c9a5558242
 
 **Activate the `PREACTIVATE_FEATURE` protocol**
 
-All of the protocol upgrade features introduced in v1.8 and v2.0 first require a special protocol feature (codenamed `PREACTIVATE_FEATURE`) to be activated and for an updated version of the system contract that makes use of the functionality introduced by that feature to be deployed.
+All new protocol upgrade features require a special protocol feature (codenamed `PREACTIVATE_FEATURE`) to be activated. It is also required for an updated version of the system contract that makes use of the functionality introduced by that feature to be deployed.
 
 To activate the special protocol `PREACTIVATE_FEATURE`:
 
