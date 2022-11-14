@@ -429,27 +429,6 @@ cd ./contracts/
 pwd
 ```
 
-You will also need an older version of `eosio.contracts`, specifically v1.8.0. Follow the instructions below to build it and remember the path where it is built:
-
-1. To install eosio.cdt version 1.6.3 binaries, see the
-[Install eosio.cdt binaries](https://github.com/AntelopeIO/cdt/tree/release/1.6.x#binary-releases) tutorial.
-
-2. After the eosio.cdt 1.6.3 version is installed, you can compile the older version of eosio.contracts:
-
-```shell
-cd ~
-git clone https://github.com/AntelopeIO/eosio.contracts.git eosio.contracts-1.8.x
-cd ./eosio.contracts-1.8.x/
-git checkout release/1.8.x
-./build.sh
-cd ./build/contracts/
-pwd
-```
-
-Make note of the printed local path, we will reference to this directory as `EOSIO_OLD_CONTRACTS_DIRECTORY` from here onward when needed.
-
-3. Restore the eosio.cdt version installed at the beginning of the tutorial.
-
 ### **1.9. Install the eosio.token contract**
 
 Now we have to set the `eosio.token` contract. This contract enables you to create, issue, transfer, and get information about tokens. To set the `eosio.token` contract:
