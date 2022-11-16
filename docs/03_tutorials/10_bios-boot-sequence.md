@@ -358,17 +358,17 @@ cd ~/biosboot/genesis/
 ./genesis_start.sh
 ```
 
-### **1.6. Inspect the nodeos.log file**
+### 1.6. Inspect the nodeos.log file
 
-Inspect the `nodeos.log` file with the following command, and use `CTRL+C to` exit the listing mode.
+Inspect the `nodeos.log` file with the following command, then press `Ctrl-C` to exit the listing mode.
 
 ```shell
 cd ~/biosboot/genesis/
 tail -f ./blockchain/nodeos.log
 ```
 
-### **1.7. Create important system accounts**
-There are several system accounts that are needed, namely the following:
+### 1.7. Create system accounts
+There are several system accounts that are needed, namely:
 
 ```text
   eosio.bpay
@@ -385,27 +385,40 @@ There are several system accounts that are needed, namely the following:
 
 Repeat the following steps to create an account for each of the system accounts.  In this tutorial, we will use the same key pair for both the account owner and active keys, so we only need to provide the key value once on the command line. For most general accounts, it is a good practice to use separate keys for owner and active. The script uses the same key for all of the `eosio.*` accounts. You can use different keys for each.
 
+Type the following commands at the shell prompt:
+
 ```shell
 cleos create key --to-console
 ```
+
+The output should be similar to:
 
 ```shell
 Private key: 5KAVVPzPZnbAx8dHz6UWVPFDVFtU1P5ncUzwHGQFuTxnEbdHJL4
 Public key: EOS84BLRbGbFahNJEpnnJHYCoW9QPbQEk2iHsHGGS6qcVUq9HhutG
 ```
 
+Next, type the following at the shell:
+
 ```shell
 cleos wallet import --private-key
 ```
 
+Then paste the private key gnerated previously.
+
+The output should be similar to:
+
 ```shell
-5KAVVPzPZnbAx8dHz6UWVPFDVFtU1P5ncUzwHGQFuTxnEbdHJL4
 imported private key for: EOS84BLRbGbFahNJEpnnJHYCoW9QPbQEk2iHsHGGS6qcVUq9HhutG
 ```
+
+Now you can create the accounts and use the public key generated previously. The following command creates the account `eosio.bpay`. You should type similar commands to create all the other accounts listed previously:
 
 ```shell
 cleos create account eosio eosio.bpay EOS84BLRbGbFahNJEpnnJHYCoW9QPbQEk2iHsHGGS6qcVUq9HhutG
 ```
+
+The output should be similar to:
 
 ```shell
 executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea7a90b1  200 bytes  280 us
