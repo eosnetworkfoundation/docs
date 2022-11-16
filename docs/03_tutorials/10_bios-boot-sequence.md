@@ -425,9 +425,20 @@ executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea
 #         eosio <= eosio::newaccount            {"creator":"eosio","name":"eosio.bpay","owner":{"threshold":1,"keys":[{"key":"EOS84BLRbGbFahNJEpnnJH...
 ```
 
-### **1.8. Build reference-contracts**
+### 1.8. Build the Reference System Contracts
 
-In order to build `reference-contracts`, clone the `reference-contracts` repository and follow the build instructions in its [README](https://github.com/AntelopeIO/reference-contracts) file. When building with `cmake`, make sure to define the `CMAKE_BUILD_TYPE=Release` and `BUILD_TESTS=OFF` flags. Print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`. The commands should be similar too:
+To have a functional Antelope-based blockchain you need to install some system smart contracts:
+
+* `eosio.system`
+* `eosio.msig`
+* `eosio.token`
+* `eosio.boot`
+
+All of these contracts can be installed from the [reference-contracts](https://github.com/antelopeIO/reference-contracts/) repository.
+
+#### 1.8.1. Build reference-contracts
+
+To build the reference contracts, you need to clone the `reference-contracts` repository and follow the build instructions in its [README](https://github.com/AntelopeIO/reference-contracts) file. When building with `cmake`, make sure to define the `CMAKE_BUILD_TYPE=Release` and `BUILD_TESTS=OFF` flags. Also, print the current directory in the terminal and make a note of it. The current directory will be referred to as `EOSIO_CONTRACTS_DIRECTORY`. The commands should be similar too:
 
 ```shell
 cd ~
@@ -441,7 +452,7 @@ cd ./contracts/
 pwd
 ```
 
-### **1.9. Install the eosio.token contract**
+### 1.9. Deploy the eosio.token contract**
 
 Now we have to set the `eosio.token` contract. This contract enables you to create, issue, transfer, and get information about tokens. To set the `eosio.token` contract:
 
