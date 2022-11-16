@@ -47,37 +47,36 @@ The BIOS Boot sequence undergoes two significant workflows:
 
 The information in this section walk you through the preparatory steps for the following:
 
-* Setting up your Leap environment
-* Starting your genesis Leap node
-* Setting up additional, interconnected Leap nodes with connectivity to the genesis node
+* Set up your Leap environment
+* Start your genesis Leap node
+* Set up additional, interconnected Leap nodes with connectivity to the genesis node
 
-After performing these steps, you will have a fully functional **Antelope-based blockchain** running locally.
+At the end of the tutorial, you will have a fully functional **Antelope-based blockchain** which runs locally.
 
-**Python Script**
+[[info | Python Script]]
+| Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional Antelope-based blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/README.md) instructions.
 
-Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional Antelope-based blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/README.md) instructions.
+If your goal is to go beyond and understand what the script does in depth, you can follow this tutorial which will get you through the outcome and also explains each step along the way.
 
-If your goal is to go beyond and understand what the script is doing, you can follow this tutorial which will get you through the same steps explaining also along the way each step needed to go through.
+### 1.1. Install the Binaries
 
-### 1.1. Install the binaries
-
-**Pre-compiled Antelope Binaries**
+#### 1.1.1. Pre-compiled Antelope Binaries
 
 For instructions to install the `nodeos` binaries, follow the [Development Environment](#development-environment) instructions in the [Prerequisites](#prerequisites) section, but do not start `nodeos` at this stage.
 
-**CDT Binaries**
+#### 1.1.2. CDT Binaries
 
 For instructions to install the CDT binaries, follow the [Development Environment](#development-environment) instructions in the [Prerequisites](#prerequisites) section.
 
-### **1.2. Create a development wallet**
+### 1.2. Create a Development Wallet
 
-Create and configure your default wallet, followed by creating a public and private development keys. After the key-pair is created, import the public and private key in your wallet. For reference purposes, we will refer the public key as `EOS_PUB_DEV_KEY` and the private key as `EOS_PRIV_DEV_KEY`.
+Create and configure your default wallet, followed by creating a public and private development keys. After the key-pair is created, import the public and private key to your wallet. For reference purposes, we will refer to the public key as `EOS_PUB_DEV_KEY` and the private key as `EOS_PRIV_DEV_KEY`.
 
-For instructions on creating a wallet and importing the keys, see the [Create development wallet](https://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-create-a-wallet) tutorial.
+For instructions on creating a wallet and importing keys securely into it, see the [Create a development wallet](..\02_getting-started\02_development-environment\05_create-development-wallet.md) section.
 
-### **1.3. Create ~/biosboot/genesis directory**
+### 1.3. Create ~/biosboot/genesis directory
 
-Create a new directory `~/biosboot/genesis` to start the genesis node by executing `nodeos` with specific parameters that will create the blockchain database, the log file, and the configuration file inside the directory.
+Create a new directory `~/biosboot/genesis`. Later on, you will start the genesis node by executing `nodeos` with specific parameters that will create the blockchain database, the log file, and the configuration file inside this directory.
 
 ```shell
 cd ~
@@ -87,7 +86,7 @@ mkdir genesis
 cd genesis
 ```
 
-### **1.4. Create a JSON file in ~/biosboot/ directory**
+### 1.4. Create a JSON file in ~/biosboot directory
 
 1. Create an empty `genesis.json` file in the `~/biosboot/` directory and open it in your preferred text editor (demonstrated with nano editor here):
 
@@ -127,9 +126,9 @@ nano genesis.json
 ```
 
 3. Paste the JSON content into the `genesis.json` file.
-Replace the `EOS_PUB_DEV_KEY` with the public key you created in  *1.2 Create Development Wallet*.
+Replace the `EOS_PUB_DEV_KEY` with the public key you created in  [1.2. Create a Development Wallet](#12-create-a-development-wallet).
 
-1. Save and exit the text editor:
+4. Save and exit the text editor:
 
 ```shell
 [CTRL]+X
@@ -137,9 +136,13 @@ y
 [ENTER]
 ```
 
-### 1.5. Start the genesis node
+### 1.5. Start, stop, and restart the Genesis node
 
-To start the genesis node:
+In this section you will create scripts to start, stop, and restart the genesis node. Then, you will execute the scripts in that order, which will keep the genesis node running.
+
+#### 1.5.1. Start the Genesis node
+
+To start the genesis node follow the steps below:
 
 1. Create a `genesis_start.sh` shell script file in the `~/biosboot/genesis/` directory and open the file with your preferred editor (demonstrated with nano editor here):
 
@@ -149,7 +152,7 @@ touch genesis_start.sh
 nano genesis_start.sh
 ```
 
-2. Copy the following shell script content and paste it to the `genesis_start.sh` shell script file.
+2. Copy the following shell script content and paste it to the `genesis_start.sh` shell script file:
 
 ```shell
 #!/bin/bash
@@ -187,10 +190,8 @@ nodeos \
 echo $! > $DATADIR"/eosd.pid"
 ```
 
----
-**NOTE**:
-Replace the `EOS_PUB_DEV_KEY` and `EOS_PRIV_DEV_KEY` with the public and private key values you generated in step *1.2 Create a development wallet*.
----
+[[info | Important]]
+| Replace the `EOS_PUB_DEV_KEY` and `EOS_PRIV_DEV_KEY` with the public and private key values you generated in step [1.2. Create a Development Wallet](#12-create-a-development-wallet).
 
 3. Save and exit the text editor:
 
@@ -200,7 +201,7 @@ y
 [ENTER]
 ```
 
-4. Assign execution privileges to the `genesis_start.sh` shell script file and then  execute the `genesis_start.sh` script to start genesis `nodeos`:
+4. Assign execution privileges to the `genesis_start.sh` shell script file, then execute the `genesis_start.sh` script to start the genesis node:
 
 ```shell
 cd ~/biosboot/genesis/
@@ -208,19 +209,19 @@ chmod 755 genesis_start.sh
 ./genesis_start.sh
 ```
 
->**The Genesis node**:
->- Bears the name **eosio**
->- Produces blocks
->- Listens for HTTP request on 127.0.0.1:8888
->- Listens for peer connections requests on 127.0.0.1:9010
->- Initiates periodic peer connections to localhost:9011, localhost:9012, and localhost:9013; these nodes are not running yet so ignore if you see any failed connection attempts
->- Has the parameter `--contracts-console` which prints contracts output to the console; in our case, this information is good for troubleshooting problems
+[[info | The genesis node is defined by the following:]]
+| - Bears the name `eosio`
+| - Produces blocks
+| - Listens for HTTP request on 127.0.0.1:8888
+| - Listens for peer connections requests on 127.0.0.1:9010
+| - Initiates periodic peer connections to localhost:9011, localhost:9012, and localhost:9013; these nodes do not run yet so ignore if you see any failed connection attempts
+| - Has the parameter `--contracts-console` which prints contracts output to the console; in our case, this information is good for troubleshooting problems
 
-#### 1.5.1 Stopping the Genesis node
+#### 1.5.2. Stop the Genesis node
 
-To stop `nodeos`:
+To stop the genesis node follow the steps below:
 
-1. Create a `stop.sh` shell script file in the `~/biosboot/genesis/` directory and copy the following stop.sh script to it.
+1. Create a `stop.sh` shell script file in the `~/biosboot/genesis/` directory and copy the following `stop.sh` script to it:
 
 ```shell
 #!/bin/bash
@@ -250,9 +251,9 @@ chmod 755 stop.sh
 ./stop.sh
 ```
 
-#### 1.5.2 Restarting nodeos
+#### 1.5.3. Restart the Genesis node
 
-After stopping the `nodeos` process, you will not be able to restart it using the  `.genesis_start.sh` script created in *1.5 Start the genesis node* as once a node runs and produces blocks, the blockchain database initializes and gets populated. Thus, `nodeos` is not able to start with the `--genesis-json` parameter. Therefore, it is recommended to create a new script, `start.sh` by following the same steps outlined in *1.5 Start a genesis node* and copy the below content to the script. Also, assign execution privileges to the script and use this file for any future nodeos restarts after you stopped the process.
+After stopping the `nodeos` process, you will not be able to restart it using the  `.genesis_start.sh` script created in [1.5.1. Start the Genesis node](#151-start-the-genesis-node) since once a node runs and produces blocks, the blockchain database initializes and gets populated. Thus, `nodeos` will be unable to restart with the `--genesis-json` parameter. Therefore, it is recommended to create a new script `start.sh` and copy the content belows to it. Also, assign execution privileges to the script and use this file for any future `nodeos` restarts after the process has stopped.
 
 ```shell
 #!/bin/bash
@@ -289,20 +290,17 @@ nodeos \
 echo $! > $DATADIR"/eosd.pid"
 ```
 
-**Troubleshooting `nodeos` Restart Errors**
+#### 1.5.4. Restart Genesis node with Replay
 
-1. `"perhaps we need to replay"`: This error can occur when you restart `nodeos` due to a missing `--hard-replay` parameter which replays all the transactions from the genesis node. To overcome this error, add the parameter `--hard-replay` in the `hard_replay.sh` shell script.
+`"perhaps we need to replay"`: This error can occur when you restart `nodeos` due to a missing `--hard-replay` parameter which replays all the transactions from the genesis node. To overcome this error, add the parameter `--hard-replay` in the new `hard_replay.sh` shell script.
 
+[[info | Some other parameters that you can use to restart nodeos are:]]
+| - `--truncate-at-block`
+| - `--delete-all-blocks`
+| - `--replay-blockchain`
+| - `--hard-replay-blockchain`
 
-----
->Some other parameters that you can use to restart `nodeos` are:
->* `--truncate-at-block`
->* `--delete-all-blocks`
->* `--replay-blockchain`
->* `--hard-replay-blockchain`
-----
-
-The following is the `hard_replay.sh` shell script which is using the `--hard-replay-blockchain` parameter:
+The following is the `hard_replay.sh` shell script which uses the `--hard-replay-blockchain` parameter:
 
 ```shell
 #!/bin/bash
@@ -341,9 +339,9 @@ echo $! > $DATADIR"/eosd.pid"
 
 ```
 
-**Restarting `nodeos` from scratch**
+#### 1.5.5. Restart Genesis node from Scratch
 
-Copy the below content and create a shell script `clean.sh` and give execution permission to it:
+1. Copy the content below into the new script `clean.sh` and give execution permission to it:
 
 ```shell
 #!/bin/bash
@@ -351,7 +349,7 @@ rm -fr blockchain
 ls -al
 ```
 
-If you want to erase the current configuration, the blockchain data, configuration, and logs, first run the `stop.sh` script and after that run the `clean.sh` script which you'll have to create from below content:
+2. If you want to start the genesis node from scratch, you need to erase the current configuration, the blockchain data, and logs, first by running the `stop.sh` script, followed the `clean.sh` script. Then you restart using the `genesis_start.sh` script:
 
 ```shell
 cd ~/biosboot/genesis/
@@ -961,7 +959,7 @@ tail -f ./blockchain/nodeos.log
 
 You can test various commands, create accounts, check balance on accounts, transfer tokens between accounts, etc.
 
-For commands on creating new accounts, see the [Create test accounts](https://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-create-an-account) tutorial.
+For commands on creating new accounts, see [How to create an account](https://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-create-an-account).
 
 For commands on issuing, allocating and transferring token between accounts, see the
 [Deploy, Issue and Transfer Tokens](../02_getting-started/03_smart-contract-development/02_deploy-issue-and-transfer-tokens.md) section.
