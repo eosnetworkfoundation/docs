@@ -603,37 +603,38 @@ Producers are chosen by election. The list of producers can change. Rather than 
 
 After the `eosio.system` contract is deployed, designate `eosio.msig` as a privileged account so it can authorize on behalf of the `eosio` account. Consequently, the `eosio` account will resign its authority and the `eosio.prods` account will take over.
 
-### **2.1. Designate eosio.msig as privileged account**
+### 2.1. Designate `eosio.msig` as privileged account
 
-To designate `eosio.msig` as a privileged account:
+Run the following command to designate `eosio.msig` as a privileged account:
 
 ```shell
 cleos push action eosio setpriv '["eosio.msig", 1]' -p eosio@active
 ```
 
-### **2.2. Initialize system account**
+### 2.2. Initialize system account
 
-To initialize the `system` account with code zero (needed at initialization time) and `SYS` token with precision 4; precision can range from [0 .. 18]:
+To initialize the `system` account with code zero (needed at initialization time) and `SYS` token with precision 4 (precision can range from 0 to 18), run the following:
 
 ```shell
 cleos push action eosio init '["0", "4,SYS"]' -p eosio@active
 ```
 
-### **2.3. Stake tokens and expand the network**
+### 2.3. Stake tokens and expand the network
 
-If you've followed the tutorial steps above to this point, you now have a single host, single-node configuration with the following contracts installed:
+If you have followed the tutorial up to this point, you now have a single-host, single-node configuration with the following contracts installed:
 
 - eosio.token
 - eosio.msig
+- eosio.boot
 - eosio.system
 
-The accounts `eosio` and `eosio.msig` are privileged accounts.  The other `eosio.*` accounts are created but are not privileged.
+The accounts `eosio` and `eosio.msig` are privileged accounts. The other `eosio.*` accounts are created but they are not privileged.
 
-We are now ready to begin staking accounts and expanding the network of producers.
+You are now ready to stake and expand the network of producers.
 
-### **2.4. Create staked accounts**
+### 2.4. Create staked accounts
 
-Staking is the process of allocating tokens acquired by an entity in the "real world" (e.g., an individual purchasing something at a Crowdsale or some other means) to an account within the Antelope system.  Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated to their accounts and ready for use, and get the voting process going so that producers can get elected and the blockchain is running "live".
+Staking is the process by which you allocate and reserve tokens to an account within the Antelope-based system. Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated and distributed to the accounts so that the voting process can get started and producers can be elected for the blockchain to run "live".
 
 The following recommendation is given for the initial staking process:
 
@@ -648,7 +649,7 @@ Example 1.  accountnum11 has 100 SYS. It will be staked as 0.1000 SYS on RAM; 45
 Example 2.  accountnum33 has 5 SYS. It will be staked as 0.1000 SYS on RAM; 0.4500 SYS on CPU; 0.4500 SYS on network; and 4.0000 SYS held for liquid use.
 ```
 
-To make the tutorial more realistic, we distribute the 1B tokens to accounts using a Pareto distribution. The Pareto distribution models an 80-20 rule, e.g., in this case, 80% of the tokens are held by 20% of the population. The examples here do not show how to generate the distribution, focusing instead on the commands to do the staking. The script `bios-boot-tutorial.py` that accompanies this tutorial uses the Python NumPy (numpy) library to generate a Pareto distribution.
+To make the tutorial more realistic, distribute the 1B tokens to the accounts using a Pareto distribution. The Pareto distribution models an 80-20 rule, e.g., in this case, 80% of the tokens are held by 20% of the population. The example here does not show how to generate the distribution, but focuses instead on the commands to do the staking. The script `bios-boot-tutorial.py` that accompanies this tutorial uses the Python NumPy (numpy) library to generate a Pareto distribution.
 
 Use the following steps to stake tokens for each account. These steps must be done individually for each account.
 
@@ -687,7 +688,7 @@ executed transaction: fb47254c316e736a26873cce1290cdafff07718f04335ea4faa4cb2e58
 #         eosio <= eosio::delegatebw            {"from":"eosio","receiver":"accountnum11","stake_net_quantity":"100000.0000 SYS","stake_cpu_quantity...
 ```
 
-### **2.5. Register the new account as a producer**
+### 2.5. Register the new account as a producer
 
 To register the new account as a producer:
 
@@ -702,7 +703,7 @@ executed transaction: 4ebe9258bdf1d9ac8ad3821f6fcdc730823810a345c18509ac41f7ef9b
 
 This makes the node a candidate to be a producer, but the node will not actually be a producer unless it is elected, that is, voted for.
 
-### **2.6. List the producers**
+### 2.6. List the producers
 
 To facilitate the voting process, list the available producers. At this point, you will see only one account registered as a producer.
 
@@ -711,15 +712,14 @@ To list the producers:
 ```shell
 cleos system listproducers
 ```
-
 ```shell
 Producer      Producer key                                           Url                                                         Scaled votes
 accountnum11  EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt  https://accountnum11.com/EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22 0.0000
 ```
 
-### **2.7. Set up and start a new producer**
+### 2.7. Set up and start a new producer
 
-We will set up now a new producer using the previously created `accountnum11` account. To set up the new producer, execute these steps to create a dedicated folder for it:
+Set up a new producer using the previously created `accountnum11` account. To set up the new producer, execute these steps to create a dedicated folder to hold the producer metadata:
 
 ```shell
 cd ~/biosboot/
@@ -858,7 +858,7 @@ drwxr-xr-x   3 owner  group   960 Dec  5 10:00 ..
 -rwxr-xr-x   1 owner  group   281 Dec  5 13:08 stop.sh
 ```
 
-You are now ready to start the second producer node by executing the following commands:
+Now you can start the second producer node by executing the following commands:
 
 ```shell
 cd ~/biosboot/accountnum11/
@@ -866,11 +866,11 @@ cd ~/biosboot/accountnum11/
 tail -f blockchain/nodeos.log
 ```
 
-After executing the above commands, you should see in the command shell a live stream of `nodeos.log` file which is getting written to by the `nodeos` continuously. You can stop the live stream monitor by pressing CTRL+C keys.
+After the above commands have executed, you should see in the command shell a live stream of `nodeos.log` file being written by the `nodeos` process continuously. You can stop the live stream monitor by pressing Ctrl-C.
 
 To stop the new node, you have to execute the `stop.sh` script and to restart the node, execute the `start.sh` script and not the `genesis_start.sh` (this one is used only once in *1.5 Start the genesis node*).
 
-To erase everything and start from scratch, you can execute the following set of commands:
+To erase everything and start from scratch, you can execute the following commands:
 
 ```shell
 cd ~/biosboot/accountnum11/
