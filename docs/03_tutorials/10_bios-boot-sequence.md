@@ -452,16 +452,13 @@ cd ./contracts/
 pwd
 ```
 
-### 1.9. Deploy the eosio.token contract**
+### 1.9. Deploy the eosio.token contract
 
-Now we have to set the `eosio.token` contract. This contract enables you to create, issue, transfer, and get information about tokens. To set the `eosio.token` contract:
+Next, you have to deploy the `eosio.token` contract. This contract enables you to create, issue, transfer, and get information about tokens. To deploy the `eosio.token` contract:
 
 ```shell
 cleos set contract eosio.token EOSIO_CONTRACTS_DIRECTORY/eosio.token/
 ```
-
-Output:
-
 ```shell
 Reading WAST/WASM from /users/documents/eos/contracts/eosio.token/eosio.token.wasm...
 Using already assembled WASM...
@@ -471,16 +468,13 @@ executed transaction: 17fa4e06ed0b2f52cadae2cd61dee8fb3d89d3e46d5b133333816a04d2
 #         eosio <= eosio::setabi                {"account":"eosio.token","abi":{"types":[],"structs":[{"name":"transfer","base":"","fields":[{"name"...
 ```
 
-### **1.10. Set the eosio.msig contract**
+### 1.10. Deploy the eosio.msig contract
 
-The `eosio.msig` contract enables and simplifies defining and managing permission levels and performing multi-signature actions. To set the `eosio.msig` contract:
+The `eosio.msig` contract enables and simplifies the definition and management of permission levels and the multi-signature process. To deploy the `eosio.msig` contract run the following command:
 
 ```shell
 cleos set contract eosio.msig EOSIO_CONTRACTS_DIRECTORY/eosio.msig/
 ```
-
-Output:
-
 ```shell
 Reading WAST/WASM from /users/documents/eos/build/contracts/eosio.msig/eosio.msig.wasm...
 Using already assembled WASM...
@@ -490,18 +484,15 @@ executed transaction: 007507ad01de884377009d7dcf409bc41634e38da2feb6a117ceced855
 #         eosio <= eosio::setabi                {"account":"eosio.msig","abi":{"types":[{"new_type_name":"account_name","type":"name"}],"structs":[{...
 ```
 
-### **1.11. Create and allocate the SYS currency**
+### 1.11. Create and allocate the SYS currency
 
-Create the `SYS` currency with a maximum value of 10 billion tokens. Then, issue one billion tokens. Replace `SYS` with your specific currency designation.
+Create the `SYS` currency with a maximum value of 10 billion tokens. Then, issue one billion tokens. Replace `SYS` with your specific currency designation, if you have a different one.
 
 1. In the first step, the `create` action from the `eosio.token` contract, authorized by the `eosio.token` account, creates 1B `SYS` tokens in the `eosio` account. This effectively creates the maximum supply of tokens, but does not put any tokens into circulation. Tokens not in circulation can be considered to be held in reserve.
 
 ```shell
 cleos push action eosio.token create '[ "eosio", "10000000000.0000 SYS" ]' -p eosio.token@active
 ```
-
-Output:
-
 ```shell
 executed transaction: 0440461e0d8816b4a8fd9d47c1a6a53536d3c7af54abf53eace884f008429697  120 bytes  326 us
 #   eosio.token <= eosio.token::create          {"issuer":"eosio","maximum_supply":"10000000000.0000 SYS"}
@@ -512,24 +503,21 @@ executed transaction: 0440461e0d8816b4a8fd9d47c1a6a53536d3c7af54abf53eace884f008
 ```shell
 cleos push action eosio.token issue '[ "eosio", "1000000000.0000 SYS", "memo" ]' -p eosio@active
 ```
-
-Output:
-
 ```shell
 executed transaction: a53961a566c1faa95531efb422cd952611b17d728edac833c9a55582425f98ed  128 bytes  432 us
 #   eosio.token <= eosio.token::issue           {"to":"eosio","quantity":"1000000000.0000 SYS","memo":"memo"}
 ```
 
 [[note | Note]]
-| _As a point of interest, from an economic point of view, moving token from reserve into circulation, such as by issuing tokens, is an inflationary action. Issuing tokens is just one way that inflation can occur._
+| _As a point of interest, from an economic point of view, token movement from reserve into circulation, by issuing tokens, is an inflationary action. The tokens issuance is just one way for inflation to occur._
 
-### **1.12. Set the eosio.system contract**
-
-**Activate the `PREACTIVATE_FEATURE` protocol**
+### 1.12. Deploy the system contracts
 
 All new protocol upgrade features require a special protocol feature (codenamed `PREACTIVATE_FEATURE`) to be activated. It is also required for an updated version of the system contract that makes use of the functionality introduced by that feature to be deployed.
 
-To activate the special protocol `PREACTIVATE_FEATURE`:
+### 1.12.1. Activate the `PREACTIVATE_FEATURE` protocol
+
+To activate the special protocol `PREACTIVATE_FEATURE` launch the following command:
 
 ```shell
 curl --request POST \
