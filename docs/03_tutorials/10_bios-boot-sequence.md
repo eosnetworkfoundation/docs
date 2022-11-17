@@ -587,86 +587,21 @@ cleos push action eosio activate '["4fca8bd82bbd181e714e283f83e1b45d95ca5af40fb8
 cleos push action eosio activate '["299dcb6af692324b899b39f16d5a530a33062804e41f09dc97e9f156b4476707"]' -p eosio
 ```
 
-**Set the `eosio.system` contract**
+#### 1.12.4. Deploy `eosio.system` contract
 
-A system contract provides the actions for all token-based operational behavior. Prior to installing the system contract, actions are done independently of accounting. Once the system contract is enabled, actions now have an economic element to them. System Resources (CPU, network, memory) must be paid for and likewise, new accounts must be paid for. The system contract enables tokens to be staked and unstaked, resources to be purchased, potential producers to be registered and subsequently voted on, producer rewards to be claimed, privileges and limits to be set, and more.
-
-In the first phase, we will install the older version of the `eosio.system` contract.
-
-```shell
-cleos set contract eosio EOSIO_OLD_CONTRACTS_DIRECTORY/eosio.system/
-```
-
-```shell
-Reading WAST/WASM from /users/documents/eos/build/contracts/eosio.system/eosio.system.wasm...
-Using already assembled WASM...
-Publishing contract...
-executed transaction: 2150ed87e4564cd3fe98ccdea841dc9ff67351f9315b6384084e8572a35887cc  39968 bytes  4395 us
-#         eosio <= eosio::setcode               {"account":"eosio","vmtype":0,"vmversion":0,"code":"0061736d0100000001be023060027f7e0060067f7e7e7f7f...
-#         eosio <= eosio::setabi                {"account":"eosio","abi":{"types":[],"structs":[{"name":"buyrambytes","base":"","fields":[{"name":"p...
-```
-
-**Enable Features**
-
-After you set the `eosio.system` contract, run the following commands to enable the rest of the features which are highly recommended to be enabled for an Antelope-based blockchain.
-
----
-NOTE: Enabling these features are optional. You can choose to enable or continue without these features.
-
----
-
-```shell
-# GET_SENDER
-cleos push action eosio activate '["f0af56d2c5a48d60a4a5b5c903edfb7db3a736a94ed589d0b797df33ff9d3e1d"]' -p eosio
-
-# FORWARD_SETCODE
-cleos push action eosio activate '["2652f5f96006294109b3dd0bbde63693f55324af452b799ee137a81a905eed25"]' -p eosio
-
-# ONLY_BILL_FIRST_AUTHORIZER
-cleos push action eosio activate '["8ba52fe7a3956c5cd3a656a3174b931d3bb2abb45578befc59f283ecd816a405"]' -p eosio
-
-# RESTRICT_ACTION_TO_SELF
-cleos push action eosio activate '["ad9e3d8f650687709fd68f4b90b41f7d825a365b02c23a636cef88ac2ac00c43"]' -p eosio
-
-# DISALLOW_EMPTY_PRODUCER_SCHEDULE
-cleos push action eosio activate '["68dcaa34c0517d19666e6b33add67351d8c5f69e999ca1e37931bc410a297428"]' -p eosio
-
- # FIX_LINKAUTH_RESTRICTION
-cleos push action eosio activate '["e0fb64b1085cc5538970158d05a009c24e276fb94e1a0bf6a528b48fbc4ff526"]' -p eosio
-
- # REPLACE_DEFERRED
-cleos push action eosio activate '["ef43112c6543b88db2283a2e077278c315ae2c84719a8b25f25cc88565fbea99"]' -p eosio
-
-# NO_DUPLICATE_DEFERRED_ID
-cleos push action eosio activate '["4a90c00d55454dc5b059055ca213579c6ea856967712a56017487886a4d4cc0f"]' -p eosio
-
-# ONLY_LINK_TO_EXISTING_PERMISSION
-cleos push action eosio activate '["1a99a59d87e06e09ec5b028a9cbb7749b4a5ad8819004365d02dc4379a8b7241"]' -p eosio
-
-# RAM_RESTRICTIONS
-cleos push action eosio activate '["4e7bf348da00a945489b2a681749eb56f5de00b900014e137ddae39f48f69d67"]' -p eosio
-
-# WEBAUTHN_KEY
-cleos push action eosio activate '["4fca8bd82bbd181e714e283f83e1b45d95ca5af40fb89ad3977b653c448f78c2"]' -p eosio
-
-# WTMSIG_BLOCK_SIGNATURES
-cleos push action eosio activate '["299dcb6af692324b899b39f16d5a530a33062804e41f09dc97e9f156b4476707"]' -p eosio
-```
-
-**Deploy**
-
-Now deploy the latest version of the `eosio.system` contract:
+Run the following command to deploy the `eosio.system` contract:
 
 ```shell
 cleos set contract eosio EOSIO_CONTRACTS_DIRECTORY/eosio.system/
 ```
 
 ## 2. Transition from single genesis producer to multiple producers
+
 In the next set of steps, we will transition from a single block producer (the genesis node) to multiple producers. Up to this point, only the built-in `eosio` account is privileged and can sign blocks. The target is to manage the blockchain by a collection of elected producers, operating under a rule of **2/3 + 1** producers agreeing before a block is final.
 
 Producers are chosen by election. The list of producers can change. Rather than giving privileged authority directly to any producer, the governing rules are associated with a special built-in account named `eosio.prods`. This account represents the group of elected producers. The `eosio.prods` account (effectively the producer group) operates using permissions defined by the `eosio.msig` contract.
 
-As soon as possible after installing the `eosio.system` contract, we want to designate `eosio.msig` as a privileged account so that it can authorize on behalf of the `eosio` account. As soon as possible, `eosio` will resign its authority and `eosio.prods` will take over.
+After the `eosio.system` contract is deployed, designate `eosio.msig` as a privileged account so it can authorize on behalf of the `eosio` account. Consequently, the `eosio` account will resign its authority and the `eosio.prods` account will take over.
 
 ### **2.1. Designate eosio.msig as privileged account**
 
