@@ -239,7 +239,6 @@ sleep 1
 done
 echo -ne "\rNode Stopped. \n"
 fi
-
 ```
 
 2. Execute the `stop.sh` shell script from the same `~/biosboot/genesis/` directory:
@@ -386,13 +385,13 @@ Repeat the following steps to create an account for each of the system accounts.
 
 Type the following commands at the shell prompt:
 
+[[note | Note]]
+| _The output of each shell command is displayed immediately below, if applicable._
+
 ```shell
 cleos create key --to-console
 ```
-
-The output should be similar to:
-
-```shell
+```console
 Private key: 5KAVVPzPZnbAx8dHz6UWVPFDVFtU1P5ncUzwHGQFuTxnEbdHJL4
 Public key: EOS84BLRbGbFahNJEpnnJHYCoW9QPbQEk2iHsHGGS6qcVUq9HhutG
 ```
@@ -403,7 +402,7 @@ Next, type the following at the shell:
 cleos wallet import --private-key
 ```
 
-Then paste the private key gnerated previously.
+Then paste the private key generated previously.
 
 The output should be similar to:
 
@@ -416,10 +415,7 @@ Now you can create the accounts and use the public key generated previously. The
 ```shell
 cleos create account eosio eosio.bpay EOS84BLRbGbFahNJEpnnJHYCoW9QPbQEk2iHsHGGS6qcVUq9HhutG
 ```
-
-The output should be similar to:
-
-```shell
+```console
 executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea7a90b1  200 bytes  280 us
 #         eosio <= eosio::newaccount            {"creator":"eosio","name":"eosio.bpay","owner":{"threshold":1,"keys":[{"key":"EOS84BLRbGbFahNJEpnnJH...
 ```
@@ -460,7 +456,7 @@ Next, you have to deploy the `eosio.token` contract. This contract enables you t
 ```shell
 cleos set contract eosio.token EOSIO_CONTRACTS_DIRECTORY/eosio.token/
 ```
-```shell
+```console
 Reading WAST/WASM from /users/documents/eos/contracts/eosio.token/eosio.token.wasm...
 Using already assembled WASM...
 Publishing contract...
@@ -476,7 +472,7 @@ The `eosio.msig` contract enables and simplifies the definition and management o
 ```shell
 cleos set contract eosio.msig EOSIO_CONTRACTS_DIRECTORY/eosio.msig/
 ```
-```shell
+```console
 Reading WAST/WASM from /users/documents/eos/build/contracts/eosio.msig/eosio.msig.wasm...
 Using already assembled WASM...
 Publishing contract...
@@ -494,7 +490,7 @@ Create the `SYS` currency with a maximum value of 10 billion tokens. Then, issue
 ```shell
 cleos push action eosio.token create '[ "eosio", "10000000000.0000 SYS" ]' -p eosio.token@active
 ```
-```shell
+```console
 executed transaction: 0440461e0d8816b4a8fd9d47c1a6a53536d3c7af54abf53eace884f008429697  120 bytes  326 us
 #   eosio.token <= eosio.token::create          {"issuer":"eosio","maximum_supply":"10000000000.0000 SYS"}
 ```
@@ -504,7 +500,7 @@ executed transaction: 0440461e0d8816b4a8fd9d47c1a6a53536d3c7af54abf53eace884f008
 ```shell
 cleos push action eosio.token issue '[ "eosio", "1000000000.0000 SYS", "memo" ]' -p eosio@active
 ```
-```shell
+```console
 executed transaction: a53961a566c1faa95531efb422cd952611b17d728edac833c9a55582425f98ed  128 bytes  432 us
 #   eosio.token <= eosio.token::issue           {"to":"eosio","quantity":"1000000000.0000 SYS","memo":"memo"}
 ```
@@ -535,7 +531,7 @@ To install the `eosio.boot` contract, run the following command:
 ```shell
 cleos set contract eosio EOSIO_CONTRACTS_DIRECTORY/eosio.boot/
 ```
-```shell
+```console
 Reading WAST/WASM from /users/documents/eos/contracts/contracts/eosio.boot/build/eosio.boot.wasm...
 Using already assembled WASM...
 Publishing contract...
@@ -658,8 +654,7 @@ Use the following steps to stake tokens for each account. These steps must be do
 ```shell
 cleos create key --to-console
 ```
-
-```shell
+```console
 	Private key: 5K7EYY3j1YY14TSFVfqgtbWbrw3FA8BUUnSyFGgwHi8Uy61wU1o
 	Public key: EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt
 ```
@@ -667,8 +662,7 @@ cleos create key --to-console
 ```shell
 cleos wallet import --private-key 5K7EYY3j1YY14TSFVfqgtbWbrw3FA8BUUnSyFGgwHi8Uy61wU1o
 ```
-
-```shell
+```console
 imported private key for: EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt
 ```
 
@@ -677,8 +671,7 @@ Create a staked account with initial resources and public key.
 ```shell
 cleos system newaccount eosio --transfer accountnum11 EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt --stake-net "100000000.0000 SYS" --stake-cpu "100000000.0000 SYS" --buy-ram-kbytes 8192
 ```
-
-```shell
+```console
 775292ms thread-0   main.cpp:419                  create_action        ] result: {"binargs":"0000000000ea30551082d4334f4d113200200000"} arg: {"code":"eosio","action":"buyrambytes","args":{"payer":"eosio","receiver":"accountnum11","bytes":8192}}
 775295ms thread-0   main.cpp:419                  create_action        ] result: {"binargs":"0000000000ea30551082d4334f4d113200ca9a3b00000000045359530000000000ca9a3b00000000045359530000000001"} arg: {"code":"eosio","action":"delegatebw","args":{"from":"eosio","receiver":"accountnum11","stake_net_quantity":"100000.0000 SYS","stake_cpu_quantity":"100000.0000 SYS","transfer":true}}
 executed transaction: fb47254c316e736a26873cce1290cdafff07718f04335ea4faa4cb2e58c9982a  336 bytes  1799 us
@@ -694,7 +687,7 @@ To register the new account as a producer:
 ```shell
 cleos system regproducer accountnum11 EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt https://accountnum11.com EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt
 ```
-```
+```console
 1487984ms thread-0   main.cpp:419                  create_action        ] result: {"binargs":"1082d4334f4d11320003fedd01e019c7e91cb07c724c614bbf644a36eff83a861b36723f29ec81dc9bdb4e68747470733a2f2f6163636f756e746e756d31312e636f6d2f454f53386d5566744a586570477a64513254614364754e7553504166584a48663232756578347534316162314556763945416857740000"} arg: {"code":"eosio","action":"regproducer","args":{"producer":"accountnum11","producer_key":"EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt","url":"https://accountnum11.com/EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt","location":0}}
 executed transaction: 4ebe9258bdf1d9ac8ad3821f6fcdc730823810a345c18509ac41f7ef9b278e0c  216 bytes  896 us
 #         eosio <= eosio::regproducer           {"producer":"accountnum11","producer_key":"EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt","u...
@@ -711,7 +704,7 @@ To list the producers:
 ```shell
 cleos system listproducers
 ```
-```shell
+```console
 Producer      Producer key                                           Url                                                         Scaled votes
 accountnum11  EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22uex4u41ab1EVv9EAhWt  https://accountnum11.com/EOS8mUftJXepGzdQ2TaCduNuSPAfXJHf22 0.0000
 ```
@@ -846,8 +839,7 @@ If you executed every step without an error, your folder structure should look l
 cd ~/biosboot/accountnum11/
 ls -al
 ```
-
-```shell
+```console
 drwxr-xr-x   8 owner  group   256 Dec  7 14:17 .
 drwxr-xr-x   3 owner  group   960 Dec  5 10:00 ..
 -rwxr-xr-x   1 owner  group   40  Dec  5 13:08 clean.sh
