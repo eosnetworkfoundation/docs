@@ -1,6 +1,5 @@
 ---
 title: BIOS Boot Sequence
-link_text: BIOS Boot Sequence
 ---
 
 ## Overview
