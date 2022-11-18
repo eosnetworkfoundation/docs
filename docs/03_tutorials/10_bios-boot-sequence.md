@@ -880,11 +880,11 @@ cd ~/biosboot/accountnum11/
 tail -f blockchain/nodeos.log
 ```
 
-### **2.8. Repeat the process for creating multiple producers**
+### 2.8. Create multiple producers
 
-You can now repeat the process (starting from 2.4. till 2.7) for creating as many producers as you want each with its own staked account, own dedicated directory, named accountnumXY (with X and Y int values in interval [1..5]), and their own dedicated script files: `genesis_start.sh`, `start.sh`, `stop.sh`, `clean.sh` located in their corresponding folder.
+Now you can repeat the process (from 2.4. to 2.7) to create as many producers as you want, each with its own staked account, own dedicated directory, named `accountnumXY` (with `X` and `Y` int values in interval [`1`..`5`]), and their own dedicated script files: `genesis_start.sh`, `start.sh`, `stop.sh`, `clean.sh` located in their corresponding folder.
 
-Also, be aware of how you mesh these nodes between each other, so pay particular attention to the following parameters in the `genesis_start.sh`, `start.sh` and `hard_start.sh` scripts:
+Also, be careful how you mesh these nodes between each other, so pay particular attention to the following parameters in the `genesis_start.sh`, `start.sh`, and `hard_start.sh` scripts:
 
 ```shell
 --producer-name $CURDIRNAME \ # Producer name, set in the script to be the parent directory name
@@ -898,14 +898,15 @@ Also, be aware of how you mesh these nodes between each other, so pay particular
 --p2p-peer-address localhost:9013 \.  # Meshing with peer `accountnum13` node
 ```
 
-### **2.9. Vote for each of the block producers started**
+### 2.9. Vote for block producers
 
-At this point the nodes are started, meshed together in a network, and they receive blocks from genesis node but they do not produce.
+At this point, various nodes are launched, meshed together in a network, and they receive blocks from the genesis boot node. However, they do not produce yet.
 
 **15% Requirement**
 
-For the nodes to produce blocks, a total of 15% of the token supply must be staked and then voted for all available producers. We gave `accountnum11` enough tokens earlier.
-To elect block producers, execute the following command which allows one account to vote for as up to 30 block producers identified by their account name:
+For the nodes to produce blocks, a total of 15% of the token supply must be staked and voted for all available producers.
+
+We gave `accountnum11` enough tokens earlier. To elect block producers, execute the following command which allows one account to vote for up to 30 block producers by specifying their account name:
 
 ```shell
 cleos system voteproducer prods accountnum11 accountnum11 accountnum12 accountnum13
