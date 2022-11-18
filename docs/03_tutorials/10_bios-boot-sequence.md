@@ -359,7 +359,7 @@ cd ~/biosboot/genesis/
 
 ### 1.6. Inspect the nodeos.log file
 
-Inspect the `nodeos.log` file with the following command, then press `Ctrl-C` to exit the listing mode.
+Inspect the `nodeos.log` file with the following command, then press `[CTRL]+C` to exit the listing mode.
 
 ```shell
 cd ~/biosboot/genesis/
@@ -865,7 +865,7 @@ cd ~/biosboot/accountnum11/
 tail -f blockchain/nodeos.log
 ```
 
-After the above commands have executed, you should see in the command shell a live stream of `nodeos.log` file being written by the `nodeos` process continuously. You can stop the live stream monitor by pressing Ctrl-C.
+After the above commands have executed, you should see in the command shell a live stream of `nodeos.log` file being written by the `nodeos` process continuously. You can stop the live stream monitor by pressing `[CTRL]+C`.
 
 To stop the new node, you have to execute the `stop.sh` script and to restart the node, execute the `start.sh` script and not the `genesis_start.sh` (this one is used only once in *1.5 Start the genesis node*).
 
