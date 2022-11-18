@@ -1,5 +1,5 @@
 ---
-title: BIOS Boot Sequence
+title: BIOS Boot Sequence Tutorial
 ---
 
 ## Overview
