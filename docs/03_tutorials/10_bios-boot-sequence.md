@@ -913,16 +913,17 @@ cleos system voteproducer prods accountnum11 accountnum11 accountnum12 accountnu
 ```
 
 ## 3. Resign eosio account and system accounts
-Once producers have been elected and the minimum number requirements have been met, that is, a minimum 15% of tokens have been staked to produce votes, the `eosio` account can resign, leaving the `eosio.msig` account as the only privileged account.
 
-Resigning involves setting the keys of the `eosio.*` accounts to null. Use the following command to clear the `eosio.*` accounts' owner and active keys:
+After producers are elected and the minimum number of requirements have been met, that is, a minimum 15% of tokens have been staked for votes, the `eosio` account can resign, and leave the `eosio.msig` account as the only privileged account.
+
+To resign set the keys of the `eosio.*` accounts to `null`. Run the following command to clear the owner and active keys of the `eosio.*` accounts:
 
 ```shell
 cleos push action eosio updateauth '{"account": "eosio", "permission": "owner", "parent": "", "auth": {"threshold": 1, "keys": [], "waits": [], "accounts": [{"weight": 1, "permission": {"actor": "eosio.prods", "permission": "active"}}]}}' -p eosio@owner
 cleos push action eosio updateauth '{"account": "eosio", "permission": "active", "parent": "owner", "auth": {"threshold": 1, "keys": [], "waits": [], "accounts": [{"weight": 1, "permission": {"actor": "eosio.prods", "permission": "active"}}]}}' -p eosio@active
 ```
 
-Also, the system accounts created in step `1.7. Create important system accounts` should be resigned as well by running the following commands:
+Also, the system accounts created in step [1.7. Create system accounts](#17-create-system-accounts) should be resigned as well by running the following commands:
 
 ```shell
 cleos push action eosio updateauth '{"account": "eosio.bpay", "permission": "owner", "parent": "", "auth": {"threshold": 1, "keys": [], "waits": [], "accounts": [{"weight": 1, "permission": {"actor": "eosio", "permission": "active"}}]}}' -p eosio.bpay@owner
@@ -955,7 +956,7 @@ cleos push action eosio updateauth '{"account": "eosio.vpay", "permission": "act
 
 ## 4. Monitor, test, monitor
 
-You can monitor each `nodeos` started (either the genesis node or any of the block producers nodes) by:
+You can monitor each `nodeos` process started, either the genesis node or any of the block producers nodes, by running the following commands:
 
 ```shell
 cd ~/biosboot/genesis/
@@ -969,7 +970,7 @@ tail -f ./blockchain/nodeos.log
 
 You can test various commands, create accounts, check balance on accounts, transfer tokens between accounts, etc.
 
-For commands on creating new accounts, see [How to create an account](https://docs.eosnetwork.com/leap/latest/cleos/how-to-guides/how-to-create-an-account).
-
-For commands on issuing, allocating and transferring token between accounts, see the
-[Deploy, Issue and Transfer Tokens](../02_getting-started/03_smart-contract-development/02_deploy-issue-and-transfer-tokens.md) section.
+[[info | Accounts and Tokens]]
+| - For commands on creating new accounts, see [How to create an account](../02_getting-started/02_development-environment/07_create-test-accounts.md) on the *Getting Started* section.
+| - To issue, allocate, and transfer tokens between accounts, see the
+[Deploy, Issue and Transfer Tokens](../02_getting-started/03_smart-contract-development/02_deploy-issue-and-transfer-tokens.md) on the *Getting Started* section.
