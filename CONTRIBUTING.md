@@ -32,11 +32,11 @@ Guidelines for documentation issue reports:
 1. **Use the GitHub issue search** &mdash; check if the issue has already been reported.
 
 2. **Check if the issue has been fixed** &mdash; look for [closed issues in the
-   current milestone](https://github.com/EOSIO/welcome/issues?q=is%3Aissue+is%3Aclosed) or try to find it using the latest `master` branch.
+   current milestone](https://github.com/eosnetworkfoundation/docs/issues?q=is%3Aissue+is%3Aclosed) or try to find it using the latest `main` branch.
 
 A good issue report shouldn't leave others needing to chase you up for more information. Be sure to include the details of your environment and relevant tests that demonstrate the problem.
 
-[Report an issue](https://github.com/EOSIO/welcome/issues/new?title=%5Bdocs%5D%20Suggestion%20/%20Change%20Request)
+[Report an issue](https://github.com/eosnetworkfoundation/docs/issues/new?title=%5Bdocs%5D%20Suggestion%20/%20Change%20Request)
 
 ### New Document Request
 
@@ -63,9 +63,8 @@ Also, please follow these guidelines when submitting your proposed documentation
 ### Documentation Changes Branches
 
 To get it out of the way:
-
-- **[develop](https://github.com/EOSIO/welcome/tree/develop)** is the development branch. All work on the next release happens here so you should generally branch off `develop`. Do **NOT** use this branch for a production site.
-- **[master](https://github.com/EOSIO/welcome/tree/master)** contains the latest release of documentation. This branch may be used in production. Do **NOT** use this branch to work on documentation's source.
+- **[main](https://github.com/eosnetworkfoundation/docs/tree/main)** is the development branch. All work on the next release happens here so you should generally branch off `main`. Do **NOT** use this branch for a production site.
+- **release/** branches, if any, contain stable releases of Docs. Some of these branches may be obsolete, a prerelease (release candidate), or designated as stable and ready for use in production. Generally do **NOT** use these branches to work on Docs' source unless you are working on a defect or change that would apply to a current stable release or release candidate. If in doubt, branch off of `main` and a Docs maintainer will chime in if you should switch to a release branch.
 
 ### Submitting Pull Requests
 
