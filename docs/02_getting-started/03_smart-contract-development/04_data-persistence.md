@@ -510,7 +510,7 @@ icon:
 <h1 class="clause">Data Distribution</h1>
 ---
 spec-version: 0.0.1
-title: Data Distirbution
+title: Data Distribution
 summary: The smart contract promises to not actively share or distribute the address data. The user of the smart contract understands that data stored in a multi index table is not private data and can be accessed by any user of the blockchain.  
 icon:
 
