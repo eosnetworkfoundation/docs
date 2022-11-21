@@ -507,7 +507,7 @@ title: Data Ownership
 summary: The user of this smart contract verifies that the data is owned by the smart contract, and that the smart contract can use the data in accordance to the terms defined in the Ricardian Contract.
 icon:
 
-<h1 class="clause">Data Distirbution</h1>
+<h1 class="clause">Data Distribution</h1>
 ---
 spec-version: 0.0.1
 title: Data Distirbution
