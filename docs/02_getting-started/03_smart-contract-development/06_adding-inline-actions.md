@@ -92,7 +92,7 @@ The action constructor requires a number of parameters:
 
 ## The Permission struct
 
-In this contract the permission should be authorized by the `active` authority of the contract using `get_self()`. As a reminder, to use the 'active` authority inline you will need your contract's to give active authority to `eosio.code` pseudo-authority (instructions above)
+In this contract the permission should be authorized by the `active` authority of the contract using `get_self()`. As a reminder, to use the `active` authority inline you will need your contract's to give active authority to `eosio.code` pseudo-authority (instructions above)
 
 ```cpp
 ...
