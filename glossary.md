@@ -149,6 +149,9 @@ Employment Agreement
 ## ENF
 EOS Network Foundation
 
+## EOS Blockchain
+EOS is a smart contract blockchain project that is build with Antelope framework.
+
 ## EOSIO Types
 EOSIO source code defines a list of types which ease the developer's work when writing smart contracts, plugins, or when extending the Antelope source code. Example types include `account_name`, `permission_name`, `table_name`, `action_name`, `scope_name`, `weight_type`, `public_key`, etc.
 

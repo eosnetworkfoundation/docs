@@ -6,7 +6,7 @@ title: "Before You Begin"
 To get started as quickly as possible we recommend using pre-built binaries. Building from source is a more advanced option that will set you back an hour or more, and you may still encounter build errors.
 
 [[info]]
-| You can find how to build and install Antelope from source [here](https://github.com/AntelopeIO/leap#build-and-install-from-source).
+| You can find how to build and install EOS from source [here](https://github.com/AntelopeIO/leap#build-and-install-from-source).
 
 To install the latest Leap binaries, visit the Leap [Binary Installation](https://github.com/AntelopeIO/leap#binary-installation) page.
 
@@ -40,4 +40,4 @@ Enter the absolute path to your contract directory below, and it will be inserte
 </div>
 
 ## What's Next?
-- [Install the CDT](./04_install-the-CDT.md): Steps to install the Antelope Contract Development Toolkit (CDT) on your system.
+- [Install the CDT](./04_install-the-CDT.md): Steps to install the EOS Contract Development Toolkit (CDT) on your system.

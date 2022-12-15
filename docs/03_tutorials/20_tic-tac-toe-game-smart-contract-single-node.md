@@ -3,12 +3,12 @@ title: "Tic-tac-toe Game Contract Using Single Node"
 link_text: "Tic-tac-toe Game Contract Using Single Node"
 ---
 
-# Tic-tac-toe on Antelope
+# Tic-tac-toe on EOS
 
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on an Antelope blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to an Antelope blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../02_getting-started/index.md) section.
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../02_getting-started/index.md) section.
 
 [[info]]
-| Antelope is a blockchain software framework developed by EOS Network Foundation. Smart contracts which run on the Antelope framework should run on any blockchain which using the Antelope framework. EOS is a digital token, though it also refers to the first public blockchain run on the Antelope framework, EOS or the public mainnet. In this tutorial we will use the Antelope framework to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
+| In this tutorial we will use the EOS software to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
 
 We explain the purpose of each step and why it is important.
 
@@ -21,26 +21,26 @@ This tutorial requires the following:
 
 and
 
-* The Antelope framework software, Click on this link for instructions on [installing Antelope binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries") 
-* Familiarity with the Antelope tools `cleos` and `keosd`.
-* The Antelope Contract Development Toolkit or eosio.cdt. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions") 
+* The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries")
+* Familiarity with the EOS tools `cleos` and `keosd`
+* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions")
 * Familiarity with the `cdt` which is used to compile smart contracts. 
 
-Click on this link for an [overview of the Antelope framework.](../01_overview/index.md)
+Click on this link for an [overview of the EOS blockchain.](../01_overview/index.md)
 
-Click on this link to [get started with Antelope.](../02_getting-started/index.md "Getting Started with Antelope")
+Click on this link to [get started with EOS.](../02_getting-started/index.md "Getting Started with EOS")
 
 ## The Rules of the Game
 
-The Antelope tic-tac-toe rules are:
+The EOS tic-tac-toe rules are:
 
-* Player one (the host) makes the first move, followed by player two (the challenger). 
-* The first player to complete a row or diagonal of either X’s or O’s wins the game.
-* If no player completes a row or diagonal of either X’s or O’s, the game is a draw. 
+* Player one (the host) makes the first move, followed by player two (the challenger)
+* The first player to complete a row or diagonal of either X’s or O’s wins the game
+* If no player completes a row or diagonal of either X’s or O’s, the game is a draw
 
 ## Understanding the Game
 
-The smart contract contains the game logic, therefore this section introduces how the game works and some of the Antelope concepts needed to build a smart contract.
+The smart contract contains the game logic, therefore this section introduces how the game works and some of the EOS concepts needed to build a smart contract.
 
 ### The Game logic
 
@@ -60,7 +60,7 @@ When all the squares contain a marker and no player has three markers in a row, 
 
 ### Accounts and Key Pairs
 
-A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. Antelope blockchains use account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../04_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
+A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. EOS blockchain uses account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../04_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
 
 ### Smart Contract Actions
 
@@ -68,9 +68,9 @@ A smart contract exposes methods or ‘actions’ that transactions use to opera
 
 ![Transactions and Actions](images/tictactoe/transactions-and-actions-temp.png "Transactions and Actions")
 
-### Antelope Resources
+### EOS Resources
 
-The Antelope blockchain accounts own and consume three resources. By default a single node testnet does load the smart contract which tracks resources therefore this section is for information only:
+The EOS blockchain accounts own and consume three resources. By default a single node testnet does load the smart contract which tracks resources therefore this section is for information only:
 
 * RAM - This resource is the amount of RAM available to an account. RAM stores smart contracts loaded on the blockchain. Smart contacts use RAM via the multi-index table to store smart contract state. Spend tokens to purchase more RAM, RAM can be sold.
 * CPU - This resource is the amount of CPU which can be used by an account in each 24 hour period. Transactions consume CPU. Stake tokens for more CPU. Unstaking returns CPU. 
@@ -289,8 +289,7 @@ Game Representation
 
 ### Create tictactoe.hpp file
 
-This section creates the tictactoe.hpp file. This header file contains the declarations of the tictactoe class, the definitions of tictactoe game data structures, and the declarations of tictactoe game methods, known as actions in Antelope smart contracts.
-
+This section creates the tictactoe.hpp file. This header file contains the declarations of the tictactoe class, the definitions of tictactoe game data structures, and the declarations of tictactoe game methods, known as actions in EOS smart contracts.
 
 #### Game Data Structures
 
@@ -655,7 +654,7 @@ The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe
 
 ## Compile and Deploy
 
-To deploy the smart contract to the blockchain first use the CDT (Antelope Contract Development Toolkit) `cdt-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "cdt reference cdt-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
+To deploy the smart contract to the blockchain first use the CDT (Contract Development Toolkit) `cdt-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "cdt reference cdt-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
 
 The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.
 
@@ -816,4 +815,4 @@ cleos get table tictactoe host games
 
 ## Next Steps
 
-Visit the [Antelope Developer Portal](http://docs.eosnetwork.com/ "eosio developers portal") to learn more about Antelope and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/) 
+Visit the [EOS Developer Portal](http://docs.eosnetwork.com/ "EOS developers portal") to learn more about EOS and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/)

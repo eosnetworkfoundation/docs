@@ -4,7 +4,7 @@ title: "Creating and Linking Custom Permissions"
 
 ## Introduction
 
-On an Antelope blockchain, you can create various custom permissions for accounts.  A custom permission can later be linked to an action of a contract.  This permission system enables smart contracts to have a flexible authorization scheme.
+On the EOS blockchain, you can create various custom permissions for accounts.  A custom permission can later be linked to an action of a contract.  This permission system enables smart contracts to have a flexible authorization scheme.
 
 This tutorial illustrates the creation of a custom permission, and subsequently, how to link the permission to an action. Upon completion of the steps, the contract's action will be prohibited from executing unless the authorization of the newly linked permission is provided. This allows you to have greater granularity of control over an account and its various actions.
 

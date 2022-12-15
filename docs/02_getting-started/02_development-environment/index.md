@@ -3,7 +3,7 @@ title: Development Environment
 sidebar_position: 1
 ---
 
-Learn about Antelope's Development Environment:
+Learn about EOS Development Environment:
 
 - [Prerequisites](02_prerequisites.md)
 - [Before You Begin](03_before-you-begin.md)

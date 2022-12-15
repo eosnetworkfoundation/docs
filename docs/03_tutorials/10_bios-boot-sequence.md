@@ -4,7 +4,7 @@ title: BIOS Boot Sequence Tutorial
 
 ## Overview
 
-In this tutorial, you will learn how to boostrap a new Antelope-based blockchain and get familiar with the steps involved in its deployment. You will start your boot node, load the system contracts, and then add multiple block producers to extend your single node blockchain into a multi node network. Finally, you will perform some node operator tasks on your new blockchain.
+In this tutorial, you will learn how to boostrap a new EOS blockchain and get familiar with the steps involved in its deployment. You will start your boot node, load the system contracts, and then add multiple block producers to extend your single node blockchain into a multi node network. Finally, you will perform some node operator tasks on your new blockchain.
 
 ## Audience
 This tutorial is useful for any node operator or blockchain developer who wants to understand how a multi node blockchain can be set up and launched. Although a typical blockchain will consist of multiple remote nodes, the commands to set up each node are to be performed in a similar fashion at each remote location.
@@ -50,16 +50,16 @@ The information in this section walk you through the preparatory steps for the f
 * Start your genesis Leap node
 * Set up additional, interconnected Leap nodes with connectivity to the genesis node
 
-At the end of the tutorial, you will have a fully functional **Antelope-based blockchain** which runs locally.
+At the end of the tutorial, you will have a fully functional **EOS blockchain** which runs locally.
 
 [[info | Python Script]]
-| Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional Antelope-based blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/README.md) instructions.
+| Alternatively, if you would like to automate these steps, you can use the [bios-boot-tutorial.py](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py) python script that implements the preparatory steps. However, the script uses different and additional data values. See the file `accounts.json` for the producer names and the user account names that the script uses. If your goal is to build a fully functional EOS blockchain on your local machine by automation, you can run the `bios-boot-tutorial.py` script directly by following the [README.md](https://github.com/AntelopeIO/leap//blob/main/tutorials/bios-boot-tutorial/README.md) instructions.
 
 If your goal is to go beyond and understand what the script does in depth, you can follow this tutorial which will get you through the outcome and also explains each step along the way.
 
 ### 1.1. Install the Binaries
 
-#### 1.1.1. Pre-compiled Antelope Binaries
+#### 1.1.1. Pre-compiled EOS Binaries
 
 For instructions to install the `nodeos` binaries, follow the [Development Environment](#development-environment) instructions in the [Prerequisites](#prerequisites) section, but do not start `nodeos` at this stage.
 
@@ -424,7 +424,7 @@ executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea
 
 System smart contracts provide the actions for all token-based operational behavior. Before the system contracts are deployed, actions are done independent of accounting operations. Once the system contracts are enabled, actions now have an economic element to them. System Resources (CPU, network, memory) must be paid for, and likewise, new accounts must be paid for. The system contracts enable tokens to be staked and unstaked, resources to be purchased, potential producers to be registered, and subsequently voted on, producer rewards to be claimed, privileges and limits to be set, and more.
 
-To have a minimum functional Antelope-based blockchain you need to install at least the following system contracts:
+To have a minimum functional EOS blockchain you need to install at least the following system contracts:
 
 * `eosio.system`
 * `eosio.msig`
@@ -524,7 +524,7 @@ curl --request POST \
 
 #### 1.12.2. Deploy the `eosio.boot` contract
 
-The `eosio.boot` contract allows protocol features to be enabled on a new blockchain. These are highly recommended for any Antelope-based blockchain.
+The `eosio.boot` contract allows protocol features to be enabled on a new blockchain. These are highly recommended for any EOS blockchain.
 
 To install the `eosio.boot` contract, run the following command:
 
@@ -545,7 +545,7 @@ executed transaction: 2150ed87e4564cd3fe98ccdea841dc9ff67351f9315b6384084e8572a3
 After you deploy the `eosio.boot` contract, run the following commands to enable the rest of the features:
 
 [[info | Optional Step]]
-| These features are optional. You can choose to enable or continue without these features. However, they are highly recommended for any Antelope-based blockchain.
+| These features are optional. You can choose to enable or continue without these features. However, they are highly recommended for any EOS blockchain.
 
 ```shell
 # KV_DATABASE
@@ -629,7 +629,7 @@ You are now ready to stake and expand the network of producers.
 
 ### 2.4. Create staked accounts
 
-Staking is the process by which you allocate and reserve tokens to an account within the Antelope-based system. Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated and distributed to the accounts so that the voting process can get started and producers can be elected for the blockchain to run "live".
+Staking is the process by which you allocate and reserve tokens to an account on the EOS blockchain. Staking and unstaking are an on-going process throughout the life of a blockchain. The initial staking done during the bios boot process is special. During the bios boot sequence, accounts are staked with their tokens. However, until producers are elected, tokens are effectively in a frozen state. Thus, the goal of the initial staking done during the bios boot sequence is to get tokens allocated and distributed to the accounts so that the voting process can get started and producers can be elected for the blockchain to run "live".
 
 The following recommendation is given for the initial staking process:
 

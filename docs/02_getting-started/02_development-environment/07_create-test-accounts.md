@@ -30,9 +30,9 @@ warning: transaction executed locally, but may not be confirmed by the network y
 ```
 
 ## Step 2: Public Key
-Note in `cleos` command a public key is associated with account `alice`. Each Antelope account is associated with a public key.
+Note in `cleos` command a public key is associated with account `alice`. Each EOS account is associated with a public key.
 
-Be aware that the account name is the only identifier for ownership. You can change the public key but it would not change the ownership of your Antelope account.
+Be aware that the account name is the only identifier for ownership. You can change the public key but it would not change the ownership of your EOS account.
 
 Check which public key is associated with `alice` using [cleos get account](http://docs.eosnetwork.com/leap/latest/cleos/command-reference/get/account)
 
@@ -58,7 +58,7 @@ cpu bandwidth:
      available:          unlimited
      limit:              unlimited
 ```
-Notice that actually `alice` has both `owner` and `active` public keys. Antelope has a unique authorization structure that has added security for your account. You can minimize the exposure of your account by keeping the owner key cold, while using the key associated with your `active` permission. This way, if your `active` key were ever compromised, you could regain control over your account with your `owner` key.
+Notice that actually `alice` has both `owner` and `active` public keys. EOS has a unique authorization structure that has added security for your account. You can minimize the exposure of your account by keeping the owner key cold, while using the key associated with your `active` permission. This way, if your `active` key were ever compromised, you could regain control over your account with your `owner` key.
 
 In term of authorization, if you have a `owner` permission you can change the private key of `active` permission. But you cannot do so other way around.
 [[info | Using Different Keys for Active/Owner on a PRODUCTION Network ]]
@@ -80,4 +80,4 @@ Wallets:
 ```
 
 ## What's Next?
-- [Hello World](../03_smart-contract-development/01_hello-world.md): The Hello World of Antelope! Learn how to set up your environment and deploy your first smart contract.
+- [Hello World](../03_smart-contract-development/01_hello-world.md): The Hello World of EOS! Learn how to set up your environment and deploy your first smart contract.

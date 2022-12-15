@@ -10,7 +10,7 @@ sidebar_position: 11
 - [Developers Telegram](https://t.me/joinchat/EaEnSUPktgfoI-XPfMYtcQ)
 - [Stack Exchange](https://eosio.stackexchange.com/)
 - [Github EOS Foundation](https://github.com/eosnetworkfoundation)
-- [Github Antelope Frameowrk](https://github.com/antelopeio)
+- [Github Antelope Framework](https://github.com/antelopeio)
 - [Twitter](https://twitter.com/EOSnFoundation)
 
 ## Test Nets

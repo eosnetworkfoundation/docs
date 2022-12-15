@@ -2,9 +2,9 @@
 title: "Prerequisites"
 ---
 
-## Antelope versions
+## EOS versions
 
-The subsequent tutorials are up to date with the following Antelope components.
+The subsequent tutorials are up to date with the following EOS components.
 
 | Component | Version |
 | ------ | ------ |
@@ -14,15 +14,15 @@ The subsequent tutorials are up to date with the following Antelope components.
 
 ## Development Experience
 
-Antelope based blockchains execute user-generated applications and code using WebAssembly (WASM). WASM is an emerging web standard with widespread support from Google, Microsoft, Apple, and industry leading companies.
+The EOS blockchain executes user-generated applications and code using WebAssembly (WASM). WASM is an emerging web standard with widespread support from Google, Microsoft, Apple, and industry leading companies.
 
-At the moment the most mature toolchain for building applications that compile to WASM is clang/llvm with their C/C++ compiler. For best compatibility, it is recommended that you use the Antelope C++ toolchain.
+At the moment the most mature toolchain for building applications that compile to WASM is clang/llvm with their C/C++ compiler. For best compatibility, it is recommended that you use the EOS C++ toolchain.
 
 Other toolchains in development by 3rd parties include: Rust, Python, and Solidity. While these other languages may appear simpler, their performance will likely impact the scale of application you can build. We expect that C++ will be the best language for developing high-performance and secure smart contracts and plan to use C++ for the foreseeable future.
 
 ## Operating System
 
-The Antelope software supports the following environments for development and/or deployment:
+The EOS software supports the following environments for development and/or deployment:
 
 * Ubuntu 18.04
 * Ubuntu 20.04
@@ -33,7 +33,7 @@ The Antelope software supports the following environments for development and/or
 
 ### Command Line Knowledge
 
-There are a variety of tools provided along with Antelope which requires you to have basic command line knowledge in order to interact with.
+There are a variety of tools provided along with EOS which requires you to have basic command line knowledge in order to interact with.
 
 ## Development Tools
 
@@ -50,8 +50,8 @@ We can use any text editor that, preferably, supports C++ syntax highlighting. S
 [[info]]
 | The resources listed above are developed, offered, and maintained by third-parties and not by EOS Network Foundation. Providing information, material, or commentaries about such third-party resources does not mean we endorse or recommend any of these resources. We are not responsible, and disclaim any responsibility or liability, for your use of or reliance on any of these resources. Third-party resources may be updated, changed or terminated at any time, so the information below may be out of date or inaccurate. USAGE AND RELIANCE IS ENTIRELY AT YOUR OWN RISK
 
-<!-- validate this, or add an alternate IDE for Antelope, if any...
-Alternatively, you can try out some community driven IDEs specifically developed for Antelope:
+<!-- validate this, or add an alternate IDE for EOS, if any...
+Alternatively, you can try out some community driven IDEs specifically developed for EOS:
 
 - [EOS Studio](https://www.eosstudio.io/)
 -->
