@@ -47,7 +47,7 @@ More details about CPU as a system resource can be found [here](https://docs.eos
 
 ### Network (NET)
 
-Besides CPU and RAM, NET is also a very important resource in the EOS blockchains. NET is the network bandwidth, measured in bytes, of transactions and is referred to as `net bandwidth` on the cleos `get account` command. NET is a also a transient system resource and falls under the staking mechanism of the EOS blockchain.
+Besides CPU and RAM, NET is also a very important resource on the EOS blockchain. NET is the network bandwidth, measured in bytes, of transactions and is referred to as `net bandwidth` on the cleos `get account` command. NET is a also a transient system resource and falls under the staking mechanism of the EOS blockchain.
 
 More details about NET as a system resource can be found [here](https://docs.eosnetwork.com/system-contracts/latest/key-concepts/net).
 

@@ -49,7 +49,7 @@ You can read more about `CDT` [here](https://github.com/AntelopeIO/cdt).
 
 ## EOSJS
 
-A Javascript API SDK for integration with EOS blockchains using the EOS RPC API.
+A Javascript API SDK for integration with the EOS blockchain using the EOS RPC API.
 
 ## What's Next?
 
