@@ -3,14 +3,14 @@ title: Get Involved
 sidebar_position: 10
 ---
 
-We appreciate your interest in contributing to the Antelope framework! We always welcome contributions from our community to make our code and docs better.
+We appreciate your interest in contributing to the EOS blockchain! We always welcome contributions from our community to make our code and docs better.
 
-* [Get Involved with Antelope Community and Code](#get-involved-with-eosio-code)
-* [Get Involved with Antelope Documentation](#get-involved-with-eosio-documentation)
+* [Get Involved with EOS Community and Code](#get-involved-with-eos-code)
+* [Get Involved with EOS Documentation](#get-involved-with-eos-documentation)
 
-## Get Involved with Antelope Community and Code
+## Get Involved with EOS Community and Code
 
-The following are different ways you can get involved with the Antelope developers community and Antelope repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [Antelope Organization](https://github.com/AntelopeIO) on GitHub.
+The following are different ways you can get involved with the EOS developers community and EOS repositories. You can find repositories to contribute to in [software manuals](../manuals) and on the [Antelope Organization](https://github.com/AntelopeIO) on GitHub.
 
 For more information about the contribution guidelines of a particular repository, look for the "Contributing" link in the right-hand sidebar of the documentation.
 
@@ -18,17 +18,19 @@ For more information about the contribution guidelines of a particular repositor
 
 ### Developers Community Involvement
 
-#### Antelope Stack Exchange
-Engage the Antelope developer community over [Antelope Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to Antelope or answer questions and share your Antelope knowledge with the community.
+#### EOS Stack Exchange
 
-#### Antelope Developer Telegram
-Instantly engage the Antelope developer community over [Antelope Telegram](https://t.me/joinchat/EaEnSUPktgfoI-XPfMYtcQ) instant messenger. Get involved by sharing your expertise in Antelope development discussions, sharing community tools and projects that can assist Antelope developers, and more.
+Engage with the EOS developer community over [EOS Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to EOS or answer questions and share your EOS knowledge with the community.
 
-### Get Involved with Antelope Code
+#### EOS Developer Telegram
 
-Antelope is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [Antelope Organization](https://github.com/AntelopeIO) on Github and start contributing to the code base.
+Instantly engage with the EOS developer community over [Antelope Developers Telegram](https://t.me/antelopedevs) instant messenger. Get involved by sharing your expertise in EOS development discussions, sharing community tools and projects that can assist EOS developers, and more.
 
-There are many ways you can contribute to Antelope code. You can report an issue, submit a pull request, and review pull requests.
+### Get Involved with EOS Code
+
+Antelope framework, on which EOS code relies on, is a large open source project with over 500 repositories for its stack and core components. You can visit the repositories in the [Antelope Organization](https://github.com/AntelopeIO) on Github and start contributing to the code base.
+
+There are many ways you can contribute to EOS code. You can report an issue, submit a pull request, and review pull requests.
 
 ### Reporting an Issue
 If you're about to raise an issue because you think you've found a problem with the stack, or you'd like to make a request for a new feature in the codebase, or any other reason, please read this first.
@@ -62,14 +64,15 @@ Feature requests are welcome. Before you submit one be sure to have:
 1. Take a moment to think about whether your idea fits with the scope and aims of the project.
 1. Remember, it's up to *you* to make a strong case to convince the project's leaders of the merits of this feature. Please provide as much detail and context as possible, this means explaining the use case and why it is likely to be common.
 
-## Get Involved with Antelope Documentation
+## Get Involved with EOS Documentation
 
-The Antelope documentation is written in Markdown. You can either submit a Pull Request for quick edits or file a new docs issue. For Markdown syntax usage, see the [Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax).
+The EOS documentation is written in Markdown. You can either submit a Pull Request for quick edits or file a new docs issue. For Markdown syntax usage, see the [Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax).
 
 ### Quick Edits
+
 Quick edits allow for faster reporting of minor content issues from typographical errors to omissions.
 
-Most of the pages on the Antelope developer portal provide an **Edit** link which redirects you to the source file on Github. If you don't see the **Edit** button on the documentation page, that means the specific page is not available to be changed.
+Most of the pages on the EOS developer portal provide an **Edit** link which redirects you to the source file on Github. If you don't see the **Edit** button on the documentation page, that means the specific page is not available to be changed.
 
 To make a quick edit:
 
@@ -83,7 +86,6 @@ To make a quick edit:
 
 > If you are not signed in to your Github account, it will redirect you to the Github login page. Sign in with your username and password to continue. If you are new to Github, create a new account.
 
-
 3. Make the suggested changes in the web editor using Markdown syntax. Click the **Preview changes** tab to see the preview of the content.
 4. After suggesting your changes, scroll down to the bottom on the page. Enter a title and a description of the changes you made and click **Propose file change**.
 5. Create a ***Pull Request*** by entering a title and a description. Click **Create pull request** to submit your suggestion to us.
@@ -91,8 +93,8 @@ To make a quick edit:
 
 Congrats! You have submitted your suggestion. Our team will review your pull request and merge it if it's a valid change.
 
-
 ### Filing a Docs Issue
+
 Filing an issue in a docs repository means reporting a documentation bug in the form of a Github issue.
 
 To file a new issue:
@@ -108,31 +110,31 @@ To file a new issue:
    ![Contribution Guidelines](./file-issues-3.png)
 4. Click **Submit new issue** to submit the issue to the repository.
 
-
 ## Code of Conduct
 
 While contributing, please be respectful and constructive, so that participation in our project is a positive experience for everyone.
 
 Examples of behavior that contributes to creating a positive environment include:
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
+
+* Using welcoming and inclusive language
+* Being respectful of differing viewpoints and experiences
+* Gracefully accepting constructive criticism
+* Focusing on what is best for the community
+* Showing empathy towards other community members
 
 Examples of unacceptable behavior include:
-- The use of sexualized language or imagery and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others’ private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
 
+* The use of sexualized language or imagery and unwelcome sexual attention or advances
+* Trolling, insulting/derogatory comments, and personal or political attacks
+* Public or private harassment
+* Publishing others’ private information, such as a physical or electronic address, without explicit permission
+* Other conduct which could reasonably be considered inappropriate in a professional setting
 
 ## Contributor License & Acknowledgments
 
 Whenever you make a contribution to this project, you license your contribution under the same terms as set out in [LICENSE](./LICENSE), and you represent and warrant that you have the right to license your contribution under those terms.  Whenever you make a contribution to this project, you also certify in the terms of the Developer’s Certificate of Origin set out below:
 
-```
+```txt
 Developer Certificate of Origin
 Version 1.1
 

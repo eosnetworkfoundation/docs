@@ -4,7 +4,7 @@ title: "Payable actions"
 
 ## Goal
 
-This tutorial illustrates how to write a smart contract that has payable actions. Payable actions are actions that require you to transfer some tokens to actions prior to use other functionality of the smart contract. Also, the Antelope `asset` type is covered in this tutorial.
+This tutorial illustrates how to write a smart contract that has payable actions. Payable actions are actions that require you to transfer some tokens to actions prior to use other functionality of the smart contract. Also, the EOS `asset` type is covered in this tutorial.
 
 As for the logic of this smart contract, we're going to write a contract that accepts a particular token but will not allow the tokens to be withdrawn for a specific amount of time.
 

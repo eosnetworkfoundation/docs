@@ -2,7 +2,7 @@
 title: "Install the CDT"
 ---
 
-The Antelope Contract Development Toolkit, CDT for short, is a collection of tools related to smart contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
+The EOS Contract Development Toolkit, CDT for short, is a collection of tools related to smart contract compilation. Subsequent tutorials use the CDT primarily for compiling contracts and generating ABIs.
 
 ## Install from Binaries
 

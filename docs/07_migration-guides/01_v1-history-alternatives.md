@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # V1 History Alternatives
 
-The latest Antelope v3.1 release officially ends support for the legacy V1 History plugin. Therefore, block producers and node operators who have integrations that rely on V1 History must seek alternative solutions.
+The latest EOS v3.1 release officially ends support for the legacy V1 History plugin. Therefore, block producers and node operators who have integrations that rely on V1 History must seek alternative solutions.
 
 ## Production Ready Alternatives
 
@@ -25,7 +25,7 @@ Roborovski History API is implemented and ran by [Greymass Inc.](https://greymas
 
 ## What makes the Roborovski History API safe
 
-Roborovski History API has a high degree of safety because it is created by [Greymass Inc.](https://greymass.com/) which has been a credible and stable block producer and wallet developer (Anchor) company for EOS, WAX, TELOS, PROTON, FIO and other Antelope based chains.
+Roborovski History API has a high degree of safety because it is created by [Greymass Inc.](https://greymass.com/) which has been a credible and stable block producer and wallet developer (Anchor) company for EOS, WAX, TELOS, PROTON, FIO and other EOS based chains.
 
 ## Understanding the risks associated with hosted solutions
 
@@ -81,7 +81,7 @@ Hyperion History requires the following components for a fully functional Hyperi
 - **Elasticsearch Cluster** - stores all indexed data
 - **RabbitMQ** - message/data transport/queue for indexer stages
 - **Redis** - used as predictive temporary database
-- **Antelope State History plugin** - feeds action traces and state deltas to indexer via websocket
+- **EOS State History plugin** - feeds action traces and state deltas to indexer via websocket
 - **Hyperion Indexer** - indexes State History data (launched from PM2 Node.js manager)
 - **Hyperion API** - API server that listens to V1/V2 requests
 

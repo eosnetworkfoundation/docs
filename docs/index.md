@@ -3,13 +3,13 @@ title: Welcome
 sidebar_position: 1
 ---
 
-## What is Antelope
+## What is EOS
 
-The Antelope blockchain framework is the next-generation, open-source framework with industry-leading transaction speed and a flexible utility. As a blockchain framework, Antelope is designed for enterprise-grade use cases and built for both public and private blockchain deployments. Antelope is customizable to suit a wide range of business needs across industries with role-based permissions system and secure application transactions processing.
+The EOS blockchain is the next-generation, open-source blockchain with industry-leading transaction speed and a flexible utility. The EOS blockchain is public, designed for enterprise-grade use cases and customizable to suit a wide range of business needs across industries with role-based permissions system and secure application transactions processing.
 
-Building distributed applications on Antelope follows familiar development patterns and programming languages used for developing non-blockchain applications. For application developers, familiarity with the development environment results in a seamless user experience as it allows developers to use their preferred development tools.
+Building distributed applications on EOS follows familiar development patterns and programming languages used for developing non-blockchain applications. For application developers, familiarity with the development environment results in a seamless user experience as it allows developers to use their preferred development tools.
 
-The Antelope framework provides functionalities such as accounts, authentication, databases, asynchronous communication, and the scheduling of applications across multiple CPU cores and clusters. These functionalities are also common in non-blockchain software development environments.
+The EOS blockchain provides functionalities such as accounts, authentication, databases, asynchronous communication, and the scheduling of applications across multiple CPU cores and clusters. These functionalities are also common in non-blockchain software development environments.
 
 ## About Blockchain
 

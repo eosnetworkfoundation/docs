@@ -84,7 +84,7 @@ Enter the public key provided in the last step in the box below. It will persist
 <div class="antelope-helper-box"><form id="YOUR_PUBLIC_KEY"><label>Development Public Key</label><input class="helper-cookie" name="YOUR_PUBLIC_KEY" type="text" /><input type="submit" /><span></span></form></div>
 
 ## Step 6: Import the Development Key
-Every new Antelope chain has a default "system" user called "eosio". This account is used to setup the chain by loading system contracts that dictate the governance and consensus of the Antelope chain. Every new Antelope chain comes with a development key, and this key is the same. Load this key to sign transactions on behalf of the system user (eosio)
+Every new EOS chain has a default "system" user called "eosio". This account is used to setup the chain by loading system contracts that dictate the governance and consensus of the EOS chain. Every new EOS chain comes with a development key, and this key is the same. Load this key to sign transactions on behalf of the system user (eosio)
 
 ```shell
 cleos wallet import

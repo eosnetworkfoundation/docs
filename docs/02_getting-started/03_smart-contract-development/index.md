@@ -3,7 +3,7 @@ title: Smart Contract Development
 sidebar_position: 2
 ---
 
-Learn Smart Contract Developemnt on Antelope:
+Learn Smart Contract Developemnt on EOS:
 
 - [Hello World Contract](01_hello-world.md)
 - [Deploy, Issue and Transfer Tokens](02_deploy-issue-and-transfer-tokens.md)
