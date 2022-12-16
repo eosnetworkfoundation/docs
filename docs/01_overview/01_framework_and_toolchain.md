@@ -53,4 +53,4 @@ A Javascript API SDK for integration with the EOS blockchain using the EOS RPC A
 
 ## What's Next?
 
-- [Core Concepts](02_core_concepts.md): Learn about EOS's core concepts
+- [Core Concepts](02_core_concepts.md): Learn about EOS' core concepts

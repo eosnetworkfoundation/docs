@@ -7,7 +7,7 @@ Application Binary Interface. A JSON-based description on how to convert user ac
 ## Account
 An account is a unique identifier and a requirement to interact with an Antelope-based blockchain. Unlike most other cryptocurrencies, transfers are sent to a human readable account name instead of a public key, while keys attributed to the account are used to sign transactions.  
 
-An account is a participant in an Antelope blockchain. 
+An account is a participant in an Antelope blockchain.
 
 An account is a collection of authorizations, stored on the blockchain, and is used to identify a sender/recipient. It has a flexible authorization structure that enables it to be owned either by an individual or group of individuals depending on how permissions have been configured. An account is required to send or receive a valid transaction to the blockchain. Ownership of each account on an Antelope blockchain is solely determined by the account name.
 
@@ -150,10 +150,10 @@ Employment Agreement
 EOS Network Foundation
 
 ## EOS Blockchain
-EOS is a smart contract blockchain project that is build with Antelope framework.
+EOS is a smart contract blockchain project that is built with Antelope framework.
 
 ## EOSIO Types
-EOSIO source code defines a list of types which ease the developer's work when writing smart contracts, plugins, or when extending the Antelope source code. Example types include `account_name`, `permission_name`, `table_name`, `action_name`, `scope_name`, `weight_type`, `public_key`, etc.
+The EOS source code defines a list of types which ease the developer's work when writing smart contracts, plugins, or when extending the EOS source code. Example types include `account_name`, `permission_name`, `table_name`, `action_name`, `scope_name`, `weight_type`, `public_key`, etc.
 
 ## EOSJS
 A frontend library for javascript development for native mobile applications development, in addition to Swift and Java SDKs. A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API. 

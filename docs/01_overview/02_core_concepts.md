@@ -10,7 +10,7 @@ An account is a human-readable name that is stored on the blockchain. It can be 
 
 ### Wallets
 
-Wallets are clients that store keys that may or may not be associated with the permissions of one or more accounts. Ideally, a wallet has a locked (encrypted) and unlocked (decrypted) state that is protected by a high entropy password. The Antelope/leap repository, which EOS blockchain is built on, comes bundled with a CLI client called `cleos` that interfaces with a lite-client called `keosd` and together, they demonstrate this pattern.
+Wallets are clients that store keys that may or may not be associated with the permissions of one or more accounts. Ideally, a wallet has a locked (encrypted) and unlocked (decrypted) state that is protected by a high entropy password. The [AntelopeIO/leap](https://github.com/AntelopeIO/leap) repository, which the EOS blockchain is built on, comes bundled with a CLI client called `cleos` that interfaces with a lite-client called `keosd` and together, they demonstrate this pattern.
 
 ### Authorization and Permissions
 
@@ -25,7 +25,7 @@ A smart contract is a piece of code that can execute on a blockchain and keep th
 
 ## Delegated Proof of Stake (DPOS)
 
-The EOS blockchain implements a proven decentralized consensus algorithm capable of meeting the performance requirements of applications on the blockchain called the _Delegated Proof of Stake_ (DPOS). Under this algorithm, if you hold tokens on EOS blockchain, you can select block producers through a continuous approval voting system. Anyone can choose to participate in the block production and will be given an opportunity to produce blocks, provided they can persuade token holders to vote for them.
+The EOS blockchain implements a proven decentralized consensus algorithm capable of meeting the performance requirements of applications on the blockchain called the _Delegated Proof of Stake_ (DPOS). Under this algorithm, if you hold tokens on the EOS blockchain, you can select block producers through a continuous approval voting system. Anyone can choose to participate in the block production and will be given an opportunity to produce blocks, provided they can persuade token holders to vote for them.
 
 For more information about DPOS BFT, see [EOS Consensus](../04_protocol/01_consensus_protocol.md#3-eosio-consensus-dpos--abft).
 

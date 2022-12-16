@@ -70,7 +70,7 @@ Hyperion History API provides both V2 and V1 (legacy history plugin) endpoints. 
 
 ## What makes the Hyperion safe
 
-Hyperion is developed and maintained by EOS Rio: https://eosrio.io/hyperion/ and has been battle tested on every EOS public network (EOS, WAX, TELOS, PROTON, FIO, etc).
+Hyperion is developed and maintained by EOS Rio: https://eosrio.io/hyperion/ and has been battle tested on every Antelope public network (EOS, WAX, TELOS, PROTON, FIO, etc).
 
 * Github: https://github.com/eosrio/Hyperion-History-API
 * Documentation: https://hyperion.docs.eosrio.io/

@@ -20,11 +20,11 @@ For more information about the contribution guidelines of a particular repositor
 
 #### EOS Stack Exchange
 
-Engage the EOS developer community over [EOS Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to EOS or answer questions and share your EOS knowledge with the community.
+Engage with the EOS developer community over [EOS Stack Exchange](https://eosio.stackexchange.com/). You can ask a question related to EOS or answer questions and share your EOS knowledge with the community.
 
 #### EOS Developer Telegram
 
-Instantly engage the EOS developer community over [Antelope Developers Telegram](https://t.me/antelopedevs) instant messenger. Get involved by sharing your expertise in EOS development discussions, sharing community tools and projects that can assist EOS developers, and more.
+Instantly engage with the EOS developer community over [Antelope Developers Telegram](https://t.me/antelopedevs) instant messenger. Get involved by sharing your expertise in EOS development discussions, sharing community tools and projects that can assist EOS developers, and more.
 
 ### Get Involved with EOS Code
 

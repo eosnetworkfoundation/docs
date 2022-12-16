@@ -407,7 +407,7 @@ Eventually, both the node and its peer receive new fresh blocks from other peers
 *   The node sends a catch up request message to the peer with its head block info.
 *   The node sends a catch up notice message to inform the peer it needs to sync.
 
-In the first case, the node switches the mode from in-sync to head catchup mode. In the second case, the peer switches to head catchup mode after receiving the notice message from the node. In practice, in-sync mode is short-lived. When EOS blockchain is very busy, nodes spend most of their time in catchup mode validating transactions and syncing their chains after catchup messages are received.
+In the first case, the node switches the mode from in-sync to head catchup mode. In the second case, the peer switches to head catchup mode after receiving the notice message from the node. In practice, in-sync mode is short-lived. When the EOS blockchain is very busy, nodes spend most of their time in catchup mode validating transactions and syncing their chains after catchup messages are received.
 
 
 # 4. Protocol Algorithm
