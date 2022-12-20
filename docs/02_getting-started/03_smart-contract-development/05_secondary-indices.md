@@ -115,12 +115,10 @@ cleos push action addressbook upsert '["alice", "alice", "liddell", 9, "123 drin
 cleos push action addressbook upsert '["bob", "bob", "is a guy", 49, "doesnt exist", "somewhere", "someplace"]' -p bob@active
 ```
 
-Look up alice's address by the age index. Here the `--index 2` parameter is used to indicate that the query applies to the secondary index
+Look up Alice's address using the age index. Here the `--index 2` parameter is used to indicate that the query applies to the secondary index (the age). We also use the `--upper 10` parameter option to select all entries with an age 10 or less, which should match only Alice.
 
 ```shell
-cleos get table addressbook addressbook people --upper 10 \
---key-type i64 \
---index 2
+cleos get table addressbook addressbook people --upper 10 --key-type i64 --index 2
 ```
 
 You should see something like the following
@@ -142,7 +140,7 @@ You should see something like the following
 }
 ```
 
-Look it up by Bob's age
+Again, using the `--upper 50` option, look up all entries with an age 50 or less, which should match both Bob and Alice. The documentation for the cleos `get table` call can be found [here](https://developers.eos.io/manuals/eos/v2.0/cleos/command-reference/get/table).
 
 ```shell
 cleos get table addressbook addressbook people --upper 50 --key-type i64 --index 2
