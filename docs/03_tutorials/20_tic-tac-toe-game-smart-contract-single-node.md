@@ -5,7 +5,7 @@ link_text: "Tic-tac-toe Game Contract Using Single Node"
 
 # Tic-tac-toe on EOS
 
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../02_getting-started/index.md) section.
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../20_getting-started/index.md) section.
 
 [[info]]
 | In this tutorial we will use the EOS software to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
@@ -21,14 +21,14 @@ This tutorial requires the following:
 
 and
 
-* The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](../02_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries")
+* The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](../20_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries")
 * Familiarity with the EOS tools `cleos` and `keosd`
-* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions")
+* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.](../20_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions")
 * Familiarity with the `cdt` which is used to compile smart contracts. 
 
 Click on this link for an [overview of the EOS blockchain.](../10_overview/index.md)
 
-Click on this link to [get started with EOS.](../02_getting-started/index.md "Getting Started with EOS")
+Click on this link to [get started with EOS.](../20_getting-started/index.md "Getting Started with EOS")
 
 ## The Rules of the Game
 
@@ -245,7 +245,7 @@ The tictactoe.hpp file (or header file) contains the declarations of the smart c
 
 The tictactoe.cpp file contains implementations of the smart contract actions declared in the tictactoe.hpp header file and uses the data structures declared in the header file.
 
-The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `cdt-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Understand ABI Files") 
+The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `cdt-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../20_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Understand ABI Files") 
 
 ### Game Board Representation
 
@@ -296,7 +296,7 @@ This section creates the tictactoe.hpp file. This header file contains the decla
 The tic-tac-toe smart contract hpp file defines the following public data structures to store game information.  
 
 * game - The game data structure contains game data. The structure has variables of type `eosio::name`, for challenger, host, turn and winner. Click on this link for a definition of [eosio::name](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1name "eosio.cdt reference - name structure") . The structure has a `std::vector` representing the game board  
-* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](../02_getting-started/03_smart-contract-development/04_data-persistence.md) 
+* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](../20_getting-started/03_smart-contract-development/04_data-persistence.md) 
 
 #### Game Actions
 
@@ -656,7 +656,7 @@ The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe
 
 To deploy the smart contract to the blockchain first use the CDT (Contract Development Toolkit) `cdt-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "cdt reference cdt-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
 
-The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../02_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.
+The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../20_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.
 
 ### Compilation
 
@@ -677,7 +677,7 @@ Warning, action <close> does not have a ricardian contract
 Warning, action <move> does not have a ricardian contract
 ```
 
-For this tutorial we ignore these warnings. Click on the following link for a tutorial showing how to add the optional ricardian contracts [Prepare the Ricardian Contract](../02_getting-started/03_smart-contract-development/04_data-persistence.md#step-10-prepare-the-ricardian-contract-optional "Getting Started - Data Peristence")
+For this tutorial we ignore these warnings. Click on the following link for a tutorial showing how to add the optional ricardian contracts [Prepare the Ricardian Contract](../20_getting-started/03_smart-contract-development/04_data-persistence.md#step-10-prepare-the-ricardian-contract-optional "Getting Started - Data Peristence")
 
 The tictactoe directory now contains two new files, `tictactoe.wasm` and `tictactoe.abi`.
 
