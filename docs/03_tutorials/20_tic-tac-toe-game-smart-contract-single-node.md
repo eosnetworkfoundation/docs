@@ -26,7 +26,7 @@ and
 * The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.](../02_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions")
 * Familiarity with the `cdt` which is used to compile smart contracts. 
 
-Click on this link for an [overview of the EOS blockchain.](../01_overview/index.md)
+Click on this link for an [overview of the EOS blockchain.](../10_overview/index.md)
 
 Click on this link to [get started with EOS.](../02_getting-started/index.md "Getting Started with EOS")
 
@@ -76,7 +76,7 @@ The EOS blockchain accounts own and consume three resources. By default a single
 * CPU - This resource is the amount of CPU which can be used by an account in each 24 hour period. Transactions consume CPU. Stake tokens for more CPU. Unstaking returns CPU. 
 * NET - This resource is the amount of data which can be written to blockchain blocks by an account in each 24 hour period. The blockchain blocks store transactions and transaction parameters, the history of blockchain . Stake tokens for more NET. Unstaking returns NET.
 
-For more information click on this link [Core Concepts](../01_overview/02_core_concepts.md)
+For more information click on this link [Core Concepts](../10_overview/02_core_concepts.md)
 
 ## Run a local single node testnet
 
