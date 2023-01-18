@@ -1,6 +1,5 @@
 ---
 title: Get Involved
-sidebar_position: 10
 ---
 
 We appreciate your interest in contributing to the EOS blockchain! We always welcome contributions from our community to make our code and docs better.
