@@ -1,8 +1,8 @@
 ---
-title: Smart Contract Development
+title: Tutorials
 ---
 
-Learn Smart Contract Developemnt on EOS:
+Learn Smart Contract Development on EOS by doing the following tutorials:
 
 - [Hello World Contract](01_hello-world.md)
 - [Deploy, Issue and Transfer Tokens](02_deploy-issue-and-transfer-tokens.md)
