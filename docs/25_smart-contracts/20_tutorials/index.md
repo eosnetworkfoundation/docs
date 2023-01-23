@@ -1,6 +1,5 @@
 ---
 title: Smart Contract Development
-sidebar_position: 2
 ---
 
 Learn Smart Contract Developemnt on EOS:
