@@ -245,7 +245,7 @@ The tictactoe.hpp file (or header file) contains the declarations of the smart c
 
 The tictactoe.cpp file contains implementations of the smart contract actions declared in the tictactoe.hpp header file and uses the data structures declared in the header file.
 
-The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `cdt-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../20_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Understand ABI Files") 
+The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `cdt-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../25_smart-contracts/20_tutorials/15_understanding-ABI-files.md "Understand ABI Files") 
 
 ### Game Board Representation
 
@@ -296,7 +296,7 @@ This section creates the tictactoe.hpp file. This header file contains the decla
 The tic-tac-toe smart contract hpp file defines the following public data structures to store game information.  
 
 * game - The game data structure contains game data. The structure has variables of type `eosio::name`, for challenger, host, turn and winner. Click on this link for a definition of [eosio::name](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1name "eosio.cdt reference - name structure") . The structure has a `std::vector` representing the game board  
-* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](../20_getting-started/03_smart-contract-development/04_data-persistence.md) 
+* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](../25_smart-contracts/20_tutorials/20_data-persistence.md) 
 
 #### Game Actions
 
@@ -656,7 +656,7 @@ The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe
 
 To deploy the smart contract to the blockchain first use the CDT (Contract Development Toolkit) `cdt-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "cdt reference cdt-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
 
-The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../20_getting-started/03_smart-contract-development/03_understanding-ABI-files.md "Getting Started - ABI files") for more information.
+The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../25_smart-contracts/20_tutorials/15_understanding-ABI-files.md "Getting Started - ABI files") for more information.
 
 ### Compilation
 
@@ -677,7 +677,7 @@ Warning, action <close> does not have a ricardian contract
 Warning, action <move> does not have a ricardian contract
 ```
 
-For this tutorial we ignore these warnings. Click on the following link for a tutorial showing how to add the optional ricardian contracts [Prepare the Ricardian Contract](../20_getting-started/03_smart-contract-development/04_data-persistence.md#step-10-prepare-the-ricardian-contract-optional "Getting Started - Data Peristence")
+For this tutorial we ignore these warnings. Click on the following link for a tutorial showing how to add the optional ricardian contracts [Prepare the Ricardian Contract](../25_smart-contracts/20_tutorials/20_data-persistence.md#step-10-prepare-the-ricardian-contract-optional "Getting Started - Data Peristence")
 
 The tictactoe directory now contains two new files, `tictactoe.wasm` and `tictactoe.abi`.
 

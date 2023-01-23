@@ -80,4 +80,4 @@ Wallets:
 ```
 
 ## What's Next?
-- [Hello World](../03_smart-contract-development/01_hello-world.md): The Hello World of EOS! Learn how to set up your environment and deploy your first smart contract.
+- [Hello World](../../25_smart-contracts/20_tutorials/05_hello-world.md): The Hello World of EOS! Learn how to set up your environment and deploy your first smart contract.

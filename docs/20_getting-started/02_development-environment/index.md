@@ -1,6 +1,5 @@
 ---
 title: Development Environment
-sidebar_position: 1
 ---
 
 Learn about EOS Development Environment:

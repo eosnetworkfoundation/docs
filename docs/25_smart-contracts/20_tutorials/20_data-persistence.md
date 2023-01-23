@@ -764,4 +764,4 @@ You've learned how to configure tables, instantiate tables, create new rows, mod
 
 ## What's Next?
 
-- [Secondary Indices](./05_secondary-indices.md): Learn how to add another index to the `addressbook` contract that you created in the preceding **Data Persistence** section.
+- [Secondary Indices](./30_secondary-indices.md): Learn how to add another index to the `addressbook` contract that you created in the preceding **Data Persistence** section.
