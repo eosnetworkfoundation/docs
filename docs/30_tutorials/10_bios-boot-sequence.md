@@ -964,4 +964,4 @@ You can test various commands, create accounts, check balance on accounts, trans
 [[info | Accounts and Tokens]]
 | - For commands on creating new accounts, see [How to create an account](../20_getting-started/02_development-environment/07_create-test-accounts.md) on the *Getting Started* section.
 | - To issue, allocate, and transfer tokens between accounts, see the
-[Deploy, Issue and Transfer Tokens](../20_getting-started/03_smart-contract-development/02_deploy-issue-and-transfer-tokens.md) on the *Getting Started* section.
+[Deploy, Issue and Transfer Tokens](../25_smart-contracts/20_tutorials/10_deploy-issue-and-transfer-tokens.md) on the *Getting Started* section.

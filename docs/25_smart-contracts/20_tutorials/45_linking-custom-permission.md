@@ -79,4 +79,4 @@ executed transaction:
 
 ## What's Next?
 
-- [Payable Actions](./10_payable_actions.md): Learn how write a smart contract that has payable actions. 
+- [Payable Actions](./50_payable_actions.md): Learn how write a smart contract that has payable actions. 
