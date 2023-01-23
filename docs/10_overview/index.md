@@ -1,6 +1,5 @@
 ---
 title: Overview
-sidebar_position: 2
 ---
 
 Learn about EOS's available tools, the core concepts and underlying technical features:

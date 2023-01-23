@@ -1,6 +1,5 @@
 ---
 title: Migration Guides
-sidebar_position: 8
 ---
 
 Learn about EOS History Alternative:

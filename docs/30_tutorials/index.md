@@ -1,6 +1,5 @@
 ---
 title: Tutorials
-sidebar_position: 4
 ---
 
 1. [BIOS Boot Sequence](10_bios-boot-sequence.md): Demonstrates how to bootstrap a new EOS blockchain

@@ -1,6 +1,5 @@
 ---
 title: Resources
-sidebar_position: 11
 ---
 
 - [Community](https://eosnetwork.com/community/)
