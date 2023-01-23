@@ -43,9 +43,6 @@ nodeos -e -p eosio \
 --plugin eosio::producer_api_plugin \
 --plugin eosio::chain_api_plugin \
 --plugin eosio::http_plugin \
---plugin eosio::history_plugin \
---plugin eosio::history_api_plugin \
---filter-on="*" \
 --access-control-allow-origin='*' \
 --contracts-console \
 --http-validate-host=false \
@@ -53,9 +50,9 @@ nodeos -e -p eosio \
 ```
 These settings accomplish the following:
 
-1. Run **Nodeos. This** command loads all the basic plugins, set the server address, enable CORS and add some contract debugging and logging.
+1. Run **Nodeos**. This command loads all the basic plugins, set the server address, enable CORS and add some contract debugging and logging.
 
-2. Enable CORS with no restrictions (*) and development logging
+2. The flag `--access-control-allow-origin='*'` enables CORS with no restrictions (*)
 
 
 [[warning]]
