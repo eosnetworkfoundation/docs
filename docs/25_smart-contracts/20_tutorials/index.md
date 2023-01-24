@@ -13,3 +13,4 @@ Learn Smart Contract Development on EOS by doing the following tutorials:
 - [Inline Actions to External Contracts](40_inline-action-to-external-contract.md)
 - [Creating and Linking Custom Permissions](45_linking-custom-permission.md)
 - [Payable actions](50_payable_actions.md)
+- [Tic-tac-toe Game Contract](55_tic-tac-toe-game-smart-contract-single-node.md)
