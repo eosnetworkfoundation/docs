@@ -422,7 +422,7 @@ executed transaction: ca68bb3e931898cdd3c72d6efe373ce26e6845fc486b42bc5d185643ea
 
 ### 1.8. Build the Reference System Contracts
 
-System smart contracts provide the actions for all token-based operational behavior. Before the system contracts are deployed, actions are done independent of accounting operations. Once the system contracts are enabled, actions now have an economic element to them. System Resources (CPU, network, memory) must be paid for, and likewise, new accounts must be paid for. The system contracts enable tokens to be staked and unstaked, resources to be purchased, potential producers to be registered, and subsequently voted on, producer rewards to be claimed, privileges and limits to be set, and more.
+System smart contracts provide the actions for all token-based operational behavior. Before the system contracts are deployed, actions are done independent of accounting operations. Once the system contracts are enabled, actions now have an economic element to them. System Resources (CPU, network, memory) must be paid for, and likewise, new accounts must be paid for. The system contracts enable tokens to be staked and unstaked for voting power, resources to be purchased, potential producers to be registered, and subsequently voted on, producer rewards to be claimed, privileges and limits to be set, and more.
 
 To have a minimum functional EOS blockchain you need to install at least the following system contracts:
 

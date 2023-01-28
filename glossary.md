@@ -99,7 +99,7 @@ On completion of the transaction, a transaction receipt is generated. Receiving 
 The core is used to refer to the Antelope blockchain native components, e.g. native actions, chain libraries, nodeos daemon, etc. The core is the Antelope platform on which Antelope-based blockchains can be instantiated and tailored by means of deploying smart contracts (including the system smart contracts). Therefore, the system smart contracts are not considered part of the core or native blockchain implementation.
 
 ## CPU
-Central Processing Unit. CPU is processing power granted to an account by an Antelope-based blockchain. The amount of CPU an account has is measured in microseconds, and represents the amount of processing time an account has at its disposal when executing its actions. CPU is recalculated after each block is produced, based on the amount of system tokens the account staked for CPU bandwidth in proportion to the amount of total system tokens staked for CPU bandwidth at that time.
+Central Processing Unit. CPU is processing power granted to an account by an Antelope-based blockchain. The amount of CPU an account has is measured in microseconds, and represents the amount of processing time an account has at its disposal when executing its actions. CPU is recalculated after each block is produced, based on the amount of system tokens the account used to rent CPU bandwidth through the PowerUp model.
 
 ## CRM
 Customer Relationship Management
@@ -215,7 +215,7 @@ Multiple Index Tables, are a way to cache state and/or data in RAM for fast acce
 Multisig is a short term for multiple signatures. It’s used to describe the case in which one requires more than one account's permission to execute a transaction. Antelope provides the system account eosio.msig, which can be used to push onto the blockchain the multisig proposals and their corresponding account's permission required to approve the proposal. Multisig, when used properly, increases the security of an account, the security of a smart contract, and it's also the method by which Block Producers are able to affect changes within an Antelope blockchain.
 
 ## NET
-NET is required to store transactions on an Antelope-based blockchain. The amount of NET an account has is measured in bytes, representing the amount of transaction storage an account has at its disposal when creating a new transaction. NET is recalculated after each block is produced, based on the system tokens staked for NET bandwidth by the account. The amount allocated to an account is proportional with the total system tokens staked for NET by all accounts. Do not confuse NET with RAM, although it is also storage space, NET measures the size of the transactions and not contract state.
+NET is required to store transactions on an Antelope-based blockchain. The amount of NET an account has is measured in bytes, representing the amount of transaction storage an account has at its disposal when creating a new transaction. NET is recalculated after each block is produced, based on how much NET bandwidth the account bought through the PowerUp model. Do not confuse NET with RAM, although it is also storage space, NET measures the size of the transactions and not contract state.
 
 ## Nodeos
 nodeos is the core Antelope node daemon that can be configured with plugins to run a node. Example uses are block production, dedicated API endpoints, and local development. nodeos = node + eos
@@ -229,6 +229,9 @@ An oracle, in the context of blockchains and smart contracts, is an agent that f
 
 ## Packed Transaction
 In order to transfer transaction content between nodes faster and to save storage space when storing transaction content in and Antelope-based blockchain database, the transactions are 'translated' from json into a packed form which is smaller in size. To get the packed version of a transaction one can use the cleos convert command.
+
+## PowerUp
+PowerUp resource model mechanism allows an account to rent CPU and NET resources needed for actions execution on EOS blockchain.
 
 ## Peer-to-peer
 Peer-to-peer computing or networking is a distributed application architecture that partitions tasks or workloads between peers. If peers are equally privileged, equipotent participants in an application, they are said to form a peer-to-peer network of nodes.
@@ -322,7 +325,7 @@ A signature is a mathematical scheme for demonstrating the authenticity of digit
 A smart contract is a computer program or transaction protocol intended to facilitate, verify, or enforce the negotiation or performance of a contract. A smart contract automatically executes, controls, or documents legally relavant events and actions according to the terms of a contract or an agreement.
 
 ## Staking
-Staking is the act of locking tokens for resources on an Antelope network. This includes but is not limited to, CPU time, RAM, and on-chain governance.
+Staking is the act of an account to lock EOS tokens and allows the account to participate in on-chain governance. The amount of EOS token staked by the account gives it voting power calculated in proportion with the total amount of EOS token staked.
 
 ## Standard Account Name
 Standard account names can only contain the characters .abcdefghijklmnopqrstuvwxyz12345. a-z (lowercase), 1-5 and . (period), must start with a letter and must be 12 characters in length.
@@ -337,7 +340,7 @@ SYS is the blockchain default token name for an Antelope-based blockchain. Any f
 Everything that is part of Antelope which is not part of core, is referred to as system, e.g. system accounts, privileged accounts, system contracts. From an architectural point of view system components sit on top of the core/native components.
 
 ## System Contract
-The design of the Antelope blockchain calls for a number of smart contracts that are run at a privileged permission level in order to support functions such as block producer registration and voting, token staking for CPU and network bandwidth, RAM purchasing, multi-sig, etc. These smart contracts are referred to as the system contracts and are the following, `eosio.bios`, `eosio.system`, `eosio.token`, `eosio.msig` and `eosio.wrap` (formerly eosio.sudo) contracts.
+The design of the Antelope blockchain calls for a number of smart contracts that are run at a privileged permission level in order to support functions such as block producer registration and voting, token staking for voting, RAM purchasing, multi-sig, etc. These smart contracts are referred to as the system contracts and are the following, `eosio.bios`, `eosio.system`, `eosio.token`, `eosio.msig` and `eosio.wrap` (formerly eosio.sudo) contracts.
 
 ## Tables
 Tables on an Antelope-based blockchain are achieved via Multiple Index Table.

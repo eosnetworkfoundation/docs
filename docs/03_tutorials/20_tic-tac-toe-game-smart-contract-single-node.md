@@ -73,8 +73,8 @@ A smart contract exposes methods or ‘actions’ that transactions use to opera
 The EOS blockchain accounts own and consume three resources. By default a single node testnet does load the smart contract which tracks resources therefore this section is for information only:
 
 * RAM - This resource is the amount of RAM available to an account. RAM stores smart contracts loaded on the blockchain. Smart contacts use RAM via the multi-index table to store smart contract state. Spend tokens to purchase more RAM, RAM can be sold.
-* CPU - This resource is the amount of CPU which can be used by an account in each 24 hour period. Transactions consume CPU. Stake tokens for more CPU. Unstaking returns CPU. 
-* NET - This resource is the amount of data which can be written to blockchain blocks by an account in each 24 hour period. The blockchain blocks store transactions and transaction parameters, the history of blockchain . Stake tokens for more NET. Unstaking returns NET.
+* CPU - This resource is the amount of CPU which can be used by an account. Transactions consume CPU.
+* NET - This resource is the amount of data which can be written to blockchain blocks by an account. The blockchain blocks store transactions and transaction parameters, the history of blockchain .
 
 For more information click on this link [Core Concepts](../01_overview/02_core_concepts.md)
 
