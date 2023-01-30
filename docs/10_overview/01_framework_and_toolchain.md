@@ -11,7 +11,7 @@ The EOS blockchain is made up of the following components and toolchain:
 
 The basic relationship between these components is illustrated in the following diagram:
 
-![EOS Development Lifecycle](./images/EOS-Overview-dev.png)
+![EOS Development Lifecycle](/docs/images/overview-EOS-Overview-dev.png)
 
 [[info | Note]]
 | EOS also provides a frontend library for javascript development called EOSJS along with Swift and Java SDKs for native mobile applications development.
