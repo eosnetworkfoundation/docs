@@ -28,7 +28,7 @@ pwd
 
 Enter the absolute path to your contract directory below, and it will be inserted throughout the documentation to make your life a bit easier. _This functionality requires cookies_
 
-![cli](../images/cli_2.2.2.gif)
+![cli](/docs/images/getting-started-cli_2.2.2.gif)
 
 <div class="antelope-helper-box">
     <form id="CONTRACTS_DIR">
