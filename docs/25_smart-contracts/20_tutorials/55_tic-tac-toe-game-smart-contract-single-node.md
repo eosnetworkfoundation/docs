@@ -315,7 +315,7 @@ Complete the following steps to create the tictactoe.hpp file:
 2. Import the eosio base library.
    Add this code to the .hpp file:
 
-```c++
+```cpp
 // 5. Import the eosio base library.
 #include <eosio/eosio.hpp>
 ```
@@ -323,7 +323,7 @@ Complete the following steps to create the tictactoe.hpp file:
 3. For convenience use the `eosio` namespace.
    Add this code to the .hpp file:
 
-```c++
+```cpp
 //6. use the eosio namespace
 using namespace eosio;
 ```
@@ -336,7 +336,7 @@ using namespace eosio;
     
 	Add this code to the .hpp file:
 
-```c++
+```cpp
 // 7. Declare the class. 8. Use the [[eosio::contract(contract_name)]] attribute. 9. Inherit from the base class. 
 class[[eosio::contract("tictactoe")]] tictactoe : public contract
 {
@@ -355,7 +355,7 @@ public:
 
     Add this code to the .hpp file inside the public section of the class:
 
-```c++
+```cpp
     // 12. Declare game data structure.
     struct [[eosio::table]] game
     {
@@ -393,7 +393,7 @@ public:
 
 Add this code to the .hpp file inside the public section of the class, after the declaration of the game structure:
 
-```c++
+```cpp
     // 15. Define the game data structure using the multi-index table template.
     typedef eosio::multi_index<"games"_n, game> games;
 ```
@@ -402,7 +402,7 @@ Add this code to the .hpp file inside the public section of the class, after the
 
 Add this code to the .hpp file inside the public section of the class:
 
-```c++
+```cpp
     [[eosio::action]]
     void create(const name &challenger, name &host);
     
@@ -423,7 +423,7 @@ Add this code to the .hpp file inside the public section of the class:
     
 	Add this code to the .hpp file inside a private section of the class:
 
-```c++
+```cpp
     bool isEmptyCell(const uint8_t &cell);
     bool isValidMove(const uint16_t &row, const uint16_t &column, const std::vector<uint8_t> &board);
     name getWinner(const game &currentGame);
@@ -443,7 +443,7 @@ Complete the following steps to create the tictactoe.cpp file:
 2. Import the tictactoe.hpp file and make the tictactoe definitions from the previous section available.
    Add this code to the .cpp file: 
 
-```c++
+```cpp
 #include "tictactoe.hpp"
 ```
 3. Implement create.
@@ -454,7 +454,7 @@ Complete the following steps to create the tictactoe.cpp file:
 
    Add this code to the .cpp file:
 
-```c++
+```cpp
 void tictactoe::create(const name &challenger, name &host) {
     require_auth(host);
     check(challenger != host, "Challenger should not be the same as the host.");
@@ -481,7 +481,7 @@ void tictactoe::create(const name &challenger, name &host) {
 
    Add this code to the .cpp file:
 
-```c++
+```cpp
 void tictactoe::restart(const name &challenger, const name &host, const name &by){
     check(has_auth(by), "Only " + by.to_string() + "can restart the game.");
 
@@ -507,7 +507,7 @@ void tictactoe::restart(const name &challenger, const name &host, const name &by
 
    Add this code to the .cpp file:
 
-```c++
+```cpp
 void tictactoe::close(const name &challenger, const name &host){
     check(has_auth(host), "Only the host can close the game.");
 
@@ -528,7 +528,7 @@ void tictactoe::close(const name &challenger, const name &host){
 
    Add this code to the .cpp file:
 
-```c++
+```cpp
 bool tictactoe::isEmptyCell(const uint8_t &cell){
     return cell == 0;
 }
@@ -537,7 +537,7 @@ bool tictactoe::isEmptyCell(const uint8_t &cell){
 
    Add this code to the .cpp file:
 
-```c++
+```cpp
 bool tictactoe::isValidMove(const uint16_t &row, const uint16_t &column, const std::vector<uint8_t> &board){
     uint32_t movementLocation = row * game::boardWidth + column;
     bool isValid = movementLocation < board.size() && isEmptyCell(board[movementLocation]);
@@ -548,7 +548,7 @@ bool tictactoe::isValidMove(const uint16_t &row, const uint16_t &column, const s
 
    Add this code to the .cpp file:
 
-```c++
+```cpp
 name tictactoe::getWinner(const game &currentGame)
 {
     auto &board = currentGame.board;
@@ -618,7 +618,7 @@ name tictactoe::getWinner(const game &currentGame)
 
    Add this code to the .cpp file:
 
-```c++
+```cpp
 void tictactoe::move(const name &challenger, const name &host, const name &by, const uint16_t &row, const uint16_t &column){
     check(has_auth(by), "The next move should be made by " + by.to_string());
 
