@@ -1,1 +1,5 @@
-<!-- THIS IS A PLACEHOLDER, TO BE POPULATED DURING SIDEMENU REDESIGN -->
+---
+title: Concepts
+---
+
+Learn concepts about EOS smart contracts:
