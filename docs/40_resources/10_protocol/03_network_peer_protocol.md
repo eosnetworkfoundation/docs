@@ -395,7 +395,7 @@ After the common ancestor is found, a sync request message is sent to retrieve t
 
 To make effective use of bandwidth, the required blocks are obtained from various peers, rather than just one, if necessary.  Depending on the number of blocks needed, the blocks are requested in chunks by specifying the start block number and the end block number to download from a given peer. The node uses the list of block states to keep track of which blocks each peer has, so this information is used to determine which connected peers to request block chunks from. This process is depicted in the diagram below:
 
-![](images/p2p-node-peer-sync.png "Node-peer syncing")
+![](/docs/images/protocol-p2p-node-peer-sync.png "Node-peer syncing")
 
 When both LIB and head blocks are caught up with respect to the peer, the operation mode in the Sync Manager is switched from catch-up mode to in-sync mode.
 
