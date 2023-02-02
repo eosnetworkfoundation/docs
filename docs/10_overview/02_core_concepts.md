@@ -16,7 +16,7 @@ Wallets are clients that store keys that may or may not be associated with the p
 
 Permissions are arbitrary names used to define the requirements for a transaction sent on behalf of that permission. Permissions can be assigned for authority over specific contract actions by *linking authorization* or linkauth.
 
-For more information about these concepts, see the [_Accounts and Permissions_](../40_protocol/04_accounts_and_permissions.md) documentation.
+For more information about these concepts, see the [_Accounts and Permissions_](/docs/60_resources/10_protocol/04_accounts_and_permissions.md) documentation.
 <!-- The link will be updated once the initial site is live -->
 
 ## Smart Contracts
@@ -27,7 +27,7 @@ A smart contract is a piece of code that can execute on a blockchain and keep th
 
 The EOS blockchain implements a proven decentralized consensus algorithm capable of meeting the performance requirements of applications on the blockchain called the _Delegated Proof of Stake_ (DPOS). Under this algorithm, if you hold tokens on the EOS blockchain, you can select block producers through a continuous approval voting system. Anyone can choose to participate in the block production and will be given an opportunity to produce blocks, provided they can persuade token holders to vote for them.
 
-For more information about DPOS BFT, see [EOS Consensus](../40_protocol/01_consensus_protocol.md#3-eosio-consensus-dpos--abft).
+For more information about DPOS BFT, see [EOS Consensus](/docs/60_resources/10_protocol/01_consensus_protocol.md#3-eosio-consensus-dpos--abft).
 
 <!-- The link will be updated once the initial site is live -->
 
@@ -50,7 +50,3 @@ More details about CPU as a system resource can be found [here](https://docs.eos
 Besides CPU and RAM, NET is also a very important resource on the EOS blockchain. NET is the network bandwidth, measured in bytes, of transactions and is referred to as `net bandwidth` on the cleos `get account` command. NET is a also a transient system resource and falls under the staking mechanism of the EOS blockchain.
 
 More details about NET as a system resource can be found [here](https://docs.eosnetwork.com/system-contracts/latest/key-concepts/net).
-
-## What's Next?
-
-- [Technical Features](03_technical_features.md): Learn about EOS technical features.

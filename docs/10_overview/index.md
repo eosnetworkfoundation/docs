@@ -2,7 +2,7 @@
 title: Overview
 ---
 
-Learn about EOS's available tools, the core concepts and underlying technical features:
+Learn about EOS available tools, its core concepts, and underlying technical features:
 
 - [Framework and Toolchain](01_framework_and_toolchain.md)
 - [Core Concepts](02_core_concepts.md)
