@@ -76,7 +76,3 @@ executed transaction:
 #         eosio <= addressbook::notify          {"user":"alice","msg":"alice successfully modified record to addressbook"}
 #     abcounter <= abcounter::count             {"user":"alice","type":"modify"}
 ```
-
-## What's Next?
-
-- [Payable Actions](./50_payable_actions.md): Learn how write a smart contract that has payable actions. 

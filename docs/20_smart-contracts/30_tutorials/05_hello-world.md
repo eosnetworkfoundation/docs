@@ -224,7 +224,3 @@ executed transaction: 235bd766c2097f4a698cfb948eb2e709532df8d18458b92c9c6aae74ed
 #    hello <= hello::hi               {"user":"alice"}
 >> Hello, alice
 ```
-
-## What's Next?
-
-- [Deploy, Issue and Transfer Tokens](./10_deploy-issue-and-transfer-tokens.md): Learn how to deploy, issue and transfer tokens.
