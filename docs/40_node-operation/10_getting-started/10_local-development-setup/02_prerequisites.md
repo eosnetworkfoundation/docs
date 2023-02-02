@@ -8,8 +8,8 @@ The subsequent tutorials are up to date with the following EOS components.
 
 | Component | Version |
 | ------ | ------ |
-| [Leap](https://github.com/AntelopeIO/leap) | 3.1 |
-| [CDT](https://github.com/AntelopeIO/cdt) | 3.0 |
+| [Leap](https://github.com/AntelopeIO/leap) | 3.2 |
+| [CDT](https://github.com/AntelopeIO/cdt) | 3.1 |
 | [eos-system-contracts](https://github.com/eosnetworkfoundation/eos-system-contracts) | 3.1 |
 
 ## Development Experience

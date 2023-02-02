@@ -78,6 +78,3 @@ Wallets:
   "default *"
 ]
 ```
-
-## What's Next?
-- [Hello World](../../25_smart-contracts/20_tutorials/05_hello-world.md): The Hello World of EOS! Learn how to set up your environment and deploy your first smart contract.

@@ -71,7 +71,7 @@ For instructions to install the CDT binaries, follow the [Development Environmen
 
 Create and configure your default wallet, followed by creating a public and private development keys. After the key-pair is created, import the public and private key to your wallet. For reference purposes, we will refer to the public key as `EOS_PUB_DEV_KEY` and the private key as `EOS_PRIV_DEV_KEY`.
 
-For instructions on creating a wallet and importing keys securely into it, see the [Create a development wallet](..\20_getting-started\02_development-environment\05_create-development-wallet.md) section.
+For instructions on creating a wallet and importing keys securely into it, see the [Create a development wallet](/docs/40_node-operation/10_getting-started/10_local-development-setup/05_create-development-wallet.md) section.
 
 ### 1.3. Create ~/biosboot/genesis directory
 
@@ -962,6 +962,6 @@ tail -f ./blockchain/nodeos.log
 You can test various commands, create accounts, check balance on accounts, transfer tokens between accounts, etc.
 
 [[info | Accounts and Tokens]]
-| - For commands on creating new accounts, see [How to create an account](../20_getting-started/02_development-environment/07_create-test-accounts.md) on the *Getting Started* section.
+| - For commands on creating new accounts, see [How to create an account](/docs/40_node-operation/10_getting-started/10_local-development-setup/07_create-test-accounts.md) on the *Getting Started* section.
 | - To issue, allocate, and transfer tokens between accounts, see the
-[Deploy, Issue and Transfer Tokens](../25_smart-contracts/20_tutorials/10_deploy-issue-and-transfer-tokens.md) on the *Getting Started* section.
+[Deploy, Issue and Transfer Tokens](/docs/20_smart-contracts/30_tutorials/10_deploy-issue-and-transfer-tokens.md) tutorial on the *Smart Contracts* section.

@@ -1,8 +1,8 @@
 ---
-title: Development Environment
+title: Local Development Setup
 ---
 
-Learn about EOS Development Environment:
+Install and set up EOS in your local development environment:
 
 - [Prerequisites](02_prerequisites.md)
 - [Before You Begin](03_before-you-begin.md)

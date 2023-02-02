@@ -2,4 +2,4 @@
 title: Web Applications
 ---
 
-Learn about Web Applications:
+Learn about EOS Web Applications

@@ -5,7 +5,7 @@ link_text: "Tic-tac-toe Game Contract Using Single Node"
 
 # Tic-tac-toe on EOS
 
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example in using the single node testnet see the [Getting Started](../20_getting-started/index.md) section.
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example of using the single node testnet see the [Getting Started for Node Operators](/docs/40_node-operation/10_getting-started/index.md) section.
 
 [[info]]
 | In this tutorial we will use the EOS software to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
@@ -21,14 +21,14 @@ This tutorial requires the following:
 
 and
 
-* The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](../20_getting-started/02_development-environment/03_before-you-begin.md "Getting started - install binaries")
+* The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](/docs/40_node-operation/10_getting-started/10_local-development-setup/03_before-you-begin.md "Getting started - install binaries")
 * Familiarity with the EOS tools `cleos` and `keosd`
-* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.](../20_getting-started/02_development-environment/04_install-the-CDT.md "CDT Installation Instructions")
+* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.]((/docs/40_node-operation/10_getting-started/10_local-development-setup/04_install-the-CDT.md "CDT Installation Instructions")
 * Familiarity with the `cdt` which is used to compile smart contracts. 
 
-Click on this link for an [overview of the EOS blockchain.](../10_overview/index.md)
+Click on this link for an [Overview of the EOS blockchain](/docs/10_overview/index.md).
 
-Click on this link to [get started with EOS.](../20_getting-started/index.md "Getting Started with EOS")
+Click on this link to [get started with EOS Smart Contracts](/docs/20_smart-contracts/10_getting-started/index.md "Getting Started with EOS Smart Contracts").
 
 ## The Rules of the Game
 
@@ -60,11 +60,11 @@ When all the squares contain a marker and no player has three markers in a row, 
 
 ### Accounts and Key Pairs
 
-A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. The EOS blockchain uses account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../40_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
+A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. The EOS blockchain uses account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](/docs/60_resources/10_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
 
 ### Smart Contract Actions
 
-A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](../40_protocol/02_transactions_protocol.md "Tranasctions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
+A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](/docs/60_resources/10_protocol/02_transactions_protocol.md "Tranasctions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
 
 ![Transactions and Actions](images/tictactoe/transactions-and-actions-temp.png "Transactions and Actions")
 
@@ -76,7 +76,7 @@ The EOS blockchain accounts own and consume three resources. By default a single
 * CPU - This resource is the amount of CPU which can be used by an account in each 24 hour period. Transactions consume CPU. Stake tokens for more CPU. Unstaking returns CPU. 
 * NET - This resource is the amount of data which can be written to blockchain blocks by an account in each 24 hour period. The blockchain blocks store transactions and transaction parameters, the history of blockchain . Stake tokens for more NET. Unstaking returns NET.
 
-For more information click on this link [Core Concepts](../10_overview/02_core_concepts.md)
+For more information visit the [Core Concepts](/docs/10_overview/02_core_concepts.md) section.
 
 ## Run a local single node testnet
 
@@ -154,7 +154,7 @@ Wallets:
 ```
 
 [[info]]
-| Account creation requires a creator account; every new blockchain is created with an account called "eosio". The "eosio" account is a special account that can be used to bootstrap a blockchain, click the following link for more information about [bootstrapping a blockchain for real world use.](/docs/34_node-operation/10_tutorials/10_bios-boot-sequence.md) In a production blockchain the eosio account keys are [resigned](/docs/34_node-operation/10_tutorials/10_bios-boot-sequence.md#3-resign-eosio-account-and-system-accounts).  To use our local single node testnet we need to add the private key of the eosio account to our wallet so that we can create other accounts. **The private key is well known and so any blockchain where the eosio acount has not been resigned is not secure.**
+| Account creation requires a creator account; every new blockchain is created with an account called "eosio". The "eosio" account is a special account that can be used to bootstrap a blockchain, click the following link for more information about [bootstrapping a blockchain for real world use.](/docs/40_node-operation/10_tutorials/10_bios-boot-sequence.md) In a production blockchain the eosio account keys are [resigned](/docs/40_node-operation/10_tutorials/10_bios-boot-sequence.md#3-resign-eosio-account-and-system-accounts).  To use our local single node testnet we need to add the private key of the eosio account to our wallet so that we can create other accounts. **The private key is well known and so any blockchain where the eosio acount has not been resigned is not secure.**
 
 [[info]]
 | The eosio private key is **5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3**
@@ -245,7 +245,7 @@ The tictactoe.hpp file (or header file) contains the declarations of the smart c
 
 The tictactoe.cpp file contains implementations of the smart contract actions declared in the tictactoe.hpp header file and uses the data structures declared in the header file.
 
-The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `cdt-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](../25_smart-contracts/20_tutorials/15_understanding-ABI-files.md "Understand ABI Files") 
+The “Compile and deploy the smart contract to the blockchain” section details compilation of the files. The compiler is the `cdt-cpp` tool from the CDT. Click on this link for more information on the [CDT.](http://docs.eosnetwork.com/cdt/latest/ "CDT documentation") The CDT builds the smart contract and creates an `ABI` file. Click on this link for more information about [ABI Files.](15_understanding-ABI-files.md "Understand ABI Files") 
 
 ### Game Board Representation
 
@@ -296,7 +296,7 @@ This section creates the tictactoe.hpp file. This header file contains the decla
 The tic-tac-toe smart contract hpp file defines the following public data structures to store game information.  
 
 * game - The game data structure contains game data. The structure has variables of type `eosio::name`, for challenger, host, turn and winner. Click on this link for a definition of [eosio::name](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1name "eosio.cdt reference - name structure") . The structure has a `std::vector` representing the game board  
-* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](../25_smart-contracts/20_tutorials/20_data-persistence.md) 
+* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](20_data-persistence.md) 
 
 #### Game Actions
 
@@ -656,7 +656,7 @@ The complete tictactoe.cpp file can be downloaded from github here: [Tic-tac-toe
 
 To deploy the smart contract to the blockchain first use the CDT (Contract Development Toolkit) `cdt-cpp` tool to build the `.wasm` file and a corresponding `.abi` file. Click on this link for details on [cdt-cpp tool](http://docs.eosnetwork.com/cdt/latest/command-reference/cdt-cpp "cdt reference cdt-cpp tool") and click on this link for details about the [CDT](http://docs.eosnetwork.com/cdt/latest/ "Contract Development Toolkit")
 
-The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](../25_smart-contracts/20_tutorials/15_understanding-ABI-files.md "Getting Started - ABI files") for more information.
+The `.wasm` file (or webassembly) is the binary code that the `wasm engine` in the blockchain executes. The webassembly engine currently used in eosio is [eos-vm](https://github.com/eosnetworkfoundation/mandel-eos-vm "git eos-vm"). The application binary interface or `.abi` file defines how to pack and unpack the data used by a smart contract, see [Understanding ABI Files](15_understanding-ABI-files.md "Getting Started - ABI files") for more information.
 
 ### Compilation
 
@@ -677,7 +677,7 @@ Warning, action <close> does not have a ricardian contract
 Warning, action <move> does not have a ricardian contract
 ```
 
-For this tutorial we ignore these warnings. Click on the following link for a tutorial showing how to add the optional ricardian contracts [Prepare the Ricardian Contract](../25_smart-contracts/20_tutorials/20_data-persistence.md#step-10-prepare-the-ricardian-contract-optional "Getting Started - Data Peristence")
+For this tutorial we ignore these warnings. Click on the following link for a tutorial showing how to add the optional ricardian contracts [Prepare the Ricardian Contract](20_data-persistence.md#step-10-prepare-the-ricardian-contract-optional "Getting Started - Data Peristence")
 
 The tictactoe directory now contains two new files, `tictactoe.wasm` and `tictactoe.abi`.
 
@@ -812,7 +812,3 @@ Check the game status to see that game data has been removed.
 ```shell
 cleos get table tictactoe host games
 ```
-
-## Next Steps
-
-Visit the [EOS Developer Portal](http://docs.eosnetwork.com/ "EOS developers portal") to learn more about EOS and try building a more advanced web based game with [Elemental Battles.](https://battles.eos.io/)
