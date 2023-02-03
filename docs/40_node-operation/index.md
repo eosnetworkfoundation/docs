@@ -2,6 +2,7 @@
 title: Node Operation
 ---
 
-Learn about Node Operation:
+Learn about EOS Node Operation:
 
-- [Tutorials](10_tutorials/index.md)
+- [Getting Started](10_getting-started/index.md)
+- [Tutorials](20_tutorials/index.md)

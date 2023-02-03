@@ -154,7 +154,7 @@ Wallets:
 ```
 
 [[info]]
-| Account creation requires a creator account; every new blockchain is created with an account called "eosio". The "eosio" account is a special account that can be used to bootstrap a blockchain, click the following link for more information about [bootstrapping a blockchain for real world use.](/docs/40_node-operation/10_tutorials/10_bios-boot-sequence.md) In a production blockchain the eosio account keys are [resigned](/docs/40_node-operation/10_tutorials/10_bios-boot-sequence.md#3-resign-eosio-account-and-system-accounts).  To use our local single node testnet we need to add the private key of the eosio account to our wallet so that we can create other accounts. **The private key is well known and so any blockchain where the eosio acount has not been resigned is not secure.**
+| Account creation requires a creator account; every new blockchain is created with an account called "eosio". The "eosio" account is a special account that can be used to bootstrap a blockchain, click the following link for more information about [bootstrapping a blockchain for real world use.](/docs/40_node-operation/20_tutorials/10_bios-boot-sequence.md) In a production blockchain the eosio account keys are [resigned](/docs/40_node-operation/20_tutorials/10_bios-boot-sequence.md#3-resign-eosio-account-and-system-accounts).  To use our local single node testnet we need to add the private key of the eosio account to our wallet so that we can create other accounts. **The private key is well known and so any blockchain where the eosio acount has not been resigned is not secure.**
 
 [[info]]
 | The eosio private key is **5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3**
