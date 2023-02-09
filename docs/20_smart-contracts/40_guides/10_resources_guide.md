@@ -37,10 +37,10 @@ The RAM resource must be bought using the system token. The price of RAM is calc
 
 The quickest way to calculate the price of RAM is the following:
 
-1. Run the following cleos command, make sure you run it against the mainnet or the testnet of your choice:
+1. Run the following dune command, make sure you run it against the mainnet or the testnet of your choice:
 
     ```shell
-    cleos get table eosio eosio rammarket
+    dune -- cleos get table eosio eosio rammarket
     ```
 
 2. Observe the output which should look like the following:  
@@ -65,14 +65,14 @@ The quickest way to calculate the price of RAM is the following:
 
 #### Buy RAM With Command Line Interface
 
-You can buy RAM through cleos command line interface tool. And you can buy either an explicit amount of RAM expressed in bytes or an amount of RAM worth of an explicit amount of EOS.
+You can buy RAM through dune command line interface tool. And you can buy either an explicit amount of RAM expressed in bytes or an amount of RAM worth of an explicit amount of EOS.
 
 #### Buy RAM In EOS
 
 For example the below command buys for account `bob` 0.1 EOS worth of RAM at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
 
 ```shell
-cleos system buyram alice bob "0.1 EOS" -p alice@active
+dune -- cleos system buyram alice bob "0.1 EOS" -p alice@active
 ```
 
 #### Buy RAM In Bytes
@@ -80,7 +80,7 @@ cleos system buyram alice bob "0.1 EOS" -p alice@active
 For example the below command buys for account `bob` 1000 RAM bytes at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
 
 ```shell
-cleos system buyrambytes alice bob "1000" -p alice@active
+dune -- cleos system buyrambytes alice bob "1000" -p alice@active
 ```
 
 #### Buy RAM With EOS Wallet
@@ -109,7 +109,7 @@ As a developer, to understand the amount of RAM your smart contract needs, you h
 
 ## CPU Resource
 
-CPU, as NET and RAM, is a very important system resource in the EOS blockchain. The system resource CPU provides processing power to blockchain accounts. When the blockchain executes a transaction it consumes CPU and NET, therefore sufficient CPU must be allocated to the payer account for transactions to complete. The amount of CPU an account has is measured in microseconds and it is referred to as `cpu bandwidth` on the `cleos get account` command output.
+CPU, as NET and RAM, is a very important system resource in the EOS blockchain. The system resource CPU provides processing power to blockchain accounts. When the blockchain executes a transaction it consumes CPU and NET, therefore sufficient CPU must be allocated to the payer account for transactions to complete. The amount of CPU an account has is measured in microseconds and it is referred to as `cpu bandwidth` on the `dune -- cleos get account` command output.
 
 ### How Is CPU Calculated
 
@@ -134,7 +134,7 @@ For details on how to rent CPU resources refer to [Account Power Up](#account-po
 
 ## NET Resource
 
-NET, as CPU and RAM, is a very important system resource in the EOS blockchain. When the blockchain executes a transaction it consumes CPU and NET, therefore sufficient NET must be allocated to the payer account for transactions to complete. NET is referred to as `net bandwidth` on the `cleos get account` command output.
+NET, as CPU and RAM, is a very important system resource in the EOS blockchain. When the blockchain executes a transaction it consumes CPU and NET, therefore sufficient NET must be allocated to the payer account for transactions to complete. NET is referred to as `net bandwidth` on the `dune -- cleos get account` command output.
 
 ### How Is NET Calculated
 
@@ -153,7 +153,13 @@ For details on how to rent NET resources refer to the how to [Account Power Up](
 
 ## Resource Cost Estimation
 
-As a developer if you want to estimate how much CPU and NET is required for a transaction to be executed you can use the []()
+As a developer if you want to estimate how much CPU and NET is required for a transaction to be executed you can employ one of the following methods:
+
+* Use the `--dry-run` option for the `dune -- cleos push transaction` command.
+* Use any tool that can pack a transaction and send it to the blockchain and specify the `--dry-run` option.
+* Use the chain API endpoint [`compute_transaction`](https://github.com/AntelopeIO/leap/blob/51c11175e54831474a89a449beea1fb067e3d1e9/plugins/chain_plugin/include/eosio/chain_plugin/chain_plugin.hpp#L489).
+
+In all cases, when the transaction is processed, the blockchain node simulates the execution of the transaction and, as a consequence, the state of the blockchain is changed speculatively, allowing for the CPU and NET measurements to be done. However in the end the transaction is not sent to the blockchain and the caller receives in return the estimated CPU and NET costs.
 
 ## Account Power Up
 
@@ -166,7 +172,7 @@ To power up an account means to rent CPU and NET from the PowerUp resource model
 * The `max_payment`, must be expressed in EOS and is the maximum amount the `payer` is willing to pay.
 
 ```sh
-cleos push action eosio powerup '[user, user, 1, 10000000000000, 10000000000000, "1000.0000 EOS"]' -p user
+dune -- cleos push action eosio powerup '[user, user, 1, 10000000000000, 10000000000000, "1000.0000 EOS"]' -p user
 ```
 
 You can see how much NET and CPU weight was received as well as the fee by looking at the `eosio.reserv::powupresult` informational action.
@@ -189,7 +195,7 @@ The resources in loans that expire do not automatically get reclaimed by the sys
 The orders table `powup.order` can be viewed by calling:
 
 ```sh
-cleos get table eosio 0 powup.order
+dune -- cleos get table eosio 0 powup.order
 ```
 
 ```json
@@ -211,7 +217,7 @@ cleos get table eosio 0 powup.order
 Example `powerupexec` call:
 
 ```sh
-cleos push action eosio powerupexec '[user, 2]' -p user
+dune -- cleos push action eosio powerupexec '[user, 2]' -p user
 ```
 
 ```console
