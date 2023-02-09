@@ -4,9 +4,9 @@ title: Resources Guide
 
 The EOS blockchain works with three system resources: CPU, NET and RAM. The EOS accounts need sufficient system resources to interact with the smart contracts deployed on the blockchain.
 
-* [RAM Resouce](#RAM_Resource)
-* [CPU Resouce](#CPU_Resource)
-* [NET Resouce](#NET_Resource)
+* [RAM Resource](#ram-resource)
+* [CPU Resource](#cpu-resource)
+* [NET Resource](#net-resource)
 
 To allocate resources to an account use the `PowerUp Model` to [power up that account](#account-power-up).
 
@@ -151,6 +151,10 @@ The blockchain calculates and updates the remaining resources, for the accounts 
 
 For details on how to rent NET resources refer to the how to [Account Power Up](#account-power-up) section.
 
+## Resource Cost Estimation
+
+As a developer if you want to estimate how much CPU and NET is required for a transaction to be executed you can use the []()
+
 ## Account Power Up
 
 To power up an account means to rent CPU and NET from the PowerUp resource model which is implemented as a smart contract on the blockchain and allocate them to the account of your choice. The action to power up an account is `powerup`. It takes as parameters:
@@ -218,4 +222,4 @@ warning: transaction executed locally, but may not be confirmed by the network y
 
 ### Alternative Ways To Use The PowerUp Model
 
-You can also use the PowerUp model to power your account with CPU and NET, using an EOS wallet that supports the PowerUp resource model.
+You can also use the PowerUp model to power up your account with CPU and NET, using an EOS wallet that supports the PowerUp resource model.
