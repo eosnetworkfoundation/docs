@@ -12,24 +12,24 @@ To allocate resources to an account use the `PowerUp Model` to [power up that ac
 
 ## RAM Resource
 
-RAM is the memory, the storage space, where the blockchain stores data. If your contract needs to store data on the blockchain, like in a database, then it can store it in the blockchain's RAM in the form of a `multi-index table` or a `singleton`.
+RAM is the memory, the storage space, where the blockchain stores data. If your contract needs to store data on the blockchain, it can store it in the blockchain's RAM as a `multi-index table` or a `singleton`.
 
 ### RAM High Performance
 
-The EOS blockchain high performance is achieved also because the data stored on the blockchain uses RAM as the storage medium, and the access to blockchain data is very fast. The EOS blockchain performance benchmarks reach levels very few blockchains have been able to, and it elevates EOS blockchain one of the few contenders for the fastest blockchain of the world.
+Data stored on the EOS blockchain uses RAM as its storage medium. Therefore, access to the blockchain data is highly performant and fast. Its performance benchmarks can reach levels rarely achieved by other blockchains. This ability elevates the EOS blockchain to be a contender for the fastest blockchain worldwide.
 
 ### RAM Importance
 
-RAM is a very important system resource because of the following reasons:
+RAM is an important system resource because of the following reasons:
 
-* RAM is a limited resource, the public EOS blockchain started with 64GB of RAM and after that the block producers decided to increase the memory with 1KB per block. This way the supply of RAM constantly increases and its price does not grow too fast too high due to the increased demand from blockchain applications.
+* Ram is a limited resource. Over time the public EOS blockchain RAM has increased from 64GB to 1KB per block. The supply of RAM constantly increases, yet its price accelerates at a slower pace.
 
-* RAM is used in the execution of many actions sent to the blockchain. When a new account is created, for example, it needs to store in the blockchain memory the new account's information. Also when an account accepts a new type of token, a new record has to be created, somewhere in the blockchain memory, that holds the balance of the new token accepted. The blockchain memory, has to be purchased either by the account that transfers the tokens or by the account that accepts the new token type.
+* The execution of actions to the blockchain uses RAM. RAM stores new account information for the blockchain. RAM also stores new records for tokens as well as holds their balance. Either the account that transfers the tokens or the account that accepts the new token type purchases Ram resources.
 
-* The smart contract can not store any additional information if it consumes all its allocated RAM. To continue to save data in the blockchain database, one, or both of the following conditions must be met:
+* If a smart contract consumes all of its allocated RAM, it cannot store any additional information. To continue to save data in the blockchain database, one, or both of the following conditions must be met:
 
-  * A portion of the occupied RAM is freed by the smart contract.
-  * More RAM is allocated to the smart contract account through the RAM purchase process.
+  * A portion of the occupied RAM is freed by the smart contract
+  * More RAM is allocated to the smart contract account through the RAM purchase process
 
 ### How To Purchase RAM
 
@@ -37,7 +37,7 @@ The RAM resource must be bought with the `EOS` system token. The price of RAM is
 
 The quickest way to calculate the price of RAM:
 
-1. Run the following dune command, make sure you run it against the mainnet or the testnet of your choice:
+1. Run the following dune command: (**Note:** Make sure you run it against the mainnet or the testnet of your choice.)
 
     ```shell
     dune -- cleos get table eosio eosio rammarket
@@ -65,11 +65,11 @@ The quickest way to calculate the price of RAM:
 
 #### Buy RAM With Command Line Interface
 
-You can buy RAM through dune command line interface tool. And you can buy either an explicit amount of RAM expressed in bytes or an amount of RAM worth of an explicit amount of EOS.
+You can buy RAM through the dune command line interface tool. You can buy either an explicit amount of RAM expressed in bytes or an amount of RAM worth of an explicit amount of EOS.
 
 #### Buy RAM In EOS
 
-For example the below command buys for account `bob` 0.1 EOS worth of RAM at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
+For example, the below command buys for account `bob` 0.1 EOS worth of RAM at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
 
 ```shell
 dune -- cleos system buyram alice bob "0.1 EOS" -p alice@active
@@ -77,7 +77,7 @@ dune -- cleos system buyram alice bob "0.1 EOS" -p alice@active
 
 #### Buy RAM In Bytes
 
-For example the below command buys for account `bob` 1000 RAM bytes at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
+For example, the below command buys for account `bob` 1000 RAM bytes at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
 
 ```shell
 dune -- cleos system buyrambytes alice bob "1000" -p alice@active
@@ -91,8 +91,8 @@ Another way to buy RAM is through an EOS wallet that supports this feature.
 
 The necessary RAM needed for a smart contract to store its data is calculated from the used blockchain state.
 
-As a developer, to understand the amount of RAM your smart contract needs, you have to pay attention to the data structure underlying the multi-index tables your smart contract instantiates and uses. The data structure underlying one multi-index table defines a row in the table. And each data member of the data structure corresponds with a row cell of the table.
-To approximate the amount of RAM one multi-index row needs to be stored on the blockchain you have to add the size of the type of each data member and the memory overheads, defined by EOS code for various structures. Moreover, you must also consider if there are any indexes defined on your multi-index table. Find below the overheads defined by the EOS code for multi-index tables, indexes and data types:
+As a developer, to understand the amount of RAM your smart contract needs, pay attention to the data structure underlying the multi-index tables your smart contract instantiates and uses. The data structure underlying one multi-index table defines a row in the table. Each data member of the data structure corresponds with a row cell of the table.
+To approximate the amount of RAM one multi-index row needs to store on the blockchain, you have to add the size of the type of each data member and the memory overheads as defined by EOS code for various structures. Consider if there are any indexes defined on your multi-index table. Find below the overheads defined by the EOS code for multi-index tables, indexes and data types:
 
 * [Multi-index RAM bytes overhead](https://github.com/AntelopeIO/leap/blob/f6643e434e8dc304bba742422dd036a6fbc1f039/libraries/chain/include/eosio/chain/contract_table_objects.hpp#L240)
 * [Overhead per row per index RAM bytes](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L109)
