@@ -8,7 +8,8 @@ The EOS blockchain works with three system resources: CPU, NET and RAM. The EOS 
 * [CPU Resource](#cpu-resource)
 * [NET Resource](#net-resource)
 
-To allocate resources to an account use the `PowerUp Model` to [power up that account](#account-power-up).
+To allocate RAM resources to an account you have to [purchase RAM](#how-to-purchase-ram).
+To allocate CPU and NET resources to an account you have to [power up the account](#account-power-up).
 
 ## RAM Resource
 
@@ -22,9 +23,9 @@ Data stored on the EOS blockchain uses RAM as its storage medium. Therefore, acc
 
 RAM is an important system resource because of the following reasons:
 
-* Ram is a limited resource. Over time the public EOS blockchain RAM has increased from 64GB to 1KB per block. The supply of RAM constantly increases, yet its price accelerates at a slower pace.
+* Ram is a limited resource. The public EOS blockchain started with 64GB of total RAM. After a brief period the block producers decided to increase the memory with 1KB per block. This way the supply of RAM constantly increases, yet its price accelerates at a slower pace.
 
-* The execution of actions to the blockchain uses RAM. RAM stores new account information for the blockchain. RAM also stores new records for tokens as well as holds their balance. Either the account that transfers the tokens or the account that accepts the new token type purchases Ram resources.
+* The execution of many actions by the blockchain uses RAM. For example, when a new account is created, it needs to store in the blockchain memory the new account's information. Also when an account accepts a token which did not hold before, a new record has to be created, somewhere in the blockchain memory, that holds the balance of the new token accepted. The blockchain memory, has to be purchased either by the account that transfers the tokens or by the account that accepts the new token type.
 
 * If a smart contract consumes all of its allocated RAM, it cannot store any additional information. To continue to save data in the blockchain database, one, or both of the following conditions must be met:
 
@@ -33,7 +34,7 @@ RAM is an important system resource because of the following reasons:
 
 ### How To Purchase RAM
 
-The RAM resource must be bought with the `EOS` system token. The price of RAM is calculated according to the unique Bancor liquidity algorithm which is implemented in the system contract [here](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/structeosiosystem_1_1exchange__state).
+The RAM resource must be bought with the `EOS` system token. The price of RAM is calculated according to the unique Bancor liquidity algorithm which is implemented in the system contract.
 
 The quickest way to calculate the price of RAM:
 
@@ -83,16 +84,12 @@ For example, the below command buys for account `bob` 1000 RAM bytes at the curr
 dune -- cleos system buyrambytes alice bob "1000" -p alice@active
 ```
 
-#### Buy RAM With EOS Wallet
-
-Another way to buy RAM is through an EOS wallet that supports this feature.
-
 ### How Is RAM Calculated
 
 The necessary RAM needed for a smart contract to store its data is calculated from the used blockchain state.
 
 As a developer, to understand the amount of RAM your smart contract needs, pay attention to the data structure underlying the multi-index tables your smart contract instantiates and uses. The data structure underlying one multi-index table defines a row in the table. Each data member of the data structure corresponds with a row cell of the table.
-To approximate the amount of RAM one multi-index row needs to store on the blockchain, you have to add the size of the type of each data member and the memory overheads as defined by EOS code for various structures. Consider if there are any indexes defined on your multi-index table. Find below the overheads defined by the EOS code for multi-index tables, indexes and data types:
+To approximate the amount of RAM one multi-index row needs to store on the blockchain, you have to add the size of the type of each data member and the memory overheads for each indexes defined, if any. Find below the overheads defined by the EOS code for multi-index tables, indexes and data types:
 
 * [Multi-index RAM bytes overhead](https://github.com/AntelopeIO/leap/blob/f6643e434e8dc304bba742422dd036a6fbc1f039/libraries/chain/include/eosio/chain/contract_table_objects.hpp#L240)
 * [Overhead per row per index RAM bytes](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L109)
@@ -100,13 +97,6 @@ To approximate the amount of RAM one multi-index row needs to store on the block
 * [Overhead per account RAM bytes](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L110)
 * [Setcode RAM bytes multiplier](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L111)
 * [RAM usage update function](https://github.com/AntelopeIO/leap/blob/9f0679bd0a42d6c24a966bb79de6d8c0591872a5/libraries/chain/apply_context.cpp#L725)
-
-### Related Documentation
-
-* Multi-index table [reference documentation page](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex)
-* Multi-index table [how to documentation page](https://docs.eosnetwork.com/cdt/latest/how-to-guides/multi-index/how-to-define-a-primary-index/)
-* Singleton [reference documentation page](https://docs.eosnetwork.com/cdt/latest/reference/Classes/classeosio_1_1singleton)
-* Singleton [how to documentation page](https://docs.eosnetwork.com/cdt/latest/how-to-guides/multi-index/how-to-define-a-singleton)
 
 ## CPU Resource
 
@@ -164,7 +154,7 @@ In all cases, when the transaction is processed, the blockchain node simulates t
 
 ## Account Power Up
 
-To power up an account means to rent CPU and NET from the PowerUp resource model which is implemented as a smart contract on the blockchain and allocate them to the account of your choice. The action to power up an account is `powerup`. It takes as parameters:
+To power up an account means to rent CPU and NET from the PowerUp resource model, which is implemented as a smart contract on the blockchain, and allocate them to the account of your choice. The action to power up an account is `powerup`. It takes as parameters:
 
 * The `payer` of the fee, must be a valid EOS account.
 * The `receiver` of the resources, must be a valid EOS account.
@@ -226,7 +216,3 @@ executed transaction: 93ab4ac900a7902e4e59e5e925e8b54622715328965150db10774aa098
 #         eosio <= eosio::powerupexec           {"user":"user","max":2}
 warning: transaction executed locally, but may not be confirmed by the network yet         ]
 ```
-
-### Alternative Ways To Use The PowerUp Model
-
-Another way to power up your account's CPU and NET, is through with any EOS wallet that supports the PowerUp resource model.
