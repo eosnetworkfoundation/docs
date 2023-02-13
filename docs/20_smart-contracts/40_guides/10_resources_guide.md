@@ -104,9 +104,9 @@ As NET and RAM, the CPU resource is a very important system resource in the EOS 
 
 ### How Is CPU Calculated
 
-When an account uses the rented CPU, the amount that can be used in one transaction is limited by predefined limits [maximum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-cpu-usage) and [minimum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-min-transaction-cpu-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of CPU defined by the limits predefined by the previously mentioned blockchain settings.
+When an account uses the rented CPU, the amount that can be used in one transaction is limited by the predefined values [maximum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-cpu-usage) and [minimum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-min-transaction-cpu-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of CPU within the limits predefined by the previously mentioned blockchain settings.
 
-For accounts that execute transactions, the blockchain calculates and updates the remaining resources for each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough CPU to cover the transaction execution. To calculate the necessary CPU, the node that actively builds the current block measures the time to execute the transaction. If the account has enough CPU, the transaction is executed; otherwise it is rejected. For technical details please refer to the following links:
+For accounts that execute transactions, the blockchain calculates and updates the remaining resources with each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough CPU to cover the transaction execution. To calculate the necessary CPU, the node that actively builds the current block measures the time to execute the transaction. If the account has enough CPU, the transaction is executed; otherwise it is rejected. For technical details please refer to the following links:
 
 * [The CPU configuration variables](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L66)
 * [The transaction initialization](https://github.com/AntelopeIO/leap/blob/e55669c42dfe4ac112e3072186f3a449936c0c61/libraries/chain/controller.cpp#L1559)
@@ -115,7 +115,7 @@ For accounts that execute transactions, the blockchain calculates and updates th
 
 ### Subjective CPU Billing
 
-Subjective billing is an optional feature of the EOS blockchain. It allows nodes to bill account resources locally in their own node without sharing the billing with the rest of the network. Since its introduction, subjective billing benefited the nodes that adopted it because it reduced the node CPU usage by almost 90%. It can result in failed transactions or lost transactions. Subjective billing can trigger transaction failure when a smart contract code uses a "check" function, like `assert()` or `check()` command to verify data. When this situation occurs, assert or check earlier in the system contract execution to reduce the applied billing. If the lack of an error message does not affect the user experience, a system contract may benefit by replacing some assets and checks with a return statement. This replacement ensures their transactions succeed and are billed objectively on-chain.
+Subjective billing is an optional feature of the EOS blockchain. It allows nodes to bill account resources locally in their own node without sharing the billing with the rest of the network. Since its introduction, subjective billing benefited the nodes that adopted it because it reduced the node CPU usage by almost 90%. But it can result in failed transactions or lost transactions. Subjective billing can trigger transaction failure when a smart contract code uses a "check" function, like `assert()` or `check()` command to verify data. When this situation occurs, assert or check earlier in the system contract execution to reduce the applied billing. If the lack of an error message does not affect the user experience, a system contract may benefit by replacing some asserts and checks with a return statement. This replacement ensures their transactions succeed and are billed objectively on-chain.
 
 Find more details about subjective billing in the [Introduction to subjective billing and lost transactions](https://eosnetwork.com/blog/api-plus-an-introduction-to-subjective-billing-and-lost-transactions/) article.
 
@@ -129,9 +129,9 @@ As CPU and RAM, the NET resource is an important system resource in the EOS bloc
 
 ### How Is NET Calculated
 
-The amount of allocated NET that can be used in one transaction is limited by predefined limits [maximum NET](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-net-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of NET that is in the limits defined by the previously menbtioned blockchain settings.
+The amount of allocated NET that can be used in one transaction is limited by predefined limits [maximum NET](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-net-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of NET that is in the limits defined by the previously mentioned blockchain settings.
 
-For accounts that execute transactions, the blockchain calculates and updates the remaining resources for each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough NET to cover the transaction execution. The necessary NET is calculated based on the transaction size, which is the size of the packed transaction as it is stored in the blockchain. If the account has enough NET resources, the transaction can be executed; otherwise it is rejected. For technical details please refer to the following sources:
+For the accounts that execute transactions, the blockchain calculates and updates the remaining resources for each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough NET to cover the transaction execution. The necessary NET is calculated based on the transaction size, which is the size of the packed transaction as it is stored in the blockchain. If the account has enough NET resources, the transaction can be executed; otherwise it is rejected. For technical details please refer to the following sources:
 
 * [The NET configuration variables](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L57)
 * [The transaction initialization](https://github.com/AntelopeIO/leap/blob/e55669c42dfe4ac112e3072186f3a449936c0c61/libraries/chain/controller.cpp#L1559)
@@ -140,11 +140,11 @@ For accounts that execute transactions, the blockchain calculates and updates th
 
 ### How To Rent NET
 
-For details on how to rent NET resources refer to the how to the [Account Power Up](#account-power-up) section.
+For details on how to rent NET resources refer to the [Account Power Up](#account-power-up) section.
 
 ## Resource Cost Estimation
 
-As a developer if you want to estimate how much CPU and NET a transaction requires execution, you can employ one of the following methods:
+As a developer if you want to estimate how much CPU and NET a transaction requires for execution, you can employ one of the following methods:
 
 * Use the `--dry-run` option for the `dune -- cleos push transaction` command.
 * Use any tool that can pack a transaction and send it to the blockchain and specify the `--dry-run` option.
@@ -166,7 +166,7 @@ To power up an account is a technique to rent CPU and NET resources from the Pow
 dune -- cleos push action eosio powerup '[user, user, 1, 10000000000000, 10000000000000, "1000.0000 EOS"]' -p user
 ```
 
-To view the received NET and CPU weight as well as the amount of the fee, use the `eosio.reserv::powupresult` informational action.
+To view the received NET and CPU weight as well as the amount of the fee, check the `eosio.reserv::powupresult` returned by the action, which should look similar to the one below:
 
 ```console
 executed transaction: 82b7124601612b371b812e3bf65cf63bb44616802d3cd33a2c0422b58399f54f  144 bytes  521 us
@@ -177,13 +177,13 @@ executed transaction: 82b7124601612b371b812e3bf65cf63bb44616802d3cd33a2c0422b583
 #     eosio.rex <= eosio.token::transfer        {"from":"user","to":"eosio.rex","quantity":"999.9901 EOS","memo":"transfer from user to eosio.rex"}
 ```
 
-Initialize the PowerUp reource model on the EOS blockchain with the `"powerup_days": 1,` command. This command permits the maximum period to rent CPU and NET for 24 hours. If you do not use the resources within the 24 hour interval, the rented CPU and NET expires.
+The PowerUp resource model on the EOS blockchain is initialized with `"powerup_days": 1,`. This setting permits the maximum period to rent CPU and NET for 24 hours. If you do not use the resources within the 24 hour interval, the rented CPU and NET expires.
 
 ### Process Expired Orders
 
-The resources in loans that expire are not automatically reclaimed by the system. The expired loans remain in a queue that must be processed. 
+The resources in loans that expire are not automatically reclaimed by the system. The expired loans remain in a queue that must be processed.
 
-Any calls to the `powerup` action processes this queue (limited to two expired loans at a time). Therefore, the expired loans are automatically processed in a timely manner. It may be necessary to manually process expired loans in the queue to release resources to the system, which reduces prices. Therefore, any account may process up to an arbitrary number of expired loans if it calls the `powerupexec` action.
+Any calls to the `powerup` action does process also this queue (limited to two expired loans at a time). Therefore, the expired loans are automatically processed in a timely manner. Sometimes, it may be necessary to manually process expired loans in the queue to release resources back to the system, which reduces prices. Therefore, any account may process up to an arbitrary number of expired loans if it calls the `powerupexec` action.
 
 To view the orders table `powup.order` execute the following command:
 
