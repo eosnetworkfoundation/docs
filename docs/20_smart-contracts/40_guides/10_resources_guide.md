@@ -13,7 +13,7 @@ To allocate CPU and NET resources to an account you have to [power up the accoun
 
 ## RAM Resource
 
-RAM is the memory, the storage space, where the blockchain stores data. If your contract needs to store data on the blockchain, it can store it in the blockchain's RAM as a `multi-index table` or a `singleton`.
+The RAM resource is the memory, the storage space, where the blockchain stores data. If your contract needs to store data on the blockchain, it can store it in the blockchain's RAM as a `multi-index table` or a `singleton`.
 
 ### RAM High Performance
 
@@ -23,18 +23,18 @@ Data stored on the EOS blockchain uses RAM as its storage medium. Therefore, acc
 
 RAM is an important system resource because of the following reasons:
 
-* Ram is a limited resource. The public EOS blockchain started with 64GB of total RAM. After a brief period the block producers decided to increase the memory with 1KB per block. This way the supply of RAM constantly increases, yet its price accelerates at a slower pace.
+* Ram is a limited resource. The public EOS blockchain started with 64GB of total RAM. After a brief period the block producers decided to increase the memory with 1KB per block. In this way the supply of RAM constantly increases, yet its price accelerates at a slower pace.
 
-* The execution of many actions by the blockchain uses RAM. For example, when a new account is created, it needs to store in the blockchain memory the new account's information. Also when an account accepts a token which did not hold before, a new record has to be created, somewhere in the blockchain memory, that holds the balance of the new token accepted. The blockchain memory, has to be purchased either by the account that transfers the tokens or by the account that accepts the new token type.
+* The execution of many actions by the blockchain uses RAM. For example, when you create a new account, the new account information is stored in the blockchain's RAM. Also, when an account accepts a token which it did not hold before, a new record has to be created, that holds the balance of the newly accepted token. The blockchain memory has to be purchased either by the account that transfers the tokens or by the account that accepts the new token type.
 
-* If a smart contract consumes all of its allocated RAM, it cannot store any additional information. To continue to save data in the blockchain database, one, or both of the following conditions must be met:
+* If a smart contract consumes all of its allocated RAM, it cannot store any additional information. To continue to save data in the blockchain database, one or both of the following conditions must be met:
 
-  * A portion of the occupied RAM is freed by the smart contract
-  * More RAM is allocated to the smart contract account through the RAM purchase process
+  * A portion of the occupied RAM is freed by the smart contract.
+  * More RAM is allocated to the smart contract account through the RAM purchase process.
 
 ### How To Purchase RAM
 
-The RAM resource must be bought with the `EOS` system token. The price of RAM is calculated according to the unique Bancor liquidity algorithm which is implemented in the system contract.
+The RAM resource must be bought with the `EOS` system token. The price of RAM is calculated according to the unique Bancor liquidity algorithm that is implemented in the system contract.
 
 The quickest way to calculate the price of RAM:
 
@@ -60,17 +60,17 @@ The quickest way to calculate the price of RAM:
     }
     ```
 
-3. Make note of the `base balance`, in this case is 35044821247.
-4. Make note of the `quote balance`, in this case is 3158350.8754.
+3. Make note of the `base balance`, in this case it is 35044821247.
+4. Make note of the `quote balance`, in this case it is 3158350.8754.
 5. Calculate the price of 1Kib of RAM as `quote balance` * 1024 / `base balance` = 0.0922 EOS.
 
 #### Buy RAM With Command Line Interface
 
-You can buy RAM through the dune command line interface tool. You can buy either an explicit amount of RAM expressed in bytes or an amount of RAM worth of an explicit amount of EOS.
+You can buy RAM through the dune command line interface tool. You can buy either an explicit amount of RAM expressed in bytes or an amount of RAM worth an explicit amount of EOS.
 
 #### Buy RAM In EOS
 
-For example, the below command buys for account `bob` 0.1 EOS worth of RAM at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
+For example, the command below buys for account `bob` 0.1 EOS worth of RAM at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
 
 ```shell
 dune -- cleos system buyram alice bob "0.1 EOS" -p alice@active
@@ -78,7 +78,7 @@ dune -- cleos system buyram alice bob "0.1 EOS" -p alice@active
 
 #### Buy RAM In Bytes
 
-For example, the below command buys for account `bob` 1000 RAM bytes at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
+For example, the command below buys for account `bob` 1000 RAM bytes at the current market RAM price. The cost for the RAM and the execution of this transaction is covered by the `alice` account and the transaction is authorized by the `active` key of the `alice` account.
 
 ```shell
 dune -- cleos system buyrambytes alice bob "1000" -p alice@active
@@ -89,7 +89,7 @@ dune -- cleos system buyrambytes alice bob "1000" -p alice@active
 The necessary RAM needed for a smart contract to store its data is calculated from the used blockchain state.
 
 As a developer, to understand the amount of RAM your smart contract needs, pay attention to the data structure underlying the multi-index tables your smart contract instantiates and uses. The data structure underlying one multi-index table defines a row in the table. Each data member of the data structure corresponds with a row cell of the table.
-To approximate the amount of RAM one multi-index row needs to store on the blockchain, you have to add the size of the type of each data member and the memory overheads for each indexes defined, if any. Find below the overheads defined by the EOS code for multi-index tables, indexes and data types:
+To approximate the amount of RAM one multi-index row needs to store on the blockchain, you have to add the size of the type of each data member and the memory overheads for each of the defined indexes, if any. Find below the overheads defined by the EOS code for multi-index tables, indexes, and data types:
 
 * [Multi-index RAM bytes overhead](https://github.com/AntelopeIO/leap/blob/f6643e434e8dc304bba742422dd036a6fbc1f039/libraries/chain/include/eosio/chain/contract_table_objects.hpp#L240)
 * [Overhead per row per index RAM bytes](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L109)
@@ -100,13 +100,13 @@ To approximate the amount of RAM one multi-index row needs to store on the block
 
 ## CPU Resource
 
-CPU, as NET and RAM, is a very important system resource in the EOS blockchain. The system resource CPU provides processing power to blockchain accounts. When the blockchain executes a transaction it consumes CPU and NET, therefore sufficient CPU must be allocated to the payer account for transactions to complete. The amount of CPU an account has is measured in microseconds and it is referred to as `cpu bandwidth` on the `dune -- cleos get account` command output.
+As NET and RAM, the CPU resource is a very important system resource in the EOS blockchain. The CPU system resource provides processing power to blockchain accounts. When the blockchain executes a transaction, it consumes CPU and NET. For transactions to complete, sufficient CPU must be allocated to the payer account. The amount of CPU an account has is measured in microseconds and it is referred to as `cpu bandwidth` on the `dune -- cleos get account` command output.
 
 ### How Is CPU Calculated
 
-When an account uses the rented CPU, the amount that can be used in one transaction is limited by predefine [maximum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-cpu-usage) and [minimum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-min-transaction-cpu-usage) limits. Transactions executed by the blockchain contain one or more actions, and each transaction must consume an amount of CPU which is in the limits defined by the aforementioned blockchain settings.
+When an account uses the rented CPU, the amount that can be used in one transaction is limited by predefined limits [maximum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-cpu-usage) and [minimum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-min-transaction-cpu-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of CPU defined by the limits predefined by the previously mentioned blockchain settings.
 
-The blockchain calculates and updates the remaining resources, for the accounts which execute transactions, with each block, before each transaction is executed. When a transaction is prepared for execution, the blockchain makes sure the payer account has enough CPU to cover for the transaction execution. To calculate the necessary CPU, the node that actively builds the current block measures the time to execute the transaction. If the account has enough CPU the transaction is executed otherwise it is rejected. For technical details please refer to the following links:
+For accounts that execute transactions, the blockchain calculates and updates the remaining resources for each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough CPU to cover the transaction execution. To calculate the necessary CPU, the node that actively builds the current block measures the time to execute the transaction. If the account has enough CPU, the transaction is executed; otherwise it is rejected. For technical details please refer to the following links:
 
 * [The CPU configuration variables](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L66)
 * [The transaction initialization](https://github.com/AntelopeIO/leap/blob/e55669c42dfe4ac112e3072186f3a449936c0c61/libraries/chain/controller.cpp#L1559)
@@ -115,23 +115,23 @@ The blockchain calculates and updates the remaining resources, for the accounts 
 
 ### Subjective CPU Billing
 
-Subjective billing is an optional feature of the EOS blockchain that lets nodes bill account resources locally in their own node without sharing the billing with the rest of the network. It has, since its introduction, benefited the nodes, which adopted it, because it reduced the node CPU usage by almost 90%. On the other side, sometimes, it results in failed transactions or lost transactions. As a developer you should be aware that when a smart contract code uses a "check" function, like `assert()` or `check()`, to verify data, it can trigger transaction failure and thus can lead to subjective billing issues. One alternative is to assert or check earlier in a contract’s execution to reduce the billing applied. Or if the lack of an error message does not affect user experience, some contracts may benefit from replacing some asserts and checks with return statements to ensure their transactions succeed and are billed objectively on-chain.
+Subjective billing is an optional feature of the EOS blockchain. It allows nodes to bill account resources locally in their own node without sharing the billing with the rest of the network. Since its introduction, subjective billing benefited the nodes that adopted it because it reduced the node CPU usage by almost 90%. It can result in failed transactions or lost transactions. Subjective billing can trigger transaction failure when a smart contract code uses a "check" function, like `assert()` or `check()` command to verify data. When this situation occurs, assert or check earlier in the system contract execution to reduce the applied billing. If the lack of an error message does not affect the user experience, a system contract may benefit by replacing some assets and checks with a return statement. This replacement ensures their transactions succeed and are billed objectively on-chain.
 
 Find more details about subjective billing in the [Introduction to subjective billing and lost transactions](https://eosnetwork.com/blog/api-plus-an-introduction-to-subjective-billing-and-lost-transactions/) article.
 
 ### How To Rent CPU
 
-For details on how to rent CPU resources refer to [Account Power Up](#account-power-up) section.
+For details on how to rent CPU resources refer to the [Account Power Up](#account-power-up) section.
 
 ## NET Resource
 
-NET, as CPU and RAM, is a very important system resource in the EOS blockchain. When the blockchain executes a transaction it consumes CPU and NET, therefore sufficient NET must be allocated to the payer account for transactions to complete. NET is referred to as `net bandwidth` on the `dune -- cleos get account` command output.
+As CPU and RAM, the NET resource is an important system resource in the EOS blockchain. When the blockchain executes a transaction, it consumes CPU and NET. Sufficient NET must be allocated to the payer account for transactions to complete. NET is referred to as `net bandwidth` on the `dune -- cleos get account` command output.
 
 ### How Is NET Calculated
 
-When an account uses the allocated NET, the amount that can be used in one transaction is limited by predefine [maximum NET](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-net-usage) limit. Transactions executed by the blockchain contain one or more actions, and each transaction must consume an amount of NET which is in the limits defined by the aforementioned blockchain settings.
+The amount of allocated NET that can be used in one transaction is limited by predefined limits [maximum NET](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-net-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of NET that is in the limits defined by the previously menbtioned blockchain settings.
 
-The blockchain calculates and updates the remaining resources, for the accounts which execute transactions, with each block, before each transaction is executed. When a transaction is prepared for execution, the blockchain makes sure the payer account has enough NET to cover for the transaction execution. The necessary NET is calculated based on the transaction size, that is, the size of the packed transaction as it is stored in the blockchain. If the account has enough NET resources the transaction can be executed otherwise it is rejected. For technical details please refer to the following sources:
+For accounts that execute transactions, the blockchain calculates and updates the remaining resources for each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough NET to cover the transaction execution. The necessary NET is calculated based on the transaction size, which is the size of the packed transaction as it is stored in the blockchain. If the account has enough NET resources, the transaction can be executed; otherwise it is rejected. For technical details please refer to the following sources:
 
 * [The NET configuration variables](https://github.com/AntelopeIO/leap/blob/a4c29608472dd195d36d732052784aadc3a779cb/libraries/chain/include/eosio/chain/config.hpp#L57)
 * [The transaction initialization](https://github.com/AntelopeIO/leap/blob/e55669c42dfe4ac112e3072186f3a449936c0c61/libraries/chain/controller.cpp#L1559)
@@ -140,21 +140,21 @@ The blockchain calculates and updates the remaining resources, for the accounts 
 
 ### How To Rent NET
 
-For details on how to rent NET resources refer to the how to [Account Power Up](#account-power-up) section.
+For details on how to rent NET resources refer to the how to the [Account Power Up](#account-power-up) section.
 
 ## Resource Cost Estimation
 
-As a developer if you want to estimate how much CPU and NET is required for a transaction to be executed you can employ one of the following methods:
+As a developer if you want to estimate how much CPU and NET a transaction requires execution, you can employ one of the following methods:
 
 * Use the `--dry-run` option for the `dune -- cleos push transaction` command.
 * Use any tool that can pack a transaction and send it to the blockchain and specify the `--dry-run` option.
 * Use the chain API endpoint [`compute_transaction`](https://github.com/AntelopeIO/leap/blob/51c11175e54831474a89a449beea1fb067e3d1e9/plugins/chain_plugin/include/eosio/chain_plugin/chain_plugin.hpp#L489).
 
-In all cases, when the transaction is processed, the blockchain node simulates the execution of the transaction and, as a consequence, the state of the blockchain is changed speculatively, allowing for the CPU and NET measurements to be done. However in the end the transaction is not sent to the blockchain and the caller receives in return the estimated CPU and NET costs.
+In all cases, when the transaction is processed, the blockchain node simulates the execution of the transaction and, as a consequence, the state of the blockchain is changed speculatively, which allows for the CPU and NET measurements to be done. However, the transaction is not sent to the blockchain and the caller receives the estimated CPU and NET costs in return.
 
 ## Account Power Up
 
-To power up an account means to rent CPU and NET from the PowerUp resource model, which is implemented as a smart contract on the blockchain, and allocate them to the account of your choice. The action to power up an account is `powerup`. It takes as parameters:
+To power up an account is a technique to rent CPU and NET resources from the PowerUp resource model. A smart contract implements this model on the blockchain and allocates these resources to the account of your choice. The action to power up an account is `powerup`. It takes as parameters:
 
 * The `payer` of the fee, must be a valid EOS account.
 * The `receiver` of the resources, must be a valid EOS account.
@@ -166,7 +166,7 @@ To power up an account means to rent CPU and NET from the PowerUp resource model
 dune -- cleos push action eosio powerup '[user, user, 1, 10000000000000, 10000000000000, "1000.0000 EOS"]' -p user
 ```
 
-To see how much NET and CPU weight was received as well as the fee check the `eosio.reserv::powupresult` informational action.
+To view the received NET and CPU weight as well as the amount of the fee, use the `eosio.reserv::powupresult` informational action.
 
 ```console
 executed transaction: 82b7124601612b371b812e3bf65cf63bb44616802d3cd33a2c0422b58399f54f  144 bytes  521 us
@@ -177,13 +177,15 @@ executed transaction: 82b7124601612b371b812e3bf65cf63bb44616802d3cd33a2c0422b583
 #     eosio.rex <= eosio.token::transfer        {"from":"user","to":"eosio.rex","quantity":"999.9901 EOS","memo":"transfer from user to eosio.rex"}
 ```
 
-The PowerUp resource model on EOS blockchain is initialized with `"powerup_days": 1,` which means the maximum period you can rent CPU and NET is 24 hours. If you do not use them in the 24 hours interval the rented CPU and NET will expire.
+Initialize the PowerUp reource model on the EOS blockchain with the `"powerup_days": 1,` command. This command permits the maximum period to rent CPU and NET for 24 hours. If you do not use the resources within the 24 hour interval, the rented CPU and NET expires.
 
 ### Process Expired Orders
 
-The resources in loans that expire do not automatically get reclaimed by the system. The expired loans sit in a queue that must be processed. Any calls the `powerup` action will help process this queue (limited to processing at most two expired loans at a time) so that normally the expired loans will be automatically processed in a timely manner. However, in some cases it may be necessary to manual process expired loans in the queue to make resources available to the system again and thus make prices cheaper. In such a scenario, any account may process up to an arbitrary number of expired loans if it calls the `powerupexec` action.
+The resources in loans that expire are not automatically reclaimed by the system. The expired loans remain in a queue that must be processed. 
 
-To view the orders table `powup.order` execute the following:
+Any calls to the `powerup` action processes this queue (limited to two expired loans at a time). Therefore, the expired loans are automatically processed in a timely manner. It may be necessary to manually process expired loans in the queue to release resources to the system, which reduces prices. Therefore, any account may process up to an arbitrary number of expired loans if it calls the `powerupexec` action.
+
+To view the orders table `powup.order` execute the following command:
 
 ```sh
 dune -- cleos get table eosio 0 powup.order
