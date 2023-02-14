@@ -104,7 +104,11 @@ As NET and RAM, the CPU resource is a very important system resource in the EOS 
 
 ### How Is CPU Calculated
 
-When an account uses the rented CPU, the amount that can be used in one transaction is limited by the predefined values [maximum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-cpu-usage) and [minimum CPU](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-min-transaction-cpu-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of CPU within the limits predefined by the previously mentioned blockchain settings.
+Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of CPU within the limits predefined by the minimum and maximum transaction CPU usage values. For EOS blockchain these limits are set in the blockchain's configuration. You can find out these limits by running the following command and consult the `min_transaction_cpu_usage` and the `max_transaction_cpu_usage` which are expressed in microseconds:
+
+```shell
+dune -- cleos get consensus_parameters | grep cpu
+```
 
 For accounts that execute transactions, the blockchain calculates and updates the remaining resources with each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough CPU to cover the transaction execution. To calculate the necessary CPU, the node that actively builds the current block measures the time to execute the transaction. If the account has enough CPU, the transaction is executed; otherwise it is rejected. For technical details please refer to the following links:
 
@@ -129,7 +133,11 @@ As CPU and RAM, the NET resource is an important system resource in the EOS bloc
 
 ### How Is NET Calculated
 
-The amount of allocated NET that can be used in one transaction is limited by predefined limits [maximum NET](https://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1blockchain__parameters#variable-max-transaction-net-usage). Transactions executed by the blockchain contain one or more actions. Each transaction must consume an amount of NET that is in the limits defined by the previously mentioned blockchain settings.
+Each transaction must consume an amount of NET which can not exceed the predefined maximum transaction NET usage value. For EOS blockchain this limit is set in the blockchain's configuration. You can find out this limit by running the following command and consult the `max_transaction_net_usage` which is expressed in bytes.
+
+```shell
+dune -- cleos get consensus_parameters | grep net
+```
 
 For the accounts that execute transactions, the blockchain calculates and updates the remaining resources for each block before each transaction is executed. When a transaction is prepared for execution, the blockchain determines whether the payer account has enough NET to cover the transaction execution. The necessary NET is calculated based on the transaction size, which is the size of the packed transaction as it is stored in the blockchain. If the account has enough NET resources, the transaction can be executed; otherwise it is rejected. For technical details please refer to the following sources:
 
