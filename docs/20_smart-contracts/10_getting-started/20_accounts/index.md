@@ -19,7 +19,7 @@ Every account on the EOS Network has a human-readable name. This makes it easier
 * Names cannot start with a number or a period. 
 * Names cannot end with a period.
 
-Periods have a special meaning for EOS accounts. They specify that an account has a **suffix **(similar to a top-level domain like .com), also known as a **premium name**. Accounts with a suffix can only be created by the **suffix owner**. 
+Periods have a special meaning for EOS accounts. They specify that an account has a **suffix** (similar to a top-level domain like .com), also known as a **premium name**. Accounts with a suffix can only be created by the **suffix owner**. 
 
 For instance, if someone owns the suffix `.bar` then only that person can create `foo.bar`. 
 
@@ -32,12 +32,19 @@ Every EOS account is ultimately controlled by a public/private key pair. The pri
 
 It is important to safeguard your private key, as it provides complete control over your account's digital assets. Your private key should be stored in a secure software or hardware wallet, as whoever possesses it will have full access to the assets linked to your account.
 
-EOS accounts offer extra security mechanisms out of the box, using something called the “permission system”.
+EOS accounts offer extra security mechanisms out of the box, using something called the *permission system*.
+
+Examples of private and public keys: 
+```
+Private: 5KSdyAiFzYQAtBKDBKCCF28KMMhZ4EmXUxSg8B3nSkHKutT15rY
+Public: PUB_K1_5d7eRKgCCiEdsbBdxxnZdFWnGYS64uWZPZgTcTU1xnB2aESxqR
+Legacy Public Format: EOS5d7eRKgCCiEdsbBdxxnZdFWnGYS64uWZPZgTcTU1xnB2cq4JMD
+```
 
 
 ## Permissions system
 
-Each account has a set of hierarchical permissions that controls it. Each new account comes with two base permissions by default. These two permissions cannot be removed as they are required for your account to function properly. 
+Each account has a set of hierarchical permissions that control it, and comes with two base permissions by default. These two permissions cannot be removed as they are required for your account to function properly. 
 
 The mandatory permissions are `owner` and `active`.
 
@@ -70,9 +77,6 @@ As you can see in the example below, `bob` alone does not have enough power to s
 ![Weights and thresholds](images/weights_and_thresholds.png)
 
 
-In our **Permission Structures** guide, we dig into how to implement various arrangements of account permission structures using DUNE, as well as some more advanced concepts like time delays.
-
-
 ## Smart Contracts
 
 A smart contract is just a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple things like a todo application to a fully-fledged RPG game running entirely on the blockchain. 
@@ -84,11 +88,10 @@ For more information about deploying smart contracts to your accounts, please se
 
 ## Creating an Account with DUNE
 
-Once you have **DUNE **set up you can start creating accounts on your local development environment with just a few commands. 
+Once you have **DUNE** set up you can start creating accounts on your local development environment with a single command. 
 
 ```
-dune --start local_testnet
-dune --create-account &lt;ACCOUNT_NAME>
+dune --create-account <ACCOUNT_NAME>
 ```
 
 If you want to see the information related to the account you just created, you can use the following command. 
@@ -100,13 +103,13 @@ dune -- cleos get account
 
 ## Ownership of Digital Assets
 
-When something is “owned” by an account on a blockchain, it means that a row in the decentralized database says that the digital asset belongs to that account. 
+When something is *owned* by an account on a blockchain, it means that a row in the decentralized database says that the digital asset belongs to that account. 
 
 In most cases, only the specific account that is registered as the owner of that digital asset and has the private key that can prove ownership of the account (via a signature) may manipulate that data. 
 
-Keep in mind that the smart contract also co-owns that data with you, and might be able to manipulate data that is registered to you as well.
+Keep in mind that a smart contract also co-owns that data with the user, and might be able to manipulate all data that is stored inside of its tables without the explicit consent of the user.
 
-Smart contract developers may also update smart contracts at will, so for contracts that have security or financial implications they may relinquish their ability to update their smart contracts in order to trade upgradeability for increased user trust. 
+Smart contract developers may also update smart contracts at will, so contracts that have security or financial implications may relinquish their ability to update their smart contracts in order to trade upgradeability for increased user trust. 
 
 
 ## Relinquishing ownership of an account
@@ -123,16 +126,27 @@ You may set the contract account’s owner and active permissions to `eosio.null
 This is a good option if you want to relinquish control of this account **forever**.
 
 
+```
+dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"eosio.null","permission":"active"},"weight":1},{"permission":{"actor":"<ACCOUNT>","permission":"eosio.code"},"weight":1}],"waits":[]}' owner -p <ACCOUNT>
+dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"eosio.null","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
+```
+
+(note the eosio.code addition for the active permission, which you might need if the account is a smart contract!)
+
 ### Prods accounts
 
 Alternatively, you may set the contract account’s owner and active permissions to three different producer-controller (network consensus-controlled) accounts so that if there is ever an issue with this contract you can request the help of the producers to upgrade the contract. 
 
 This is a good option if you are dealing with intricate and complex contracts that might have bugs that could impact the users negatively. 
 
-
 #### eosio.prods
 
 The `eosio.prods` account is controlled by ⅔+1 of the actively producing producers on the network. This means that if there are 21 active producers then you would need 15 of them to sign off on all upgrades. 
+
+```
+dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"eosio.prods","permission":"active"},"weight":1},{"permission":{"actor":"<ACCOUNT>","permission":"eosio.code"},"weight":1}],"waits":[]}' owner -p <ACCOUNT>
+dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"eosio.prods","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
+```
 
 
 #### prod.major
@@ -140,10 +154,20 @@ The `eosio.prods` account is controlled by ⅔+1 of the actively producing produ
 The `prod.major` account is controlled by ½+1, meaning that if there are 30 active producers then you would need 16 of them to sign off on all upgrades.
 
 
+```
+dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"prod.major","permission":"active"},"weight":1},{"permission":{"actor":"<ACCOUNT>","permission":"eosio.code"},"weight":1}],"waits":[]}' owner -p <ACCOUNT>
+dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"prod.major","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
+```
+
 #### prod.minor
 
 The `prod.minor` account is controlled by ⅓+1, meaning that if there are 30 active producers, then you would need 11 of them to sign off on all upgrades.
 
+
+```
+dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"prod.minor","permission":"active"},"weight":1},{"permission":{"actor":"<ACCOUNT>","permission":"eosio.code"},"weight":1}],"waits":[]}' owner -p <ACCOUNT>
+dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"prod.minor","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
+```
 
 ## Bidding on premium names (suffixes)
 
