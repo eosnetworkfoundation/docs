@@ -5,16 +5,30 @@ title: DUNE Guide
 ## Overview
 
 Docker Utilities for Node Execution (DUNE) is a client tool for blockchain developers and node operators to perform tasks related to smart contract development and node management functions. In particular, DUNE allows to:
+* Build, deploy, and test smart contracts
+* Start, initialize, and stop EOS nodes
+* Send actions to smart contracts
+* Retrieve data from smart contracts
+* Perform other node management operations
 
-- Build, deploy, and test smart contracts
-- Start, initialize, and stop EOS nodes
-- Send actions to smart contracts
-- Retrieve data from smart contracts
-- Perform other node management operations
-
-DUNE simplifies blockchain software setup by isolating the EOS software and its dependencies from the host system. It allows developers and operators to experiment with the EOS blockchain and perform boilerplate tasks in a safe sandbox using a Docker container.
+DUNE simplifies blockchain software setup by isolating the EOS software and its dependencies from the host system. It allows developers and operators to experiment with the EOS blockchain and perform boilerplate operations in a safe sandbox using a Docker container.
 
 ## Installation
+
+DUNE can be installed and run on the following platforms:
+* Linux
+* Windows
+* MacOS
+
+Installation instructions for each supported plaftorm are available below.
+
+### Dependencies
+
+DUNE requires the following software dependencies to be installed on all supported plaftorms:
+* Python 3: https://www.python.org/downloads/
+* Docker: https://docs.docker.com/get-docker/
+
+Follow the instructions provided on the above links to install these software dependencies.
 
 ### Linux
 
