@@ -42,7 +42,7 @@ Applications deployed on the EOS blockchain are upgradeable. This means you can 
 
 With `DPOS` as the consensus mechanism, EOS consumes much less energy to validate transactions and secure a blockchain compared to other consensus algorithms.
 
-## What's Next?
+## See Also
 
 - [Get Started](../02_getting-started/index.md): Learn how to develop on the EOS blockchain
 - [Protocol](../04_protocol/index.md): Understand the protocols that make up the EOS blockchain
