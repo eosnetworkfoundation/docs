@@ -4,7 +4,17 @@ title: DUNE Guide
 
 ## Overview
 
-Docker Utilities for Node Execution (DUNE) is a client tool for blockchain developers and node operators to perform tasks related to smart contract development and node management functions. In particular, DUNE allows to:
+In this guide you will learn to use DUNE for basic smart contract development. You will learn to:
+* Launch a local EOS blockchain consisting of a single node
+* Create test accounts for smart contract deployment and use
+* Develop and deploy the Hello World contract (singleton version)
+* Test your Hello World contract and get table information
+
+Before getting started with smart contract development, you need to learn about DUNE and how to install it on your platform.
+
+## DUNE
+
+Docker Utilities for Node Execution (DUNE) is a client tool for blockchain developers and node operators to perform tasks related to smart contract development and node management. In particular, DUNE allows to:
 * Build, deploy, and test smart contracts
 * Start, initialize, and stop EOS nodes
 * Send actions to smart contracts
@@ -13,7 +23,7 @@ Docker Utilities for Node Execution (DUNE) is a client tool for blockchain devel
 
 DUNE simplifies blockchain software setup by isolating the EOS software and its dependencies from the host system. It allows developers and operators to experiment with the EOS blockchain and perform boilerplate operations in a safe sandbox using a Docker container.
 
-## Installation
+### Installation
 
 DUNE can be installed and run on the following platforms:
 * Linux
@@ -22,7 +32,7 @@ DUNE can be installed and run on the following platforms:
 
 Installation instructions for each supported plaftorm are available below.
 
-### Dependencies
+#### Dependencies
 
 DUNE requires the following software dependencies to be installed on all supported plaftorms:
 * Python 3: https://www.python.org/downloads/
@@ -30,9 +40,9 @@ DUNE requires the following software dependencies to be installed on all support
 
 Follow the instructions provided on the above links to install these software dependencies.
 
-### Linux
+#### Linux
 
-### Windows
+#### Windows
 
 ## Wallet Setup
 
