@@ -166,7 +166,7 @@ curl http://localhost:8888/v1/chain/get_info
 In both cases, the result is similar to the JSON output above.
 
 > ℹ️ Node Bootstrapping ℹ️  
-Bootstrapping nodes becomes necessary when either the system contracts must be deployed, or some functionality must be enabled by activating protocol features. This guide does not need to activate protocol features or deploy additional layer-2 functionality through the system contracts.
+Bootstrapping nodes becomes necessary when either the system contracts must be deployed, or some functionality must be enabled by activating protocol features. For simplicitly, node bootstrapping will be showcased in another guide when required.
 
 ### Create Test Accounts
 
