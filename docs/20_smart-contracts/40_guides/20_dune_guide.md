@@ -30,19 +30,7 @@ DUNE can be installed and run on the following platforms:
 * Windows
 * MacOS
 
-Installation instructions for each supported plaftorm are available below.
-
-#### Dependencies
-
-DUNE requires the following software dependencies to be installed on all supported plaftorms:
-* Python 3: https://www.python.org/downloads/
-* Docker: https://docs.docker.com/get-docker/
-
-Follow the instructions provided on the above links to install these software dependencies.
-
-#### Linux
-
-#### Windows
+Installation instructions for each supported plaftorm are available on the [DUNE's github project](https://github.com/AntelopeIO/DUNE) page.
 
 ## Wallet Setup
 
