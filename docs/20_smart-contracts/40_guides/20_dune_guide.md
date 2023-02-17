@@ -34,11 +34,33 @@ Follow the instructions provided on the above links to install these software de
 
 ### Windows
 
+## Wallet Setup
+
+An EOS wallet stores development and account keys that are required to sign messages and transactions sent to the blockchain. Your EOS wallet usually resides near your local system, so you can create and interact with your wallet before launching your EOS blockchain, if needed.
+
+> ℹ️ DUNE wallet management ℹ️  
+DUNE creates a default wallet when first installed. This simplifies wallet setup or eliminates it altogether, unless you name your wallet explicitly. To take advantage of DUNE's automatic wallet management, it is recommended that you use the default wallet.
+
+To view all wallets, execute this command:
+
+```shell
+$ dune -- cleos wallet list
+```
+
+The command displays a wallet named `default` in a locked (*) state:
+
+```
+Wallets:
+[
+  "default *"
+]
+```
+
+During node setup, DUNE will create an EOS development key to bootstrap your EOS blockchain. Later on, to create your test account on the blockchain, you will create a key pair in your wallet and associate the public key with your account.
+
 ## Node Setup
 
 ### Set Up EOS Node
-
-### Create Wallet and Keys
 
 ### Create Test Accounts
 
