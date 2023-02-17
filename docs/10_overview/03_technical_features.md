@@ -44,6 +44,5 @@ With `DPOS` as the consensus mechanism, EOS consumes much less energy to validat
 
 ## See Also
 
-- [Get Started](../02_getting-started/index.md): Learn how to develop on the EOS blockchain
-- [Protocol](../04_protocol/index.md): Understand the protocols that make up the EOS blockchain
-- [Get Involved](../get-involved/index.md): Learn how to get involved and contribute to the EOS ecosystem
+- [Get Started with EOS Smart Contracts](/docs/20_smart-contracts/10_getting-started/index.md): Learn to develop Smart Contracts on the EOS blockchain.
+- [Learn about the EOS Protocol](/docs/60_resources/10_protocol/index.md): Understand the protocols that make up the EOS blockchain.
