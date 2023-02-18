@@ -38,7 +38,7 @@ Installation instructions for each supported plaftorm are available on the [DUNE
 An EOS wallet stores development and account keys that are required to sign messages and also transactions sent to the blockchain. Your EOS wallet works independently from the blockchain, so you can create and interact with your wallet before or after launching your EOS blockchain, if needed.
 
 > ℹ️ DUNE wallet management  
-DUNE creates a default wallet when first installed. This simplifies wallet setup or eliminates it altogether, unless you name your wallet explicitly. To take advantage of DUNE's automatic wallet management, it is recommended that you use the default wallet.
+DUNE creates a default wallet when first installed. This simplifies wallet setup or eliminates it altogether, unless you want to name your wallet explicitly. To take advantage of DUNE's automatic wallet management, it is recommended that you use the default wallet.
 
 To view all wallets, execute this command:
 
@@ -55,7 +55,7 @@ Wallets:
 ]
 ```
 
-If DUNE requires the wallet for some reason, e.g. to sign a transaction, it will unlock it automatically for you, as long as you are using the default wallet.
+If DUNE requires to access the wallet for some reason, e.g. to sign a transaction, it will unlock the wallet automatically for you as long as you are using the default wallet. Therefore, there is no further wallet setup required in DUNE.
 
 ## Node Setup
 
