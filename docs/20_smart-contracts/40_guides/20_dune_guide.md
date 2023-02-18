@@ -59,6 +59,10 @@ If DUNE requires to access the wallet for some reason, e.g. to sign a transactio
 
 ## Node Setup
 
+An EOS blockchain operates through a network of interconnected nodes. EOS nodes are set up to serve one or more roles, such as a validating transactions, producing blocks, serving RPC API requests, etc.
+
+In this section, you will set up your own EOS blockchain consisting of a single API/producer node. This will allow you to deploy a smart contract to your EOS blockchain later on, and perform tests on it.
+
 ### Set Up EOS Node
 
 DUNE simplifies node creation and setup. To start a node called `first` execute the following command:
