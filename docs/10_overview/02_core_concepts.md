@@ -35,18 +35,16 @@ For more information about DPOS BFT, see [EOS Consensus](/docs/60_resources/10_p
 
 ### RAM
 
-RAM, in the EOS blockchain, is one of the important system resources consumed by blockchain accounts and smart contracts. RAM acts as a permanent storage and is used to store account names, permissions, token balance and other data for speedy on-chain data access. RAM needs to be purchased and is not based on staking as it is a limited persistent resource.
-
-More details about RAM as a system resource can be found [here](https://docs.eosnetwork.com/system-contracts/latest/key-concepts/ram).
+RAM, in the EOS blockchain, is one of the important system resources consumed by blockchain accounts and smart contracts. RAM acts as a permanent storage and is used to store account names, permissions, token balance and other data for speedy on-chain data access. RAM must be purchased. More details about RAM as a system resource can be found [here](https://docs.eosnetwork.com/system-contracts/latest/key-concepts/ram).
 
 ### CPU
 
-CPU, in the EOS blockchain, represents the processing time of an action and is measured in microseconds (μs). CPU is referred to as `cpu bandwidth` in the cleos `get account` command output and indicates the amount of processing time an account has at its disposal when pushing actions to a contract. CPU is a transient system resource and falls under the staking mechanism of the EOS blockchain.
+CPU, in the EOS blockchain, represents the processing time of an action and is measured in microseconds (μs). CPU is referred to as `cpu bandwidth` in the `dune -- cleos get account` command output and indicates the amount of processing time an account has at its disposal when pushing actions to a contract. CPU is a transient system resource and it can be rented through the `PowerUp` resource model mechanism.
 
 More details about CPU as a system resource can be found [here](https://docs.eosnetwork.com/system-contracts/latest/key-concepts/cpu).
 
 ### Network (NET)
 
-Besides CPU and RAM, NET is also a very important resource on the EOS blockchain. NET is the network bandwidth, measured in bytes, of transactions and is referred to as `net bandwidth` on the cleos `get account` command. NET is a also a transient system resource and falls under the staking mechanism of the EOS blockchain.
+Besides CPU and RAM, NET is also a very important resource on the EOS blockchain. NET is the network bandwidth, measured in bytes, of transactions and is referred to as `net bandwidth` on the `dune -- cleos get account` command. NET is a also a transient system resource and it can be rented through the `PowerUp` resource model mechanism.
 
 More details about NET as a system resource can be found [here](https://docs.eosnetwork.com/system-contracts/latest/key-concepts/net).
