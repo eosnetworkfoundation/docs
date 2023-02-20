@@ -59,7 +59,7 @@ If DUNE requires to access the wallet for some reason, e.g. to sign a transactio
 
 ## Node Setup
 
-An EOS blockchain operates through a network of interconnected nodes. EOS nodes are set up to serve one or more roles, such as a validating transactions, producing blocks, serving RPC API requests, etc.
+An EOS blockchain operates through a network of interconnected nodes. EOS nodes can be set up to serve one or more roles, such as a validating transactions, producing blocks, serving RPC API requests, etc.
 
 In this section, you will set up your own EOS blockchain consisting of a single API/producer node. This will allow you to deploy a smart contract to your EOS blockchain later on, and perform tests on it.
 
@@ -121,13 +121,27 @@ info  nodeos    producer_plugin.cpp:2534      produce_block        ] Produced bl
 ...
 ```
 
-You can check that indeed the node is active and listening to RPC API requests by using the `cleos get info` command:
+You can check that indeed the node is active and running by invoking the following command:
+
+```shell
+$ dune --list
+```
+
+The result lists all nodes created on the container, whether active or running, and their assigned ports:
+
+```
+Node Name   | Active? | Running? | HTTP           | P2P          | SHiP
+---------------------------------------------------------------------------------
+first       |    Y    |    Y     | 127.0.0.1:8888 | 0.0.0.0:9876 | 127.0.0.1:8080
+```
+
+You can also check that the node is listening to RPC API requests by running the following command:
 
 ```shell
 $ dune -- cleos get info
 ```
 
-The command returns information about the local EOS blockchain that you just launched:
+The command returns information about the local EOS blockchain just launched:
 
 ```json
 {
@@ -154,13 +168,13 @@ The command returns information about the local EOS blockchain that you just lau
 }
 ```
 
-You can also check the `get_info` endpoint directly provided by the `chain_api_plugin` in your browser:
+You can also check the `get_info` endpoint directly exposed by the `chain_api_plugin` in your browser:
 
 ```shell
 http://localhost:8888/v1/chain/get_info
 ```
 
-Or you can use `curl` or `wget` and send an HTTP GET request directly:
+Or you can use `curl` or `wget` to send an HTTP GET request directly:
 
 ```shell
 curl http://localhost:8888/v1/chain/get_info
@@ -168,8 +182,8 @@ curl http://localhost:8888/v1/chain/get_info
 
 In both cases, the result is similar to the JSON output above.
 
-> ℹ️ Node Bootstrapping ℹ️  
-Bootstrapping nodes becomes necessary when either the system contracts must be deployed, or some functionality must be enabled by activating protocol features. For simplicitly, node bootstrapping will be showcased in another guide when required.
+> ℹ️ Node Bootstrapping  
+Bootstrapping a node becomes necessary when either the system contracts must be deployed, or some functionality must be activated by a protocol feature. For simplicitly, node bootstrapping will be showcased in another guide when required.
 
 ### Create Test Accounts
 
