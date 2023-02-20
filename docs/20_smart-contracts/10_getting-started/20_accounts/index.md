@@ -169,6 +169,16 @@ dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],
 dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"prod.minor","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
 ```
 
+## Account creation costs
+
+Because EOS accounts have multiple things registered to them, like their permissions, as well as the resources (CPU, NET, RAM) they hold, there is a cost incurred when creating them on the network. This also means that someone who already has an account needs to create an account for you. There are many services that do this for the EOS network, and for your local development environment you can create accounts using the system account (`eosio`). 
+
+This does however potentially impact your application design, as your users who aren't already on the network will need accounts created for them. You should take this cost into consideration when planning your user acquisition expenses. 
+
+The cost of opening an account is based on the RAM required for opening it, which as of writing this document (20/02/2023) is `2996 bytes`.
+
+Go to our [Resources Guide](../30_resources/index.md) to learn how to calculate the cost of purchasing RAM from the RAM Market.
+
 ## Bidding on premium names (suffixes)
 
 In order to own a premium name (for example: `foo[.bar]`) you must bid on it and then win it in an auction. 
