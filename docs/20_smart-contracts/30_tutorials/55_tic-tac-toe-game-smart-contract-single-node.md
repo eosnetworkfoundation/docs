@@ -64,7 +64,7 @@ A blockchain account has a human readable name which is between 1 and 12 charact
 
 ### Smart Contract Actions
 
-A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](/docs/60_resources/10_protocol/02_transactions_protocol.md "Tranasctions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
+A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](/docs/60_resources/10_protocol/02_transactions_protocol.md "Transactions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
 
 ![Transactions and Actions](images/tictactoe/transactions-and-actions-temp.png "Transactions and Actions")
 
@@ -73,8 +73,8 @@ A smart contract exposes methods or ‘actions’ that transactions use to opera
 The EOS blockchain accounts own and consume three resources. By default a single node testnet does load the smart contract which tracks resources therefore this section is for information only:
 
 * RAM - This resource is the amount of RAM available to an account. RAM stores smart contracts loaded on the blockchain. Smart contacts use RAM via the multi-index table to store smart contract state. Spend tokens to purchase more RAM, RAM can be sold.
-* CPU - This resource is the amount of CPU which can be used by an account in each 24 hour period. Transactions consume CPU. Stake tokens for more CPU. Unstaking returns CPU. 
-* NET - This resource is the amount of data which can be written to blockchain blocks by an account in each 24 hour period. The blockchain blocks store transactions and transaction parameters, the history of blockchain . Stake tokens for more NET. Unstaking returns NET.
+* CPU - This resource is the amount of CPU which can be used by an account. Transactions consume CPU.
+* NET - This resource is the amount of data which can be written to blockchain blocks by an account. The blockchain blocks store transactions and transaction parameters, the history of blockchain.
 
 For more information visit the [Core Concepts](/docs/10_overview/02_core_concepts.md) section.
 
@@ -85,7 +85,7 @@ Run [nodeos](http://docs.eosnetwork.com/leap/latest/nodeos/) locally to start a 
 ```shell
 nodeos -e -p eosio --plugin eosio::producer_plugin --plugin eosio::producer_api_plugin --plugin eosio::chain_api_plugin --plugin eosio::http_plugin --plugin eosio::history_plugin --plugin eosio::history_api_plugin --filter-on="*" --access-control-allow-origin='*' --contracts-console --http-validate-host=false --verbose-http-errors >> nodeos.log 2>&1 &
 ```
-Look at the `nodeos.log` file to ensure `nodeos` is running and producing blocks. The ouput should look as follows:
+Look at the `nodeos.log` file to ensure `nodeos` is running and producing blocks. The output should look as follows:
 
 ```console
 info  2020-08-10T07:57:04.561 thread-0  http_plugin.cpp:895           add_handler          ] add api url: /v1/history/get_key_accounts

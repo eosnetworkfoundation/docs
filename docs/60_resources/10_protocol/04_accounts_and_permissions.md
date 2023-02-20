@@ -57,13 +57,11 @@ Name | Type | Description
 
 The `name` type consists of a 64-bit value that encodes alphanumeric characters into 5-bit chunks, except the last character, if any, which uses a 4-bit chunk. The `name` type is used to encode account names, action names, etc. The `time_point` type stores timestamps in microseconds. The `asset` type associates a currency or token symbol with a given amount. The `account_resource_limit` type keeps track of the amount used, available, and maximum that can be used in a given window for the given resource (NET or CPU). The `permission` type holds the list of permission levels associated with the account (see [3. Permissions](#3-permissions)).
 
-
 ## 2.2. Actions and Transactions
 
 Besides identifying participants in the EOS blockchain, actions and transactions are the other reason for accounts to exist. An action requires one or more actors to push or send the action, and a receiver account to whom the action is directed. A receiver account is also needed when leaving proof, in an action receipt, that the action was pushed to the intended recipient.
 
 In contrast, transactions are agnostic to accounts, although there is an indirect link to them through their associated keys. Transactions are signed using one or more signing keys belonging to the one or more actors involved in the actions that form the transaction. This can be the receiving account itself or other authorized actors specified on the authority table from the receiving account's permission.
-
 
 # 3. Permissions
 

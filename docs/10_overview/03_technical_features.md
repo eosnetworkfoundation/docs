@@ -22,20 +22,13 @@ The resource allocation and governance mechanism of the EOS blockchain are progr
 
 ## Staking Mechanism
 
-In the EOS blockchain, access to the system resources is regulated by a process called the staking mechanism. The system resources that fall under the scope of the staking mechanism are CPU and NET. You can directly interact with the blockchain through the cleos CLI, the RPC APIs, or an application to access CPU and NET by staking system tokens.
-
-[[info | Note]]
-| RAM is a persistent system resource on the EOS blockchain and does not fall in the scope of the staking mechanism.
-
-When you stake tokens for CPU and NET, you gain access to system resources proportional to the total amount of tokens staked by all other users for the same resource at the same time. This means you can perform transactions at no cost but in the limitations of the staked tokens. The staked tokens guarantee the proportional amount of resources regardless of any variations in the free market.
-
-You can also allocate the system resources to EOS accounts in a programmatic manner by customizing the resource allocation model in the system smart contract. This flexibility is provided by the programmable economics of the EOS blockchain.
+EOS blockchain implements on-chain governance. The token holder can participate in the on-chain governance by voting. The vote power is given by the amount of EOS tokens staked, and is calculated in proportion with the total amount of EOS tokens staked on-chain by all EOS token holder.
 
 ## Business Model Flexibility
 
 Applications built on EOS can adopt a freemium model in which application users do not need to pay for the cost of resources needed to execute transactions.
 
-The execution of the costless transactions under the freemium model is facilitated by applications co-signing the transactions with the user. Alternatively, applications can also stake enough system tokens to guarantee the resources needed.
+The execution of the costless transactions under the freemium model is facilitated by applications co-signing the transactions with the user.
 
 ## Comprehensive Permission Schema
 
@@ -53,4 +46,3 @@ With `DPOS` as the consensus mechanism, EOS consumes much less energy to validat
 
 - [Get Started with EOS Smart Contracts](/docs/20_smart-contracts/10_getting-started/index.md): Learn to develop Smart Contracts on the EOS blockchain.
 - [Learn about the EOS Protocol](/docs/60_resources/10_protocol/index.md): Understand the protocols that make up the EOS blockchain.
-- [Get Involved](/docs/80_get-involved/index.md): Learn how to get involved and contribute to the EOS ecosystem.
