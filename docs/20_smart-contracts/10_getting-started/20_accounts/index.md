@@ -4,7 +4,9 @@ title: Account Basics
 
 ## What is an account?
 
-An account on the EOS Network is exactly what it sounds like. It’s a digital container that holds a variety of information about you. It can even hold a smart contract. It is the key component that enables you to access and control your blockchain data, as well as execute transactions.
+An account on the EOS Network is a digital container that holds a variety of information like EOS tokens that the account owns, resources at its disposal, account control permission structure, and various other things we will get into later in this guide. Accounts can also hold a smart contract. 
+
+An account is the key component that enables you to access and control your blockchain data, as well as execute transactions.
 
 
 ## Account names
@@ -44,16 +46,16 @@ Legacy Public Format: EOS5d7eRKgCCiEdsbBdxxnZdFWnGYS64uWZPZgTcTU1xnB2cq4JMD
 
 ## Permissions system
 
-Each account has a set of hierarchical permissions that control it, and comes with two base permissions by default. These two permissions cannot be removed as they are required for your account to function properly. 
+Each account has a set of hierarchical permissions that control what that account can do, and comes with two base permissions by default. These two permissions cannot be removed as they are required for your account to function properly. 
 
 The mandatory permissions are `owner` and `active`.
 
-A permission can only ever change its own information or the information of its children. It can never change its parent’s information.
+A permission can only ever change what controls it (keys or accounts) or the what controls its children. It can never change what controls its parent.
 
 ![Who can change permissions?](images/who_can_change_permissions.png)
 
 
-The information that controls a permission is either another `account@permission` or a public key. This allows for the creation of complex account control structures, where multiple parties can have control over a single account while having full autonomy over their own account’s security. 
+What controls a permission is either a public key (which is registered on chain, and controlled by the associated private key) or another `account@permission`. This allows for the creation of complex account control structures, where multiple parties have control over a single account while still having full autonomy over their own account’s security. 
 
 Take the following diagram as an example, where the account `alice` is controlled both by `bob` and `charlie`, while `charlie` is also controlled by `tom`. Eventually, all accounts are controlled by public keys. 
 
@@ -71,7 +73,7 @@ This means you are able to create granular access permissions across accounts an
 
 Most importantly, the permission system has built-in support for multi-signature transactions (transactions that require multiple parties to sign them). Every linked account or key associated with a permission has a **weight** assigned to it, and the permission itself has a **threshold**. 
 
-As you can see in the example below, `bob` alone does not have enough power to sign using the `active` permission. He needs either `charlie` or `jenny` to co-sign with him for any transaction that `alice@active` makes. 
+As you can see in the example below, `bob` alone does not have enough power to sign using the `active` permission. He needs either `charlie` or `jenny` to co-sign with him for any transaction that `alice@active` makes. On the other hand, `charlie` and `jenny` cannot sign a transaction alone, they need `bob`. 
 
 
 ![Weights and thresholds](images/weights_and_thresholds.png)
@@ -90,24 +92,22 @@ For more information about deploying smart contracts to your accounts, please se
 
 Once you have **DUNE** set up you can start creating accounts on your local development environment with a single command. 
 
-```
+```shell
 dune --create-account <ACCOUNT_NAME>
 ```
 
 If you want to see the information related to the account you just created, you can use the following command. 
 
-```
-dune -- cleos get account
+```shell
+dune -- cleos get account <ACCOUNT_NAME>
 ```
 
 
 ## Ownership of Digital Assets
 
-When something is *owned* by an account on a blockchain, it means that a row in the decentralized database says that the digital asset belongs to that account. 
+Data that can be owned by an account, and is stored on the blockchain, is commonly referred to as a "digital asset". **Ownership** of these digital assets simply means that a row in the decentralized database (blockchain) says that the asset belongs to a specific account, and that only that account has the ability to manipulate, transfer, or otherwise control that digital asset. 
 
-In most cases, only the specific account that is registered as the owner of that digital asset and has the private key that can prove ownership of the account (via a signature) may manipulate that data. 
-
-Keep in mind that a smart contract also co-owns that data with the user, and might be able to manipulate all data that is stored inside of its tables without the explicit consent of the user.
+Keep in mind that a smart contract also co-owns that digital asset with the account, and might be able to manipulate all assets that are stored inside of its tables without the explicit consent of the user.
 
 Smart contract developers may also update smart contracts at will, so contracts that have security or financial implications may relinquish their ability to update their smart contracts in order to trade upgradeability for increased user trust. 
 
@@ -131,11 +131,11 @@ dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],
 dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"eosio.null","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
 ```
 
-(note the eosio.code addition for the active permission, which you might need if the account is a smart contract!)
+(note the `eosio.code` addition for the `active` permission, which you might need if the account is a smart contract!)
 
 ### Prods accounts
 
-Alternatively, you may set the contract account’s owner and active permissions to three different producer-controller (network consensus-controlled) accounts so that if there is ever an issue with this contract you can request the help of the producers to upgrade the contract. 
+Alternatively, you may set the contract account’s `owner` and `active` permissions to three different types of producer-controlled (network consensus-controlled) accounts, so that if there is ever an issue with this contract you can request the help of the producers to upgrade the contract. 
 
 This is a good option if you are dealing with intricate and complex contracts that might have bugs that could impact the users negatively. 
 
@@ -185,7 +185,7 @@ In order to own a premium name (for example: `foo[.bar]`) you must bid on it and
 
 You must also: 
 
-* Have the highest bid across **all** names – meaning if two people are bidding on different names right now, the one who paid more will be able to be won in the auction first, and the next will be able to be won 24 hours after the first is awarded.
+* Have the highest bid across **all** names being bid on at that point in time – meaning if there are multiple people bidding on multiple different names, the name with the highest overall bid will be won first, and the next name with the highest bid on it will be won 24 hours later.
 * Stay as the top bidder for the name you bid on for 24 hours, if someone else bids on the name you are trying to win, the timer will reset and another 24-hour period begins. 
 * Bid 10% higher than the last bid – If you are outbid on a name, you will receive your bid back. If a name never gets outbid or awarded, **your funds will not be returned to you**. 
 
