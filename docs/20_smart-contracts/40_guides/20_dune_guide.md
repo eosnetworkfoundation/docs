@@ -324,7 +324,7 @@ Enter the `hello` project main directory:
 cd hello
 ```
 
-Open the `hello` project folder in your code editor of choice:
+Open the `hello` project folder in your code editor or IDE of choice:
 
 ```shell
 code .
@@ -358,7 +358,7 @@ ACTION hello::hi( name nm ) {
 }
 ```
 
-The code above includes the `hello.hpp` header, which defines the `hello` contract class, and defines the `hi` action.
+The code above includes the `hello.hpp` header, which defines the `hello` contract class and the `hi` action.
 
 Now you will compile the `hello` contract.
 
@@ -389,7 +389,7 @@ The result looks similar to:
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /host/Users/lparisc/Documents/eosnf/work/contracts/hello/build
+-- Build files have been written to: /home/lupaxel/work/contracts/hello/build
 Scanning dependencies of target hello_project
 [ 11%] Creating directories for 'hello_project'
 [ 22%] No download step for 'hello_project'
@@ -410,7 +410,7 @@ Scanning dependencies of target hello_project
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /host/Users/lparisc/Documents/eosnf/work/contracts/hello/build/hello
+-- Build files have been written to: /home/lupaxel/work/contracts/hello/build/hello
 [ 66%] Performing build step for 'hello_project'
 Scanning dependencies of target hello
 [ 50%] Building CXX object CMakeFiles/hello.dir/hello.obj
