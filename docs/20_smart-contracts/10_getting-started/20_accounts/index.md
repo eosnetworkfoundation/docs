@@ -57,7 +57,7 @@ A permission can only ever change what controls it (keys or accounts) or the wha
 
 What controls a permission is either a public key (which is registered on chain, and controlled by the associated private key) or another `account@permission`. This allows for the creation of complex account control structures, where multiple parties have control over a single account while still having full autonomy over their own account’s security. 
 
-Take the following diagram as an example, where the account `alice` is controlled both by `bob` and `charlie`, while `charlie` is also controlled by `tom`. Eventually, all accounts are controlled by public keys. 
+Take the following diagram as an example, where the account `alice` is controlled both by `bob` and `charlie`, while `charlie` is also controlled by `tom`. Eventually, all accounts are controlled by keys. 
 
 
 ![Delegated account ownership](images/delegated_account_ownership.png)
