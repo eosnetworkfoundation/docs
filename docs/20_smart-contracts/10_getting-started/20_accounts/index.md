@@ -83,7 +83,7 @@ A smart contract is just a program that runs on the blockchain. It allows you to
 
 Every account has the ability to have one single smart contract deployed to it, however, that smart contract can be updated and replaced at will. 
 
-For more information about deploying smart contracts to your accounts, please see our **DUNE Guide**. 
+For more information about deploying smart contracts to your accounts, please see our [DUNE Guide](../10_dune-guide/index.md). 
 
 
 ## Creating an Account with DUNE
