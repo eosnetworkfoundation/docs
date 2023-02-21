@@ -4,6 +4,8 @@ title: DUNE Guide
 
 ## Overview
 
+Try EOS in [DUNE](https://github.com/AntelopeIO/DUNE) (Docker Utilities for Node Execution) if you do not want to install EOS binaries or have other types of installation restrictions. This approach, powered by Docker, provides developers with a personal container for the EOS blockchain management, smart contract development, and testing purposes.
+
 In this guide you will learn to use DUNE for basic smart contract development. You will learn to:
 * Launch a local EOS blockchain consisting of a single node
 * Create test accounts for smart contract deployment and use
