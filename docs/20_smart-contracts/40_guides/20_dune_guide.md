@@ -187,13 +187,87 @@ Bootstrapping a node becomes necessary when either the system contracts must be 
 
 ### Create Test Accounts
 
+EOS accounts give ownership to stakeholders in an EOS blockchain. To deploy a smart contract, you need to create an EOS account to host it. Accounts also represent the actors that send actions to a smart contract. For more information about EOS accounts, visit the [Accounts](../20_accounts/index.md) guide.
+
+> ℹ️ DUNE Account Creation  
+DUNE simplifies account creation by abstracting key management. When an account gets created, DUNE also creates public/private key pairs for its two default permissions, `owner` and `active`. Therefore, if you use DUNE then key creation is not required during [Wallet Setup](#wallet-setup).
+
+For this guide, you will create three accounts: `hello`, then `bob` and `alice`. The first account, `hello`, will be used in this guide to deploy your `Hello World` smart contract. The last two, `bob` and `alice`, are test accounts to be used in later guides.
+
+First, make sure your `first` node is up and running:
+
+```shell
+$ dune --list
+```
+
+If your node shows an `X` or `N` on the *Running* column, visit the [Node Setup](#node-setup) section again and follow the instructions to start your node:
+
+```
+Node Name   | Active? | Running? | HTTP           | P2P          | SHiP
+---------------------------------------------------------------------------------
+first       |    Y    |    Y     | 127.0.0.1:8888 | 0.0.0.0:9876 | 127.0.0.1:8080
+```
+
+Create your contract account, `hello`, by executing the following DUNE command:
+
+```shell
+$ dune --create-account hello
+```
+
+The result should look similar to the following output, with different public/private key values:
+
+```
+Creating account [hello] with key pair [Private: 5KPKVDZyzJyb7hQF9g1y6KpJ8T2mjy8GYzroKpSCo9VMbJYLrZ6, Public: EOS6ye61vW3PgVfPC8L6t1yCe3EVdzGK9HqSs6a7vqasGb93CfvRL]
+executed transaction: 5ad9d7db01a7fce7cfbaf8a911ee5b6e6dd2971faf50392e361af07c3954336f  200 bytes  100 us
+warning: transaction executed locally, but may not be confirmed by the network yet         ]
+```
+
+Now that the account `hello` was created on the blockchain, you can inspect its contents by invoking the following command:
+
+```shell
+$ dune -- cleos get account hello
+```
+
+The result should be similar to:
+
+```
+created: 2023-02-17T22:46:47.000
+permissions:
+     owner     1:    1 EOS6ye61vW3PgVfPC8L6t1yCe3EVdzGK9HqSs6a7vqasGb93CfvRL
+        active     1:    1 EOS6ye61vW3PgVfPC8L6t1yCe3EVdzGK9HqSs6a7vqasGb93CfvRL
+
+permission links:
+     eosio.any:
+
+memory:
+     quota:       unlimited  used:      2.66 KiB
+
+net bandwidth:
+     used:               unlimited
+     available:          unlimited
+     limit:              unlimited
+
+cpu bandwidth:
+     used:               unlimited
+     available:          unlimited
+     limit:              unlimited
+
+subjective cpu bandwidth:
+     used:                 0 us
+```
+
+Notice the account's creation date and time, the default permissions `owner` and `active`, their corresponding public keys, and default values for RAM, NET, and CPU resources. For more information about EOS resources, visit the [Resources guide](../30_resources/index.md) guide.
+
+Finally, create two test accounts, `bob` and `alice` by executing the following DUNE commands:
+
+```shell
+$ dune --create-account bob
+$ dune --create-account alice
+```
+
+Now that your contract account has been created, you can build, deploy, and test your smart contract in the next section.
+
 ## Smart Contract Development
-
-## Hello World Contract - Singleton version
-
-### Compile Contract
-
-### Deploy Contract
 
 ## Smart Contract Testing
 
