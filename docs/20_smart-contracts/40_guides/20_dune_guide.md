@@ -269,6 +269,177 @@ Now that your contract account has been created, you can build, deploy, and test
 
 ## Smart Contract Development
 
+DUNE provides at least two commands to create smart contract projects:
+* `create-bare-app`, for simple projects, invoking `cdt` directly
+* `create-cmake-app`, for larger projects, using `cmake` builds
+
+Although a bare smart contract project makes more sense for single contract projects, for this guide you will create a cmake project that you will expand. For larger projects involving multiple contracts and/or web applications, a cmake project makes more sense.
+
+## Hello World Singleton Contract
+
+These are the steps that you need to follow to create your "Hello World" singleton smart contract:
+
+[Step 1](#step-1---create-project) - Create new cmake smart contract project `hello`
+[Step 2](#step-2---write-contract) - Write the `hello` singleton contract
+[Step 3](#step-3---compile-contract) - Compile the `hello` contract
+[Step 4](#step-4---deploy-contract) - Deploy the `hello` contract
+
+### Step 1 - Create Project
+
+Create the cmake smart contract project `hello` in the current directory by running the following command:
+
+```shell
+dune --create-cmake-app hello .
+```
+
+The command will create the following file structure:
+
+```shell
+ls -l hello
+```
+```
+-rw-r--r-- 1 lupaxel lupaxel  442 Feb 17 10:20 CMakeLists.txt
+-rw-r--r-- 1 lupaxel lupaxel  462 Feb 17 10:20 README.txt
+drwxr-x--- 1 lupaxel lupaxel 4096 Feb 17 10:20 build
+drwxr-x--- 1 lupaxel lupaxel 4096 Feb 17 10:20 include
+drwxr-x--- 1 lupaxel lupaxel 4096 Feb 17 10:20 ricardian
+drwxr-x--- 1 lupaxel lupaxel 4096 Feb 17 10:20 src
+```
+
+```shell
+ls -l hello/src
+```
+```
+-rw-r--r-- 1 lupaxel lupaxel 215 Feb 17 10:20 CMakeLists.txt
+-rw-r--r-- 1 lupaxel lupaxel 110 Feb 17 10:20 hello.cpp
+```
+
+Now you will modify the source file `hello.cpp` to implement your contract.
+
+### Step 2 - Write Contract
+
+Enter the `hello` project main directory:
+
+```shell
+cd hello
+```
+
+Open the `hello` project folder in your code editor of choice:
+
+```shell
+code .
+```
+
+Open the `include/hello.hpp` C++ header file, type the following, then save the file:
+
+```cpp
+#include <eosio/eosio.hpp>
+using namespace eosio;
+
+CONTRACT hello : public contract {
+   public:
+      using contract::contract;
+
+      ACTION hi( name nm );
+
+      using hi_action = action_wrapper<"hi"_n, &hello::hi>;
+};
+```
+
+The code above defines the `hello` contract class derived from the `contract` class, and declares the `hi` action.
+
+Open the `include/hello.cpp` C++ source file, type the following, then save the file:
+
+```cpp
+#include <hello.hpp>
+ACTION hello::hi( name nm ) {
+   /* fill in action body */
+   print_f("Name : %\n",nm);
+}
+```
+
+The code above includes the `hello.hpp` header, which defines the `hello` contract class, and defines the `hi` action.
+
+Now you will compile the `hello` contract.
+
+### Step 3 - Compile Contract
+
+Compile the `hello` contract by running the following command:
+
+```shell
+dune --cmake-build .
+```
+
+The result looks similar to:
+
+```
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /host/Users/lparisc/Documents/eosnf/work/contracts/hello/build
+Scanning dependencies of target hello_project
+[ 11%] Creating directories for 'hello_project'
+[ 22%] No download step for 'hello_project'
+[ 33%] No patch step for 'hello_project'
+[ 44%] No update step for 'hello_project'
+[ 55%] Performing configure step for 'hello_project'
+-- Setting up CDT Wasm Toolchain 3.1.0 at /usr
+-- Setting up CDT Wasm Toolchain 3.1.0 at /usr
+-- The C compiler identification is Clang 9.0.1
+-- The CXX compiler identification is Clang 9.0.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - failed
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /host/Users/lparisc/Documents/eosnf/work/contracts/hello/build/hello
+[ 66%] Performing build step for 'hello_project'
+Scanning dependencies of target hello
+[ 50%] Building CXX object CMakeFiles/hello.dir/hello.obj
+Warning, empty ricardian clause file
+[100%] Linking CXX executable hello.wasm
+[100%] Built target hello
+[ 77%] No install step for 'hello_project'
+[ 88%] No test step for 'hello_project'
+[100%] Completed 'hello_project'
+[100%] Built target hello_project
+```
+
+Now you will deploy the contract.
+
+### Step 4 - Deploy Contract
+
+Run the following command to deploy your `hello` contract:
+
+```shell
+dune --deploy build/hello hello
+```
+
+The command will deploy the compiled contract residing at `build/hello` to account `hello`:
+
+```
+#         eosio <= eosio::setcode               {"account":"hello","vmtype":0,"vmversion":0,"code":"0061736d0100000001410d60017e0060017f0060027f7f00...
+#         eosio <= eosio::setabi                {"account":"hello","abi":"0e656f73696f3a3a6162692f312e3200010268690001026e6d046e616d6501000000000000...
+```
+
 ## Smart Contract Testing
 
 ### Send Actions
