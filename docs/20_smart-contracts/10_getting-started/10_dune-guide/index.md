@@ -462,6 +462,17 @@ If the code hash is non-zero, as above, then the contract was deployed successfu
 
 ### Send Actions
 
+```shell
+dune --send-action hello world '[john]' hello@active
+```
+
+```
+executed transaction: 8594b978e913356d75306ee21c7f319080887c1431cc6efb16740941f434d578  104 bytes  100 us
+warning: transaction executed locally, but may not be confirmed by the network yet         ]
+#         hello <= hello::world                 {"my_name":"john"}
+>> Hello World! I'm john```
+```
+
 ### Get Table Data
 
 ## Summary
