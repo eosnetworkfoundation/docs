@@ -450,7 +450,7 @@ You can check that the contract was indeed deployed by running the following com
 dune -- cleos get code hello
 ```
 
-The command sends the name of code account `hello` to the `get_code` endpoint, which replies with the hash of the contract:
+The command sends the name of code account, `hello`, where the contract was deployed, to the `get_code` endpoint, which replies with the hash of the deployed contract:
 
 ```
 code hash: 2737de70263c4ac5ac8e04760e5d7426a8d7c9a1680f2bcc3e44354185badc34
@@ -460,18 +460,11 @@ If the code hash is non-zero, as above, then the contract was deployed successfu
 
 ## Smart Contract Testing
 
+You can use DUNE to start testing your smart contract locally first. Later on, you should test your contract on an EOS testnet, and eventually on the real EOS mainnet.
+
+To test your smart contract, you typically send actions to it. Then you inspect the endpoint response to those actions and their effect on the blockchain, if applicable.
+
 ### Send Actions
-
-```shell
-dune --send-action hello world '[john]' hello@active
-```
-
-```
-executed transaction: 8594b978e913356d75306ee21c7f319080887c1431cc6efb16740941f434d578  104 bytes  100 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ]
-#         hello <= hello::world                 {"my_name":"john"}
->> Hello World! I'm john```
-```
 
 ### Get Table Data
 
