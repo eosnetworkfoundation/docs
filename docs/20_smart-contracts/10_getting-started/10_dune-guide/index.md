@@ -336,31 +336,33 @@ Open the `include/hello.hpp` C++ header file, type the following, then save the 
 
 ```cpp
 #include <eosio/eosio.hpp>
+
 using namespace eosio;
 
 CONTRACT hello : public contract {
    public:
       using contract::contract;
 
-      ACTION hi( name nm );
+      ACTION world( name my_name );
 
-      using hi_action = action_wrapper<"hi"_n, &hello::hi>;
+      using world_action = action_wrapper<"world"_n, &hello::world>;
 };
 ```
 
-The code above defines the `hello` contract class derived from the `contract` class, and declares the `hi` action.
+The code above defines the `hello` contract class derived from the `contract` parent class, and declares the `world` action. Note the usage of macros CONTRACT and ACTION to simplify the C++ xyntax.
 
 Open the `include/hello.cpp` C++ source file, type the following, then save the file:
 
 ```cpp
 #include <hello.hpp>
-ACTION hello::hi( name nm ) {
+
+ACTION hello::world( name my_name ) {
    /* fill in action body */
-   print_f("Name : %\n",nm);
+   print_f("Hello World! I'm %\n", my_name);
 }
 ```
 
-The code above includes the `hello.hpp` header, which defines the `hello` contract class and the `hi` action.
+The code above includes the `hello.hpp` header, which defines the `hello` contract class. Then it defines the `world` action, which simply displays a message using the EOS name argument passed in the `my_name` parameter.
 
 Now you will compile the `hello` contract.
 
@@ -391,7 +393,7 @@ The result looks similar to:
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/lupaxel/work/contracts/hello/build
+-- Build files have been written to: /host/home/lupaxel/work/contracts/hello/build
 Scanning dependencies of target hello_project
 [ 11%] Creating directories for 'hello_project'
 [ 22%] No download step for 'hello_project'
@@ -412,7 +414,7 @@ Scanning dependencies of target hello_project
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/lupaxel/work/contracts/hello/build/hello
+-- Build files have been written to: /host/home/lupaxel/work/contracts/hello/build/hello
 [ 66%] Performing build step for 'hello_project'
 Scanning dependencies of target hello
 [ 50%] Building CXX object CMakeFiles/hello.dir/hello.obj
@@ -441,6 +443,20 @@ The command will deploy the compiled contract residing at `build/hello` to accou
 #         eosio <= eosio::setcode               {"account":"hello","vmtype":0,"vmversion":0,"code":"0061736d0100000001410d60017e0060017f0060027f7f00...
 #         eosio <= eosio::setabi                {"account":"hello","abi":"0e656f73696f3a3a6162692f312e3200010268690001026e6d046e616d6501000000000000...
 ```
+
+You can check that the contract was indeed deployed by running the following command:
+
+```shell
+dune -- cleos get code hello
+```
+
+The command sends the name of code account `hello` to the `get_code` endpoint, which replies with the hash of the contract:
+
+```
+code hash: 2737de70263c4ac5ac8e04760e5d7426a8d7c9a1680f2bcc3e44354185badc34
+```
+
+If the code hash is non-zero, as above, then the contract was deployed successfully. You can now test your smart contract.
 
 ## Smart Contract Testing
 
