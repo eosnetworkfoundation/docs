@@ -4,5 +4,6 @@ title: Getting Started
 
 Get started with EOS Smart Contracts:
 
-- [DUNE Development Setup](10_dune-development-setup/index.md)
+- [DUNE Guide](./10_dune-guide/index.md)
+- [Accounts](./20_accounts/index.md)
 - [Resources Guide](./30_resources/index.md)
