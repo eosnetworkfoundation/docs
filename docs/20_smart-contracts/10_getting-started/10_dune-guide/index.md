@@ -466,6 +466,25 @@ To test your smart contract, you typically send actions to it. Then you inspect 
 
 ### Send Actions
 
+In the `hello` contract, there is only one `world` action that receives an EOS name as a parameter. To test the contract, you need to send the `world` action to your contract with an apppropriate argument.
+
+To that end, specify the `hello` account and send the action `world` with your name ("user" in the example below) as argument - note that you must use lowercase and abide by the EOS account name rules:
+
+```shell
+dune --send-action hello world '[user]' hello@active
+```
+
+The endpoint returns the following response:
+
+```
+executed transaction: 8594b978e913356d75306ee21c7f319080887c1431cc6efb16740941f434d578  104 bytes  100 us
+warning: transaction executed locally, but may not be confirmed by the network yet         ]
+#         hello <= hello::world                 {"my_name":"user"}
+>> Hello World! I'm user.
+```
+
+Note that the response indicates that the `hello::world` action was executed with the `user` argument passed to the `my_name` parameter, and the action performed its job by displaying the correct message.
+
 ### Get Table Data
 
 ## Summary
