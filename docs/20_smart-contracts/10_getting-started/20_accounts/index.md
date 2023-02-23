@@ -4,37 +4,37 @@ title: Account Basics
 
 ## What is an account?
 
-An account on the EOS Network is a digital container that holds a variety of information like EOS tokens that the account owns, resources at its disposal, account control permission structure, and various other things we will get into later in this guide. Accounts can also hold a smart contract. 
-
-An account is the key component that enables you to access and control your blockchain data, as well as execute transactions.
+On the EOS Network an account is a digital container. The digital container holds a variety of information such as EOS tokens the account owns, resources at its disposal, an account control permission structure, and more. Accounts can also hold a smart contract. An account is the key component that enables access and control of your blockchain data and to execute transactions.
 
 
-## Account names
+## Account Names
 
-Every account on the EOS Network has a human-readable name. This makes it easier to identify transaction recipients and smart contracts. In order to keep account names efficient on the blockchain, a few restrictions apply to all names: 
+Every account on the EOS Network has a human-readable name. A human-readable name facilitates the identity of transaction recipients and smart contracts. 
 
+### Account Naming Convention
 
+The following restrictions apply to all account names on the EOS blockchain:
 
-* All characters must be lowercase
-* Every name must be 12 characters long (or less with a suffix/premium name)
+* All characters must be lowercase.
+* Every name must be 12 characters long (or less with a suffix/premium name).
 * Only letters `a-z`, numbers `1-5`, and period (`.`) are supported characters. 
 * Names cannot start with a number or a period. 
 * Names cannot end with a period.
 
 Periods have a special meaning for EOS accounts. They specify that an account has a **suffix** (similar to a top-level domain like .com), also known as a **premium name**. Accounts with a suffix can only be created by the **suffix owner**. 
 
-For instance, if someone owns the suffix `.bar` then only that person can create `foo.bar`. 
+For example, if someone owns the suffix `.bar` then only that person can create `foo.bar`. 
 
-At the end of this guide, we will talk about the Name Bidding system which allows someone on the EOS network to purchase premium names. 
+More information is availble about the Name Bidding System later in this guide, which allows you to purchase premium names on the EOS network.
 
 
 ## Public/Private Keys
 
-Every EOS account is ultimately controlled by a public/private key pair. The private key is used to sign transactions and must be kept confidential, while the public key is used to identify the account on the blockchain and can be publicly known.
+Every EOS account is controlled by a public/private key pair. Use the private key to sign transactions and it must be kept confidential. Use the public key to identify the account on the blockchain and it can be publicly known.
 
-It is important to safeguard your private key, as it provides complete control over your account's digital assets. Your private key should be stored in a secure software or hardware wallet, as whoever possesses it will have full access to the assets linked to your account.
+Safeguard your private key, as it provides complete control over your account's digital assets. Your private key should be stored in a secure software or hardware wallet. Whoever possesses it has full access to the assets linked to your account.
 
-EOS accounts offer extra security mechanisms out of the box, using something called the *permission system*.
+EOS accounts offer extra security mechanisms out of the box and use the *permission system*.
 
 Examples of private and public keys: 
 ```
@@ -44,18 +44,18 @@ Legacy Public Format: EOS5d7eRKgCCiEdsbBdxxnZdFWnGYS64uWZPZgTcTU1xnB2cq4JMD
 ```
 
 
-## Permissions system
+## Permissions System
 
-Each account has a set of hierarchical permissions that control what that account can do, and comes with two base permissions by default. These two permissions cannot be removed as they are required for your account to function properly. 
+Each account has a set of hierarchical permissions that control what that account can do. Hierarchical permissions have two base permissions by default. These two permissions are required for your account to function properly and cannot be removed. 
 
-The mandatory permissions are `owner` and `active`.
+The mandatory required permissions are `owner` and `active`.
 
-A permission can only ever change what controls it (keys or accounts) or the what controls its children. It can never change what controls its parent.
+A permission can only change what controls it (keys or accounts) or what controls its children. It can not change what controls its parent.
 
 ![Who can change permissions?](images/who_can_change_permissions.png)
 
 
-What controls a permission is either a public key (which is registered on chain, and controlled by the associated private key) or another `account@permission`. This allows for the creation of complex account control structures, where multiple parties have control over a single account while still having full autonomy over their own account’s security. 
+What controls a permission is either a public key (which is registered on chain, and controlled by the associated private key) or another `account@permission`. This control allows for the creation of complex account control structures, where multiple parties have control over a single account while still having full autonomy over their own account’s security. 
 
 Take the following diagram as an example, where the account `alice` is controlled both by `bob` and `charlie`, while `charlie` is also controlled by `tom`. Eventually, all accounts are controlled by keys. 
 
@@ -63,17 +63,17 @@ Take the following diagram as an example, where the account `alice` is controlle
 ![Delegated account ownership](images/delegated_account_ownership.png)
 
 
-You can add custom permissions underneath `active` which allows you to limit that permission’s access to only a specific contract’s action (callable function). That permission will then only ever be able to interact with the contract action you specified. 
+You can add custom permissions under `active` which allow you to limit that permission’s access to only a specific contract’s action (callable function). That permission will only be able to interact with the contract action you specified. 
 
-This means you are able to create granular access permissions across accounts and have hierarchical ownership and usage of them. 
+Therefore you are able to create granular access permissions across accounts and have hierarchical ownership and usage of them. 
 
 
 ![Custom permissions](images/custom_permissions.png)
 
 
-Most importantly, the permission system has built-in support for multi-signature transactions (transactions that require multiple parties to sign them). Every linked account or key associated with a permission has a **weight** assigned to it, and the permission itself has a **threshold**. 
+The permission system has built-in support for multi-signature transactions (transactions that require multiple parties to sign them). Every linked account or key associated with a permission has a **weight** assigned to it, and the permission itself has a **threshold**. 
 
-As you can see in the example below, `bob` alone does not have enough power to sign using the `active` permission. He needs either `charlie` or `jenny` to co-sign with him for any transaction that `alice@active` makes. On the other hand, `charlie` and `jenny` cannot sign a transaction alone, they need `bob`. 
+In the example below, `bob` alone does not have enough power to sign using the `active` permission. He needs either `charlie` or `jenny` to co-sign with him for any transaction that `alice@active` makes. `charlie` and `jenny` cannot sign a transaction alone, they need `bob`. 
 
 
 ![Weights and thresholds](images/weights_and_thresholds.png)
@@ -81,22 +81,22 @@ As you can see in the example below, `bob` alone does not have enough power to s
 
 ## Smart Contracts
 
-A smart contract is just a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple things like a todo application to a fully-fledged RPG game running entirely on the blockchain. 
+A smart contract is a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple features like a todo application to a fully-fledged RPG game running entirely on the blockchain. 
 
-Every account has the ability to have one single smart contract deployed to it, however, that smart contract can be updated and replaced at will. 
+Every account has the ability to have one single smart contract deployed to it. The smart contract can be updated and replaced at will. 
 
 For more information about deploying smart contracts to your accounts, please see our [DUNE Guide](../10_dune-guide/index.md). 
 
 
 ## Creating an Account with DUNE
 
-Once you have **DUNE** set up you can start creating accounts on your local development environment with a single command. 
+Once you have **DUNE** set up, you can start creating accounts on your local development environment with a single command. 
 
 ```shell
 dune --create-account <ACCOUNT_NAME>
 ```
 
-If you want to see the information related to the account you just created, you can use the following command. 
+If you want to see the information related to the account you just created, use the following command. 
 
 ```shell
 dune -- cleos get account <ACCOUNT_NAME>
@@ -105,25 +105,24 @@ dune -- cleos get account <ACCOUNT_NAME>
 
 ## Ownership of Digital Assets
 
-Data that can be owned by an account, and is stored on the blockchain, is commonly referred to as a "digital asset". **Ownership** of these digital assets simply means that a row in the decentralized database (blockchain) says that the asset belongs to a specific account, and that only that account has the ability to manipulate, transfer, or otherwise control that digital asset. 
+Data, owned by an account and stored on the blockchain, is commonly referred to as a "digital asset". **Ownership** digital assets indicates that a row in the decentralized database (blockchain) belongs to a specific account. Only the **ownership** account has the ability to manipulate, transfer, or otherwise control that digital asset. 
 
-Keep in mind that a smart contract also co-owns that digital asset with the account, and might be able to manipulate all assets that are stored inside of its tables without the explicit consent of the user.
+A smart contract co-owns a digital asset with its account. A co-owning smart contract may be able to manipulate all assets stored inside its tables without the explicit consent of the user.
 
-Smart contract developers may also update smart contracts at will, so contracts that have security or financial implications may relinquish their ability to update their smart contracts in order to trade upgradeability for increased user trust. 
+Smart contract developers may also update smart contracts at will. Therefore smart contracts that have security or financial implications may relinquish their ability to update their smart contracts to trade upgradeability for increased user trust. 
 
 
-## Relinquishing ownership of an account
+## Relinquishing Ownership of an Account
 
-Upgradeability has significant benefits for smart contract development, but isn’t always wanted. 
+Upgradeability has significant benefits for smart contract development, but is not always desired. 
 
-In order to relinquish a smart contract’s upgradeability, you have two options.
+To relinquish a smart contract’s upgradeability, you have two options - null and prod accounts.
 
 
 ### NULL account
 
-You may set the contract account’s owner and active permissions to `eosio.null@active`. This is a `NULL` account that is specifically designed for these purposes. It has no private key or owner. 
-
-This is a good option if you want to relinquish control of this account **forever**.
+A `NULL` account has no private key or owner. A `NULL` account is a good option if you want to relinquish control of this account **forever**.
+Set the contract account’s owner and active permissions to `eosio.null@active`. 
 
 
 ```
@@ -133,15 +132,13 @@ dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[]
 
 (note the `eosio.code` addition for the `active` permission, which you might need if the account is a smart contract!)
 
-### Prods accounts
+### Prods Accounts
 
-Alternatively, you may set the contract account’s `owner` and `active` permissions to three different types of producer-controlled (network consensus-controlled) accounts, so that if there is ever an issue with this contract you can request the help of the producers to upgrade the contract. 
-
-This is a good option if you are dealing with intricate and complex contracts that might have bugs that could impact the users negatively. 
+A prods account permits you to set the smart contract account's `owner` and `active` permissions to the three following three different types of producer-controlled (network consensus-controlled) accounts. Therefore, you can request help from the producers to upgrade the smart contract if there is an issue with the smart contract. A producer-controlled account is a good option if you are dealing with intricate and complex contracts that might have bugs that could impact the users negatively.
 
 #### eosio.prods
 
-The `eosio.prods` account is controlled by ⅔+1 of the actively producing producers on the network. This means that if there are 21 active producers then you would need 15 of them to sign off on all upgrades. 
+The `eosio.prods` account is controlled by ⅔+1 of the actively producing producers on the network. Therefore, if there are 21 active producers then you would need 15 of them to sign off on all upgrades. 
 
 ```
 dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"eosio.prods","permission":"active"},"weight":1},{"permission":{"actor":"<ACCOUNT>","permission":"eosio.code"},"weight":1}],"waits":[]}' owner -p <ACCOUNT>
@@ -169,13 +166,13 @@ dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],
 dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"prod.minor","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
 ```
 
-## Account creation costs
+## Account Creation Costs
 
-Because EOS accounts have multiple things registered to them, like their permissions, as well as the resources (CPU, NET, RAM) they hold, there is a cost incurred when creating them on the network. This also means that someone who already has an account needs to create an account for you. There are many services that do this for the EOS network, and for your local development environment you can create accounts using the system account (`eosio`). 
+EOS accounts have multiple qualities registered to them, such as their permissions and the resources (CPU, NET, RAM) they hold. Therefore, costs are incurred when creating an EOS account on the network. Someone who already has an account needs to create an account for you. Many services are available to create accounts for the EOS network and for your local development environment. You can create accounts using the system account (`eosio`).
 
-This does however potentially impact your application design, as your users who aren't already on the network will need accounts created for them. You should take this cost into consideration when planning your user acquisition expenses. 
+Your users who aren't already on the network will need accounts created for them. You need to take this cost into consideration when planning your user acquisition expenses.
 
-The cost of opening an account is based on the RAM required for opening it, which as of writing this document (20/02/2023) is `2996 bytes`.
+The cost of opening an account is based on the RAM required for opening it, which as 20/02/2023 is `2996 bytes`.
 
 Go to our [Resources Guide](../30_resources/index.md) to learn how to calculate the cost of purchasing RAM from the RAM Market.
 
