@@ -172,7 +172,7 @@ The command returns information about the local EOS blockchain just launched:
 ```
 
 > ℹ️ Node Bootstrapping  
-Bootstrapping a node becomes necessary when either the system contracts must be deployed, or some functionality must be activated by a protocol feature. For simplicitly, node bootstrapping will be showcased in another guide when required.
+Bootstrapping a node becomes necessary when either the system contracts must be deployed, or some functionality must be activated by a protocol feature. For simplicity, node bootstrapping will be showcased in another guide when required.
 
 ### Create Test Accounts
 
@@ -231,7 +231,7 @@ subjective cpu bandwidth:
      used:                 0 us
 ```
 
-Notice the account's creation date and time, the default permissions `owner` and `active`, their corresponding public keys, and default values for RAM, NET, and CPU resources. For more information about EOS resources, visit the [Resources guide](../30_resources/index.md) guide.
+Notice the account's creation date and time, the default permissions `owner` and `active`, their corresponding public keys, and default values for RAM, NET, and CPU resources. For more information about EOS resources, visit the [Resources](../30_resources/index.md) guide.
 
 Now that your contract account has been created, you can build, deploy, and test your smart contract in the next section.
 
@@ -503,7 +503,7 @@ Warning, empty ricardian clause file
 ```
 
 ```shell
-dune --deploy build/hello hello
+dune --deploy ./build/hello hello
 ```
 ```
 #         eosio <= eosio::setcode               {"account":"hello","vmtype":0,"vmversion":0,"code":"0061736d010000000159106000006000017f60027f7f0060...
