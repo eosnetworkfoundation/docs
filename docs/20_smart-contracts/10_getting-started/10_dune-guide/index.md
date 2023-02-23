@@ -357,8 +357,7 @@ Open the `include/hello.cpp` C++ source file, type the following, then save the 
 #include <hello.hpp>
 
 ACTION hello::world( name my_name ) {
-   /* fill in action body */
-   print_f("Hello World! I'm %\n", my_name);
+   print_f("Hello World! I'm %.\n", my_name);
 }
 ```
 
@@ -466,7 +465,7 @@ To test your smart contract, you typically send actions to it. Then you inspect 
 
 ### Send Actions
 
-In the `hello` contract, there is only one `world` action that receives an EOS name as a parameter. To test the contract, you need to send the `world` action to your contract with an apppropriate argument.
+In the `hello` contract, there is only one `world` action that receives an EOS name as a parameter. To test the contract, you need to send the `world` action to your contract with an appropriate argument.
 
 To that end, specify the `hello` account and send the action `world` with your name ("user" in the example below) as argument - note that you must use lowercase and abide by the EOS account name rules:
 
