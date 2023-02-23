@@ -9,7 +9,7 @@ Try EOS in [DUNE](https://github.com/AntelopeIO/DUNE) (Docker Utilities for Node
 In this guide you will learn to use DUNE for basic smart contract development. You will learn to:
 * Launch a local EOS blockchain consisting of a single node
 * Create test accounts for smart contract deployment and use
-* Develop and deploy the Hello World contract (singleton version)
+* Develop and deploy the Hello World contract locally
 * Test your Hello World contract and get table information
 
 Before getting started with smart contract development, you need to learn about DUNE and how to install it on your platform.
@@ -277,12 +277,12 @@ DUNE provides at least two commands to create smart contract projects:
 
 Although a bare smart contract project makes more sense for single contract projects, for this guide you will create a cmake project that you will expand. For larger projects involving multiple contracts and/or web applications, a cmake project makes more sense.
 
-## Hello World Singleton Contract
+## Hello World Contract
 
-These are the steps that you need to follow to create your "Hello World" singleton smart contract:
+These are the steps that you need to follow to create your "Hello World" smart contract:
 
 [Step 1](#step-1---create-project) - Create new cmake smart contract project `hello`
-[Step 2](#step-2---write-contract) - Write the `hello` singleton contract
+[Step 2](#step-2---write-contract) - Write the `hello` smart contract
 [Step 3](#step-3---compile-contract) - Compile the `hello` contract
 [Step 4](#step-4---deploy-contract) - Deploy the `hello` contract
 
