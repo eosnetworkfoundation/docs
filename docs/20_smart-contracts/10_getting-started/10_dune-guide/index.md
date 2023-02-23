@@ -4,13 +4,14 @@ title: DUNE Guide
 
 ## Overview
 
-Try EOS in [DUNE](https://github.com/AntelopeIO/DUNE) (Docker Utilities for Node Execution) if you do not want to install EOS binaries or have other types of installation restrictions. This approach, powered by Docker, provides developers with a personal container for the EOS blockchain management, smart contract development, and testing purposes.
+[DUNE](https://github.com/AntelopeIO/DUNE) (Docker Utilities for Node Execution) provides developers with a personal container for EOS blockchain management, smart contract development, and testing purposes.
 
 In this guide you will learn to use DUNE for basic smart contract development. You will learn to:
-* Launch a local EOS blockchain consisting of a single node
-* Create test accounts for smart contract deployment and use
-* Develop and deploy the Hello World contract locally
-* Test your Hello World contract and get table information
+* Launch a local EOS blockchain made of a single node
+* Create a test account for smart contract deployment
+* Develop and deploy a "Hello World" contract locally
+* Test your "Hello World" contract by sending actions
+* Add state to your contract and get table contents
 
 Before getting started with smart contract development, you need to learn about DUNE and how to install it on your platform.
 
@@ -170,20 +171,6 @@ The command returns information about the local EOS blockchain just launched:
 }
 ```
 
-You can also check the `get_info` endpoint directly exposed by the `chain_api_plugin` in your browser:
-
-```shell
-http://localhost:8888/v1/chain/get_info
-```
-
-Or you can use `curl` or `wget` to send an HTTP GET request directly:
-
-```shell
-curl http://localhost:8888/v1/chain/get_info
-```
-
-In both cases, the result is similar to the JSON output above.
-
 > ℹ️ Node Bootstrapping  
 Bootstrapping a node becomes necessary when either the system contracts must be deployed, or some functionality must be activated by a protocol feature. For simplicitly, node bootstrapping will be showcased in another guide when required.
 
@@ -194,23 +181,9 @@ EOS accounts give ownership to stakeholders in an EOS blockchain. To deploy a sm
 > ℹ️ DUNE Account Creation  
 DUNE simplifies account creation by abstracting key management. When an account gets created, DUNE also creates public/private key pairs for its two default permissions, `owner` and `active`. Therefore, if you use DUNE then key creation is not required during [Wallet Setup](#wallet-setup).
 
-For this guide, you will create three accounts: `hello`, then `bob` and `alice`. The first account, `hello`, will be used in this guide to deploy your `Hello World` smart contract. The last two, `bob` and `alice`, are test accounts to be used in later guides.
+For this guide, you will create one test account, `hello`, which will be used to deploy your "Hello World" smart contract. Before proceeding, make sure you complete the previous section [Set Up EOS Node](#set-up-eos-node) to make sure your `first` node is up and running.
 
-First, make sure your `first` node is up and running:
-
-```shell
-$ dune --list
-```
-
-If your node shows an `X` or `N` on the *Running* column, visit the [Node Setup](#node-setup) section again and follow the instructions to start your node:
-
-```
-Node Name   | Active? | Running? | HTTP           | P2P          | SHiP
----------------------------------------------------------------------------------
-first       |    Y    |    Y     | 127.0.0.1:8888 | 0.0.0.0:9876 | 127.0.0.1:8080
-```
-
-Create your contract account, `hello`, by executing the following DUNE command:
+Create your contract account, `hello`, by executing the following command:
 
 ```shell
 $ dune --create-account hello
@@ -260,31 +233,24 @@ subjective cpu bandwidth:
 
 Notice the account's creation date and time, the default permissions `owner` and `active`, their corresponding public keys, and default values for RAM, NET, and CPU resources. For more information about EOS resources, visit the [Resources guide](../30_resources/index.md) guide.
 
-Finally, create two test accounts, `bob` and `alice` by executing the following DUNE commands:
-
-```shell
-$ dune --create-account bob
-$ dune --create-account alice
-```
-
 Now that your contract account has been created, you can build, deploy, and test your smart contract in the next section.
 
 ## Smart Contract Development
 
 DUNE provides at least two commands to create smart contract projects:
-* `create-bare-app`, for simple projects, invoking `cdt` directly
-* `create-cmake-app`, for larger projects, using `cmake` builds
+* `create-bare-app`, for simple projects, using the compiler directly
+* `create-cmake-app`, for larger projects, using `cmake` build system
 
-Although a bare smart contract project makes more sense for single contract projects, for this guide you will create a cmake project that you will expand. For larger projects involving multiple contracts and/or web applications, a cmake project makes more sense.
+Although a bare smart contract project makes more sense for single contract projects, in this guide you will create a `cmake` project that you will expand later. For larger projects involving multiple contracts and/or web applications, a `cmake` project makes more sense.
 
 ## Hello World Contract
 
 These are the steps that you need to follow to create your "Hello World" smart contract:
 
-[Step 1](#step-1---create-project) - Create new cmake smart contract project `hello`
-[Step 2](#step-2---write-contract) - Write the `hello` smart contract
-[Step 3](#step-3---compile-contract) - Compile the `hello` contract
-[Step 4](#step-4---deploy-contract) - Deploy the `hello` contract
+[Step 1](#step-1---create-project) - Create new cmake smart contract project `hello`  
+[Step 2](#step-2---write-contract) - Write the `hello` smart contract  
+[Step 3](#step-3---compile-contract) - Compile the `hello` contract  
+[Step 4](#step-4---deploy-contract) - Deploy the `hello` contract  
 
 ### Step 1 - Create Project
 
@@ -326,13 +292,13 @@ Enter the `hello` project main directory:
 cd hello
 ```
 
-Open the `hello` project folder in your code editor or IDE of choice:
+Open the `hello` project directory in your code editor or IDE of choice - in this guide we will use the Visual Studio (VS) Code editor:
 
 ```shell
 code .
 ```
 
-Open the `include/hello.cpp` C++ source file, type the following, then save the file:
+Open the `include/hello.cpp` C++ source file, type or copy/paste the following code, replacing its contents, then save the file:
 
 ```cpp
 #include <eosio/eosio.hpp>
@@ -349,7 +315,7 @@ CONTRACT hello : public contract {
 };
 ```
 
-The code above defines the `hello` contract class derived from the `eosio::contract` parent class. Then it defines the `world` action, which simply displays a message using the EOS name argument passed in the `user` parameter. Note the usage of macros CONTRACT and ACTION to simplify the C++ syntax. Also note that we are not implementing the `hello.hpp` C++ header file nor now.
+The code above defines the main class `hello` where your contract is implemented. The contract defines only one action `world` which displays a message about the specified user.
 
 Now you will compile the `hello` contract.
 
@@ -421,7 +387,7 @@ Now you will deploy the contract.
 Run the following command to deploy your `hello` contract:
 
 ```shell
-dune --deploy build/hello hello
+dune --deploy ./build/hello hello
 ```
 
 The command will deploy the compiled contract residing at `build/hello` to account `hello`:
@@ -437,31 +403,37 @@ You can check that the contract was indeed deployed by running the following com
 dune -- cleos get code hello
 ```
 
-The command sends the name of code account, `hello`, where the contract was deployed, to the `get_code` endpoint, which replies with the hash of the deployed contract:
+The command sends the name of account, `hello`, where the contract was deployed, and returns the hash of the contract if deployed successfully:
 
 ```
 code hash: 2737de70263c4ac5ac8e04760e5d7426a8d7c9a1680f2bcc3e44354185badc34
 ```
 
-If the code hash is non-zero, as above, then the contract was deployed successfully. You can now test your smart contract.
+The code hash is important as it changes when the contract code changes. The deployment mechanism uses this information to re-deploy the contract if needed. If the compiled contract code does not change, the contract is not re-deployed to save on [resources](../30_resources/index.md).
 
-## Smart Contract Testing
+If the code hash is zero, as below, then there is no contract deployed on that account yet:
+
+```
+code hash: 0000000000000000000000000000000000000000000000000000000000000000
+```
+
+Once the contract is deployed successfully, you can proceed to test your smart contract.
+
+## Test Your Smart Contract
 
 You can use DUNE to start testing your smart contract locally first. Later on, you should test your contract on an EOS testnet, and eventually on the real EOS mainnet.
 
-To test your smart contract, you typically send actions to it. Then you inspect the endpoint response to those actions and their effect on the blockchain state, if applicable.
+To test your smart contract, you typically send actions to it. Then you inspect the node's response to those actions and their effect on the blockchain state, if applicable.
 
 ### Send Actions
 
-In the `hello` contract, there is only one `world` action that receives an EOS name as a parameter. To test the contract, you need to send the `world` action to your contract with an appropriate argument.
-
-To that end, specify the `hello` account and send the action `world` with your name ("john" in the example below) as argument - note that you must use lowercase and abide by the EOS account name rules:
+In the `hello` contract, there is only one `world` action that receives an EOS name as a parameter. To test the contract, you need to send the `world` action to your contract with an appropriate argument:
 
 ```shell
 dune --send-action hello world '[john]' hello@active
 ```
 
-The endpoint returns the following response:
+The node returns the following response:
 
 ```
 executed transaction: 8594b978e913356d75306ee21c7f319080887c1431cc6efb16740941f434d578  104 bytes  100 us
@@ -470,36 +442,13 @@ warning: transaction executed locally, but may not be confirmed by the network y
 >> Hello World from john!
 ```
 
-Note that the response indicates that the `hello::world` action was executed with the `john` argument passed to the `user` parameter, and the action displayed the message correctly.
+Note that the response indicates that the `world` action was executed with the `john` argument passed to the `user` parameter, and the action displayed the message correctly.
 
 ### Create Table
 
-In your first `hello` contract, you invoked the `world` action and passed a name as argument. However, the contract cannot store any names yet, since it does not have state or persistence.
+In your first `hello` contract, you invoked the `world` action and passed a name as argument. However, the contract cannot store any names yet, since it does not have the ability to keep state or persistence.
 
-To add persistence to your contract, you need to create multi-index tables. To create a table, add the following code to the `hello.cpp` file, right after `using contract::contract`:
-
-```cpp
-      TABLE user_record {
-         name user;
-         uint64_t primary_key() const { return user.value; }
-      };
-      typedef eosio::multi_index< name("users"), user_record> user_index;
-```
-
-The table is defined by a struct named `user_record` containing one field `user` of type `name`; in practice, more fields are defined. It also defines the `primary_key()` method which returns the unique identifier associated with `user`. This enforces a unique name in the table.
-
-Now that you have a multi-index table, you can implement full CRUD functionality: create, read, update, and delete records. In this guide, you will create a new record when the `world` action gets invoked. To that end, add the following code at the beginning of your `world` method:
-
-```cpp
-         user_index users( get_self(), get_self().value );
-         users.emplace( get_self(), [&]( auto& new_record ) {
-            new_record.user = user;
-         });
-```
-
-In the code above, a new record is created and appended to the `users` table. The `user` field in the new record gets populated with the user name passed to the `world` action.
-
-The full modified `hello` contract now looks as follows:
+To add persistence to your contract, you need to use multi-index tables. To that end, copy/paste the following code to the `hello.cpp` file, replacing its contents, then save the file:
 
 ```cpp
 #include <eosio/eosio.hpp>
@@ -525,6 +474,10 @@ CONTRACT hello : public contract {
       }
 };
 ```
+
+The table is defined by the struct `user_record` containing one field `user`; in practice, more fields are defined. The table also defines the `primary_key()` method which returns the unique identifier associated with `user`. This enforces a unique name in the table.
+
+Now that you have a multi-index table, you can implement full CRUD functionality: create, read, update, and delete records. In the code above, a new user record is created when the `world` action executes.
 
 ### Recompile, Deploy, Test
 
@@ -589,30 +542,19 @@ warning: transaction executed locally, but may not be confirmed by the network y
 >> Hello World from john!
 ```
 
-Note that if you try to re-add the same user name, the transaction will fail as expected:
-
-```shell
-dune --send-action hello world '[john]' hello@active
-```
-```
-failed transaction: 70acecf896d92b70bf473beb86b3e04e93e6f21fcb32e6bdeee6ad5f8173fbcc  <unknown> bytes  <unknown> us
-error 2023-02-23T09:17:08.670 cleos     main.cpp:700                  print_result         ] soft_except->to_detail_string(): 13 N5boost10wrapexceptISt11logic_errorEE: could not insert object, most likely a uniqueness constraint was violated
-could not insert object, most likely a uniqueness constraint was violated: pending console output:
-    {"console":"","what":"could not insert object, most likely a uniqueness constraint was violated"}
-    nodeos  apply_context.cpp:124 exec_one
-```
+Note that if you try to add the same `user` twice, the action will fail since it has to be unique.
 
 ### Get Table Data
 
-Now that you have implemented your multi-index table and the ability to create new records in it, you can now implement the remaining three CRUD operations: read, update, and delete records, if needed. It all depends on the business rules that you need to implement within your contract.
+Now that you have implemented your multi-index table and the ability to create new records in it, you can implement the remaining three CRUD operations: read, update, and delete records, if needed. It all depends on the business rules that you need to implement within your contract.
 
-You can also invoke the `get_table_rows` endpoint to perform basic table queries, or view the entire table state if needed. To view the current table state, invoke the following command:
+To view the entire table state, invoke the following command:
 
 ```shell
 dune --get-table hello hello users
 ```
 
-The result will look similar to:
+The result displays the contents of the `users` table within the `hello` contract deployed in the `hello` account:
 
 ```
 {
@@ -629,6 +571,8 @@ The result will look similar to:
 }
 ```
 
+If you want to perform more advanced table queries, you can use the `dune -- cleos get table` command which provides more options.
+
 ## Summary
 
-In this guide you learned how to use DUNE for basic smart contract development. In particular, you launched a local EOS blockchain consisting of a single node, created test accounts for smart contract deployment and testing, developed and deployed the Hello World contract, and finally tested your Hello World contract.
+In this guide you learned how to use DUNE for basic smart contract development. In particular, you launched a local EOS blockchain consisting of a single node, created a test account for smart contract deployment, developed and deployed a "Hello World" contract locally, tested your contract by sending actions, and finally added persistence to your contract and obtained table contents.
