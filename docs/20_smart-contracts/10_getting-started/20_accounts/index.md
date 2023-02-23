@@ -4,7 +4,7 @@ title: Account Basics
 
 ## What is an account?
 
-On the EOS Network an account is a digital container. The digital container holds a variety of information such as EOS tokens the account owns, resources at its disposal, an account control permission structure, and more. Accounts can also hold a smart contract. An account is the key component that enables access and control of your blockchain data and to execute transactions.
+On the EOS Network an account is a digital container. The digital container holds a variety of information such as EOS tokens the account owns, resources at its disposal, and the account permissions structure. Accounts can also hold a smart contract, tables, indexes, and one singleton. An account is the key component that enables access and control of your blockchain data and to execute transactions.
 
 
 ## Account Names
@@ -25,7 +25,7 @@ Periods have a special meaning for EOS accounts. They specify that an account ha
 
 For example, if someone owns the suffix `.bar` then only that person can create `foo.bar`. 
 
-More information is availble about the Name Bidding System later in this guide, which allows you to purchase premium names on the EOS network.
+More information is availble about the [Name Bidding System](#bidding_on_premium_names_and_suffixes) later in this guide, which allows you to purchase premium names on the EOS network.
 
 
 ## Public/Private Keys
@@ -134,7 +134,14 @@ dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[]
 
 ### Prods Accounts
 
-A prods account permits you to set the smart contract account's `owner` and `active` permissions to the three following three different types of producer-controlled (network consensus-controlled) accounts. Therefore, you can request help from the producers to upgrade the smart contract if there is an issue with the smart contract. A producer-controlled account is a good option if you are dealing with intricate and complex contracts that might have bugs that could impact the users negatively.
+A prods account is a multisig account for which the signatories are active block producers. You can reassign `owner` and `active` permissions to one of these three producer-controlled or network consensus-controlled accounts:
+- eosio.prods
+- prod.major
+- prod.minor
+
+If there is ever an issue with this contract you can request the help of the producers to upgrade the contract.
+
+This is a good option if you are dealing with intricate and complex contracts that might have bugs that could impact the users negatively.
 
 #### eosio.prods
 
@@ -168,15 +175,13 @@ dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[]
 
 ## Account Creation Costs
 
-EOS accounts have multiple qualities registered to them, such as their permissions and the resources (CPU, NET, RAM) they hold. Therefore, costs are incurred when creating an EOS account on the network. Someone who already has an account needs to create an account for you. Many services are available to create accounts for the EOS network and for your local development environment. You can create accounts using the system account (`eosio`).
+EOS accounts store information on the blockchain, which requires a cost paid in EOS tokens. To create an account you need to pay the minimum price for a new account. The price of RAM varies, therefore this cost varies as well. If you have an account that holds EOS tokens, use that account to create a new account. Otherwise, many services are available to create accounts for the EOS network. When you work in your local development environment, create an account using the `eosio` system account. 
 
-Your users who aren't already on the network will need accounts created for them. You need to take this cost into consideration when planning your user acquisition expenses.
-
-The cost of opening an account is based on the RAM required for opening it, which as 20/02/2023 is `2996 bytes`.
+As an application developer, when onboarding new users to the EOS blockchain who do not have an EOS account, you need to create an account for them. Therefore, you need to take into consideration the account creation costs. The cost of creating an account is based on the RAM required for creating it, which as 20/02/2023 is `2996 bytes`.
 
 Go to our [Resources Guide](../30_resources/index.md) to learn how to calculate the cost of purchasing RAM from the RAM Market.
 
-## Bidding on premium names (suffixes)
+## Bidding on Premium Names and Suffixes
 
 In order to own a premium name (for example: `foo[.bar]`) you must bid on it and then win it in an auction. 
 
