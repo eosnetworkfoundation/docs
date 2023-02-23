@@ -606,7 +606,7 @@ could not insert object, most likely a uniqueness constraint was violated: pendi
 
 Now that you have implemented your multi-index table and the ability to create new records in it, you can now implement the remaining three CRUD operations: read, update, and delete records, if needed. It all depends on the business rules that you need to implement within your contract.
 
-You can also invoke the `get_table_rows` endpoint to perform basic table queries, or view the entire table state if needed. To view the whole table, invoke the following command:
+You can also invoke the `get_table_rows` endpoint to perform basic table queries, or view the entire table state if needed. To view the current table state, invoke the following command:
 
 ```shell
 dune --get-table hello hello users
