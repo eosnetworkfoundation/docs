@@ -11,7 +11,7 @@ In this guide you will learn to use DUNE for basic smart contract development. Y
 * Create a test account for smart contract deployment
 * Develop and deploy a "Hello World" contract locally
 * Test your "Hello World" contract by sending actions
-* Add state to your contract and get table contents
+* Check contract state by reading the table contents
 
 Before getting started with smart contract development, you need to learn about DUNE and how to install it on your platform.
 
@@ -309,13 +309,23 @@ CONTRACT hello : public contract {
    public:
       using contract::contract;
 
+      TABLE user_record {
+         name user;
+         uint64_t primary_key() const { return user.value; }
+      };
+      typedef eosio::multi_index< name("users"), user_record> user_index;
+
       ACTION world( name user ) {
          print_f("Hello World from %!\n", user);
+         user_index users( get_self(), get_self().value );
+         users.emplace( get_self(), [&]( auto& new_record ) {
+            new_record.user = user;
+         });
       }
 };
 ```
 
-The code above defines the main class `hello` where your contract is implemented. The contract defines only one action `world` which displays a message about the specified user.
+The code above defines the main class where your contract is implemented and one action which displays a message about the specified user. The contract also defines a table which will be explained later.
 
 Now you will compile the `hello` contract.
 
@@ -330,53 +340,18 @@ dune --cmake-build .
 The result looks similar to:
 
 ```
--- The C compiler identification is GNU 9.4.0
--- The CXX compiler identification is GNU 9.4.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /host/home/lupaxel/work/contracts/hello/build
-Scanning dependencies of target hello_project
-[ 11%] Creating directories for 'hello_project'
-[ 22%] No download step for 'hello_project'
-[ 33%] No patch step for 'hello_project'
-[ 44%] No update step for 'hello_project'
-[ 55%] Performing configure step for 'hello_project'
--- Setting up CDT Wasm Toolchain 3.1.0 at /usr
--- Setting up CDT Wasm Toolchain 3.1.0 at /usr
--- The C compiler identification is Clang 9.0.1
--- The CXX compiler identification is Clang 9.0.1
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - failed
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - failed
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring done
--- Generating done
--- Build files have been written to: /host/home/lupaxel/work/contracts/hello/build/hello
-[ 66%] Performing build step for 'hello_project'
+[ 11%] Performing build step for 'hello_project'
 Scanning dependencies of target hello
 [ 50%] Building CXX object CMakeFiles/hello.dir/hello.obj
 Warning, empty ricardian clause file
 [100%] Linking CXX executable hello.wasm
 [100%] Built target hello
-[ 77%] No install step for 'hello_project'
-[ 88%] No test step for 'hello_project'
-[100%] Completed 'hello_project'
+[ 22%] No install step for 'hello_project'
+[ 33%] No test step for 'hello_project'
+[ 44%] Completed 'hello_project'
 [100%] Built target hello_project
 ```
 
@@ -390,7 +365,7 @@ Run the following command to deploy your `hello` contract:
 dune --deploy ./build/hello hello
 ```
 
-The command will deploy the compiled contract residing at `build/hello` to account `hello`:
+The command will deploy the compiled contract residing at `./build/hello` to account `hello`:
 
 ```
 #         eosio <= eosio::setcode               {"account":"hello","vmtype":0,"vmversion":0,"code":"0061736d0100000001410d60017e0060017f0060027f7f00...
@@ -403,10 +378,10 @@ You can check that the contract was indeed deployed by running the following com
 dune -- cleos get code hello
 ```
 
-The command sends the name of account, `hello`, where the contract was deployed, and returns the hash of the contract if deployed successfully:
+The command sends the account name, `hello`, where the contract was deployed, and returns the hash of the contract if deployed successfully:
 
 ```
-code hash: 2737de70263c4ac5ac8e04760e5d7426a8d7c9a1680f2bcc3e44354185badc34
+code hash: ab8455aa1b46e5129b5ff40192de47a5d17587498a452c9c482e39f556270e55
 ```
 
 The code hash is important as it changes when the contract code changes. The deployment mechanism uses this information to re-deploy the contract if needed. If the compiled contract code does not change, the contract is not re-deployed to save on [resources](../30_resources/index.md).
@@ -427,10 +402,10 @@ To test your smart contract, you typically send actions to it. Then you inspect 
 
 ### Send Actions
 
-In the `hello` contract, there is only one `world` action that receives an EOS name as a parameter. To test the contract, you need to send the `world` action to your contract with an appropriate argument:
+In the `hello` contract, there is only one `world` action that receives an EOS name as a parameter. To test your contract, you need to send the `world` action to your contract with an EOS name as argument:
 
 ```shell
-dune --send-action hello world '[john]' hello@active
+dune --send-action hello world '[bob]' hello@active
 ```
 
 The node returns the following response:
@@ -438,89 +413,13 @@ The node returns the following response:
 ```
 executed transaction: 8594b978e913356d75306ee21c7f319080887c1431cc6efb16740941f434d578  104 bytes  100 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ]
-#         hello <= hello::world                 {"user":"john"}
->> Hello World from john!
-```
-
-Note that the response indicates that the `world` action was executed with the `john` argument passed to the `user` parameter, and the action displayed the message correctly.
-
-### Create Table
-
-In your first `hello` contract, you invoked the `world` action and passed a name as argument. However, the contract cannot store any names yet, since it does not have the ability to keep state or persistence.
-
-To add persistence to your contract, you need to use multi-index tables. To that end, copy/paste the following code to the `hello.cpp` file, replacing its contents, then save the file:
-
-```cpp
-#include <eosio/eosio.hpp>
-
-using namespace eosio;
-
-CONTRACT hello : public contract {
-   public:
-      using contract::contract;
-
-      TABLE user_record {
-         name user;
-         uint64_t primary_key() const { return user.value; }
-      };
-      typedef eosio::multi_index< name("users"), user_record> user_index;
-
-      ACTION world( name user ) {
-         user_index users( get_self(), get_self().value );
-         users.emplace( get_self(), [&]( auto& new_record ) {
-            new_record.user = user;
-         });
-         print_f("Hello World from %!\n", user);
-      }
-};
-```
-
-The table is defined by the struct `user_record` containing one field `user`; in practice, more fields are defined. The table also defines the `primary_key()` method which returns the unique identifier associated with `user`. This enforces a unique name in the table.
-
-Now that you have a multi-index table, you can implement full CRUD functionality: create, read, update, and delete records. In the code above, a new user record is created when the `world` action executes.
-
-### Recompile, Deploy, Test
-
-Now that you have added state to your `hello` contract by creating a multi-index table, you can compile, deploy, and test your modified contract. To that end, re-execute the following commands:
-
-```shell
-dune --cmake-build .
-```
-```
--- Configuring done
--- Generating done
--- Build files have been written to: /host/Users/lparisc/Documents/eosnf/work/contracts/hello/build
-[ 11%] Performing build step for 'hello_project'
-Scanning dependencies of target hello
-[ 50%] Building CXX object CMakeFiles/hello.dir/hello.obj
-Warning, empty ricardian clause file
-[100%] Linking CXX executable hello.wasm
-[100%] Built target hello
-[ 22%] No install step for 'hello_project'
-[ 33%] No test step for 'hello_project'
-[ 44%] Completed 'hello_project'
-[100%] Built target hello_project
-```
-
-```shell
-dune --deploy ./build/hello hello
-```
-```
-#         eosio <= eosio::setcode               {"account":"hello","vmtype":0,"vmversion":0,"code":"0061736d010000000159106000006000017f60027f7f0060...
-#         eosio <= eosio::setabi                {"account":"hello","abi":"0e656f73696f3a3a6162692f312e3200020b757365725f7265636f72640001047573657204...
-```
-
-If all went well, you can now send new `world` actions to your `hello` contract by passing different names - just make sure they are unique and they abide by the EOS name rules:
-
-```shell
-dune --send-action hello world '[bob]' hello@active
-```
-```
-executed transaction: d32628565fee76440da0a8bc8d2f0eacce15dbdd629b3a64e8aad21ae87171eb  104 bytes  100 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ]
 #         hello <= hello::world                 {"user":"bob"}
 >> Hello World from bob!
 ```
+
+Note that the response indicates that the `world` action was executed with the `bob` argument passed to the `user` parameter, and the action displayed the message correctly.
+
+You can pass different names to the action - just make sure they are unique:
 
 ```shell
 dune --send-action hello world '[alice]' hello@active
@@ -532,21 +431,15 @@ warning: transaction executed locally, but may not be confirmed by the network y
 >> Hello World from alice!
 ```
 
-```shell
-dune --send-action hello world '[john]' hello@active
-```
-```
-executed transaction: ff05d2842ae5d6def42d96474837ca03d5106f6f94ce62f2a579905143376ab7  104 bytes  103 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ]
-#         hello <= hello::world                 {"user":"john"}
->> Hello World from john!
-```
-
 Note that if you try to add the same `user` twice, the action will fail since it has to be unique.
 
 ### Get Table Data
 
-Now that you have implemented your multi-index table and the ability to create new records in it, you can implement the remaining three CRUD operations: read, update, and delete records, if needed. It all depends on the business rules that you need to implement within your contract.
+In your `hello` contract above, the `world` action displays a message using a specified `user` name. However, the contract does more under the hood:
+* the contract defines a table with one name field.
+* the action creates a new user record on that table.
+
+This adds the ability to keep or persist contract state on the blockchain. Now that you have a table and the ability to create new records in it, you just need to read, update, and delete records to have full CRUD functionality. It all depends on the business rules that you need to implement within your contract.
 
 To view the entire table state, invoke the following command:
 
@@ -562,8 +455,6 @@ The result displays the contents of the `users` table within the `hello` contrac
       "user": "bob"
     },{
       "user": "alice"
-    },{
-      "user": "john"
     }
   ],
   "more": false,
@@ -575,4 +466,4 @@ If you want to perform more advanced table queries, you can use the `dune -- cle
 
 ## Summary
 
-In this guide you learned how to use DUNE for basic smart contract development. In particular, you launched a local EOS blockchain consisting of a single node, created a test account for smart contract deployment, developed and deployed a "Hello World" contract locally, tested your contract by sending actions, and finally added persistence to your contract and obtained table contents.
+In this guide you learned how to use DUNE for basic smart contract development. In particular, you launched a local EOS blockchain consisting of a single node, created a test account for smart contract deployment, developed and deployed a "Hello World" contract locally, tested your contract by sending actions, and finally checked its state by reading the table contents.
