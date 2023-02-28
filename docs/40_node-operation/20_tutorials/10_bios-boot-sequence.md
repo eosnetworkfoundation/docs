@@ -25,9 +25,7 @@ In this tutorial, you will learn how to perform the following tasks:
 Before you start this tutorial, get familiar with the following sections:
 
 ### Overview
-* [Framework and Toolchain](https://docs.eosnetwork.com/docs/latest/overview/framework_and_toolchain)
-* [Core Concepts](https://docs.eosnetwork.com/docs/latest/overview/core_concepts)
-* [Technical Features](https://docs.eosnetwork.com/docs/latest/overview/technical_features)
+* [Welcome](/docs/index.md)
 
 Also, make sure to learn about the software prerequisites, and install the required software before you continue this tutorial:
 
