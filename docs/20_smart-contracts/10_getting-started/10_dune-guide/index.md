@@ -176,7 +176,7 @@ Bootstrapping a node becomes necessary when either the system contracts must be 
 
 ### Create Test Accounts
 
-EOS accounts give ownership to stakeholders in an EOS blockchain. To deploy a smart contract, you need to create an EOS account to host it. Accounts also represent the actors that send actions to a smart contract. For more information about EOS accounts, visit the [Accounts](/docs/20_smart-contracts/10_getting-started/20_Accounts.md) guide.
+EOS accounts give ownership to stakeholders in an EOS blockchain. To deploy a smart contract, you need to create an EOS account to host it. Accounts also represent the actors that send actions to a smart contract. For more information about EOS accounts, visit the [Accounts](../Accounts) guide.
 
 > ℹ️ DUNE Account Creation  
 DUNE simplifies account creation by abstracting key management. When an account gets created, DUNE also creates public/private key pairs for its two default permissions, `owner` and `active`. Therefore, if you use DUNE then key creation is not required during [Wallet Setup](#wallet-setup).
