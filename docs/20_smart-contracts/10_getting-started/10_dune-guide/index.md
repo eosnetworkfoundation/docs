@@ -1,5 +1,5 @@
 ---
-title: DUNE Guide
+title: DUNE
 ---
 
 ## Overview
