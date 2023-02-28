@@ -1,5 +1,5 @@
 ---
-title: Resources Guide
+title: Resources
 ---
 
 The EOS blockchain works with three system resources: CPU, NET and RAM. The EOS accounts need sufficient system resources to interact with the smart contracts deployed on the blockchain.
