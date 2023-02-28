@@ -52,7 +52,7 @@ The mandatory permissions are `owner` and `active`.
 
 A permission can only ever change what controls it (keys or accounts) or the what controls its children. It can never change what controls its parent.
 
-![Who can change permissions?](images/who_can_change_permissions.png)
+![Who can change permissions?](/docs/images/accts_who_can_change_permissions.png)
 
 
 What controls a permission is either a public key (which is registered on chain, and controlled by the associated private key) or another `account@permission`. This allows for the creation of complex account control structures, where multiple parties have control over a single account while still having full autonomy over their own account’s security. 
@@ -60,7 +60,7 @@ What controls a permission is either a public key (which is registered on chain,
 Take the following diagram as an example, where the account `alice` is controlled both by `bob` and `charlie`, while `charlie` is also controlled by `tom`. Eventually, all accounts are controlled by keys. 
 
 
-![Delegated account ownership](images/delegated_account_ownership.png)
+![Delegated account ownership](/docs/images/accts_delegated_account_ownership.png)
 
 
 You can add custom permissions underneath `active` which allows you to limit that permission’s access to only a specific contract’s action (callable function). That permission will then only ever be able to interact with the contract action you specified. 
@@ -68,7 +68,7 @@ You can add custom permissions underneath `active` which allows you to limit tha
 This means you are able to create granular access permissions across accounts and have hierarchical ownership and usage of them. 
 
 
-![Custom permissions](images/custom_permissions.png)
+![Custom permissions](/docs/images/accts_custom_permissions.png)
 
 
 Most importantly, the permission system has built-in support for multi-signature transactions (transactions that require multiple parties to sign them). Every linked account or key associated with a permission has a **weight** assigned to it, and the permission itself has a **threshold**. 
@@ -76,7 +76,7 @@ Most importantly, the permission system has built-in support for multi-signature
 As you can see in the example below, `bob` alone does not have enough power to sign using the `active` permission. He needs either `charlie` or `jenny` to co-sign with him for any transaction that `alice@active` makes. On the other hand, `charlie` and `jenny` cannot sign a transaction alone, they need `bob`. 
 
 
-![Weights and thresholds](images/weights_and_thresholds.png)
+![Weights and thresholds](/docs/images/accts_weights_and_thresholds.png)
 
 
 ## Smart Contracts
