@@ -296,7 +296,7 @@ This section creates the tictactoe.hpp file. This header file contains the decla
 The tic-tac-toe smart contract hpp file defines the following public data structures to store game information.  
 
 * game - The game data structure contains game data. The structure has variables of type `eosio::name`, for challenger, host, turn and winner. Click on this link for a definition of [eosio::name](http://docs.eosnetwork.com/cdt/latest/reference/Classes/structeosio_1_1name "eosio.cdt reference - name structure") . The structure has a `std::vector` representing the game board  
-* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](20_data-persistence.md) 
+* Games - Games is a type definition that uses a class template. Games uses an `eosio::muti_index` template to define a type which stores a game structure in RAM. Click on this link for more information on [eosio::multi_index](http://docs.eosnetwork.com/cdt/latest/reference/Modules/group__multiindex "eosio.cdt reference - multi index table") and click on this link for more general information about [multi index tables](../../20_smart-contracts/40_guides/10_create_smart_contracts_guide.md).
 
 #### Game Actions
 
@@ -677,7 +677,7 @@ Warning, action <close> does not have a ricardian contract
 Warning, action <move> does not have a ricardian contract
 ```
 
-For this tutorial we ignore these warnings. Click on the following link for a tutorial showing how to add the optional ricardian contracts [Prepare the Ricardian Contract](20_data-persistence.md#step-10-prepare-the-ricardian-contract-optional "Getting Started - Data Peristence")
+For this tutorial we ignore these warnings.
 
 The tictactoe directory now contains two new files, `tictactoe.wasm` and `tictactoe.abi`.
 
