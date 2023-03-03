@@ -1,4 +1,4 @@
-# Create Smart Contracts Basics
+# Smart Contracts Basics
 
 A smart contract is a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple ones like a todo application to a fully-fledged RPG game which runs entirely on the blockchain.
 
@@ -36,7 +36,7 @@ The bare application contains just the minimum files needed to develop, compile 
 ```shell
 dune --create-bare-app hello .
 cd hello
-ls -al
+ls
 ```
 
 The result of this command is a `hello` directory with four files in it:
@@ -76,7 +76,7 @@ The DUNE cmake application is a more complex type than the bare type and is suit
 ```shell
 dune --create-cmake-app hello .
 cd hello
-ls -al
+ls
 ```
 
 The result of this command is a `hello` directory with a bit more complex structure than the bare application because it generates some extra files to configure the cmake project:
@@ -94,7 +94,7 @@ To build the DUNE cmake application run the following command:
 
 ```shell
 dune --cmake-build <PATH_TO_CMakeLists.txt_PARENT_DIR>
-ls -al <PATH_TO_CMakeLists.txt_PARENT_DIR>/build/hello
+ls <PATH_TO_CMakeLists.txt_PARENT_DIR>/build/hello
 ```
 
 You can run the two commands from above from any directory on your local machine, just make sure you correctly replace the `<PATH_TO_CMakeLists.txt_PARENT_DIR>` with the parent directory path of `CMakeLists.txt` file.
