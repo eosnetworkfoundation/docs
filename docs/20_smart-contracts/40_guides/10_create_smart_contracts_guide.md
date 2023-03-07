@@ -48,8 +48,6 @@ dune --cmake-build <PATH_TO_CMakeLists.txt_PARENT_DIR>
 ls <PATH_TO_CMakeLists.txt_PARENT_DIR>/build/hello
 ```
 
-You can run the two commands from above from any directory on your local machine, just make sure you correctly replace the `<PATH_TO_CMakeLists.txt_PARENT_DIR>` with the parent directory path of `CMakeLists.txt` file.
-
 The result of the above build command are two files located in the `./build/hello/` folder:
 
 - hello.wasm, the WebAssembly binary file for the smart contract.
@@ -115,7 +113,7 @@ The `hello.cpp` is the C++ implementation file and it contains the `hello` smart
 
 ## Actions
 
-An action is a method, defined and implemented by a smart contract class. Actions can have parameters and return values and their responsibility is to execute the business logic of the contract. They can be called by other contracts or by external accounts with the EOS Chain API. Each action requires a specific level of authorization, which can be specified in the action's code. This ensures that only authorized accounts can execute specific actions.
+An action is a method, defined and implemented by a smart contract class. Actions can have parameters and return values and their responsibility is to execute the business logic of the contract. They can be called by other contracts or by external accounts with the EOS Chain API. Each action may require a specific level of authorization, which can be specified in the action's code.
 
 The `hello` smart contract class has only one action implemented by its `hi` public member function.
 
@@ -142,11 +140,7 @@ If you use the `[[eosio::action("action.name")]]` attribute you can name the act
 
 ## Inline Actions
 
-An inline action is an action that is executed within the context of a parent action. This means that an inline action is initiated by a smart contract action and is executed within the same transaction as the parent action.
-
-Inline actions are useful in situations where a smart contract action needs to interact with another smart contract. Instead of making an external call to the other contract, which could potentially result in a new transaction, the action can be executed inline within the same transaction.
-
-If any part of the transaction fails, the inline action will unwind with the rest of the transaction. Because they run in the context of the current transaction the order of execution of the inline actions it is guaranteed.
+An inline action is initiated by a smart contract action and is executed within the same transaction as the parent action. Inline actions are useful in situations where a smart contract action needs to interact with another smart contract. Instead of making an external call to the other contract, which could potentially result in a new transaction, the action can be executed inline within the same transaction. If any part of the transaction fails, the inline action will unwind with the rest of the transaction.
 
 The easiest way to execute an inline action is to use `SEND_INLINE_ACTION` macro.
 
@@ -165,9 +159,6 @@ CONTRACT hello : public contract {
 
       ACTION hi(name nm);
       ACTION gettime();
-
-   private:
-      void parse_time(uint64_t epoch_time, uint16_t& year, uint8_t& month, uint8_t& day, uint8_t& hour, uint8_t& minute, uint8_t& second);
 };
 ```
 
@@ -186,77 +177,7 @@ ACTION hello::hi(name nm) {
 
 ACTION hello::gettime() {
 
-   uint64_t time_point = current_time_point().time_since_epoch().count();
-   uint16_t year = 0;
-   uint8_t month = 0;
-   uint8_t day = 0;
-   uint8_t hour = 0;
-   uint8_t minute = 0;
-   uint8_t second = 0;
-   parse_time(time_point, year, month, day, hour, minute, second);
-
-   printf("Year: %u, Month: %u, Day: %u, Hour: %u, Minute: %u, Second: %u\n", year, month, day, hour, minute, second);
-}
-
-void hello::parse_time(uint64_t epoch_time, uint16_t& year, uint8_t& month, uint8_t& day, uint8_t& hour, uint8_t& minute, uint8_t& second) {
-    const uint32_t seconds_per_day = 86400;
-    const uint32_t seconds_per_hour = 3600;
-    const uint32_t seconds_per_minute = 60;
-    const uint32_t seconds_per_year = 31536000;
-    const uint32_t seconds_per_leap_year = 31622400;
-    const uint32_t epoch_years = 1970;
-
-    uint32_t remaining_seconds = epoch_time / 1000000;
-
-    // Calculate the year
-    uint32_t num_years = 0;
-    while (true) {
-        uint32_t seconds_in_year = (num_years % 4 == 0 && (num_years % 100 != 0 || num_years % 400 == 0)) ? seconds_per_leap_year : seconds_per_year;
-        if (remaining_seconds < seconds_in_year) {
-            year = epoch_years + num_years;
-            break;
-        }
-        remaining_seconds -= seconds_in_year;
-        num_years++;
-    }
-
-    // Calculate the month
-    uint32_t num_days = 0;
-    for (uint8_t i = 1; i <= 13; i++) {
-        uint32_t days_in_month = 0;
-        if (i == 2) {
-            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-                days_in_month = 29;
-            } else {
-                days_in_month = 28;
-            }
-        } else if (i == 4 || i == 6 || i == 9 || i == 11) {
-            days_in_month = 30;
-        } else {
-            days_in_month = 31;
-        }
-        uint32_t seconds_in_month = days_in_month * seconds_per_day;
-        if (remaining_seconds < seconds_in_month) {
-            month = i;
-            break;
-        }
-        remaining_seconds -= seconds_in_month;
-        num_days += days_in_month;
-    }
-
-    // Calculate the day
-    day = remaining_seconds / seconds_per_day + 1;
-    remaining_seconds = remaining_seconds % seconds_per_day;
-
-    // Calculate the hour
-    hour = remaining_seconds / seconds_per_hour;
-    remaining_seconds = remaining_seconds % seconds_per_hour;
-
-    // Calculate the minute
-    minute = remaining_seconds / seconds_per_minute;
-
-    // Calculate the second
-    second = remaining_seconds % seconds_per_minute;
+   printf("It is the first second of the rest of your life.\n");
 }
 ```
 
@@ -283,7 +204,7 @@ Antelope supports several C++ data types for developing smart contracts. Develop
 
 - `uint64_t`: This is an unsigned 64-bit integer type used for storing numeric values. It's commonly used for representing amounts of assets.
 - `name`: This is a type that represents an account name on the EOSIO network. Account names are 12-character strings that uniquely identify user accounts.
-- `asset`: This is a type that represents a quantity of a particular asset, such as EOS. It includes both the amount and the symbol of the asset.
+- `asset`: This is a type that represents a quantity of a particular asset, such as EOS. It includes both the amount and the symbol of the asset, example `1.0000 EOS`.
 - `string`: This is a type that represents a sequence of characters, such as a message or a username.
 - `time_point_sec`: This is a type that represents a point in time as the number of seconds since the Unix epoch (January 1, 1970).
 - `bool`: This is a type that represents a boolean value, which can be either true or false.
@@ -291,16 +212,9 @@ Antelope supports several C++ data types for developing smart contracts. Develop
 
 You can find a full list of all defined built-in types in the [abi_serializer.cpp file](https://github.com/AntelopeIO/leap/blob/a3e0756474a0899f94161b031a30bce4c496b292/libraries/chain/abi_serializer.cpp#L90-L128)
 
-The `hello` smart contract uses several built-in types:
-
-- `name` for the type of the `hi` action input parameter,
-- `uint64_t`, `uint32_t`, `uint16_t`, and `uint8_t` for the time sub-components.
-
 ## Multi-index Tables
 
-In EOS smart contract development, a multi-index table is a database-like data structure that allows developers to store and manage data in a persistent and efficient manner. Multi-index tables are defined using the `eosio::multi_index` template class, and can store any number of rows, each of which contains a set of related data elements.
-
-Multi-index tables are often used to store data that needs to be accessed frequently and efficiently, such as user account balances, transaction history, or other important information. Because multi-index tables are implemented as an on-chain database, they can be accessed and modified by other smart contracts, as well as by external applications through the EOSIO API.
+A multi-index table is a database-like data structure that allows developers to store and manage data in a persistent and efficient manner. Multi-index tables are defined using the `TABLE` macro, and can store any number of rows, each of which contains a set of related data elements.
 
 Here's an example of a simple multi-index table definition:
 
@@ -438,22 +352,21 @@ using namespace eosio;
 
 CONTRACT hello : public contract {
    public:
-      using contract::contract;
+        using contract::contract;
 
-      ACTION hi(name nm);
-      ACTION gettime();
-      ACTION goodbye(name nm);
+        ACTION hi(name nm);
+        ACTION gettime();
+        ACTION goodbye(name nm);
 
    private:
-      void parse_time(uint64_t epoch_time, uint16_t& year, uint8_t& month, uint8_t& day, uint8_t& hour, uint8_t& minute, uint8_t& second);
 
-   TABLE user_balance {
-      name user;
-      asset balance;
+        TABLE user_balance {
+            name user;
+            asset balance;
 
-      uint64_t primary_key() const { return user.value; }
-   };
-   using balance_table = eosio::multi_index<"balances"_n, user_balance>;
+            uint64_t primary_key() const { return user.value; }
+        };
+        using balance_table = eosio::multi_index<"balances"_n, user_balance>;
 };
 ```
 
@@ -555,7 +468,9 @@ In the outputs above, note that after the `goodbye` action is successfully execu
 
 ## Singleton
 
-A singleton is a special type of multi-index table that is designed to store a single row of data. Unlike a regular table, which can store any number of rows, a singleton is restricted to a single row. Singletons are often used to store global state variables or configuration parameters in a contract. Because there is only one row in a singleton, it is more efficient to access and modify its data than a regular table.
+A singleton is a special type of multi-index table that is designed to store a single row of data. Unlike a regular table, which can store any number of rows, a singleton is restricted to a single row. Singletons are often used to store global state variables or configuration parameters in a contract.
+
+It is important to remember the explanation of code and scope. For a singleton the scope can allow you to save one item per scope, and thus for example, you can store per-account configs.
 
 Here's an example of a singleton definition:
 
@@ -644,7 +559,6 @@ CONTRACT hello : public contract {
       ACTION deletestats();
 
    private:
-      void parse_time(uint64_t epoch_time, uint16_t& year, uint8_t& month, uint8_t& day, uint8_t& hour, uint8_t& minute, uint8_t& second);
 
       TABLE user_balance {
          name user;
@@ -921,7 +835,6 @@ CONTRACT hello : public contract {
       ACTION addmsg(name nm, std::string message);
 
    private:
-      void parse_time(uint64_t epoch_time, uint16_t& year, uint8_t& month, uint8_t& day, uint8_t& hour, uint8_t& minute, uint8_t& second);
 
       TABLE user_balance {
          name user;
