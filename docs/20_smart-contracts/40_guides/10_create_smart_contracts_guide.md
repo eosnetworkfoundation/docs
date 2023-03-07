@@ -2,7 +2,7 @@
 
 A smart contract is a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple ones like a todo application to a fully-fledged RPG game which runs entirely on the blockchain.
 
-This guide will show you how to develope a basic EOS smart contract with **DUNE** and with the C++ programming language. Also the basic smart contract concepts will be explained along the way.
+This guide will show you how to develope a basic EOS smart contract with **DUNE** and with the C++ programming language.
 
 ## Create Contract and Test Accounts
 
@@ -22,56 +22,7 @@ dune --create-account ama
 
 Make sure you have DUNE installed. Otherwise follow the [DUNE development setup](../10_getting-started/10_dune-guide/index.md#installation) documentation.
 
-There are two types of DUNE smart contract applications.
-
-- [The bare application](#create-build-and-deploy-a-dune-bare-application)
-- [The cmake application](#create-build-and-deploy-a-dune-cmake-application)
-
-Pick any of the above and create a DUNE application which will be used for the entire guide forward.
-
-### Create, Build and Deploy a DUNE Bare Application
-
-The bare application contains just the minimum files needed to develop, compile and deploy one smart contract to the blockchain. Run the following command to create a bare `hello` application.
-
-```shell
-dune --create-bare-app hello .
-cd hello
-ls
-```
-
-The result of this command is a `hello` directory with four files in it:
-
-- README.txt, a text file which contains information about how to build this application.
-- hello.contracts.md, the ricardian contract markdown file.
-- hello.hpp, the C++ header file.
-- hello.cpp, the C++ implementation file.
-
-#### Build the DUNE Bare Application
-
-To build the DUNE bare application run the following command:
-
-```shell
-dune -- cdt-cpp /host/<LOCAL-PATH-TO-HELLO-PARENT>/hello/hello.cpp -o /host/<LOCAL-PATH-TO-HELLO-PARENT>/hello/hello.wasm
-```
-
-The above command you can run it from directory on your local machine, just make sure that the `<LOCAL-PATH-TO-HELLO-PARENT>` is replace with the corresponding path of the parent directory of the hello folder.
-
-The result of the above build command are two files:
-
-- hello.wasm, the WebAssembly binary file for the smart contract.
-- hello.abi, the application binary interface (ABI) file for the smart contract.
-
-#### Deploy the hello Smart Contract (built with cdt-cpp)
-
-Execute the following command to deploy the `hello` smart contract to the account `hello` which you created at the beginning:
-
-```shell
-dune --deploy <PATH_TO_HELLO_DIR>
-```
-
 ### Create, Build and Deploy a DUNE cmake Application
-
-The DUNE cmake application is a more complex type than the bare type and is suited better for larger projects which involve multiple contracts and/or web applications.
 
 ```shell
 dune --create-cmake-app hello .
@@ -79,7 +30,7 @@ cd hello
 ls
 ```
 
-The result of this command is a `hello` directory with a bit more complex structure than the bare application because it generates some extra files to configure the cmake project:
+The result of this command is a `hello` directory with the following structure:
 
 - CMakeLists.txt, cmake configuration file.
 - README.txt, a text file which contains information about how to build this application with cmake.
@@ -104,9 +55,9 @@ The result of the above build command are two files located in the `./build/hell
 - hello.wasm, the WebAssembly binary file for the smart contract.
 - hello.abi, the application binary interface (ABI) file for the smart contract.
 
-#### Deploy the hello Smart Contract (built with cmake)
+#### Deploy the hello Smart Contract
 
-Execute the following command to deploy the `hello` smart contract to the account `hello` which you created at the beginning:
+Execute the following command to deploy the `hello` smart contract to the `hello` account:
 
 ```shell
 dune --deploy <PATH_TO_CMakeLists.txt_PARENT_DIR>/build/hello
@@ -114,7 +65,7 @@ dune --deploy <PATH_TO_CMakeLists.txt_PARENT_DIR>/build/hello
 
 ## First Test
 
-Let's send the `hi` action to the local node and send as input parameter the test account name you created earlier:
+Send the `hi` action to the local node and set as input parameter the `ama` test account name:
 
 ```shell
 dune --send-action hello hi '[ama]' hello@active
@@ -123,7 +74,7 @@ dune --send-action hello hi '[ama]' hello@active
 The output of the command above shows on the first line that `hello::hi` action was executed with the input parameter `{"nm":"ama"}` and on the second line the output of the action itself `Name: ama`.
 
 ```txt
-#         hello <= hello::hi                    {"nm":"ama"}
+#  hello <= hello::hi    {"nm":"ama"}
 >> Name: ama
 ```
 
@@ -152,24 +103,19 @@ CONTRACT hello : public contract {
 
 A smart contract class definition must:
 
-- Be annotated by the [[eosio::contract]] attribute which tells the compiler it is a smart contract class; in the `hello.hpp` generated code the `CONTRACT` macro is used, which expands to `class [[eosio::contract]]` C++ code.
+- Be annotated by the [[eosio::contract]] attribute which tells the compiler it is a smart contract class; in the `hello.hpp` generated code the `CONTRACT` macro is used, which expands to `class [[eosio::contract]]` C++ code at compilation time.
 - Be derived from the `contract` class which provides basic smart contract functionality.
 - Define at least a public action function, in this case it has only one, the `hi` action.
-- Define a public action wrapper for each action defined.
 
 You will learn more about actions later.
 
 ### The hello.cpp File
 
-The `hello.cpp` is the C++ implementation file and it contains the `hello` smart contract C++ class implementation, that is, the implementation for every member function of the class.
+The `hello.cpp` is the C++ implementation file and it contains the `hello` smart contract C++ class implementation for every member function of the class.
 
 ## Actions
 
-An action is a method, defined and implemented by a smart contract class, that can be called by an authorized account to perform some specific task or operation on the blockchain. Actions can be called by other contracts or by external accounts with the EOS Chain API.
-
-Actions can have parameters and return values and their responsibility is to execute the business logic of the contract. For example, an action in a token contract might transfer tokens from one account to another or update the balances of multiple accounts.
-
-Each action requires a specific level of authorization, which can be specified in the action's code. This ensures that only authorized accounts can execute specific actions.
+An action is a method, defined and implemented by a smart contract class. Actions can have parameters and return values and their responsibility is to execute the business logic of the contract. They can be called by other contracts or by external accounts with the EOS Chain API. Each action requires a specific level of authorization, which can be specified in the action's code. This ensures that only authorized accounts can execute specific actions.
 
 The `hello` smart contract class has only one action implemented by its `hi` public member function.
 
@@ -183,13 +129,13 @@ ACTION hello::hi( name nm ) {
 ```
 
 The function that implements a smart contract action must be annotated by the `[[eosio::action("action.name")]]` attribute. The `action.name` is optional and if not specified then the action is named by the function name that implements it.
-In the `hello.cpp` generated code the `ACTION` macro is used which expands to `[[eosio::action]] void` C++ code.
+In the `hello.cpp` generated code the `ACTION` macro is used which expands to `[[eosio::action]] void` C++ code at compilation time.
 
 The name of the action must:
 
 - Be no longer than 13 characters.
 - Contain only `.`, `a`-`z`, or `1`-`5` characters.
-- May not end with `.`.
+- Not end with `.`.
 
 Note that when you use the `ACTION` macro the action name is the same as the function name that implements it. Because of that the action name inherits the limitations of the C++ function names as well, which means it can not have `.` in it.
 If you use the `[[eosio::action("action.name")]]` attribute you can name the action differently than the function name that implements it.
@@ -200,7 +146,7 @@ An inline action is an action that is executed within the context of a parent ac
 
 Inline actions are useful in situations where a smart contract action needs to interact with another smart contract. Instead of making an external call to the other contract, which could potentially result in a new transaction, the action can be executed inline within the same transaction.
 
-If any part of the transaction fails, the inline action will unwind with the rest of the transaction. Also because they run in the context of the current transaction the order of execution of the inline actions it is guaranteed.
+If any part of the transaction fails, the inline action will unwind with the rest of the transaction. Because they run in the context of the current transaction the order of execution of the inline actions it is guaranteed.
 
 The easiest way to execute an inline action is to use `SEND_INLINE_ACTION` macro.
 
@@ -316,7 +262,7 @@ void hello::parse_time(uint64_t epoch_time, uint16_t& year, uint8_t& month, uint
 
 Build the smart contract again and deploy it to the local node as you did previously.
 
-Now you can send an `hi` action to the local node and observe that both `hi` and `gettime` actions are executed.
+Now you can send a `hi` action to the local node and observe that both `hi` and `gettime` actions are executed.
 
 ```shell
 dune --send-action hello hi '[ama]' hello@active
@@ -335,12 +281,12 @@ warning: transaction executed locally, but may not be confirmed by the network y
 
 Antelope supports several C++ data types for developing smart contracts. Developers can use these types to define data structures and write functions that interact with the EOS blockchain and smart contract system. Here are some of the most commonly used types:
 
-- `uint64_t`: This is an unsigned 64-bit integer type used for storing numeric values. It's commonly used for representing amounts of currency or other assets.
+- `uint64_t`: This is an unsigned 64-bit integer type used for storing numeric values. It's commonly used for representing amounts of assets.
 - `name`: This is a type that represents an account name on the EOSIO network. Account names are 12-character strings that uniquely identify user accounts.
-- `asset`: This is a type that represents a quantity of a particular asset, such as EOS or another token. It includes both the amount and the symbol of the asset.
+- `asset`: This is a type that represents a quantity of a particular asset, such as EOS. It includes both the amount and the symbol of the asset.
 - `string`: This is a type that represents a sequence of characters, such as a message or a username.
 - `time_point_sec`: This is a type that represents a point in time as the number of seconds since the Unix epoch (January 1, 1970).
-- `bool`: This is a type that represents a Boolean value, which can be either true or false.
+- `bool`: This is a type that represents a boolean value, which can be either true or false.
 - `vector`: This is a type that represents a dynamic array of elements. It can be used to store lists of items such as account names or asset quantities.
 
 You can find a full list of all defined built-in types in the [abi_serializer.cpp file](https://github.com/AntelopeIO/leap/blob/a3e0756474a0899f94161b031a30bce4c496b292/libraries/chain/abi_serializer.cpp#L90-L128)
@@ -354,7 +300,7 @@ The `hello` smart contract uses several built-in types:
 
 In EOS smart contract development, a multi-index table is a database-like data structure that allows developers to store and manage data in a persistent and efficient manner. Multi-index tables are defined using the `eosio::multi_index` template class, and can store any number of rows, each of which contains a set of related data elements.
 
-Multi-index tables are often used in EOS smart contract development to store data that needs to be accessed frequently and efficiently, such as user account balances, transaction history, or other important information. Because multi-index tables are implemented as an on-chain database, they can be accessed and modified by other smart contracts, as well as by external applications through the EOSIO API.
+Multi-index tables are often used to store data that needs to be accessed frequently and efficiently, such as user account balances, transaction history, or other important information. Because multi-index tables are implemented as an on-chain database, they can be accessed and modified by other smart contracts, as well as by external applications through the EOSIO API.
 
 Here's an example of a simple multi-index table definition:
 
@@ -368,20 +314,20 @@ TABLE user_balance {
 using balance_table = eosio::multi_index<"balances"_n, user_balance>;
 ```
 
-The name of a multi-index table has the same restrictions as the name of an action.
+The code above defines a table type called `balance_table`. The table stores user account balances encapsulated in the `user_balance` structure. The structure contains two fields: the account `name`, and the `asset` which is the user's account balance. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
 
-The code above defines a multi-index table type called `balance_table`. The table stores user account balances which are encapsulated in the `user_balance` structure. The structure contains two fields: the `name` field represents the user's account name, and the `asset` field represents the user's account balance. The `primary_key()` inline method implementation defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
-
-Developers can use the `balance_table` template type, to instantiate a reference to a table and to perform various operations on that table, such as:
+Developers can use the `balance_table` table type, to instantiate a reference to a table and to perform various operations on that table, such as:
 
 - query the table for specific data,
 - insert new rows,
 - modify existing rows,
 - delete existing rows.
 
+The name of a multi-index table has the same restrictions as the name of an action.
+
 ### Multi-index: Code, Scope and Table
 
-When you define and use a multi-index table in an EOS smart contract, there are three important components to consider:
+When you define and use a multi-index table, there are three important components to consider:
 
 - the table,
 - the code,
@@ -395,15 +341,15 @@ The table is the name of the multi-index table itself. This name is used to iden
    using balance_table = eosio::multi_index<"balances"_n, user_balance>;
 ```
 
-The above code defines the type `balance_table` as a multi-index table which has the name `balances` and is capable to store instance of `user_balance` types.
+The above code defines the table type `balance_table` with name `balances`, which stores instances of `user_balance` structure.
 
 #### The code
 
-The code is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table. When defining a multi-index table, you must specify the code account as the first argument to the multi_index constructor.
+The code is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table. When defining a table, you must specify the code account as the first argument to the multi_index constructor.
 
 #### The scope
 
-The scope is a secondary identifier that is used to group related data within the multi-index table. When defining a multi-index table, you must specify the scope as the second argument to the multi_index constructor. The scope is often set to the contract account itself, to group all related data within the same contract.
+The scope is a secondary identifier that is used to group related data within the multi-index table. When defining a table, you must specify the scope as the second argument to the multi_index constructor. The scope is often set to the contract account itself, to group all related data within the same contract.
 
 ```cpp
 balance_table balances(get_self(), get_self().value);
@@ -411,7 +357,7 @@ balance_table balances(get_self(), get_self().value);
 
 In the code above, the first parameter, the`code`, is initialized with the `get_self()`, witch returns the contract account owner. The second parameter, the `scope`, is initialized with the `get_self().value`, which returns the same account value as the contract owner.
 
-Important to note is that the code above creates a `balances` object which is an accessor to the multi-index `balances` table, which is an address of the RAM storage space where the table rows/objects are saved.
+Important to note is that the code above creates a `balances` object which is an accessor to the `balances` table, which is an address of the RAM storage space where the table rows/objects are saved.
 
 ### Multi-index: Find in Table
 
@@ -442,7 +388,7 @@ balances.emplace(get_self(), [&](auto& row) {
 });
 ```
 
-The code above uses emplace method to insert a new row into the table, and specifies the user's account name and balance as the values for the row's fields.
+The code above uses emplace method to insert a new row into the table, and sets the user's account name and balance as the values for the row's fields.
 
 ### Multi-index: Modify Existing Data
 
@@ -482,7 +428,7 @@ Now, that you know the basic operations you can perform on a multi-index table, 
 - Decrease the asset amount by 0.0001 EOS with every `hi` action execution following the first time.
 - Delete the table row associated with the account sender when `goodbye` action is sent.
 
-The hello.hpp file should look like this:
+The hello.hpp file can look like this:
 
 ```cpp
 #include <eosio/eosio.hpp>
@@ -511,7 +457,7 @@ CONTRACT hello : public contract {
 };
 ```
 
-The `hi` and `goodbye` actions implementation should look like this:
+The `hi` and `goodbye` actions implementation can look like this:
 
 ```cpp
 ACTION hello::hi(name nm) {
@@ -552,7 +498,7 @@ ACTION hello::goodbye(name nm) {
 
 ### Multi-index: Test
 
-After you build and deploy again the smart contract you can send the `hi` action a couple of times and observe the results:
+Build and deploy again the smart contract, send the `hi` action a couple of times and observe the results:
 
 ```shell
 dune --send-action hello hi '[ama]' hello@active
@@ -605,11 +551,11 @@ warning: transaction executed locally, but may not be confirmed by the network y
 >> Year: 2023, Month: 2, Day: 24, Hour: 14, Minute: 37, Second: 2
 ```
 
-Note in the outputs above that after the `goodbye` action is successfully executed the `hi` action re-initializes the `ama` account balance to 1 EOS.
+In the outputs above, note that after the `goodbye` action is successfully executed, the `hi` action, which executed after that, re-initializes the `ama` account balance to 1 EOS.
 
 ## Singleton
 
-A singleton is a special type of multi-index table that is designed to store a single row of data. Unlike a regular multi-index table, which can store any number of rows, a singleton is restricted to a single row. Singletons are often used to store global state variables or configuration parameters in a contract. Because there is only one row in a singleton, it is more efficient to access and modify its data than a regular multi-index table.
+A singleton is a special type of multi-index table that is designed to store a single row of data. Unlike a regular table, which can store any number of rows, a singleton is restricted to a single row. Singletons are often used to store global state variables or configuration parameters in a contract. Because there is only one row in a singleton, it is more efficient to access and modify its data than a regular table.
 
 Here's an example of a singleton definition:
 
@@ -620,7 +566,7 @@ TABLE statsdata {
 using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
 ```
 
-The code above defines a singleton type called `stats_singleton`. The singleton, is a special table that stores statistical data which are encapsulated in the `statsdata` structure. The structure contains just one field `hi_count` which counts the number of time the `hi` action was executed.
+The code above defines a singleton type `stats_singleton`. This singleton stores statistical data defined by `statsdata` structure. The structure contains the `hi_count` data member which stores the number of times the `hi` action was executed.
 
 Developers can use the `stats_singleton` template type, to instantiate a reference to the singleton table and to perform various operations, such as:
 
@@ -674,11 +620,11 @@ if (stats.exists()) {
 
 Now, that you know the basic operations you can perform on a singleton, you can extend the `hello` contract `hi` action to:
 
-- Implement a `stats` singleton which stores statistical data about the `hi` action number of executions,
-- Implement `getstats` action to read the stats singleton,
+- Instantiate a `stats` singleton which stores statistical data about the `hi` action number of executions.
+- Implement `getstats` action to read the stats singleton.
 - Implement `deletestats` action to delete the stats singleton.
 
-The hello.hpp file should look like this:
+The hello.hpp file can look like this:
 
 ```cpp
 #include <eosio/eosio.hpp>
@@ -715,7 +661,7 @@ CONTRACT hello : public contract {
 };
 ```
 
-The `hi`, `getstats` and `deletestats` actions implementation should look like this:
+The `hi`, `getstats` and `deletestats` actions implementation can look like this:
 
 ```cpp
 ACTION hello::hi(name nm) {
@@ -776,7 +722,7 @@ ACTION hello::deletestats() {
 
 ### Singleton: Test
 
-After you build and deploy again the smart contract you can send the `hi` action, followed by the `getstats` action and observe the results:
+Build and deploy again the smart contract, send the `hi` action, followed by the `getstats` action and observe the results:
 
 ```shell
 dune --send-action hello hi '[ama]' hello@active
@@ -797,7 +743,7 @@ Send the `getstats` action:
 dune --send-action hello getstats '[]' hello@active
 ```
 
-And notice the statistical data, it started to record the number of counts the `hi` action got executed:
+Notice the statistical data, it started to record the number of counts the `hi` action got executed:
 
 ```txt
 executed transaction: 463c5b3b88aa0a4bf74e649ff1a72357051489452717fd8a12e3f62b71771994  96 bytes  224 us
@@ -806,7 +752,7 @@ warning: transaction executed locally, but may not be confirmed by the network y
 >> Stats for `hi` action: 1
 ```
 
-You can continue the test by sending `hi` and `getstats` action for as long as you like. When you want to reset the statistical data send the `deletestats` action, followed by the `getstats` and `hi` action again:
+You can continue the test by sending `hi` and `getstats` action a few more times. When you want to reset the statistical data send the `deletestats` action, followed by the `getstats` and `hi` action again:
 
 ```shell
 dune --send-action hello deletestats '[]' hello@active
@@ -849,13 +795,13 @@ warning: transaction executed locally, but may not be confirmed by the network y
 >> Year: 2023, Month: 2, Day: 26, Hour: 22, Minute: 3, Second: 34
 ```
 
-And if you check the stats now:
+Check the stats now:
 
 ```cpp
 dune --send-action hello getstats '[]' hello@active
 ```
 
-You can see the stats restarted from scratch:
+Observe the stats restarted from scratch:
 
 ```txt
 executed transaction: 62e7853cf93654592badba9578f05182d10994d826b0f3bab093d47f83f73140  96 bytes  366 us
@@ -866,7 +812,7 @@ warning: transaction executed locally, but may not be confirmed by the network y
 
 ## Indexes
 
-Indexes provide efficient and flexible access to data stored in multi-index tables. An index is a specialized data structure that allows you to look up data in the table based on a certain field, or a combination of fields. Indexes can be used to optimize the performance of queries that retrieve data from the table, and can also enforce uniqueness constraints on the data (only the primary index).
+Indexes provide efficient and flexible access to data stored in the multi-index tables. An index is a specialized data structure that allows you to look up data in the table based on a certain field, or a combination of fields. Indexes can be used to optimize the performance of queries that retrieve data from the table, and can also enforce uniqueness constraints on the data (only the primary index).
 
 EOS supports two types of indexes:
 
@@ -875,7 +821,7 @@ EOS supports two types of indexes:
 
 ### Primary Indexes
 
-A primary index in EOS is a unique identifier for each row in the multi-index table. It is defined explicitly using the `primary_key()` member function. This function must be defined within the `struct` that represents the table, and must return a value that uniquely identifies each row. In the `hello` smart contract we already have a primary index defined for the `user_balance` table structure definition.
+A primary index is a unique identifier for each row in the multi-index table. It is defined explicitly using the `primary_key()` member function. This function must be defined within the `struct` that represents the table, and must return a value that uniquely identifies each row. In the `hello` smart contract we already have a primary index defined for the `user_balance` table structure definition.
 
 ```cpp
 uint64_t primary_key() const { return user.value; }
@@ -1039,11 +985,11 @@ ACTION hello::searchmsg(std::string message) {
 
 Note in the code above the `eosio::sha256` function returns a fixed-length 256-bit (32-byte) hash value as a checksum256 object. The hash value is computed using the SHA-256 algorithm, which is a widely-used cryptographic hash function. The checksum256 type is a typedef for a fixed-length array of 32 bytes, and is used throughout EOS codebase to represent hash values.
 
-The second action makes use of the secondary index to search for a message by its hash. Please be aware that because it is not a unique index, the first value that matches the search is found, however, multiple rows with the same searched value can exist after it. That's why the `searchmsg` function prints the first message found and all the subsequent ones.
+The second action makes use of the secondary index to search for a message by its hash. Please be aware, because it is not a unique index, the first value that matches the search is found, however, multiple rows with the same searched value can exist after it. That's why the `searchmsg` function prints the first message found and all the subsequent ones.
 
 ### Indexes: Test
 
-After you build and deploy again the smart contract you can send the `addmsg` action a couple of times with two different accounts as first parameter and the same message and then search for the added message to see if it is found:
+Build and deploy again the smart contract, send the `addmsg` action a couple of times with two different accounts as first parameter and the same message as the second, and then search for the added message to see if it is found:
 
 ```shell
 dune --send-action hello addmsg '[ama, "good morning sunshine"]' hello@active
@@ -1066,9 +1012,9 @@ warning: transaction executed locally, but may not be confirmed by the network y
 
 ## Authorization
 
-When a user or contract attempts to perform an action, the action can be validated by the EOS blockchain software. This validation process includes checking that the user or contract has the necessary permissions to perform the action. Permissions are granted through authorization, which involves associating a particular account or contract with a specific permission level.
+When a user or contract attempts to send an action, the action can be validated by the EOS blockchain software. This validation process includes checking that the user or contract has the authorization to perform the action.
 
-The `hello` contract does not perform any authorization checks. Any account could send any of its actions to the blockchain and they would be executed.
+The `hello` contract does not perform any authorization checks. Any account could send any of the 'hello' contract's actions to the blockchain and they would be executed.
 
 Send `hi` action and sign it with the `hello@active` private key succeeds:
 
@@ -1082,7 +1028,7 @@ warning: transaction executed locally, but may not be confirmed by the network y
 #         hello <= hello::addmsg                {"nm":"ama","message":"hi again"}
 ```
 
-Send `hi` action and sign it with the `ama@active` private key succeeds:
+Send `hi` action and sign it with the `ama@active` private key succeeds as well:
 
 ```shell
 dune --send-action hello addmsg '[ama, "hi again"]' ama@active
@@ -1094,7 +1040,7 @@ warning: transaction executed locally, but may not be confirmed by the network y
 #         hello <= hello::addmsg                {"nm":"ama","message":"hi again"}
 ```
 
-You can implement an authorization check to permit only certain accounts or just on account to execute the `hello` contract's actions.
+You can implement an authorization check to permit only certain accounts or just one account to execute the `hello` contract's actions.
 
 ### Use check() with has_auth()
 
@@ -1116,7 +1062,7 @@ ACTION hello::addmsg(name nm, std::string message) {
 }
 ```
 
-If you compile and deploy the smart contract and send the `addmsg` action with first parameter `ama` and sign it with `hello@active` key it will fail with the custom error message defined:
+Compile and deploy the smart contract, send the `addmsg` action with first parameter `ama` and sign it with `hello@active` key and then observe how it fails with the custom error message:
 
 ```cpp
 dune --send-action hello addmsg '[ama, "hi again"]' hello@active
@@ -1153,7 +1099,7 @@ ACTION hello::addmsg(name nm, std::string message) {
 }
 ```
 
-If you compile and deploy the smart contract and send the `addmsg` action with first parameter `ama` and sign it with `hello@active` key it will fail with a standard error message:
+Compile and deploy the smart contract, send the `addmsg` action with first parameter `ama` and sign it with `hello@active` key, and then observe how it fails with a standard error message:
 
 ```cpp
 dune --send-action hello addmsg '[ama, "hi again"]' hello@active
@@ -1172,7 +1118,7 @@ pending console output:
 
 ### Use require_auth2()
 
-The `require_auth2()` enforces the execution only by the account that is set as the first parameter and only if the permission used to sign the transaction is the one specified as  the second parameter. In other words, if the same user uses the transaction with a different permission (e.g. code, owner) the execution of the action is halted. If the check fails it raises a standard error message which can not be customized.
+The `require_auth2()` enforces the execution only by the account that is set as the first parameter and only if the permission used to sign the transaction is the one specified as the second parameter. If the check fails it raises a standard error message which can not be customized.
 
 ```cpp
 ACTION hello::addmsg(name nm, std::string message) {
@@ -1190,13 +1136,13 @@ ACTION hello::addmsg(name nm, std::string message) {
 }
 ```
 
-If you compile and deploy the smart contract and send the `addmsg` action with first parameter `ama` and sign it with `ama@owner` private key, it will fail with a standard error message:
+Compile and deploy the smart contract, send the `addmsg` action with first parameter `ama`, sign it with `ama@owner` private key, and then observe how it fails with a standard error message:
 
 ```shell
 dune --send-action hello addmsg '[ama, "hi again"]' ama@owner
 ```
 
-Even if the `ama@owner` private key was used to sign the above transaction, the execution fails because the required signature is for the `ama@active`.
+Even if the `ama@owner` private key was used to sign the above transaction, the execution fails because the required signature is the `ama@active`.
 
 ```txt
 failed transaction: 7dcb10621e4102ec933cdbaf544f0204446cc96bc20b76242391b17286f1408e  <unknown> bytes  <unknown> us
@@ -1211,7 +1157,7 @@ pending console output:
 
 ## Assertions
 
-An assertion is a mechanism for checking whether a certain condition is true during the execution of a contract. If the condition is not true, the assertion will cause the contract to terminate with an error message. 
+An assertion is a mechanism that checks whether a certain condition is true during the execution of a contract. If the condition is not true, the assertion will cause the contract to terminate with an error message.
 
 Implement an assertion check with standard error message like this:
 
@@ -1273,7 +1219,7 @@ To raise an event from a smart contract action use the `require_recipient()` fun
 
 To listen to the event raised by a smart contract's action implement the `on_notify()` function and register it for that particular smart contract and its action.
 
-Implement a second smart contract that listens to `hello::addmsg` action notifications. 
+Implement a second smart contract that listens to `hello::addmsg` action notifications.
 
 ```shell
 dune --create-cmake-app hellolisten ./
