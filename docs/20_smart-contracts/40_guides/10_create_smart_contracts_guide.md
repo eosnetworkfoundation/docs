@@ -61,21 +61,6 @@ Execute the following command to deploy the `hello` smart contract to the `hello
 dune --deploy <PATH_TO_CMakeLists.txt_PARENT_DIR>/build/hello
 ```
 
-## First Test
-
-Send the `hi` action to the local node and set as input parameter the `ama` test account name:
-
-```shell
-dune --send-action hello hi '[ama]' hello@active
-```
-
-The output of the command above shows on the first line that `hello::hi` action was executed with the input parameter `{"nm":"ama"}` and on the second line the output of the action itself `Name: ama`.
-
-```txt
-#  hello <= hello::hi    {"nm":"ama"}
->> Name: ama
-```
-
 ## Smart Contract Source Files
 
 The smart contract C++ source files are:
@@ -103,7 +88,7 @@ A smart contract class definition must:
 
 - Be annotated by the [[eosio::contract]] attribute which tells the compiler it is a smart contract class; in the `hello.hpp` generated code the `CONTRACT` macro is used, which expands to `class [[eosio::contract]]` C++ code at compilation time.
 - Be derived from the `contract` class which provides basic smart contract functionality.
-- Define at least a public action function, in this case it has only one, the `hi` action.
+- Define at least a public action function.
 
 You will learn more about actions later.
 
@@ -138,16 +123,35 @@ The name of the action must:
 Note that when you use the `ACTION` macro the action name is the same as the function name that implements it. Because of that the action name inherits the limitations of the C++ function names as well, which means it can not have `.` in it.
 If you use the `[[eosio::action("action.name")]]` attribute you can name the action differently than the function name that implements it.
 
+### Send Action
+
+Send the `hi` action to the local node and set as input parameter the `ama` test account name:
+
+```shell
+dune --send-action hello hi '[ama]' hello@active
+```
+
+The output of the command above shows on one line that `hello::hi` action was executed with the input parameter `{"nm":"ama"}` and on the second line the output of the action itself `Name: ama`.
+
+```txt
+executed transaction: 23340b0920233d6f8c84af691891d7e056435dfc73e2d2cf30ddcc59d967c4ce  104 bytes  172 us
+warning: transaction executed locally, but may not be confirmed by the network yet         ] 
+#         hello <= hello::hi   {"nm":"ama"}
+>> Name : ama
+```
+
 ## Inline Actions
 
 An inline action is initiated by a smart contract action and is executed within the same transaction as the parent action. Inline actions are useful in situations where a smart contract action needs to interact with another smart contract. Instead of making an external call to the other contract, which could potentially result in a new transaction, the action can be executed inline within the same transaction. If any part of the transaction fails, the inline action will unwind with the rest of the transaction.
 
 The easiest way to execute an inline action is to use `SEND_INLINE_ACTION` macro.
 
+### Send Inline Action
+
 Let's extend the hello smart contract to:
 
-- Implement a new action called `gettime` which has no input parameter and prints the current date and time at the console.
-- Modify the `hi` action to send an inline `gettime` action to the blockchain.
+- Implement a new action called `inlineaction` which prints a message at the console.
+- Modify the `hi` action to send an inline `inlineaction` action to the blockchain.
 
 ```hpp
 #include <eosio/eosio.hpp>
@@ -157,45 +161,42 @@ CONTRACT hello : public contract {
    public:
       using contract::contract;
 
-      ACTION hi(name nm);
-      ACTION gettime();
+      ACTION hi( name nm );
+      ACTION inlineaction();
 };
 ```
 
 ```cpp
 #include <hello.hpp>
-#include <eosio/eosio.hpp>
-#include <eosio/system.hpp>
-#include <eosio/time.hpp>
 
-ACTION hello::hi(name nm) {
+ACTION hello::hi( name nm ) {
+   print_f("Name : %\n",nm);
 
-   print_f("Name : %\n", nm);
-
-   SEND_INLINE_ACTION(*this, gettime, {get_self(), "active"_n}, {});
+   SEND_INLINE_ACTION(*this, inlineaction, {get_self(), "active"_n}, {});
 }
 
-ACTION hello::gettime() {
-
-   printf("It is the first second of the rest of your life.\n");
+ACTION hello::inlineaction() {
+   printf("Inline action message.\n");
 }
 ```
 
+Note that the `SEND_INLINE_ACTION` macro third parameter uses the `_n()` string operator to convert `"active"` string into a `name` object. `"active"_n` is a shortcut for `name("active")`. And `name` is an EOS built-in type. You will learn more about built-in types later in this guide.
+
 Build the smart contract again and deploy it to the local node as you did previously.
 
-Now you can send a `hi` action to the local node and observe that both `hi` and `gettime` actions are executed.
+Now you can send a `hi` action to the local node and observe that both `hi` and `inlineactions` actions are executed.
 
 ```shell
 dune --send-action hello hi '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: 78ece3e63c3c6f11a210a9229f32b822c825fc72b268b1325b7dc1798797f460  104 bytes  431 us
+executed transaction: 4d8e428df8476aa1d98729874bd5082bb43603f69a9264238790177ba0f18e4b  104 bytes  289 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::hi                    {"nm":"ama"}
 >> Name : ama
-#         hello <= hello::gettime               ""
->> Year: 2023, Month: 2, Day: 24, Hour: 0, Minute: 42, Second: 5
+#         hello <= hello::inlineaction          ""
+>> Inline action message.
 ```
 
 ## Built-in Types
@@ -203,7 +204,7 @@ warning: transaction executed locally, but may not be confirmed by the network y
 Antelope supports several C++ data types for developing smart contracts. Developers can use these types to define data structures and write functions that interact with the EOS blockchain and smart contract system. Here are some of the most commonly used types:
 
 - `uint64_t`: This is an unsigned 64-bit integer type used for storing numeric values. It's commonly used for representing amounts of assets.
-- `name`: This is a type that represents an account name on the EOSIO network. Account names are 12-character strings that uniquely identify user accounts.
+- `name`: This is a type that represents an account name which is a string of up to 12 characters that uniquely identifies an account on the EOS network. To save space and improve efficiency, account names are stored as 64-bit unsigned integers (`uint64_t`) in the EOS database. The _n() macro is used to convert an account name string into its corresponding` uint64_t` value. And the `name.value()` returns the underlying `uint64_t` value.
 - `asset`: This is a type that represents a quantity of a particular asset, such as EOS. It includes both the amount and the symbol of the asset, example `1.0000 EOS`.
 - `string`: This is a type that represents a sequence of characters, such as a message or a username.
 - `time_point_sec`: This is a type that represents a point in time as the number of seconds since the Unix epoch (January 1, 1970).
@@ -219,18 +220,18 @@ A multi-index table is a database-like data structure that allows developers to 
 Here's an example of a simple multi-index table definition:
 
 ```cpp
-TABLE user_balance {
-  name user;
-  asset balance;
+TABLE user_data {
+   name user;
+   bool is_admin;
 
-  uint64_t primary_key() const { return user.value; }
+   uint64_t primary_key() const { return user.value; }
 };
-using balance_table = eosio::multi_index<"balances"_n, user_balance>;
+using user_data_table = eosio::multi_index<"userdata"_n, user_data>;
 ```
 
-The code above defines a table type called `balance_table`. The table stores user account balances encapsulated in the `user_balance` structure. The structure contains two fields: the account `name`, and the `asset` which is the user's account balance. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
+The code above defines a table type called `user_data_table`. An instance of this table type is a reference of a table, named `userdata`, that stores data defined by the `user_data` structure. The structure contains two fields: the account `name`, and a boolean which says if a user is admin. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
 
-Developers can use the `balance_table` table type, to instantiate a reference to a table and to perform various operations on that table, such as:
+Developers can use the `user_data_table` table type, to instantiate a reference the table and to perform various operations on that table, such as:
 
 - query the table for specific data,
 - insert new rows,
@@ -239,232 +240,276 @@ Developers can use the `balance_table` table type, to instantiate a reference to
 
 The name of a multi-index table has the same restrictions as the name of an action.
 
-### Multi-index: Code, Scope and Table
+### Multi-index: Code and Scope
 
-When you define and use a multi-index table, there are three important components to consider:
+When you define and use a multi-index table, you must define the following two parameters:
 
-- the table,
-- the code,
+- the code and
 - the scope.
-
-#### The table
-
-The table is the name of the multi-index table itself. This name is used to identify the table when performing operations on it, such as inserting, modifying, deleting, or querying data. The table name must be specified as a template parameter to the multi_index class.
-
-```cpp
-   using balance_table = eosio::multi_index<"balances"_n, user_balance>;
-```
-
-The above code defines the table type `balance_table` with name `balances`, which stores instances of `user_balance` structure.
 
 #### The code
 
-The code is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table. When defining a table, you must specify the code account as the first argument to the multi_index constructor.
+The code is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table. When defining a table, you must specify the code account as the first argument of the multi_index constructor.
 
 #### The scope
 
-The scope is a secondary identifier that is used to group related data within the multi-index table. When defining a table, you must specify the scope as the second argument to the multi_index constructor. The scope is often set to the contract account itself, to group all related data within the same contract.
+The scope is a secondary identifier that is used to group related data within the multi-index table. When defining a table, you must specify the scope as the second argument of the multi_index constructor. To group all related data within the same contract, the scope is often set as the contract account itself.
 
 ```cpp
-balance_table balances(get_self(), get_self().value);
+user_data_table users(get_self(), get_self().value);
 ```
 
-In the code above, the first parameter, the`code`, is initialized with the `get_self()`, witch returns the contract account owner. The second parameter, the `scope`, is initialized with the `get_self().value`, which returns the same account value as the contract owner.
+In the code above, the first parameter, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The second parameter, the `scope`, is initialized with the `get_self().value`, which returns the same account value as the contract owner.
 
-Important to note is that the code above creates a `balances` object which is an accessor to the `balances` table, which is an address of the RAM storage space where the table rows/objects are saved.
+Important to note is that the code above creates a `users` object which is a reference of the `userdata` table, which is an address of the RAM storage space where the table rows/objects are saved for the `code` and `scope` defined.
 
 ### Multi-index: Find in Table
 
-This is how to query the `balance_table` based on its primary key:
+This is how to query the `user_data_table` based on its primary key:
 
 ```cpp
-balance_table balances(get_self(), get_self().value);
+user_data_table users(get_self(), get_self().value);
 
-auto itr = balances.find(name.value);
-if ( itr != balances.end() ) {
-    // entity  found by name
+auto itr = users.find(name.value);
+if ( itr != users.end() ) {
+    // row found by name
 }
 else {
-    // entity not found
+    // row not found
 }
 ```
 
 ### Multi-index: Insert in Table
 
-This is how to insert a row into the `balance_table`:
+This is how to insert a row into the `user_data_table`:
 
 ```cpp
-balance_table balances(get_self(), get_self().value);
+user_data_table users(get_self(), get_self().value);
 
-balances.emplace(get_self(), [&](auto& row) {
+users.emplace(get_self(), [&](auto& row) {
   row.user = "user123"_n;
-  row.balance = asset(1, symbol("EOS", 4));
+  row.is_admin = false;
 });
 ```
 
-The code above uses emplace method to insert a new row into the table, and sets the user's account name and balance as the values for the row's fields.
+The code above uses `emplace` method to insert a new user into the table.
 
 ### Multi-index: Modify Existing Data
 
-This is how to modify an existing row in the `balance_table`:
+This is how to modify an existing row in the `user_data_table`:
 
 ```cpp
-balance_table balances(get_self(), get_self().value);
+user_data_table users(get_self(), get_self().value);
 
-auto itr = balances.find(name.value);
-if ( itr != balances.end() ) {
-    balances.modify(itr, get_self(), [&](auto& row) {
-        row.balance = asset(1, symbol("EOS", 4));
-    }
-});
+auto itr = users.find(name.value);
+if ( itr != users.end() ) {
+    users.modify(itr, get_self(), [&](auto& row) {
+        row.is_admin = true;
+    });
+};
 ```
 
 ### Multi-index: Delete from Table
 
-This is how to delete an entity from the `balance_table`:
+This is how to delete an entity from the `user_data_table`:
 
 ```cpp
-balance_table balances(get_self(), get_self().value);
+user_data_table users(get_self(), get_self().value);
 
 // check if the user already exists
-auto itr = balances.find(nm.value);
-if ( itr != balances.end() ) {
-    balances.erase(itr);
+auto itr = users.find(nm.value);
+if ( itr != users.end() ) {
+    users.erase(itr);
 }
 ```
 
 ### Extend Hello Smart Contract with Multi-index
 
-Now, that you know the basic operations you can perform on a multi-index table, you can extend the `hello` contract `hi` action to:
+You know now the basic operations you can perform on a multi-index table.
+You can extend the `hello` contract to:
 
-- Keep a list of all accounts that executed at least once the action.
-- Allocate 1 EOS to each user for the first time when the user executes the action.
-- Decrease the asset amount by 0.0001 EOS with every `hi` action execution following the first time.
-- Delete the table row associated with the account sender when `goodbye` action is sent.
+- Add `createrow` action which creates a new non-admin user.
+- Add `readrow` action which reads a user's data.
+- Add `updaterow` action which updates an existing user's data.
+- Add `deleterow` action which deletes an existing user's data.
 
 The hello.hpp file can look like this:
 
 ```cpp
 #include <eosio/eosio.hpp>
-#include <eosio/asset.hpp>
-
 using namespace eosio;
 
 CONTRACT hello : public contract {
    public:
-        using contract::contract;
+      using contract::contract;
 
-        ACTION hi(name nm);
-        ACTION gettime();
-        ACTION goodbye(name nm);
+      ACTION hi(name nm);
+
+      ACTION inlineaction();
+
+      // Table actions
+      ACTION createrow(name nm);
+      ACTION readrow(name nm);
+      ACTION updaterow(name nm, bool is_admin);
+      ACTION deleterow(name nm);
 
    private:
 
-        TABLE user_balance {
-            name user;
-            asset balance;
+   TABLE user_data {
+      name user;
+      bool is_admin;
 
-            uint64_t primary_key() const { return user.value; }
-        };
-        using balance_table = eosio::multi_index<"balances"_n, user_balance>;
+      uint64_t primary_key() const { return user.value; }
+   };
+   using user_data_table = eosio::multi_index<"userdata"_n, user_data>;
+
 };
 ```
 
-The `hi` and `goodbye` actions implementation can look like this:
+The hello.cpp file can look like this:
 
 ```cpp
+#include <hello.hpp>
+
 ACTION hello::hi(name nm) {
+   print_f("Name : %\n",nm);
 
-   balance_table balances(get_self(), get_self().value);
-
-   // check if the user already exists
-   auto itr = balances.find(nm.value);
-   if ( itr == balances.end() ) {
-      itr = balances.emplace(get_self(), [&](auto& row) {
-         row.user = nm;
-         row.balance = asset(10000, symbol("EOS", 4));
-      });
-   }
-   else {
-      balances.modify(itr, get_self(), [&](auto& row) {
-         row.balance -= asset(1, symbol("EOS", 4));
-      });
-   }
-
-   print_f("Name: %, balance: %\n", itr->user, itr->balance);
-
-   // takes three arguments: the code the contract is deployed on, the action name, and the set of permissions
-   SEND_INLINE_ACTION(*this, gettime, {get_self(), "active"_n}, {});
+   SEND_INLINE_ACTION(*this, inlineaction, {get_self(), "active"_n}, {});
 }
 
-ACTION hello::goodbye(name nm) {
+ACTION hello::inlineaction() {
+   printf("Inline action message.\n");
+}
 
-   balance_table balances(get_self(), get_self().value);
+ACTION hello::createrow(name nm) {
+   user_data_table users(get_self(), get_self().value);
 
-   // check if the user already exists
-   auto itr = balances.find(nm.value);
-   if ( itr != balances.end() ) {
-      balances.erase(itr);
+   auto itr = users.find(nm.value);
+
+   if ( itr == users.end() ) {
+      users.emplace(get_self(), [&](auto& row) {
+      row.user = nm;
+      row.is_admin = false;
+      });
+      printf("User % added as non-admin.\n", nm);
+   }
+   else {
+      printf("User % already exists.\n", nm);
+   }
+}
+
+ACTION hello::readrow(name nm) {
+   user_data_table users(get_self(), get_self().value);
+
+   auto itr = users.find(nm.value);
+   if ( itr != users.end() ) {
+      if (itr->is_admin) {
+         print_f("User admin % found.\n", itr->user);
+      }
+      else {
+         print_f("User non-admin % found.\n", itr->user);
+      }
+   }
+   else {
+      printf("User % not found.\n", nm);
+   }
+}
+
+ACTION hello::updaterow(name nm, bool is_admin) {
+   user_data_table users(get_self(), get_self().value);
+
+   auto itr = users.find(nm.value);
+   if ( itr != users.end() ) {
+      users.modify(itr, get_self(), [&](auto& row) {
+         row.is_admin = is_admin;
+      });
+      print_f("User % is_admin was set to %.\n", itr->user, itr->is_admin);
+   }
+   else{
+      printf("User % not found.\n", nm);
+   } 
+}
+
+ACTION hello::deleterow(name nm) {
+   user_data_table users(get_self(), get_self().value);
+
+   auto itr = users.find(nm.value);
+   if ( itr != users.end() ) {
+      users.erase(itr);
+      printf("User % erased.\n", nm);
+   }
+   else{
+      printf("User % not found.\n", nm);
    }
 }
 ```
 
 ### Multi-index: Test
 
-Build and deploy again the smart contract, send the `hi` action a couple of times and observe the results:
+Build and deploy again the smart contract, send the `createrow` action a couple of times and observe the results:
 
 ```shell
-dune --send-action hello hi '[ama]' hello@active
+dune --send-action hello createrow '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: a92e307fa78f20a10f8639453051940f8f50b2db94e20a2ccd7c5304def6232e  104 bytes  415 us
+executed transaction: 116a1fe518206595d5ceb5d54c1ccd93313ad7d9a51255e3b84f78a92b454696  104 bytes  230 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::hi                    {"nm":"ama"}
->> Name: ama, balance: 1.0000 EOS
-#         hello <= hello::gettime               ""
->> Year: 2023, Month: 2, Day: 24, Hour: 14, Minute: 37, Second: 2
+#         hello <= hello::createrow             {"nm":"ama"}
+>> User added as non-admin.
 ```
 
 ```shell
-dune --send-action hello hi '[ama]' hello@active
+dune --send-action hello createrow '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: a92e307fa78f20a10f8639453051940f8f50b2db94e20a2ccd7c5304def6232e  104 bytes  415 us
+executed transaction: f271f70776c567d873b8f15177193de903559d9f53b9dfdacb684c8834d94e4e  104 bytes  257 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::hi                    {"nm":"ama"}
->> Name: ama, balance: 0.9999 EOS
-#         hello <= hello::gettime               ""
->> Year: 2023, Month: 2, Day: 24, Hour: 14, Minute: 37, Second: 2
+#         hello <= hello::createrow             {"nm":"ama"}
+>> User already exists.
 ```
+
+Note how the first action created the a non-admin user `ama` and the second one did not because the user already existed.
+
+Now read the `ama` user data:
 
 ```shell
-dune --send-action hello goodbye '[ama]' hello@active
+dune --send-action hello readrow '[ama]' hello@active
 ```
-
-Note in the outputs above that the balance started with 1 EOS and then it decreased to 0.9999 EOS.
 
 ```txt
-executed transaction: 68ceadffa8858e094cb1bce742d0eccc6e8f7eece5e5e650850845183f8109cc  104 bytes  249 us
+executed transaction: fd367588be9190eda7d44fbf3b10034a601a4e36277146455db158b93f9c0751  104 bytes  210 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::goodbye               {"nm":"ama"}
+#         hello <= hello::readrow               {"nm":"ama"}
+>> User non-admin ama found.
 ```
+
+Now make the user `ama` admin:
 
 ```shell
-dune --send-action hello hi '[ama]' hello@active
+dune --send-action hello updaterow '[ama, 1]' hello@active
 ```
 
 ```txt
-executed transaction: a92e307fa78f20a10f8639453051940f8f50b2db94e20a2ccd7c5304def6232e  104 bytes  415 us
+executed transaction: e792dbe5a093bc581b8655503858be2c363b5918daedfad215c4ea01237b5553  104 bytes  305 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::hi                    {"nm":"ama"}
->> Name: ama, balance: 1.0000 EOS
-#         hello <= hello::gettime               ""
->> Year: 2023, Month: 2, Day: 24, Hour: 14, Minute: 37, Second: 2
+#         hello <= hello::updaterow             {"nm":"ama","is_admin":1}
+>> User ama is_admin was set to true.
 ```
 
-In the outputs above, note that after the `goodbye` action is successfully executed, the `hi` action, which executed after that, re-initializes the `ama` account balance to 1 EOS.
+Now delete the user `ama`:
+
+```shell
+dune --send-action hello deleterow '[ama]' hello@active
+```
+
+```txt
+executed transaction: c537502c519dfc9f0868123697b6e07f9e70e235925a005abeb2d30d0b3420ea  104 bytes  285 us
+warning: transaction executed locally, but may not be confirmed by the network yet         ] 
+#         hello <= hello::deleterow             {"nm":"ama"}
+>> User erased.
+```
 
 ## Singleton
 
@@ -476,22 +521,22 @@ Here's an example of a singleton definition:
 
 ```cpp
 TABLE statsdata {
-    int hi_count;
+    int count;
 };
 using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
 ```
 
-The code above defines a singleton type `stats_singleton`. This singleton stores statistical data defined by `statsdata` structure. The structure contains the `hi_count` data member which stores the number of times the `hi` action was executed.
+The code above defines a singleton type `stats_singleton`. This singleton stores statistical data defined by `statsdata` structure. The structure contains the `count` data member which can hold an arbitrary integer value.
 
-Developers can use the `stats_singleton` template type, to instantiate a reference to the singleton table and to perform various operations, such as:
+Developers can use the `stats_singleton` template type, to instantiate a reference of the singleton table and to perform various operations, such as:
 
 - read the singleton data,
 - modify existing singleton data,
 - delete existing singleton data.
 
-### Singleton: Code, Scope and Table
+### Singleton: Code and Scope
 
-The code, scope and table have the same same meaning as those for the [multi-index table](#multi-index-code-scope-and-table).
+The code and scope have the same meaning as for the [multi-index table](#multi-index-code-and-scope).
 
 #### Get Singleton Data
 
@@ -502,7 +547,7 @@ stats_singleton stats(get_self(), get_self().value);
 
 if (stats.exists()) {
     auto current_stats = stats.get();
-    print_f("Stats for `hi` action: %\n", current_stats.hi_count);
+    print_f("Stats value: %\n", current_stats.count);
 }
 ```
 
@@ -514,8 +559,9 @@ This is how you modify the singleton data:
 stats_singleton stats(get_self(), get_self().value);
 
 auto current_stats = stats.get_or_create(get_self(), {0});
-current_stats.hi_count += 1;
+current_stats.count += 1;
 stats.set(current_stats, get_self());
+print_f("Stats have been updated.");
 ```
 
 #### Delete Singleton Data
@@ -533,88 +579,59 @@ if (stats.exists()) {
 
 ### Extend Hello Smart Contract with Singleton
 
-Now, that you know the basic operations you can perform on a singleton, you can extend the `hello` contract `hi` action to:
+You know now the basic operations you can perform on a singleton.
+You can extend the `hello` contract to:
 
-- Instantiate a `stats` singleton which stores statistical data about the `hi` action number of executions.
-- Implement `getstats` action to read the stats singleton.
-- Implement `deletestats` action to delete the stats singleton.
+- Add `updatestats` which updates the stats with a given value.
+- Add `readstats` which reads the stats stored in the singleton.
+- Add `deletestats` which deletes the stats stored in the singleton.
 
-The hello.hpp file can look like this:
+#### Update the `hello.hpp` file
+
+Add the following line at the top of the file:
 
 ```cpp
-#include <eosio/eosio.hpp>
-#include <eosio/asset.hpp>
 #include <eosio/singleton.hpp>
-
-using namespace eosio;
-
-CONTRACT hello : public contract {
-   public:
-      using contract::contract;
-
-      ACTION hi(name nm);
-      ACTION gettime();
-      ACTION goodbye(name nm);
-      ACTION getstats();
-      ACTION deletestats();
-
-   private:
-
-      TABLE user_balance {
-         name user;
-         asset balance;
-
-         uint64_t primary_key() const { return user.value; }
-      };
-      using balance_table = eosio::multi_index<"balances"_n, user_balance>;
-
-      TABLE statsdata {
-         int hi_count;
-      };
-      using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
-};
 ```
 
-The `hi`, `getstats` and `deletestats` actions implementation can look like this:
+Add the singleton related actions:
 
 ```cpp
-ACTION hello::hi(name nm) {
+   ACTION updatestats(int value);
+   ACTION readstats();
+   ACTION deletestats();
+```
 
-   balance_table balances(get_self(), get_self().value);
+Add the singleton definition:
 
-   // check if the user already exists
-   auto itr = balances.find(nm.value);
-   if ( itr == balances.end() ) {
-      itr = balances.emplace(get_self(), [&](auto& row) {
-         row.user = nm;
-         row.balance = asset(10000, symbol("EOS", 4));
-      });
-   }
-   else {
-      balances.modify(itr, get_self(), [&](auto& row) {
-         row.balance -= asset(1, symbol("EOS", 4));
-      });
-   }
+```cpp
+   TABLE statsdata {
+      int count;
+   };
+   using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
+```
 
-   print_f("Name: %, balance: %.\n", itr->user, itr->balance);
+#### Update the `hello.cpp` file
 
-   // takes three arguments: the code the contract is deployed on, the action name, and the set of permissions
-   SEND_INLINE_ACTION(*this, gettime, {get_self(), "active"_n}, {});
+Add the actions implementation:
 
-   // update statistics for `hi` action
+```cpp
+ACTION hello::updatestats(int value) {
    stats_singleton stats(get_self(), get_self().value);
 
    auto current_stats = stats.get_or_create(get_self(), {0});
-   current_stats.hi_count += 1;
+   current_stats.count = value;
    stats.set(current_stats, get_self());
+
+   print_f("Stats updated with value %.\n", value);
 }
 
-ACTION hello::getstats() {
+ACTION hello::readstats() {
    stats_singleton stats(get_self(), get_self().value);
    
    if (stats.exists()) {
-      auto current_stats = stats.get();
-      print_f("Stats for `hi` action: %\n", current_stats.hi_count);
+      auto current_stats = stats.get();   
+      print_f("Stats value: %\n", current_stats.count);
    }
    else {
       print_f("Stats not initialized.");
@@ -636,53 +653,54 @@ ACTION hello::deletestats() {
 
 ### Singleton: Test
 
-Build and deploy again the smart contract, send the `hi` action, followed by the `getstats` action and observe the results:
+Build and deploy again the smart contract, and send the three new actions which you just added:
 
 ```shell
-dune --send-action hello hi '[ama]' hello@active
+dune --send-action hello readstats '[]' hello@active
 ```
 
 ```txt
-executed transaction: a92e307fa78f20a10f8639453051940f8f50b2db94e20a2ccd7c5304def6232e  104 bytes  415 us
+executed transaction: 8e778d1cad7f44b39b4759d716830495e4fc9737fd8c035acd88aa68aac2da40  96 bytes  241 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::hi                    {"nm":"ama"}
->> Name: ama, balance: 0.9991 EOS
-#         hello <= hello::gettime               ""
->> Year: 2023, Month: 2, Day: 24, Hour: 14, Minute: 37, Second: 2
+#         hello <= hello::readstats             ""
+>> Stats not initialized.
 ```
-
-Send the `getstats` action:
 
 ```shell
-dune --send-action hello getstats '[]' hello@active
+dune --send-action hello updatestats '[999]' hello@active
 ```
-
-Notice the statistical data, it started to record the number of counts the `hi` action got executed:
 
 ```txt
-executed transaction: 463c5b3b88aa0a4bf74e649ff1a72357051489452717fd8a12e3f62b71771994  96 bytes  224 us
+executed transaction: ea70a88172426ade12df14d4f7f400313b2c751bae793bab7a895849d076a70b  96 bytes  285 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::getstats              ""
->> Stats for `hi` action: 1
+#         hello <= hello::updatestats           {"value":999}
+>> Stats updated with value 999.
 ```
 
-You can continue the test by sending `hi` and `getstats` action a few more times. When you want to reset the statistical data send the `deletestats` action, followed by the `getstats` and `hi` action again:
+```shell
+dune --send-action hello readstats '[]' hello@active
+```
+
+```txt
+executed transaction: caa7207c96147ed66976e9f5d4fb288def979d952c31e4e479a6c88571433b5c  96 bytes  180 us
+warning: transaction executed locally, but may not be confirmed by the network yet         ] 
+#         hello <= hello::readstats             ""
+>> Stats value: 999
+```
 
 ```shell
 dune --send-action hello deletestats '[]' hello@active
 ```
 
 ```txt
-executed transaction: c3d833a0e2567fb81de60c335ffd19f9b980527e649a80a9b0965a2a39aff5d1  96 bytes  248 us
+executed transaction: 6d2d07a9455ff9bc0dc5261ca227ab4c5f199aaab3fe380d10a107455d436e5f  96 bytes  239 us
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::deletestats           ""
 >> Stats have been removed.
 ```
 
-Call the `getstats` action:
-
 ```shell
-dune --send-action hello getstats '[]' hello@active
+dune --send-action hello readstats '[]' hello@active
 ```
 
 Note that now stats are not initialized anymore:
@@ -692,36 +710,6 @@ executed transaction: 5e93cca2859c6c6566ec48fd308c7a9e94b89e01af134dc09154a9e287
 warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::getstats              ""
 >> Stats not initialized.
-```
-
-Call the `hi` action again:
-
-```shell
-dune --send-action hello hi '[ama]' hello@active
-```
-
-```txt
-executed transaction: cc41c0ebfe6449fcf5ecdacdba2edce0fe68551308a8250943b173f314659ae3  104 bytes  435 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::hi                    {"nm":"ama"}
->> Name: ama, balance: 0.9990 EOS.
-#         hello <= hello::gettime               ""
->> Year: 2023, Month: 2, Day: 26, Hour: 22, Minute: 3, Second: 34
-```
-
-Check the stats now:
-
-```cpp
-dune --send-action hello getstats '[]' hello@active
-```
-
-Observe the stats restarted from scratch:
-
-```txt
-executed transaction: 62e7853cf93654592badba9578f05182d10994d826b0f3bab093d47f83f73140  96 bytes  366 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
-#         hello <= hello::getstats              ""
->> Stats for `hi` action: 1
 ```
 
 ## Indexes
@@ -796,11 +784,11 @@ using messages_table = eosio::multi_index<
     >;
 ```
 
-Note in the code above the `messages_table` is defined almost the same way as you defined earlier the `balance_table`. What is different this time is the definition of the `"messageidx"` secondary index which is done with the `indexed_by` and `const_mem_fun` templates. The `const_mem_fun` receives three parameters:
+Note in the code above the `messages_table` is defined almost the same way as you defined earlier the `user_data_table`. What is different this time is the definition of the `"messageidx"` secondary index which is done with the `indexed_by` and `const_mem_fun` templates. The `const_mem_fun` receives three parameters:
 
 - `user_messages`: the multi-index table structure name,
 - `checksum256`: the type of the data the index is defined for,
-- `&user_messages::message_idx`: the reference to the data member function which retrieves the data the index is defined for.
+- `&user_messages::message_idx`: the reference of the data member function which retrieves the data the index is defined for.
 
 The name of a secondary index has the same restrictions as the name of an action.
 
@@ -842,10 +830,10 @@ CONTRACT hello : public contract {
 
          uint64_t primary_key() const { return user.value; }
       };
-      using balance_table = eosio::multi_index<"balances"_n, user_balance>;
+      using user_data_table = eosio::multi_index<"balances"_n, user_balance>;
 
       TABLE statsdata {
-         int hi_count;
+         int count;
       };
       using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
 
@@ -912,7 +900,7 @@ dune --send-action hello addmsg '[hello, "good morning sunshine"]' hello@active
 Find the `good morning sunshine` messages:
 
 ```shell
-root@ubuntu-s-4vcpu-8gb-fra1-01:~# dune --send-action hello searchmsg '["good morning sunshine"]' hello@active
+dune --send-action hello searchmsg '["good morning sunshine"]' hello@active
 ```
 
 ```txt
