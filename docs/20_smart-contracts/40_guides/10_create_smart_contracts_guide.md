@@ -4,7 +4,9 @@ A smart contract is a program that runs on the blockchain. It allows you to add 
 
 This guide will show you how to develope a basic EOS smart contract with **DUNE** and with the C++ programming language.
 
-## Create the Contract and the Test Accounts
+## Preparation Steps
+
+### Create the Contract Account
 
 To deploy a smart contract you need an account to deploy it to. Create an account `hello` with the following command:
 
@@ -12,19 +14,30 @@ To deploy a smart contract you need an account to deploy it to. Create an accoun
 dune --create-account hello
 ```
 
+### Create the Test Account
+
 Create a second account, `ama`, for test purposes.
 
 ```shell
 dune --create-account ama
 ```
 
-## Create the Smart Contract
+### DUNE
 
 To develop the smart contract you will use the Docker Utilities for Node Execution (DUNE) which is a tool that allows you to perform the functions of node management, compile smart contracts, and several other common tasks required to develop smart contracts on EOS blockchains.
 
-### Create the DUNE Application
-
 Make sure you have DUNE installed. Otherwise follow the [DUNE development setup](../10_getting-started/10_dune-guide/index.md#installation) documentation.
+
+## Create the Smart Contract
+
+To create the smart contract you need to:
+
+1. Create a DUNE basic application.
+2. Extend the application to perform the custom actions you want to.
+3. Build the DUNE application which outputs the smart contract.
+4. Deploy the smart contract resulted from building the application.
+
+### Create the DUNE Application
 
 ```shell
 dune --create-cmake-app hello .
