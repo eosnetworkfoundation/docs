@@ -746,14 +746,21 @@ If you add a secondary index to an existing multi-index table it will have unpre
 
 ### Extend Hello Smart Contract with a Secondary Index
 
-Now that you know what secondary indexes are you can extend the `hello` smart contract with two new actions:
+You know now what secondary indexes are and how to define them. 
+Extend the `hello` smart contract with two new actions:
 
 - `addmsg`, which allows an account to send a message which is saved in a table and indexed by the message content.
 - `searchmsg`, which can look up a message using the secondary index defined.
 
 #### Add the Data Structure
 
-Add the data structure underlying the `user_messages` table:
+At the top of the `hello.hpp` file add the following line:
+
+```cpp
+#include <eosio/crypto.hpp>
+```
+
+And then, after the previous table definition, add the data structure underlying the `user_messages` table:
 
 ```cpp
 TABLE user_messages {
@@ -774,7 +781,7 @@ Note in the code above:
 
 #### Define the Table with the Secondary Index
 
-Define the `messages_table` table with the secondary index:
+In the `hello.hpp` file define the `messages_table` table type with the secondary index:
 
 ```cpp
 using messages_table = eosio::multi_index<
@@ -794,66 +801,14 @@ The name of a secondary index has the same restrictions as the name of an action
 
 #### Define and Implement the Actions
 
-Define the two actions which will make use of the `messages_table` and its `messageidx` secondary index.
+In the `hello.hpp` file define the two actions which will make use of the `messages_table` and its `messageidx` secondary index.
 
 ```cpp
 ACTION searchmsg(std::string message);
 ACTION addmsg(name nm, std::string message);
 ```
 
-The `hello.hpp` looks like this now:
-
-```cpp
-#include <eosio/eosio.hpp>
-#include <eosio/asset.hpp>
-#include <eosio/singleton.hpp>
-
-using namespace eosio;
-
-CONTRACT hello : public contract {
-   public:
-      using contract::contract;
-
-      ACTION hi(name nm);
-      ACTION gettime();
-      ACTION goodbye(name nm);
-      ACTION getstats();
-      ACTION deletestats();
-      ACTION searchmsg(std::string message);
-      ACTION addmsg(name nm, std::string message);
-
-   private:
-
-      TABLE user_balance {
-         name user;
-         asset balance;
-
-         uint64_t primary_key() const { return user.value; }
-      };
-      using user_data_table = eosio::multi_index<"balances"_n, user_balance>;
-
-      TABLE statsdata {
-         int count;
-      };
-      using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
-
-      TABLE user_messages {
-         name user;
-         std::string message;
-         checksum256 messagecks;
-         uint64_t time;
-
-         uint64_t primary_key() const { return time; }
-         checksum256 message_idx() const { return messagecks; }
-      };
-      using messages_table = eosio::multi_index<
-         "messages"_n,
-         user_messages,
-         indexed_by<"messageidx"_n, const_mem_fun<user_messages, checksum256, &user_messages::message_idx>>
-         >;
-};```
-
-Implement the two actions by adding the following code to the `hello.cpp` file:
+In the `hello.cpp` implement the two actions by adding the following code:
 
 ```cpp
 ACTION hello::addmsg(name nm, std::string message) {
@@ -941,7 +896,7 @@ warning: transaction executed locally, but may not be confirmed by the network y
 #         hello <= hello::addmsg                {"nm":"ama","message":"hi again"}
 ```
 
-You can implement an authorization check to permit only certain accounts or just one account to execute the `hello` contract's actions.
+You can implement an authorization check to allow only certain accounts or just one account to execute the `hello` contract's actions.
 
 ### Use check() with has_auth()
 
