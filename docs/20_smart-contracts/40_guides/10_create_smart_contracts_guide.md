@@ -4,7 +4,7 @@ A smart contract is a program that runs on the blockchain. It allows you to add 
 
 This guide will show you how to develope a basic EOS smart contract with **DUNE** and with the C++ programming language.
 
-## Create Contract and Test Accounts
+## Create the Contract and the Test Accounts
 
 To deploy a smart contract you need an account to deploy it to. Create an account `hello` with the following command:
 
@@ -18,11 +18,13 @@ Create a second account, `ama`, for test purposes.
 dune --create-account ama
 ```
 
-## Create a DUNE Smart Contract Application
+## Create the Smart Contract
+
+To develop the smart contract you will use the Docker Utilities for Node Execution (DUNE) which is a tool that allows you to perform the functions of node management, compile smart contracts, and several other common tasks required to develop smart contracts on EOS blockchains.
+
+### Create the DUNE Application
 
 Make sure you have DUNE installed. Otherwise follow the [DUNE development setup](../10_getting-started/10_dune-guide/index.md#installation) documentation.
-
-### Create, Build and Deploy a DUNE cmake Application
 
 ```shell
 dune --create-cmake-app hello .
@@ -39,7 +41,7 @@ The result of this command is a `hello` directory with the following structure:
 - ricardian, the folder contains the smart contract ricardian definition, hello.contracts.md file.
 - src, the C++ implementation files folder, at the beginning it contains just hello.cpp file.
 
-#### Build the DUNE cmake Application
+### Build the DUNE Application
 
 To build the DUNE cmake application run the following command:
 
@@ -53,7 +55,7 @@ The result of the above build command are two files located in the `./build/hell
 - hello.wasm, the WebAssembly binary file for the smart contract.
 - hello.abi, the application binary interface (ABI) file for the smart contract.
 
-#### Deploy the hello Smart Contract
+### Deploy the Smart Contract
 
 Execute the following command to deploy the `hello` smart contract to the `hello` account:
 
