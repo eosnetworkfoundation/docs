@@ -85,7 +85,9 @@ The smart contract C++ source files are:
 
 ### The hello.hpp File
 
-The `hello.hpp` is the C++ header file and it contains the `hello` smart contract C++ class definition.
+In C++ programming, a `.hpp` file is a header file that contains declarations of classes, functions, variables, and other entities that are intended to be used in other parts of the program. The `.hpp` file is typically included in a source code file (`.cpp`) using the #include preprocessor directive.
+
+The `hello.hpp` contains the `hello` smart contract C++ class declaration.
 
 ```c++
 #include <eosio/eosio.hpp>
@@ -99,17 +101,22 @@ CONTRACT hello : public contract {
 };
 ```
 
-A smart contract class definition must:
+A smart contract class declaration must:
 
-- Be annotated by the [[eosio::contract]] attribute which tells the compiler it is a smart contract class; in the `hello.hpp` generated code the `CONTRACT` macro is used, which expands to `class [[eosio::contract]]` C++ code at compilation time.
+- Be annotated by the [[eosio::contract]] attribute which tells the compiler it is a smart contract class; in the `hello.hpp` generated code the `CONTRACT` `macro` is used, which expands to `class [[eosio::contract]]` C++ code at compilation time.
 - Be derived from the `contract` class which provides basic smart contract functionality.
 - Define at least a public action function.
+
+> ℹ️ **C++ Macro** ℹ️  
+In C++, a `macro` is a way to define a shorthand for a piece of code or a value. When the `macro` is used in the code, the preprocessor automatically replaces it with its corresponding definition before the code is compiled. This can help to make the code more readable and maintainable by reducing repetition and increasing abstraction.
 
 You will learn more about actions later.
 
 ### The hello.cpp File
 
-The `hello.cpp` is the C++ implementation file and it contains the `hello` smart contract C++ class implementation for every member function of the class.
+In C++ programming, a `.cpp` file is a source code file that contains C++ code. The `.cpp` file is one of the most important files in a C++ project, as it contains the actual implementation of the code that performs the desired functionality.
+
+The `hello.cpp` file contains the `hello` smart contract C++ class implementation for every member function of the class.
 
 ## Actions
 
@@ -195,7 +202,10 @@ ACTION hello::inlineaction() {
 }
 ```
 
-Note that the `SEND_INLINE_ACTION` macro third parameter uses the `_n()` string operator to convert `"active"` string into a `name` object. `"active"_n` is a shortcut for `name("active")`. And `name` is an EOS built-in type. You will learn more about built-in types later in this guide.
+The `SEND_INLINE_ACTION` macro third parameter uses the `_n()` string operator to convert `"active"` string into a `name` object. `"active"_n` is a shortcut for `name("active")`. And `name` is an EOS built-in type. You will learn more about built-in types later in this guide.
+
+> ℹ️ **C++ Operator** ℹ️  
+In C++ programming, an operator is a symbol or keyword used to perform operations on variables or values. Examples of operators in C++ include arithmetic operators (+, -, *, /), assignment operators (=, +=, -=, *=, /=), comparison operators (==, !=, <, >, <=, >=), logical operators (&&, ||, !), and many others.
 
 Build the smart contract again and deploy it to the local node as you did previously.
 
@@ -216,15 +226,43 @@ warning: transaction executed locally, but may not be confirmed by the network y
 
 ## Built-in Types
 
-Antelope supports several C++ data types for developing smart contracts. Developers can use these types to define data structures and write functions that interact with the EOS blockchain and smart contract system. Here are some of the most commonly used types:
+EOS supports several C++ data types for developing smart contracts. Developers can use these types to define data structures and write functions that interact with the EOS blockchain and smart contract system.
 
-- `uint64_t`: This is an unsigned 64-bit integer type used for storing numeric values. It's commonly used for representing amounts of assets.
-- `name`: This is a type that represents an account name which is a string of up to 12 characters that uniquely identifies an account on the EOS network. To save space and improve efficiency, account names are stored as 64-bit unsigned integers (`uint64_t`) in the EOS database. The _n() macro is used to convert an account name string into its corresponding` uint64_t` value. And the `name.value()` returns the underlying `uint64_t` value.
-- `asset`: This is a type that represents a quantity of a particular asset, such as EOS. It includes both the amount and the symbol of the asset, example `1.0000 EOS`.
-- `string`: This is a type that represents a sequence of characters, such as a message or a username.
-- `time_point_sec`: This is a type that represents a point in time as the number of seconds since the Unix epoch (January 1, 1970).
-- `bool`: This is a type that represents a boolean value, which can be either true or false.
-- `vector`: This is a type that represents a dynamic array of elements. It can be used to store lists of items such as account names or asset quantities.
+This is the full list of built-in types:
+
+| Type | Description |
+| --- | --- |
+| `bool` | Boolean (true/false) |
+| `int8` | Signed 8-bit integer |
+| `uint8` | Unsigned 8-bit integer |
+| `int16` | Signed 16-bit integer |
+| `uint16` | Unsigned 16-bit integer |
+| `int32` | Signed 32-bit integer |
+| `uint32` | Unsigned 32-bit integer |
+| `int64` | Signed 64-bit integer |
+| `uint64` | Unsigned 64-bit integer |
+| `int128` | Signed 128-bit integer |
+| `uint128` | Unsigned 128-bit integer |
+| `varint32` | Variable-length signed 32-bit integer |
+| `varuint32` | Variable-length unsigned 32-bit integer |
+| `float32` | 32-bit floating-point number |
+| `float64` | 64-bit floating-point number |
+| `float128` | 128-bit floating-point number |
+| `time_point` | Point in time |
+| `time_point_sec` | Point in time with second precision |
+| `block_timestamp_type` | Block timestamp |
+| `name` | Account name |
+| `bytes` | Raw byte sequence |
+| `string` | String |
+| `checksum160` | 160-bit checksum |
+| `checksum256` | 256-bit checksum |
+| `checksum512` | 512-bit checksum |
+| `public_key` | Public key |
+| `signature` | Signature |
+| `symbol` | Asset symbol |
+| `symbol_code` | Asset symbol code |
+| `asset` | Asset |
+| `extended_asset` | Asset with extended precision |
 
 You can find a full list of all defined built-in types in the [abi_serializer.cpp file](https://github.com/AntelopeIO/leap/blob/a3e0756474a0899f94161b031a30bce4c496b292/libraries/chain/abi_serializer.cpp#L90-L128)
 
