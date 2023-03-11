@@ -264,8 +264,6 @@ This is the full list of built-in types:
 | `asset` | Asset |
 | `extended_asset` | Asset with extended precision |
 
-You can find a full list of all defined built-in types in the [abi_serializer.cpp file](https://github.com/AntelopeIO/leap/blob/a3e0756474a0899f94161b031a30bce4c496b292/libraries/chain/abi_serializer.cpp#L90-L128)
-
 ## Multi-index Tables
 
 A multi-index table is a database-like data structure that allows developers to store and manage data in a persistent and efficient manner. Multi-index tables are defined using the `TABLE` macro, and can store any number of rows, each of which contains a set of related data elements.
