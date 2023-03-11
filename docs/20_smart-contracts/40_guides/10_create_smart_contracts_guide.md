@@ -207,7 +207,7 @@ In C++ programming, an operator is a symbol or keyword used to perform operation
 
 Build the smart contract again and deploy it to the local node as you did previously.
 
-Now you can send a `hi` action to the local node and observe that both `hi` and `inlineactions` actions are executed.
+Send a `hi` action to the local node and observe that both `hi` and `inlineactions` actions are executed.
 
 ```shell
 dune --send-action hello hi '[ama]' hello@active
@@ -536,7 +536,7 @@ dune --send-action hello createrow '[ama]' hello@active
 
 Note how the first action created the a non-admin user `ama` and the second one did not because the user already existed.
 
-Now read the `ama` user data:
+Read the `ama` user data:
 
 ```shell
 dune --send-action hello readrow '[ama]' hello@active
@@ -547,7 +547,7 @@ dune --send-action hello readrow '[ama]' hello@active
 >> User non-admin ama found.
 ```
 
-Now make the user `ama` admin:
+Make the user `ama` admin:
 
 ```shell
 dune --send-action hello updaterow '[ama, 1]' hello@active
@@ -558,7 +558,7 @@ dune --send-action hello updaterow '[ama, 1]' hello@active
 >> User ama is_admin was set to true.
 ```
 
-Now delete the user `ama`:
+Delete the user `ama`:
 
 ```shell
 dune --send-action hello deleterow '[ama]' hello@active
@@ -1146,7 +1146,7 @@ CONTRACT hellolisten : public contract {
 };
 ```
 
-Now change the `hello::addmsg` action to raise the event for the `hellolisten` contract account whenever a new message is added.
+Change the `hello::addmsg` action to raise the event for the `hellolisten` contract account whenever a new message is added.
 
 ```cpp
 ACTION hello::addmsg(name nm, std::string message) {
