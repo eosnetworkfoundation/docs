@@ -156,8 +156,6 @@ dune --send-action hello hi '[ama]' hello@active
 The output of the command above shows on one line that `hello::hi` action was executed with the input parameter `{"nm":"ama"}` and on the second line the output of the action itself `Name: ama`.
 
 ```txt
-executed transaction: 23340b0920233d6f8c84af691891d7e056435dfc73e2d2cf30ddcc59d967c4ce  104 bytes  172 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::hi   {"nm":"ama"}
 >> Name : ama
 ```
@@ -216,8 +214,6 @@ dune --send-action hello hi '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: 4d8e428df8476aa1d98729874bd5082bb43603f69a9264238790177ba0f18e4b  104 bytes  289 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::hi                    {"nm":"ama"}
 >> Name : ama
 #         hello <= hello::inlineaction          ""
@@ -504,8 +500,6 @@ dune --send-action hello createrow '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: 116a1fe518206595d5ceb5d54c1ccd93313ad7d9a51255e3b84f78a92b454696  104 bytes  230 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::createrow             {"nm":"ama"}
 >> User added as non-admin.
 ```
@@ -515,8 +509,6 @@ dune --send-action hello createrow '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: f271f70776c567d873b8f15177193de903559d9f53b9dfdacb684c8834d94e4e  104 bytes  257 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::createrow             {"nm":"ama"}
 >> User already exists.
 ```
@@ -530,8 +522,6 @@ dune --send-action hello readrow '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: fd367588be9190eda7d44fbf3b10034a601a4e36277146455db158b93f9c0751  104 bytes  210 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::readrow               {"nm":"ama"}
 >> User non-admin ama found.
 ```
@@ -543,8 +533,6 @@ dune --send-action hello updaterow '[ama, 1]' hello@active
 ```
 
 ```txt
-executed transaction: e792dbe5a093bc581b8655503858be2c363b5918daedfad215c4ea01237b5553  104 bytes  305 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::updaterow             {"nm":"ama","is_admin":1}
 >> User ama is_admin was set to true.
 ```
@@ -556,8 +544,6 @@ dune --send-action hello deleterow '[ama]' hello@active
 ```
 
 ```txt
-executed transaction: c537502c519dfc9f0868123697b6e07f9e70e235925a005abeb2d30d0b3420ea  104 bytes  285 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::deleterow             {"nm":"ama"}
 >> User erased.
 ```
@@ -711,8 +697,6 @@ dune --send-action hello readstats '[]' hello@active
 ```
 
 ```txt
-executed transaction: 8e778d1cad7f44b39b4759d716830495e4fc9737fd8c035acd88aa68aac2da40  96 bytes  241 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::readstats             ""
 >> Stats not initialized.
 ```
@@ -722,8 +706,6 @@ dune --send-action hello updatestats '[999]' hello@active
 ```
 
 ```txt
-executed transaction: ea70a88172426ade12df14d4f7f400313b2c751bae793bab7a895849d076a70b  96 bytes  285 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::updatestats           {"value":999}
 >> Stats updated with value 999.
 ```
@@ -733,8 +715,6 @@ dune --send-action hello readstats '[]' hello@active
 ```
 
 ```txt
-executed transaction: caa7207c96147ed66976e9f5d4fb288def979d952c31e4e479a6c88571433b5c  96 bytes  180 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::readstats             ""
 >> Stats value: 999
 ```
@@ -744,8 +724,6 @@ dune --send-action hello deletestats '[]' hello@active
 ```
 
 ```txt
-executed transaction: 6d2d07a9455ff9bc0dc5261ca227ab4c5f199aaab3fe380d10a107455d436e5f  96 bytes  239 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::deletestats           ""
 >> Stats have been removed.
 ```
@@ -757,8 +735,6 @@ dune --send-action hello readstats '[]' hello@active
 Note that now stats are not initialized anymore:
 
 ```txt
-executed transaction: 5e93cca2859c6c6566ec48fd308c7a9e94b89e01af134dc09154a9e287bd54a9  96 bytes  251 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::getstats              ""
 >> Stats not initialized.
 ```
@@ -910,8 +886,6 @@ dune --send-action hello searchmsg '["good morning sunshine"]' hello@active
 ```
 
 ```txt
-executed transaction: dc8feaf0847b0c426f5e6c58bf532305e0625f617abf38555cc85d303bd82fd9  120 bytes  505 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::searchmsg             {"message":"good morning sunshine"}
 >> First message found. User: ama, Message: good morning sunshine
 >> Other message: User: hello, Message: good morning sunshine
@@ -930,8 +904,6 @@ dune --send-action hello addmsg '[ama, "hi again"]' hello@active
 ```
 
 ```txt
-executed transaction: 4cee7cee2c76a764fde62c0f0719e138d9e1c3f69792f4a48b04beedacf8af64  112 bytes  453 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::addmsg                {"nm":"ama","message":"hi again"}
 ```
 
@@ -942,8 +914,6 @@ dune --send-action hello addmsg '[ama, "hi again"]' ama@active
 ```
 
 ```txt
-executed transaction: a83c1623215c9d0be78a34e41a850716f176e5320fb4165879d7fab86599ff64  112 bytes  308 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::addmsg                {"nm":"ama","message":"hi again"}
 ```
 
@@ -1191,8 +1161,6 @@ dune --send-action hello addmsg '[ama, "hi notify"]' ama@active
 ```
 
 ```txt
-executed transaction: 808fbd1bf22044ea93251ecec824e1d46967f19a252b3038d0a50d8aaf427076  112 bytes  397 us
-warning: transaction executed locally, but may not be confirmed by the network yet         ] 
 #         hello <= hello::addmsg                {"nm":"ama","message":"hi notify"}
 #   hellolisten <= hello::addmsg                {"nm":"ama","message":"hi notify"}
 >> Notification received. From: ama, message: hi notify
