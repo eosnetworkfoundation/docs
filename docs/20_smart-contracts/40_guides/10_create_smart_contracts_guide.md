@@ -241,20 +241,41 @@ This is the full list of built-in types:
 | `uint128` | Unsigned 128-bit integer |
 | `varint32` | Variable-length signed 32-bit integer |
 | `varuint32` | Variable-length unsigned 32-bit integer |
+
+| Float Types | Description |
+| --- | --- |
 | `float32` | 32-bit floating-point number |
 | `float64` | 64-bit floating-point number |
 | `float128` | 128-bit floating-point number |
+
+| Time Types | Description |
+| --- | --- |
 | `time_point` | Point in time |
 | `time_point_sec` | Point in time with second precision |
 | `block_timestamp_type` | Block timestamp |
+
+| Name Type | Description |
+| --- | --- |
 | `name` | Account name |
+
+| Blob Types | Description |
+| --- | --- |
 | `bytes` | Raw byte sequence |
 | `string` | String |
+
+| Checksum Types | Description |
+| --- | --- |
 | `checksum160` | 160-bit checksum |
 | `checksum256` | 256-bit checksum |
 | `checksum512` | 512-bit checksum |
+
+| Cryptography Types | Description |
+| --- | --- |
 | `public_key` | Public key |
 | `signature` | Signature |
+
+| Asset Types | Description |
+| --- | --- |
 | `symbol` | Asset symbol |
 | `symbol_code` | Asset symbol code |
 | `asset` | Asset |
