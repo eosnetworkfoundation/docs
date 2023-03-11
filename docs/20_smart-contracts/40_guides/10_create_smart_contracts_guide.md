@@ -226,7 +226,7 @@ EOS supports several C++ data types for developing smart contracts. Developers c
 
 This is the full list of built-in types:
 
-| Type | Description |
+| Integral Types | Description |
 | --- | --- |
 | `bool` | Boolean (true/false) |
 | `int8` | Signed 8-bit integer |
