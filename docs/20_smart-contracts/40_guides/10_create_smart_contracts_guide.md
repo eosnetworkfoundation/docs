@@ -303,7 +303,7 @@ The name of a multi-index table has the same restrictions as the name of an acti
 
 ### Multi-index: Code and Scope
 
-Developers can use the `user_data_table` table type to instantiate a reference **within** the table and perform various operations on that table, such as:
+Developers can use the `user_data_table` type to instantiate a reference **within** the table and perform various operations on that table, such as:
 
 - query the table for specific data,
 - insert new rows,
