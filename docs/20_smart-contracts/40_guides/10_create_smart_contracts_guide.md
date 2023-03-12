@@ -297,18 +297,18 @@ TABLE user_data {
 using user_data_table = eosio::multi_index<"userdata"_n, user_data>;
 ```
 
-The code above defines a table type called `user_data_table`. An instance of this table type is a reference **within** a table, named `userdata`, that stores rows defined by the `user_data` structure. The structure contains two fields: the account `name`, and a boolean which says if a user is admin. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
+The code above defines a `user_data_table` type, which is a type of a table with name `userdata`, that stores rows defined by the `user_data` structure. The structure contains two fields: the account `name`, and a boolean which says if a user is admin. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
 
-Developers can use the `user_data_table` table type to perform various operations on that table, such as:
+The name of a multi-index table has the same restrictions as the name of an action.
+
+### Multi-index: Code and Scope
+
+Developers can use the `user_data_table` table type to instantiate a reference **within** the table and perform various operations on that table, such as:
 
 - query the table for specific data,
 - insert new rows,
 - modify existing rows,
 - delete existing rows.
-
-The name of a multi-index table has the same restrictions as the name of an action.
-
-### Multi-index: Code and Scope
 
 This is how you define a reference within the table with name `userdata`:
 
