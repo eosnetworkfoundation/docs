@@ -322,7 +322,9 @@ The fist parameter is the `code` parameter, and the second one is the `scope`.
 
 - The `scope` is used to group related data within the multi-index table. To group all related data within the same contract, the scope is often set as the contract account itself.
 
-In the code above, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The `scope`, is initialized with the `get_self().value`, which returns the same contract owner account's value. Note that these two parameters allow you to access different table `instances` of the same table `type`. For example, for the same `code` parameter you can access different tables of the same type by using different values for the second parameter `scope`. All these tables belong to the account set for the same `code` parameter.
+In the code above, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The `scope`, is initialized with the `get_self().value`, which returns the same contract owner account's value.
+
+Note that these two parameters allow you to access different table `instances` of the same table `type`. For example, for the same `code` parameter you can access different tables of the same type by using different values for the second parameter `scope`. All these tables belong to the account set for the same `code` parameter.
 
 Another way to see it is that the `users` object is a reference within the table with name `userdata` (which is of type `user_data_table`). This reference is an address within the RAM storage space, allocated for this table, where the table rows are saved for the `code` and `scope` defined (the `get_self()` and `get_self().value`). The number of tables within the `userdata` table is equal to the number of (`code`, `scope`) pairs used to instantiate table references.
 
