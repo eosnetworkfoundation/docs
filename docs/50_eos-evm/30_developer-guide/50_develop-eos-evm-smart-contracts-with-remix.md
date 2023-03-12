@@ -1,10 +1,10 @@
 ---
-title: Develop Trust Smart Contracts With Remix
+title: Develop EOS EVM Smart Contracts With Remix
 ---
 
 ## Remix IDE
 
-Remix IDE is a popular integrated development environment for smart contract development written in Solidity programming language. It is intuitive and very easy to use. Remix can be used by any developer with any level of experience. This document outlines the main steps to develop a smart contract for the Trust network, written in Solidity. The official Remix documentation can be found at [remix-ide.readthedocs.io](https://remix-ide.readthedocs.io/en/latest/).
+Remix IDE is a popular integrated development environment for smart contract development written in Solidity programming language. It is intuitive and very easy to use. Remix can be used by any developer with any level of experience. This document outlines the main steps to develop a smart contract for the EOS EVM network, written in Solidity. The official Remix documentation can be found at [remix-ide.readthedocs.io](https://remix-ide.readthedocs.io/en/latest/).
 
 The Remix IDE comes in three flavors, the web application, the desktop application, and a VSCode extension. This tutorial uses the Remix web IDE. From here onwards the `Remix IDE` refers to the Remix web application integrated development environment.
 
@@ -49,19 +49,19 @@ The compilation for this smart contract is instant and, if successful, you will 
 
  You will return to this panel later, after you deploy the smart contract, and if you want to [verify](#verify-the-smart-contract) the deployed smart contract.
 
-## Connect To Trust
+## Connect To EOS EVM
 
 ### Connect Metamask Wallet
 
-To connect the Remix IDE to the Trust network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the Trust network. You can connect to the Trust main network or you can connect to any of the available Trust test networks. For information about available Trust networks please consult the [resources page](../20_eos-evm-network/30_resources.md).
+To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [resources page](../20_eos-evm-network/30_resources.md).
 
 ### Have Enough EMV Tokens
 
-You also must ensure you have EVM tokens available in your wallet to be able to cover the transactions costs. If you use the Trust test network you can use the [faucet](https://faucet-testnet.trust.one) to get some EVM tokens. If you use the Trust main network you must transfer tokens from a different address or swap them from EOS tokens or any other available tokens.
+You also must ensure you have EVM tokens available in your wallet to be able to cover the transactions costs. If you use the EOS EVM test network you can use the [faucet](https://faucet-testnet.trust.one) to get some EVM tokens. If you use the EOS EVM main network you must transfer tokens from a different address or swap them from EOS tokens or any other available tokens.
 
-### Connect the Remix IDE To Trust
+### Connect the Remix IDE To EOS EVM
 
-To connect the Remix IDE to the Trust network:
+To connect the Remix IDE to the EOS EVM network:
 
 1. Click the `Deploy & run transactions` button on the left side vertical menu to switch to the `Deploy & run transactions` panel.
 2. Click the `ENVIRONMENT` drop-down list.

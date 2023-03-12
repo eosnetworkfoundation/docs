@@ -6,7 +6,7 @@ title: Resources
 
 * Main RPC URL: [https://api-testnet.trust.one](https://api-testnet.trust.one)
 
-For Trust EVM testnet you can use the configuration listed at [Chainlist.org](https://chainlist.org/).
+For EOS EVM testnet you can use the configuration listed at [Chainlist.org](https://chainlist.org/).
 
 ## Blockchain Explorer
 

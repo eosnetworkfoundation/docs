@@ -2,7 +2,7 @@
 title: How To Connect Metamask
 ---
 
-To connect Metamask to Trust EVM follow the steps below to add the Trust EVM network to your Metamask wallet:
+To connect Metamask to EOS EVM follow the steps below to add the EOS EVM network to your Metamask wallet:
 
 1. Open the Metamask wallet and click on the network in the top center \
 ![metamask top network button](./images/metamask_top_network_button.png)
@@ -10,11 +10,11 @@ To connect Metamask to Trust EVM follow the steps below to add the Trust EVM net
 2. Click on `Add network` at the end of the dropdown list \
 ![metamask top network button](./images/metamask_add_network_button.png)
 
-3. Fill in the connection details of the Trust EVM network you want to connect to and click the `Save` button \
+3. Fill in the connection details of the EOS EVM network you want to connect to and click the `Save` button \
 
 ![metamask_add_network_form](./images/metamask_add_network_form.png)
 
-The Trust Network Testnet Preview connection details follow:
+The EOS EVM Network Testnet Preview connection details follow:
 
 * `Network Name`: EOS EVM Network Testnet
 * `Chain ID`: 15556

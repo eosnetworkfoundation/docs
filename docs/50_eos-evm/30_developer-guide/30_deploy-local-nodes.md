@@ -48,16 +48,16 @@ Compiled binaries from this repo:
 - trustevm-node: silkworm node process that receive data from the main Antelope chain and convert to the EVM chain
 - trustevm-rpc: silkworm rpc server that provide service for view actions and other read operations
 
-## Run A Local Node With Trust EVM Service
+## Run A Local Node With EOS EVM Service
 
-In order to run a Trust EVM service, and thus have setup the Antelope blockchain with capabilities to push EVM transactions, we need to have the follow items inside one physical server / VM.
+In order to run a EOS EVM service, and thus have setup the Antelope blockchain with capabilities to push EVM transactions, we need to have the follow items inside one physical server / VM.
 
 1. [Run A Local Antelope Node](#1-run-a-local-antelope-node)
 2. [Blockchain Bootstrap And Initialization](#2-blockchain-bootstrap-and-initialization)
 3. [Deploy And Initialize EVM Contract](#3-deploy-and-initialize-evm-contract)
 4. [Setup The Transaction Wrapper Service](#4-setup-the-transaction-wrapper-service)
-5. [Start TrustEVM-node (a.k.a. Silkworm Node)](#5-start-trustevm-node-aka-silkworm-node)
-6. [Start TrustEVM-RPC (a.k.a. Silkworm RPC)](#6-start-trustevm-rpc-aka-silkworm-rpc)
+5. [Start EOS EVM node (a.k.a. Silkworm Node)](#5-start-eos-evm-node-aka-silkworm-node)
+6. [Start EOS EVM RPC (a.k.a. Silkworm RPC)](#6-start-eos-evm-rpc-aka-silkworm-rpc)
 7. [Setup The Flask Proxy](#7-setup-the-flask-proxy)
 
 ### 1. Run A Local Antelope Node
@@ -817,7 +817,7 @@ Verify on Antelope blockchain to ensure nonce & balance were updated:
 
 #### [Debug only] Investigate The Current EVM Storage State On Antelope
 
-Since we don't support running View actions directly from Antelope node (read requests will go to TrustEVM-RPC), it is quite complicated to investigate the storage of EVM directly from Antelope. However, If you really want to do that. These are the steps:
+Since we don't support running View actions directly from Antelope node (read requests will go to EOS EVM RPC), it is quite complicated to investigate the storage of EVM directly from Antelope. However, If you really want to do that. These are the steps:
 
 ##### Identify The "id" Field Of The Contract Address
 
@@ -860,9 +860,9 @@ Example output:
 }
 ```
 
-### 5. Start TrustEVM-node (a.k.a. Silkworm Node)
+### 5. Start EOS EVM Node (a.k.a. Silkworm Node)
 
-A TrustEVM-node is a node process of the virtual ethereum blockchain that validates virtual ethereum blocks and serves the read requests coming from TrustEVM-RPC. It will not produce blocks. However, it will consume blocks from Antelope node and convert Antelope blocks into Virutal Ethereum blocks in a deterministic way.
+A EOS EVM Node is a node process of the virtual ethereum blockchain that validates virtual ethereum blocks and serves the read requests coming from EOS EVM RPC. It will not produce blocks. However, it will consume blocks from Antelope node and convert Antelope blocks into Virutal Ethereum blocks in a deterministic way.
 
 To set it up, we need to first make up a genesis of the virtual ethereum blockchain that maps to the same EVM state of the evm account of the Antelope chain that just initialized in the previous steps.
 
@@ -956,29 +956,29 @@ Final EVM genesis example:
     }
 ```
 
-#### Start The TrustEVM Process
+#### Start The EOS EVM Process
 
-Run the below commamnd to start the TrustEVM node:
+Run the below commamnd to start the EOS EVM node:
 
 ```shell
 mkdir ./chain-data
 ./trustevm-node --chain-data ./chain-data --plugin block_conversion_plugin --plugin blockchain_plugin --nocolor 1 --verbosity=5 --genesis-json=./genesis.json
 ```
 
-### 6. Start TrustEVM-RPC (a.k.a. Silkworm RPC)
+### 6. Start EOS EVM RPC (a.k.a. Silkworm RPC)
 
-The TrustEVM-RPC process provides Ethereum compatible RPC service for clients. It queries state (including blocks, accounts, storage) from TrustEVM-node, and it can also run view actions requested by clients.
+The EOS EVM RPC process provides Ethereum compatible RPC service for clients. It queries state (including blocks, accounts, storage) from EOS EVM Node, and it can also run view actions requested by clients.
 
-#### Start The TrustEVM-RPC process
+#### Start The EOS EVM RPC process
 
-Run below commmand to start the Trust-EVM node:
+Run below commmand to start the EOS EVM node:
 
 ```shell
 ./trustevm-rpc --api-spec=eth,net --http-port=0.0.0.0:8881 --trust-evm-node=127.0.0.1:8080 --chaindata=./chain-data
 ```
 
-The `--chain-data` parameter value must point to the same directory of the chain-data in TrustEVM-node.
-In the above command, TrustEVM-rpc will listen on port 8881 for RPC requests.
+The `--chain-data` parameter value must point to the same directory of the chain-data in EOS EVM node.
+In the above command, EOS EVM RPC will listen on port 8881 for RPC requests.
 
 #### Verify The RPC Response
 
@@ -1039,7 +1039,7 @@ Response:
 
 #### Setup Proxy To Separate Read Requests From Write Requests
 
-The proxy program will separate Ethereum's write requests (such as eth_sendRawTransaction,eth_gasPrice) from other requests (treated as read requests). The write requests should go to Transaction Wrapper (which wrap the ETH transaction into Antelope transaction and sign it and push to the Antelope blockchain). The read requests should go to TrustEVM-RPC.
+The proxy program will separate Ethereum's write requests (such as eth_sendRawTransaction,eth_gasPrice) from other requests (treated as read requests). The write requests should go to Transaction Wrapper (which wrap the ETH transaction into Antelope transaction and sign it and push to the Antelope blockchain). The read requests should go to EOS EVM RPC.
 
 In order to get it working, docker is required. To install docker in Linux, see https://docs.docker.com/engine/install/ubuntu/
 
@@ -1062,7 +1062,7 @@ cd TrustEVM/peripherals/proxy/
 ```
 
 - Change the IP and port of the write session to your Transaction Wrapper server endpoint.
-- Change the IP and port of the read session to your TrustEVM-RPC server endpoint
+- Change the IP and port of the read session to your EOS EVM RPC server endpoint
 - Build the docker image for the proxy program:
 
 ```shell
@@ -1105,7 +1105,7 @@ Example response:
 
 #### [Optional] Setup Metamask Chrome extension
 
-- Ensure TrustEVM-RPC is running with `--api-spec=eth,debug,net,trace`
+- Ensure EOS EVM RPC is running with `--api-spec=eth,debug,net,trace`
 - Install Metamask Plugin in Chrome
 - Click Account ICON on the top right, the Find Settings -> Networks -> Add Network
 
@@ -1128,7 +1128,7 @@ In this example, we will use the blockscout explorer (https://github.com/elmato/
 
 Requirements:
 
-- TrustEVM-RPC is running with `--api-spec=eth,debug,net,trace` parameter. This is the source the block explore will retrieve data from.
+- EOS EVM RPC is running with `--api-spec=eth,debug,net,trace` parameter. This is the source the block explore will retrieve data from.
 - docker in Linux
 - Python3
 
@@ -1136,9 +1136,9 @@ Requirements:
 
 Setup the Flask proxy to convert the bulk requests into single requests.
 
-Since TrustEVM-RPC does not support bulk requests, we need a simple proxy script to convert those requests into multiple single requests:
+Since EOS EVM RPC does not support bulk requests, we need a simple proxy script to convert those requests into multiple single requests:
 
-This is an example proxy script "flask_proxy.py" that convert requests and forward them to the TrustEVM-RPC endpoint (for example http://127.0.0.1:8881):
+This is an example proxy script "flask_proxy.py" that convert requests and forward them to the EOS EVM RPC endpoint (for example http://127.0.0.1:8881):
 
 ```python
 #!/usr/bin/env python3
