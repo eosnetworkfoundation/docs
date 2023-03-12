@@ -297,9 +297,9 @@ TABLE user_data {
 using user_data_table = eosio::multi_index<"userdata"_n, user_data>;
 ```
 
-The code above defines a table type called `user_data_table`. An instance of this table type is a reference of a table, named `userdata`, that stores data defined by the `user_data` structure. The structure contains two fields: the account `name`, and a boolean which says if a user is admin. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
+The code above defines a table type called `user_data_table`. An instance of this table type is a reference **within** a table, named `userdata`, that stores rows defined by the `user_data` structure. The structure contains two fields: the account `name`, and a boolean which says if a user is admin. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
 
-Developers can use the `user_data_table` table type, to instantiate a reference the table and to perform various operations on that table, such as:
+Developers can use the `user_data_table` table type to perform various operations on that table, such as:
 
 - query the table for specific data,
 - insert new rows,
@@ -310,26 +310,21 @@ The name of a multi-index table has the same restrictions as the name of an acti
 
 ### Multi-index: Code and Scope
 
-When you define and use a multi-index table, you must define the following two parameters:
-
-- the code and
-- the scope.
-
-#### The code
-
-The code is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table. When defining a table, you must specify the code account as the first argument of the multi_index constructor.
-
-#### The scope
-
-The scope is a secondary identifier that is used to group related data within the multi-index table. When defining a table, you must specify the scope as the second argument of the multi_index constructor. To group all related data within the same contract, the scope is often set as the contract account itself.
+This is how you define a reference within the table with name `userdata`:
 
 ```cpp
 user_data_table users(get_self(), get_self().value);
 ```
 
-In the code above, the first parameter, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The second parameter, the `scope`, is initialized with the `get_self().value`, which returns the same account value as the contract owner.
+The fist parameter is the `code` parameter, and the second one is the `scope`.
 
-Important to note is that the code above creates a `users` object which is a reference of the `userdata` table, which is an address of the RAM storage space where the table rows/objects are saved for the `code` and `scope` defined.
+- The `code` is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table.
+
+- The `scope` is used to group related data within the multi-index table. To group all related data within the same contract, the scope is often set as the contract account itself.
+
+In the code above, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The `scope`, is initialized with the `get_self().value`, which returns the same contract owner account's value. Note that these two parameters allow you to access different table `instances` of the same table `type`. For example, for the same `code` parameter you can access different tables of the same type by using different values for the second parameter `scope`. All these tables belong to the account set for the same `code` parameter.
+
+Another way to see it is that the `users` object is a reference within the table with name `userdata` (which is of type `user_data_table`). This reference is an address within the RAM storage space, allocated for this table, where the table rows are saved for the `code` and `scope` defined (the `get_self()` and `get_self().value`). The number of tables within the `userdata` table is equal to the number of (`code`, `scope`) pairs used to instantiate table references.
 
 ### Multi-index: Find in Table
 
@@ -571,9 +566,9 @@ dune --send-action hello deleterow '[ama]' hello@active
 
 ## Singleton
 
-A singleton is a special type of multi-index table that is designed to store a single row of data. Unlike a regular table, which can store any number of rows, a singleton is restricted to a single row. Singletons are often used to store global state variables or configuration parameters in a contract.
+A singleton is a special multi-index table that is designed to store a single row of data for each instance of the singleton type. Singletons are often used to store global state variables or configuration parameters in a contract.
 
-It is important to remember the explanation of code and scope. For a singleton the scope can allow you to save one item per scope, and thus for example, you can store per-account configs.
+It is important to remember the explanation of code and scope. When you instantiate a singleton, you can keep the code parameter fixed, and vary the scope parameter. This way you save one item per scope, and thus for example, you can store per-account configs.
 
 Here's an example of a singleton definition:
 
