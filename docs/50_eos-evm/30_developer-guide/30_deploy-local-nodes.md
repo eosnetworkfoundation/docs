@@ -2,14 +2,14 @@
 title: Deploy Local Testnet With EVM Support
 ---
 
-This document describes how to set up a local Antelope test environment with EVM support. This setup allows developers to speed up their smart contracts development without worry about any resource, network, version or other stability issues that public testnet may introduce. Developers are free to modify, debug, or reset the environment to facilitate their applications development.
+This document describes how to set up a local Antelope test environment with EVM support. This setup allows developers to speed up their smart contracts development without worrying about any resource, network, version, or other stability issues that public testnets might introduce. Developers are free to modify, debug, or reset the environment to facilitate their own applications development.
 
 ## Hardware Requirements
 
-- CPU: a high end CPU with good single threaded performance is recommended, such as i9 or Ryzen 9 or Server grade CPU. Middle or Low end CPU would also be OK but will end up having less transactions per second
-- RAM: 32GB+ is recommended. 16GB is OK but it can not support much data and compilation will be significantly slower
-- SSD: a big SSD is required for storing all history (blocks + State History). Recommend 1TB+. Using very small amount of storage like 100GB would still work fine but it will only support much fewer transactions / data
-- Network: a low latency network is recommended if you plan to run multiple nodes. A simple network (or even WiFi) would work for single node
+- CPU: a high end CPU with good single threaded performance is recommended, such as i9 or Ryzen 9 or Server grade CPU. Middle or Low end CPU would also be OK but will end up having less transactions per second.
+- RAM: 32GB+ is recommended. 16GB is OK but it can not support much data, and compilation will be significantly slower.
+- SSD: a big SSD is required for storing all history (blocks + State History). Recommend 1TB+. Using very small amount of storage like 100GB would still work fine but it will support less fewer transactions/data.
+- Network: a low latency network is recommended if you plan to run multiple nodes. A simple network (or even WiFi) would work for single node deployments.
   
 ## Software Requirements
 
@@ -17,40 +17,40 @@ This document describes how to set up a local Antelope test environment with EVM
 
 Make sure you have the following binaries built from https://github.com/AntelopeIO/leap:
 
-- nodeos: the main process of an Antelope node
-- cleos: the command line interface for queries and transaction
-- keosd: the key and wallet manager
+- `nodeos`: the main process of an Antelope node
+- `cleos`: the command line interface for queries and transaction
+- `keosd`: the key and wallet manager
 
 Have the following binaries built from https://github.com/AntelopeIO/cdt:
 
-- cdt-cpp: the Antelope smart contract compiler
-- eosio-wast2wasm & eosio-wasm2wast: conversion tools for building EVM contract
+- `cdt-cpp`: the Antelope smart contract compiler
+- `eosio-wast2wasm` & `eosio-wasm2wast`: conversion tools for building EVM contract
 
 List of compiled system contracts from https://github.com/eosnetworkfoundation/eos-system-contracts (compiled by cdt):
 
-- eosio.boot.wasm
-- eosio.bios.wasm
-- eosio.msig.wasm (optional, if you want to test multisig)
-- eosio.token.wasm (optional, if you want to test token economy)
-- eosio.system.wasm (optional, if you want to test resources: RAM, NET, CPU)
+- `eosio.boot.wasm`
+- `eosio.bios.wasm`
+- `eosio.msig.wasm` (optional, if you want to test multisig)
+- `eosio.token.wasm` (optional, if you want to test token economy)
+- `eosio.system.wasm` (optional, if you want to test resources: RAM, NET, CPU)
 
-Compiled EVM contracts in DEBUG mode, from this repo, see https://github.com/eosnetworkfoundation/TrustEVM/blob/main/docs/compilation_and_testing_guide.md for details.
+Compiled EVM contracts in DEBUG mode, from this repo. See https://github.com/eosnetworkfoundation/TrustEVM/blob/main/docs/compilation_and_testing_guide.md for details.
 
-The compilation result should be these two files:
+The compilation results should be these two files:
 
-- evm_runtime.wasm
-- evm_runtime.abi
+- `evm_runtime.wasm`
+- `evm_runtime.abi`
 
-<b> Ensure action "setbal" exists in evm_runtime.abi </b>
+**Ensure action `setbal` exists in `evm_runtime.abi`**
 
 Compiled binaries from this repo:
 
-- trustevm-node: silkworm node process that receive data from the main Antelope chain and convert to the EVM chain
-- trustevm-rpc: silkworm rpc server that provide service for view actions and other read operations
+- `trustevm-node`: silkworm node process that receives data from the main Antelope chain and converts to the EVM chain
+- `trustevm-rpc`: silkworm RPC server that provides service for view actions and other read operations
 
 ## Run A Local Node With EOS EVM Service
 
-In order to run a EOS EVM service, and thus have setup the Antelope blockchain with capabilities to push EVM transactions, we need to have the follow items inside one physical server / VM.
+In order to run an EOS EVM service, and thus have setup the Antelope blockchain with capabilities to push EVM transactions, we need to have the follow items inside one physical server/VM:
 
 1. [Run A Local Antelope Node](#1-run-a-local-antelope-node)
 2. [Blockchain Bootstrap And Initialization](#2-blockchain-bootstrap-and-initialization)
@@ -817,7 +817,7 @@ Verify on Antelope blockchain to ensure nonce & balance were updated:
 
 #### [Debug only] Investigate The Current EVM Storage State On Antelope
 
-Since we don't support running View actions directly from Antelope node (read requests will go to EOS EVM RPC), it is quite complicated to investigate the storage of EVM directly from Antelope. However, If you really want to do that. These are the steps:
+Since we don't support running View actions directly from Antelope node (read requests will go to EOS EVM RPC), it is quite complicated to investigate the storage of EVM directly from Antelope. However, If you really want to do that, these are the steps:
 
 ##### Identify The "id" Field Of The Contract Address
 
@@ -862,9 +862,9 @@ Example output:
 
 ### 5. Start EOS EVM Node (a.k.a. Silkworm Node)
 
-A EOS EVM Node is a node process of the virtual ethereum blockchain that validates virtual ethereum blocks and serves the read requests coming from EOS EVM RPC. It will not produce blocks. However, it will consume blocks from Antelope node and convert Antelope blocks into Virutal Ethereum blocks in a deterministic way.
+An EOS EVM Node is a node process of the virtual Ethereum blockchain that validates virtual Ethereum blocks and serves the read requests coming from EOS EVM RPC. It will not produce blocks. However, it will consume blocks from an Antelope node and convert Antelope blocks into Virtual Ethereum blocks in a deterministic way.
 
-To set it up, we need to first make up a genesis of the virtual ethereum blockchain that maps to the same EVM state of the evm account of the Antelope chain that just initialized in the previous steps.
+To set it up, first we need to make up a genesis of the virtual Ethereum blockchain that maps to the same EVM state of the EVM account of the Antelope chain that just initialized in the previous steps.
 
 #### Antelope To EVM Block Mapping
 
@@ -967,17 +967,17 @@ mkdir ./chain-data
 
 ### 6. Start EOS EVM RPC (a.k.a. Silkworm RPC)
 
-The EOS EVM RPC process provides Ethereum compatible RPC service for clients. It queries state (including blocks, accounts, storage) from EOS EVM Node, and it can also run view actions requested by clients.
+The EOS EVM RPC process provides Ethereum compatible RPC service for clients. It queries state (including blocks, accounts, storage) from an EOS EVM Node, and it can also run view actions requested by clients.
 
 #### Start The EOS EVM RPC process
 
-Run below commmand to start the EOS EVM node:
+Run the command below to start the EOS EVM node:
 
 ```shell
 ./trustevm-rpc --api-spec=eth,net --http-port=0.0.0.0:8881 --trust-evm-node=127.0.0.1:8080 --chaindata=./chain-data
 ```
 
-The `--chain-data` parameter value must point to the same directory of the chain-data in EOS EVM node.
+The `--chain-data` parameter value must point to the same directory of the chain data from the EOS EVM node.
 In the above command, EOS EVM RPC will listen on port 8881 for RPC requests.
 
 #### Verify The RPC Response
@@ -1039,9 +1039,9 @@ Response:
 
 #### Setup Proxy To Separate Read Requests From Write Requests
 
-The proxy program will separate Ethereum's write requests (such as eth_sendRawTransaction,eth_gasPrice) from other requests (treated as read requests). The write requests should go to Transaction Wrapper (which wrap the ETH transaction into Antelope transaction and sign it and push to the Antelope blockchain). The read requests should go to EOS EVM RPC.
+The proxy program will separate Ethereum's write requests (such as eth_sendRawTransaction,eth_gasPrice) from other requests (treated as read requests). The write requests should go to the Transaction Wrapper (which wraps the ETH transaction into an Antelope transaction, sign it, and push to the Antelope blockchain). The read requests should go to EOS EVM RPC.
 
-In order to get it working, docker is required. To install docker in Linux, see https://docs.docker.com/engine/install/ubuntu/
+In order to get it working, docker is required. To install docker in Linux, see https://docs.docker.com/engine/install/ubuntu/.
 
 You can find the proxy tool here: TrustEVM/perfipherals/proxy
 
@@ -1128,17 +1128,17 @@ In this example, we will use the blockscout explorer (https://github.com/elmato/
 
 Requirements:
 
-- EOS EVM RPC is running with `--api-spec=eth,debug,net,trace` parameter. This is the source the block explore will retrieve data from.
+- EOS EVM RPC is running with `--api-spec=eth,debug,net,trace` parameter. This is the source the block explorer will retrieve data from.
 - docker in Linux
 - Python3
 
-### 7. Setup The Flask Proxy
+### 7. Set Up The Flask Proxy
 
-Setup the Flask proxy to convert the bulk requests into single requests.
+Set up the Flask proxy to convert the bulk requests into single requests.
 
 Since EOS EVM RPC does not support bulk requests, we need a simple proxy script to convert those requests into multiple single requests:
 
-This is an example proxy script "flask_proxy.py" that convert requests and forward them to the EOS EVM RPC endpoint (for example http://127.0.0.1:8881):
+This is an example proxy script "flask_proxy.py" that converts requests and forwards them to the EOS EVM RPC endpoint (for example http://127.0.0.1:8881):
 
 ```python
 #!/usr/bin/env python3
