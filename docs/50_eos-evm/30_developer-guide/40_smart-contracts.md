@@ -4,17 +4,17 @@ title: Smart Contracts
 
 ## Solidity
 
-Currently the Trust is using a standard EVM implementation. Therefore all existing solidity compilers targeting standard EVM environment should work.
+Currently the EOS EVM is using a standard EVM implementation. Therefore all existing solidity compilers targeting standard EVM environment should work.
 
 There might be some limitations in the smart contracts. Please check [EVM Compatibility](./20_compatibility/index.md) documentation for more information.
 
-In the future, we might develop add-ons to the VM of the Trust EVM to support more features. In that case, one may need to use our SDK for development. We will update this guild if that happens.
+In the future, we might develop add-ons to the VM of the EOS EVM to support more features. In that case, one may need to use our SDK for development. We will update this guide if that happens.
 
 ## TruffleSuite
 
-[Truffle](https://www.trufflesuite.com/) is a widely used development environment and testing framework for Ethereum smart contracts. Thanks to the architecture of the Trust EVM, all the existing SDKs for Ethereum will work out of the box and your users will have the same experience as on Ethereum.
+[Truffle](https://www.trufflesuite.com/) is a widely used development environment and testing framework for Ethereum smart contracts. Thanks to the architecture of the EOS EVM, all the existing SDKs for Ethereum will work out of the box and your users will have the same experience as on Ethereum.
 
-Therefore, the official tutorials of Truffle applies to our Trust EVM perfectly:
+Therefore, the official Truffle tutorials apply to our EOS EVM perfectly:
 
 [https://trufflesuite.com/docs/truffle/quickstart/](https://trufflesuite.com/docs/truffle/quickstart/)
 
@@ -36,4 +36,4 @@ module.exports = {
 
 ## Remix
 
-Learn how to [Develop EOS EVM Smart Contracts With Remix](./develop-trust-smart-contracts-with-remix.md) tutorial.
+Learn how to [Develop EOS EVM Smart Contracts With Remix](./50_develop-eos-evm-smart-contracts-with-remix.md) tutorial.
