@@ -301,7 +301,7 @@ The code above defines a `user_data_table` type, which is a type of a table with
 
 The name of a multi-index table has the same restrictions as the name of an action.
 
-### Multi-index: Code and Scope
+### Instantiate a Multi-index with Code and Scope
 
 Developers can use the `user_data_table` type to instantiate a reference **within** the table and perform various operations on that table, such as:
 
@@ -540,61 +540,25 @@ Developers can use the `stats_singleton` template type, to instantiate a referen
 - modify existing singleton data,
 - delete existing singleton data.
 
-### Singleton: Code and Scope
+### Instantiate a Singleton with Code and Scope
 
 The code and scope have the same meaning as for the [multi-index table](#multi-index-code-and-scope).
-
-#### Get Singleton Data
-
-This is how you get the singleton data:
+This is how you define a reference within the singleton with name `stats`. The `code` and `scope` are set as the contract owner account:
 
 ```cpp
-stats_singleton stats(get_self(), get_self().value);
-
-if (stats.exists()) {
-    auto current_stats = stats.get();
-    print_f("Stats value: %\n", current_stats.count);
-}
+   stats_singleton stats(get_self(), get_self().value);
 ```
 
-#### Modify Singleton Data
+### Extend Hello Smart Contract with Singleton and Actions
 
-This is how you modify the singleton data:
+Extend the `hello` contract to:
 
-```cpp
-stats_singleton stats(get_self(), get_self().value);
+- Add the singleton `stats`.
+- Add `updatestats` action which updates the stats with a given value.
+- Add `readstats` action which reads the stats stored in the singleton.
+- Add `deletestats` action which deletes the stats stored in the singleton.
 
-auto current_stats = stats.get_or_create(get_self(), {0});
-current_stats.count += 1;
-stats.set(current_stats, get_self());
-print_f("Stats have been updated.");
-```
-
-#### Delete Singleton Data
-
-This is how you delete the singleton data:
-
-```cpp
-stats_singleton stats(get_self(), get_self().value);
-
-if (stats.exists()) {
-    stats.remove();
-    print_f("Stats have been removed.");
-}
-```
-
-### Extend Hello Smart Contract with Singleton
-
-You know now the basic operations you can perform on a singleton.
-You can extend the `hello` contract to:
-
-- Add `updatestats` which updates the stats with a given value.
-- Add `readstats` which reads the stats stored in the singleton.
-- Add `deletestats` which deletes the stats stored in the singleton.
-
-#### Update the `hello.hpp` file
-
-Add the following line at the top of the file:
+Add the following line at the top of the `hello.hpp` file:
 
 ```cpp
 #include <eosio/singleton.hpp>
@@ -617,9 +581,9 @@ Add the singleton definition:
    using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
 ```
 
-#### Update the `hello.cpp` file
+#### Singleton: Modify Data
 
-Add the actions implementation:
+This is how you modify the singleton data:
 
 ```cpp
 ACTION hello::updatestats(int value) {
@@ -631,7 +595,13 @@ ACTION hello::updatestats(int value) {
 
    print_f("Stats updated with value %.\n", value);
 }
+```
 
+#### Singleton: Read Data
+
+This is how you get the singleton data:
+
+```cpp
 ACTION hello::readstats() {
    stats_singleton stats(get_self(), get_self().value);
    
@@ -643,7 +613,13 @@ ACTION hello::readstats() {
       print_f("Stats not initialized.");
    }
 }
+```
 
+#### Singleton: Delete Data
+
+This is how you delete the singleton data:
+
+```cpp
 ACTION hello::deletestats() {
    stats_singleton stats(get_self(), get_self().value);
    
@@ -860,6 +836,61 @@ dune --send-action hello searchmsg '["good morning sunshine"]' hello@active
 >> Other message: User: hello, Message: good morning sunshine
 ```
 
+## Assertions
+
+An assertion is a mechanism that checks whether a certain condition is true during the execution of a contract. If the condition is not true, the assertion will cause the contract to terminate with an error message.
+
+### Use assert()
+
+Implement an assertion check with standard error message like this:
+
+```cpp
+assert(message.size() <= 10);
+```
+
+### Use check()
+
+Implement an assertion check with a custom error message like this:
+
+```cpp
+check(message.size() <= 10, "Message can not be bigger than 10 characters.");
+```
+
+### Extend Hello Smart Contract with Asserts
+
+Add the above checks to the `addmsg` implementation, compile and deploy the contract again each time and then execute the command to sign and send the action to the blockchain:
+
+```shell
+dune --send-action hello addmsg '[ama, "01234567891"]' ama@active
+```
+
+This is the standard error message you see when you use the `assert()` function:
+
+```txt
+failed transaction: 50c7566e784a34509e02e4775e6b63b5978d3ddf5ab02618bee8c8a68ff5ce8d  <unknown> bytes  <unknown> us
+error 2023-03-01T16:49:50.792 cleos     main.cpp:700                  print_result         ] soft_except->to_detail_string(): 3050008 abort_called: Abort Called
+abort() called
+    {}
+    nodeos  cf_system.cpp:7 abort
+pending console output: Assertion failed: message.size() <= 10 (hello.cpp: addmsg: 94)
+
+    {"console":"Assertion failed: message.size() <= 10 (hello.cpp: addmsg: 94)\n"}
+    nodeos  apply_context.cpp:124 exec_one
+```
+
+This is the custom error message you see when you use the `check()` function:
+
+```txt
+failed transaction: 6d18bc090aa65880b28a4f697e8bf08999e68d209c2a1367f16d596e11bbed02  <unknown> bytes  <unknown> us
+error 2023-03-01T16:54:04.555 cleos     main.cpp:700                  print_result         ] soft_except->to_detail_string(): 3050003 eosio_assert_message_exception: eosio_assert_message assertion failure
+assertion failure with message: Message can not be bigger than 10 characters.
+    {"s":"Message can not be bigger than 10 characters."}
+    nodeos  cf_system.cpp:14 eosio_assert
+pending console output: 
+    {"console":""}
+    nodeos  apply_context.cpp:124 exec_one
+```
+
 ## Authorization
 
 When a user or contract attempts to send an action, the action can be validated by the EOS blockchain software. This validation process includes checking that the user or contract has the authorization to perform the action.
@@ -996,55 +1027,6 @@ error 2023-03-01T16:00:02.853 cleos     main.cpp:700                  print_resu
 missing authority of ama/active
     {"account":"ama","permission":"active"}
     nodeos  apply_context.cpp:275 require_authorization
-pending console output: 
-    {"console":""}
-    nodeos  apply_context.cpp:124 exec_one
-```
-
-## Assertions
-
-An assertion is a mechanism that checks whether a certain condition is true during the execution of a contract. If the condition is not true, the assertion will cause the contract to terminate with an error message.
-
-Implement an assertion check with standard error message like this:
-
-```cpp
-assert(message.size() <= 10);
-```
-
-Implement an assertion check with a custom error message like this:
-
-```cpp
-check(message.size() <= 10, "Message can not be bigger than 10 characters.");
-```
-
-Add the above checks to the `addmsg` implementation, compile and deploy the contract again each time and then execute the command to sign and send the action to the blockchain:
-
-```shell
-dune --send-action hello addmsg '[ama, "01234567891"]' ama@active
-```
-
-This is the standard error message you see when you use the `assert()` function:
-
-```txt
-failed transaction: 50c7566e784a34509e02e4775e6b63b5978d3ddf5ab02618bee8c8a68ff5ce8d  <unknown> bytes  <unknown> us
-error 2023-03-01T16:49:50.792 cleos     main.cpp:700                  print_result         ] soft_except->to_detail_string(): 3050008 abort_called: Abort Called
-abort() called
-    {}
-    nodeos  cf_system.cpp:7 abort
-pending console output: Assertion failed: message.size() <= 10 (hello.cpp: addmsg: 94)
-
-    {"console":"Assertion failed: message.size() <= 10 (hello.cpp: addmsg: 94)\n"}
-    nodeos  apply_context.cpp:124 exec_one
-```
-
-This is the custom error message you see when you use the `check()` function:
-
-```txt
-failed transaction: 6d18bc090aa65880b28a4f697e8bf08999e68d209c2a1367f16d596e11bbed02  <unknown> bytes  <unknown> us
-error 2023-03-01T16:54:04.555 cleos     main.cpp:700                  print_result         ] soft_except->to_detail_string(): 3050003 eosio_assert_message_exception: eosio_assert_message assertion failure
-assertion failure with message: Message can not be bigger than 10 characters.
-    {"s":"Message can not be bigger than 10 characters."}
-    nodeos  cf_system.cpp:14 eosio_assert
 pending console output: 
     {"console":""}
     nodeos  apply_context.cpp:124 exec_one
