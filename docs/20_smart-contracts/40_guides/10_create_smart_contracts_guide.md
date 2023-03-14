@@ -285,54 +285,9 @@ This is the full list of built-in types:
 
 A multi-index table is a database-like data structure that allows developers to store and manage data in a persistent and efficient manner. Multi-index tables are defined using the `TABLE` macro, and can store any number of rows, each of which contains a set of related data elements.
 
-Here's an example of a simple multi-index table definition:
-
-```cpp
-TABLE user_data {
-   name user;
-   bool is_admin;
-
-   uint64_t primary_key() const { return user.value; }
-};
-using user_data_table = eosio::multi_index<"userdata"_n, user_data>;
-```
-
-The code above defines a `user_data_table` type, which is a type of a table with name `userdata`, that stores rows defined by the `user_data` structure. The structure contains two fields: the account `name`, and a boolean which says if a user is admin. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
-
-The name of a multi-index table has the same restrictions as the name of an action.
-
-### Instantiate a Multi-index with Code and Scope
-
-Developers can use the `user_data_table` type to instantiate a reference **within** the table and perform various operations on that table, such as:
-
-- query the table for specific data,
-- insert new rows,
-- modify existing rows,
-- delete existing rows.
-
-This is how you define a reference within the table with name `userdata`:
-
-```cpp
-user_data_table users(get_self(), get_self().value);
-```
-
-The fist parameter is the `code` parameter, and the second one is the `scope`.
-
-- The `code` is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table.
-
-- The `scope` is used to group related data within the multi-index table. To group all related data within the same contract, the scope is often set as the contract account itself.
-
-In the code above, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The `scope`, is initialized with the `get_self().value`, which returns the same contract owner account's value.
-
-Note that these two parameters allow you to access different table `instances` of the same table `type`. For example, for the same `code` parameter you can access different tables of the same type by using different values for the second parameter `scope`. All these tables belong to the account set for the same `code` parameter.
-
-Another way to see it is that the `users` object is a reference within the table with name `userdata` (which is of type `user_data_table`). This reference is an address within the RAM storage space, allocated for this table, where the table rows are saved for the `code` and `scope` defined (the `get_self()` and `get_self().value`). The number of tables within the `userdata` table is equal to the number of (`code`, `scope`) pairs used to instantiate table references.
-
-### Extend the Hello Smart Contract with Multi-index Table and Actions
-
 Extend the `hello` contract:
 
-- Add the table named `userdata`.
+- Add the `userdata` table declaration.
 - Add `createrow` action which creates a new non-admin user.
 - Add `readrow` action which reads a user's data.
 - Add `updaterow` action which updates an existing user's data.
@@ -370,9 +325,40 @@ CONTRACT hello : public contract {
 };
 ```
 
-Next implement each action declared above. Open the `hello.cpp` file and copy and paste the following functions implementations.
+The code above defines a `user_data_table` type, which is a type of a table with name `userdata`, that stores rows defined by the `user_data` structure. The structure contains two fields: the account `name`, and a boolean which says if a user is admin. The `primary_key()` inline method defines the primary key for the table, which in this case is the user's account name represented as a 64-bit unsigned integer value.
 
-#### Multi-index: Create a Row in Table
+The name of a multi-index table has the same restrictions as the name of an action.
+
+### Multi-index: Instantiate with Code and Scope
+
+Developers can use the `user_data_table` type to instantiate a reference **within** the table and perform various operations on that table, such as:
+
+- query the table for specific data,
+- insert new rows,
+- modify existing rows,
+- delete existing rows.
+
+This is how you define a reference within the table with name `userdata`:
+
+```cpp
+user_data_table users(get_self(), get_self().value);
+```
+
+The fist parameter is the `code` parameter, and the second one is the `scope`.
+
+- The `code` is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table.
+
+- The `scope` is used to group related data within the multi-index table. To group all related data within the same contract, the scope is often set as the contract account itself.
+
+In the code above, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The `scope`, is initialized with the `get_self().value`, which returns the same contract owner account's value.
+
+Note that these two parameters allow you to access different table `instances` of the same table `type`. For example, for the same `code` parameter you can access different tables of the same type by using different values for the second parameter `scope`. All these tables belong to the account set for the same `code` parameter.
+
+Another way to see it is that the `users` object is a reference within the table with name `userdata` (which is of type `user_data_table`). This reference is an address within the RAM storage space, allocated for this table, where the table rows are saved for the `code` and `scope` defined (the `get_self()` and `get_self().value`). The number of tables within the `userdata` table is equal to the number of (`code`, `scope`) pairs used to instantiate table references.
+
+Next implement each action declared in the `hello.hpp` file. Open the `hello.cpp` file and copy and paste the following functions implementations.
+
+### Multi-index: Create a Row in Table
 
 This is how to create a row in the `user_data_table`:
 
@@ -397,7 +383,7 @@ ACTION hello::createrow(name nm) {
 
 The code above uses `emplace` method to insert a new user into the table.
 
-#### Multi-index: Read a Row from Table
+### Multi-index: Read a Row from Table
 
 This is how to query the `user_data_table` based on its primary key:
 
@@ -420,7 +406,7 @@ ACTION hello::readrow(name nm) {
 }
 ```
 
-#### Multi-index: Modify Existing Row from Table
+### Multi-index: Modify Existing Row from Table
 
 This is how to modify an existing row in the `user_data_table`:
 
@@ -441,7 +427,7 @@ ACTION hello::updaterow(name nm, bool is_admin) {
 }
 ```
 
-#### Multi-index: Delete a Row from Table
+### Multi-index: Delete a Row from Table
 
 This is how to delete an entity from the `user_data_table`:
 
@@ -523,7 +509,7 @@ A singleton is a special multi-index table that is designed to store a single ro
 
 It is important to remember the explanation of code and scope. When you instantiate a singleton, you can keep the code parameter fixed, and vary the scope parameter. This way you save one item per scope, and thus for example, you can store per-account configs.
 
-Here's an example of a singleton definition:
+Here's an example of a singleton declaration:
 
 ```cpp
 TABLE statsdata {
@@ -543,13 +529,11 @@ Developers can use the `stats_singleton` template type, to instantiate a referen
 ### Instantiate a Singleton with Code and Scope
 
 The code and scope have the same meaning as for the [multi-index table](#multi-index-code-and-scope).
-This is how you define a reference within the singleton with name `stats`. The `code` and `scope` are set as the contract owner account:
+This is how you instantiate a reference within the singleton with name `stats`. The `code` and `scope` are set as the contract owner account:
 
 ```cpp
    stats_singleton stats(get_self(), get_self().value);
 ```
-
-### Extend Hello Smart Contract with Singleton and Actions
 
 Extend the `hello` contract to:
 
@@ -581,7 +565,7 @@ Add the singleton definition:
    using stats_singleton = eosio::singleton<"stats"_n, statsdata>;
 ```
 
-#### Singleton: Modify Data
+### Singleton: Modify Data
 
 This is how you modify the singleton data:
 
@@ -597,7 +581,7 @@ ACTION hello::updatestats(int value) {
 }
 ```
 
-#### Singleton: Read Data
+### Singleton: Read Data
 
 This is how you get the singleton data:
 
@@ -615,7 +599,7 @@ ACTION hello::readstats() {
 }
 ```
 
-#### Singleton: Delete Data
+### Singleton: Delete Data
 
 This is how you delete the singleton data:
 
@@ -718,7 +702,7 @@ If you add a secondary index to an existing multi-index table it will have unpre
 
 ### Extend Hello Smart Contract with a Secondary Index
 
-You know now what secondary indexes are and how to define them. 
+You know now what secondary indexes are and how to define them.
 Extend the `hello` smart contract with two new actions:
 
 - `addmsg`, which allows an account to send a message which is saved in a table and indexed by the message content.
