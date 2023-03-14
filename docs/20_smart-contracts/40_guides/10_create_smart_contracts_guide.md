@@ -83,7 +83,7 @@ The smart contract C++ source files are:
 - hello.hpp
 - hello.cpp
 
-### The hello.hpp File
+### The hpp File
 
 In C++ programming, a `.hpp` file is a header file that contains declarations of classes, functions, variables, and other entities that are intended to be used in other parts of the program. The `.hpp` file is typically included in a source code file (`.cpp`) using the #include preprocessor directive.
 
@@ -112,7 +112,7 @@ In C++, a `macro` is a way to define a shorthand for a piece of code or a value.
 
 You will learn more about actions later.
 
-### The hello.cpp File
+### The cpp File
 
 In C++ programming, a `.cpp` file is a source code file that contains C++ code. The `.cpp` file is one of the most important files in a C++ project, as it contains the actual implementation of the code that performs the desired functionality.
 
@@ -358,7 +358,7 @@ Another way to see it is that the `users` object is a reference within the table
 
 Next implement each action declared in the `hello.hpp` file. Open the `hello.cpp` file and copy and paste the following functions implementations.
 
-### Multi-index: Create a Row in Table
+### Multi-index: Create Row
 
 This is how to create a row in the `user_data_table`:
 
@@ -383,7 +383,7 @@ ACTION hello::createrow(name nm) {
 
 The code above uses `emplace` method to insert a new user into the table.
 
-### Multi-index: Read a Row from Table
+### Multi-index: Read Row
 
 This is how to query the `user_data_table` based on its primary key:
 
@@ -406,7 +406,7 @@ ACTION hello::readrow(name nm) {
 }
 ```
 
-### Multi-index: Modify Existing Row from Table
+### Multi-index: Modify Row
 
 This is how to modify an existing row in the `user_data_table`:
 
@@ -427,7 +427,7 @@ ACTION hello::updaterow(name nm, bool is_admin) {
 }
 ```
 
-### Multi-index: Delete a Row from Table
+### Multi-index: Delete Row
 
 This is how to delete an entity from the `user_data_table`:
 
@@ -526,7 +526,7 @@ Developers can use the `stats_singleton` template type, to instantiate a referen
 - modify existing singleton data,
 - delete existing singleton data.
 
-### Instantiate a Singleton with Code and Scope
+### Singleton: Instantiate with Code and Scope
 
 The code and scope have the same meaning as for the [multi-index table](#multi-index-code-and-scope).
 This is how you instantiate a reference within the singleton with name `stats`. The `code` and `scope` are set as the contract owner account:
@@ -700,7 +700,7 @@ If you add a secondary index to an existing multi-index table it will have unpre
 
 **Advance topic**: Consult the [Data design and migration](https://docs.eosnetwork.com/cdt/latest/best-practices/data-design-and-migration) documentation for more details on how to extended existing, already deployed, multi-index tables.
 
-### Extend Hello Smart Contract with a Secondary Index
+### Add a Secondary Index
 
 You know now what secondary indexes are and how to define them.
 Extend the `hello` smart contract with two new actions:
@@ -840,7 +840,7 @@ Implement an assertion check with a custom error message like this:
 check(message.size() <= 10, "Message can not be bigger than 10 characters.");
 ```
 
-### Extend Hello Smart Contract with Asserts
+### Extend Smart Contract with Asserts
 
 Add the above checks to the `addmsg` implementation, compile and deploy the contract again each time and then execute the command to sign and send the action to the blockchain:
 
