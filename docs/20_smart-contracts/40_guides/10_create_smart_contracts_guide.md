@@ -328,71 +328,11 @@ Note that these two parameters allow you to access different table `instances` o
 
 Another way to see it is that the `users` object is a reference within the table with name `userdata` (which is of type `user_data_table`). This reference is an address within the RAM storage space, allocated for this table, where the table rows are saved for the `code` and `scope` defined (the `get_self()` and `get_self().value`). The number of tables within the `userdata` table is equal to the number of (`code`, `scope`) pairs used to instantiate table references.
 
-### Multi-index: Find in Table
+### Extend the Hello Smart Contract with Multi-index Table and Actions
 
-This is how to query the `user_data_table` based on its primary key:
+Extend the `hello` contract:
 
-```cpp
-user_data_table users(get_self(), get_self().value);
-
-auto itr = users.find(name.value);
-if ( itr != users.end() ) {
-    // row found by name
-}
-else {
-    // row not found
-}
-```
-
-### Multi-index: Insert in Table
-
-This is how to insert a row into the `user_data_table`:
-
-```cpp
-user_data_table users(get_self(), get_self().value);
-
-users.emplace(get_self(), [&](auto& row) {
-  row.user = "user123"_n;
-  row.is_admin = false;
-});
-```
-
-The code above uses `emplace` method to insert a new user into the table.
-
-### Multi-index: Modify Existing Data
-
-This is how to modify an existing row in the `user_data_table`:
-
-```cpp
-user_data_table users(get_self(), get_self().value);
-
-auto itr = users.find(name.value);
-if ( itr != users.end() ) {
-    users.modify(itr, get_self(), [&](auto& row) {
-        row.is_admin = true;
-    });
-};
-```
-
-### Multi-index: Delete from Table
-
-This is how to delete an entity from the `user_data_table`:
-
-```cpp
-user_data_table users(get_self(), get_self().value);
-
-// check if the user already exists
-auto itr = users.find(nm.value);
-if ( itr != users.end() ) {
-    users.erase(itr);
-}
-```
-
-### Extend Hello Smart Contract with Multi-index
-
-You know now the basic operations you can perform on a multi-index table.
-You can extend the `hello` contract to:
-
+- Add the table named `userdata`.
 - Add `createrow` action which creates a new non-admin user.
 - Add `readrow` action which reads a user's data.
 - Add `updaterow` action which updates an existing user's data.
@@ -427,25 +367,16 @@ CONTRACT hello : public contract {
       uint64_t primary_key() const { return user.value; }
    };
    using user_data_table = eosio::multi_index<"userdata"_n, user_data>;
-
 };
 ```
 
-The hello.cpp file can look like this:
+Next implement each action declared above. Open the `hello.cpp` file and copy and paste the following functions implementations.
+
+#### Multi-index: Create a Row in Table
+
+This is how to create a row in the `user_data_table`:
 
 ```cpp
-#include <hello.hpp>
-
-ACTION hello::hi(name nm) {
-   print_f("Name : %\n",nm);
-
-   SEND_INLINE_ACTION(*this, inlineaction, {get_self(), "active"_n}, {});
-}
-
-ACTION hello::inlineaction() {
-   printf("Inline action message.\n");
-}
-
 ACTION hello::createrow(name nm) {
    user_data_table users(get_self(), get_self().value);
 
@@ -462,7 +393,15 @@ ACTION hello::createrow(name nm) {
       printf("User % already exists.\n", nm);
    }
 }
+```
 
+The code above uses `emplace` method to insert a new user into the table.
+
+#### Multi-index: Read a Row from Table
+
+This is how to query the `user_data_table` based on its primary key:
+
+```cpp
 ACTION hello::readrow(name nm) {
    user_data_table users(get_self(), get_self().value);
 
@@ -479,7 +418,13 @@ ACTION hello::readrow(name nm) {
       printf("User % not found.\n", nm);
    }
 }
+```
 
+#### Multi-index: Modify Existing Row from Table
+
+This is how to modify an existing row in the `user_data_table`:
+
+```cpp
 ACTION hello::updaterow(name nm, bool is_admin) {
    user_data_table users(get_self(), get_self().value);
 
@@ -494,7 +439,13 @@ ACTION hello::updaterow(name nm, bool is_admin) {
       printf("User % not found.\n", nm);
    } 
 }
+```
 
+#### Multi-index: Delete a Row from Table
+
+This is how to delete an entity from the `user_data_table`:
+
+```cpp
 ACTION hello::deleterow(name nm) {
    user_data_table users(get_self(), get_self().value);
 
