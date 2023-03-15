@@ -18,9 +18,9 @@ The EOS EVM Network Testnet Preview connection details follow:
 
 * `Network Name`: EOS EVM Network Testnet
 * `Chain ID`: 15556
-* `New RPC URL`: https://api-testnet.trust.one/
+* `New RPC URL`: https://api-testnet.eosnetwork.com/
 * `Currency Symbol`: EVM
-* `Block Explorer URL (Optional)`: https://explorer-testnet.trust.one/
+* `Block Explorer URL (Optional)`: https://explorer-testnet.eosnetwork.com/
 
 Alternative endpoints can be found at [resources](30_resources.md) page.
 
