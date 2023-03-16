@@ -2,8 +2,6 @@
 title: BIOS Boot Sequence Tutorial
 ---
 
-## Overview
-
 In this tutorial, you will learn how to boostrap a new EOS blockchain and get familiar with the steps involved in its deployment. You will start your boot node, load the system contracts, and then add multiple block producers to extend your single node blockchain into a multi node network. Finally, you will perform some node operator tasks on your new blockchain.
 
 ## Audience
@@ -24,8 +22,8 @@ In this tutorial, you will learn how to perform the following tasks:
 ## Prerequisites
 Before you start this tutorial, get familiar with the following sections:
 
-### Overview
-* [Welcome](/docs/index.md)
+### EOS Overview
+* [Welcome](../../index.md)
 
 Also, make sure to learn about the software prerequisites, and install the required software before you continue this tutorial:
 
@@ -69,7 +67,7 @@ For instructions to install the CDT binaries, follow the [Development Environmen
 
 Create and configure your default wallet, followed by creating a public and private development keys. After the key-pair is created, import the public and private key to your wallet. For reference purposes, we will refer to the public key as `EOS_PUB_DEV_KEY` and the private key as `EOS_PRIV_DEV_KEY`.
 
-For instructions on creating a wallet and importing keys securely into it, see the [Create a development wallet](/docs/40_node-operation/10_getting-started/10_local-development-setup/05_create-development-wallet.md) section.
+For instructions on creating a wallet and importing keys securely into it, see the [Create a development wallet](../../40_node-operation/10_getting-started/10_local-development-setup/05_create-development-wallet.md) section.
 
 ### 1.3. Create ~/biosboot/genesis directory
 
@@ -960,6 +958,6 @@ tail -f ./blockchain/nodeos.log
 You can test various commands, create accounts, check balance on accounts, transfer tokens between accounts, etc.
 
 [[info | Accounts and Tokens]]
-| - For commands on creating new accounts, see [How to create an account](/docs/40_node-operation/10_getting-started/10_local-development-setup/07_create-test-accounts.md) on the *Getting Started* section.
+| - For commands on creating new accounts, see [How to create an account](../../40_node-operation/10_getting-started/10_local-development-setup/07_create-test-accounts.md) on the *Getting Started* section.
 | - To issue, allocate, and transfer tokens between accounts, see the
-[Deploy, Issue and Transfer Tokens](/docs/20_smart-contracts/30_tutorials/10_deploy-issue-and-transfer-tokens.md) tutorial on the *Smart Contracts* section.
+[Deploy, Issue and Transfer Tokens](../../20_smart-contracts/30_tutorials/10_deploy-issue-and-transfer-tokens.md) tutorial on the *Smart Contracts* section.
