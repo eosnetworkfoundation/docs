@@ -1,11 +1,8 @@
 ---
-title: "Tic-tac-toe Game Contract Using Single Node"
-link_text: "Tic-tac-toe Game Contract Using Single Node"
+title: "Tic-tac-toe Game Contract"
 ---
 
-# Tic-tac-toe on EOS
-
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example of using the single node testnet see the [Getting Started for Node Operators](/docs/40_node-operation/10_getting-started/index.md) section.
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example of using the single node testnet see the [Getting Started for Node Operators](../../40_node-operation/10_getting-started/index.md) section.
 
 [[info]]
 | In this tutorial we will use the EOS software to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
@@ -21,14 +18,14 @@ This tutorial requires the following:
 
 and
 
-* The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](/docs/40_node-operation/10_getting-started/10_local-development-setup/03_before-you-begin.md "Getting started - install binaries")
+* The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](../../40_node-operation/10_getting-started/10_local-development-setup/03_before-you-begin.md "Getting started - install binaries")
 * Familiarity with the EOS tools `cleos` and `keosd`
-* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.]((/docs/40_node-operation/10_getting-started/10_local-development-setup/04_install-the-CDT.md "CDT Installation Instructions")
+* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.](../../40_node-operation/10_getting-started/10_local-development-setup/04_install-the-CDT.md "CDT Installation Instructions")
 * Familiarity with the `cdt` which is used to compile smart contracts. 
 
-Click on this link for an [Overview of the EOS blockchain](/docs/index.md).
+Click on this link for an [Overview of the EOS blockchain](../../index.md).
 
-Click on this link to [get started with EOS Smart Contracts](/docs/20_smart-contracts/10_getting-started/index.md "Getting Started with EOS Smart Contracts").
+Click on this link to [get started with EOS Smart Contracts](../../20_smart-contracts/10_getting-started/index.md "Getting Started with EOS Smart Contracts").
 
 ## The Rules of the Game
 
@@ -60,11 +57,11 @@ When all the squares contain a marker and no player has three markers in a row, 
 
 ### Accounts and Key Pairs
 
-A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. The EOS blockchain uses account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](/docs/60_resources/10_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
+A blockchain account has a human readable name which is between 1 and 12 characters in length. Each account identifies a blockchain participant and the authority of that participant. You use an account to deploy a smart contract; an account can own one smart contract instance and a smart contract instance must be loaded by an account. Accounts are stored on the blockchain with their public keys. Each account requires at least one key pair (public and private keys.) The blockchain uses asymmetric cryptography to verify that the account pushing a transaction has signed the transaction with the matching private key. The EOS blockchain uses account authority tables to check that the account has the required authority to perform an action. For more information about accounts and permissions click on this link [Accounts and Permissions.](../../60_resources/10_protocol/04_accounts_and_permissions.md "Accounts and Permissions Overview")
 
 ### Smart Contract Actions
 
-A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](/docs/60_resources/10_protocol/02_transactions_protocol.md "Transactions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
+A smart contract exposes methods or ‘actions’ that transactions use to operate the game logic. Transactions may contain one or more ‘actions’. Transactions are generated dynamically outside the smart contract, within an application, or from the command line to call smart contract actions and execute business logic within a smart contract. Transactions are atomic. For example, if one action of a transaction fails the entire transaction fails and the blockchain state is restored to the original state. For more details about transactions and actions click on this link [Transactions Protocol.](../../60_resources/10_protocol/02_transactions_protocol.md "Transactions Protocol") You can use `cleos` to create transactions and push transactions to the blockchain. Transactions contain one or more actions. You can also use `cleos` to call actions directly. Actions can call other actions and can also call actions from other smart contracts.
 
 ![Transactions and Actions](images/tictactoe/transactions-and-actions-temp.png "Transactions and Actions")
 
@@ -76,7 +73,7 @@ The EOS blockchain accounts own and consume three resources. By default a single
 * CPU - This resource is the amount of CPU which can be used by an account. Transactions consume CPU.
 * NET - This resource is the amount of data which can be written to blockchain blocks by an account. The blockchain blocks store transactions and transaction parameters, the history of blockchain.
 
-For more information visit the [Resource](/docs/20_smart-contracts/10_getting-started/30_resources/index.md) guide.
+For more information visit the [Resource](../../20_smart-contracts/10_getting-started/30_resources/index.md) guide.
 
 ## Run a local single node testnet
 
@@ -154,7 +151,7 @@ Wallets:
 ```
 
 [[info]]
-| Account creation requires a creator account; every new blockchain is created with an account called "eosio". The "eosio" account is a special account that can be used to bootstrap a blockchain, click the following link for more information about [bootstrapping a blockchain for real world use.](/docs/40_node-operation/20_tutorials/10_bios-boot-sequence.md) In a production blockchain the eosio account keys are [resigned](/docs/40_node-operation/20_tutorials/10_bios-boot-sequence.md#3-resign-eosio-account-and-system-accounts).  To use our local single node testnet we need to add the private key of the eosio account to our wallet so that we can create other accounts. **The private key is well known and so any blockchain where the eosio acount has not been resigned is not secure.**
+| Account creation requires a creator account; every new blockchain is created with an account called "eosio". The "eosio" account is a special account that can be used to bootstrap a blockchain, click the following link for more information about [bootstrapping a blockchain for real world use.](../../40_node-operation/20_tutorials/10_bios-boot-sequence.md) In a production blockchain the eosio account keys are [resigned](../../40_node-operation/20_tutorials/10_bios-boot-sequence.md#3-resign-eosio-account-and-system-accounts).  To use our local single node testnet we need to add the private key of the eosio account to our wallet so that we can create other accounts. **The private key is well known and so any blockchain where the eosio acount has not been resigned is not secure.**
 
 [[info]]
 | The eosio private key is **5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3**
