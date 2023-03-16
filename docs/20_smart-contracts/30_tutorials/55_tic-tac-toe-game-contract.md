@@ -1,9 +1,6 @@
 ---
-title: "Tic-tac-toe Game Contract Using Single Node"
-link_text: "Tic-tac-toe Game Contract Using Single Node"
+title: "Tic-tac-toe Game Contract"
 ---
-
-# Tic-tac-toe on EOS
 
 This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example of using the single node testnet see the [Getting Started for Node Operators](../../40_node-operation/10_getting-started/index.md) section.
 
