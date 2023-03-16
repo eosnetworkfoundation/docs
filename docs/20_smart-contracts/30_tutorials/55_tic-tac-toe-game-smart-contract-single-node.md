@@ -5,7 +5,7 @@ link_text: "Tic-tac-toe Game Contract Using Single Node"
 
 # Tic-tac-toe on EOS
 
-This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example of using the single node testnet see the [Getting Started for Node Operators](/docs/40_node-operation/10_getting-started/index.md) section.
+This tic-tac-toe tutorial guides you step by step to build a tic-tac-toe game which runs on the EOS blockchain. You will create a smart contract containing the game logic, then compile and deploy this smart contract to the EOS blockchain. In this tutorial we use a local [single node testnet](http://docs.eosnetwork.com/leap/latest/nodeos/usage/development-environment/local-single-node-testnet "local single node testnet") and show you how to play the game by calling the smart contract. For another example of using the single node testnet see the [Getting Started for Node Operators](../../40_node-operation/10_getting-started/index.md) section.
 
 [[info]]
 | In this tutorial we will use the EOS software to run a blockchain on your local machine. This runs only one producing node and is commonly called a single node testnet.
@@ -23,7 +23,7 @@ and
 
 * The EOS blockchain software, click on this link for instructions on [installing EOS binaries.](/docs/40_node-operation/10_getting-started/10_local-development-setup/03_before-you-begin.md "Getting started - install binaries")
 * Familiarity with the EOS tools `cleos` and `keosd`
-* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.]((/docs/40_node-operation/10_getting-started/10_local-development-setup/04_install-the-CDT.md "CDT Installation Instructions")
+* The EOS Contract Development Toolkit or the CDT. Click on this link to [install the CDT.](/docs/40_node-operation/10_getting-started/10_local-development-setup/04_install-the-CDT.md "CDT Installation Instructions")
 * Familiarity with the `cdt` which is used to compile smart contracts. 
 
 Click on this link for an [Overview of the EOS blockchain](/docs/index.md).
