@@ -2,7 +2,7 @@
 
 A smart contract is a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple ones like a todo application to a fully-fledged RPG game which runs entirely on the blockchain.
 
-This guide will show you how to develope a basic EOS smart contract with **DUNE** and with the C++ programming language.
+This guide will show you how to develop a basic EOS smart contract with **DUNE** and with the C++ programming language.
 
 ## Preparation Steps
 
@@ -344,13 +344,13 @@ This is how you define a reference within the table with name `userdata`:
 user_data_table users(get_self(), get_self().value);
 ```
 
-The fist parameter is the `code` parameter, and the second one is the `scope`.
+The first parameter is the `code` parameter, and the second one is the `scope`.
 
-- The `code` is the account that owns the smart contract. This account is responsible for paying the RAM storage costs associated with the multi-index table.
+- The `code` (`name`) is the account that owns the smart contract (and the table).
 
-- The `scope` is used to group related data within the multi-index table. To group all related data within the same contract, the scope is often set as the contract account itself.
+- The `scope` (`integer`) is used to group related data within the multi-index table. To group all related data within the same contract, the scope is often set as the contract account itself.
 
-In the code above, the `code`, is initialized with the `get_self()`, witch returns the contract account owner. The `scope`, is initialized with the `get_self().value`, which returns the same contract owner account's value.
+In the code above, the `code`, is initialized with the `get_self()`, which returns the account the contract is deployed on. The `scope`, is initialized with the `get_self().value`, which returns the numerical representation of the account name.
 
 Note that these two parameters allow you to access different table `instances` of the same table `type`. For example, for the same `code` parameter you can access different tables of the same type by using different values for the second parameter `scope`. All these tables belong to the account set for the same `code` parameter.
 
@@ -366,12 +366,12 @@ This is how to create a row in the `user_data_table`:
 ACTION hello::createrow(name nm) {
    user_data_table users(get_self(), get_self().value);
 
-   auto itr = users.find(nm.value);
+   auto itr = users.find(name.value);
 
    if ( itr == users.end() ) {
       users.emplace(get_self(), [&](auto& row) {
-      row.user = nm;
-      row.is_admin = false;
+         row.user = nm;
+         row.is_admin = false;
       });
       printf("User % added as non-admin.\n", nm);
    }
@@ -381,7 +381,7 @@ ACTION hello::createrow(name nm) {
 }
 ```
 
-The code above uses `emplace` method to insert a new user into the table.
+The code above uses the `emplace` method to insert a new user into the table.
 
 ### Multi-index: Read Row
 
@@ -674,8 +674,8 @@ Indexes provide efficient and flexible access to data stored in the multi-index 
 
 EOS supports two types of indexes:
 
-- primary indexes and
-- secondary indexes.
+- primary indexes
+- secondary indexes
 
 ### Primary Indexes
 
@@ -696,7 +696,7 @@ Secondary indexes may be defined on data members which are not unique as well as
 - `double`
 - `long double`
 
-If you add a secondary index to an existing multi-index table it will have unpredictable outcome.
+If you add a new secondary index to an existing multi-index table it will have an unpredictable outcome since indexes are applied at row insertion or update.
 
 **Advance topic**: Consult the [Data design and migration](https://docs.eosnetwork.com/cdt/latest/best-practices/data-design-and-migration) documentation for more details on how to extended existing, already deployed, multi-index tables.
 
@@ -751,7 +751,7 @@ Note in the code above the `messages_table` is defined almost the same way as yo
 
 - `user_messages`: the multi-index table structure name,
 - `checksum256`: the type of the data the index is defined for,
-- `&user_messages::message_idx`: the reference of the data member function which retrieves the data the index is defined for.
+- `&user_messages::message_idx`: a reference to the secondary index function defined in the struct.
 
 The name of a secondary index has the same restrictions as the name of an action.
 
