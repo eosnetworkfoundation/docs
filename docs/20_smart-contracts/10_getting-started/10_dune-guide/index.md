@@ -4,28 +4,16 @@ title: DUNE
 
 ## Overview
 
-[DUNE](https://github.com/AntelopeIO/DUNE) (Docker Utilities for Node Execution) provides developers with a personal container for EOS blockchain management, smart contract development, and testing.
+[Docker Utilities for Node Execution (DUNE)](https://github.com/AntelopeIO/DUNE) is a client tool that allows blockchain developers and node operators to perform boilerplate tasks related to smart contract development and node management functions.
 
-In this guide you will learn to use DUNE for basic smart contract development. You will learn to:
-* Launch a local EOS blockchain made of a single node
-* Create a test account for smart contract deployment
-* Develop and deploy a "Hello World" contract locally
-* Test your "Hello World" contract by sending actions
-* Check contract state by reading the table contents
-
-Before getting started with smart contract development, you need to learn about DUNE and how to install it on your platform.
-
-## DUNE
-
-Docker Utilities for Node Execution (DUNE) is a client tool that allows blockchain developers and node operators to perform boilerplate tasks related to smart contract development and node management functions. In particular, DUNE allows to:
+In this guide you will learn to:
 * Start, initialize, and stop EOS nodes
-* Build, deploy, and test smart contracts
+* Create testing accounts
+* Build & deploy smart contracts
 * Send actions to smart contracts
 * Retrieve data from smart contracts
-* Perform other node management operations
 
-> ℹ️ DUNE concept  
-DUNE simplifies blockchain software setup by isolating the EOS software and its dependencies from the host system. This allows developers and operators to experiment with the EOS blockchain, try proof-of-concepts, and perform scaffolding in a safe sandbox using a Docker container.
+Before getting started with smart contract development, you need to learn about DUNE and how to install it on your platform.
 
 ### Installation
 
