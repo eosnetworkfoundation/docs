@@ -1116,7 +1116,7 @@ Fill in the following information:
 - Network Name: any name is OK
 - New RPC URL: YOUR PROXY LISTENING ENDPOINT
 - Chain ID: 15556 or other chainID that matches the EVM chain
-- Currency Symbol: EVM
+- Currency Symbol: EOS
 
 And then click "Save"
 
