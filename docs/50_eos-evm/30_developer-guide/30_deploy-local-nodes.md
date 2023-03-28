@@ -363,7 +363,7 @@ Deploy evm_runtime contract, wasm and abi file, to account evmevmevmevm:
 
 Set chain ID & native token configuration
 ```
-./cleos push action evmevmevmevm init '{"chainid": 15556}'
+./cleos push action evmevmevmevm init '{"chainid": 15557}'
 ```
 
 #### Set Initial Balance For Genesis ETH Accounts
@@ -486,7 +486,7 @@ import rlp
 import json
 
 EVM_SENDER_KEY  = os.getenv("EVM_SENDER_KEY", None)
-EVM_CHAINID     = int(os.getenv("EVM_CHAINID", "15556"))
+EVM_CHAINID     = int(os.getenv("EVM_CHAINID", "15557"))
 
 if len(sys.argv) < 6:
     print("{0} FROM TO AMOUNT INPUT_DATA NONCE".format(sys.argv[0]))
@@ -937,7 +937,7 @@ Final EVM genesis example:
         },
         "coinbase": "0x0000000000000000000000000000000000000000",
         "config": {
-            "chainId": 15556,
+            "chainId": 15557,
             "homesteadBlock": 0,
             "eip150Block": 0,
             "eip155Block": 0,
@@ -1115,8 +1115,8 @@ Fill in the following information:
 
 - Network Name: any name is OK
 - New RPC URL: YOUR PROXY LISTENING ENDPOINT
-- Chain ID: 15556 or other chainID that matches the EVM chain
-- Currency Symbol: EVM
+- Chain ID: 15557 or other chainID that matches the EVM chain
+- Currency Symbol: EOS
 
 And then click "Save"
 
