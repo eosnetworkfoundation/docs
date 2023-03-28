@@ -15,7 +15,7 @@ You should have the following:
 
 ## Start
 
-Go to http://3.13.142.95/address/SMART_CONTRACT_ADDRESS/verify-via-flattened-code/new
+Go to https://explorer.testnet.evm.eosnetwork.com/address/SMART_CONTRACT_ADDRESS/verify-via-flattened-code/new
 
 ## Fill In The Verification Form
 
