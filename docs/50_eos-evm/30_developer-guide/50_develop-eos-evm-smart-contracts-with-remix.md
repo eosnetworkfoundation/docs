@@ -76,7 +76,7 @@ Right after you successfully selected `Injected Provider - Metamask` option from
 3. Confirm the transaction on the Metamask wallet
 4. Wait for the transaction to complete on the blockchain
 
-When the transaction is done you will see details in the bottom panel. Notice the status of the transaction and the transaction hash. You can open the [blockchain explorer](http://3.13.142.95/) and search for the transaction hash to see it on chain.
+When the transaction is done you will see details in the bottom panel. Notice the status of the transaction and the transaction hash. You can open the [blockchain explorer](https://explorer.testnet.evm.eosnetwork.com/) and search for the transaction hash to see it on chain.
 
 ![remix deploy trx success](./resources/remix_deploy_trx_success.png)
 
@@ -98,7 +98,7 @@ Wait for the transaction to be confirmed on the blockchain and note on the Remix
 
 ![remix log decoded input](./resources/remix_log_decoded_input.png)
 
-Search for the transaction hash on the [blockchain explorer](http://3.13.142.95/). Note that the input parameter is not decoded. In order to see it decoded you must verify your smart contract on chain.
+Search for the transaction hash on the [blockchain explorer](https://explorer.testnet.evm.eosnetwork.com/). Note that the input parameter is not decoded. In order to see it decoded you must verify your smart contract on chain.
 
 ![remix onchain encoded data](./resources/remix_onchain_encoded_data.png)
 
