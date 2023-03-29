@@ -18,7 +18,7 @@ The EVM support brings the following advantages:
 
 Join the developer community to report bugs and for more technical support:
 
-* **Telegram of Developer Community**: [`https://t.me/TrustEVMDev`](https://t.me/TrustEVMDev)
+* **Telegram of Developer Community**: [`https://t.me/eosevm`](https://t.me/eosevm)
 * **EVM Channel in ENF Discord:** [`http://discord.gg/eos-network`](http://discord.gg/eos-network)
 * **Twitter of EOS EVM**: [`https://twitter.com/trustevm`](https://twitter.com/trustevm)
 * **Twitter of ENF:**  [`https://twitter.com/EosNFoundation`](https://twitter.com/EosNFoundation)
