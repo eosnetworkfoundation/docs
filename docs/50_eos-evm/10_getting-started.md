@@ -19,11 +19,4 @@ The EVM support brings the following advantages:
 Join the developer community to report bugs and for more technical support:
 
 * **Telegram of Developer Community**: [`https://t.me/eosevm`](https://t.me/eosevm)
-* **EVM Channel in ENF Discord:** [`http://discord.gg/eos-network`](http://discord.gg/eos-network)
-* **Twitter of EOS EVM**: [`https://twitter.com/trustevm`](https://twitter.com/trustevm)
-* **Twitter of ENF:**  [`https://twitter.com/EosNFoundation`](https://twitter.com/EosNFoundation)
-* **Medium of ENF(English):** [`https://medium.com/@eos-network-foundation`](https://medium.com/@eos-network-foundation)
-* **Medium of ENF(Chinese):** [`https://medium.com/@EOSNetworkFoundation`](https://medium.com/@EOSNetworkFoundation)
-* **Telegram of ENF(Chinese)**: [`https://t.me/EOSCN`](https://t.me/EOSCN)
-* **Telegram Channel of ENF(English)**: [`https://t.me/EOSNetworkFoundation`](https://t.me/EOSNetworkFoundation)
-* **Telegram Channel of ENF(Chinese)**: [`https://t.me/EosNetworkFoundation_CN`](https://t.me/EosNetworkFoundation\_CN)
+* **EVM Channel in EOS Discord:** [`http://discord.gg/eos-network`](http://discord.gg/eos-network)
