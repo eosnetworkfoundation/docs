@@ -20,7 +20,7 @@ module.exports = {
   networks: {
   // Use the address of your favorite endpoint.
     eosevm: {
-      host: "api-testnet2.trust.one",
+      host: "api.testnet.evm.eosnetwork.com",
       port: 15557,
       network_id: "*"
     }
