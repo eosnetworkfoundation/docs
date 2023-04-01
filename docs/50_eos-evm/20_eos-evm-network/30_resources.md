@@ -1,17 +1,17 @@
 ---
-title: Resources
+title: Helpful Links
 ---
 
-## Endpoints
+#### EOS EVM Testnet
 
-* Main RPC URL: [https://api.testnet.evm.eosnetwork.com](https://api.testnet.evm.eosnetwork.com)
+* Testnet RPC URL: [https://api.testnet.evm.eosnetwork.com](https://api.testnet.evm.eosnetwork.com).
+* Testnet EOS EVM Explorer: [https://explorer.testnet.evm.eosnetwork.com/](https://explorer.testnet.evm.eosnetwork.com/).
+* Testnet Faucet: [https://faucet.testnet.evm.eosnetwork.com](https://faucet.testnet.evm.eosnetwork.com).
+
+#### Community
+
+* EOS EVM Developers Telegram: [https://t.me/eosevm](https://t.me/eosevm).
+
+#### Miscellaneous
 
 For EOS EVM testnet you can use the configuration listed at [Chainlist.org](https://chainlist.org/).
-
-## EOS EVM Blockchain Explorer
-
-* [EOS EVM Explorer](https://explorer.testnet.evm.eosnetwork.com/)
-
-## Faucet
-
-* EVM Token: [`https://faucet.testnet.evm.eosnetwork.com/`](https://faucet.testnet.evm.eosnetwork.com/)
