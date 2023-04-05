@@ -2,34 +2,49 @@
 title: EVM Compatibility
 ---
 
+EOS EVM is fully compatible with the Ethereum EVM specification, including all precompiles and opcodes. However, there are some EOS EVM differences:
+
 ## Precompiles
 
-| Address | ID          | Name                                 | Spec                                                             | Status         |
-| ------- | ----------- | ------------------------------------ | ---------------------------------------------------------------- | -------------- |
-| 0x01    | `ECRecover` | ECDSA public key recovery            | [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) | in development |
-| 0x02    | `SHA256`    | SHA-2 256-bit hash function          | [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) | in development |
-| 0x03    | `RIPEMD160` | RIPEMD 160-bit hash function         | [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) | in development |
-| 0x04    | `Identity`  | Identity function                    | [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) | in development |
-| 0x05    | `ModExp`    | Big integer modular exponentiation   | [EIP-198](https://eips.ethereum.org/EIPS/eip-198)                | in development |
-| 0x06    | `BN128Add`  | Elliptic curve addition              | [EIP-196](https://eips.ethereum.org/EIPS/eip-196)                | in development |
-| 0x07    | `BN128Mul`  | Elliptic curve scalar multiplication | [EIP-196](https://eips.ethereum.org/EIPS/eip-196)                | in development |
-| 0x08    | `BN128Pair` | Elliptic curve pairing check         | [EIP-197](https://eips.ethereum.org/EIPS/eip-197)                | in development |
-| 0x09    | `Blake2F`   | BLAKE2b `F` compression function     | [EIP-152](https://eips.ethereum.org/EIPS/eip-152)                | in development |
+EOS EVM supports all precompiles supported by Ethereum, with the following distinctions:
 
-## Opcodes[​](https://doc.aurora.dev/compat/evm#opcodes) <a href="#opcodes" id="opcodes"></a>
+### `modexp (0x05)`
 
-### `BLOCKHASH`[​](https://doc.aurora.dev/compat/evm#blockhash) <a href="#blockhash" id="blockhash"></a>
+The exponent bit size cannot exceed either the base bit size or the modulus bit size.
 
-In the **developer preview testnet** this opcode will not be available and calling it will make the EOS EVM contract to raise and exception stopping contract execution at EOS level.
+> ℹ️ Info  
+If the above limits are not met, the precompile will throw an exception and the transaction will be halted.
 
-### `COINBASE`[​](https://doc.aurora.dev/compat/evm#coinbase) <a href="#coinbase" id="coinbase"></a>
+## Opcodes
 
-In the **developer preview testnet** this will be _0x0000000000000000000000000000000000000000_
+### `BLOCKHASH (0x40)`
 
-### `DIFFICULTY`[​](https://doc.aurora.dev/compat/evm#difficulty) <a href="#difficulty" id="difficulty"></a>
+This opcode currently does not return the hash of the specified block contents, but the hash of the specified block height and the chain ID instead:
 
-In the **developer preview testnet** this will be 0
+`block_hash = sha256( msg(block_height, chain_id) )`
 
-### `GASLIMIT`[​](https://doc.aurora.dev/compat/evm#gaslimit) <a href="#gaslimit" id="gaslimit"></a>
+where:
+* `block_height`: specified 64-bit block height
+* `chain_id`: used as a 64-bit salt value
+* `msg`: concatenation of a leading zero byte constant, the `block_height`, and the `chain_id`, in big endian format.
 
-In the **developer preview testnet** this will be INT64\_MAX
+> ℹ️ Info  
+The leading zero byte in the hash is a version byte which may change if a new blockhash scheme is introduced in the future.
+
+### `COINBASE (0x41)`
+
+This opcode always returns 0 (zero).
+
+> ℹ️ Info  
+This value might change in the future to return the address of the EOS EVM engine deployment, or the address of the account receiving the block rewards.
+
+### `DIFFICULTY (0x44)`
+
+This opcode always returns 1 (one) as the default difficulty since there is no hash difficulty in the underlying EOS consensus protocol.
+
+> ℹ️ Info  
+This value might change in the future to return the EOS EVM's perceived randomness value - see [EIP-4399](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-4399.md#abstract).
+
+### `GASLIMIT (0x45)`
+
+This opcode always returns `INT64_MAX` or `0x7FFFFF..FF` (2^63-1).
