@@ -6,7 +6,7 @@ title: Architecture
 
 The EVM is implemented as a smart contract on the EOS network, we shall call it form this point forward the EOS EVM contract. Generating transactions in the EOS EVM network is done via calls to the EOS EVM contract. The chain state of the EVM can be derived from the information obtain from the EOS blockchain.
 
-To achieve the full RPC compatibility, a full functioning Ethereum node is utilized. The EOS EVM testnet and mainnet use an Ethereum node built on top of Silkworm node, we shall call it from this point forward the EOS EVM node. All the API *read requests* are serviced through the EOS EVM node while all the *write requests* are forwarded to a small service which packs them into EOS actions sen to the EOS EVM contract.
+To achieve the full RPC compatibility, a full functioning Ethereum node is utilized. The EOS EVM testnet and mainnet use an Ethereum node built on top of Silkworm node, we shall call it from this point forward the EOS EVM node. All the API *read requests* are serviced through the EOS EVM node while all the *write requests* are forwarded to a small service which packs them into EOS actions and sent to the EOS EVM contract.
 
 ![Overall Design of the EOS EVM](./20_getting_started/resources/EOS-EVM_design_drawio.svg)
 
