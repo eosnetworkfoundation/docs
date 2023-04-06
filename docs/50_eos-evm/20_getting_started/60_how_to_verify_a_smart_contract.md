@@ -1,5 +1,5 @@
 ---
-title: How To Verify A Smart Contract
+title: Verify A Smart Contract
 ---
 
 This document shows the steps you need to follow to verify a smart contract through its flattened source code.
@@ -15,7 +15,7 @@ You should have the following:
 
 ## Start
 
-Go to https://explorer-testnet2.trust.one/address/SMART_CONTRACT_ADDRESS/verify-via-flattened-code/new
+Go to https://explorer.testnet.evm.eosnetwork.com/address/SMART_CONTRACT_ADDRESS/verify-via-flattened-code/new
 
 ## Fill In The Verification Form
 

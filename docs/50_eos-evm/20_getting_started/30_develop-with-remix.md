@@ -1,5 +1,5 @@
 ---
-title: Develop EOS EVM Smart Contracts With Remix
+title: Develop With Remix
 ---
 
 ## Remix IDE
@@ -12,9 +12,9 @@ The Remix IDE comes in three flavors: the web application, the desktop applicati
 
 Navigate to the [Remix IDE web version](https://remix.ethereum.org/). One of the first thing you notice is the `FILE EXPLORER` panel on the left side of the screen. You can see that the Remix IDE already created a default workspace with three folders:
 
-- `Contracts`, 
+- `Contracts`,
 - `Scripts`,
-- `Tests` 
+- `Tests`
 
 and a `README.txt` file.
 
@@ -50,11 +50,11 @@ You will return to this panel later, after you deploy the smart contract, and al
 
 ### Connect Metamask Wallet
 
-To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [resources page](../20_eos-evm-network/30_resources.md).
+To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [helpful links](../50_helpful_links.md) section.
 
 ### Have Enough EMV Tokens
 
-You also must ensure you have EVM tokens available in your wallet to be able to cover the transactions costs. If you use the EOS EVM test network you can use the [faucet](https://faucet-testnet2.trust.one) to get some EVM tokens. If you use the EOS EVM main network you must transfer tokens from a different address or swap them from EOS tokens or any other available tokens.
+You also must ensure you have EVM tokens available in your wallet to be able to cover the transactions costs. If you use the EOS EVM test network you can use the [faucet](https://faucet.testnet.evm.eosnetwork.com) to get some EVM tokens. If you use the EOS EVM main network you must transfer tokens from a different address or swap them from EOS tokens or any other available tokens.
 
 ### Connect the Remix IDE To EOS EVM
 
@@ -76,7 +76,7 @@ Right after you successfully selected `Injected Provider - Metamask` option from
 3. Confirm the transaction on the Metamask wallet
 4. Wait for the transaction to complete on the blockchain
 
-When the transaction is done you will see details in the bottom panel. Notice the status of the transaction and the transaction hash. You can open the [blockchain explorer](https://explorer-testnet2.trust.one/) and search for the transaction hash to see it on chain.
+When the transaction is done you will see details in the bottom panel. Notice the status of the transaction and the transaction hash. You can open the [blockchain explorer](https://explorer.testnet.evm.eosnetwork.com/) and search for the transaction hash to see it on chain.
 
 ![remix deploy trx success](./resources/remix_deploy_trx_success.png)
 
@@ -98,7 +98,7 @@ Wait for the transaction to be confirmed on the blockchain and note on the Remix
 
 ![remix log decoded input](./resources/remix_log_decoded_input.png)
 
-Search for the transaction hash on the [blockchain explorer](https://explorer-testnet2.trust.one/). Note that the input parameter is not decoded. In order to see it decoded you must verify your smart contract on chain.
+Search for the transaction hash on the [blockchain explorer](https://explorer.testnet.evm.eosnetwork.com/). Note that the input parameter is not decoded. In order to see it decoded you must verify your smart contract on chain.
 
 ![remix onchain encoded data](./resources/remix_onchain_encoded_data.png)
 

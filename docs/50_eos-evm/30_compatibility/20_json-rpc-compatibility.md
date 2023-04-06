@@ -2,13 +2,11 @@
 title: JSON RPC Compatibility
 ---
 
-As we described in previous sections, the requests will be forwarded to the Geth Node in our system or a Wrapper service the repacking the transaction into an EOS smart contract call.
+All the JSON-RPC calls are inherently supported thanks to the full functioning Geth Node. However, some methods are blocked in the current phase for the following reasons:
 
-According to our design, all the JSON-RPC calls should be inherently supported thanks to the full functioning Geth Node. However, we are still blocking some methods in the current phase for different reasons:
-
-* Some methods are simply deprecated or discontinued. We'd better refrain from supporting them.
-* Some methods are designed for the local node scenario. We will not expose them in the public API, but will give ways to access them when one deploys their own EOS EVM node.
-* Some methods involve complex logic: We need to do more tests before exposing them.
+* Some methods are deprecated or discontinued.
+* Some methods are designed for the local node scenario. They are not exposed to the public API, however you can access them when you deploy your own EOS EVM node.
+* Some methods involve complex logic, therefore more tests need to be performed before they will be exposed.
 
 ## RPC List
 

@@ -20,11 +20,11 @@ The EOS EVM Network Testnet Preview connection details are as follows:
 
 * `Network Name`: EOS EVM Network Testnet
 * `Chain ID`: 15557
-* `New RPC URL`: https://api-testnet2.trust.one/
+* `New RPC URL`: https://api.testnet.evm.eosnetwork.com/
 * `Currency Symbol`: EOS
-* `Block Explorer URL (Optional)`: https://explorer-testnet2.trust.one/
+* `Block Explorer URL (Optional)`: https://explorer.testnet.evm.eosnetwork.com/
 * `Token Bridge`: https://bridge-testnet2.trust.one/
 
-Alternative endpoints can be found at [resources](30_resources.md) page.
+Alternative endpoints can be found in the [helpful links](../50_helpful_links.md) section.
 
 Yet another way is to find the network you want to connect to at [Chainlist.org](https://chainlist.org/), and you can add the configuration to your wallet through that service.

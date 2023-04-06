@@ -1,8 +1,8 @@
 ---
-title: Deploy Local Testnet With EVM Support
+title: Deploy EOS EVM Local Testnet
 ---
 
-This document describes how to set up a local Antelope test environment with EVM support. This setup allows developers to speed up their smart contracts development without worrying about any resource, network, version, or other stability issues that public testnets might introduce. Developers are free to modify, debug, or reset the environment to facilitate their own applications development.
+This document describes how to set up a local EOS test environment with EVM support. This setup allows developers to speed up their smart contracts development without worrying about any resource, network, version, or other stability issues that public testnets might introduce. Developers are free to modify, debug, or reset the environment to facilitate their own applications development.
 
 ## Hardware Requirements
 
@@ -17,13 +17,13 @@ This document describes how to set up a local Antelope test environment with EVM
 
 Make sure you have the following binaries built from https://github.com/AntelopeIO/leap:
 
-- `nodeos`: the main process of an Antelope node
+- `nodeos`: the main process of an EOS node
 - `cleos`: the command line interface for queries and transaction
 - `keosd`: the key and wallet manager
 
 Have the following binaries built from https://github.com/AntelopeIO/cdt:
 
-- `cdt-cpp`: the Antelope smart contract compiler
+- `cdt-cpp`: the EOS smart contract compiler
 - `eosio-wast2wasm` & `eosio-wasm2wast`: conversion tools for building EVM contract
 
 List of compiled system contracts from https://github.com/eosnetworkfoundation/eos-system-contracts (compiled by cdt):
@@ -45,14 +45,14 @@ The compilation results should be these two files:
 
 Compiled binaries from this repo:
 
-- `trustevm-node`: silkworm node process that receives data from the main Antelope chain and converts to the EVM chain
+- `trustevm-node`: silkworm node process that receives data from the main EOS blockchain and converts to the EVM chain
 - `trustevm-rpc`: silkworm RPC server that provides service for view actions and other read operations
 
 ## Run A Local Node With EOS EVM Service
 
-In order to run an EOS EVM service, and thus have setup the Antelope blockchain with capabilities to push EVM transactions, we need to have the follow items inside one physical server/VM:
+In order to run an EOS EVM service, and thus have setup the EOS blockchain with capabilities to push EVM transactions, we need to have the follow items inside one physical server/VM:
 
-1. [Run A Local Antelope Node](#1-run-a-local-antelope-node)
+1. [Run A Local EOS Node](#1-run-a-local-eos-node)
 2. [Blockchain Bootstrap And Initialization](#2-blockchain-bootstrap-and-initialization)
 3. [Deploy And Initialize EVM Contract](#3-deploy-and-initialize-evm-contract)
 4. [Setup The Transaction Wrapper Service](#4-setup-the-transaction-wrapper-service)
@@ -60,7 +60,7 @@ In order to run an EOS EVM service, and thus have setup the Antelope blockchain 
 6. [Start EOS EVM RPC (a.k.a. Silkworm RPC)](#6-start-eos-evm-rpc-aka-silkworm-rpc)
 7. [Setup The Flask Proxy](#7-setup-the-flask-proxy)
 
-### 1. Run A Local Antelope Node
+### 1. Run A Local EOS Node
 
 #### Create a local data-dir directory
 
@@ -179,9 +179,9 @@ plugin = eosio::net_plugin
 plugin = eosio::net_api_plugin
 ```
 
-#### Start Antelope Node
+#### Start EOS Node
 
-Start the Antelope node with the below command:
+Start the EOS node with the below command:
 
 ```shell
 ./build/programs/nodeos/nodeos --data-dir=./data-dir  --config-dir=./data-dir --genesis-json=./data-dir/genesis.json --disable-replay-opts --contracts-console
@@ -382,7 +382,7 @@ Now EVM initialization is completed.
 
 #### Verify EVM account balances 
 
-To verify all EVM account balances directly on the Antelope node run the following command and replace your contract name "evmevmevmevm" if needed:
+To verify all EVM account balances directly on the EOS node run the following command and replace your contract name "evmevmevmevm" if needed:
 
 ```shell
 ./cleos get table evmevmevmevm evmevmevmevm account
@@ -410,7 +410,7 @@ Notice that the value `000000000000000000000000000000010000000000000000000000000
 
 ### 4. Setup The Transaction Wrapper Service
 
-Setup the transaction wrapper service to wrap ETH write requests into Antelope transactions.
+Setup the transaction wrapper service to wrap ETH write requests into EOS transactions.
 
 #### Install The Necessary nodejs Tools
 
@@ -421,11 +421,11 @@ npm install eosjs
 npm install ethereumjs-util
 ```
 
-#### Create Sender Antelope Account
+#### Create Sender EOS Account
 
-Create an additional Antelope account, a.k.a. the sender account, as the wrapper account for signing wrapped Antelope transactions.
+Create an additional EOS account, a.k.a. the sender account, as the wrapper account for signing wrapped EOS transactions.
 
-We use `a123` for example (public key EOS8kE63z4NcZatvVWY4jxYdtLg6UEA123raMGwS6QDKwpQ69eGcP, private key 5JURSKS1BrJ1TagNBw1uVSzTQL2m9eHGkjknWeZkjSt33Awtior). Note, you may need to unlock your Antelope wallet again if it was already timed out.
+We use `a123` for example (public key EOS8kE63z4NcZatvVWY4jxYdtLg6UEA123raMGwS6QDKwpQ69eGcP, private key 5JURSKS1BrJ1TagNBw1uVSzTQL2m9eHGkjknWeZkjSt33Awtior). Note, you may need to unlock your EOS wallet again if it was already timed out.
 
 ```shell
 ./cleos create account eosio a123 EOS8kE63z4NcZatvVWY4jxYdtLg6UEA123raMGwS6QDKwpQ69eGcP EOS8kE63z4NcZatvVWY4jxYdtLg6UEA123raMGwS6QDKwpQ69eGcP
@@ -433,7 +433,7 @@ We use `a123` for example (public key EOS8kE63z4NcZatvVWY4jxYdtLg6UEA123raMGwS6Q
 
 #### Prepare The .env File
 
-Prepare the `.env` file to configure Antelope RPC endpoint, listening port, EVM contract account, sender account and other details:
+Prepare the `.env` file to configure EOS RPC endpoint, listening port, EVM contract account, sender account and other details:
 
 ```txt
 EOS_RPC="http://127.0.0.1:8888"
@@ -444,7 +444,7 @@ EOS_EVM_ACCOUNT="evmevmevmevm"
 EOS_SENDER="a123"
 ```
 
-In this environment settings, Tx Wrapper will listen to 127.0.0.1:18888, use `5JURSKS1BrJ1TagNBw1uVSzTQL2m9eHGkjknWeZkjSt33Awtior` to wrap and sign the in-coming ETH trasnactions into Antelope transactions, and then push them into the Antelope RPC endpoint http://127.0.0.1:8888
+In this environment settings, Tx Wrapper will listen to 127.0.0.1:18888, use `5JURSKS1BrJ1TagNBw1uVSzTQL2m9eHGkjknWeZkjSt33Awtior` to wrap and sign the in-coming ETH trasnactions into EOS transactions, and then push them into the EOS RPC endpoint http://127.0.0.1:8888
 
 #### Start Tx Wrapper Service
 
@@ -697,9 +697,9 @@ f901c401843b9aca00830f42408080b90170608060405234801561001057600080fd5b5061015080
      error_code: null } }
 ```
 
-#### Check The Account From Antelope Blockchain
+#### Check The Account From EOS Blockchain
 
-Check the account from Antelope blockchain to verify if your solidity bytecode has been deployed:
+Check the account from EOS blockchain to verify if your solidity bytecode has been deployed:
 
 ```shell
 ./cleos get table evmevmevmevm evmevmevmevm account
@@ -747,7 +747,7 @@ python3 sign_ethraw.py 2787b98fc4e731d0456b3941f0b3fe2e01439961 51a97d86ae7c83f0
 
 In this case `6057361d` is the function first 4 bytes of hash of `store(uint256 num)` (more precisely, `bytes4(keccak256("store(uint256)"))`, see https://solidity-by-example.org/function-selector/) , we use 123 as the value of `num`, which is 7b in hex form.
 
-Once you get the raw trasnaction, then we can push into Tx Wrapper to sign as the Antelope transaction and push to Antelope blockchain:
+Once you get the raw trasnaction, then we can push into Tx Wrapper to sign as the EOS transaction and push to EOS blockchain:
 
 ```shell
 curl http://127.0.0.1:18888 -X POST -H "Accept: application/json" -H "Content-Type: application/json" --data '{"method":"eth_sendRawTransaction","params":["0xf88a02843b9aca00830f42409451a97d86ae7c83f050056f03ebbe45100104676480a46057361d000000000000000000000000000000000000000000000000000000000000007b8279a9a0a2fc71e4beebd9cd1a3d9a55da213f126641f7ed0bb708a3882fa2b85dd6c30ea0164a5d8a8b9b37950091665194f07b5c4e8f6d1b0d6ef162b0e0a1f9bf10c7a7"],"id":1,"jsonrpc":"2.0"}'
@@ -779,7 +779,7 @@ f88a02843b9aca00830f42409451a97d86ae7c83f050056f03ebbe45100104676480a46057361d00
      error_code: null } }
 ```
 
-Verify on Antelope blockchain to ensure nonce & balance were updated:
+Verify on EOS blockchain to ensure nonce & balance were updated:
 
 ```shell
 ./cleos get table evmevmevmevm evmevmevmevm account
@@ -815,9 +815,9 @@ Verify on Antelope blockchain to ensure nonce & balance were updated:
 }
 ```
 
-#### [Debug only] Investigate The Current EVM Storage State On Antelope
+#### [Debug only] Investigate The Current EVM Storage State On EOS
 
-Since we don't support running View actions directly from Antelope node (read requests will go to EOS EVM RPC), it is quite complicated to investigate the storage of EVM directly from Antelope. However, If you really want to do that, these are the steps:
+Since we don't support running View actions directly from EOS node (read requests will go to EOS EVM RPC), it is quite complicated to investigate the storage of EVM directly from EOS. However, If you really want to do that, these are the steps:
 
 ##### Identify The "id" Field Of The Contract Address
 
@@ -862,23 +862,23 @@ Example output:
 
 ### 5. Start EOS EVM Node (a.k.a. Silkworm Node)
 
-An EOS EVM Node is a node process of the virtual Ethereum blockchain that validates virtual Ethereum blocks and serves the read requests coming from EOS EVM RPC. It will not produce blocks. However, it will consume blocks from an Antelope node and convert Antelope blocks into Virtual Ethereum blocks in a deterministic way.
+An EOS EVM Node is a node process of the virtual Ethereum blockchain that validates virtual Ethereum blocks and serves the read requests coming from EOS EVM RPC. It will not produce blocks. However, it will consume blocks from an EOS node and convert EOS blocks into Virtual Ethereum blocks in a deterministic way.
 
-To set it up, first we need to make up a genesis of the virtual Ethereum blockchain that maps to the same EVM state of the EVM account of the Antelope chain that just initialized in the previous steps.
+To set it up, first we need to make up a genesis of the virtual Ethereum blockchain that maps to the same EVM state of the EVM account of the EOS chain that just initialized in the previous steps.
 
-#### Antelope To EVM Block Mapping
+#### EOS To EVM Block Mapping
 
-We need to choose a block, let's say X, in Antelope as the starting point to build up the Virtual EVM blockchain. This block X need to be equal or eariler than the first EVM related transaction happened in Antelope.
+We need to choose a block, let's say X, in EOS as the starting point to build up the Virtual EVM blockchain. This block X need to be equal or eariler than the first EVM related transaction happened in EOS.
 
 For example:
 
-If we choose X = 2, it means that the virtual Ethereum blockchain will be built from the 2nd block of Antelope. As compared to Antelope, which have a 0.5 second block time, Ethereum protocol can only support block timestamp of up to second level precision. To make it compatible with Ethereum protocol, there is a block mapping mechanism between Antelope blocks and EVM virtual blocks, for example:
+If we choose X = 2, it means that the virtual Ethereum blockchain will be built from the 2nd block of EOS. As compared to EOS, which have a 0.5 second block time, Ethereum protocol can only support block timestamp of up to second level precision. To make it compatible with Ethereum protocol, there is a block mapping mechanism between EOS blocks and EVM virtual blocks, for example:
 
 ```txt
-Antelope block 3 -> EVM virtual block 1
-Antelope block 4 & 5 -> EVM virtual block 2
-Antelope block 6 & 7 -> EVM virtual block 3
-Antelope block 8 & 9 -> EVM virtual block 4
+EOS block 3 -> EVM virtual block 1
+EOS block 4 & 5 -> EVM virtual block 2
+EOS block 6 & 7 -> EVM virtual block 3
+EOS block 8 & 9 -> EVM virtual block 4
 ...
 ```
 
@@ -886,7 +886,7 @@ Antelope block 8 & 9 -> EVM virtual block 4
 
 Once we have decided the starting block number, the next step is to build up the correct genesis for the virtual Ethereum chain. Take this as example.
 
-Antelope block 2:
+EOS block 2:
 
 ```json
 {
@@ -920,7 +920,7 @@ Result:
 
 This determines the value of the "timestamp" field in EVM genesis.
 
-Set the "mixHash" field to be "0x + Antelope starting block id", e.g.  "0x000000026d392f1bfeddb000555bcb03ca6e31a54c0cf9edc23cede42bda17e6"
+Set the "mixHash" field to be "0x + EOS starting block id", e.g.  "0x000000026d392f1bfeddb000555bcb03ca6e31a54c0cf9edc23cede42bda17e6"
 
 Set the "nonce" field with "0x3e8". This is re-purposed to be the block time (in mill-second) of the EVM chain.
 
@@ -1039,7 +1039,7 @@ Response:
 
 #### Setup Proxy To Separate Read Requests From Write Requests
 
-The proxy program will separate Ethereum's write requests (such as eth_sendRawTransaction,eth_gasPrice) from other requests (treated as read requests). The write requests should go to the Transaction Wrapper (which wraps the ETH transaction into an Antelope transaction, sign it, and push to the Antelope blockchain). The read requests should go to EOS EVM RPC.
+The proxy program will separate Ethereum's write requests (such as eth_sendRawTransaction,eth_gasPrice) from other requests (treated as read requests). The write requests should go to the Transaction Wrapper (which wraps the ETH transaction into an EOS transaction, sign it, and push to the EOS blockchain). The read requests should go to EOS EVM RPC.
 
 In order to get it working, docker is required. To install docker in Linux, see https://docs.docker.com/engine/install/ubuntu/.
 
