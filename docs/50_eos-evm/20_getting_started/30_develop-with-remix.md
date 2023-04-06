@@ -1,5 +1,5 @@
 ---
-title: Develop EOS EVM Smart Contracts With Remix
+title: Develop With Remix
 ---
 
 ## Remix IDE
@@ -12,9 +12,9 @@ The Remix IDE comes in three flavors: the web application, the desktop applicati
 
 Navigate to the [Remix IDE web version](https://remix.ethereum.org/). One of the first thing you notice is the `FILE EXPLORER` panel on the left side of the screen. You can see that the Remix IDE already created a default workspace with three folders:
 
-- `Contracts`, 
+- `Contracts`,
 - `Scripts`,
-- `Tests` 
+- `Tests`
 
 and a `README.txt` file.
 
@@ -50,7 +50,7 @@ You will return to this panel later, after you deploy the smart contract, and al
 
 ### Connect Metamask Wallet
 
-To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [resources page](../20_eos-evm-network/30_resources.md).
+To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [helpful links](../50_helpful_links.md) section.
 
 ### Have Enough EOS Tokens
 

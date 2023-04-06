@@ -1,5 +1,5 @@
 ---
-title: How To Verify A Smart Contract
+title: Verify A Smart Contract
 ---
 
 This document shows the steps you need to follow to verify a smart contract through its flattened source code.

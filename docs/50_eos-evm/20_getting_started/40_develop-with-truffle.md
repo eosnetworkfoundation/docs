@@ -1,14 +1,6 @@
 ---
-title: Smart Contracts
+title: Configure Truffle
 ---
-
-## Solidity
-
-Currently the EOS EVM is using a standard EVM implementation. Therefore all existing solidity compilers targeting standard EVM environment should work.
-
-There might be some limitations in the smart contracts. Please check [EVM Compatibility](./20_compatibility/index.md) documentation for more information.
-
-## TruffleSuite
 
 [Truffle](https://www.trufflesuite.com/) is a widely used development environment and testing framework for Ethereum smart contracts. Thanks to the architecture of the EOS EVM, all the existing SDKs for Ethereum will work out of the box and your users will have the same experience as on Ethereum.
 
@@ -30,7 +22,3 @@ module.exports = {
 ```
 
 [Truffle quick start guide](https://trufflesuite.com/docs/truffle/quickstart/).
-
-## Remix
-
-Learn how to [Develop EOS EVM Smart Contracts With Remix](./50_develop-eos-evm-smart-contracts-with-remix.md) tutorial.
