@@ -45,8 +45,8 @@ The compilation results should be these two files:
 
 Compiled binaries from this repo:
 
-- `trustevm-node`: silkworm node process that receives data from the main EOS blockchain and converts to the EVM chain
-- `trustevm-rpc`: silkworm RPC server that provides service for view actions and other read operations
+- `trustevm-node`: EOS EVM node process that receives data from the main EOS blockchain and converts to the EVM chain
+- `trustevm-rpc`: EOS EVM RPC server that provides service for view actions and other read operations
 
 ## Run A Local Node With EOS EVM Service
 
@@ -56,8 +56,8 @@ In order to run an EOS EVM service, and thus have setup the EOS blockchain with 
 2. [Blockchain Bootstrap And Initialization](#2-blockchain-bootstrap-and-initialization)
 3. [Deploy And Initialize EVM Contract](#3-deploy-and-initialize-evm-contract)
 4. [Setup The Transaction Wrapper Service](#4-setup-the-transaction-wrapper-service)
-5. [Start EOS EVM node (a.k.a. Silkworm Node)](#5-start-eos-evm-node-aka-silkworm-node)
-6. [Start EOS EVM RPC (a.k.a. Silkworm RPC)](#6-start-eos-evm-rpc-aka-silkworm-rpc)
+5. [Start EOS EVM node](#5-start-eos-evm-node)
+6. [Start EOS EVM RPC](#6-start-eos-evm-rpc)
 7. [Setup The Flask Proxy](#7-setup-the-flask-proxy)
 
 ### 1. Run A Local EOS Node
@@ -860,7 +860,7 @@ Example output:
 }
 ```
 
-### 5. Start EOS EVM Node (a.k.a. Silkworm Node)
+### 5. Start EOS EVM Node
 
 An EOS EVM Node is a node process of the virtual Ethereum blockchain that validates virtual Ethereum blocks and serves the read requests coming from EOS EVM RPC. It will not produce blocks. However, it will consume blocks from an EOS node and convert EOS blocks into Virtual Ethereum blocks in a deterministic way.
 
@@ -965,7 +965,7 @@ mkdir ./chain-data
 ./trustevm-node --chain-data ./chain-data --plugin block_conversion_plugin --plugin blockchain_plugin --nocolor 1 --verbosity=5 --genesis-json=./genesis.json
 ```
 
-### 6. Start EOS EVM RPC (a.k.a. Silkworm RPC)
+### 6. Start EOS EVM RPC
 
 The EOS EVM RPC process provides Ethereum compatible RPC service for clients. It queries state (including blocks, accounts, storage) from an EOS EVM Node, and it can also run view actions requested by clients.
 
