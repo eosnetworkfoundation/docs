@@ -23,7 +23,7 @@ The EOS EVM Network Testnet Preview connection details are as follows:
 * `New RPC URL`: https://api.testnet.evm.eosnetwork.com/
 * `Currency Symbol`: EOS
 * `Block Explorer URL (Optional)`: https://explorer.testnet.evm.eosnetwork.com/
-* `Token Bridge`: https://bridge-testnet2.trust.one/
+* `Token Bridge`: https://bridge.testnet.evm.eosnetwork.com/
 
 Alternative endpoints can be found in the [helpful links](../50_helpful_links.md) section.
 
