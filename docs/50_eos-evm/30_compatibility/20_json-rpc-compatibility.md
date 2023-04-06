@@ -2,7 +2,7 @@
 title: JSON RPC Compatibility
 ---
 
-All the JSON-RPC calls are inherently supported thanks to the full functioning Geth Node. However, some methods are blocked in the current phase for the following reasons:
+All the JSON-RPC calls are inherently supported thanks to the full functioning Silkworm Node. However, some methods are blocked in the current phase for the following reasons:
 
 * Some methods are deprecated or discontinued.
 * Some methods are designed for the local node scenario. They are not exposed to the public API, however you can access them when you deploy your own EOS EVM node.
@@ -12,9 +12,9 @@ All the JSON-RPC calls are inherently supported thanks to the full functioning G
 
 | RPC Method                               | Destination |
 | ---------------------------------------- | ----------- |
-| web3\_clientVersio                       | Geth        |
+| web3\_clientVersion                      | Silkworm    |
 | web3\_sha3                               | Block       |
-| net\_version                             | Geth        |
+| net\_version                             | Silkworm    |
 | net\_peerCount                           | Block       |
 | net\_listening                           | Block       |
 | eth\_protocolVersion                     | Block       |
@@ -24,27 +24,27 @@ All the JSON-RPC calls are inherently supported thanks to the full functioning G
 | eth\_hashrate                            | Block       |
 | eth\_gasPrice                            | Wrapper     |
 | eth\_accounts                            | Block       |
-| eth\_blockNumber                         | Geth        |
-| eth\_getBalance                          | Geth        |
-| eth\_getStorageAt                        | Geth        |
-| eth\_getTransactionCount                 | Geth        |
-| eth\_getBlockTransactionCountByHash      | Geth        |
-| eth\_getBlockTransactionCountByNumber    | Geth        |
+| eth\_blockNumber                         | Silkworm    |
+| eth\_getBalance                          | Silkworm    |
+| eth\_getStorageAt                        | Silkworm    |
+| eth\_getTransactionCount                 | Silkworm    |
+| eth\_getBlockTransactionCountByHash      | Silkworm    |
+| eth\_getBlockTransactionCountByNumber    | Silkworm    |
 | eth\_getUncleCountByBlockHash            | Block       |
 | eth\_getUncleCountByBlockNumber          | Block       |
-| eth\_getCode                             | Geth        |
+| eth\_getCode                             | Silkworm    |
 | eth\_sign                                | Block       |
 | eth\_signTransaction                     | Block       |
 | eth\_sendTransaction                     | Block       |
 | eth\_sendRawTransaction                  | Wrapper     |
-| eth\_call                                | Geth        |
+| eth\_call                                | Silkworm    |
 | eth\_estimateGas                         | Wrapper     |
-| eth\_getBlockByHash                      | Geth        |
-| eth\_getBlockByNumber                    | Geth        |
-| eth\_getTransactionByHash                | Geth        |
-| eth\_getTransactionByBlockHashAndIndex   | Geth        |
-| eth\_getTransactionByBlockNumberAndIndex | Geth        |
-| eth\_getTransactionReceipt               | Geth        |
+| eth\_getBlockByHash                      | Silkworm    |
+| eth\_getBlockByNumber                    | Silkworm    |
+| eth\_getTransactionByHash                | Silkworm    |
+| eth\_getTransactionByBlockHashAndIndex   | Silkworm    |
+| eth\_getTransactionByBlockNumberAndIndex | Silkworm    |
+| eth\_getTransactionReceipt               | Silkworm    |
 | eth\_getUncleByBlockHashAndIndex         | Block       |
 | eth\_getUncleByBlockNumberAndIndex       | Block       |
 | eth\_getCompilers                        | Block       |
