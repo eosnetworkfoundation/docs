@@ -2,17 +2,17 @@
 title: EVM Compatibility
 ---
 
-EOS EVM is fully compatible with the Ethereum EVM specification, including all precompiles and opcodes. However, there are some EOS EVM differences:
+EOS EVM is fully compatible with the Ethereum EVM specification, including all precompiles and opcodes. However, there are some key EOS EVM differences:
 
 ## Precompiles
 
-EOS EVM supports all precompiles supported by Ethereum, with the following distinctions:
+EOS EVM supports all precompiles supported by Ethereum, with the following provisions:
 
 ### `modexp (0x05)`
 
-The exponent bit size cannot exceed either the base bit size or the modulus bit size.
+The `exponent` bit size cannot exceed either the `base` bit size or the `modulus` bit size.
 
-> ℹ️ Info  
+> ℹ️ Unmet limits  
 If the above limits are not met, the precompile will throw an exception and the transaction will be halted.
 
 ## Opcodes
@@ -26,25 +26,19 @@ This opcode currently does not return the hash of the specified block contents, 
 where:
 * `block_height`: specified 64-bit block height
 * `chain_id`: used as a 64-bit salt value
-* `msg`: concatenation of a leading zero byte constant, the `block_height`, and the `chain_id`, in big endian format.
+* `msg`: concatenation of a leading zero byte (0x00) constant, the `block_height`, and the `chain_id`, in big endian format.
 
-> ℹ️ Info  
+> ℹ️ Version byte  
 The leading zero byte in the hash is a version byte which may change if a new blockhash scheme is introduced in the future.
 
 ### `COINBASE (0x41)`
 
-This opcode always returns 0 (zero).
-
-> ℹ️ Info  
-This value might change in the future to return the address of the EOS EVM engine deployment, or the address of the account receiving the block rewards.
+This opcode returns the address of the EOS EVM contract account, `eosio.evm`. The current address is `0xbbbbbbbbbbbbbbbbbbbbbbbb5530ea015b900000`.
 
 ### `DIFFICULTY (0x44)`
 
-This opcode always returns 1 (one) as the default difficulty since there is no hash difficulty in the underlying EOS consensus protocol.
-
-> ℹ️ Info  
-This value might change in the future to return the EOS EVM's perceived randomness value - see [EIP-4399](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-4399.md#abstract).
+This opcode currently returns 1 (one) by default since there is no hash difficulty in the underlying EOS consensus protocol.
 
 ### `GASLIMIT (0x45)`
 
-This opcode always returns `INT64_MAX` or `0x7FFFFF..FF` (2^63-1).
+This opcode currently returns `0x7FFFFFFFFFF` (2^43-1) as the maximum gas limit in EOS EVM.
