@@ -228,54 +228,62 @@ This is the full list of built-in types:
 
 | Integral Types | Description |
 | --- | --- |
+| Header file to include | `<eosio/eosio.hpp>` |
 | `bool` | Boolean (true/false) |
-| `int8` | Signed 8-bit integer |
-| `uint8` | Unsigned 8-bit integer |
-| `int16` | Signed 16-bit integer |
-| `uint16` | Unsigned 16-bit integer |
-| `int32` | Signed 32-bit integer |
-| `uint32` | Unsigned 32-bit integer |
-| `int64` | Signed 64-bit integer |
-| `uint64` | Unsigned 64-bit integer |
-| `int128` | Signed 128-bit integer |
-| `uint128` | Unsigned 128-bit integer |
-| `varint32` | Variable-length signed 32-bit integer |
-| `varuint32` | Variable-length unsigned 32-bit integer |
+| `int8_t` | Signed 8-bit integer |
+| `uint8_t` | Unsigned 8-bit integer |
+| `int16_t` | Signed 16-bit integer |
+| `uint16_t` | Unsigned 16-bit integer |
+| `int32_t` | Signed 32-bit integer |
+| `uint32_t` | Unsigned 32-bit integer |
+| `int64_t` | Signed 64-bit integer |
+| `uint64_t` | Unsigned 64-bit integer |
+| `int128_t` | Signed 128-bit integer |
+| `uint128_t` | Unsigned 128-bit integer |
+| `signed_int` | Variable-length signed 32-bit integer |
+| `unsigned_int` | Variable-length unsigned 32-bit integer |
 
 | Float Types | Description |
 | --- | --- |
-| `float32` | 32-bit floating-point number |
-| `float64` | 64-bit floating-point number |
+| Header file to include | `<eosio/eosio.hpp>` |
+| `float` | 32-bit floating-point number |
+| `double` | 64-bit floating-point number |
 | `float128` | 128-bit floating-point number |
 
 | Time Types | Description |
 | --- | --- |
+| Header file to include | `<eosio/eosio.hpp>` |
 | `time_point` | Point in time |
 | `time_point_sec` | Point in time with second precision |
 | `block_timestamp_type` | Block timestamp |
 
 | Name Type | Description |
 | --- | --- |
+| Header file to include | `<eosio/eosio.hpp>` |
 | `name` | Account name |
 
 | Blob Types | Description |
 | --- | --- |
+| Header file to include | `<eosio/eosio.hpp>` |
 | `bytes` | Raw byte sequence |
 | `string` | String |
 
 | Checksum Types | Description |
 | --- | --- |
+| Header file to include | `<eosio/eosio.hpp>` |
 | `checksum160` | 160-bit checksum |
 | `checksum256` | 256-bit checksum |
 | `checksum512` | 512-bit checksum |
 
 | Cryptography Types | Description |
 | --- | --- |
+| Header file to include | `<eosio/crypto.hpp>` |
 | `public_key` | Public key |
 | `signature` | Signature |
 
 | Asset Types | Description |
 | --- | --- |
+| Header file to include | `<eosio/asset.hpp>` |
 | `symbol` | Asset symbol |
 | `symbol_code` | Asset symbol code |
 | `asset` | Asset |
