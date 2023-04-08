@@ -228,30 +228,30 @@ This is the full list of built-in types:
 
 | Integral Types | Description |
 | --- | --- |
-| `uint8_t` | Boolean (true/false) |
-| `int8_t` | Signed 8-bit integer |
-| `uint8_t` | Unsigned 8-bit integer |
-| `int16_t` | Signed 16-bit integer |
-| `uint16_t` | Unsigned 16-bit integer |
-| `int32_t` | Signed 32-bit integer |
-| `uint32_t` | Unsigned 32-bit integer |
-| `int64_t` | Signed 64-bit integer |
-| `uint64_t` | Unsigned 64-bit integer |
-| `int128_t` | Signed 128-bit integer |
-| `uint128_t` | Unsigned 128-bit integer |
-| `fc::signed_int` | Variable-length signed 32-bit integer |
-| `fc::unsigned_int` | Variable-length unsigned 32-bit integer |
+| `bool` | Boolean (true/false) |
+| `int8` | Signed 8-bit integer |
+| `uint8` | Unsigned 8-bit integer |
+| `int16` | Signed 16-bit integer |
+| `uint16` | Unsigned 16-bit integer |
+| `int32` | Signed 32-bit integer |
+| `uint32` | Unsigned 32-bit integer |
+| `int64` | Signed 64-bit integer |
+| `uint64` | Unsigned 64-bit integer |
+| `int128` | Signed 128-bit integer |
+| `uint128` | Unsigned 128-bit integer |
+| `varint32` | Variable-length signed 32-bit integer |
+| `varuint32` | Variable-length unsigned 32-bit integer |
 
 | Float Types | Description |
 | --- | --- |
-| `float` | 32-bit floating-point number |
-| `double` | 64-bit floating-point number |
-| `float128_t` | 128-bit floating-point number |
+| `float32` | 32-bit floating-point number |
+| `float64` | 64-bit floating-point number |
+| `float128` | 128-bit floating-point number |
 
 | Time Types | Description |
 | --- | --- |
-| `fc::time_point` | Point in time |
-| `fc::time_point_sec` | Point in time with second precision |
+| `time_point` | Point in time |
+| `time_point_sec` | Point in time with second precision |
 | `block_timestamp_type` | Block timestamp |
 
 | Name Type | Description |
@@ -265,14 +265,14 @@ This is the full list of built-in types:
 
 | Checksum Types | Description |
 | --- | --- |
-| `checksum160_type` | 160-bit checksum |
-| `checksum256_type` | 256-bit checksum |
-| `checksum512_type` | 512-bit checksum |
+| `checksum160` | 160-bit checksum |
+| `checksum256` | 256-bit checksum |
+| `checksum512` | 512-bit checksum |
 
 | Cryptography Types | Description |
 | --- | --- |
-| `public_key_type` | Public key |
-| `signature_type` | Signature |
+| `public_key` | Public key |
+| `signature` | Signature |
 
 | Asset Types | Description |
 | --- | --- |
