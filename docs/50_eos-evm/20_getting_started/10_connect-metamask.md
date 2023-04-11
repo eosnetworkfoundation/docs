@@ -22,6 +22,15 @@ To add the EOS EVM network to your Metamask wallet follow the steps below:
 
 ![metamask_add_network_form](./images/metamask_add_network_form.png)
 
+The EOS EVM Network connection details are as follows:
+
+* `Network Name`: EOS EVM Network
+* `Chain ID`: 15557
+* `New RPC URL`: https://api.evm.eosnetwork.com/
+* `Currency Symbol`: EOS
+* `Block Explorer URL (Optional)`: https://explorer.evm.eosnetwork.com/
+* `Token Bridge`: https://bridge.evm.eosnetwork.com/
+
 The EOS EVM Network Testnet Preview connection details are as follows:
 
 * `Network Name`: EOS EVM Network Testnet
