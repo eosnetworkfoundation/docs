@@ -15,7 +15,7 @@ module.exports = {
   // Use the address of your favorite endpoint.
     eosevm: {
       host: "api.evm.eosnetwork.com",
-      port: 15557,
+      port: 17777,
       network_id: "*"
     }
   }
