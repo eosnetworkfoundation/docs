@@ -4,7 +4,7 @@ title: Architecture
 
 ## Overview
 
-The EOS EVM implements as a smart contract which runs on the EOS network, we shall call it form this point forward the `EVM contract`. To send transactions to the EOS EVM network one has to send transactions to the EVM contract.
+The EOS EVM implements a smart contract which runs on the EOS network, we shall call it form this point forward the `EVM contract`. To send transactions to the EOS EVM network one has to send transactions to the EVM contract.
 
 To achieve the complete RPC compatibility, a full functioning Ethereum node is utilized. The EOS EVM testnet and mainnet use an Ethereum node built on top of Silkworm node, we shall call it from this point forward the `EOS EVM node`.
 
