@@ -240,6 +240,7 @@ This is the full list of built-in types:
 | `uint64_t` | Unsigned 64-bit integer |
 | `int128_t` | Signed 128-bit integer |
 | `uint128_t` | Unsigned 128-bit integer |
+| Header file to include | `<eosio/varint.hpp>` |
 | `signed_int` | Variable-length signed 32-bit integer |
 | `unsigned_int` | Variable-length unsigned 32-bit integer |
 
@@ -248,7 +249,6 @@ This is the full list of built-in types:
 | Header file to include | `<eosio/eosio.hpp>` |
 | `float` | 32-bit floating-point number |
 | `double` | 64-bit floating-point number |
-| `float128` | 128-bit floating-point number |
 
 | Time Types | Description |
 | --- | --- |
