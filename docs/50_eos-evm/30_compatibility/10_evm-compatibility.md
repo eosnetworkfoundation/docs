@@ -4,6 +4,16 @@ title: EVM Compatibility
 
 EOS EVM is fully compatible with the Ethereum EVM specification, including all precompiles and opcodes. However, there are some key EOS EVM differences:
 
+## Nested Call Limit
+
+Due to a limitation in the EOS EVM Contract, EOS EVM currently supports a maximum of five (5) nested calls. The EOS EVM team will keep optimizing designs to increase this number.
+
+## Reserved Addresses
+
+EVM addresses that begin with twelve `0xbb` bytes, e.g. `0xbbbbbbbbbbbbbbbbbbbbbbbb5530ea015b900000`, are reserved for bridging EOS between native EOS and EOS within EVM. Sending messages to these addresses with a value may initiate a bridge transaction or abort the transaction depending on various bridge rules.
+
+Also, while unlikely, any contract creation which results in a reserved address will also abort the transaction.
+
 ## Precompiles
 
 EOS EVM supports all precompiles supported by Ethereum, with the following provisions:
