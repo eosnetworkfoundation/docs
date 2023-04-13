@@ -8,7 +8,10 @@ The EOS EVM implements a smart contract which runs on the EOS network, we shall 
 
 To achieve the complete RPC compatibility, a full functioning Ethereum node is utilized. The EOS EVM testnet and mainnet use an Ethereum node built on top of Silkworm node, we shall call it from this point forward the `EOS EVM Node`.
 
-All the RPC requests, reads and writes, sent by the EOS EVM clients, are first processed by a proxy component, which redirects the requests as follows: the reads to the EOS EVM RPC component and the writes to the Transaction Wrapper service.
+All the RPC requests, reads and writes, sent by the EOS EVM clients, are first processed by a proxy component, which redirects the requests as follows:
+
+- the reads to the EOS EVM RPC component, and
+- the writes to the Transaction Wrapper service.
 
 ### The Read Requests
 
