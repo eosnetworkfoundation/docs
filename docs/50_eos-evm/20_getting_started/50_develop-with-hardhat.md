@@ -8,6 +8,23 @@ Therefore, the official Hardhat tutorials apply to EOS EVM perfectly.
 
 Just do not forget to modify the config in `hardhat.config.js` file:
 
+**To connect to EOS EVM mainnet**
+
+```javascript
+module.exports = {
+  networks: {
+    // Use the address of your favorite endpoint.
+    eosevm: {
+      host: "api.evm.eosnetwork.com",
+      port: 17777,
+      network_id: "*"
+    }
+  }
+};
+```
+
+**To connect to EOS EVM testnet**
+
 ```javascript
 module.exports = {
   networks: {
@@ -19,7 +36,6 @@ module.exports = {
     }
   }
 };
-
 ```
 
 [Hardhat quick start tutorial](https://hardhat.org/tutorial).

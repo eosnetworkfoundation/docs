@@ -7,6 +7,23 @@ title: Configure Truffle
 Therefore, the official Truffle tutorials apply to EOS EVM perfectly.
 Just do not forget to modify the config in `truffle-config.js` file:
 
+**To connect to EOS EVM mainnet**
+
+```javascript
+module.exports = {
+  networks: {
+  // Use the address of your favorite endpoint.
+    eosevm: {
+      host: "api.evm.eosnetwork.com",
+      port: 17777,
+      network_id: "*"
+    }
+  }
+};
+```
+
+**To connect to EOS EVM testnet**
+
 ```javascript
 module.exports = {
   networks: {
@@ -18,7 +35,6 @@ module.exports = {
     }
   }
 };
-
 ```
 
 [Truffle quick start guide](https://trufflesuite.com/docs/truffle/quickstart/).
