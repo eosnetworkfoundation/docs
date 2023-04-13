@@ -4,6 +4,10 @@ title: EVM Compatibility
 
 EOS EVM is fully compatible with the Ethereum EVM specification, including all precompiles and opcodes. However, there are some key EOS EVM differences:
 
+## Nested Call Limit
+
+Due to a limitation in the EOS EVM Contract, EOS EVM currently supports a maximum of five (5) nested calls. The EOS EVM team will keep optimizing designs to increase this number.
+
 ## Precompiles
 
 EOS EVM supports all precompiles supported by Ethereum, with the following provisions:
