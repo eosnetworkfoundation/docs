@@ -9,3 +9,4 @@ Learn about EOS EVM
 - [Compatibility](./30_compatibility/index.md)
 - [Architecture](./40_architecture.md)
 - [Helpful Links](./50_helpful_links.md)
+- [Supported Tokens](./60_supported_tokens.md)

@@ -1,5 +1,5 @@
 ---
-title: Tokens list
+title: Supported tokens
 ---
 
 Below is an official list of tokens supported by the EOS EVM.
