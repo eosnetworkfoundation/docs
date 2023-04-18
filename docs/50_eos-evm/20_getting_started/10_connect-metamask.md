@@ -40,6 +40,6 @@ The EOS EVM Network Testnet Preview connection details are as follows:
 * `Block Explorer URL (Optional)`: https://explorer.testnet.evm.eosnetwork.com/
 * `Token Bridge`: https://bridge.testnet.evm.eosnetwork.com/
 
-Alternative endpoints can be found in the [helpful links](../50_helpful_links.md) section.
+Alternative endpoints can be found in the [helpful links](../60_helpful_links.md) section.
 
 Yet another way is to find the network you want to connect to at [Chainlist.org](https://chainlist.org/), and you can add the configuration to your wallet through that service.
