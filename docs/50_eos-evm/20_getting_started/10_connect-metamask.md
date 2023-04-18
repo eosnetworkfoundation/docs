@@ -34,7 +34,7 @@ The EOS EVM Network Mainnet connection details are as follows:
 The EOS EVM Network Testnet Preview connection details are as follows:
 
 * `Network Name`: EOS EVM Network Testnet
-* `Chain ID`: 15557
+* `Chain ID`: 17777
 * `New RPC URL`: https://api.testnet.evm.eosnetwork.com/
 * `Currency Symbol`: EOS
 * `Block Explorer URL (Optional)`: https://explorer.testnet.evm.eosnetwork.com/
