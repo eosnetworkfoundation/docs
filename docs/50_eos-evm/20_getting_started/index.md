@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started with EOS EVM
 ---
 
 Thanks to the high API compatibility of the EOS EVM, most popular wallets and IDEs should work on EOS EVM seamlessly.

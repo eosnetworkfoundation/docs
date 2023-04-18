@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started with Smart Contracts
 ---
 
 Get started with EOS Smart Contracts:

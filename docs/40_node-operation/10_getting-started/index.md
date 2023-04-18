@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started with Node Operation
 ---
 
 Get started with EOS Node Operation:
