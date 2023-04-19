@@ -9,7 +9,7 @@ The EOS EVM native token is the EOS token.
 
 Interoperability is a key part of the EOS EVM design. Therefore the EVM design allows the economic value to flow freely between the native and EVM layers. This is where the EVM’s trustless bridge comes into play.
 
-TO DO: add diagram trustless bridge
+![EOS EVM Trustless Bridge](./resources/EOS-EVM_trustless_bridge.png)
 
 With the trustless bridge, users do not have to rely on third-party oracles to move tokens from EOS native to EOS EVM. Instead, they can simply send their tokens to the EOS EVM Contract, eosio.evm, and enter the address of their EOS EVM wallet in the memo field. This will move the asset from the native layer to the designated address on the EVM. When a user would like to move assets back to EOS native, the bridge allows an EVM transaction to trigger a transfer of EOS from the EOS EVM Contract to the user-specified EOS native account with an optional memo. The bridge frontend makes it easy for users to construct these types of EVM transactions.
 
@@ -31,7 +31,7 @@ To solve this, if a user only wishes to interact with EOS EVM, they can simply g
 
 The long term goal for EOS EVM is to enable functionality to support multiple tokens in the future besides EOS. In the meantime, the Multichain bridge will make it easy for dApps to bring their tokens into the EOS EVM economy.
 
-TO DO: add diagram Bridge To EOSEnglish
+![EOS EVM Bridge To EOS](./resources/EOS-EVM_bridge_to_EOS.png)
 
 ## EOS EVM Gas Model
 
@@ -63,7 +63,7 @@ The percentage of the gas fee routed to the internal balance of this miner is de
 
 The second cost is the internal EVM operational cost, which primarily consist of the EOS EVM Contract’s RAM consumption. This cost is covered by the remaining portion of the gas fees of EVM transactions that are not routed to the miner. Again, tuning the miner cut and minimum gas price parameters appropriately ensures sufficient fees are collected for the system to remain profitable. These fees accumulate in a special internal balance of the eosio.evm account which can be withdrawn with authorization of its active permission at any point in time.
 
-TO DO: add diagram Token Flow
+![EOS EVM Token Flow](./resources/EOS-EVM_token_flow.png)
 
 ### EOS Token Enhancements
 
