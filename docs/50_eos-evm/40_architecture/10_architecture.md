@@ -1,8 +1,6 @@
 ---
-title: Architecture
+title: Overview
 ---
-
-## Overview
 
 The EOS EVM implements a smart contract which runs on the EOS network, we shall call it form this point forward the `EVM Contract`. To send transactions to the EOS EVM network one has to send transactions to the EVM Contract. The EOS EVM Contract is fully compatible with the Ethereum EVM except for some small differences which can be consulted in the [](./30_compatibility/10_evm-compatibility.md) section.
 
