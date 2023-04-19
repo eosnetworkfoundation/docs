@@ -1,19 +1,19 @@
 ---
-title: How To Connect Metamask
+title: How To Connect MetaMask
 ---
 
 ## The EOS EVM Bridge Way
 
-To quickly set up your Metamask wallet you can visit the EOS EVM Bridge application and connect your wallet. You will then be led through a process that adds the EOS EVM network to your Metamask automatically.
+To quickly set up your MetaMask wallet you can visit the EOS EVM Bridge application and connect your wallet. You will then be led through a process that adds the EOS EVM network to your MetaMask automatically.
 
 - [Mainnet](https://bridge.evm.eosnetwork.com/)
 - [Testnet](https://bridge.testnet.evm.eosnetwork.com/)
 
 ## The Step by Step Way
 
-Alternatively, to manually add the EOS EVM network to your Metamask wallet follow the steps below:
+Alternatively, to manually add the EOS EVM network to your MetaMask wallet follow the steps below:
 
-1. Open the Metamask wallet and click on the network in the top center:
+1. Open the MetaMask wallet and click on the network in the top center:
 
 ![metamask top network button](./images/metamask_top_network_button.png)
 

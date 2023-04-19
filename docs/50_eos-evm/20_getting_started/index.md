@@ -4,7 +4,7 @@ title: Getting Started with EOS EVM
 
 Thanks to the high API compatibility of the EOS EVM, most popular wallets and IDEs should work on EOS EVM seamlessly.
 
-- [Connect Metamask](./10_connect-metamask.md)
+- [Connect MetaMask](./10_connect-metamask.md)
 - [Smart Contracts](./20_smart-contracts.md)
 - [Develop with Remix](./30_develop-with-remix.md)
 - [Configure Truffle](./40_develop-with-truffle.md)
