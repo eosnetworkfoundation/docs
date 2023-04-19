@@ -34,6 +34,6 @@ It accomplishes this through the following steps:
 
 Transaction Wrapper also supports the `eth_gasPrice` RPC method, despite the fact that it is a read method, because its implementation also depends on access to the chain API of an EOS node. In particular, it simply grabs the minimum gas price configured in the EOS EVM Contract from the appropriate table and returns it to the caller.
 
-![Overall Design of the EOS EVM](./20_getting_started/resources/EOS-EVM_design_drawio.svg)
+![Overall Design of the EOS EVM](../20_getting_started/resources/EOS-EVM_design_drawio.svg)
 
 This architecture allows the possibility for other implementations of Ethereum nodes to be used if it is deemed necessary for some specific scenarios.
