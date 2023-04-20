@@ -64,17 +64,3 @@ The percentage of the gas fee routed to the internal balance of this miner is de
 The second cost is the internal EVM operational cost, which primarily consist of the EOS EVM Contract’s RAM consumption. This cost is covered by the remaining portion of the gas fees of EVM transactions that are not routed to the miner. Again, tuning the miner cut and minimum gas price parameters appropriately ensures sufficient fees are collected for the system to remain profitable. These fees accumulate in a special internal balance of the eosio.evm account which can be withdrawn with authorization of its active permission at any point in time.
 
 ![EOS EVM Token Flow](./resources/EOS-EVM_token_flow.png)
-
-### EOS Token Enhancements
-
-#### New Utility
-
-Because EOS token is utilized as the native token for the EOS EVM, a new use case for the EOS token has been created and is expected to be highly utilized with the new projects deployed on the EOS EVM network.
-
-#### RPC Profits Burn
-
-For current version, ENF maintains a reliable RPC endpoint for the community to utilize. Because the ENF expenses, including RPC nodes, are already being subsidized by the network, the ENF does not take a profit from the fees left over after covering the cost of network resources. Instead, the ENF has made a commitment to burn all the profit that it collects from running its RPC service.
-
-#### Independent RPCs
-
-Anyone is welcome to run their own RPC nodes rather than relying on the nodes run by the ENF. Currently the only automated mechanism for those running RPC nodes to get rewarded via the EOS EVM Contract is through the miner cut of the gas fees. This is designed to only cover the minimal costs of getting EVM transactions onto the EOS blockchain and it is not designed to support the costs of a full RPC services including read requests. The long term goal for EOS EVM is for the network to not rely on the ENF to operate nodes. Therefore in the future additional incentive models will be explored to address this aspect of the ecosystem.
