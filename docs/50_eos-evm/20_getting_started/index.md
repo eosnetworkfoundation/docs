@@ -1,5 +1,5 @@
 ---
-title: Getting Started with EOS EVM
+title: Getting Started
 ---
 
 <head>
