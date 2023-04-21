@@ -2,6 +2,10 @@
 title: Getting Started with EOS EVM
 ---
 
+<head>
+  <title>Getting Started with EOS EVM</title>
+</head>
+
 Thanks to the high API compatibility of the EOS EVM, most popular wallets and IDEs should work on EOS EVM seamlessly.
 
 - [Connect MetaMask](./10_connect-metamask.md)

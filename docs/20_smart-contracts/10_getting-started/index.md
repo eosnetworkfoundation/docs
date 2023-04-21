@@ -1,6 +1,10 @@
 ---
-title: Getting Started with Smart Contracts
+title: Getting Started
 ---
+
+<head>
+  <title>Getting Started with Smart Contracts</title>
+</head>
 
 Get started with EOS Smart Contracts:
 
