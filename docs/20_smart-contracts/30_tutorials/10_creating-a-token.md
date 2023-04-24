@@ -618,8 +618,11 @@ If you'd like to simply use the source code which is used in most fungible token
 repository to grab it. Not only is this code battle tested, but it powers the underlying EOS token.
 
 Please note that the standard `eosio.token` contract differs considerably from this tutorial. It is a more complex
-contract which allows for more advanced features. You will need to `create` new tokens with it, and then `issue` them
-to an account before they can be transferred.
+contract which allows for more advanced features such as allowing users interacting with the contract to pay for their own RAM, 
+or creating multiple tokens within a single contract. 
+
+You will need to `create` a new token with it, and then `issue` those tokens to an account before they can be transferred. 
+You will also need to `open` a balance for an account before you can transfer tokens over to it.
 
 
 ## Challenge
