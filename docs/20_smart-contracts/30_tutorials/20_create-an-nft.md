@@ -693,7 +693,9 @@ CONTRACT nft : public contract {
 ```
 </details>
 
+## Challenge
 
+This NFT contract has no way to burn NFTs. Add a `burn` action that allows the token owner to burn their own NFTs.
 
 
 
