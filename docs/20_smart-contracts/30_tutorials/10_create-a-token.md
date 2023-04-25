@@ -1,5 +1,5 @@
 ---
-title: "Creating a Token"
+title: "Create a Token"
 ---
 
 ## What is a token?
@@ -13,7 +13,7 @@ and the actions that can be taken to manipulate the tokens.
 
 There are two widely used types of blockchain tokens: 
 - **Fungible tokens** are interchangeable and every token is equal to every other, like gold in a game 
-- **Non-fungible tokens** are unique and cannot be equally exchanged, like a collectible card
+- **Non-fungible tokens** are unique, like a collectible card or a piece of land
 
 In this tutorial you will create an in-game currency called **GOLD**, which is a *fungible token*. 
 
@@ -134,7 +134,9 @@ Put this below the `TOKEN_SYMBOL` you just added.
 
 You just created a `balance` structure which defines the data that will be stored in the `balances` table.
 Then, you defined the `balances_table` type which is the definition of a table that will store rows of the `balance` model.
-Later you will construct that table into an object that you can use to store and retrieve data from the blockchain.
+
+Later you will use the `balances_table` type to instantiate a reference to the `balances` table, and use that reference to 
+store and retrieve data to/from the blockchain.
 
 The `owner` property is of type `name` (EOS account name) and will be used to identify the account that owns the tokens.
 The `name` type is a way to pack a string into a 64-bit integer efficiently. It is limited to a-z, 1-5, and a period, and can 
@@ -157,8 +159,8 @@ We're using a different type of table here, a `singleton`. A `singleton` is a ta
 This is perfect for storing things like configurations. We will use it to store the total supply of the token as you 
 only have the one token in your contract.
 
-You can see that we also didn't define a structure to store as we only need the `asset` type to store the total supply,
-though you _could_ define a structure if you wanted to.
+You can see that we also didn't define a custom structure to store as we only needed the `asset` type to store 
+the total supply.
 
 ## Filling in the actions
 
@@ -205,9 +207,13 @@ Now let's start dealing with the balances table.
 ```
 
 We took the `balances_table` type we defined earlier and instantiated a new `balances_table` object. We passed in the 
-`get_self()` function as the first parameter, which returns the contract account's name. We passed in the `get_self().value`
-as the second parameter, which returns the `uint64_t` representation of the contract account's name. This is the scope 
-that the `balances` table will be stored in (scope is just a way to partition data within a table). 
+`get_self()` function as the first parameter (the `code` parameter), which returns the contract account's name. We passed in the `get_self().value`
+as the second parameter (the `scope` parameter), which returns the `uint64_t` representation of the contract account's name.
+
+> ❔ **Scopes**: Scopes are a way to group rows in a table together. You can think of it as a folder that
+> contains all the rows in the table. In this case, we are using the contract account's name as the scope, so all the
+> rows in the `balances` table will be grouped together under the contract account's name. If you'd
+> like to learn more about scopes, check out the [Getting Started with Smart Contracts Guide](/docs/20_smart-contracts/10_getting-started/40_smart_contract_basics/#multi-index-instantiate-with-code-and-scope).
 
 Next, we need to check if the `to` account already has a balance. We can do this by using the `find` function on the
 `balances` table.
