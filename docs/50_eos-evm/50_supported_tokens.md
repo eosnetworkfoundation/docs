@@ -2,7 +2,11 @@
 title: Supported tokens
 ---
 
-Below is an official list of tokens supported by the EOS EVM.
+> ⚠ Disclaimer
+> Please note that none of these tokens or smart contracts are endorsed by the ENF. Engaging with these must be done at the risk of the user. 
+> All the resources within this document are to be taken as educational material and NOT financial advice. Trading and/or investing in 
+> cryptocurrency and/or any related commodities/securities/derivatives/instruments is extremely high risk and you can very easily 
+> lose all of your investment capital!
 
 | Symbol    | Token Name      | Address                                                                |
 |-----------|-----------------|------------------------------------------------------------------------|
