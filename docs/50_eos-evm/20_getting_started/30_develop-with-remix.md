@@ -48,7 +48,7 @@ You will return to this panel later, after you deploy the smart contract, and al
 
 ## Connect To EOS EVM
 
-### Connect Metamask Wallet
+### Connect MetaMask Wallet
 
 To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [helpful links](../60_helpful_links.md) section.
 
@@ -69,18 +69,18 @@ To connect the Remix IDE to the EOS EVM network:
 
 1. Click the `Deploy & run transactions` button on the left side vertical menu to switch to the `Deploy & run transactions` panel.
 2. Click the `ENVIRONMENT` drop-down list.
-3. Select from the `Injected Provider - Metamask` option.
+3. Select from the `Injected Provider - MetaMask` option.
 
 \
 ![remix deploy and run trx](./resources/remix_deploy_run_trx_panel.png)
 
-Right after you successfully selected `Injected Provider - Metamask` option from the drop-down list, the `ACCOUNT` field gets populated with your wallet address. Make note of it and make sure it is indeed the same address as your Metamask wallet.
+Right after you successfully selected `Injected Provider - MetaMask` option from the drop-down list, the `ACCOUNT` field gets populated with your wallet address. Make note of it and make sure it is indeed the same address as your MetaMask wallet.
 
 ## Deploy The Smart Contract
 
 1. Make sure the `CONTRACT (Compiled by Remix)` field shows the value `Storage/contracts - 1_Storage.sol`. If not, click on the drop-down list and select it.
 2. Click Deploy button
-3. Confirm the transaction on the Metamask wallet
+3. Confirm the transaction on the MetaMask wallet
 4. Wait for the transaction to complete on the blockchain
 
 When the transaction is done you will see details in the bottom panel. Notice the status of the transaction and the transaction hash. You can open the [blockchain explorer](https://explorer.evm.eosnetwork.com/) and search for the transaction hash to see it on chain.
@@ -99,7 +99,7 @@ To send an instance of the `store` action to your smart contract you first set t
 
 ![remix deployed contracts panel 2](./resources/remix_deployed_contracts_panel_2.png)
 
-The click on the `store` or on the `transact` button opens up the Metamask wallet with the transaction you are about to send to the blockchain. This transaction packs the `store` action with the parameter you typed. Go ahead and click on the `Confirm` Metamask button to sign the transaction and send it to the blockchain.
+The click on the `store` or on the `transact` button opens up the MetaMask wallet with the transaction you are about to send to the blockchain. This transaction packs the `store` action with the parameter you typed. Go ahead and click on the `Confirm` MetaMask button to sign the transaction and send it to the blockchain.
 
 Wait for the transaction to be confirmed on the blockchain and note on the Remix log panel, on the bottom of the screen, the status of the transaction, the transaction hash, and the decoded input parameter value.
 

@@ -123,7 +123,6 @@ The producer and consumer of the signals defined in the controller and their lif
 | --- | --- |
 | controller | setting the current lib of wasm_interface |
 | chain_plugin | forward data to irreversible_block_channel |
-| mongodb_plugin | forward the data to irreversible_block_state_queue |
 
 #### accepted_transaction (carry transaction_metadata_ptr)
 
@@ -142,7 +141,6 @@ The producer and consumer of the signals defined in the controller and their lif
 | Module | Usage |
 | --- | --- |
 | chain_plugin | forward data to accepted_transaction_channel |
-| mongodb_plugin | forward the data to transaction_metadata_queue |
 
 #### applied_transaction (carry std::tuple<const transaction_trace_ptr&, const signed_transaction&>)
 
@@ -161,7 +159,6 @@ The producer and consumer of the signals defined in the controller and their lif
 | Module | Usage |
 | --- | --- |
 | chain_plugin | forward data to applied_transaction_channel |
-| mongodb_plugin | forward the data to transaction_trace_queue |
 
 #### bad_alloc
 Not used.
@@ -173,11 +170,9 @@ Not used.
 1. When a transaction is pushed to the blockchain (through RPC or broadcasted by peer)
    1. Transaction is executed either succesfully/ fail the validation -> `accepted_transaction` is emitted by the controller
    2. chain_plugin will react to the signal to forward the transaction_metadata to accepted_transaction_channel
-   3. mongodb_plugin will react to the signal and add the transaction_metadata to its queue to be processed later on
 2. When a scheduled transaction is pushed to the blockchain
    1. Transaction is executed either succesfully/ fail subjectively/ soft fail/ hard fail -> `accepted_transaction` is emitted by the controller
    2. chain_plugin will react to the signal to forward the transaction_metadata to accepted_transaction_channel
-   3. mongodb_plugin will react to the signal and add the transaction_metadata to its queue to be processed later on
 3. When a block is pushed to the blockchain (through RPC or broadcasted by peer)
    1. Before the block is added to fork db -> `pre_accepted_block` will be emitted by the controller
    2. chain_plugin will react to the signal to do validation of the block forward the block_state to accepted_block_header_channel and validate it with the checkpoint
@@ -196,7 +191,6 @@ Not used.
 5. When a block becomes irreversible
    1. Once a block is deemed irreversible -> `irreversible_block` will be emitted by the controller before the block is appended to the block log and the chainbase db is committed
    2. chain_plugin will react to the signal to forward the block_state to irreversible_block_channel and also set the lib of wasm_interface
-   3. mongodb_plugin will react to the signal and add the transaction_metadata to its queue to be processed later on
 
 #### B. operation where forks are presented and resolved
 
