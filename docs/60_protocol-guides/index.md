@@ -1,5 +1,5 @@
 ---
-title: EOS Protocol
+title: Protocol Guides
 ---
 
 ## Core
@@ -24,10 +24,3 @@ The EOS Network Foundation implements and maintains these `system contracts` as 
 3. [eosio.msig](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1multisig)
 4. [eosio.token](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1token)
 5. [eosio.wrap](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1wrap)
-
-Also part of the `system` layer are the following concepts:
-
-1. [Account](/glossary.md#account)
-2. [RAM](/glossary.md#ram)
-3. [CPU](/glossary.md#cpu)
-4. [NET](/glossary.md#net)
