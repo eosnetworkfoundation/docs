@@ -41,6 +41,8 @@ ACTION transfer(name from, name to, asset quantity, string memo){
 
 #### The event receiver and record action
 ```c++
+#include <eosio/asset.hpp>
+
 [[eosio::on_notify("eosio.token::transfer")]]
 void on_transfer(name from, name to, asset quantity, string memo){
     // ...
