@@ -8,4 +8,5 @@ Learn about EOS EVM
 - [Get Started](./20_getting_started/index.md)
 - [Compatibility](./30_compatibility/index.md)
 - [Architecture](./40_architecture/index.md)
-- [Helpful Links](./50_helpful_links.md)
+- [Supported Tokens](./50_supported_tokens.md)
+- [Helpful Links](./60_helpful_links.md)

@@ -164,7 +164,7 @@ Bootstrapping a node becomes necessary when either the system contracts must be 
 
 ### Create Test Accounts
 
-EOS accounts give ownership to stakeholders in an EOS blockchain. To deploy a smart contract, you need to create an EOS account to host it. Accounts also represent the actors that send actions to a smart contract. For more information about EOS accounts, visit the [Accounts](../Accounts) guide.
+EOS accounts give ownership to stakeholders in an EOS blockchain. To deploy a smart contract, you need to create an EOS account to host it. Accounts also represent the actors that send actions to a smart contract. For more information about EOS accounts, visit the [Accounts](./20_accounts.md) guide.
 
 > ℹ️ DUNE Account Creation  
 DUNE simplifies account creation by abstracting key management. When an account gets created, DUNE also creates public/private key pairs for its two default permissions, `owner` and `active`. Therefore, if you use DUNE then key creation is not required during [Wallet Setup](#wallet-setup).
@@ -219,7 +219,7 @@ subjective cpu bandwidth:
      used:                 0 us
 ```
 
-Notice the account's creation date and time, the default permissions `owner` and `active`, their corresponding public keys, and default values for RAM, NET, and CPU resources. For more information about EOS resources, visit the [Resources](../30_resources/index.md) guide.
+Notice the account's creation date and time, the default permissions `owner` and `active`, their corresponding public keys, and default values for RAM, NET, and CPU resources. For more information about EOS resources, visit the [Resources](./30_resources.md) guide.
 
 Now that your contract account has been created, you can build, deploy, and test your smart contract in the next section.
 
@@ -372,7 +372,7 @@ The command sends the account name, `hello`, where the contract was deployed, an
 code hash: ab8455aa1b46e5129b5ff40192de47a5d17587498a452c9c482e39f556270e55
 ```
 
-The code hash is important as it changes when the contract code changes. The deployment mechanism uses this information to re-deploy the contract if needed. If the compiled contract code does not change, the contract is not re-deployed to save on [resources](../30_resources/index.md).
+The code hash is important as it changes when the contract code changes. The deployment mechanism uses this information to re-deploy the contract if needed. If the compiled contract code does not change, the contract is not re-deployed to save on [resources](./30_resources.md).
 
 If the code hash is zero, as below, then there is no contract deployed on that account yet:
 
