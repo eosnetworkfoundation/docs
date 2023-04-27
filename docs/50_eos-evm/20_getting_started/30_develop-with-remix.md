@@ -50,7 +50,7 @@ You will return to this panel later, after you deploy the smart contract, and al
 
 ### Connect MetaMask Wallet
 
-To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](../20_eos-evm-network/20_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [helpful links](../60_helpful_links.md) section.
+To connect the Remix IDE to the EOS EVM network you must first [connect your metamask wallet](./10_connect-metamask.md) to the EOS EVM network. You can connect to the EOS EVM main network or you can connect to any of the available EOS EVM test networks. For information about available EOS EVM networks please consult the [helpful links](../60_helpful_links.md) section.
 
 ### Have Enough EOS Tokens
 
