@@ -156,7 +156,7 @@ way to keep your RAM usage down.
 
 ## Challenge
 
-How could you change the code above to make sure that the user has transferred tokens twice?
-Or even better, how could you prevent it?
+How could you change the code above to capture an NFT transfer and link the action so that
+only the owner and the correct NFT can trigger the `record` action?
 
 
