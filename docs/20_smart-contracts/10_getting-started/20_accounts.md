@@ -1,3 +1,7 @@
+---
+title: Accounts
+---
+
 ## What is an account?
 
 An account on the EOS Network is a digital container that holds a variety of information like EOS tokens that the account owns, resources at its disposal, account control permission structure, and various other things we will get into later in this guide. Accounts can also hold a smart contract. 
