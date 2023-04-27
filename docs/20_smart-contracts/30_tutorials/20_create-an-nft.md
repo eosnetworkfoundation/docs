@@ -5,9 +5,9 @@ title: Create an NFT
 ## Want to just create an NFT easily?
 
 In this tutorial we are going to discuss creating an NFT that follows Ethereum's ERC721
-standard so that we can dig into some technicals. 
+standard so that we can dig into some technicals using a clear standard. 
 
-**However**, if you want to create an NFT that follows the Atomic Assets standard which
+**However**, if you want to create an NFT that follows the [**Atomic Assets**](https://github.com/pinknetworkx/atomicassets-contract) standard which
 is more common on the EOS Network, you can visit the [Atomic Assets NFT Creator](https://eos.atomichub.io/creator)
 where you can easily create an NFT that will instantly be listed on the AtomicHub marketplace.
 
@@ -28,13 +28,15 @@ understand how to interact with them.
 
 ## What is the ERC721 Standard?
 
-The ERC721 standard is an NFT standard that was created by the Ethereum community. It
+The [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721) is an NFT standard that was created by the Ethereum community. It
 is the most common NFT standard and is used by many NFTs on the Ethereum network. If you've
-ever seen a Cryptopunk or a Bored Ape, they are ERC721 NFTs.
+ever seen a Bored Ape, they are ERC721 NFTs.
+
+![Bored Ape Club Examples](./images/boredapeclub.jpg)
 
 ## Your development environment
 
-Make sure you have [DUNE](/docs/20_smart-contracts/10_getting-started/10_dune-guide/index.md) installed
+Make sure you have [DUNE](/docs/20_smart-contracts/10_getting-started/10_dune-guide.md) installed
 and understand how to build contracts.
 
 After each step, you should try to compile your contract and check if there are any errors.
@@ -61,9 +63,12 @@ CONTRACT nft : public contract {
 ## Creating the actions
 
 If we look at the [ERC721 standard](https://eips.ethereum.org/EIPS/eip-721), we can see that
-there are a few actions that we need to implement. Some actions do not apply to EOS
-smart contracts as the technologies differ, but we will be implementing their logic in a different
-way.
+there are a few actions that we need to implement. Overall the standard is quite simple, but
+some concepts are not necessarily EOS-native. For instance, there is no concept 
+of `approvals` on EOS since you can send tokens directly to another account (via `on_notify` events), unlike Ethereum.
+
+For the sake of keeping the standard as close to the original as possible, we will implement
+those non-native concepts in this tutorial.
 
 The actions we will be implementing are:
 
@@ -112,11 +117,29 @@ The actions we will be implementing are:
 Add them to your contract and then let's dig into each action and see what they do, and what parameters they take.
 
 You'll notice that actions with return values are marked with `[[eosio::action]]` instead
-of `ACTION`.
+of `ACTION`. 
+
+> ❔ **ACTION Macro**
+> 
+> `ACTION` is something called a `MACRO`, which is a way to write code that will be replaced
+> with other code at compile time. In this case, the `ACTION` macro is replaced with:
+> ```c++
+> [[eosio::action]] void
+> ```
+> The reason we cannot use the `ACTION` macro for actions that return values is because
+> it adds the `void` keyword to the function, which means it will not return anything.
+
+## Digging into the action parameters
+
+If you want a deeper explanation of the parameters and a brief explanation of
+each action, expand the section below.
+
+<details>
+    <summary>Click here to view</summary>
 
 ### Mint
 
-The `mint` action is used to create a new NFT. 
+The `mint` action is used to create a new NFT.
 
 It takes two parameters:
 - **to** - The account that will own the NFT
@@ -201,36 +224,47 @@ The `setbaseuri` action is used to set the base URI of the NFT's metadata.
 
 It takes one parameter:
 - **base_uri** - The base URI of the NFT's metadata
+</details>
 
 
 ## Adding the data structures
 
 Now that we have our actions, we need to add some data structures to store the NFTs.
 
-We will be using a `singleton` to store the NFTs. A `singleton` is a data structure that
-stores a single value. In this case, we will be storing a `std::map` that will store the
-NFTs.
+We will be using a `singleton` to store the NFTs. 
+
+> ❔ **Singleton**
+> 
+> A `singleton` is a table that can only have one row per scope, unlike a `multi_index` which 
+> can have multiple rows per scope and uses a `primary_key` to identify each row.
+> Singletons are a little closer to Ethereum's storage model. 
 
 Add the following code to your contract above the actions:
 
 ```cpp
-    // Mapping from token ID to owner
     using _owners = singleton<"owners"_n, name>;
-    
-    // Mapping owner address to token count
     using _balances = singleton<"balances"_n, uint64_t>;
-    
-    // Mapping from token ID to approved address
     using _approvals = singleton<"approvals"_n, name>;
-    
-    // Mapping from owner to approvals
     using _approvealls = singleton<"approvealls"_n, name>;
-    
-    // Registering the token URI
     using _base_uris = singleton<"baseuris"_n, std::string>;
     
     ACTION mint...
 ```
+
+We've created singleton tables for the following:
+- **_owners** - A mapping from token ID to the owner of the NFT
+- **_balances** - A mapping from owner to the amount of NFTs they own
+- **_approvals** - A mapping from token ID to an account approved to transfer that NFT
+- **_approvealls** - A mapping from owner to an account approved to transfer all their NFTs
+- **_base_uris** - A configuration table that stores the base URI of the NFT's metadata
+
+> ❔ **Table Naming**
+> 
+> `singleton<"<TABLE NAME>"_n, <ROW TYPE>>`
+> 
+> If we look at the singleton definition, inside the double quotes we have the table name.
+> Names in EOS tables must also follow the Account Name rules, which means they must be
+> 12 characters or less and can only contain the characters `a-z`, `1-5`, and `.`.
 
 Now that we've created the tables and structures that will store data about the NFTs,
 we can start filling in the logic for each action.
@@ -238,7 +272,7 @@ we can start filling in the logic for each action.
 
 ## Adding some helper functions
 
-We will add helper functions to make our code more readable and easier to
+We want some helper functions to make our code more readable and easier to
 use. Add the following code to your contract right below the table definitions:
 
 ```cpp
@@ -275,10 +309,19 @@ use. Add the following code to your contract right below the table definitions:
     }
 ```
 
+The helper functions will make it easier to get data from the tables we created earlier.
+We will use these functions in the actions we will implement next.
+
+In particular, some functions are used in multiple places so it makes sense to
+create a helper function for them. For example, the `get_owner` function is used
+in the `mint`, `transfer`, and `approve` actions. If we didn't create a helper function
+for it, we would have to write the same code in each action.
+
 ## Filling in the actions
 
 We will go through each action and implement the logic for it. Pay close attention to
-the comments as they will explain what each line of code does.
+the comments as they will explain what each line of code does, though I will give you a 
+layman's explanation of the action after the code as well.
 
 ### Mint
 
@@ -375,7 +418,11 @@ The `balanceof` action is used to get the balance of an account.
     }
 ```
 
-We simply return the balance of the account.
+> ⚠ **Return values & Composability**
+> 
+> Return values are only usable from outside the blockchain, and cannot currently be used
+> in EOS for smart contract composability. EOS supports [**inline actions**](../10_getting-started/40_smart_contract_basics.md#inline-actions) which can be used
+> to call other smart contracts, but they cannot return values.
 
 ### OwnerOf
 
@@ -386,8 +433,6 @@ The `ownerof` action is used to get the owner of an NFT.
         return get_owner(token_id);
     }
 ```
-
-We simply return the owner of the NFT.
 
 ### Approve
 
@@ -469,6 +514,12 @@ all of your NFTs on your behalf.
    }
 ```
 
+> ⚠ **ACTION name limitations**
+> 
+> Account names also have the same limitations as table names, so they can only contain
+> the characters `a-z`, `1-5`, and `.`. Because of this, we cannot use the standard `isApprovedForAll`
+> name for the action, so we are using `approved4all` instead.
+
 ### TokenURI
 
 The `tokenuri` action is used to get the URI of an NFT.
@@ -503,7 +554,13 @@ get the base URI table and set the base URI.
 
 ## Putting it all together
 
-Now that we have all of the actions, we can put them all together in the `nft.hpp` file.
+Now that we have all the actions laid out, we can put them all together in the `nft.cpp` file.
+
+You should try to build, deploy, and interact with the contract on your own before looking at the full contract below.
+First you'll need to mint some NFTs to an account you control, then you can try transferring them to another account.
+
+You can also test out the approval mechanisms by approving another account to transfer your NFTs on your behalf, 
+and then transferring them to another account using the approved account.
 
 <details>
     <summary>Click here to see full contract</summary>
@@ -692,6 +749,11 @@ CONTRACT nft : public contract {
 };
 ```
 </details>
+
+## This is for education purposes
+
+Keep in mind, that if you deployed this contract on the EOS Network and minted tokens, there
+would be no supported marketplaces to sell them (at the time of writing this guide). This is just for education purposes.
 
 ## Challenge
 
