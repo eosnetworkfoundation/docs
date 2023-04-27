@@ -81,7 +81,7 @@ A smart contract is just a program that runs on the blockchain. It allows you to
 
 Every account has the ability to have one single smart contract deployed to it, however, that smart contract can be updated and replaced at will. 
 
-For more information about deploying smart contracts to your accounts, please see our [DUNE Guide](dune-guide/). 
+For more information about deploying smart contracts to your accounts, please see our [DUNE Guide](./10_dune-guide.md). 
 
 
 ## Creating an Account with DUNE
@@ -173,7 +173,7 @@ This does however potentially impact your application design, as your users who 
 
 The cost of opening an account is based on the RAM required for opening it, which as of writing this document (20/02/2023) is `2996 bytes`.
 
-Go to our [Resources Guide](resources/) to learn how to calculate the cost of purchasing RAM from the RAM Market.
+Go to our [Resources Guide](./30_resources.md) to learn how to calculate the cost of purchasing RAM from the RAM Market.
 
 ## Bidding on premium names (suffixes)
 
