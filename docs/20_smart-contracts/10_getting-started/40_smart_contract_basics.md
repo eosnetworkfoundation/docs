@@ -26,7 +26,7 @@ dune --create-account ama
 
 To develop the smart contract you will use the Docker Utilities for Node Execution (DUNE) which is a tool that allows you to perform the functions of node management, compile smart contracts, and several other common tasks required to develop smart contracts on EOS blockchains.
 
-Make sure you have DUNE installed. Otherwise follow the [DUNE development setup](../10_getting-started/10_dune-guide/index.md#installation) documentation.
+Make sure you have DUNE installed. Otherwise follow the [DUNE development setup](../10_getting-started/10_dune-guide.md#installation) documentation.
 
 ## Create the Smart Contract
 

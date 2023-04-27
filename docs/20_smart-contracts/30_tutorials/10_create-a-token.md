@@ -19,7 +19,7 @@ In this tutorial you will create an in-game currency called **GOLD**, which is a
 
 ## Your development environment
 
-Make sure you have [DUNE](/docs/20_smart-contracts/10_getting-started/10_dune-guide/index.md) installed
+Make sure you have [DUNE](/docs/20_smart-contracts/10_getting-started/10_dune-guide.md) installed
 and understand how to build contracts.
 
 After each step, you should try to compile your contract and check if there are any errors.
@@ -213,7 +213,7 @@ as the second parameter (the `scope` parameter), which returns the `uint64_t` re
 > ❔ **Scopes**: Scopes are a way to group rows in a table together. You can think of it as a folder that
 > contains all the rows in the table. In this case, we are using the contract account's name as the scope, so all the
 > rows in the `balances` table will be grouped together under the contract account's name. If you'd
-> like to learn more about scopes, check out the [Getting Started with Smart Contracts Guide](/docs/20_smart-contracts/10_getting-started/40_smart_contract_basics/#multi-index-instantiate-with-code-and-scope).
+> like to learn more about scopes, check out the [Getting Started with Smart Contracts Guide](/docs/20_smart-contracts/10_getting-started/40_smart_contract_basics.md#multi-index-instantiate-with-code-and-scope).
 
 Next, we need to check if the `to` account already has a balance. We can do this by using the `find` function on the
 `balances` table.
