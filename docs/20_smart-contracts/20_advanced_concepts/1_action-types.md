@@ -7,7 +7,10 @@ title: Action Types
 An action is an entry point into a smart contract. It is a function that can be called by an account through 
 interacting with the blockchain's APIs, or by another smart contract through inline actions.
 
+Transactions that are sent to the EOS Network include one or more actions within them. 
+
 In EOS there are a few different ways you can declare an action, which are used for different purposes.
+
 
 ## Callable Actions
 
