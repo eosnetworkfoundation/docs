@@ -45,9 +45,9 @@ it does not allow you to specify the return type of the action as it includes th
 return type by default.
 
 
-## Notifiable Actions
+## Event Receivers
 
-Notifiable actions are actions that will be called when another action tags your contract
+Event Receivers are not actions, but rather functions that will be called when another action tags your contract
 as a recipient. This is useful for tracking other smart contracts, such as token transfers.
 
 Below are two contracts, one which is sending an event, and one which is catching it.
