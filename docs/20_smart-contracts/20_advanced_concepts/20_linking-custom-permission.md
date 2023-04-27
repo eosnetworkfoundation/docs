@@ -20,7 +20,7 @@ If you have the authority of a parent permission which a custom permission was c
 Firstly, let's create a new permission level on the `alice` account:
 
 ```shell
-cleos set account permission alice upsert YOUR_PUBLIC_KEY owner -p alice@owner
+dune -- cleos set account permission alice upsert YOUR_PUBLIC_KEY owner -p alice@owner
 ```
 
 A few things to note:
@@ -36,7 +36,7 @@ You can also specify authorities other than a public key for this permission, fo
 Link the authorization to invoke the `upsert` action with the newly created permission:
 
 ```shell
-cleos set action permission alice addressbook upsert upsert
+dune -- cleos set action permission alice addressbook upsert upsert
 ```
 
 In this example, we link the authorization to the `upsert` action created earlier in the addressbook contract.
@@ -46,7 +46,7 @@ In this example, we link the authorization to the `upsert` action created earlie
 Let's try to invoke the action with an `active` permission:
 
 ```shell
-cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"]' -p alice@active
+dune -- cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"]' -p alice@active
 ```
 
 You should see an error like the one below:
@@ -61,13 +61,13 @@ action declares irrelevant authority '{"actor":"alice","permission":"active"}'; 
 Now, try the **upsert** permission, this time, explicitly declaring the **upsert** permission we just created: (e.g. `-p alice@upsert`)
 
 ```text
-cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"]' -p alice@upsert
+dune -- cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"]' -p alice@upsert
 ```
 
 Now it works:
 
 ```text
-cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"] -p alice@upsert
+dune -- cleos push action addressbook upsert '["alice", "alice", "liddel", 21, "Herengracht", "land", "dam"] -p alice@upsert
 executed transaction:
 
 2fe21b1a86ca2a1a72b48cee6bebce9a2c83d30b6c48b16352c70999e4c20983  144 bytes  9489 us
