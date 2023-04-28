@@ -32,8 +32,6 @@ This creates a symbol with the name `COOL` and 8 decimal places.
 Now we can create an asset:
 
 ```cpp
-asset my_asset = asset(100000000, TOKEN_SYMBOL);
-// or
 asset my_asset = asset(1'00000000, TOKEN_SYMBOL);
 // or
 asset my_asset(1'00000000, TOKEN_SYMBOL);
