@@ -2,23 +2,21 @@
 title: Create an NFT
 ---
 
-## Want to just create an NFT easily?
-
-In this tutorial we are going to discuss creating an NFT that follows Ethereum's ERC721
-standard so that we can dig into some technicals using a clear standard. 
-
-**However**, if you want to create an NFT that follows the [**Atomic Assets**](https://github.com/pinknetworkx/atomicassets-contract) standard which
-is more common on the EOS Network, you can visit the [Atomic Assets NFT Creator](https://eos.atomichub.io/creator)
-where you can easily create an NFT that will instantly be listed on the AtomicHub marketplace.
-
-## What is an NFT?
-
 An NFT is a **non-fungible token**. This means that it is a unique token that cannot be
 interchanged with another token. 
 
 Let's take a trading card as an example. If you have a trading card of a blue car, 
 you can't trade it for a trading card of a red car. They are different cards and 
 therefore are not _fungible_.
+
+> 👀 **Want to just create an NFT?**
+> 
+> In this tutorial we are going to discuss creating an NFT that follows Ethereum's ERC721
+> standard so that we can dig into some EOS development using a clear standard.
+> 
+> **However**, if you want to create an NFT that follows the [**Atomic Assets**](https://github.com/pinknetworkx/atomicassets-contract) standard which
+> is more common on the EOS Network, you can visit the [Atomic Assets NFT Creator](https://eos.atomichub.io/creator)
+> where you can easily create an NFT that will instantly be listed on the AtomicHub marketplace without deploying any code.
 
 ## What is an NFT Standard?
 
