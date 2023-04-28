@@ -104,7 +104,7 @@ check(false, "You have " + a.to_string() + " tokens.");
 ## Checking validity
 
 You should always check if an asset is valid before using it. This is done with the `is_valid()` method.
-This checks if the asset is within the range of valid values.
+This checks if the asset is within the range of valid values and whether or not the symbol is valid.
 
 ```cpp
 asset a = asset(1'00000000, TOKEN_SYMBOL);
