@@ -48,12 +48,12 @@ The asset type has a few operators that you can use to manipulate assets.
 You can add two assets together:
 
 ```cpp
-asset a = asset(100000000, TOKEN_SYMBOL);
-asset b = asset(200000000, TOKEN_SYMBOL);
+asset a = asset(1'00000000, TOKEN_SYMBOL);
+asset b = asset(2'00000000, TOKEN_SYMBOL);
 asset c = a + b;
 ```
 
-This will result in `c` being equal to `300000000 COOL`. You could alternatively also just 
+This will result in `c` being equal to `3.00000000 COOL`. You could alternatively also just 
 add the two assets' amounts together directly:
 
 ```cpp
@@ -68,8 +68,8 @@ uint64_t c = a.amount + b.amount;
 Other mathematical operations are also available:
 
 ```cpp
-asset a = asset(100000000, TOKEN_SYMBOL);
-asset b = asset(200000000, TOKEN_SYMBOL);
+asset a = asset(1'00000000, TOKEN_SYMBOL);
+asset b = asset(2'00000000, TOKEN_SYMBOL);
 asset c = a - b; 
 asset d = a * 2;
 asset e = a / 2; 
@@ -84,8 +84,8 @@ e /= 2;
 You can compare two assets with each other:
 
 ```cpp
-asset a = asset(100000000, TOKEN_SYMBOL);
-asset b = asset(200000000, TOKEN_SYMBOL);
+asset a = asset(1'00000000, TOKEN_SYMBOL);
+asset b = asset(2'00000000, TOKEN_SYMBOL);
 bool c = a > b;
 bool d = a < b; 
 bool e = a == b; 
@@ -97,7 +97,7 @@ bool f = a != b;
 If you want to print assets in either an error message or console log, you can use the `to_string()` method.
 
 ```cpp
-asset a = asset(100000000, TOKEN_SYMBOL);
+asset a = asset(1'00000000, TOKEN_SYMBOL);
 check(false, "You have " + a.to_string() + " tokens.");
 ```
 
@@ -107,7 +107,7 @@ You should always check if an asset is valid before using it. This is done with 
 This checks if the asset is within the range of valid values.
 
 ```cpp
-asset a = asset(100000000, TOKEN_SYMBOL);
+asset a = asset(1'00000000, TOKEN_SYMBOL);
 check(a.is_valid(), "Asset is not valid.");
 ```
 
