@@ -57,7 +57,7 @@ Wallets do not store any blockchain data within them, instead they use the priva
 In web2 development, you need to build your own authentication system. You might use a third-party service like Auth0, or you might roll your own.
 Once your user logs in, you rely on their session to prove that they are who they say they are. 
 
-You might add in additional security measures like 2FA, IP<>user pairing, and a variety of other techniques. 
+You might add in additional security measures like 2FA, IP-user pairing, and a variety of other techniques. 
 
 In web3 development life is simpler, your users will log in with a wallet instead. There are no passwords you need to authenticate yourself. 
 You also don't need to rely on a session to prove that their interactions are coming from them, because every interaction (transaction) 
