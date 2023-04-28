@@ -75,7 +75,7 @@ git submodule update --init --recursive
 mkdir build
 cd build
 cmake .. # this will take around 40 minutes
-make -j8 # this wil take around 5 minutes
+make -j8 # this wil take around 20 minutes
 ```
 
 
@@ -90,25 +90,59 @@ make -j8
 ```
 </details>
 
-To verify that you have all the tools installed, run this command.
-
+Once done, let's add the binaries to your path.
 ```bash
-eos-evm-node --version && eos-evm-rpc --version && silkrpc_toolbox --version && silkrpcdaemon --version
+cd cmd
+# this will add the binaries to your path, and persist after reboot
+echo 'export PATH=$PATH:$(pwd)' | tee -a ~/.bashrc
 ```
 
-If you got back 4 version numbers, you're good to go.
-
-You now have the following binaries available for usage:
-```
-cmd/eos-evm-node
-cmd/eos-evm-rpc
-cmd/silkrpc_toolbox
-cmd/silkrpcdaemon
+You can make sure you have the binaries in your path by running:
+```bash
+eos-evm-node --version
 ```
 
-## Accounts you need
+If you see the version, you're good to go!
 
-You will need an EOS Network account which will serve as your miner. 
+
+## Your miner account
+
+You will need an EOS Network account which will serve as your **miner**. This account will take the EVM transactions that your node converts into 
+EOS transactions and send them to the `eosio.evm` contract on the native EOS Network. 
+
+It is your responsibility to secure this account and manage its resources (which will be depleted by the transactions it sends).
 
 ## Registering your miner
+
+Once you have your miner account, you will need to register it with the `eosio.evm` contract. 
+
+This is done by sending a transaction to the `eosio.evm` contract with the following action:
+
+```bash
+cleos -u https://eos.greymass.com/ push action eosio.evm open '["<your-miner-account>"]' -p <your-miner-account>
+```
+
+If you'd like to register using a web interface you can visit [bloks.io](https://bloks.io/account/eosio.evm?loadContract=true&tab=Actions&account=eosio.evm&scope=eosio.evm&limit=100&action=open)
+and sign the transaction using a wallet like [Anchor](https://www.greymass.com/anchor).
+
+## Viewing your mining rewards
+
+The `eosio.evm` contract will store the rewards you earn from mining in a table. You can view these rewards at any time by
+getting the table rows from the contract's `balances` table with the upper and lower bound set to your miner account:
+
+```bash
+cleos -u https://eos.greymass.com/ get table eosio.evm eosio.evm balances -U <your-miner-account> -L <your-miner-account>
+```
+
+
+## Withdrawing your mining rewards
+
+The `eosio.evm` contract will store the rewards you earn from mining in a table. You can withdraw these rewards at any 
+time by sending a transaction to the `eosio.evm` contract with the following action:
+
+```bash
+cleos -u https://eos.greymass.com/ push action eosio.evm withdraw '["<your-miner-account>", "1.0000 EOS"]' -p <your-miner-account>
+```
+
+
 
