@@ -23,6 +23,8 @@ Then you can use the asset type in your contract. Let's set up a symbol first:
 
 ```cpp
 symbol TOKEN_SYMBOL = symbol("COOL", 8);
+// or
+symbol TOKEN_SYMBOL("COOL", 8);
 ```
 
 This creates a symbol with the name `COOL` and 8 decimal places. 
@@ -33,6 +35,8 @@ Now we can create an asset:
 asset my_asset = asset(100000000, TOKEN_SYMBOL);
 // or
 asset my_asset = asset(1'00000000, TOKEN_SYMBOL);
+// or
+asset my_asset(1'00000000, TOKEN_SYMBOL);
 ```
 
 The above declaration means that the string representation of the asset will look like this: `1.00000000 COOL`.
