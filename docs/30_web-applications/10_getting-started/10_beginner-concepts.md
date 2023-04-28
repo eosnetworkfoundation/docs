@@ -19,13 +19,13 @@ you still need to pick and choose which services you want to use and how to inte
 
 In web3 development, the blockchain comes packed with every feature you need to build most applications.
 
-| Feature | Description                                                                                                                                        |
-| --- |----------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Database** | The blockchain itself is just a massive database. **You** can also store data on the blockchain and query it.                                      |
-| **Data replication** | Because of how a blockchain woprks, you get data replication across the entire network for **free**.                                               |
-| **Authentication** | All blockchains come with built-in authentication and user management.                                                                             |
-| **Payments** | One of the core functionalities of a blockchain is decentralized finance, and payments are made very easy.                                         |
-| **Serverless Functions** | The blockchain has built-in serverless functions in the form of Smart Contracts.                                                                   |
+| Feature | Description                                                                                                                                       |
+| --- |---------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Database** | The blockchain itself is just a massive database. **You** can also store data on the blockchain and query it.                                     |
+| **Data replication** | Because of how a blockchain works, you get data replication across the entire network for **free**.                                               |
+| **Authentication** | All blockchains come with built-in authentication and user management.                                                                            |
+| **Payments** | One of the core functionalities of a blockchain is decentralized finance, and payments are made very easy.                                        |
+| **Serverless Functions** | The blockchain has built-in serverless functions in the form of Smart Contracts.                                                                  |
 | **Event Notifications** | You can subscribe to events that happen on the blockchain, similar to a message-queue or pub-sub. |
 
 ## You don't need a backend
