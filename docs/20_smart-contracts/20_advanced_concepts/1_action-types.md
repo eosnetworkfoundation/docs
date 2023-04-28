@@ -2,8 +2,6 @@
 title: Action Types
 ---
 
-## What is an Action?
-
 An action is an entry point into a smart contract. It is a function that can be called by an account through 
 interacting with the blockchain's APIs, or by another smart contract through inline actions.
 
