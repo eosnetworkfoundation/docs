@@ -95,6 +95,12 @@ void on_transfer(name from, name to, asset quantity, string memo){
 }
 ```
 
+> ⚠ **Warning**
+>
+> You should have more checks on the `on_transfer` than we have here in this example. This guide is not
+> about security, so we are omitting those checks for clarity, but you should not deploy a token event receiver
+> this way in production.
+
 Then, in our `record` action we can check if the transfer exists and if it does, we can
 delete it from the table to free up RAM and do our logic.
 
