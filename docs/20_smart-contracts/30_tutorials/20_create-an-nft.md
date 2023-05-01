@@ -16,9 +16,9 @@ where you can easily create an NFT that will instantly be listed on the AtomicHu
 An NFT is a **non-fungible token**. This means that it is a unique token that cannot be
 interchanged with another token. 
 
-Let's take a trading card as an example. If you have a trading card of a blue car, 
-you can't trade it for a trading card of a red car. They are different cards and 
-therefore are not _fungible_.
+Take a collectable item as an example (a pen owned by a celebrity, a game-winning ball, etc). Each of these
+items is unique and cannot be interchanged with another item because their value is
+in their uniqueness.
 
 ## What is an NFT Standard?
 
@@ -280,6 +280,11 @@ use. Add the following code to your contract right below the table definitions:
     
     // Helper function to get the owner of an NFT
     name get_owner(uint64_t token_id){
+        
+        // Note that we are using the "token_id" as the "scope" of this table.
+        // This lets us use singleton tables like key-value stores, which is similar
+        // to how Ethereum contracts store data.
+        
         _owners owners(get_self(), token_id);
         return owners.get_or_default(name(""));
     }
@@ -352,11 +357,6 @@ The `mint` action is used to create a new NFT.
     }    
 ```
 
-Let's briefly go over what the action does. First, we check that the action is called
-by the contract owner. Then, we check that the account we are minting to exists. Next,
-we get the owner singleton and check if the NFT already exists. If it doesn't, we set
-the owner of the NFT to the account that called the action and get the balances
-table so that we can set the new balances of the account.
 
 ### Transfer
 
@@ -399,14 +399,6 @@ The `transfer` action is used to transfer an NFT from one account to another.
         require_recipient(to);
     }
 ```
-
-First, we check that the account we are
-transferring from has authorized the transfer. Then, we check that the account we are
-transferring to exists. Next, we check that the account we are transferring from is
-the owner of the NFT or allowed to transfer it through an approval. If it is, we get
-the owner singleton and set the owner of the NFT to the "to" account. Then, we set the
-new balance for the "from" account and the "to" account. Next, we remove the approval
-for the "from" account and send the transfer notification.
 
 ### BalanceOf
 
@@ -457,10 +449,6 @@ The `approve` action is used to approve an account to transfer an NFT on your be
     }
 ```
 
-First, we get the owner of the NFT. Then, we check that the owner of the NFT has
-authorized the approval. Next, we check that the account we are approving exists. Then,
-we get the approvals table and set the approval for the NFT.
-
 ### ApproveAll
 
 The `approveall` action is used to approve an account to transfer all of your
@@ -486,11 +474,6 @@ NFTs on your behalf.
         }
     }
 ```
-
-First, we check that the owner of the NFTs has authorized the approval. Then, we check
-that the account we are approving exists. Next, we get the approvals table and set the
-approval for the NFT if the `approved` parameter is `true`. Otherwise, we remove the
-approval for the NFT.
 
 ### GetApproved
 
@@ -546,9 +529,6 @@ The `setbaseuri` action is used to set the base URI of the NFTs.
         base_uris.set(base_uri, get_self());
     }
 ```
-
-First, we check that the account calling this action is the contract owner. Then, we
-get the base URI table and set the base URI.
 
 
 
