@@ -7,7 +7,7 @@ An `asset` is a special type made specifically for blockchain tokens.
 The two primary components of an asset are the `symbol` and the `amount`.
 
 The `symbol` is a combination of a string and a number. The string is the
-name of the token and the number is the amount of decimal places.
+name of the token and the number is the number of decimal places.
 
 The `amount` is a 64-bit signed integer.
 
@@ -119,7 +119,7 @@ The asset type comes with built-in overflow/underflow protection.
 
 This means that if you try to add two assets together and the result is larger than the maximum value of a 64-bit integer, an error will be thrown.
 
-It will not allow you to create an asset with an amount that is no within the range of a signed 64-bit integer.
+It will not allow you to create an asset with an amount that is not within the range of a signed 64-bit integer.
 
 
 
