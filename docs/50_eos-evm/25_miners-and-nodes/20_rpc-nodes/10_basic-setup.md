@@ -6,9 +6,10 @@ title: Basic Setup
     <title>EOS EVM - Basic Setup</title>
 </head>
 
-No matter if you want to run locally, on the testnet or on the mainnet, there are a few things you need to know, get, and do.
+Before we can configure and run your EOS EVM node, we need to make sure your system meets the requirements, and has the 
+proper software installed.
 
-## Hardware Requirements
+## Requirements
 
 | Hardware | Minimum | Recommended | Impact                           |
 | --- | --- | --- |----------------------------------|
@@ -17,7 +18,6 @@ No matter if you want to run locally, on the testnet or on the mainnet, there ar
 | SSD | 100 GB | 1 TB | History storage                  |
 | Network | 100 Mbps | 1 Gbps | Latency                          |
 
-## Software Requirements
 
 ### Supported Operating Systems
 
@@ -61,7 +61,7 @@ sudo apt-get install -y texinfo
 </details>
 
 
-## Install EOS EVM
+## Install the EOS EVM Node
 
 ### Grab the code
 ```bash
@@ -94,7 +94,8 @@ Once done, let's add the binaries to your path.
 ```bash
 cd cmd
 # this will add the binaries to your path, and persist after reboot
-echo 'export PATH=$PATH:$(pwd)' | tee -a ~/.bashrc
+echo 'export PATH=$PATH:$(pwd)' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 You can make sure you have the binaries in your path by running:
@@ -102,47 +103,6 @@ You can make sure you have the binaries in your path by running:
 eos-evm-node --version
 ```
 
-If you see the version, you're good to go!
-
-
-## Your miner account
-
-You will need an EOS Network account which will serve as your **miner**. This account will take the EVM transactions that your node converts into 
-EOS transactions and send them to the `eosio.evm` contract on the native EOS Network. 
-
-It is your responsibility to secure this account and manage its resources (which will be depleted by the transactions it sends).
-
-## Registering your miner
-
-Once you have your miner account, you will need to register it with the `eosio.evm` contract. 
-
-This is done by sending a transaction to the `eosio.evm` contract with the following action:
-
-```bash
-cleos -u https://eos.greymass.com/ push action eosio.evm open '["<your-miner-account>"]' -p <your-miner-account>
-```
-
-If you'd like to register using a web interface you can visit [bloks.io](https://bloks.io/account/eosio.evm?loadContract=true&tab=Actions&account=eosio.evm&scope=eosio.evm&limit=100&action=open)
-and sign the transaction using a wallet like [Anchor](https://www.greymass.com/anchor).
-
-## Viewing your mining rewards
-
-The `eosio.evm` contract will store the rewards you earn from mining in a table. You can view these rewards at any time by
-getting the table rows from the contract's `balances` table with the upper and lower bound set to your miner account:
-
-```bash
-cleos -u https://eos.greymass.com/ get table eosio.evm eosio.evm balances -U <your-miner-account> -L <your-miner-account>
-```
-
-
-## Withdrawing your mining rewards
-
-The `eosio.evm` contract will store the rewards you earn from mining in a table. You can withdraw these rewards at any 
-time by sending a transaction to the `eosio.evm` contract with the following action:
-
-```bash
-cleos -u https://eos.greymass.com/ push action eosio.evm withdraw '["<your-miner-account>", "1.0000 EOS"]' -p <your-miner-account>
-```
-
+If that command returns a version, you're ready to move on.
 
 
