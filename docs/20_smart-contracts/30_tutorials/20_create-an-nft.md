@@ -34,7 +34,7 @@ ever seen a Bored Ape, they are ERC721 NFTs.
 
 ## Your development environment
 
-Make sure you have [DUNE](/docs/20_smart-contracts/10_getting-started/10_dune-guide.md) installed
+Make sure you have [DUNE](../../20_smart-contracts/10_getting-started/10_dune-guide.md) installed
 and understand how to build contracts.
 
 After each step, you should try to compile your contract and check if there are any errors.
