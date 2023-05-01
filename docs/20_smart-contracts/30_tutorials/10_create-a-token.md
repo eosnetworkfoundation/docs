@@ -287,18 +287,19 @@ initialized with a value of `0` and the `TOKEN_SYMBOL` constant we defined earli
 Now that we have the current supply, we can add the new tokens to the current supply and save the value to the blockchain.
 Since both the `current_supply` and `quantity` are of type `asset`, we can use the `+` operator to add them together.
 
-Note that though the `asset` class handles floating number precision as integers, it does not handle overflow. 
-If the new supply is greater than the maximum value of a `uint64_t`, then the `asset` will overflow.
+> ✔ **Automatic overflow protection**
+> 
+> The `asset` class handles overflows/underflows automatically. If there is an overflow
+> it will throw an error and abort the transaction automatically. You do not have to do any 
+> special checks when using `asset`. You do however if using `uint64_t` or any other base type. 
 
 ```c++
     ...
     auto new_supply = current_supply + quantity;
-    check(new_supply.amount > current_supply.amount, "issuing this GOLD would cause an overflow");
     supply.set(new_supply, get_self());
 ```
 
-We checked that the `new_supply` is greater than the `current_supply` to make sure that there is no overflow.
-Then we used the `set` function on the singleton to save the new supply to the blockchain. 
+We used the `set` function on the singleton to save the new supply to the blockchain. 
 
 The `set` function takes two parameters:
 - **value**: The new value to save to the blockchain
@@ -446,9 +447,6 @@ If the `to` account _does_ have a balance, then we need to modify the row in the
         });
     }
 ```
-
-We don't need to check if there is an overflow, because there's no way there's an overflow if the total supply doesn't 
-have an overflow. 
 
 Now we need to check if the `from` account has a balance of the same amount as the `quantity` we are transferring. If
 it does, then we can just erase the row from the `balances` table, and once again, save **RAM**.
