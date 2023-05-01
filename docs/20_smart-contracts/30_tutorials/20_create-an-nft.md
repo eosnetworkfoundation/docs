@@ -222,6 +222,7 @@ The `setbaseuri` action is used to set the base URI of the NFT's metadata.
 
 It takes one parameter:
 - **base_uri** - The base URI of the NFT's metadata
+    
 </details>
 
 
