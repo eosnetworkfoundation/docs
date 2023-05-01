@@ -5,7 +5,7 @@ title: Create an NFT
 An NFT is a **non-fungible token**. This means that it is a unique token that cannot be
 interchanged with another token. 
 
-Take a collectable item as an example (a pen owned by a celebrity, a game-winning ball, etc). Each of these
+Take a collectible item as an example (a pen owned by a celebrity, a game-winning ball, etc). Each of these
 items is unique and cannot be interchanged with another item because their value is
 in their uniqueness.
 
