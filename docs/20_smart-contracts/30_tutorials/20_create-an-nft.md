@@ -736,12 +736,3 @@ would be no supported marketplaces to sell them (at the time of writing this gui
 ## Challenge
 
 This NFT contract has no way to burn NFTs. Add a `burn` action that allows the token owner to burn their own NFTs.
-
-
-
-
-
-
-
-
-
