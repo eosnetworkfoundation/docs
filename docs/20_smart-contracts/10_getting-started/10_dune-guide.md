@@ -188,3 +188,13 @@ dune --get-table hello hello users
 
 You should get a table result with one or more row. If you didn't make sure your interaction above was successful.
 
+## Using raw programs with DUNE
+
+If you want to tap into the raw EOS stack you can use the `DUNE -- <COMMAND>` format to access anything within the container.
+
+Examples:
+    
+```shell
+dune -- cleos get info
+dune -- nodeos --help
+```
