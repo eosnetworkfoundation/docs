@@ -1103,10 +1103,10 @@ Example response:
 {"jsonrpc":"2.0","id":1,"result":"0x22ecb25c00"}
 ```
 
-#### [Optional] Setup Metamask Chrome extension
+#### [Optional] Setup MetaMask Chrome extension
 
 - Ensure EOS EVM RPC is running with `--api-spec=eth,debug,net,trace`
-- Install Metamask Plugin in Chrome
+- Install MetaMask Plugin in Chrome
 - Click Account ICON on the top right, the Find Settings -> Networks -> Add Network
 
 ![image](https://user-images.githubusercontent.com/37097018/202395747-7ee25460-7cab-4a14-af45-99835a69d86e.png)
@@ -1120,7 +1120,7 @@ Fill in the following information:
 
 And then click "Save"
 
-After setting up Metamask, you should able to import or create accounts via this plugin, or go to https://metamask.github.io/test-dapp/ to test basic dapp integration.
+After setting up MetaMask, you should able to import or create accounts via this plugin, or go to https://metamask.github.io/test-dapp/ to test basic dapp integration.
 
 #### [Optional] Setup EVM block explorer
 

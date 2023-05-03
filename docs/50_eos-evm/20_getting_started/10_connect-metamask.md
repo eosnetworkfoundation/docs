@@ -1,16 +1,19 @@
 ---
-title: How To Connect Metamask
+title: How To Connect MetaMask
 ---
 
-If you'd like to quickly set up your Metamask wallet you can visit our Bridge applications and connect your wallet. 
-You will then be led through a process that adds the network to your Metamask automatically.
+## The EOS EVM Bridge Way
 
-- [Mainnet](https://bridge.evm.eosnetwork.com/);
-- [Testnet](https://bridge.testnet.evm.eosnetwork.com/);
+To quickly set up your MetaMask wallet you can visit the EOS EVM Bridge application and connect your wallet. You will then be led through a process that adds the EOS EVM network to your MetaMask automatically.
 
-To add the EOS EVM network to your Metamask wallet follow the steps below:
+- [Mainnet](https://bridge.evm.eosnetwork.com/)
+- [Testnet](https://bridge.testnet.evm.eosnetwork.com/)
 
-1. Open the Metamask wallet and click on the network in the top center:
+## The Step by Step Way
+
+Alternatively, to manually add the EOS EVM network to your MetaMask wallet follow the steps below:
+
+1. Open the MetaMask wallet and click on the network in the top center:
 
 ![metamask top network button](./images/metamask_top_network_button.png)
 
@@ -40,6 +43,6 @@ The EOS EVM Network Testnet Preview connection details are as follows:
 * `Block Explorer URL (Optional)`: https://explorer.testnet.evm.eosnetwork.com/
 * `Token Bridge`: https://bridge.testnet.evm.eosnetwork.com/
 
-Alternative endpoints can be found in the [helpful links](../50_helpful_links.md) section.
+Alternative endpoints can be found in the [helpful links](../60_helpful_links.md) section.
 
 Yet another way is to find the network you want to connect to at [Chainlist.org](https://chainlist.org/), and you can add the configuration to your wallet through that service.
