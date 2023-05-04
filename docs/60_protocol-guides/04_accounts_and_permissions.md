@@ -7,7 +7,7 @@ title: Accounts and Permissions
 
 An account identifies a participant in the EOS blockchain. A participant can be an individual or a group depending on the assigned permissions within the account. Accounts also represent the smart contract actors that push and receive actions to and from other accounts in the blockchain. Actions are always contained within transactions. A transaction can be one or more atomic actions.
 
-Permissions associated with an account are used to authorize actions and transactions to other accounts. Each permission is linked to an authority table which contains a threshold that must be reached in order to allow the action associated with the given permission to be authorized for execution. The following diagram illustrates the relationship between accounts, permissions, and authorities.
+Permissions associated with an account are used to authorize actions and transactions to other accounts. Each permission can be linked to an authority table which contains a threshold that must be reached in order to allow the action associated with the given permission to be authorized for execution. The following diagram illustrates the relationship between accounts, permissions, and authorities.
 
 ![](/docs/images/protocol-accts_perms_auths.png "Accounts, Permissions, Authorities")
 
