@@ -3,12 +3,12 @@ title: Network Peer Protocol
 ---
 
 
-# 1. Overview
+## 1. Overview
 
 Nodes on the EOS blockchain must be able to communicate with each other for relaying transactions, pushing blocks, and syncing state between peers. The peer-to-peer (p2p) protocol, part of the `nodeos` service that runs on every node, serves this purpose. The ability to sync state is crucial for each block to eventually reach finality within the global state of the blockchain and allow each node to advance the last irreversible block (LIB). In this regard, the fundamental goal of the p2p protocol is to sync blocks and propagate transactions between nodes to reach consensus and advance the blockchain state.
 
 
-## 1.1. Goals
+### 1.1. Goals
 
 In order to add multiple transactions into a block and fit them within the specified production time of 0.5 seconds, the p2p protocol must be designed with speed and efficiency in mind. These two goals translate into maximizing transaction throughput within the effective bandwidth and reducing both network and operational latency. Some strategies to achieve this include:
 
@@ -20,7 +20,7 @@ In order to add multiple transactions into a block and fit them within the speci
 Most of these strategies are fully or partially implemented in the EOS software. Data compression, which is optional, is implemented at the transaction level. Binary encoding is implemented by the net serializer when sending object instances and protocol messages over the network.
 
 
-# 2. Architecture
+## 2. Architecture
 
 The main goal of the p2p protocol is to synchronize nodes securely and efficiently. To achieve this overarching goal, the system delegates functionality into four main components:
 
@@ -42,7 +42,7 @@ At the highest level sits the Net Plugin, which exchanges messages between the n
 3. The Net Plugin accesses the local chain via the Chain Controller if necessary to push or retrieve blocks.
 
 
-## 2.1. Local Chain
+### 2.1. Local Chain
 
 The local chain is the node’s local copy of the blockchain. It consists of both irreversible and reversible blocks received by the node, each block being cryptographically linked to the previous one. The list of irreversible blocks contains the actual copy of the immutable blockchain. The list of reversible blocks is typically shorter in length and it is managed by the Fork Database as the Chain Controller pushes blocks to it. The local chain is depicted below.
 
@@ -50,19 +50,19 @@ The local chain is the node’s local copy of the blockchain. It consists of bot
 
 Each node constructs its own local copy of the blockchain as it receives blocks and transactions and syncs their state with other peers. The reversible blocks are those new blocks received that have not yet reached finality. As such, they are likely to form branches that stem from a main common ancestor, which is the LIB (last irreversible block). Other common ancestors different from the LIB are also possible for reversible blocks. In fact, any two sibling branches always have a nearest common ancestor. For instance, in the diagram above, block 52b is the nearest common ancestor for the branches starting at block 53a and 53b that is different from the LIB. Every active branch in the local chain has the potential to become part of the blockchain.
 
-### 2.1.1. LIB Block
+#### 2.1.1. LIB Block
 
 All irreversible blocks constructed in a node are expected to match those from other nodes up to the last irreversible block (LIB) of each node. This is the distributed nature of the blockchain. Eventually, as the blocks that follow the LIB block reach finality, the LIB block moves up the chain through one of the branches as it catches up with the head block (HB). When the LIB block advances, the immutable blockchain effectively grows. In this process, the head block might switch branches multiple times depending on the potential head block numbers received and their timestamps, which is ultimately used as tiebreaker.
 
-## 2.2. Chain Controller
+### 2.2. Chain Controller
 
 The Chain Controller manages the basic operations on blocks and transactions that change the local chain state, such as validating and executing transactions, pushing blocks, etc. The Chain Controller receives commands from the Net Plugin and dispatches the proper operation on a block or a transaction based on the network message received by the Net Plugin. The network messages are exchanged continuously between the EOS nodes as they communicate with each other to sync the state of blocks and transactions.
 
-### 2.2.1. Signals' Producer and Consumer
+#### 2.2.1. Signals' Producer and Consumer
 
 The producer and consumer of the signals defined in the controller and their life cycle during normal operation, fork, and replay are as follows:
 
-#### pre_accepted_block (carry signed_block_ptr)
+##### pre_accepted_block (carry signed_block_ptr)
 
 - Produced by
 
@@ -78,7 +78,7 @@ The producer and consumer of the signals defined in the controller and their lif
 | chain_plugin | checkpoint validation |
 | | forward data to pre_accepted_block_channel |
 
-#### accepted_block_header (carry block_state_ptr)
+##### accepted_block_header (carry block_state_ptr)
 
 - Produced by
 
@@ -94,7 +94,7 @@ The producer and consumer of the signals defined in the controller and their lif
 | --- | --- |
 | chain_plugin | forward data to accepted_block_header_channel |
 
-#### accepted_block (carry block_state_ptr)
+##### accepted_block (carry block_state_ptr)
 
 - Produced by
 
@@ -108,7 +108,7 @@ The producer and consumer of the signals defined in the controller and their lif
 | --- | --- |
 | net_plugin | broadcast block to other peers |
 
-#### irreversible_block (carry block_state_ptr)
+##### irreversible_block (carry block_state_ptr)
 
 - Produced by
 
@@ -124,7 +124,7 @@ The producer and consumer of the signals defined in the controller and their lif
 | controller | setting the current lib of wasm_interface |
 | chain_plugin | forward data to irreversible_block_channel |
 
-#### accepted_transaction (carry transaction_metadata_ptr)
+##### accepted_transaction (carry transaction_metadata_ptr)
 
 - Produced by
 
@@ -142,7 +142,7 @@ The producer and consumer of the signals defined in the controller and their lif
 | --- | --- |
 | chain_plugin | forward data to accepted_transaction_channel |
 
-#### applied_transaction (carry std::tuple<const transaction_trace_ptr&, const signed_transaction&>)
+##### applied_transaction (carry std::tuple<const transaction_trace_ptr&, const signed_transaction&>)
 
 - Produced by
 
@@ -160,12 +160,12 @@ The producer and consumer of the signals defined in the controller and their lif
 | --- | --- |
 | chain_plugin | forward data to applied_transaction_channel |
 
-#### bad_alloc
+##### bad_alloc
 Not used.
 
-### 2.2.2. Signals' Life Cycle
+#### 2.2.2. Signals' Life Cycle
 
-#### A. normal operation where blocks and transactions are input
+##### A. normal operation where blocks and transactions are input
 
 1. When a transaction is pushed to the blockchain (through RPC or broadcasted by peer)
    1. Transaction is executed either succesfully/ fail the validation -> `accepted_transaction` is emitted by the controller
@@ -192,7 +192,7 @@ Not used.
    1. Once a block is deemed irreversible -> `irreversible_block` will be emitted by the controller before the block is appended to the block log and the chainbase db is committed
    2. chain_plugin will react to the signal to forward the block_state to irreversible_block_channel and also set the lib of wasm_interface
 
-#### B. operation where forks are presented and resolved
+##### B. operation where forks are presented and resolved
 
 1. When forks are presented, the blockchain will pop all existing blocks up to the forking point and then apply all new blocks in the fork.
 2. When applying the new block, all the transactions and scheduled_transactions inside the block will be pushed. All signals related to push_transaction and push_scheduled_transaction (see point A.1 and A.2) will be emitted.
@@ -200,7 +200,7 @@ Not used.
 4. net_plugin will react to the signal and broadcast the block to the peers
 5. If If a new block becomes irreversible, signals related to irreversible block will be emitted (see point A.5)
 
-#### C. normal replay (with or without replay optimization)
+##### C. normal replay (with or without replay optimization)
 
 1. When replaying irreversible block -> `irreversible_block` will be emitted by the controller
 2. Refer to A.5 to see how `irreversible_block` signal is responded
@@ -209,7 +209,7 @@ Not used.
 5. When replaying reversible block, when the block is committed -> `accepted_block` will be emitted by the controller
 6. Refer to A.3 to see how `pre_accepted_block`, `accepted_block_header` and `accepted_block` signal are responded
 
-### 2.2.3. Fork Database
+#### 2.2.3. Fork Database
 
 The Fork Database (Fork DB) provides an internal interface for the Chain Controller to perform operations on the node’s local chain. As new blocks are received from other peers, the Chain Controller pushes these blocks to the Fork DB. Each block is then cryptographically linked to a previous block. Since there might be more than one previous block, the process is likely to produce temporary branches called mini-forks. Thus, the Fork DB serves three main purposes:
 
@@ -224,7 +224,7 @@ In essence, the Fork DB contains all the candidate block branches within a node 
 In the diagram above, the branch starting at block 52b gets pruned (blocks 52b, 53a, 53b are invalid) after the LIB advances from node 51 to block 52c then 53c. As the LIB moves through the reversible blocks, they are moved from the Fork DB to the local chain as they now become part of the immutable blockchain. Finally, block 54d is kept in the Fork DB since new blocks might still be built off from it.
 
 
-## 2.3. Net Plugin
+### 2.3. Net Plugin
 
 The Net Plugin defines the actual peer to peer communication messages between the EOS nodes. The main goal of the Net Plugin is to sync valid blocks upon request and to forward valid transactions invariably. To that end, the Net Plugin delegates functionality to the following components:
 
@@ -234,7 +234,7 @@ The Net Plugin defines the actual peer to peer communication messages between th
 *   **Message Handler**: dispatches protocol messages to the corresponding handler. (see [4.2. Protocol Messages](#42-protocol-messages)).
 
 
-### 2.3.1. Sync Manager
+#### 2.3.1. Sync Manager
 
 The Sync Manager implements the functionality for syncing block state between the node and its peers. It processes the messages sent by each peer and performs the actual syncing of the blocks based on the status of the node’s LIB or head block with respect to that peer. At any point, the node can be in any of the following sync states:
 
@@ -245,7 +245,7 @@ The Sync Manager implements the functionality for syncing block state between th
 If the node’s LIB or head block is behind, the node will generate sync request messages to retrieve the missing blocks from the connected peer. Similarly, if a connected peer’s LIB or head block is behind, the node will send notice messages to notify the node about which blocks it needs to sync with. For more information about sync modes see [3. Operation Modes](#3-operation-modes).
 
 
-### 2.3.2. Dispatch Manager
+#### 2.3.2. Dispatch Manager
 
 The Dispatch Manager maintains the state of blocks and loose transactions received by the node. The state contains basic information to identify a block or a transaction and it is maintained within two indexed lists of block states and transaction states:
 
@@ -255,7 +255,7 @@ The Dispatch Manager maintains the state of blocks and loose transactions receiv
 This makes it possible to locate very quickly which peer has a given block or transaction.
 
 
-#### 2.3.2.1. Block State
+##### 2.3.2.1. Block State
 
 The block state identifies a block and the peer it came from. It is transient in nature, so it is only valid while the node is active. The block state contains the following fields:
 
@@ -269,7 +269,7 @@ Block State Fields | Description
 The list of block states is indexed by block ID, block number, and connection ID for faster lookup. This allows to query the list for any blocks given one or more of the indexed attributes.
 
 
-#### 2.3.2.2. Transaction State
+##### 2.3.2.2. Transaction State
 
 The transaction state identifies a loose transaction and the peer it came from. It is also transient in nature, so it is only valid while the node is active. The transaction state contains the following fields:
 
@@ -285,14 +285,14 @@ The `block_num` stores the node's head block number when the transaction is rece
 The list of transaction states is indexed by transaction ID, expiration time, block number, and connection ID for faster lookup. This allows to query the list for any transactions given one or more of the indexed attributes.
 
 
-#### 2.3.2.3. State Recycling
+##### 2.3.2.3. State Recycling
 
 As the LIB block advances (see [3.3.1. LIB Catch-Up Mode](#331-lib-catch-up-mode)), all blocks prior to the new LIB block are considered finalized, so their state is removed from the local list of block states, including the list of block states owned by each peer in the list of connections maintained by the node. Likewise, transaction states are removed from the list of transactions based on expiration time. Therefore, after a transaction expires, its state is removed from all lists of transaction states.
 
 The lists of block states and transaction states have a light footprint and feature high rotation, so they are maintained in memory for faster access. The actual contents of the blocks and transactions received by a node are stored temporarily in the fork database and the various incoming queues for applied and unapplied transactions, respectively.
 
 
-### 2.3.3. Connection List
+#### 2.3.3. Connection List
 
 The Connection List contains the connection state of each peer. It keeps information about the p2p protocol version, the state of the blocks and transactions from the peer that the node knows about, whether it is currently syncing with that peer, the last handshake message sent and received, whether the peer has requested information from the node, the socket state, the node ID, etc. The connection state includes the following relevant fields:
 
@@ -317,7 +317,7 @@ The transaction state consists of the following fields:
 *   **Expiration time**: the time in seconds for the transaction to expire.
 
 
-## 2.4. Net Serializer
+### 2.4. Net Serializer
 
 The Net Serializer has two main roles:
 
@@ -327,7 +327,7 @@ The Net Serializer has two main roles:
 In the first case, each serialized object or message needs to get deserialized at the other end upon receipt from the network for further processing. In the latter case, serialization of specific fields within an object instance is needed to generate cryptographic hashes of its contents. Most IDs generated for a given object type (action, transaction, block, etc.) consist of a cryptographic hash of the relevant fields from the object instance. 
 
 
-# 3. Operation Modes
+## 3. Operation Modes
 
 From an operational standpoint, a node can be in either one of three states with respect to a connected peer:
 
@@ -338,12 +338,12 @@ From an operational standpoint, a node can be in either one of three states with
 The operation mode for each node is stored in a sync manager context within the Net Plugin of the nodeos service. Therefore, a node is always in either in-sync mode or some variant of catchup mode with respect to its connected peers. This allows the node to switch back and forth between catchup mode and in-sync mode as the LIB and head blocks are updated and new fresh blocks are received from other peers.
 
 
-## 3.1. Block ID
+### 3.1. Block ID
 
 The EOS software checks whether two blocks match or hold the same content by comparing their block IDs. A block ID is a function that depends on the contents of the block header and the block number (see [Consensus Protocol: 5.1. Block Structure](01_consensus_protocol.md#51-block-structure)). Checking whether two blocks are equal is crucial for syncing a node’s local chain with that of its peers. To generate the block ID from the block contents, the block header is serialized and a SHA-256 digest is created. The most significant 32 bits are assigned the block number while the least significant 224 bits of the hash are retained. Note that the block header includes the root hash of both the transaction merkle tree and the action merkle tree. Therefore, the block ID depends on all transactions included in the block as well as all actions included in each transaction.
 
 
-## 3.2. In-Sync Mode
+### 3.2. In-Sync Mode
 
 During in-sync mode, the node's head block is caught up with the peer's head block, which means the node is in sync block-wise. When the node is in-sync mode, it does not request further blocks from peers, but continues to perform the other functions:
 
@@ -355,7 +355,7 @@ Therefore, this mode trades bandwidth in favor of latency, being particularly us
 Note that loose transactions are always forwarded if valid and not expired. Blocks, on the other hand, are only forwarded if valid and if explicitly requested by a peer. This reduces network overhead.
 
 
-## 3.3. Catch-Up Mode
+### 3.3. Catch-Up Mode
 
 A node is in catchup mode when its head block is behind the peer’s LIB or the peer’s head block. If syncing is needed, it is performed in two sequential steps:
 
@@ -365,7 +365,7 @@ A node is in catchup mode when its head block is behind the peer’s LIB or the 
 Therefore, the node’s LIB block is updated first, followed by the node’s head block. 
 
 
-### 3.3.1. LIB Catch-Up Mode
+#### 3.3.1. LIB Catch-Up Mode
 
 Case 1 above, where the node’s LIB block needs to catch up with the peer’s LIB block, is depicted in the below diagram, before and after the sync (Note: inapplicable branches have been removed for clarity):
 
@@ -374,7 +374,7 @@ Case 1 above, where the node’s LIB block needs to catch up with the peer’s L
 In the above diagram, the node’s local chain syncs up with the peer’s local chain by appending finalized blocks 91 and 92 (the peer’s LIB) to the node’s LIB (block 90). Note that this discards the temporary fork consisting of blocks 91n, 92n, 93n. Also note that these nodes have an “n” suffix (short for node) to indicate that they are not finalized, and therefore, might be different from the peer’s. The same applies to unfinalized blocks on the peer; they end in “p” (short for peer). After syncing, note that both the LIB (lib) and the head block (hb) have the same block number on the node.
 
 
-### 3.3.2. Head Catch-Up Mode
+#### 3.3.2. Head Catch-Up Mode
 
 After the node’s LIB block is synced with the peer’s, there will be new blocks pushed to either chain. Case 2 above covers the case where the peer’s chain is longer than the node’s chain. This is depicted in the following diagram, which shows the node and the peer’s local chains before and after the sync:
 
@@ -383,7 +383,7 @@ After the node’s LIB block is synced with the peer’s, there will be new bloc
 In either case 1 or 2 above, the syncing process in the node involves locating the first common ancestor block starting from the node’s head block, traversing the chains back, and ending in the LIB blocks, which are now in sync (see [3.3.1. LIB Catch-Up Mode](#331-lib-catch-up-mode)). In the worst case scenario, the synced LIBs are the nearest common ancestor. In the above diagram, the node’s chain is traversed from head block 94n, 93n, etc. trying to match blocks 94p, 93p, etc. in the peer’s chain. The first block that matches is the nearest common ancestor (block 93n and 93p in the diagram). Therefore, the following blocks 94p and 95p are retrieved and appended to the node’s chain right after the nearest common ancestor, now re-labeled 93n,p (see [3.3.3. Block Retrieval](#333-block-retrieval) process). Finally, block 95p becomes the node’s head block and, since the node is fully synced with the peer, the node switches to in-sync mode.
 
 
-### 3.3.3. Block Retrieval
+#### 3.3.3. Block Retrieval
 
 After the common ancestor is found, a sync request message is sent to retrieve the blocks needed by the node, starting from the next block after the nearest common ancestor and ending in the peer’s head block.
 
@@ -394,7 +394,7 @@ To make effective use of bandwidth, the required blocks are obtained from variou
 When both LIB and head blocks are caught up with respect to the peer, the operation mode in the Sync Manager is switched from catch-up mode to in-sync mode.
 
 
-## 3.4. Mode Switching
+### 3.4. Mode Switching
 
 Eventually, both the node and its peer receive new fresh blocks from other peers, which in turn push the blocks to their respective local chains. This causes the head blocks on each chain to advance. Depending on which chain grows first, one of the following actions occur:
 
@@ -404,7 +404,7 @@ Eventually, both the node and its peer receive new fresh blocks from other peers
 In the first case, the node switches the mode from in-sync to head catchup mode. In the second case, the peer switches to head catchup mode after receiving the notice message from the node. In practice, in-sync mode is short-lived. When the EOS blockchain is very busy, nodes spend most of their time in catchup mode validating transactions and syncing their chains after catchup messages are received.
 
 
-# 4. Protocol Algorithm
+## 4. Protocol Algorithm
 
 The p2p protocol algorithm runs on every node, forwarding validated transactions and validated blocks. Starting EOS v2.0, a node also forwards block IDs of unvalidated blocks it has received. In general, the simplified process is as follows:
 
@@ -414,7 +414,7 @@ The p2p protocol algorithm runs on every node, forwarding validated transactions
 The data messages contain the block contents or the transaction contents. The control messages make possible the syncing of blocks and transactions between the node and its peers (see [Protocol Messages](#42-protocol-messages)). In order to allow such synchronization, each node must be able to retrieve information about its own state of blocks and transactions as well as that of its peers.
 
 
-## 4.1. Node/Peers Status
+### 4.1. Node/Peers Status
 
 Before attempting to sync state, each node needs to know the current status of its own blocks and transactions. It must also be able to query other peers to obtain the same information. In particular, nodes must be able to obtain the following on demand:
 
@@ -426,7 +426,7 @@ Before attempting to sync state, each node needs to know the current status of i
 To perform these queries, and thereafter when syncing state, the Net Plugin defines specific communication messages to be exchanged between the nodes. These messages are sent by the Net Plugin when transmitted and received over a TCP connection.
 
 
-## 4.2. Protocol Messages
+### 4.2. Protocol Messages
 
 The p2p protocol defines the following control messages for peer to peer node communication:
 
@@ -448,7 +448,7 @@ Data Message | Description
 `packed_transaction` | serialized contents of a packed transaction.
 
 
-### 4.2.1. Handshake Message
+#### 4.2.1. Handshake Message
 
 The handshake message is sent by a node when connecting to another peer. It is used by the connecting node to pass its chain state (LIB number/ID and head block number/ID) to the peer. It is also used by the peer to perform basic validation on the node the first time it connects, such as whether it belongs to the same blockchain, validating that fields are within range, detecting inconsistent block states on the node, such as whether its LIB is ahead of the head block, etc. The handshake message consists of the following fields:
 
@@ -480,7 +480,7 @@ If all checks succeed, the peer proceeds to authenticate the connecting node bas
 The peer key corresponds to the public key of the node attempting to connect to the peer. If authentication succeeds, the receiving node acknowledges the connecting node by sending a handshake message back, which the connecting node validates in the same way as above. Finally, the receiving node checks whether the peer’s head block or its own needs syncing. This is done by checking the state of the head block and the LIB of the connecting node with respect to its own. From these checks, the receiving node determines which chain needs syncing.
 
 
-### 4.2.2. Chain Size Message
+#### 4.2.2. Chain Size Message
 
 The chain size message was defined for future use, but it is currently not implemented. The idea was to send ad-hoc status notifications of the node’s chain state after a successful connection to another peer. The chain size message consists of the following fields:
 
@@ -494,7 +494,7 @@ Message Field | Description
 The chain size message is superseded by the handshake message, which also sends the status of the LIB and head blocks, but includes additional information so it is preferred.
 
 
-### 4.2.3. Go Away Message
+#### 4.2.3. Go Away Message
 
 The go away message is sent to a peer before closing the connection. It is usually the result of an error that prevents the node from continuing the p2p protocol further. The go away message consists of the following fields:
 
@@ -521,7 +521,7 @@ The current reason codes are defined as follows:
 After the peer receives the go away message, the peer should also close the connection.
 
 
-### 4.2.4. Time Message
+#### 4.2.4. Time Message
 
 The time message is used to synchronize events among peers, measure time intervals, and detect network anomalies such as duplicate messages, invalid timestamps, broken nodes, etc. The time message consists of the following fields:
 
@@ -533,7 +533,7 @@ Message Field | Description
 `dst` | destination timestamp; set when marking the end of a time interval.
 
 
-### 4.2.5. Notice Message
+#### 4.2.5. Notice Message
 
 The notice message is sent to notify a peer which blocks and loose transactions the node currently has. The notice message consists of the following fields :
 
@@ -545,7 +545,7 @@ Message Field | Description
 Notice messages are lightweight since they only contain block IDs and transaction IDs, not the actual block or transaction.
 
 
-### 4.2.6. Request Message
+#### 4.2.6. Request Message
 
 The request message is sent to notify a peer which blocks and loose transactions the node currently needs. The request message consists of the following fields:
 
@@ -555,7 +555,7 @@ Message Field | Description
 `req_blocks` | sorted list of requested block IDs required by node.
 
 
-### 4.2.7. Sync Request Message
+#### 4.2.7. Sync Request Message
 
 The sync request message requests a range of blocks from peer. The sync request message consists of the following fields:
 
@@ -567,7 +567,7 @@ Message Field | Description
 Upon receipt of the sync request message, the peer sends back the actual blocks for the range of block numbers specified.
 
 
-## 4.3. Message Handler
+### 4.3. Message Handler
 
 The p2p protocol uses an event-driven model to process messages, so no polling or looping is involved when a message is received. Internally, each message is placed in a queue and the next message in line is dispatched to the corresponding message handler for processing. At a high level, the message handler can be defined as follows:
 
@@ -589,7 +589,7 @@ The p2p protocol uses an event-driven model to process messages, so no polling o
 ```
 
 
-## 4.4. Send Queue
+### 4.4. Send Queue
 
 Protocol messages are placed in a buffer queue and sent to the appropriate connected peer. At a higher level, a node performs the following operations with each connected peer in a round-robin fashion:
 
@@ -611,6 +611,6 @@ Protocol messages are placed in a buffer queue and sent to the appropriate conne
 ```
 
 
-# 5. Protocol Improvements
+## 5. Protocol Improvements
 
 Any software updates to the p2p protocol must also scale progressively and consistently across all nodes. This translates into installing updates that reduce operation downtime and potentially minimize it altogether while deploying new functionality in a backward compatible manner, if possible. On the other hand, data throughput can be increased by taking measures that minimize message footprint, such as using data compression and binary encoding of the protocol messages.
