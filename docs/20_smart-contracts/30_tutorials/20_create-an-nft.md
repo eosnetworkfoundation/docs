@@ -324,8 +324,7 @@ for it, we would have to write the same code in each action.
 ## Filling in the actions
 
 We will go through each action and implement the logic for it. Pay close attention to
-the comments as they will explain what each line of code does, though I will give you a 
-layman's explanation of the action after the code as well.
+the comments as they will explain what each line of code does.
 
 ### Mint
 
