@@ -116,7 +116,7 @@ After the transaction instance is created at the application level, the transact
 
 ### 3.2. Sign Transaction
 
-The transaction must be signed by a set of keys sufficient to satisfy the accumulated set of explicit `actor:permission` pairs specified in all the actions enclosed within the transaction. This linkage is done through the authority table for the given permission (see [Accounts and Permissions: 3. Permissions](04_accounts_and_permissions.md#3-permissions)). The actual signing key is obtained by querying the wallet associated with the signing account on the client where the application is run.
+The transaction must be signed by a set of keys sufficient to satisfy the accumulated set of explicit `actor:permission` pairs specified in all the actions enclosed within the transaction. This linkage is done through the authority table for the given permission. The actual signing key is obtained by querying the wallet associated with the signing account on the client where the application is run.
 
 The transaction signing process takes three parameters: the transaction instance to sign, the set of public keys from which the associated private keys within the application wallet are retrieved, and the chain ID. The chain ID identifies the actual EOS blockchain and consists of a hash of its genesis state, which depends on the blockchain’s initial configuration parameters. Before signing the transaction, the EOS software first computes a digest of the transaction. The digest value is a SHA-256 hash of the chain ID, the transaction instance, and the context free data if the transaction has any context free actions. Any instance fields get serialized before computing any cryptographic hashes to avoid including reference fields (memory addresses) in the hash computation. The transaction digest computation and the signing process are depicted below.
 
@@ -158,7 +158,7 @@ The diagram below depicts an action instance. It consists of the receiver accoun
 
 #### 3.4.4. Authority Check
 
-After the minimum permission levels are checked, the authority table for the receiver account’s permission that matches each actor’s permission within the action instance is checked (see [Accounts and Permissions: 3. Permissions](04_accounts_and_permissions.md#3-permissions) for more details).
+After the minimum permission levels are checked, the authority table for the receiver account’s permission that matches each actor’s permission within the action instance is checked.
 
 
 ### 3.5. Execute Transaction
