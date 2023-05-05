@@ -1,5 +1,5 @@
 ---
-title: What is decentralization
+title: Decentralization
 ---
 
 Decentralization means giving power to many people instead of just one group. For example, with blockchain technology, 
