@@ -2,8 +2,6 @@
 title: "Create a Token"
 ---
 
-## What is a token?
-
 
 A token is an own-able digital asset such as a virtual collectible or in-game currency. It is nothing more than a data structure
 that is stored on the blockchain.
