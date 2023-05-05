@@ -10,3 +10,4 @@ of blockchain technology. This section provides an overview of blockchain techno
 * [Cryptography](./30_cryptography.md)
 * [Transactions and Blocks](./40_transactions-and-blocks.md)
 * [Smart Contracts](./50_smart-contracts.md)
+* [Web3](./60_web3.md)
