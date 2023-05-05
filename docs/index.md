@@ -1,5 +1,6 @@
 ---
 title: Welcome
+sidebar_class_name: sidebarhidden
 ---
 
 The EOS Documentation Portal hosts a rich array of technical product documentation resources created and curated for the EOS blockchain developers community. These resources empower developers from all technology backgrounds to build enterprise-grade, secure, and scalable blockchain applications using the open-source EOS software.
