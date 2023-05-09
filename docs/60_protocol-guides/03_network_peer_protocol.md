@@ -31,7 +31,7 @@ The main goal of the p2p protocol is to synchronize nodes securely and efficient
 
 The interaction between the above components is depicted in the diagram below:
 
-![](/docs/images/protocol-p2p_system_arch.png "Peer-to-peer Architecture")
+![](../images/protocol-p2p_system_arch.png "Peer-to-peer Architecture")
 
 At the highest level sits the Net Plugin, which exchanges messages between the node and its peers to sync blocks and transactions. A typical message flow goes as follows:
 
