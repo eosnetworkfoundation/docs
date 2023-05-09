@@ -5,7 +5,7 @@ Application Binary Interface. A JSON-based description on how to convert user ac
 **Abbreviation**: ABI
 
 ## Account
-An account is a unique identifier and a requirement to interact with an Antelope-based blockchain. Unlike most other cryptocurrencies, transfers are sent to a human readable account name instead of a public key, while keys attributed to the account are used to sign transactions.  
+An account is a unique identifier and a requirement to interact with an Antelope-based blockchain. Unlike most other cryptocurrencies, transfers are sent to a human readable account name instead of a public key, while keys attributed to the account are used to sign transactions.
 
 An account is a participant in an Antelope blockchain.
 
@@ -28,7 +28,7 @@ A marketing implementation that involves sending free coins or tokens to wallet 
 A method to deploy tokens for dApp developers. Use your personal RAM to receive airgrab tokens.
 
 ## Antelope
-The technology that powers EOS, WAX, Telos, UX, Ultra  
+The technology that powers EOS, WAX, Telos, UX, Ultra
 
 ## API
 Application Programming Interface. A computer interface that enables two computer applications to interact with each other.
@@ -156,7 +156,7 @@ EOS is a smart contract blockchain project that is built with Antelope framework
 The EOS source code defines a list of types which ease the developer's work when writing smart contracts, plugins, or when extending the EOS source code. Example types include `account_name`, `permission_name`, `table_name`, `action_name`, `scope_name`, `weight_type`, `public_key`, etc.
 
 ## EOSJS
-A frontend library for javascript development for native mobile applications development, in addition to Swift and Java SDKs. A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API. 
+A frontend library for javascript development for native mobile applications development, in addition to Swift and Java SDKs. A Javascript API SDK for integration with Antelope-based blockchains using the Antelope RPC API.
 
 ## EVM
 Earned Value Management. EVM is a project management methodology that integrates schedule, costs, and scope to measure project performance.
@@ -368,7 +368,7 @@ Wait is measured in seconds and it is the time to wait until a delayed transacti
 Wallets are clients that store keys that may or may not be associated with the permissions of one or more accounts. Ideally a wallet has a locked (encrypted) and unlocked (decrypted) state that is protected by a high entropy password.
 
 ## Wallet Import Format
-An encoding for a private EDSA key. Antelolpe uses the same version, checksum, and encoding scheme as the Bitcoin WIF addresses and should be compatible with existing libraries. 
+An encoding for a private EDSA key. Antelolpe uses the same version, checksum, and encoding scheme as the Bitcoin WIF addresses and should be compatible with existing libraries.
 **Abbreviation**: WIF
 
 ## WebAssembly
