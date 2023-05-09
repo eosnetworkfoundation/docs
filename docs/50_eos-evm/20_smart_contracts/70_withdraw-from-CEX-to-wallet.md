@@ -4,7 +4,7 @@ title: Withdraw from CEX to EOS EVM Address
 
 To withdraw EOS tokens from a centralize exchange (CEX) to an EOS EVM address:
 
-1. Make sure you connect your wallet of choice to EOS EVM mainnet. See [how to connect MetaMask](./10_connect-metamask.md) documentation.
+1. Make sure you connect your wallet of choice to EOS EVM mainnet. See [how to connect MetaMask](../10_basic-setup/10_connect-metamask.md) documentation.
 2. Visit the withdraw screen of the CEX website or app.
 3. Select EOS as Coin.
 4. Select EOS as Network.

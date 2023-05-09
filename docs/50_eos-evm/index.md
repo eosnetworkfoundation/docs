@@ -11,8 +11,20 @@ libraries, such as Hardhat, Remix, ethers, and any other tools that are compatib
 The EOS EVM is a drop-in replacement for the Ethereum EVM, and can be used to run any Ethereum application on EOS
 with little to no changes.
 
-- [Get Started](./20_getting_started/index.md)
+### Get started with EOS EVM
+
+- [Get Started](./20_smart_contracts/index.md)
 - [Compatibility](./30_compatibility/index.md)
 - [Architecture](./40_architecture/index.md)
-- [Supported Tokens](./50_supported_tokens.md)
 - [Helpful Links](./60_helpful_links.md)
+
+### Can I deploy my dapp to the EOS EVM?
+
+Any EVM compatible smart contract can instantly be deployed to EOS EVM. 
+
+A few examples of chains that are supported are:
+- Ethereum
+- Binance Smart Chain
+- Polygon
+- Fantom
+- Arbitrum
