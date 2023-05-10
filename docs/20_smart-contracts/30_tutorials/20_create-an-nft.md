@@ -70,7 +70,7 @@ those non-native concepts in this tutorial.
 
 The actions we will be implementing are:
 
-```c++
+```cpp
     ACTION mint(name to, uint64_t token_id){
     
     }
@@ -121,7 +121,7 @@ of `ACTION`.
 > 
 > `ACTION` is something called a `MACRO`, which is a way to write code that will be replaced
 > with other code at compile time. In this case, the `ACTION` macro is replaced with:
-> ```c++
+> ```cpp
 > [[eosio::action]] void
 > ```
 > The reason we cannot use the `ACTION` macro for actions that return values is because
@@ -330,7 +330,7 @@ the comments as they will explain what each line of code does.
 
 The `mint` action is used to create a new NFT.
 
-```c++
+```cpp
     ACTION mint(name to, uint64_t token_id){
         // We only want to mint NFTs if the action is called by the contract owner
         check(has_auth(get_self()), "only contract can mint");
@@ -360,7 +360,7 @@ The `mint` action is used to create a new NFT.
 
 The `transfer` action is used to transfer an NFT from one account to another.
 
-```c++
+```cpp
     ACTION transfer(name from, name to, uint64_t token_id, std::string memo){
         // The account we are transferring from must authorize this action
         check(has_auth(from), "from account has not authorized the transfer");
@@ -402,7 +402,7 @@ The `transfer` action is used to transfer an NFT from one account to another.
 
 The `balanceof` action is used to get the balance of an account.
 
-```c++
+```cpp
     [[eosio::action]] uint64_t balanceof(name owner){
         return get_balance(owner);
     }
@@ -418,7 +418,7 @@ The `balanceof` action is used to get the balance of an account.
 
 The `ownerof` action is used to get the owner of an NFT.
 
-```c++
+```cpp
     [[eosio::action]] name ownerof(uint64_t token_id){
         return get_owner(token_id);
     }
@@ -428,7 +428,7 @@ The `ownerof` action is used to get the owner of an NFT.
 
 The `approve` action is used to approve an account to transfer an NFT on your behalf.
 
-```c++
+```cpp
     ACTION approve(name to, uint64_t token_id){
         // get the token owner
         name owner = get_owner(token_id);
@@ -452,7 +452,7 @@ The `approve` action is used to approve an account to transfer an NFT on your be
 The `approveall` action is used to approve an account to transfer all of your
 NFTs on your behalf.
 
-```c++
+```cpp
     ACTION approveall(name from, name to, bool approved){
         // The owner of the NFTs must authorize this action
         check(has_auth(from), "owner has not authorized the approval");
@@ -478,7 +478,7 @@ NFTs on your behalf.
 The `getapproved` action is used to get the account that is approved to transfer an
 NFT on your behalf.
 
-```c++
+```cpp
     [[eosio::action]] name getapproved(uint64_t token_id){
         return get_approved(token_id);
     }
@@ -489,7 +489,7 @@ NFT on your behalf.
 The `approved4all` action is used to check if an account is approved to transfer
 all of your NFTs on your behalf.
 
-```c++
+```cpp
     [[eosio::action]] bool approved4all(name owner, name approved_account){
       return get_approved_all(owner) == approved_account;
    }
@@ -505,7 +505,7 @@ all of your NFTs on your behalf.
 
 The `tokenuri` action is used to get the URI of an NFT.
 
-```c++
+```cpp
     [[eosio::action]] std::string tokenuri(uint64_t token_id){
         return get_token_uri(token_id);
     }
@@ -515,7 +515,7 @@ The `tokenuri` action is used to get the URI of an NFT.
 
 The `setbaseuri` action is used to set the base URI of the NFTs.
 
-```c++
+```cpp
     ACTION setbaseuri(std::string base_uri){
         // The account calling this action must be the contract owner
         require_auth(get_self());
@@ -543,7 +543,7 @@ and then transferring them to another account using the approved account.
 <details>
     <summary>Click here to see full contract</summary>
 
-```c++
+```cpp
 #include <eosio/eosio.hpp>
 #include <eosio/asset.hpp>
 #include <eosio/singleton.hpp>

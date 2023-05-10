@@ -89,7 +89,7 @@ In C++ programming, a `.hpp` file is a header file that contains declarations of
 
 The `hello.hpp` contains the `hello` smart contract C++ class declaration.
 
-```c++
+```cpp
 #include <eosio/eosio.hpp>
 using namespace eosio;
 
@@ -124,7 +124,7 @@ An action is a method, defined and implemented by a smart contract class. Action
 
 The `hello` smart contract class has only one action implemented by its `hi` public member function.
 
-```c++
+```cpp
 #include <hello.hpp>
 
 ACTION hello::hi( name nm ) {
