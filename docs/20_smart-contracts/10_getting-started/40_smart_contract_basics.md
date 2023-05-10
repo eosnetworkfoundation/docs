@@ -107,7 +107,7 @@ A smart contract class declaration must:
 - Be derived from the `contract` class which provides basic smart contract functionality.
 - Define at least a public action function.
 
-> ℹ️ **C++ Macro** ℹ️  
+> ℹ️ **C++ Macro**   
 In C++, a `macro` is a way to define a shorthand for a piece of code or a value. When the `macro` is used in the code, the preprocessor automatically replaces it with its corresponding definition before the code is compiled. This can help to make the code more readable and maintainable by reducing repetition and increasing abstraction.
 
 You will learn more about actions later.
@@ -202,7 +202,7 @@ ACTION hello::inlineaction() {
 
 The `SEND_INLINE_ACTION` macro third parameter uses the `_n()` string operator to convert `"active"` string into a `name` object. `"active"_n` is a shortcut for `name("active")`. And `name` is an EOS built-in type. You will learn more about built-in types later in this guide.
 
-> ℹ️ **C++ Operator** ℹ️  
+> ℹ️ **C++ Operator**   
 In C++ programming, an operator is a symbol or keyword used to perform operations on variables or values. Examples of operators in C++ include arithmetic operators (+, -, *, /), assignment operators (=, +=, -=, *=, /=), comparison operators (==, !=, <, >, <=, >=), logical operators (&&, ||, !), and many others.
 
 Build the smart contract again and deploy it to the local node as you did previously.
