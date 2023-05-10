@@ -3,21 +3,19 @@ title: Connect MetaMask
 ---
 
 You can easily add the EOS EVM networks (mainnet and testnet) to your MetaMask by visiting 
-[Chainlist](https://chainlist.org/?search=EOS&testnets=true) and clicking the **"Connect Wallet"** button.
+[**Chainlist**](https://chainlist.org/?search=EOS&testnets=true) and clicking the **"Connect Wallet"** button.
 
-If you'd like to add the networks manually, follow the steps below.
 
-## Adding networks manually
+## Adding manually
 
-1. Open your MetaMask wallet and click on the network in the top center:
+Open your MetaMask wallet and click on the network in the top center:
 
 ![metamask top network button](./images/metamask_top_network_button.png)
 
-2. Click on `Add network` at the end of the dropdown list:
+Click on `Add network` at the end of the dropdown list:
 
 ![metamask top network button](./images/metamask_add_network_button.png)
 
-3. Fill in the connection details of the EOS EVM network you want to connect to and click the `Save` button:
 
 ![metamask_add_network_form](./images/metamask_add_network_form.png)
 
@@ -42,3 +40,4 @@ Add the following details:
 
 </details>
 
+Now click Save and you should see the new network in your MetaMask dropdown list.
