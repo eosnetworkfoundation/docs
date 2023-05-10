@@ -102,15 +102,14 @@ Create a sample project to learn how to use DUNE to compile, deploy, and interac
 
 ### Create sample project
 
-1. Navigate to a directory in which you want to create a project, then run the following command:
+Navigate to a directory in which you want to create a project, then run the following command:
 
 ```shell
 dune --create-cmake-app hello .
 ```
-
 This command creates a `hello` directory with a cmake style EOS smart contract project.
 
-2. Replace the contents of `src/hello.cpp` with the following code:
+Replace the contents of `src/hello.cpp` with the following code:
 
 ```cpp
 #include <eosio/eosio.hpp> 
