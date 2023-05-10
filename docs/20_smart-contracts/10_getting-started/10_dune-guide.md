@@ -30,21 +30,19 @@ dune --import-dev-key <PRIVATE_KEY>
 
 ## Node management
 
-Creating a new local EOS blockchain is easy with DUNE.
+DUNE easily creates a new local EOS blockchain.
 
-The following command creates a new node called `NODE_NAME`.  The node initiates with default settings. These default settings configure the node to serve as an API/producer node. You can deploy smart contracts to it and perform tests on it.
+The following command creates a new node called `NODE_NAME`.  This node initiates with default settings. These default settings configure the node to serve as an API/producer node. You can deploy smart contracts to it and perform tests on it.
 
 ```shell
 dune --start <NODE_NAME>
 ```
 
-> ❔ **Errors**
+> 📝 **In Case of Errors**
 >
 > You may see errors at the end of the node setup process.
 > If you do, refer to this guide to troubleshoot common errors, or reach out to us on our
 > [Telegram channel](https://t.me/antelopedevs) for help.
-
-**Note to Author - What does the word "this" mean in the above sentence? Be explicit. Does it refer to the guide the reader is reading or another guide. Always follow the word "this" with an identifying noun.**
 
 The following command shows you a list of EOS nodes on your system:
 
@@ -70,8 +68,6 @@ The following command removes a node:
 dune --remove <NODE_NAME>
 ```
 
-
-
 ### Bootstrapping your environment
 
 There are a few system contracts that your development environment may need to rely on, such as:
@@ -84,8 +80,6 @@ Bootstrapping your local node is easy. Once you have an active node running, boo
 ```shell
 dune --bootstrap-system-full
 ```
-
-
 
 ## Account management
 
@@ -108,21 +102,19 @@ Create a sample project to learn how to use DUNE to compile, deploy, and interac
 
 ### Create sample project
 
-    1. Navigate to a directory you want to create a project in, and then run the following command:
+1. Navigate to a directory in which you want to create a project, then run the following command:
 
-        ```shell
- dune --create-cmake-app hello .
-        ```
+```shell
+dune --create-cmake-app hello .
+```
 
-       This command creates a `hello` directory with a cmake style EOS smart contract project.
+This command creates a `hello` directory with a cmake style EOS smart contract project.
 
-    2.Replace the contents of `src/hello.cpp` with the following code:
+2. Replace the contents of `src/hello.cpp` with the following code:
 
-        ```cpp
- #include <eosio/eosio.hpp>
- using namespace eosio;
-
-**Note to author - is the following code the sample project. If so it needs a level 3 heading stating it is the resulting project from steps 1 and 2.**
+```cpp
+#include <eosio/eosio.hpp> 
+using namespace eosio;
 
 CONTRACT hello : public contract {ompilinc
  public:
@@ -151,6 +143,7 @@ From the root of your project, run the following command to compile your contrac
 dune --cmake-build .
 ```
 You see your contract compiling. If there are any errors, you see them in the output.
+
 ### Deploy your contract
 
 Use the following commands to create an account and deploy the contract to the account.
@@ -167,8 +160,8 @@ dune --deploy ./build/hello hello
 
 ### Interacting with your contract
 
-To interact with your contract send a transaction on your local EOS node. Transactions on EOS consist of 
-`actions`, so you need to send a single action to your contract.
+Transactions on EOS consist of 
+`actions`. To interact with your contract send a single action to your contract.
 
 You also need to create a test account from which to send the action.
 
@@ -183,6 +176,7 @@ dune --send-action hello test '[bob]' testaccount
 
 You should see a transaction executed successfully. If you try to repeat this command, the command 
 fails because the row already exists in the contract's database.
+
 ### Get data from your contract
 
 You added a row to the contract's database. 
@@ -194,7 +188,7 @@ Use the following command to fetch that data from the chain:
 dune --get-table hello hello users
 ```
 
-You should get a table result with one or more row. If you didn't make sure your interaction above was successful.
+You should get a table result with one or more rows. If you didn't, make sure your interaction above was successful.
 
 ## Using raw programs with DUNE
 
