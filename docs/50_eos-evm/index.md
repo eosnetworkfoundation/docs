@@ -6,25 +6,25 @@ The EOS EVM is an Ethereum Virtual Machine (EVM) running on EOS which has been o
 
 ## What is EOS EVM?
 
-It is fully compatible with the Ethereum EVM, and supports all Ethereum smart contracts and applications,
-but lowers the costs of interacting with them considerably. It also supports all Ethereum development tools and
-libraries, such as Hardhat, Remix, ethers, and any other tools that are compatible with the Ethereum JSON-RPC API.
+It is a fully compatible Ethereum EVM running on EOS which
+lowers the costs of interacting with EVM contracts considerably and achiever much higher throughput. 
 
-The EOS EVM is a drop-in replacement for the Ethereum EVM, and can be used to run any Ethereum application on EOS
-with little to no changes.
+It also supports all Ethereum development tools and libraries, such as Hardhat, Remix, ethers, and all other tools that 
+allow you to specify a custom JSON-RPC endpoint.
 
-### Get started with EOS EVM
+## Can I deploy my dapp to the EOS EVM?
 
-- [Get Started](./20_smart_contracts/index.md)
-- [Compatibility](./30_compatibility/index.md)
-- [Architecture](./40_architecture/index.md)
+Any EVM compatible smart contract can instantly be deployed to EOS EVM.
 
-### Can I deploy my dapp to the EOS EVM?
-
-Any EVM compatible smart contract can instantly be deployed to EOS EVM. 
-
-A few examples of chains that are supported are: **Ethereum, Binance Smart Chain, Polygon, Fantom, and Arbitrum.**
+> A few examples of chains that are supported are: **Ethereum, Binance Smart Chain, Polygon, Fantom, and Arbitrum.**
 
 ## Join the Community
 
-Head over to the [EOS EVM Developer Telegram](https://t.me/eosevm) to join the community and ask questions.
+Come make some friends in our [EOS EVM Developer Telegram](https://t.me/eosevm)!
+
+## What's Next?
+
+- [Basics](./10_basic-setup/index.md) (you should start here)
+- [Smart Contracts](./20_smart_contracts/index.md)
+- [Compatibility](./30_compatibility/index.md)
+- [Architecture](./40_architecture/index.md)
