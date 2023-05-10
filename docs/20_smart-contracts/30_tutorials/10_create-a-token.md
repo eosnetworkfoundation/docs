@@ -28,7 +28,7 @@ To get started, let's set up a basic contract scaffold.
 
 Create a `token.cpp` file and add the following code:
 
-```c++
+```cpp
 #include <eosio/eosio.hpp>
 #include <eosio/asset.hpp>
 #include <eosio/singleton.hpp>
@@ -47,7 +47,7 @@ CONTRACT token : public contract {
 
 Our token contract will have three actions: 
 
-```c++
+```cpp
     ACTION issue(name to, asset quantity){
         
     }
@@ -98,7 +98,7 @@ We are going to add a constant variable to our contract to define the `symbol` a
 
 Add this above the `issue` action:
 
-```c++
+```cpp
     const symbol TOKEN_SYMBOL = symbol(symbol_code("GOLD"), 4);
     
     ACTION issue ...
@@ -114,7 +114,7 @@ Now that you have your actions defined, let's add the data structures that will 
 
 Put this below the `TOKEN_SYMBOL` you just added.
 
-```c++
+```cpp
     const symbol TOKEN_SYMBOL = symbol(symbol_code("GOLD"), 4);
 
     TABLE balance {
@@ -149,7 +149,7 @@ we are using the `owner` field as the primary key, but using the `uint64_t` repr
 
 Next, you need another table to store the total supply of the token. Add this below the `balances_table` you just added:
 
-```c++
+```cpp
     using supply_table = singleton<"supply"_n, asset>;
 ```
 
@@ -171,7 +171,7 @@ First we'll start with the `issue` action, which will create new tokens and add 
 We want only the account that the contract is deployed on to be able to call the `issue` action, so we will add 
 an assertion to make sure that the account calling the action is the same as the account that the contract is deployed on.
 
-```c++
+```cpp
     ACTION issue(name to, asset quantity){
         check(has_auth(get_self()), "only contract owner can issue new GOLD");
     }
@@ -180,7 +180,7 @@ an assertion to make sure that the account calling the action is the same as the
 Next, we want to make sure that the account we will issue the tokens to exists on the blockchain. We don't want that
 sweet in-game GOLD to go to waste!
 
-```c++
+```cpp
     ...
     check(is_account(to), "the account you are trying to issue GOLD to does not exist");
 ```
@@ -188,7 +188,7 @@ sweet in-game GOLD to go to waste!
 Next, we want to make sure that the `quantity` parameter is a positive number, and has the correct 
 `symbol` and `precision`.
 
-```c++
+```cpp
     ...
     check(quantity.is_valid(), "invalid quantity");
     check(quantity.amount > 0, "must issue a positive quantity");
@@ -199,7 +199,7 @@ Shwew! That's a lot of checks, but it's important to make sure that we are prote
 
 Now let's start dealing with the balances table.
 
-```c++
+```cpp
     ...
     balances_table balances(get_self(), get_self().value);
 ```
@@ -216,7 +216,7 @@ as the second parameter (the `scope` parameter), which returns the `uint64_t` re
 Next, we need to check if the `to` account already has a balance. We can do this by using the `find` function on the
 `balances` table.
 
-```c++
+```cpp
     ...
     auto to_balance = balances.find(to.value);
 ```
@@ -229,7 +229,7 @@ If there is already a balance, then we need to add the new tokens to the existin
 `modify` function on the `balances` table. We will check to see if the `to_balance` iterator is not equal to the end of
 the table, and if it is not, then we will modify the row.
 
-```c++
+```cpp
     ...
     if(to_balance != balances.end()){
         balances.modify(to_balance, get_self(), [&](auto& row){
@@ -249,7 +249,7 @@ balance.
 If there is not already a balance, then we need to create a new balance for the `to` account. We can do this by using
 the `emplace` function on the `balances` table.
 
-```c++
+```cpp
     ...
     else{
         balances.emplace(get_self(), [&](auto& row){
@@ -268,7 +268,7 @@ account, and the `balance` to the `quantity`.
 
 Finally, we need to update the total supply of the token. We can do this by getting the `supply` table.
 
-```c++
+```cpp
     ...
     supply_table supply(get_self(), get_self().value);
     auto current_supply = supply.get_or_default(asset(0, TOKEN_SYMBOL));
@@ -291,7 +291,7 @@ Since both the `current_supply` and `quantity` are of type `asset`, we can use t
 > it will throw an error and abort the transaction automatically. You do not have to do any 
 > special checks when using `asset`. You do however if using `uint64_t` or any other base type. 
 
-```c++
+```cpp
     ...
     auto new_supply = current_supply + quantity;
     supply.set(new_supply, get_self());
@@ -310,7 +310,7 @@ the `owner` account and the supply instead of increasing them.
 
 Let's start with the checks like before, and then get into the logic.
 
-```c++
+```cpp
     ACTION burn(name owner, asset quantity){
         check(has_auth(owner), "only the owner of these tokens can burn them");
         check(quantity.is_valid(), "invalid quantity");
@@ -322,7 +322,7 @@ Let's start with the checks like before, and then get into the logic.
 We're doing the same checks we did in the `issue` action, except for the `is_account` check because we will already be 
 testing to see if the `owner` has a balance in the `balances` table.
 
-```c++
+```cpp
     ...
     balances_table balances(get_self(), get_self().value);
     auto owner_balance = balances.find(owner.value);
@@ -331,14 +331,14 @@ testing to see if the `owner` has a balance in the `balances` table.
 
 Now let's check if the `owner` account has enough tokens to burn.
 
-```c++
+```cpp
     ...
     check(owner_balance->balance.amount >= quantity.amount, "owner doesn't have enough GOLD to burn");
 ```
 
 Let's calculate a new balance for the `owner` account.
 
-```c++
+```cpp
     ...
     auto new_balance = owner_balance->balance - quantity;
 ```
@@ -349,7 +349,7 @@ to burn.
 Let's subtract the tokens from the `owner` account. If the `new_balance` is zero, then we can just erase the
 row from the `balances` table to save **RAM**.
 
-```c++
+```cpp
     ...
     if(new_balance.amount == 0){
         balances.erase(owner_balance);
@@ -358,7 +358,7 @@ row from the `balances` table to save **RAM**.
 
 If the `new_balance` is not zero, then we need to modify the row in the `balances` table.
 
-```c++
+```cpp
     ...
     else {
         balances.modify(owner_balance, get_self(), [&](auto& row){
@@ -369,7 +369,7 @@ If the `new_balance` is not zero, then we need to modify the row in the `balance
 
 We also need to remove the tokens from the total supply.
 
-```c++
+```cpp
     ...
     supply_table supply(get_self(), get_self().value);
     supply.set(supply.get() - quantity, get_self());
@@ -387,7 +387,7 @@ build things on top of it.
 
 Again let's start with the checks and then get into the logic.
 
-```c++
+```cpp
     ACTION transfer(name from, name to, asset quantity, string memo){
         check(has_auth(from), "only the owner of these tokens can transfer them");
         check(is_account(to), "to account does not exist");
@@ -402,7 +402,7 @@ that is authorizing the transfer, and we're making sure that the `to` account ex
 
 Next, we need to get the `balances` table and check if the `from` account has a balance.
 
-```c++
+```cpp
     ...
     balances_table balances(get_self(), get_self().value);
     auto from_balance = balances.find(from.value);
@@ -411,21 +411,21 @@ Next, we need to get the `balances` table and check if the `from` account has a 
 
 Let's check if the `from` account has enough tokens to transfer.
 
-```c++
+```cpp
     ...
     check(from_balance->balance.amount >= quantity.amount, "owner doesn't have enough GOLD to transfer");
 ```
 
 We need to check if the `to` account has a balance in the `balances` table.
 
-```c++
+```cpp
     ...
     auto to_balance = balances.find(to.value);
 ```
 
 If the `to` account does not have a balance, then we need to create a new row in the `balances` table.
 
-```c++
+```cpp
     ...
     if(to_balance == balances.end()){
         balances.emplace(get_self(), [&](auto& row){
@@ -437,7 +437,7 @@ If the `to` account does not have a balance, then we need to create a new row in
 
 If the `to` account _does_ have a balance, then we need to modify the row in the `balances` table.
 
-```c++
+```cpp
     ...
     else {
         balances.modify(to_balance, get_self(), [&](auto& row){
@@ -449,7 +449,7 @@ If the `to` account _does_ have a balance, then we need to modify the row in the
 Now we need to check if the `from` account has a balance of the same amount as the `quantity` we are transferring. If
 it does, then we can just erase the row from the `balances` table, and once again, save **RAM**.
 
-```c++
+```cpp
     ...
     if(from_balance->balance.amount == quantity.amount){
         balances.erase(from_balance);
@@ -459,7 +459,7 @@ it does, then we can just erase the row from the `balances` table, and once agai
 If the `from` account has a balance that is greater than the `quantity` we are transferring, then we need to
 modify the row in the `balances` table.
 
-```c++
+```cpp
     ...
     else {
         balances.modify(from_balance, get_self(), [&](auto& row){
@@ -472,7 +472,7 @@ Finally, we need to emit an event that other contracts can listen to. We will em
 account as the recipient, and another which has the `to` account as the recipient. This allows either party to listen
 to the event and do something with it if they have a contract deployed to that account.
 
-```c++
+```cpp
     ...
     require_recipient(from);
     require_recipient(to);
@@ -486,7 +486,7 @@ If you want to copy the full contract, and match it against yours, you can find 
 <details>
     <summary>Click here to view full code</summary>
 
-```c++
+```cpp
 #include <eosio/eosio.hpp>
 #include <eosio/asset.hpp>
 #include <eosio/singleton.hpp>

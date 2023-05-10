@@ -30,7 +30,7 @@ Let's take a look at some code for this without the pattern:
 
 
 #### The token transfer action
-```c++
+```cpp
 ACTION transfer(name from, name to, asset quantity, string memo){
     // ...
     require_recipient( from );
@@ -40,7 +40,7 @@ ACTION transfer(name from, name to, asset quantity, string memo){
 ```
 
 #### The event receiver and record action
-```c++
+```cpp
 #include <eosio/asset.hpp>
 
 [[eosio::on_notify("eosio.token::transfer")]]
@@ -75,7 +75,7 @@ using the linked-actions pattern.
 First we're going to add a `multi_index` table to our contract to store the information we need to pass
 between the two actions.
 
-```c++
+```cpp
 TABLE transfer_info {
     name from;
     asset quantity;
