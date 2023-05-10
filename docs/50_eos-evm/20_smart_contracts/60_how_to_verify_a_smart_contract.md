@@ -2,24 +2,27 @@
 title: Verify A Smart Contract
 ---
 
-This document shows the steps you need to follow to verify a smart contract through its flattened source code.
+In order to verify your smart contract, you must know your:
 
-## Prerequisites
+- Smart contract address
+- The compiler version that the deployed contract was compiled with
+- The EVM version
+- The solidity flattened source code for your smart contract
 
-You should have the following:
+## Go to the verification page
 
-1. The smart contract address, let us assume it is `SMART_CONTRACT_ADDRESS`
-2. The compiler version used to compile the smart contract, let us assume it is `COMPILER_VERSION`
-3. The EVM version the WASM was compiled for, let us assume it is `EVM_VERSION`
-4. The solidity flattened source code for your smart contract
+Copy this URL and replace the `SMART_CONTRACT_ADDRESS` with your smart contract address:
 
-## Start
+```
+https://explorer.evm.eosnetwork.com/address/SMART_CONTRACT_ADDRESS/verify-via-flattened-code/new
+```
 
-Go to https://explorer.evm.eosnetwork.com/address/SMART_CONTRACT_ADDRESS/verify-via-flattened-code/new
+Paste that into your browser and you should see the following page:
 
-## Fill In The Verification Form
+![verify smart contract](./images/verify_contract.png)
 
-1. Select the compiler version used to compile the smart contract, in this case the `COMPILER_VERSION`
-2. Select the EVM version, in this case `EVM_VERSION`
-3. Copy & paste the solidity contract flattened source code
+## Complete the verification process
+
+1. Fill out all the fields
+3. Copy & paste the solidity contract (flattened; meaning a single file with no imports) source code
 4. Click `Verify & Push` button

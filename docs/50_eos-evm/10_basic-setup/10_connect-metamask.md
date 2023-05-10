@@ -1,19 +1,15 @@
 ---
-title: How To Connect MetaMask
+title: Connect MetaMask
 ---
 
-## The EOS EVM Bridge Way
+You can easily add the EOS EVM networks (mainnet and testnet) to your MetaMask by visiting 
+[Chainlist](https://chainlist.org/?search=EOS&testnets=true) and clicking the **"Connect Wallet"** button.
 
-To quickly set up your MetaMask wallet you can visit the EOS EVM Bridge application and connect your wallet. You will then be led through a process that adds the EOS EVM network to your MetaMask automatically.
+If you'd like to add the networks manually, follow the steps below.
 
-- [Mainnet](https://bridge.evm.eosnetwork.com/)
-- [Testnet](https://bridge.testnet.evm.eosnetwork.com/)
+## Adding networks manually
 
-## The Step by Step Way
-
-Alternatively, to manually add the EOS EVM network to your MetaMask wallet follow the steps below:
-
-1. Open the MetaMask wallet and click on the network in the top center:
+1. Open your MetaMask wallet and click on the network in the top center:
 
 ![metamask top network button](./images/metamask_top_network_button.png)
 
@@ -25,7 +21,7 @@ Alternatively, to manually add the EOS EVM network to your MetaMask wallet follo
 
 ![metamask_add_network_form](./images/metamask_add_network_form.png)
 
-The EOS EVM Network Mainnet connection details are as follows:
+Add the following details:
 
 * `Network Name`: EOS EVM Network
 * `Chain ID`: 17777
@@ -34,7 +30,8 @@ The EOS EVM Network Mainnet connection details are as follows:
 * `Block Explorer URL (Optional)`: https://explorer.evm.eosnetwork.com/
 * `Token Bridge`: https://bridge.evm.eosnetwork.com/
 
-The EOS EVM Network Testnet Preview connection details are as follows:
+<details>
+    <summary>Click here if you want Testnet details</summary>
 
 * `Network Name`: EOS EVM Network Testnet
 * `Chain ID`: 15557
@@ -43,6 +40,5 @@ The EOS EVM Network Testnet Preview connection details are as follows:
 * `Block Explorer URL (Optional)`: https://explorer.testnet.evm.eosnetwork.com/
 * `Token Bridge`: https://bridge.testnet.evm.eosnetwork.com/
 
-Alternative endpoints can be found in the [helpful links](../60_helpful_links.md) section.
+</details>
 
-Yet another way is to find the network you want to connect to at [Chainlist.org](https://chainlist.org/), and you can add the configuration to your wallet through that service.
