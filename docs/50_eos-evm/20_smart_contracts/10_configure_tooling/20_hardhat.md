@@ -1,5 +1,5 @@
 ---
-title: Configure Hardhat
+title: Hardhat
 ---
 
 [Hardhat](https://hardhat.org/) is a widely used development environment and testing framework for Ethereum smart contracts. Thanks to the architecture of the EOS EVM, all the existing SDKs for Ethereum will work out of the box and your users will have the same experience as on Ethereum.
