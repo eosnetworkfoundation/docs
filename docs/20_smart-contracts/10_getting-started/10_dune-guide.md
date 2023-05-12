@@ -9,12 +9,12 @@ Before you begin, learn about DUNE and how to install it on your platform.
 
 ### Installation
 
-You can install and run DUNE n the following platforms:
+You can install and run DUNE on the following platforms:
 * Linux
 * Windows
 * MacOS
 
-Each platform has their own installation instructions. Click [DUNE's GitHub project](https://github.com/AntelopeIO/DUNE) to view the instructions.
+Each platform has their own installation instructions. View the [DUNE GitHub](https://github.com/AntelopeIO/DUNE) for installation instructions. 
 
 Run `dune --help` to view a list of all supported commands.
 
@@ -30,39 +30,39 @@ dune --import-dev-key <PRIVATE_KEY>
 
 ## Node management
 
-DUNE easily creates a new local EOS blockchain.
+Use DUNE to easily create a new local EOS blockchain.
 
-The following command creates a new node called `NODE_NAME`.  This node initiates with default settings. These default settings configure the node to serve as an API/producer node. You can deploy smart contracts to it and perform tests on it.
+The above command creates a new node called `NODE_NAME`.  This node initiates with default settings. These default settings configure the node to serve as an API/producer node. You can deploy smart contracts to it and perform tests on it.
 
 ```shell
 dune --start <NODE_NAME>
 ```
 
-> 📝 **In Case of Errors**
+>**Errors**
 >
 > You may see errors at the end of the node setup process.
 > If you do, refer to this guide to troubleshoot common errors, or reach out to us on our
 > [Telegram channel](https://t.me/antelopedevs) for help.
 
-The following command shows you a list of EOS nodes on your system:
+To view a list of EOS nodes on your system:
 
 ```shell
 dune --list
 ```
 
-The following command checks if your active node's RPC API is live:
+To check if your active node's RPC API is live:
 
 ```shell
 dune -- cleos get info
 ```
 
-The following command shuts down your node:
+To shut down your node:
 
 ```shell
 dune --stop <NODE_NAME>
 ```
 
-The following command removes a node:
+To remove a node entirely:
 
 ```shell
 dune --remove <NODE_NAME>
@@ -85,13 +85,13 @@ dune --bootstrap-system-full
 
 You deploy contracts on top of accounts. Use accounts to interact with your smart contracts. 
 
-The following command creates a new account:
+To create a new account:
 
 ```shell
 dune --create-account <ACCOUNT_NAME>
 ```
 
-The following command gets account info:
+To get account info:
 
 ```shell
 dune -- cleos get account <ACCOUNT_NAME>
@@ -102,12 +102,12 @@ Create a sample project to learn how to use DUNE to compile, deploy, and interac
 
 ### Create sample project
 
-Navigate to a directory in which you want to create a project, then run the following command:
+Navigate to the directory in which you want to create a project, then run the following command:
 
 ```shell
 dune --create-cmake-app hello .
 ```
-This command creates a `hello` directory with a cmake style EOS smart contract project.
+Create a `hello` directory with a cmake style EOS smart contract project.
 
 Replace the contents of `src/hello.cpp` with the following code:
 
@@ -136,7 +136,7 @@ CONTRACT hello : public contract {ompilinc
 ```
 ### Compile the contract
 
-From the root of your project, run the following command to compile your contract:
+From the root of your project, run this command to compile your contract:
 
 ```shell
 dune --cmake-build .
@@ -145,7 +145,7 @@ You see your contract compiling. If there are any errors, you see them in the ou
 
 ### Deploy your contract
 
-Use the following commands to create an account and deploy the contract to the account.
+Create an account and deploy the contract to the account.
 
 ```shell
 dune --create-account hello
@@ -159,12 +159,12 @@ dune --deploy ./build/hello hello
 
 ### Interacting with your contract
 
-Transactions on EOS consist of 
+Transactions on EOS contain 
 `actions`. To interact with your contract send a single action to your contract.
 
 You also need to create a test account from which to send the action.
 
-Use the following commands to create a test account and send an action:
+Use these commands to create a test account and send an action:
 
 ```shell
 dune --create-account testaccount
