@@ -168,7 +168,7 @@ To execute the transaction, a chain database session is started and a snapshot i
 
 #### 3.5.1. Apply Context
 
-To prepare for action execution, an apply context instance is created locally for each action. The apply context, as its name implies, contains references to the necessary resources to apply the action, such as an instance to the chain controller (see [Network Peer Protocol: 2.2. Chain Controller](03_network_peer_protocol.md#22-chain-controller)), the chain database where state is kept, the transaction context where the transaction is running, the actual action instance, and the receiver account to whom the action is intended.
+To prepare for action execution, an apply context instance is created locally for each action. The apply context, as its name implies, contains references to the necessary resources to apply the action, such as an instance to the chain controller (see [Network Peer Protocol: 2.2. Chain Controller](03_network-peer-protocol.md#22-chain-controller)), the chain database where state is kept, the transaction context where the transaction is running, the actual action instance, and the receiver account to whom the action is intended.
 
 
 #### 3.5.2. Action Trace
@@ -232,4 +232,4 @@ A transaction is verified and validated at various stages during its lifecycle: 
 
 #### 3.7.1. Validation Process
 
-When validating a transaction as part of a block, multiple validations occur at various levels. In full block validation, all transactions recorded in the block are replayed and the locally calculated merkle tree root hashes (generated from the transaction receipt data and the action receipt data, respectively) are compared against the `transaction_mroot` and `action_mroot` fields in the block header. Therefore, if a recorded transaction is tampered within a block, not only the merkle tree root hashes would cause a mismatch, but also the transaction signature(s) would fail to validate. If the tampering was not performed by a bona-fide block producer, the block signature would fail to validate as well (see [Consensus Protocol: 5.3. Block Validation](01_consensus_protocol.md#53-block-validation)).
+When validating a transaction as part of a block, multiple validations occur at various levels. In full block validation, all transactions recorded in the block are replayed and the locally calculated merkle tree root hashes (generated from the transaction receipt data and the action receipt data, respectively) are compared against the `transaction_mroot` and `action_mroot` fields in the block header. Therefore, if a recorded transaction is tampered within a block, not only the merkle tree root hashes would cause a mismatch, but also the transaction signature(s) would fail to validate. If the tampering was not performed by a bona-fide block producer, the block signature would fail to validate as well (see [Consensus Protocol: 5.3. Block Validation](01_consensus-protocol.md#53-block-validation)).

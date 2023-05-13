@@ -90,7 +90,7 @@ cleos is a command line tool that interfaces with the REST api exposed by nodeos
 EOS, WAX, Telos, UX (Origin)
 
 ## Consensus / DPoS
-A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus_protocol.md)
+A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus-protocol.md)
 
 ## Confirmed Transaction
 On completion of the transaction, a transaction receipt is generated. Receiving a transaction hash does not mean that the transaction has been confirmed, it only means that the node accepted it without error, which also means that there is a high probability other producers will accept it. A transaction is considered confirmed when a nodeos instance has received, processed, and written it to a block on the blockchain, i.e. it is in the head block or an earlier block.
@@ -121,7 +121,7 @@ An entity that uses a combination of automation and input from stakeholders, nor
 Deferred actions are actions sent to a peer action that are scheduled to run, at best, at a later time, at a block producer's discretion. There is no guarantee that a deferred action will be executed. From the perspective of the originating action, i.e., the action that creates the deferred action, it can only determine whether the create request was submitted successfully or whether it failed (if it fails, it will fail immediately). Deferred actions carry the authority of the contract that sends them. A deferred action can also be cancelled by another action.
 
 ## Delegated Proof of Stake
-A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus_protocol.md)
+A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus-protocol.md)
 **Abbreviation**: DPoS
 
 ## Deserialization
