@@ -2,40 +2,34 @@
 title: Hardhat
 ---
 
-[Hardhat](https://hardhat.org/) is a widely used development environment and testing framework for Ethereum smart contracts. Thanks to the architecture of the EOS EVM, all the existing SDKs for Ethereum will work out of the box and your users will have the same experience as on Ethereum.
+[Hardhat](https://hardhat.org/) is the most widely used development environment for Ethereum smart contracts.
 
-Therefore, the official Hardhat tutorials apply to EOS EVM perfectly.
-
-Just do not forget to modify the config in `hardhat.config.js` file:
-
-**To connect to EOS EVM mainnet**
+If you want to deploy your smart contracts to the EOS EVM using hardhat, update your `hardhat.config.js` file 
+with the following network configuration:
 
 ```javascript
-module.exports = {
-  networks: {
-    // Use the address of your favorite endpoint.
-    eosevm: {
-      host: "api.evm.eosnetwork.com",
-      port: 17777,
-      network_id: "*"
+// mainnet
+const config: HardhatUserConfig = {
+    // ...
+
+    networks: {
+        eosevm: {
+            url: "https://api.evm.eosnetwork.com",
+            accounts:[process.env.PRIVATE_KEY],
+        },
+        eosevm_testnet: {
+            url: "https://api.testnet.evm.eosnetwork.com",
+            accounts:[process.env.PRIVATE_KEY],
+        }
     }
-  }
 };
 ```
 
-**To connect to EOS EVM testnet**
+Now you can deploy your contract to either the mainnet or the testnet using:
 
-```javascript
-module.exports = {
-  networks: {
-    // Use the address of your favorite endpoint.
-    eosevm: {
-      host: "api.testnet.evm.eosnetwork.com",
-      port: 15557,
-      network_id: "*"
-    }
-  }
-};
+```bash
+npx hardhat run scripts/deploy.js --network eosevm
+
+// or for testnet
+npx hardhat run scripts/deploy.js --network eosevm_testnet
 ```
-
-[Hardhat quick start tutorial](https://hardhat.org/tutorial).
