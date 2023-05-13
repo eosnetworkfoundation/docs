@@ -1,7 +1,6 @@
 name: Hyphen Enforcer
 
 on:
-  push:
   pull_request:
     branches:
       - main
