@@ -10,8 +10,8 @@ Thanks to the high API compatibility of the EOS EVM, most popular wallets and ID
 
 - [Configure Tooling](./10_configure_tooling/index.md)
 - [Endpoints](./10_endpoints.md)
-- [Migrate your Smart Contract](./20_migrate_your_smart_contract.md)
-- [Verify a Smart Contract](./60_how_to_verify_a_smart_contract.md)
+- [Migrate your Smart Contract](./20_migrate-your-smart-contract.md)
+- [Verify a Smart Contract](./60_how-to-verify-a-smart-contract.md)
 
 ## Join Our Community
 
