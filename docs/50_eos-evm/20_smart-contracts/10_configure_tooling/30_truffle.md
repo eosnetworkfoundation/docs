@@ -2,39 +2,34 @@
 title: Truffle
 ---
 
-[Truffle](https://www.trufflesuite.com/) is a widely used development environment and testing framework for Ethereum smart contracts. Thanks to the architecture of the EOS EVM, all the existing SDKs for Ethereum will work out of the box and your users will have the same experience as on Ethereum.
-
-Therefore, the official Truffle tutorials apply to EOS EVM perfectly.
-Just do not forget to modify the config in `truffle-config.js` file:
-
-**To connect to EOS EVM mainnet**
+Modify your `truffle-config.js` to add the EOS EVM to [Truffle](https://www.trufflesuite.com/):
 
 ```javascript
+require('dotenv').config();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+
 module.exports = {
-  networks: {
-  // Use the address of your favorite endpoint.
-    eosevm: {
-      host: "api.evm.eosnetwork.com",
-      port: 17777,
-      network_id: "*"
-    }
-  }
-};
+    networks: {
+        eosevm: {
+            provider: new HDWalletProvider([process.env.PRIVATE_KEY], "https://api.evm.eosnetwork.com"),
+            network_id: 17777,
+        },
+        eosevm_testnet: {
+            provider: new HDWalletProvider([process.env.PRIVATE_KEY], "https://api.testnet.evm.eosnetwork.com"),
+            network_id: 15557,
+        },
+        // ... other networks
+    },
+    // ... other config
 ```
 
-**To connect to EOS EVM testnet**
+### Installing dependencies
 
-```javascript
-module.exports = {
-  networks: {
-  // Use the address of your favorite endpoint.
-    eosevm: {
-      host: "api.testnet.evm.eosnetwork.com",
-      port: 15557,
-      network_id: "*"
-    }
-  }
-};
+You may need to install `@truffle/hdwallet-provider` and `dotenv`:
+
+```bash
+npm install @truffle/hdwallet-provider dotenv
+// or
+yarn add @truffle/hdwallet-provider dotenv
 ```
 
-[Truffle quick start guide](https://trufflesuite.com/docs/truffle/quickstart/).
