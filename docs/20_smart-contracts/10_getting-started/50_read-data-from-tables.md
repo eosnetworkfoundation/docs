@@ -35,7 +35,7 @@ The `get_table_rows` function retrieves rows from a table. It takes the followin
 - `"time_limit_ms"`: (optional) the maximum time should spend to retrieve the results, defaults to 10ms.
 - `"reverse"`: (options) if `true` the results are retrieved in reverse order, from lower_bound up towards upper_bound, defaults to `false`.
 
-The below example retrieves from the `producers` table, owned by the `eosio` account and having as `scope` the `eosio` name, the first three rows that have the primary key value (which is the producers account name) higher than or equal with the `argentinaeos`:
+Below is an example that retrieves rows from `abihash` table, owned by the `eosio` account and having as `scope` the `eosio` name.
 
 ```shell
 curl --request POST \
@@ -44,18 +44,28 @@ curl --request POST \
 --data '{
 "json": true,
 "code": "eosio",
-"scope":"eosio",
-"table": "producers",
-"lower_bound": "argentinaeos",
+"scope": "eosio",
+"table": "abihash",
+"lower_bound": "eosio",
 "limit": 3,
 "reverse": false
 }'
 ```
 
+In the example above:
+
+- The rows values are returned as JSON, set by the `json` parameter.
+- The table is owned by the account `eosio`, set by the `code` parameter.
+- The table scope is `eosio`, set by the `scope` parameter.
+- The table name is `abihash.`, set by the `table` parameter.
+- The query uses the primary index to search the rows and starts from the `eosio` lower bound index value, set by the `lower_bound` parameter.
+- The function will fetch a maximum of 3 rows, set by the `limit` parameter.
+- The retrieved rows will be in ascending order, set by the `reverse` parameter.
+
 Alternatively, you can execute the same command with `cleos` utility tool, and have the same result:
 
 ```shell
-dune -- cleos -u https://eos.greymass.com get table eosio eosio producers --lower argentinaeos --limit 3
+dune -- cleos -u https://eos.greymass.com get table eosio eosio abihash --lower eosio --limit 3
 ```
 
 #### The get_table_rows Result
@@ -70,7 +80,7 @@ The JSON returned by the `get_table_rows` has the following structure:
     { }
   ],
   "more": true,
-  "next_key": "3923449209446281328"
+  "next_key": ""
 }
 ```
 
@@ -78,50 +88,32 @@ The `"rows"` field is an array of table row objects in JSON representation.
 The `"more"` field indicates that there are additional rows beyond the ones returned.
 The `"next_key"` field contains the key to be used as the lower bound in the next request to retrieve the next set of rows.
 
-For example, the result from the previous section command contains three producers, and looks similar to the one below:
+For example, the result from the previous section command contains three rows, and looks similar to the one below:
 
 ```json
 {
   "rows": [
     {
-      "owner": "argentinaeos",
-      "total_votes": "1122719094997979904.00000000000000000",
-      "producer_key": "EOS7jq4FHrFrtCXxpRQ39dBeDMa5AjM4VaRbqBECkSa5aZnizJzrx",
-      "is_active": 1,
-      "url": "https://www.eosargentina.io",
-      "unpaid_blocks": 0,
-      "last_claim_time": "2023-05-14T16:05:06.500",
-      "location": 32
+      "owner": "eosio",
+      "hash": "00e166885b16bcce50fea9ea48b6bd79434cb845e8bc93cf356ff787e445088c"
     },
     {
-      "owner": "ashutoken123",
-      "total_votes": "55459463574.14361572265625000",
-      "producer_key": "EOS1111111111111111111111111111111114T1Anm",
-      "is_active": 0,
-      "url": "",
-      "unpaid_blocks": 0,
-      "last_claim_time": "2018-09-27T15:09:24.000",
-      "location": 0
+      "owner": "eosio.assert",
+      "hash": "aad0ac9f3f3d8f71841d82c52080f99479e869cbde5794208c9cd08e94b7eb0f"
     },
     {
-      "owner": "asmallpotato",
-      "total_votes": "104030431450.48027038574218750",
-      "producer_key": "EOS8infhRsijfSTMKPRNd7edY92pDHar52cbjZj4JyUxnKCbaKwM5",
-      "is_active": 1,
-      "url": "https://eoscannon.i",
-      "unpaid_blocks": 0,
-      "last_claim_time": "2020-03-30T03:36:55.000",
-      "location": 156
+      "owner": "eosio.evm",
+      "hash": "9f238b42f5a4be3b7f97861f90d00bbfdae03e707e5209a4c22d70dfbe3bcef7"
     }
   ],
   "more": true,
-  "next_key": "3923449209446281328"
+  "next_key": "6138663584080503808"
 }
 ```
 
 #### The get_table_rows Pagination
 
-Note that the previous command has the `"more"` field set to `true`. That means there's more rows in the table that were not returned with the first issued command.
+Note that the previous command has the `"more"` field set to `true`. That means there's more rows in the table, which match the filter used, that were not returned with the first issued command.
 
 The `"next_key"`, `"lower_bound"` and `"upper_bound"` fields, can be used to implement pagination or iterative retrieval of data from any table in the EOS blockchain.
 
@@ -134,22 +126,23 @@ curl --request POST \
 --data '{
 "json": true,
 "code": "eosio",
-"scope":"eosio",
-"table": "producers",
-"lower_bound": "3923449209446281328",
+"scope": "eosio",
+"table": "abihash",
+"lower_bound": "6138663584080503808",
 "limit": 3,
+"reverse": false
 }'
 ```
 
 Alternatively, you can execute the same command with `cleos` utility tool, and have the same result:
 
 ```shell
-dune -- cleos -u https://eos.greymass.com get table eosio eosio producers --lower 3923449209446281328 --limit 3
+dune -- cleos -u https://eos.greymass.com get table eosio eosio abihash --lower 6138663584080503808 --limit 3
 ```
 
-The above commands returns the subsequent 3 rows from the `producers` table with the producer name value greater than `"3923449209446281328"`. By iterating this process, you can retrieve all the rows in the table.
+The above commands returns the subsequent 3 rows from the `abihash` table with the producer name value greater than `"6138663584080503808"`. By iterating this process, you can retrieve all the rows in the table.
 
-If the response from the second request includes `"more": false`, it means that you have fetched all the available rows, and there is no need for further requests.
+If the response from the second request includes `"more": false`, it means that you have fetched all the available rows, which match the filter, and there is no need for further requests.
 
 ### Use get_table_by_scope Function
 
@@ -165,7 +158,7 @@ These are the input parameters supported by `get_table_by_scope`:
 - `"reverse"` (optional): if `true` the results are retrieved in reverse order, from lower_bound up towards upper_bound, defaults to `false`.
 - `"time_limit_ms"`: (optional) the maximum time should spend to retrieve the results, defaults to 10ms.
 
-Here's an example JSON payload for the get_table_by_scope function:
+Below is an example JSON payload for the get_table_by_scope function:
 
 ```json
 {
@@ -177,13 +170,13 @@ Here's an example JSON payload for the get_table_by_scope function:
 }
 ```
 
-In the above example:
+In the example above:
 
-- The table is owned by the account `accountname1`.
-- The table name is `tablename.`
-- The query starts from the `accountname2` scope value.
-- The function will fetch a maximum of 10 rows.
-- The retrieved rows will be in ascending order (not reversed).
+- The table is owned by the account `accountname1`, set by the `code` parameter.
+- The table name is `tablename.`, set by the `table` parameter.
+- The query starts from the `accountname2` scope value, set by the `lower_bound` parameter.
+- The function will fetch a maximum of 10 rows, set by the `limit` parameter.
+- The retrieved rows will be in ascending order, set by the `reverse` parameter.
 
 #### The get_table_by_scope Result
 
