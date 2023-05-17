@@ -162,9 +162,8 @@ dune --deploy ./build/hello hello
 ### Interacting with your contract
 
 Transactions on EOS contain 
-`actions`. To interact with your contract send a single action to your contract.
+`actions`. To interact with your contract using DUNE, you need to send a transaction witih a single action to your contract using `==send=action`..
 
-You also need to create a test account from which to send the action.
 
 Use these commands to create a test account and send an action:
 
