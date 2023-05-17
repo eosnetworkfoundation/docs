@@ -5,7 +5,7 @@ title: DUNE
 [Docker Utilities for Node Execution (DUNE)](https://github.com/AntelopeIO/DUNE) is a client tool. 
 As a blockchain developer or node operator, use DUNE for your common tasks.
 
-Before you begin, learn about DUNE and how to install it on your platform.
+Before getting started with smart contract development, learn about DUNE and how to install it on your platform.
 
 ### Installation
 
@@ -32,7 +32,7 @@ dune --import-dev-key <PRIVATE_KEY>
 
 Use DUNE to easily create a new local EOS blockchain.
 
-The above command creates a new node called `NODE_NAME`.  This node initiates with default settings. These default settings configure the node to serve as an API/producer node. You can deploy smart contracts to it and perform tests on it.
+The below command creates a new node called `NODE_NAME`.  This node initiates with default settings. These default settings configure the node to serve as an API/producer node. You can deploy smart contracts to it and perform tests on it.
 
 ```shell
 dune --start <NODE_NAME>
@@ -112,24 +112,26 @@ Create a `hello` directory with a cmake style EOS smart contract project.
 Replace the contents of `src/hello.cpp` with the following code:
 
 ```cpp
-#include <eosio/eosio.hpp> 
+
+
+ #include <eosio/eosio.hpp>
 using namespace eosio;
 
-CONTRACT hello : public contract {ompilinc
- public:
- using contract::contract;
+CONTRACT hello : public contract {
+   public:
+      using contract::contract;
 
       TABLE user_record {
          name user;
- uint64_t primary_key() const { return user.value; }
+         uint64_t primary_key() const { return user.value; }
       };
- typedef eosio::multi_index< name("users"), user_record> user_index;
+      typedef eosio::multi_index< name("users"), user_record> user_index;
 
       ACTION test( name user ) {
- print_f("Hello World from %!\n", user);
+         print_f("Hello World from %!\n", user);
          user_index users( get_self(), get_self().value );
- users.emplace( get_self(), [&]( auto& new_record ) {
- new_record.user = user;
+         users.emplace( get_self(), [&]( auto& new_record ) {
+            new_record.user = user;
          });
       }
 };
@@ -141,7 +143,7 @@ From the root of your project, run this command to compile your contract:
 ```shell
 dune --cmake-build .
 ```
-You see your contract compiling. If there are any errors, you see them in the output.
+Your contract is now compiled. If there were any errors you see them in the output.
 
 ### Deploy your contract
 
