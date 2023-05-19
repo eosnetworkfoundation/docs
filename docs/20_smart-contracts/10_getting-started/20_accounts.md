@@ -24,7 +24,7 @@ Periods have a special meaning for EOS accounts. They specify that an account ha
 
 For instance, if someone owns the suffix `.bar` then only that person can create `foo.bar`. 
 
-FRefer to the Name Bidding system in this guide for more information. Thgis sysem allows someone on the EOS network to purchase premium names.
+Refer to the Name Bidding system in this guide for more information. Thgis sysem allows someone on the EOS network to purchase premium names.
 
 ## Public/private keys
 
