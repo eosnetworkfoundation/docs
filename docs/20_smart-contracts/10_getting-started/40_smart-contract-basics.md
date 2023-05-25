@@ -706,8 +706,6 @@ Secondary indexes may be defined on data members which are not unique as well as
 
 If you add a new secondary index to an existing multi-index table it will have an unpredictable outcome since indexes are applied at row insertion or update.
 
-**Advance topic**: Consult the [Data design and migration](https://docs.eosnetwork.com/cdt/latest/best-practices/data-design-and-migration) documentation for more details on how to extended existing, already deployed, multi-index tables.
-
 ### Add a Secondary Index
 
 You know now what secondary indexes are and how to define them.
