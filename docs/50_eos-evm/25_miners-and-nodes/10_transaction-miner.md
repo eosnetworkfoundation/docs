@@ -23,7 +23,7 @@ resources to ensure your miner can continue to operate.
 Services like PowerUp should be automated to ensure that your miner account has enough resources to continue operating 
 without interruption.
 
-> ❔ **RAM is not required**:
+> ❔ **RAM is not required**
 > 
 > Your miner account does not deplete RAM resources as it relays transactions. It only consumes CPU and NET resources.
 > The `eosio.evm` contract pays for the RAM that the EOS EVM uses through the fees it collects from the EVM transactions.
@@ -48,6 +48,8 @@ getting the table rows from the contract's `balances` table with the upper and l
 cleos -u https://eos.greymass.com/ get table eosio.evm eosio.evm balances -U <your-miner-account> -L <your-miner-account>
 ```
 
+You can also view the same data on [bloks.io](https://bloks.io/account/eosio.evm?loadContract=true&tab=Tables&account=eosio.evm&scope=eosio.evm&limit=100&table=balances)
+
 
 ### Withdrawing your mining rewards
 
@@ -58,10 +60,11 @@ time by sending a transaction to the `eosio.evm` contract with the following act
 cleos -u https://eos.greymass.com/ push action eosio.evm withdraw '["<your-miner-account>", "1.0000 EOS"]' -p <your-miner-account>
 ```
 
+If you'd like to claim using a web interface you can visit [bloks.io](https://bloks.io/account/eosio.evm?loadContract=true&tab=Actions&account=eosio.evm&scope=eosio.evm&limit=100&table=balances&action=withdraw)
+and sign the transaction using a wallet like [Anchor](https://www.greymass.com/anchor).
+
 
 ## Setting up the miner
-
-
 
 ### Installation
 
@@ -97,7 +100,7 @@ Copy the `.env.example` file to `.env` and fill in the environment variables.
 yarn mine
 ```
 
-> ❕ **Logs**:
+> 📄 **Logs**:
 > 
 > A `logs` directory is created in the project root with two log files:
 > - **error.log**: Only error logs
