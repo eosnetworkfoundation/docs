@@ -29,7 +29,7 @@ A few things to note:
 2. The **upsert** permission uses the development public key as the proof of authority
 3. This permission was created on the `alice` account
 
-You can also specify authorities other than a public key for this permission, for example, a set of other accounts. Check [account permission](http://docs.eosnetwork.com/leap/latest/cleos/command-reference/set/set-account) for more details.
+You can also specify authorities other than a public key for this permission, for example, a set of other accounts. 
 
 ## Step 2. Link Authorization to Your Custom Permission
 
