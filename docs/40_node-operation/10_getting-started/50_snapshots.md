@@ -16,7 +16,17 @@ parts of the process that would otherwise take longer.
 
 ### Required configuration
 
-In order to sync from a snapshot, you must have the `state_history_plugin` enabled.
+You should have basic the following plugins enabled in your `config.ini` file:
+
+```ini
+plugin = eosio::chain_plugin
+plugin = eosio::chain_api_plugin
+plugin = eosio::net_plugin
+plugin = eosio::net_api_plugin
+plugin = eosio::producer_plugin
+plugin = eosio::producer_api_plugin
+plugin = eosio::state_history_plugin
+```
 
 ### Getting a snapshot
 
@@ -75,7 +85,7 @@ In order to sync from a snapshot, you must have the `state_history_plugin` and `
 ### Creating the snapshot
 
 ```shell
-curl http://127.0.0.1:8888/v1/producer/create_snapshot | json_pp
+curl http://127.0.0.1:8888/v1/producer/create_snapshot
 ```
 
 The command above taps into your `producer_api_plugin` and creates a snapshot. The snapshot will be saved in the
