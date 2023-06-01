@@ -1,5 +1,5 @@
 ---
-title: EOS EVM Transaction Miner
+title: Transaction Miner
 --- 
 
 The EOS EVM transaction miner is a simple transaction relay that allows you to take Ethereum formatted transactions and 
