@@ -34,15 +34,6 @@ curl -X POST \
   https://eos.greymass.com/v1/chain/get_abi
 ```
 
-### Using a web interface
-You can use [bloks.io](https://bloks.io/account/eosio.token?loadContract=true&tab=ABI&account=eosio.token&scope=eosio.token&limit=100)
-to see the exact ABI that is deployed to the EOS Mainnet with a user-interface
-
-> ⚠ **Hard to copy**
-> 
-> Though this is nice to see, it's hard to copy from the user interface as you have to un-nest all of the JSON.
-
-
 ### Copy the ABI from the docs
 
 Below is the ABI for the `eosio.token` contract. You can copy this directly into your application.
@@ -256,18 +247,18 @@ For information about how to compile contracts, see our [DUNE guide](/docs/20_sm
 
 ## Updating your configuration file
 
-You will need to have the following plugins enabled in your `config.ini` file.
+You will need to update your `config.ini` file to include the following options:
 
 ```ini
-# Specify the required plugins
+# Plugins required for the Trace API
 plugin = eosio::chain_plugin
 plugin = eosio::http_plugin
 plugin = eosio::trace_api_plugin
 
-# The Trace API  needs to know the ABI for the contracts you want to watch. 
+# Tell the where ABIs are for the contracts you care about 
 trace-rpc-abi=eosio.token=<YOUR_PATH_to_eosio.token.abi>
 
-# You may also specify a traces directory
+# You may also manually specify a traces directory
 trace-dir=/path/to/traces
 ```
 
