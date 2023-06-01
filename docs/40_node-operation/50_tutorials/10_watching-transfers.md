@@ -21,12 +21,7 @@ occurs on the EOS Network, from any contract.
 ## Download the token ABI
 
 In order to watch for transfers, you will need to download the ABI for the token contract. You can either compile the 
-contract yourself, or you can download the ABI directly. 
-
-### Downloading the ABI directly
-
-You can download the ABI in a variety of ways:
-
+contract yourself, or you can download the ABI directly.
 
 ### Using curl
 
@@ -252,7 +247,7 @@ read this.
 
 </details>
 
-### Compiling the contract
+### Compiling the contract yourself
 
 You will need to clone the [EOS System Contracts](https://github.com/eosnetworkfoundation/eos-system-contracts/) repository,
 and then compile the `eosio.token` contract.
