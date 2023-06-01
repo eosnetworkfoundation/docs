@@ -265,7 +265,8 @@ trace-dir=/path/to/traces
 ## Should you replay?
 
 Once you enable the Trace API, you will only get traces for blocks that are produced after you enable the plugin. 
-If you want to get traces for blocks that were produced before you enabled the plugin, you will need to replay the chain. 
+If you want to get traces for blocks that were produced before you enabled the plugin, you will need to replay the chain
+from that block.
 
 > 🕔 **Want to replay from EOS EVM launch?**
 > 
