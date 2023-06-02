@@ -254,7 +254,7 @@ plugin = eosio::chain_plugin
 plugin = eosio::http_plugin
 plugin = eosio::trace_api_plugin
 
-# Tell the where ABIs are for the contracts you care about 
+# Tell the Trace API where ABIs are for the contracts you care about 
 trace-rpc-abi=eosio.token=<YOUR_PATH_to_eosio.token.abi>
 
 # You may also manually specify a traces directory
