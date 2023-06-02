@@ -615,7 +615,102 @@ for(let transaction of result.transactions) {
         }
     }
 }
+```
 
+</details>
+
+### Using a transaction ID instead of watching blocks
+
+If you have a transaction ID, you can fetch the transaction directly from the Trace API instead.
+
+```shell
+curl -X POST -H "Content-Type: application/json" \
+   -d '{ "id": "YOUR_TRANSACTION_ID" }' \
+   http://127.0.0.1:8888/v1/trace_api/get_transaction_trace | jq
+```
+
+This will give you a single transaction trace in exactly the same format as the `get_block` endpoint.
+
+<details>
+    <summary>See example result</summary>
+
+```json
+{
+  "id": "d11dc29013e40c5f132b1ae507622eaba6ab01e1e3ac1ecc875b7a80fdc72233",
+  "block_num": 21,
+  "block_time": "2023-06-02T15:15:33.500",
+  "producer_block_id": null,
+  "actions": [
+    {
+      "global_sequence": 51,
+      "receiver": "eosio.dex",
+      "account": "eosio.dex",
+      "action": "withdraw",
+      "authorization": [
+        {
+          "account": "bob",
+          "permission": "active"
+        }
+      ],
+      "data": "0000000000000e3da08601000000000004454f530000000000a6823403ea305506313233343536",
+      "return_value": ""
+    },
+    {
+      "global_sequence": 52,
+      "receiver": "eosio.token",
+      "account": "eosio.token",
+      "action": "transfer",
+      "authorization": [
+        {
+          "account": "eosio.dex",
+          "permission": "active"
+        }
+      ],
+      "data": "0000e82a01ea305500a6823403ea3055a08601000000000004454f530000000006313233343536",
+      "return_value": "",
+      "params": {
+        "from": "eosio.dex",
+        "to": "eosio.token",
+        "quantity": "10.0000 EOS",
+        "memo": "123456"
+      }
+    },
+    {
+      "global_sequence": 53,
+      "receiver": "eosio.dex",
+      "account": "eosio.token",
+      "action": "transfer",
+      "authorization": [
+        {
+          "account": "eosio.dex",
+          "permission": "active"
+        }
+      ],
+      "data": "0000e82a01ea305500a6823403ea3055a08601000000000004454f530000000006313233343536",
+      "return_value": "",
+      "params": {
+        "from": "eosio.dex",
+        "to": "eosio.token",
+        "quantity": "10.0000 EOS",
+        "memo": "123456"
+      }
+    }
+  ],
+  "status": "executed",
+  "cpu_usage_us": 187,
+  "net_usage_words": 17,
+  "signatures": [
+    "SIG_K1_JwowShN9caNF4PeX3oMN3PCwKqbfLKz3f1noURuftDSvEd9RiMdY4HGk2kbVJjN47QKcFJSFMh1Yf6uZAfYRxay8iWprzF"
+  ],
+  "transaction_header": {
+    "expiration": "2023-06-02T15:16:03",
+    "ref_block_num": 19,
+    "ref_block_prefix": 3497594715,
+    "max_net_usage_words": 0,
+    "max_cpu_usage_ms": 0,
+    "delay_sec": 0
+  }
+}
 ```
 </details>
 
