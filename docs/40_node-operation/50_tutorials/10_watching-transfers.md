@@ -581,6 +581,8 @@ name, and possibly that the memo field matches some identifier that you're expec
     <summary>JavaScript example of checking for transfers</summary>
 
 ```javascript
+const CONTRACT = "eosio.token";
+const ACTION = "transfer";
 const YOUR_ACCOUNT = "someexchange";
 
 const result = await fetch('https://your.node/v1/trace_api/get_block', {
@@ -594,12 +596,12 @@ for(let transaction of result.transactions) {
     for(let action of transaction.actions) {
         if(
             // This is the smart contract that is being executed
-            action.account === 'eosio.token' 
-            // This is the receiver of this action, if it is not the same as 
-            // the account, then this is a notification
-            && action.receiver === "eosio.token" 
+            action.account === CONTRACT
             // This is the action that is being executed
-            && action.action === 'transfer'
+            && action.action === ACTION
+            // This is the receiver of this action, if it is not the same as 
+            // the contract account, then this is just a notification (DO NOT PROCESS)
+            && action.receiver === action.account 
         ) {
             // We now know that this is a transfer action, and it is not 
             // a notification, so we can check the params
