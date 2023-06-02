@@ -31,8 +31,10 @@ You can use `curl` to fetch the ABI directly from the EOS Mainnet.
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{ "account_name":"eosio.token" }' \
-  https://eos.greymass.com/v1/chain/get_abi
+  https://eos.greymass.com/v1/chain/get_abi | jq -r '.abi' > ./eosio.token.abi
 ```
+
+The command above will fetch the ABI for the `eosio.token` contract and save it to a file called `eosio.token.abi`.
 
 ### Copy the ABI from the docs
 
@@ -240,10 +242,10 @@ read this.
 
 ### Compiling the contract yourself
 
-You will need to clone the [EOS System Contracts](https://github.com/eosnetworkfoundation/eos-system-contracts/) repository,
-and then compile the `eosio.token` contract.
+You can clone the [EOS System Contracts](https://github.com/eosnetworkfoundation/eos-system-contracts/) repository,
+and then compile the contracts using the `build.sh` script.
 
-For information about how to compile contracts, see our [DUNE guide](/docs/20_smart-contracts/10_getting-started/10_dune-guide.md).
+You will then have a `build/contracts` directory that contains the compiled contracts.
 
 ## Updating your configuration file
 
@@ -295,9 +297,33 @@ trace-minimum-uncompressed-history-blocks=<number of blocks to keep uncompressed
 Normally, you would use a `/v1/chain/get_block` request on every block, and then iterate the `actions` array within each
 transaction in the `transactions` array to scan for transfers.
 
+<details>
+    <summary>See curl command to get chain block</summary>
+
+```shell
+curl -X POST \
+   -H "Content-Type: application/json" \
+   -d '{ "block_num_or_id": 2 }' \
+   http://127.0.0.1:8888/v1/chain/get_block | jq
+```
+
+</details>
+
 With the Trace API enabled, you will now use the `/v1/trace_api/get_block` instead, which will give you back almost the same result format, 
 except that the `actions` array will contain not only the root actions, but also the inline actions that were executed as well. 
 This paints a complete picture of what happened during the execution of the transaction, instead of just the root actions that were sent to the chain.
+
+<details>
+    <summary>See curl command to get trace block</summary>
+
+```shell
+curl -X POST \
+   -H "Content-Type: application/json" \
+   -d '{ "block_num": 2 }' \
+   http://127.0.0.1:8888/v1/trace_api/get_block | jq
+```
+
+</details>
 
 There are some other important things to note about the Trace API's `get_block` endpoint:
 - An action's `name` property is now called `action`
@@ -316,60 +342,63 @@ There are some other important things to note about the Trace API's `get_block` 
 
 ```json
 {
-  "timestamp": "2023-06-01T06:31:16.000",
-  "producer": "inits",
+  "timestamp": "2023-06-02T15:10:56.500",
+  "producer": "eosio",
   "confirmed": 0,
-  "previous": "000001ab6eb2de15d55286d765fca3b74568162dde73e8c1808ccfce70574b67",
-  "transaction_mroot": "1da2a48b3d0174d7bc038f071f810ea651b5f7248acb4bd77634aaac24df2c7e",
-  "action_mroot": "301c7aba7ff16587608f24704a54ea015913f383ba1973e61f3478a62d8e6188",
-  "schedule_version": 1,
+  "previous": "000000140022c6320e45d8d390e686b6ce6148db4d602884be01776ad8d18c46",
+  "transaction_mroot": "430716daff9428cf0327dd9fd08478295a4422bf303b13a74d88379a5e89ff5f",
+  "action_mroot": "3ee0e97056c1c592ee755d9d26e178d810dba8c0af57410632fc0e7c4ac9f9a0",
+  "schedule_version": 0,
   "new_producers": null,
-  "producer_signature": "SIG_K1_Ki6riLECdTexT6ZgWWvMukzdm4JfBan2iiHn3xpsGjEvz9jbhV9neWr3HJzqzcGH3CFNr5uDCu9TjdjT5sXfAoTxBaqrsy",
-  "transactions": [{
+  "producer_signature": "SIG_K1_KiSmFVmh498vHRj5rzWvFKo1zJDV2vUv5hfQVwpyj1GtYF1wSedAkJ2zihMWMjFWxqZmWVJZtW3wCFLBtAEDTSxjK7deQV",
+  "transactions": [
+    {
       "status": "executed",
-      "cpu_usage_us": 162,
-      "net_usage_words": 16,
+      "cpu_usage_us": 192,
+      "net_usage_words": 17,
       "trx": {
-        "id": "c45899f8527586da30609325df5467f84ad2e542a0a8d4c8ad3099d45d3bf5dd",
+        "id": "1c073fe57292a253ea18cd7075c5420301038197806eeda51e94a33ce63be935",
         "signatures": [
-          "SIG_K1_KkLSBr7HrdVqbzkTZs3a35B3y6EnpTjXYgCpV52QBQqrkN51E6tkpUsDYW88mKRkKT3q4UrbXNV1TiAzzN4G1qkM3WJW7X"
+          "SIG_K1_KVPDUxX5DbokbpYj9VgNZw3AZHu9HCLcH2CJbMhJuY2MfcufaLcaRz3KAwLJd12JkoR6r1EUN2XeTVjrDtorKFMiMwnd4f"
         ],
         "compression": "none",
         "packed_context_free_data": "",
         "context_free_data": [],
-        "packed_trx": "513b78642b00f8e3e8ea000000000100a6823403ea3055000000572d3ccdcd01000000000030443000000000a8ed32322100000000003044300000000000404430102700000000000004454f53000000000000",
+        "packed_trx": "9e067a641300ba187bdd00000000010000e82a01ea3055000000dcdcd4b2e3010000000000000e3d00000000a8ed3232270000000000000e3da08601000000000004454f5300000000a0d8340d75a524c50631323334353600",
         "transaction": {
-          "expiration": "2023-06-01T06:31:45",
-          "ref_block_num": 43,
-          "ref_block_prefix": 3941131256,
+          "expiration": "2023-06-02T15:11:26",
+          "ref_block_num": 19,
+          "ref_block_prefix": 3715831994,
           "max_net_usage_words": 0,
           "max_cpu_usage_ms": 0,
           "delay_sec": 0,
           "context_free_actions": [],
-          "actions": [{
+          "actions": [
+            {
               "account": "eosio.dex",
               "name": "withdraw",
-              "authorization": [{
+              "authorization": [
+                {
                   "actor": "bob",
                   "permission": "active"
                 }
               ],
               "data": {
-                "from": "bob",
-                "quantity": "100.0000 EOS",
+                "account": "bob",
+                "quantity": "10.0000 EOS",
                 "to": "someexchange",
-                "memo": ""
+                "memo": "123456"
               },
-              "hex_data": "00000000003044300000000000404430102700000000000004454f530000000000"
+              "hex_data": "0000000000000e3da08601000000000004454f5300000000a0d8340d75a524c506313233343536"
             }
           ]
         }
       }
     }
   ],
-  "id": "000001acc6daa5d504b7d906415a0406bdb9ace9ce536c96d810577a53d6df37",
-  "block_num": 428,
-  "ref_block_prefix": 114931460
+  "id": "000000157b7f9e05cf80f8861df6e6bda357230ed7c8a29409d5c5d823fc0a1f",
+  "block_num": 21,
+  "ref_block_prefix": 2264432847
 }
 ```
 </details>
@@ -379,68 +408,141 @@ There are some other important things to note about the Trace API's `get_block` 
 
 ```json
 {
-  "id": "000001acc6daa5d504b7d906415a0406bdb9ace9ce536c96d810577a53d6df37",
-  "number": 428,
-  "previous_id": "000001ab6eb2de15d55286d765fca3b74568162dde73e8c1808ccfce70574b67",
-  "status": "pending",
-  "timestamp": "2023-06-01T06:31:16.000Z",
-  "producer": "inits",
-  "transaction_mroot": "1da2a48b3d0174d7bc038f071f810ea651b5f7248acb4bd77634aaac24df2c7e",
-  "action_mroot": "301c7aba7ff16587608f24704a54ea015913f383ba1973e61f3478a62d8e6188",
-  "schedule_version": 1,
-  "transactions": [{
-      "id": "c45899f8527586da30609325df5467f84ad2e542a0a8d4c8ad3099d45d3bf5dd",
-      "block_num": 428,
-      "block_time": "2023-06-01T06:31:16.000",
+  "id": "000000157b7f9e05cf80f8861df6e6bda357230ed7c8a29409d5c5d823fc0a1f",
+  "number": 21,
+  "previous_id": "000000140022c6320e45d8d390e686b6ce6148db4d602884be01776ad8d18c46",
+  "status": "irreversible",
+  "timestamp": "2023-06-02T15:10:56.500Z",
+  "producer": "eosio",
+  "transaction_mroot": "430716daff9428cf0327dd9fd08478295a4422bf303b13a74d88379a5e89ff5f",
+  "action_mroot": "3ee0e97056c1c592ee755d9d26e178d810dba8c0af57410632fc0e7c4ac9f9a0",
+  "schedule_version": 0,
+  "transactions": [
+    {
+      "id": "2529fa879b6a4d7a75f892ab2ee9ace8c322355c2700c713b38c5b4aba023c2b",
+      "block_num": 21,
+      "block_time": "2023-06-02T15:10:56.500",
       "producer_block_id": null,
-      "actions": [{
-          "global_sequence": 1190,
+      "actions": [
+        {
+          "global_sequence": 50,
+          "receiver": "eosio",
+          "account": "eosio",
+          "action": "onblock",
+          "authorization": [
+            {
+              "account": "eosio",
+              "permission": "active"
+            }
+          ],
+          "data": "008619580000000000ea3055000000000013ce0c73faba187bdd5bce9432d8a5505b8da7a0a88a89d4c063d27b770000000000000000000000000000000000000000000000000000000000000000ceb2eeb65028c5680dfc06486faad42bfd7ff4c6e3b211058eff625d0d1f212f000000000000",
+          "return_value": ""
+        }
+      ],
+      "status": "executed",
+      "cpu_usage_us": 100,
+      "net_usage_words": 0,
+      "signatures": [],
+      "transaction_header": {
+        "expiration": "2023-06-02T15:10:57",
+        "ref_block_num": 20,
+        "ref_block_prefix": 3554166030,
+        "max_net_usage_words": 0,
+        "max_cpu_usage_ms": 0,
+        "delay_sec": 0
+      }
+    },
+    {
+      "id": "1c073fe57292a253ea18cd7075c5420301038197806eeda51e94a33ce63be935",
+      "block_num": 21,
+      "block_time": "2023-06-02T15:10:56.500",
+      "producer_block_id": null,
+      "actions": [
+        {
+          "global_sequence": 51,
           "receiver": "eosio.dex",
           "account": "eosio.dex",
           "action": "withdraw",
-          "authorization": [{
+          "authorization": [
+            {
               "account": "bob",
               "permission": "active"
             }
           ],
-          "data": "00000000003044300000000000404430102700000000000004454f530000000000",
-          "return_value": "",
-          "params": {
-            "from": "bob",
-            "quantity": "100.0000 EOS",
-            "to": "someexchange",
-            "memo": "123456"
-          }
-        },{
-          "global_sequence": 1191,
-          "receiver": "someexchange",
+          "data": "0000000000000e3da08601000000000004454f5300000000a0d8340d75a524c506313233343536",
+          "return_value": ""
+        },
+        {
+          "global_sequence": 52,
+          "receiver": "eosio.token",
           "account": "eosio.token",
           "action": "transfer",
-          "authorization": [{
+          "authorization": [
+            {
               "account": "eosio.dex",
               "permission": "active"
             }
           ],
-          "data": "00000000003044300000000000404430102700000000000004454f530000000000",
+          "data": "0000e82a01ea3055a0d8340d75a524c5a08601000000000004454f530000000006313233343536",
           "return_value": "",
           "params": {
             "from": "eosio.dex",
             "to": "someexchange",
-            "quantity": "100.0000 EOS",
+            "quantity": "10.0000 EOS",
+            "memo": "123456"
+          }
+        },
+        {
+          "global_sequence": 53,
+          "receiver": "eosio.dex",
+          "account": "eosio.token",
+          "action": "transfer",
+          "authorization": [
+            {
+              "account": "eosio.dex",
+              "permission": "active"
+            }
+          ],
+          "data": "0000e82a01ea3055a0d8340d75a524c5a08601000000000004454f530000000006313233343536",
+          "return_value": "",
+          "params": {
+            "from": "eosio.dex",
+            "to": "someexchange",
+            "quantity": "10.0000 EOS",
+            "memo": "123456"
+          }
+        },
+        {
+          "global_sequence": 54,
+          "receiver": "someexchange",
+          "account": "eosio.token",
+          "action": "transfer",
+          "authorization": [
+            {
+              "account": "eosio.dex",
+              "permission": "active"
+            }
+          ],
+          "data": "0000e82a01ea3055a0d8340d75a524c5a08601000000000004454f530000000006313233343536",
+          "return_value": "",
+          "params": {
+            "from": "eosio.dex",
+            "to": "someexchange",
+            "quantity": "10.0000 EOS",
             "memo": "123456"
           }
         }
       ],
       "status": "executed",
-      "cpu_usage_us": 162,
-      "net_usage_words": 16,
+      "cpu_usage_us": 192,
+      "net_usage_words": 17,
       "signatures": [
-        "SIG_K1_KkLSBr7HrdVqbzkTZs3a35B3y6EnpTjXYgCpV52QBQqrkN51E6tkpUsDYW88mKRkKT3q4UrbXNV1TiAzzN4G1qkM3WJW7X"
+        "SIG_K1_KVPDUxX5DbokbpYj9VgNZw3AZHu9HCLcH2CJbMhJuY2MfcufaLcaRz3KAwLJd12JkoR6r1EUN2XeTVjrDtorKFMiMwnd4f"
       ],
       "transaction_header": {
-        "expiration": "2023-06-01T06:31:45",
-        "ref_block_num": 43,
-        "ref_block_prefix": 3941131256,
+        "expiration": "2023-06-02T15:11:26",
+        "ref_block_num": 19,
+        "ref_block_prefix": 3715831994,
         "max_net_usage_words": 0,
         "max_cpu_usage_ms": 0,
         "delay_sec": 0
@@ -448,6 +550,7 @@ There are some other important things to note about the Trace API's `get_block` 
     }
   ]
 }
+
 ```
 </details>
 
@@ -461,6 +564,7 @@ When listening for actions there are three primary fields you want to look for.
 - **account** - tells you which contract is being executed
 - **action** - tells you which action was executed on the contract
 - **params** - contains the parameters that were passed to the action
+- **receiver** - tells you which contract is receiving the action
 
 If you were listening for token transfers of **EOS**, you would want to look for actions where the
 **account** field is `eosio.token` and the **action** field is `transfer`.
@@ -469,6 +573,12 @@ Then, you'll want to validate the information inside the `params` object.
 
 For example, if you were the `someexchange` account, you would want to make sure that the `to` field matches your account 
 name, and possibly that the memo field matches some identifier that you're expecting.
+
+> ⚠ **Warning**
+> 
+> The `receiver` field is not always the same as the `account` field. If the `receiver` field is different than the 
+> `account` field, then this is a notification which allows other contracts to trigger side-effects, and not an action 
+> that you should be processing.
 
 <details>
     <summary>JavaScript example of checking for transfers</summary>
@@ -485,10 +595,22 @@ const result = await fetch('https://your.node/v1/trace_api/get_block', {
 
 for(let transaction of result.transactions) {
     for(let action of transaction.actions) {
-        if(action.account === 'eosio.token' && action.action === 'transfer') {
+        if(
+            // This is the smart contract that is being executed
+            action.account === 'eosio.token' 
+            // This is the receiver of this action, if it is not the same as 
+            // the account, then this is a notification
+            && action.receiver === "eosio.token" 
+            // This is the action that is being executed
+            && action.action === 'transfer'
+        ) {
+            // We now know that this is a transfer action, and it is not 
+            // a notification, so we can check the params
             if(action.params.to === YOUR_ACCOUNT) {
+                
+                // This transfer is for us, so we can do something with it
                 const { quantity, memo } = action.params;
-                // ... do something with the transfer
+                // ... 
             }
         }
     }
