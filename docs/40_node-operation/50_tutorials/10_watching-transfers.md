@@ -609,6 +609,15 @@ for(let transaction of result.transactions) {
                 
                 // This transfer is for us, so we can do something with it
                 const { quantity, memo } = action.params;
+                const [amount, symbol] = quantity.split(' ');
+                // You should also check that the symbol matches
+                // the symbol that you're expecting as well
+                if(symbol !== 'EOS') {
+                    // This is not the token that we're expecting
+                    continue;
+                }
+                
+                
                 // ... 
             }
         }
