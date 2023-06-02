@@ -713,3 +713,7 @@ This will give you a single transaction trace in exactly the same format as the 
 ```
 </details>
 
+> 📄 **API reference**
+>
+> For more information about the Trace API, see the [API Reference](https://docs.eosnetwork.com/apis/leap/latest/trace_api.api).
+
