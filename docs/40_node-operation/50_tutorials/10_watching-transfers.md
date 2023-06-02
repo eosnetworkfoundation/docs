@@ -34,7 +34,7 @@ curl -X POST \
   https://eos.greymass.com/v1/chain/get_abi | jq -r '.abi' > ./eosio.token.abi
 ```
 
-The command above will fetch the ABI for the `eosio.token` contract and save it to a file called `eosio.token.abi`.
+The command above will fetch the ABI for the `eosio.token` contract's ABI and save it to a file called `eosio.token.abi`.
 
 ### Copy the ABI from the docs
 
