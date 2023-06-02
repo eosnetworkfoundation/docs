@@ -627,7 +627,7 @@ for(let transaction of result.transactions) {
 
 </details>
 
-### Using a transaction ID instead of watching blocks
+## Using a transaction ID instead of watching blocks
 
 If you have a transaction ID, you can fetch the transaction directly from the Trace API instead.
 
