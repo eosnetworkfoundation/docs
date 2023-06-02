@@ -249,7 +249,7 @@ For information about how to compile contracts, see our [DUNE guide](/docs/20_sm
 
 You will need to update your `config.ini` file to include the following options:
 
-```ini
+```shell
 # Plugins required for the Trace API
 plugin = eosio::chain_plugin
 plugin = eosio::http_plugin
@@ -281,9 +281,8 @@ traces which enable you to have a complete
 
 You can optimize disk usage by removing old traces, and compressing log files.
 
-```ini
-# config.ini
-
+Add these to your `config.ini` file:
+```shell
 # Remove old traces
 trace-minimum-irreversible-history-blocks=<number of blocks to keep>
 
@@ -291,22 +290,210 @@ trace-minimum-irreversible-history-blocks=<number of blocks to keep>
 trace-minimum-uncompressed-history-blocks=<number of blocks to keep uncompressed>
 ```
 
-## Watching for transfers
-
-Once you have set up, enabled, and gotten some traces, you can start watching for transfers.
+## Watching blocks using the Trace API
 
 Normally, you would use a `/v1/chain/get_block` request on every block, and then iterate the `actions` array within each
 transaction in the `transactions` array to scan for transfers.
 
-With the Trace API, you will now use the `/v1/trace_api/get_block` instead, which will give you back the same result format, 
-except that the `actions` array will contain not only the root actions, but also the inline actions which were called
-during execution. This paints a complete picture of what happened during the execution of the transaction, instead of 
-just the root actions that were sent to the chain.
+With the Trace API enabled, you will now use the `/v1/trace_api/get_block` instead, which will give you back almost the same result format, 
+except that the `actions` array will contain not only the root actions, but also the inline actions that were executed as well. 
+This paints a complete picture of what happened during the execution of the transaction, instead of just the root actions that were sent to the chain.
 
-## Security considerations
+There are some other important things to note about the Trace API's `get_block` endpoint:
+- An action's `name` property is now called `action`
+- An action's `data` property is now called `params`
+- The `block_num_or_id` POST data parameter is now just `block_num`
 
-If security is a concern, you should run your own node, and not rely on a public node. 
+> 📄 **API reference**
+>
+> For more information about the Trace API, see the [API Reference](https://docs.eosnetwork.com/apis/leap/latest/trace_api.api).
 
-However, there is no difference between the security of the Trace API's `get_block` endpoint and the security of 
-the `get_block` RPC endpoint.
+
+### Examples of both formats
+
+<details>
+    <summary>See chain/get_block</summary>
+
+```json
+{
+  "timestamp": "2023-06-01T06:31:16.000",
+  "producer": "inits",
+  "confirmed": 0,
+  "previous": "000001ab6eb2de15d55286d765fca3b74568162dde73e8c1808ccfce70574b67",
+  "transaction_mroot": "1da2a48b3d0174d7bc038f071f810ea651b5f7248acb4bd77634aaac24df2c7e",
+  "action_mroot": "301c7aba7ff16587608f24704a54ea015913f383ba1973e61f3478a62d8e6188",
+  "schedule_version": 1,
+  "new_producers": null,
+  "producer_signature": "SIG_K1_Ki6riLECdTexT6ZgWWvMukzdm4JfBan2iiHn3xpsGjEvz9jbhV9neWr3HJzqzcGH3CFNr5uDCu9TjdjT5sXfAoTxBaqrsy",
+  "transactions": [{
+      "status": "executed",
+      "cpu_usage_us": 162,
+      "net_usage_words": 16,
+      "trx": {
+        "id": "c45899f8527586da30609325df5467f84ad2e542a0a8d4c8ad3099d45d3bf5dd",
+        "signatures": [
+          "SIG_K1_KkLSBr7HrdVqbzkTZs3a35B3y6EnpTjXYgCpV52QBQqrkN51E6tkpUsDYW88mKRkKT3q4UrbXNV1TiAzzN4G1qkM3WJW7X"
+        ],
+        "compression": "none",
+        "packed_context_free_data": "",
+        "context_free_data": [],
+        "packed_trx": "513b78642b00f8e3e8ea000000000100a6823403ea3055000000572d3ccdcd01000000000030443000000000a8ed32322100000000003044300000000000404430102700000000000004454f53000000000000",
+        "transaction": {
+          "expiration": "2023-06-01T06:31:45",
+          "ref_block_num": 43,
+          "ref_block_prefix": 3941131256,
+          "max_net_usage_words": 0,
+          "max_cpu_usage_ms": 0,
+          "delay_sec": 0,
+          "context_free_actions": [],
+          "actions": [{
+              "account": "eosio.dex",
+              "name": "withdraw",
+              "authorization": [{
+                  "actor": "bob",
+                  "permission": "active"
+                }
+              ],
+              "data": {
+                "from": "bob",
+                "quantity": "100.0000 EOS",
+                "to": "someexchange",
+                "memo": ""
+              },
+              "hex_data": "00000000003044300000000000404430102700000000000004454f530000000000"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "id": "000001acc6daa5d504b7d906415a0406bdb9ace9ce536c96d810577a53d6df37",
+  "block_num": 428,
+  "ref_block_prefix": 114931460
+}
+```
+</details>
+
+<details>
+    <summary>See trace_api/get_block</summary>
+
+```json
+{
+  "id": "000001acc6daa5d504b7d906415a0406bdb9ace9ce536c96d810577a53d6df37",
+  "number": 428,
+  "previous_id": "000001ab6eb2de15d55286d765fca3b74568162dde73e8c1808ccfce70574b67",
+  "status": "pending",
+  "timestamp": "2023-06-01T06:31:16.000Z",
+  "producer": "inits",
+  "transaction_mroot": "1da2a48b3d0174d7bc038f071f810ea651b5f7248acb4bd77634aaac24df2c7e",
+  "action_mroot": "301c7aba7ff16587608f24704a54ea015913f383ba1973e61f3478a62d8e6188",
+  "schedule_version": 1,
+  "transactions": [{
+      "id": "c45899f8527586da30609325df5467f84ad2e542a0a8d4c8ad3099d45d3bf5dd",
+      "block_num": 428,
+      "block_time": "2023-06-01T06:31:16.000",
+      "producer_block_id": null,
+      "actions": [{
+          "global_sequence": 1190,
+          "receiver": "eosio.dex",
+          "account": "eosio.dex",
+          "action": "withdraw",
+          "authorization": [{
+              "account": "bob",
+              "permission": "active"
+            }
+          ],
+          "data": "00000000003044300000000000404430102700000000000004454f530000000000",
+          "return_value": "",
+          "params": {
+            "from": "bob",
+            "quantity": "100.0000 EOS",
+            "to": "someexchange",
+            "memo": "123456"
+          }
+        },{
+          "global_sequence": 1191,
+          "receiver": "someexchange",
+          "account": "eosio.token",
+          "action": "transfer",
+          "authorization": [{
+              "account": "eosio.dex",
+              "permission": "active"
+            }
+          ],
+          "data": "00000000003044300000000000404430102700000000000004454f530000000000",
+          "return_value": "",
+          "params": {
+            "from": "eosio.dex",
+            "to": "someexchange",
+            "quantity": "100.0000 EOS",
+            "memo": "123456"
+          }
+        }
+      ],
+      "status": "executed",
+      "cpu_usage_us": 162,
+      "net_usage_words": 16,
+      "signatures": [
+        "SIG_K1_KkLSBr7HrdVqbzkTZs3a35B3y6EnpTjXYgCpV52QBQqrkN51E6tkpUsDYW88mKRkKT3q4UrbXNV1TiAzzN4G1qkM3WJW7X"
+      ],
+      "transaction_header": {
+        "expiration": "2023-06-01T06:31:45",
+        "ref_block_num": 43,
+        "ref_block_prefix": 3941131256,
+        "max_net_usage_words": 0,
+        "max_cpu_usage_ms": 0,
+        "delay_sec": 0
+      }
+    }
+  ]
+}
+```
+</details>
+
+As you can see, if you were using the `chain/get_block` endpoint to scan for incoming transfers, you would have missed 
+the token transfer action that was executed in the transaction, and potentially lost your user's funds.
+
+### Listening for specific actions
+
+When listening for actions there are three primary fields you want to look for. 
+
+- **account** - tells you which contract is being executed
+- **action** - tells you which action was executed on the contract
+- **params** - contains the parameters that were passed to the action
+
+If you were listening for token transfers of **EOS**, you would want to look for actions where the
+**account** field is `eosio.token` and the **action** field is `transfer`.
+
+Then, you'll want to validate the information inside the `params` object.
+
+For example, if you were the `someexchange` account, you would want to make sure that the `to` field matches your account 
+name, and possibly that the memo field matches some identifier that you're expecting.
+
+<details>
+    <summary>JavaScript example of checking for transfers</summary>
+
+```javascript
+const YOUR_ACCOUNT = "someexchange";
+
+const result = await fetch('https://your.node/v1/trace_api/get_block', {
+    method: 'POST',
+    body: JSON.stringify({
+        block_num: NEXT_BLOCK_NUM
+    })
+}).then(res => res.json())
+
+for(let transaction of result.transactions) {
+    for(let action of transaction.actions) {
+        if(action.account === 'eosio.token' && action.action === 'transfer') {
+            if(action.params.to === YOUR_ACCOUNT) {
+                const { quantity, memo } = action.params;
+                // ... do something with the transfer
+            }
+        }
+    }
+}
+
+```
+</details>
 
