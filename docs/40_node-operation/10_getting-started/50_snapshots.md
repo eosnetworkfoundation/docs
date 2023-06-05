@@ -16,7 +16,7 @@ parts of the process that would otherwise take longer.
 
 ### Required configuration
 
-You should have basic the following plugins enabled in your `config.ini` file:
+You should have the following plugins enabled in your `config.ini` file:
 
 ```ini
 plugin = eosio::chain_plugin
@@ -58,8 +58,8 @@ and `cleos net connect` to reconnect nodes which timed out.
 
 > ⚠ **Warning**
 > 
-> Caution when using net_api_plugin. Either use a firewall to block access to your `http-server-address`, or change 
-> it to localhost:8888 to disable remote access.
+> Caution when using `net_api_plugin`. Either use a firewall to block access to your `http-server-address`, or change 
+> it to `localhost:8888` to disable remote access.
 
 ### Using a database filler
 
@@ -70,17 +70,13 @@ Then you can start a filler with the following arguments:
 ... --fpg-create --fill-skip-to <block_num> --fill-trim
 ```
 
-> On subsequent runs, you should not use the `--fpg-create` and `--fill-skip-to` arguments.
+**On subsequent runs, you should not use the `--fpg-create` and `--fill-skip-to` arguments.**
 
 
 ## Creating a snapshot with full state history
 
 Creating snapshots allows you to create a backup of your node's state. This can be useful if you want to create periodic 
 backups of your node, or if you want to create a snapshot to share with others.
-
-### Required configuration
-
-In order to sync from a snapshot, you must have the `state_history_plugin` and `producer_api_plugin` plugins enabled.
 
 ### Creating the snapshot
 
@@ -91,8 +87,8 @@ curl http://127.0.0.1:8888/v1/producer/create_snapshot
 The command above taps into your `producer_api_plugin` and creates a snapshot. The snapshot will be saved in the
 `data/snapshots` directory.
 
-Wait for nodeos to process several blocks after the snapshot completed. The goal is for the state-history files to 
-contain at least 1 more block than the portable snapshot has, and for the blocks.log file to contain the block after 
+Wait for `nodeos` to process several blocks after the snapshot completed. The goal is for the state-history files to 
+contain at least 1 more block than the portable snapshot has, and for the `blocks.log` file to contain the block after 
 it has become irreversible.
 
 > ⚠ **Warning**
