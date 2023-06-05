@@ -3,7 +3,7 @@ title: Snapshots
 ---
 
 A snapshot is a capture of the blockchain state at a specific point in time. It includes the sum of all changes that 
-occurred up until that point from transaction executions. This means that it includes all created accounts, contract code,
+have occurred up until that point from transaction executions. This means that it includes all created accounts, contract code,
 contract data, and anything else that was created or modified on the blockchain.
 
 It does not however include the blockchain history. This means that it does not include the transactions themselves. These
