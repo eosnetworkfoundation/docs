@@ -22,7 +22,7 @@ To transfer EOS tokens from an EOS EVM address to an exchange address/account, u
 3. Make sure your wallet has now active the EOS EVM mainnet.
 4. Back on the EOS EVM bridge, make sure the `Withdraw` tab is the active one, if not, click on it to activate it.
 \
-![metamask top network button](./images/withdraw_tab_active.png)
+![metamask top network button](./images/withdraw-tab-active.png)
 
 5. On the `From` panel, the `Address` field should now contain your EOS EVM address.
 \
