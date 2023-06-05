@@ -25,6 +25,6 @@ Come make some friends in our [EOS EVM Developer Telegram](https://t.me/eosevm)!
 ## What's Next?
 
 - [Basics](./10_basic-setup/index.md) (you should start here)
-- [Smart Contracts](./20_smart_contracts/index.md)
+- [Smart Contracts](./20_smart-contracts/index.md)
 - [Compatibility](./30_compatibility/index.md)
 - [Architecture](./40_architecture/index.md)

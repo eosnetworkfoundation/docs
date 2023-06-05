@@ -52,7 +52,7 @@ A blockchain application is a software application that has integrated a blockch
 
 ## Block Header
 A part of the block which holds metadata related to the block. In an Antelope block header this includes things like the transaction Merkle root, the action Merkle root, the producer who produced the block, the block id of the previous block, the block id of the current block, and the block timestamp.
-**Related**: [Account](#Account) [Account](#Account)
+**Related**: [Account](#Account)
 
 ## Block Log
 The block log is an append only log of blocks written to disk and contains all the irreversible blocks.
@@ -72,7 +72,7 @@ Blockchain Producer
 
 ## Byzantine Fault Tolerance
 In the context of distributed systems, Byzantine Fault Tolerance (BFT) is the ability of a distributed computer network to function as desired and correctly reach a sufficient consensus despite malicious components (nodes) of the system failing or propagating incorrect information to other peers. In an EOSIO based blockchain BFT is achieved using a combination of Delegated Proof of Stake, the last irreversible block, and the fact that a producer cannot sign two blocks with the same block number.
-**Related**: [Account](#Account) [Account](#Account)
+**Related**: [Account](#Account)
 
 ## CDT
 Contract Development Toolkit. A toolchain for WebAssembly (Wasm). A set of tools to facilitate smart contract writing for the Antelope framework, such as a debugger, profiler, and smart contract development tools.
@@ -90,7 +90,7 @@ cleos is a command line tool that interfaces with the REST api exposed by nodeos
 EOS, WAX, Telos, UX (Origin)
 
 ## Consensus / DPoS
-A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus_protocol.md)
+A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them.
 
 ## Confirmed Transaction
 On completion of the transaction, a transaction receipt is generated. Receiving a transaction hash does not mean that the transaction has been confirmed, it only means that the node accepted it without error, which also means that there is a high probability other producers will accept it. A transaction is considered confirmed when a nodeos instance has received, processed, and written it to a block on the blockchain, i.e. it is in the head block or an earlier block.
@@ -121,7 +121,7 @@ An entity that uses a combination of automation and input from stakeholders, nor
 Deferred actions are actions sent to a peer action that are scheduled to run, at best, at a later time, at a block producer's discretion. There is no guarantee that a deferred action will be executed. From the perspective of the originating action, i.e., the action that creates the deferred action, it can only determine whether the create request was submitted successfully or whether it failed (if it fails, it will fail immediately). Deferred actions carry the authority of the contract that sends them. A deferred action can also be cancelled by another action.
 
 ## Delegated Proof of Stake
-A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them. [Consensus Protocol](https://github.com/eosnetworkfoundation/welcome/blob/main/docs/04_protocol/01_consensus_protocol.md)
+A large number of participants or stakeholders elect a smaller number of delegates, which in turn make decisions for them.
 **Abbreviation**: DPoS
 
 ## Deserialization
@@ -222,7 +222,7 @@ nodeos is the core Antelope node daemon that can be configured with plugins to r
 
 ## Non-Producing Node
 A full node running nodeos that is only watching and verifying for itself each block, and maintaining its own local full copy of the blockchain. A non-producing node that is in the "standby pool" can, through the process of being voted in, become a Producing Node. A producing node, if voted out, will become a non-producing node. For large Antelope changes, non-producing nodes are outside the realm of the "standby pool".
-**Related**: [Account](#Account) [Account](#Account)
+**Related**: [Account](#Account)
 
 ## Oracle
 An oracle, in the context of blockchains and smart contracts, is an agent that finds and verifies real-world occurrences and submits this information to a blockchain to be used by smart contracts.
@@ -247,7 +247,7 @@ The sum of permission weights necessary for a signature to be considered valid.
 
 ## Permission Weight
 A permission weight is a value given to an account for authorization purposes. This is typically used in the context of a mutli-sig to give one or more accounts more control over a multi-sig than others.
-**Related**: [Account](#Account) [Account](#Account)
+**Related**: [Account](#Account)
 
 ## Plugin
 nodeos plugins are software components that implement features that complement the native Antelope blockchain basic implementation. They can be enabled or disabled through the nodeos configuration file or specifying them in the command line that launches the nodeos daemon.
@@ -272,7 +272,7 @@ A public network is a production network instantiated with the Antelope platform
 
 ## RAM
 Random Access Memory. RAM is required to store account information such as keys, balances, and contract state on an Antelope-based blockchain. Because the amount of RAM available to a single computer is limited by Moore’s Law and other technological advances, RAM is fundamentally scarce and must be purchased on a free-market inside an Antelope-based blockchain.
-**Related**: [Account](#Account) [Account](#Account)
+**Related**: [Account](#Account)
 
 ## RAM Market
 In order to persist data on an Antelope-based blockchain, a user must first purchase RAM. The Antelope RAM market uses the Bancor Relay algorithm in a system smart contract to offer to buy and sell RAM from users at previously established market rates.

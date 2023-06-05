@@ -8,9 +8,9 @@ The `EOS Core` provides the basic building blocks for the `system` layer. Howeve
 
 The core protocols are:
 
-1. [Consensus Protocol](01_consensus_protocol.md)
-2. [Transactions Protocol](02_transactions_protocol.md)
-3. [Network or Peer to Peer Protocol](03_network_peer_protocol.md)
+1. [Consensus Protocol](01_consensus-protocol.md)
+2. [Transactions Protocol](02_transactions-protocol.md)
+3. [Network or Peer to Peer Protocol](03_network-peer-protocol.md)
 
 ## System
 
@@ -18,8 +18,8 @@ The EOS blockchain is unique in that the features and characteristics of the blo
 
 The EOS Network Foundation implements and maintains these `system contracts` as reference implementations only, encapsulating the base functionality for an EOS-based blockchain. The `system contracts` are listed below:
 
-1. [eosio.bios](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosiobios_1_1bios)
-2. [eosio.system](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosiosystem_1_1system__contract)
-3. [eosio.msig](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1multisig)
-4. [eosio.token](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1token)
-5. [eosio.wrap](https://docs.eosnetwork.com/system-contracts/latest/reference/Classes/classeosio_1_1wrap)
+* [eosio.bios](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.bios) - The `eosio.bios` contract is a special contract that is used to initialize the blockchain
+* [eosio.system](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.system) - The `eosio.system` contract is the core contract that implements the foundational EOS blockchain features
+* [eosio.msig](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.msig) - The `eosio.msig` contract implements the multi-signature functionality
+* [eosio.token](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.token) - The `eosio.token` contract implements the system token functionality
+* [eosio.wrap](https://github.com/eosnetworkfoundation/eos-system-contracts/tree/main/contracts/eosio.wrap) - The `eosio.wrap` contract implements a governance feature

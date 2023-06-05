@@ -411,7 +411,7 @@ The `balanceof` action is used to get the balance of an account.
 > ⚠ **Return values & Composability**
 > 
 > Return values are only usable from outside the blockchain, and cannot currently be used
-> in EOS for smart contract composability. EOS supports [**inline actions**](../10_getting-started/40_smart_contract_basics.md#inline-actions) which can be used
+> in EOS for smart contract composability. EOS supports [**inline actions**](../10_getting-started/40_smart-contract-basics.md#inline-actions) which can be used
 > to call other smart contracts, but they cannot return values.
 
 ### OwnerOf
