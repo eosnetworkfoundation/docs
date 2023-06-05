@@ -60,3 +60,12 @@ Notes:
 | trace\_filter                               | EOS EVM Node-SlowQuery |
 | trace\_get                                  | EOS EVM Node-SlowQuery |
 | trace\_transaction                          | EOS EVM Node-SlowQuery |
+
+## Batched Requests
+
+Sending an array of request objects as the body to the JSON-RPC API is not currently supported. The server will return a 400 error in this case. If this is impacting you, try a workaround until this is supported.
+
+Example failing request body:
+```json
+[{"method":"eth_chainId","params":[],"id":1,"jsonrpc":"2.0"},{"method":"eth_blockNumber","params":[],"id":2,"jsonrpc":"2.0"}]
+```

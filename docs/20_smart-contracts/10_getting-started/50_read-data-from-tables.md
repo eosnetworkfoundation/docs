@@ -1,5 +1,5 @@
 ---
-title: Get Data from EOS Blockchain
+title: Read Data from Tables
 ---
 
 ## Prerequisites
