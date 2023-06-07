@@ -639,6 +639,11 @@ curl -X POST -H "Content-Type: application/json" \
 
 This will give you a single transaction trace in exactly the same format as the `get_block` endpoint.
 
+> ⚠ **Warning**
+> 
+> The `v1/trace_api/get_transaction_trace` API will scan each block in the trace log files until the transaction is found.
+> Because of such, this API is inefficient and should only be used for testing purpose only.
+
 <details>
     <summary>See example result</summary>
 
