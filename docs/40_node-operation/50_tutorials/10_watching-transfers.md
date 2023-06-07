@@ -276,7 +276,7 @@ from that block.
 ## SSD considerations
 
 The Trace API's persisted data grows at a rate similar to the `blocks.log`. You will need more SSD storage to store the
-traces which enable you to have a complete 
+traces which enable you to have a complete history of transactions.
 
 You can optimize disk usage by removing old traces, and compressing log files.
 
