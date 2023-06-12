@@ -5,7 +5,7 @@ sidebar_class_name: sidebarhidden
 
 The hardware requirements for each type of EOS node can vary depending on factors such as network size, transaction volume, and the number of concurrent users. However, here are some general guidelines for the hardware requirements of different EOS node types:
 
-## API Node
+## API Node without Block Log
 
 The minimum, starting point, for an API node, without maintaining block logs, is the following:
 
@@ -16,7 +16,7 @@ The minimum, starting point, for an API node, without maintaining block logs, is
 
 > ⚠ Be aware, the above configuration will face problems if suddenly RAM usage on the network increased over that 32GB mark. Also this setup is 50/50 RAM/swap and occasionally will respond slow on some requests due to swapping.
 
-The optimal configuration at the time of writing this document, June the 12th 2023, for an API node is:
+The optimal configuration at the time of writing this document, June the 12th 2023, for an API node without block logs is:
 
 - CPU: 4 cores >= 3.8 Ghz
 - RAM: 64 GB
@@ -25,7 +25,7 @@ The optimal configuration at the time of writing this document, June the 12th 20
 
 > ℹ️ For API nodes, in general you do not want too high CPU speeds (>= 5 Ghz), since it will skew subjective billing lower and run into edge cases where the API thinks a transaction is fine, accepts it, tells the user success, and then the transaction ends up getting rejected upstream by a slower CPU.
 
-## API Node with Blocks log
+## API Node with Blocks Log
 
 - CPU: 4 cores >= 3.8 Ghz
 - RAM: 64 GB
