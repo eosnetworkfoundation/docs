@@ -3,8 +3,6 @@ title: "V1 History Alternatives"
 sidebar_position: 1
 ---
 
-# V1 History Alternatives
-
 The latest EOS v3.1 release officially ends support for the legacy V1 History plugin. Therefore, block producers and node operators who have integrations that rely on V1 History must seek alternative solutions.
 
 ## Production Ready Alternatives
