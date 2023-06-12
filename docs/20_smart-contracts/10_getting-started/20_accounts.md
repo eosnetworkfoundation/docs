@@ -11,8 +11,6 @@ An account is the key component that enables you to access and control your bloc
 
 Every account on the EOS Network has a human-readable name. This makes it easier to identify transaction recipients and smart contracts. In order to keep account names efficient on the blockchain, a few restrictions apply to all names: 
 
-
-
 * All characters must be lowercase
 * Every name must be 12 characters long (or less with a suffix/premium name)
 * Only letters `a-z`, numbers `1-5`, and period (`.`) are supported characters. 
@@ -26,7 +24,7 @@ For instance, if someone owns the suffix `.bar` then only that person can create
 At the end of this guide, we will talk about the Name Bidding system which allows someone on the EOS network to purchase premium names. 
 
 
-## Public/Private Keys
+## Public/private keys
 
 Every EOS account is ultimately controlled by a public/private key pair. The private key is used to sign transactions and must be kept confidential, while the public key is used to identify the account on the blockchain and can be publicly known.
 
@@ -40,7 +38,6 @@ Private: 5KSdyAiFzYQAtBKDBKCCF28KMMhZ4EmXUxSg8B3nSkHKutT15rY
 Public: PUB_K1_5d7eRKgCCiEdsbBdxxnZdFWnGYS64uWZPZgTcTU1xnB2aESxqR
 Legacy Public Format: EOS5d7eRKgCCiEdsbBdxxnZdFWnGYS64uWZPZgTcTU1xnB2cq4JMD
 ```
-
 
 ## Permissions system
 
@@ -77,7 +74,7 @@ As you can see in the example below, `bob` alone does not have enough power to s
 ![Weights and thresholds](../../images/accts_weights_and_thresholds.png)
 
 
-## Smart Contracts
+## Smart contracts
 
 A smart contract is just a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple things like a todo application to a fully-fledged RPG game running entirely on the blockchain. 
 
@@ -86,7 +83,7 @@ Every account has the ability to have one single smart contract deployed to it, 
 For more information about deploying smart contracts to your accounts, please see our [DUNE Guide](./10_dune-guide.md). 
 
 
-## Creating an Account with DUNE
+## Creating an account with DUNE
 
 Once you have **DUNE** set up you can start creating accounts on your local development environment with a single command. 
 
@@ -101,7 +98,7 @@ dune -- cleos get account <ACCOUNT_NAME>
 ```
 
 
-## Ownership of Digital Assets
+## Ownership of digital assets
 
 Data that can be owned by an account, and is stored on the blockchain, is commonly referred to as a "digital asset". **Ownership** of these digital assets simply means that a row in the decentralized database (blockchain) says that the asset belongs to a specific account, and that only that account has the ability to manipulate, transfer, or otherwise control that digital asset. 
 
@@ -146,11 +143,9 @@ dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],
 dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[], "accounts":[{"permission":{"actor":"eosio.prods","permission":"active"},"weight":1}], "waits":[] }' -p <ACCOUNT>@owner
 ```
 
-
 #### prod.major
 
 The `prod.major` account is controlled by ½+1, meaning that if there are 30 active producers then you would need 16 of them to sign off on all upgrades.
-
 
 ```
 dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"prod.major","permission":"active"},"weight":1},{"permission":{"actor":"<ACCOUNT>","permission":"eosio.code"},"weight":1}],"waits":[]}' owner -p <ACCOUNT>
@@ -160,7 +155,6 @@ dune -- cleos set account permission <ACCOUNT> owner '{"threshold": 1, "keys":[]
 #### prod.minor
 
 The `prod.minor` account is controlled by ⅓+1, meaning that if there are 30 active producers, then you would need 11 of them to sign off on all upgrades.
-
 
 ```
 dune -- cleos set account permission <ACCOUNT> active '{"threshold":1,"keys":[],"accounts":[{"permission":{"actor":"prod.minor","permission":"active"},"weight":1},{"permission":{"actor":"<ACCOUNT>","permission":"eosio.code"},"weight":1}],"waits":[]}' owner -p <ACCOUNT>
