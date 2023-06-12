@@ -1,4 +1,6 @@
-# Smart Contracts Basics
+--- 
+title: Smart Contracts Basics
+---
 
 A smart contract is a program that runs on the blockchain. It allows you to add functionality to an account ranging from simple ones like a todo application to a fully-fledged RPG game which runs entirely on the blockchain.
 
