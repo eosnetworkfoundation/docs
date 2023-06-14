@@ -27,7 +27,7 @@ If you need to import a new key into your wallet:
 dune --import-dev-key <PRIVATE_KEY>
 ```
 
-## Node Management
+## Node management
 
 Creating a new local EOS blockchain is easy with DUNE.
 
@@ -99,7 +99,7 @@ To get account info:
 dune -- cleos get account <ACCOUNT_NAME>
 ```
 
-## Smart Contract Development
+## Smart contract development
 
 Let's create a sample project so that we can learn how to compile, deploy, and interact with smart contracts using DUNE.
 
@@ -137,7 +137,7 @@ CONTRACT hello : public contract {
 };
 ```
 
-### Compile the contract
+### Compile your contract
 
 From the root of your project, run the following command to compile your contract:
 
