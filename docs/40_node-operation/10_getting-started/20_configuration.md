@@ -5,7 +5,7 @@ sidebar_class_name: sidebarhidden
 
 While there are a few steps to installing and configuring a local EOS blockchain node, it is pretty straight forward once you understand the pieces. This guide will walk you through configuring Ubuntu (or other Debian based Linux distributions), installing Antelope Leap, Contract Development Toolkit (CDT), and the EOS Foundation Network's System Contracts, then configuriong everything for a local developmance instance. The process itself only takes a few minutes, but we will explain the parts as we progress through them and point you to additional resources for other options. 
 
-![Node architecture](./Node architecture.svg)
+![Local Node Architecture](local_node_architecture.svg)
 
 ## The Local Node Stack
 Running a local node has the following parts
