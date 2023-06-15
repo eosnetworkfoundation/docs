@@ -48,7 +48,7 @@ cd ~/eos/temp/eos-system-contracts-3.1.1/
 sudo apt-get install -y screen
 mkdir ~/eos/data-dir
 mkdir ~/eosio-wallet
-cp -r ~~/eos/temp/eos-system-contracts-3.1.1/build/contracts ~/eos/
+cp -r ~/eos/temp/eos-system-contracts-3.1.1/build/contracts ~/eos/
 wget https://gist.githubusercontent.com/jimmckeeth/4355a024f23192b1a6a046cc09231cdc/raw/bootup.sh \
     -O ~/eos/bootup.sh
 chmod +x ~/eos/bootup.sh

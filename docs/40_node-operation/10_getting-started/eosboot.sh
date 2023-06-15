@@ -54,6 +54,9 @@ echo "----------------------------------------------"
 echo " Launching Nodeos in background with 'screen'"
 echo "----------------------------------------------"
 echo
+echo "View nodeos with the command:"
+echo "  screen -r nodeos -p 0"
+echo
 
 # nodeos is the core node daemon that is configured with plugins to run a node.
 NODEOSCMD="nodeos --delete-all-block --config=$DATA_DIR/config.ini --data-dir=$DATA_DIR --disable-replay-opts\r" 
