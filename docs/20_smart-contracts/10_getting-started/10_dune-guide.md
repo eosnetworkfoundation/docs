@@ -101,7 +101,7 @@ dune -- cleos get account <ACCOUNT_NAME>
 
 ## Smart contract development
 
-Create a sample project to learn how to compile, deploy, and interact with smart contracts using DUNE.
+Create a sample project so you can learn how to compile, deploy, and interact with smart contracts using DUNE.
 
 Navigate to a directory in which to create a project, and then run the following command:
 
@@ -144,7 +144,7 @@ From the root of your project, run the following command to compile your contrac
 ```shell
 dune --cmake-build .
 ```
-The contract copmiles. Any errors display in the output. 
+Your contract compiles. Any errors display in the output. 
 
 ### Deploy your contract
 
@@ -163,7 +163,7 @@ dune --deploy ./build/hello hello
 
 To interact with your contract send a transaction on your local EOS node. Transactions on EOS are made of `actions`. Send a single action to your contract.
 
-You can also create a test account from which to send the action.
+You must also create a test account from which to send the action.
 
 ```shell
 dune --create-account testaccount
@@ -183,7 +183,7 @@ You just added a row to the contract's database. You can fetch that data from th
 dune --get-table hello hello users
 ```
 
-A table results with one or more rows. If you did not receive a table with one or more rows, make sure the interaction above was successful.
+You get a table result with one or more rows. If you did not receive a table with one or more rows, make sure the interaction above was successful.
 
 ## Using raw programs with DUNE
 
