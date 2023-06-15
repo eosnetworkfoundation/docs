@@ -6,19 +6,7 @@ The logging mechanism for `nodeos` is controlled through the `logging.json` file
 
 ## Configure logging.json File
 
-The path where the `loggin.json` is stored can be explicitly defined using the `-l` or `--logconf` options when starting `nodeos`. By default the `logging.json` file is located in the specified `--config-dir`, the same directory as the `config.ini` file.
-
-```sh
-    nodeos --help
-```
-
-```console
-    ...
-    Application Command Line Options:
-    ...
-    --config-dir arg                      Directory containing configuration files such as config.ini
-    -l [ --logconf ] arg (=logging.json)  Logging configuration file name/path for library users
-```
+The path where the `logging.json` is stored can be explicitly defined using the `-l` or `--logconf` options when starting `nodeos`. By default the `logging.json` file is located in the specified `--config-dir`, the same directory as the `config.ini` file.
 
 ## Appenders
 
