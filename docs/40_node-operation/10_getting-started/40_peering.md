@@ -140,3 +140,28 @@ Besides the **endpoints report** URLs listed in the parent section [How to locat
 
 * P2P Endpoints: https://validate.eosnation.io/kylin/reports/endpoints.txt
 * API Endpoints: https://validate.eosnation.io/kylin/reports/api_versions.txt
+
+## How to check peers health
+
+Some web portals provide periodic reports and/or live reports to check the health of public P2P and API endpoints. Again, EOS Nation provides the various exhaustive reports on the status of various endpoints, including the health of block producing nodes, for both the EOS Mainnet and various EOS Testnets:
+
+* EOS Mainnet reports: https://validate.eosnation.io/eos/reports/
+* Jungle Testnet reports: https://validate.eosnation.io/jungle4/reports/
+* Kylin Testnet reports: https://validate.eosnation.io/kylin/reports/
+
+Since the endpoints listed on the above reports are validated and refreshed every 30 minutes, the mere presence of an endpoint on a given report indicates that the endpoint is responsive. For more errors detected, you can check the following:
+
+* EOS Mainnet error report: https://validate.eosnation.io/eos/reports/errors.html
+* Jungle Testnet error report: https://validate.eosnation.io/jungle4/reports/errors.html
+* Kylin Testnet error report: https://validate.eosnation.io/kylin/reports/errors.html
+
+### Third-party Tools
+
+Some tools are available to measure the responsiveness, or lack thereof, a list of P2P and/or API endpoints:
+
+* [get-closer](https://medium.com/hackernoon/find-the-best-api-endpoint-for-your-eos-dapp-7b7489cb6449)  
+  receives a list of API endpoints and returns the HTTP request-response time. If an endpoint is unresponsive, it eventually times out and does not show on the list.
+
+## Summary
+
+Peering is crucial for the decentralized operation of any EOS blockchain network. It allows to synchronize and distribute the blockchain state among all nodes and peers for a smoother and faster blockchain experience. Peering is necessary for any EOS blockchain to reach consensus, achieve self-governance, and exploit the many benefits of blockchain technology.
