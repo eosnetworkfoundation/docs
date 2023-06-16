@@ -85,7 +85,7 @@ dune --bootstrap-system-full
 
 ## Account management
 
-You deploy contracts on top of accounts. Use them to interact with your smart contracts. 
+You use accounts to interact with smart contracts, and also deploy contracts on top of accounts.
 
 To create a new account:
 
@@ -103,7 +103,7 @@ dune -- cleos get account <ACCOUNT_NAME>
 
 Create a sample project so you can learn how to compile, deploy, and interact with smart contracts using DUNE.
 
-Navigate to a directory in which to create a project, and then run the following command:
+Navigate to a directory in which you create a project, and then run the following command:
 
 ```shell
 dune --create-cmake-app hello .
@@ -161,7 +161,7 @@ dune --deploy ./build/hello hello
 
 ### Interacting with your contract
 
-To interact with your contract send a transaction on your local EOS node. Transactions on EOS are made of `actions`. Send a single action to your contract.
+Send a transaction on your local EOS. node to the blockchain to interact with your smart contract. A transaction contains multiple actions. You can send a transaction with a single action using the --send-action command.
 
 You must also create a test account from which to send the action.
 
@@ -187,7 +187,7 @@ You get a table result with one or more rows. If you did not receive a table wit
 
 ## Using raw programs with DUNE
 
-If you want to tap into the raw EOS stack, you can use the `DUNE -- <COMMAND>` format to access data within the container.
+If you want to tap into the raw EOS stack, you can use the `DUNE -- <COMMAND>` format to access data, applications, and everything else within the container.
 
 Examples:
     
