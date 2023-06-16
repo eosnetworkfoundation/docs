@@ -52,3 +52,18 @@ p2p-peer-address = <host1>:<port1>  # e.g. peer.leap.sg:9876
 p2p-peer-address = <host2>:<port2>  # e.g. p2p.eosphere.io:3571
 # etc.
 ```
+
+### Peer setup using command-line (CLI)
+
+To peer your local node with other nodes, specify the following in your nodeos command-line arguments *when* launching your `nodeos` instance:
+
+```shell
+nodeos ... \
+  p2p-listen-endpoint = <myhost>:<myport> \
+  p2p-server-address = <mypubhost>:<myport> \
+  p2p-peer-address = <host1>:<port1> \
+  p2p-peer-address = <host2>:<port2> \
+  ...
+```
+
+Check the previous section [Peer setup using `config.ini`](#peer-setup-using-configini) for examples about potential values for `p2p-listen-endpoint`, `p2p-server-address`, and `p2p-peer-address`.
