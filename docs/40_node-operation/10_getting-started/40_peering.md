@@ -67,3 +67,17 @@ nodeos ... \
 ```
 
 Check the previous section [Peer setup using `config.ini`](#peer-setup-using-configini) for examples about potential values for `p2p-listen-endpoint`, `p2p-server-address`, and `p2p-peer-address`.
+
+## How to locate peers
+
+For the EOS Mainnet and various Testnets, some websites publish and maintain lists of P2P, API, and other endpoints for your nodes to connect to. There are various endpoint lists available for the EOS Mainnet and the various EOS Testnets.
+
+> ℹ️ These lists are typically generated, validated, and combined from the standard `bp.json` files provided by Block Producers, including Standby Producers.
+
+For a central portal that keeps track of *all* endpoints (P2P, API, History, etc.) for the EOS Mainnet and various EOS Testnets, you can visit the EOS Nation Validate Portal and select the **endpoints report** for the specific network:
+
+* EOS Mainnet endpoints: https://validate.eosnation.io/eos/reports/endpoints.html
+* Jungle Testnet endpoints: https://validate.eosnation.io/jungle4/reports/endpoints.html
+* Kylin Testnet: https://validate.eosnation.io/kylin/reports/endpoints.html
+
+Once you visit any of the above **endpoints report**, you can scroll down to the specific endpoints of interest: `api_http` or `api_https2` for API endpoints, `p2p` for P2P endpoints, etc.
