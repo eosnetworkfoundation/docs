@@ -81,3 +81,62 @@ For a central portal that keeps track of *all* endpoints (P2P, API, History, etc
 * Kylin Testnet: https://validate.eosnation.io/kylin/reports/endpoints.html
 
 Once you visit any of the above **endpoints report**, you can scroll down to the specific endpoints of interest: `api_http` or `api_https2` for API endpoints, `p2p` for P2P endpoints, etc.
+
+
+### For EOS Mainnet
+
+Besides the **endpoints report** URLs listed in the parent section above [How to locate peers](#how-to-locate-peers), the following endpoints are available to add directly to your `config.ini`:
+
+* P2P Endpoints: https://validate.eosnation.io/eos/reports/config.txt
+
+As of 6/15/2023, the above P2P endpoint list shows as below:
+
+```ini
+# Endpoints config.ini
+# Network: EOS
+# Validator last update: 2023-06-12 19:32 UTC
+# For details on how this is generated see https://validate.eosnation.io/about/
+# ==== p2p ====
+# alohaeosprod: GB, London
+p2p-peer-address = peer.main.alohaeos.com:9876
+# argentinaeos: AR, argentina
+p2p-peer-address = p2p.eosargentina.io:9876
+...
+# ivote4eosusa: US, Greenville,SC,USA
+p2p-peer-address = eos.p2p.eosusa.io:9882
+```
+
+* API Endpoints: https://validate.eosnation.io/eos/reports/api_versions.txt
+
+As of 6/15/2023, the above API endpoint list shows as below:
+
+```ini
+# API Versions Report
+# Network: EOS
+# Validator last update: 2023-06-12 20:06 UTC
+# For details on how this is generated see https://validate.eosnation.io/about/
+==== 4.0.1 (leap) ====
+aus1genereos api_https2, v4.0.1, https://eos.genereos.io, ...
+eosnationftw  api_http, v4.0.1, http://eos.api.eosnation.io, ...
+...
+==== 3.1.0 (leap) ====
+eosamsterdam api_http, v3.1.0, http://mainnet.eosamsterdam.net, ...
+eosamsterdam api_https2, v3.1.0, https://mainnet.eosamsterdam.net, ...
+...
+teamgreymass api_http, v3.1.0, http://eos.greymass.com, ...
+teamgreymass api_https2, v3.1.0, https://eos.greymass.com, ...
+```
+
+### For EOS Testnets
+
+Besides the **endpoints report** URLs listed in the parent section [How to locate peers](#how-to-locate-peers), the following endpoints are available to add directly to your `config.ini` for the EOS Testnets below:
+
+#### EOS Kylin Testnet
+
+* P2P Endpoints: https://validate.eosnation.io/jungle4/reports/config.txt
+* API Endpoints: https://validate.eosnation.io/jungle4/reports/api_versions.txt
+
+#### EOS Jungle Testnet
+
+* P2P Endpoints: https://validate.eosnation.io/kylin/reports/endpoints.txt
+* API Endpoints: https://validate.eosnation.io/kylin/reports/api_versions.txt
