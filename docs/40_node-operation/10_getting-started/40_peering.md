@@ -8,13 +8,13 @@ In a previous section, you deployed a local single node EOS blockchain. Although
 
 ## What is Peering?
 
-Peering allows EOS nodes to propagate and synchronize the distributed blockchain state by receiving and relaying blocks and/or transactions to other nodes. Any node that is configured to send and receive data in a peer-to-peer fashion is considered a "peer". This adds redundancy and allows for faster response times to client queries and requests. Therefore, peering is key to the decentralized operation and incremental growth of the EOS blockchain.
+Peering allows EOS nodes to propagate and synchronize the distributed blockchain state by receiving and relaying blocks and/or transactions to other nodes. Any node that is configured to send and receive data in a peer-to-peer fashion is considered a "peer". This adds redundancy and allows for faster response times to client queries and node requests. Therefore, peering is key to the decentralized operation and incremental growth of the EOS blockchain.
 
-> ℹ️ Peering is enabled through the EOS peer-to-peer (p2p) network protocol and it is what makes possible the blockchain's decentralized operation.
+> ℹ️ Peering is enabled through the EOS peer-to-peer (p2p) network protocol and it is what makes possible the decentralized operation of the blockchain.
 
-## Why you need nodes/peers
+## Why you need nodes/peers?
 
-In the EOS blockchain, nodes can be configured to operate in different ways. It is this flexibility in having nodes serve various roles which allows for a more distributed load and a smoother blockchain experience to the end user. Some of the node types in EOS include, but are not limited to:
+In the EOS blockchain, nodes can be configured to operate in different ways. It is this flexibility in having nodes serve distinct roles which allows for a more distributed load and a smoother blockchain experience to the end user. Some of the node types in EOS include, but are not limited to:
 
 * **Producing Nodes**: produce blocks to be added to the chain
 * **Relay Nodes**: validate/relay blocks and/or transactions
@@ -22,11 +22,13 @@ In the EOS blockchain, nodes can be configured to operate in different ways. It 
 * **History Nodes**: stores chain data for L2 history solutions
 * etc.
 
-Therefore, when set up as peers EOS nodes typically validate the blocks and transactions they receive and relay them to other peers if valid. Nodes can also be set up to respond to API requests from clients, provide historical data about blocks and transactions, etc.
+Therefore, when set up as peers, EOS nodes validate the blocks and transactions they receive and relay them to other peers by default, if valid. Nodes can also be set up to respond to API requests from clients, provide historical data about blocks and transactions, etc. This separation of concerns makes the blockchain more efficient.
 
 ## How to set up peers
 
-Peering can be set up by configuring the `net_plugin` of each `nodeos` instance whose node will act as peer. The most important options are:
+> ℹ️ The peer connection process must be performed on the local environment of each peer. Therefore, peering involves planning and agreement among some of the nodes that will act as peers in the EOS network.
+
+Peering can be set up by configuring the `net_plugin` of each `nodeos` instance whose node will act as a peer. The most important options are:
 
 * `p2p-listen-endpoint arg`: local `host:port` for incoming p2p connections
 * `p2p-server-address arg`: public `host:port` for incoming p2p connections
@@ -35,8 +37,6 @@ Peering can be set up by configuring the `net_plugin` of each `nodeos` instance 
 Other options are available to limit the maximum number of connections, whitelisting specific peers by public key, accept/relay transactions, etc. Check the `net_plugin` options in `nodeos` for more information.
 
 ### Peer setup using `config.ini`
-
-> ℹ️ The peer connection process must be performed on the local environment of each peer. Therefore, peering involves planning and agreement among all nodes that will act as peers in the EOS network.
 
 To peer your local node with other nodes, specify the following in your nodeos `config.ini` *before* launching your `nodeos` instance:
 
@@ -69,11 +69,11 @@ Check the previous section [Peer setup using `config.ini`](#peer-setup-using-con
 
 ## How to locate peers
 
-For the EOS Mainnet and various Testnets, some websites publish and maintain lists of P2P, API, and other endpoints for your nodes to connect to. There are various endpoint lists available for the EOS Mainnet and the various EOS Testnets.
+For the EOS Mainnet and various Testnets, some websites publish and maintain lists of P2P, API, and other endpoints for your nodes to connect to.
 
-> ℹ️ These lists are typically generated, validated, and combined from the standard `bp.json` files provided by Block Producers, including Standby Producers.
+> ℹ️ Endpoint lists are typically generated, validated, and combined from the standard `bp.json` files provided by Block Producers, including Standby Producers.
 
-For a central portal that keeps track of *all* endpoints (P2P, API, History, etc.) for the EOS Mainnet and various EOS Testnets, you can visit the EOS Nation Validate Portal and select the **endpoints report** for the specific network:
+For a central portal that maintains the recent status of *all* active endpoints (P2P, API, History, etc.) for the EOS Mainnet and various EOS Testnets, you can visit the EOS Nation Validate Portal and select the **endpoints report** for the specific network:
 
 * EOS Mainnet endpoints: https://validate.eosnation.io/eos/reports/endpoints.html
 * Jungle Testnet endpoints: https://validate.eosnation.io/jungle4/reports/endpoints.html
@@ -81,14 +81,13 @@ For a central portal that keeps track of *all* endpoints (P2P, API, History, etc
 
 Once you visit any of the above **endpoints report**, you can scroll down to the specific endpoints of interest: `api_http` or `api_https2` for API endpoints, `p2p` for P2P endpoints, etc.
 
-
 ### For EOS Mainnet
 
 Besides the **endpoints report** URLs listed in the parent section above [How to locate peers](#how-to-locate-peers), the following endpoints are available to add directly to your `config.ini`:
 
 * P2P Endpoints: https://validate.eosnation.io/eos/reports/config.txt
 
-As of 6/15/2023, the above P2P endpoint list shows as below:
+The above P2P endpoints list should display something similar to:
 
 ```ini
 # Endpoints config.ini
@@ -107,7 +106,7 @@ p2p-peer-address = eos.p2p.eosusa.io:9882
 
 * API Endpoints: https://validate.eosnation.io/eos/reports/api_versions.txt
 
-As of 6/15/2023, the above API endpoint list shows as below:
+The above API endpoints list should display something similar to:
 
 ```ini
 # API Versions Report
@@ -142,13 +141,13 @@ Besides the **endpoints report** URLs listed in the parent section [How to locat
 
 ## How to check peers health
 
-Some web portals provide periodic reports and/or live reports to check the health of public P2P and API endpoints. Again, EOS Nation provides the various exhaustive reports on the status of various endpoints, including the health of block producing nodes, for both the EOS Mainnet and various EOS Testnets:
+Some portals provide periodic reports and/or live monitoring to check the health of public P2P and API endpoints. Again, EOS Nation provides extensive reports on the status of various endpoints, including the health of block producing nodes, for both the EOS Mainnet and various EOS Testnets:
 
 * EOS Mainnet reports: https://validate.eosnation.io/eos/reports/
 * Jungle Testnet reports: https://validate.eosnation.io/jungle4/reports/
 * Kylin Testnet reports: https://validate.eosnation.io/kylin/reports/
 
-Since the endpoints listed on the above reports are validated and refreshed every 30 minutes, the mere presence of an endpoint on a given report indicates that the endpoint is responsive. For more errors detected, you can check the following:
+Since the endpoints listed on the above reports are validated and refreshed every 30 minutes, the mere presence of an endpoint on a given report indicates a *responsive* status. For other errors detected during `bp.json` validation, check these resources:
 
 * EOS Mainnet error report: https://validate.eosnation.io/eos/reports/errors.html
 * Jungle Testnet error report: https://validate.eosnation.io/jungle4/reports/errors.html
@@ -156,10 +155,10 @@ Since the endpoints listed on the above reports are validated and refreshed ever
 
 ### Third-party Tools
 
-Some tools are available to measure the responsiveness, or lack thereof, a list of P2P and/or API endpoints:
+Some tools are available to measure the responsiveness, or lack thereof, of a list of P2P and/or API endpoints:
 
 * [get-closer](https://medium.com/hackernoon/find-the-best-api-endpoint-for-your-eos-dapp-7b7489cb6449)  
-  receives a list of API endpoints and returns the HTTP request-response time. If an endpoint is unresponsive, it eventually times out and does not show on the list.
+  receives a list of API endpoints and returns the HTTP request-response time. If an endpoint is unresponsive, it will eventually time out and will not show on the list.
 
 ## Summary
 
