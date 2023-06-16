@@ -24,3 +24,31 @@ In the EOS blockchain, nodes can be configured to operate in different ways. It 
 * etc.
 
 Therefore, when set up as peers EOS nodes typically validate the blocks and transactions they receive and relay them to other peers if valid. Nodes can also be set up to respond to API requests from clients, provide historical data about blocks and transactions, etc.
+
+## How to set up peers
+
+Peering can be set up by configuring the `net_plugin` of each `nodeos` instance whose node will act as peer. The most important options are:
+
+* `p2p-listen-endpoint arg`: local `host:port` for incoming p2p connections
+* `p2p-server-address arg`: public `host:port` for incoming p2p connections
+* `p2p-peer-address arg`: local or remote peer `host:port` to connect to
+
+Other options are available to limit the maximum number of connections, whitelisting specific peers by public key, accept/relay transactions, etc. Check the `net_plugin` options in `nodeos` for more information.
+
+### Peer setup using `config.ini`
+
+> ℹ️ The peer connection process must be performed on the local environment of each peer. Therefore, peering involves planning and agreement among all nodes that will act as peers in the EOS network.
+
+To peer your local node with other nodes, specify the following in your nodeos `config.ini` *before* launching your `nodeos` instance:
+
+```ini
+# your listening host:port
+p2p-listen-endpoint = <myhost>:<myport>   # e.g. 0.0.0.0:9876
+# your public host:port
+p2p-server-address = <mypubhost>:<myport> # e.g. p2p.eos99.io:9876
+
+# peers host:port (for each peer to connect to)
+p2p-peer-address = <host1>:<port1>  # e.g. peer.leap.sg:9876
+p2p-peer-address = <host2>:<port2>  # e.g. p2p.eosphere.io:3571
+# etc.
+```
