@@ -14,7 +14,7 @@ Peering allows EOS nodes to propagate and synchronize the distributed blockchain
 
 ## Why you need nodes/peers?
 
-In the EOS blockchain, nodes can be configured to operate in different ways. It is this flexibility in having nodes serve distinct roles which allows for a more distributed load and a smoother blockchain experience to the end user. Some of the node types in EOS include, but are not limited to:
+In the EOS blockchain, nodes can be configured to operate in different ways. It is this flexibility in having nodes serve distinct roles which allows for a more distributed load and a smoother blockchain experience for the end user. Some of the node types in EOS include, but are not limited to:
 
 * **Producing Nodes**: produce blocks to be added to the chain
 * **Relay Nodes**: validate/relay blocks and/or transactions
@@ -164,4 +164,4 @@ Some tools are available to measure the responsiveness, or lack thereof, of a li
 
 ## Summary
 
-Peering is crucial for the decentralized operation of any EOS blockchain network. It allows to synchronize and distribute the blockchain state among all nodes and peers for a smoother and faster blockchain experience. Peering is necessary for any EOS blockchain to reach consensus, achieve self-governance, and exploit the many benefits of blockchain technology.
+Peering is crucial for the decentralized operation of any EOS blockchain network. It allows to synchronize and distribute the blockchain state among all nodes and peers for a smoother and faster blockchain experience. Peering is necessary for any EOS blockchain to reach consensus, achieve self-governance, and exploit many of the benefits of blockchain technology.
