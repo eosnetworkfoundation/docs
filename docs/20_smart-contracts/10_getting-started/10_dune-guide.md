@@ -8,18 +8,18 @@ Before getting started with smart contract development, you need to learn about 
 
 ### Installation
 
-DUNE can be installed and run on the following platforms:
+DUNE supports the following platforms:
 * Linux
 * Windows
 * MacOS
 
 Installation instructions for each supported platform are available on the [DUNE's github project](https://github.com/AntelopeIO/DUNE) page.
 
-Once you're done, you can run `dune --help` to see a list of all supported commands.
+ Run `dune --help` to see a list of all supported commands.
 
 ## Wallets
 
-DUNE handles wallet management for you so that you don't have to. 
+DUNE handles wallet management for you. 
 
 If you need to import a new key into your wallet:
 
@@ -29,19 +29,18 @@ dune --import-dev-key <PRIVATE_KEY>
 
 ## Node management
 
-Creating a new local EOS blockchain is easy with DUNE.
+Use DUNE to easily create a new local EOS blockchain.
 
 ```shell
 dune --start <NODE_NAME>
 ```
 
-The command above creates a new node called `NODE_NAME` and starts it with default settings. 
-The node is configured to serve as an API/producer node that you can deploy smart contracts to, and perform tests on.
+The command above creates a new node called `NODE_NAME` with default settings. The default settings configure the new node to serve as an API/producer node. You can deploy smart contracts to this node and perform tests on it.
 
 > ❔ **Errors**
 >
 > You may see errors at the end of the node setup process.
-> If you do you can refer to this guide to troubleshoot common errors, or reach out to us on our
+> If you do, you can refer to this guide to troubleshoot common errors, or reach out to us on our
 > [Telegram channel](https://t.me/antelopedevs) for help.
 
 You can see a list of EOS nodes on your system:
@@ -50,7 +49,7 @@ You can see a list of EOS nodes on your system:
 dune --list
 ```
 
-You can also check if your active node's RPC API is live:
+You can check if your active node's RPC API is live:
 
 ```shell
 dune -- cleos get info
@@ -71,12 +70,13 @@ dune --remove <NODE_NAME>
 
 ### Bootstrapping your environment
 
-There are a few system contracts that your development environment might need to rely on such as:
+Your development environment may need to rely on a few system contracts, such as:
+
 - `eosio.token` for **EOS** token transfers
 - `eosio.msig` for multisig transactions
 - `eosio.system` for system level actions such as resource management
 
-Bootstrapping your local node is easy, once you have an active node running, you can bootstrap it with:
+Bootstrapping your local node is easy. Once you have an active node running, you can bootstrap it with:
 
 ```shell
 dune --bootstrap-system-full
@@ -85,7 +85,7 @@ dune --bootstrap-system-full
 
 ## Account management
 
-You deploy contracts on top of accounts, and also use them to interact with your smart contracts. 
+You use accounts to interact with smart contracts, and also deploy contracts on top of accounts.
 
 To create a new account:
 
@@ -101,9 +101,9 @@ dune -- cleos get account <ACCOUNT_NAME>
 
 ## Smart contract development
 
-Let's create a sample project so that we can learn how to compile, deploy, and interact with smart contracts using DUNE.
+Create a sample project so you can learn how to compile, deploy, and interact with smart contracts using DUNE.
 
-Navigate to a directory you want to create a project in, and then run the following command:
+Navigate to a directory in which you create a project, and then run the following command:
 
 ```shell
 dune --create-cmake-app hello .
@@ -144,11 +144,11 @@ From the root of your project, run the following command to compile your contrac
 ```shell
 dune --cmake-build .
 ```
-You will see your contract being compiled. If there are any errors you will see them in the output.
+Your contract compiles. Any errors display in the output. 
 
 ### Deploy your contract
 
-We need to create an account for your contract, and then we can deploy it.
+Create an account for your contract and then deploy it.
 
 ```shell
 dune --create-account hello
@@ -157,15 +157,13 @@ dune --deploy ./build/hello hello
 
 > 👀 **Code Permission**
 > 
-> By default, DUNE adds the `eosio.code` permission to an account when you deploy a contract to it. This allows the
-> contract to be able to trigger inline actions on other smart contracts.
+> By default, DUNE adds the `eosio.code` permission to an account when you deploy a contract to it. This allows the contract to trigger inline actions on other smart contracts.
 
 ### Interacting with your contract
 
-To interact with your contract you will send a transaction on your local EOS node. Transactions on EOS are made up of 
-`actions`, so we will send a single action to your contract.
+Send a transaction on your local EOS. node to the blockchain to interact with your smart contract. A transaction contains multiple actions. You can send a transaction with a single action using the --send-action command.
 
-We will also create a test account to send the action from.
+You must also create a test account from which to send the action.
 
 ```shell
 dune --create-account testaccount
@@ -174,23 +172,22 @@ dune --create-account testaccount
 dune --send-action hello test '[bob]' testaccount
 ```
 
-You should see a transaction executed successfully on the first time, and if you try to repeat this command it will 
-fail because that row already exists in the contract's database.
+You should see a transaction executed successfully with a row added to the contract's database. If you repeat this command it will fail because that row already exists in the contract's database.
 
 ### Get data from your contract
 
-You just added a row to the contract's database, let's fetch that data from the chain:
+You just added a row to the contract's database. You can fetch that data from the chain:
 
 ```shell
 # format: dune --get-table <CONTRACT> <SCOPE> <TABLE>
 dune --get-table hello hello users
 ```
 
-You should get a table result with one or more row. If you didn't make sure your interaction above was successful.
+You get a table result with one or more rows. If you did not receive a table with one or more rows, make sure the interaction above was successful.
 
 ## Using raw programs with DUNE
 
-If you want to tap into the raw EOS stack you can use the `DUNE -- <COMMAND>` format to access anything within the container.
+If you want to tap into the raw EOS stack, you can use the `DUNE -- <COMMAND>` format to access data, applications, and everything else within the container.
 
 Examples:
     
