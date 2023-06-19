@@ -34,6 +34,8 @@ Peering can be set up by configuring the `net_plugin` of each `nodeos` instance 
 * `p2p-server-address arg`: public `host:port` for incoming p2p connections
 * `p2p-peer-address arg`: local or remote peer `host:port` to connect to
 
+The `p2p-listen-endpoint` arguments holds the local IP address or hostname and the port number of the listening socket for the local node instance to accept incoming connections from other peers. The `p2p-server-address` argument holds the public facing IP address or hostname and the port number that other peers will connect to. If not specified, the `p2p-server-address` defaults to the specified `p2p-listen-endpoint`. The `p2p-server-address` option can be useful in scenarios where you have a proxy or firewall that presents a different external address than what the node uses internally.
+
 Other options are available to limit the maximum number of connections, whitelisting specific peers by public key, accept/relay transactions, etc. Check the `net_plugin` options in `nodeos` for more information.
 
 ### Peer setup using `config.ini`
