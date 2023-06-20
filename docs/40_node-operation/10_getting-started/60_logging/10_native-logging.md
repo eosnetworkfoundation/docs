@@ -176,16 +176,6 @@ Sample `logging.json`:
         "host": "host_name"
       },
       "enabled": true
-    },{
-      "name": "zip",
-      "type": "zipkin",
-      "args": {
-        "endpoint": "http://127.0.0.1:9411",
-        "path": "/api/v2/spans",
-        "service_name": "nodeos",
-        "timeout_us": 200000
-      },
-      "enabled": true
     }
   ],
   "loggers": [{
@@ -196,14 +186,6 @@ Sample `logging.json`:
       "appenders": [
         "stderr",
         "net"
-      ]
-    },{
-      "name": "zipkin",
-      "level": "debug",
-      "enabled": true,
-      "additivity": false,
-      "appenders": [
-        "zip"
       ]
     },{
       "name": "net_plugin_impl",
