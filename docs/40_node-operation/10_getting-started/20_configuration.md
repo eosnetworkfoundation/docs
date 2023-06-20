@@ -145,7 +145,10 @@ We will deploy the following system contracts later: `eosio.bios.wasm`, `eosio.m
 
 ### Command Line Options
 
-Nodeos includes a listing of all command line applications options and their usage with the `-h` or `--help` paremter. Here is the help from version 4.0.1:
+Nodeos includes a listing of all command line applications options and their usage with the `-h` or `--help` paremter. 
+
+<details>
+<summary>Here is the help from version 4.0.1:</summary>
 
 ```
 Application Options:
@@ -823,9 +826,12 @@ Application Command Line Options:
   -l [ --logconf ] arg (=logging.json)  Logging configuration file name/path 
                                         for library users
 ```
+</details>
 
 ### config.ini
-Nodeos looks for the `config.ini` in the default data directory of `~/.local/share/eosio/nodeos/config/`, unless you specify a custom data directory via the `--data-dir=` parameter, or use `--config-dir=` / `--config=` to further customize the path. If the `config.ini` doesn't exist, then nodeos will create a new default one containing a list of options with short descriptions of each. Here is the default config.ini from version 4.0.1:
+Nodeos looks for the `config.ini` in the default data directory of `~/.local/share/eosio/nodeos/config/`, unless you specify a custom data directory via the `--data-dir=` parameter, or use `--config-dir=` / `--config=` to further customize the path. If the `config.ini` doesn't exist, then nodeos will create a new default one containing a list of options with short descriptions of each. 
+<details>
+<summary>Here is the default config.ini from version 4.0.1:</summary>
 
 ```
 # the location of the blocks directory (absolute path or relative to application data dir) (eosio::chain_plugin)
@@ -1312,14 +1318,17 @@ Nodeos looks for the `config.ini` in the default data directory of `~/.local/sha
 # Plugin(s) to enable, may be specified multiple times
 # plugin = 
 ```
+</details>
+
 ## Configuration
 The following are a few useful configuration options you will most likely need to work with.
 
 ### Plugins
 | Method       | Syntax         | Example                           |
 |--------------|----------------|-----------------------------------|
-| Command line | `--plugin arg` | `--plugin eosio::producer_plugin` |
-| Paragraph    | `plugin = arg` | `plugin = eosio::producer_plugin` |
+| Command-line | `--plugin arg` | `--plugin eosio::producer_plugin` |
+| config.ini    | `plugin = arg` | `plugin = eosio::producer_plugin` |
+
 Plugins extend and modify the functionality of nodeos and a number of the configuration options depend their presence.
 
 Plugins list for `config.ini`:
@@ -1340,16 +1349,17 @@ There are additional plugins, but these are the ones you most need to include.
 ### Enable Stale Production
 | Usage Method | Syntax                               |
 |--------------|--------------------------------------|
-| Command line | `-e` or ` --enable-stale-production` |
-| Paragraph    | `enable-stale-production = true`     |
+| Command-line | `-e` or ` --enable-stale-production` |
+| config.ini    | `enable-stale-production = true`     |
+
 Enables block production, even if the chain is stale. Otherwise, if your chain was paused for an extended period of time then block production will fail.
 
 ### Signature Provider
 | Method       | Syntax                                                                                                                                      |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Command line | `--signature-provider arg (=EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3)` |
-| Paragraph    | `signature-provider = EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
-`       |
+| Command-line | `--signature-provider arg (=EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3)` |
+| config.ini    | `signature-provider = EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3`       |
+
 The signature provider is provided in the form of a key pair. The default one is shown above, but an alternative one could be used depending on your usecase.
 
 ### Trace No ABIs
@@ -1357,6 +1367,7 @@ The signature provider is provided in the form of a key pair. The default one is
 |--------------|--------------------------------------|
 | Command line | `-e` or ` --enable-stale-production` |
 | Paragraph    | `enable-stale-production = true`     |
+
 Use to indicate that the RPC responses will not use ABIs. Failure to specify this option when there are no trace-rpc-abi configuations will result in an Error. This option is mutually exclusive with trace-rpc-api.
 
 ### Access Control Allow Origin
@@ -1364,6 +1375,7 @@ Use to indicate that the RPC responses will not use ABIs. Failure to specify thi
 |--------------|--------------------------------------|
 | Command line | `-e` or ` --enable-stale-production` |
 | Paragraph    | `enable-stale-production = true`     |
+
 Similar to Cross-Origin Resource Sharing (CORS) for the web, *Access Control Allow Origin* allows you to control access from other origins (domain, scheme, or port). For a development instance you will most likely find it useful to allow all with the asterisk `*`, but then change it to specific origins on release.
 
 ## Example Config.ini
