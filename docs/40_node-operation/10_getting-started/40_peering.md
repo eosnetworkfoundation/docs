@@ -4,7 +4,7 @@ title: Peering
 
 # Peering
 
-In the [Node Tutorials](/node-operation/tutorials/) section, you will deploy a local single node EOS blockchain. Although it is still a fully functional blockchain, it actually runs on a single node. To start grasping the full benefits of the EOS blockchain technology, you need to add more nodes. The [Bios Boot Tutorial](https://github.com/AntelopeIO/leap/tree/release/4.0/tutorials/bios-boot-tutorial) showcases how to deploy a multi node blockchain consisting of 21 producing nodes. In this section, you will learn about "peering", the network feature that makes it all possible. This is what allows to grow incrementally from a single node to a truly decentralized, geographically distributed, multi node EOS blockchain.
+EOS blockchains can consist of one or many nodes. Although a single node can still run a fully functional blockchain, it cannot scale or grow. To grasp the full benefits of the EOS blockchain technology, more nodes need to be added. In this section, you will learn about "peering", the network feature that makes it possible. This is what allows to grow incrementally from a single node to a truly decentralized, geographically distributed, multi node EOS blockchain.
 
 ## What is Peering?
 
@@ -164,4 +164,4 @@ Some tools are available to measure the responsiveness, or lack thereof, of a li
 
 ## Summary
 
-Peering is crucial for the decentralized operation of any EOS blockchain network. It allows to synchronize and distribute the blockchain state among all nodes and peers for a smoother and faster blockchain experience. Peering is necessary for any EOS blockchain to reach consensus, achieve self-governance, and exploit many of the benefits of blockchain technology.
+Peering is crucial for the decentralized operation of any EOS blockchain network. It allows to synchronize and distribute the blockchain state among all nodes and peers for a smoother and faster blockchain experience. Peering is necessary for any EOS blockchain to grow organically, reach consensus, achieve self-governance, and exploit many of the benefits of blockchain technology.
