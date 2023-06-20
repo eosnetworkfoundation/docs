@@ -46,6 +46,9 @@ cd ~/eos/temp/eos-system-contracts-3.1.1/
 
 #screen is used to run nodeos in the background
 sudo apt-get install -y screen
+mkdir ~/.screen
+chmod 700 ~/.screen
+export SCREENDIR=$HOME/.screen
 mkdir ~/eos/data-dir
 mkdir ~/eosio-wallet
 cp -r ~/eos/temp/eos-system-contracts-3.1.1/build/contracts ~/eos/
@@ -55,3 +58,6 @@ chmod +x ~/eos/bootup.sh
 wget https://gist.github.com/jimmckeeth/34ca8a049a39c4f917fdc60021422137/raw/config.ini \
     -O ~/eos/data-dir/config.ini
 cd ~/eos
+echo "====================================="
+echo " use ~/eos/eosboot.sh to boot nodeos"
+echo "====================================="
