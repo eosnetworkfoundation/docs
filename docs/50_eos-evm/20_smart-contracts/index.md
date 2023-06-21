@@ -9,8 +9,9 @@ title: Smart Contracts
 Thanks to the high API compatibility of the EOS EVM, most popular wallets and IDEs should work on EOS EVM seamlessly.
 
 - [Configure Tooling](./10_configure_tooling/index.md)
-- [Endpoints](./10_endpoints.md)
+- [Endpoints](./15_endpoints.md)
 - [Migrate your Smart Contract](./20_migrate-your-smart-contract.md)
+- [Develope with Remix](./30_develop-with-remix.md)
 - [Verify a Smart Contract](./60_how-to-verify-a-smart-contract.md)
 
 ## Join Our Community
