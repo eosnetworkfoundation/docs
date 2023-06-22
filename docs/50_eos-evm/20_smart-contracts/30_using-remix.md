@@ -212,6 +212,29 @@ that the `completed` property has changed.
 
 ![Remix toggle todo item](../../images/eos-evm_using-remix_toggle-todo.png)
 
+## Verifying your smart contract
+
+Verification is an important step in the smart contract development process. It allows anyone to verify that the
+smart contract code that is deployed to the blockchain is the same as the code that you have written.
+
+We have a guide on [how to verify your smart contract](/docs/50_eos-evm/20_smart-contracts/60_how-to-verify-a-smart-contract.md) 
+but you will need to get some information from Remix first. 
+
+### Flattening your contract
+
+If your contract inherits or imports other contracts, you will need to flatten your contract before you can verify it.
+Doing this in Solidity is easy, just right click on the contract in the `File Explorer` tab, and click `Flatten`. 
+
+This will create a new file in your workspace called `<contract-name>_flattened.sol`. 
+
+### Getting the contract metadata
+
+You also need the `compiler` and `EVM version` that you used to compile your contract. You can find this information
+in the `Solidity Compiler` tab.
+
+![Remix compiler version](../../images/eos-evm_using-remix_verify.png)
+
+
 ## Next steps
 
 **Congratulations!**
