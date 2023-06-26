@@ -1,6 +1,8 @@
 ---
-title: Protocol Guides
+title: Advanced Topics
+sidebar_class_name: sidebarhidden
 ---
+
 
 ## Core
 
