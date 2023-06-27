@@ -18,7 +18,7 @@ Click either of these buttons to instantly add EOS EVM to your MetaMask.
 
 import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
 
-Click either of these buttons to instantly add EOS EVM to your MetaMask.
+Want some EOS tokens to play with? Click the button below to get some from the testnet faucet.
 
 <FaucetTokens />
 

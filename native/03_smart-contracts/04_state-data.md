@@ -2,7 +2,9 @@
 title: State Data
 ---
 
-Storing data on the blockchain is one of the most important features of a smart contract.
+There are two types of data in a smart contract: state data and transient data. State data is data that is stored on the
+blockchain, and is persistent. Transient data is data that is stored during the execution of a transaction, and is not
+persistent. The second the transaction is over, the transient data is gone.
 
 There are two parts to storing data on the blockchain: the model and the table. The model is the data structure that you
 will be storing, and the table is the container that holds the data. There are a few different types of tables, and each

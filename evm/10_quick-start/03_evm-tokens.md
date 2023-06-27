@@ -9,8 +9,11 @@ exchanges only support the native version of those tokens, you must *bridge* you
 
 ## Testnet faucet
 
-Head over to the [EOS EVM Testnet Faucet](https://faucet.testnet.evm.eosnetwork.com/) to get some `EOS` tokens on the 
-testnet. Keep in mind these tokens have no value, they are only for testing purposes.
+import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
+
+Want some EOS tokens to play with? Click the button below to get some from the testnet faucet.
+
+<FaucetTokens />
 
 ## Bridge from EOS to EOS EVM
 
