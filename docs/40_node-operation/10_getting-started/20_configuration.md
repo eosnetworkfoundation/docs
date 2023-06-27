@@ -129,3 +129,39 @@ Option type | Config method | Syntax | Example
 -|-|-|-
 Plugin-specific | CLI option | `--access-control-allow-origin arg`
 `http_plugin` | `config.ini` | `access-control-allow-origin = arg`
+
+## CORS
+
+Cross-Origin Resource Sharing (CORS) is a protocol that enables scripts on a browser client to interact with resources from different origins. This is necessary because JavaScript is typically restricted by the same-origin policy, which limits its ability to make requests to URLs residing on different origins than the script's location. For instance, if a JavaScript application wants to make an AJAX call to an API hosted on a different domain, it would be blocked due to the same-origin policy.
+
+> ℹ️ CORS is important for web decentralized applications (dApps) because without it, RPC API calls from a remote host to say an API node might be blocked.
+
+### Why is CORS needed?
+
+In most cases, a script running in the user's browser only needs to access resources within the same origin (such as making API calls to the backend that served the JavaScript code). Thus, the restriction preventing JavaScript from accessing resources on other origins is beneficial for security.
+
+In this context, "other origins" refer to URLs that differ from the location where the JavaScript is running, with variations in the scheme (HTTP or HTTPS), domain, or port.
+
+However, there are valid scenarios where cross-origin access is desired or even essential. For example, a React Single-Page Application (SPA) may need to communicate with an API backend hosted on a different domain. CORS is also crucial for the proper functioning of web fonts, for instance.
+
+### Identifying a CORS Response
+
+When a server is correctly configured to allow cross-origin resource sharing, specific headers are included in the response. These headers indicate the support for CORS and are used by web browsers to determine whether an `XMLHttpRequest` call should proceed or fail.
+
+Several headers can be set, but the primary one that determines resource accessibility is `Access-Control-Allow-Origin`. This header specifies the origins permitted to access the resource. For instance, to allow access from any origin, the header can be set as:
+
+```
+Access-Control-Allow-Origin: *
+```
+
+Alternatively, it can be restricted to a specific origin:
+
+```
+Access-Control-Allow-Origin: https://sample.io
+```
+
+> ℹ️ In the context of blockchain applications running as web dApps, `nodeos` provides the `access-control-allow-origin` option to control access from other origins. This option can be used by an EOS API node, for instance, to grant access to selected remote hosts.
+
+## Summary
+
+The `config.ini` file is responsible for configuring the functionality of a nodeos instance. It allows users to specify the nodes with which their node will establish connections, define the plugins to be utilized, and customize the behavior of the node through plugin-specific options. As a result, the config.ini file plays a significant role in determining how the node operates, and node operators frequently edit and personalize this file to assign specific roles to their nodes.
