@@ -1,9 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-const dir = `./docs`;
-
-const getAllDocs = () => {
+const getAllDocs = (dir) => {
     let files = [];
     const iterateFiles = (_files, _path = "") => {
         _files.map(file => {
