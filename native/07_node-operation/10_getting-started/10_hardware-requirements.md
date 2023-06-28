@@ -24,7 +24,7 @@ The optimal configuration at the time of writing this document, June 12th 2023, 
 - HDD: 1024 GB
 - Internet network link: >= 100Mb/s
 
-> ℹ️ For API nodes, in general, you do not want too high CPU speeds (>= 5 Ghz), since it will skew [subjective billing](../../20_smart-contracts/10_getting-started/30_resources.md#subjective-cpu-billing) lower and run into edge cases where the API thinks a transaction is fine, accepts it, tells the user success, and then the transaction ends up getting rejected upstream by a slower CPU.
+> ℹ️ For API nodes, in general, you do not want too high CPU speeds (>= 5 Ghz), since it will skew subjective billing lower and run into edge cases where the API thinks a transaction is fine, accepts it, tells the user success, and then the transaction ends up getting rejected upstream by a slower CPU.
 
 ## API Node with Blocks Log
 

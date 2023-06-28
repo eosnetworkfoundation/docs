@@ -89,7 +89,7 @@ into the search field.
 You have successfully deployed your first smart contract to the EOS EVM! 🎉
 
 If you already have a front-end application that interacts with your smart contract, you can now point it at the 
-[EOS EVM Endpoints](./10_endpoints.md) and it will work as expected.
+[EOS EVM Endpoints](/evm/999_miscellaneous/10_endpoints.md), and it will work as expected.
 
-Make sure you visit the [**Compatibility**](../30_compatibility/index.md) section to learn about the differences between
+Make sure you visit the [**Compatibility**](/evm/999_miscellaneous/20_evm-compatibility.md) section to learn about the differences between
 the EOS EVM and Ethereum, and how to make sure your web3 application works on the EOS EVM as expected.

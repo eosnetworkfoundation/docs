@@ -32,13 +32,6 @@ ever seen a Bored Ape, they are ERC721 NFTs.
 
 ![Bored Ape Club Examples](/images/boredapeclub.jpg)
 
-## Your development environment
-
-Make sure you have [DUNE](../../20_smart-contracts/10_getting-started/10_dune-guide.md) installed
-and understand how to build contracts.
-
-After each step, you should try to compile your contract and check if there are any errors.
-
 ## Create a new contract
 
 Create a new `nft.cpp` file and add the following code:
@@ -411,7 +404,7 @@ The `balanceof` action is used to get the balance of an account.
 > ⚠ **Return values & Composability**
 > 
 > Return values are only usable from outside the blockchain, and cannot currently be used
-> in EOS for smart contract composability. EOS supports [**inline actions**](../10_getting-started/40_smart-contract-basics.md#inline-actions) which can be used
+> in EOS for smart contract composability. EOS supports [**inline actions**](/docs/03_smart-contracts/02_actions.md#inline-actions) which can be used
 > to call other smart contracts, but they cannot return values.
 
 ### OwnerOf

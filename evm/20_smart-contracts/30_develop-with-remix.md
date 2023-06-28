@@ -155,7 +155,7 @@ Then click on the `ENVIROMENT` dropdown and select `Injected Provider - MetaMask
 > 
 > If you haven't already, make sure you have set up your MetaMask wallet and connected it to the EOS EVM.
 > 
-> **You can follow [this guide](/native/50_eos-evm/10_basic-setup/10_connect-metamask.md) to learn how to do that.**
+> **You can follow [this guide](/evm/10_quick-start/02_setup-metamask.md) to learn how to do that.**
 
 ![Remix deploy](/images/eos-evm_using-remix_open-deploy.png)
 
@@ -217,7 +217,7 @@ that the `completed` property has changed.
 Verification is an important step in the smart contract development process. It allows anyone to verify that the
 smart contract code that is deployed to the blockchain is the same as the code that you have written.
 
-We have a guide on [how to verify your smart contract](/native/50_eos-evm/20_smart-contracts/60_how-to-verify-a-smart-contract.md) 
+We have a guide on [how to verify your smart contract](/evm/20_smart-contracts/60_verify-a-smart-contract.md), 
 but you will need to get some information from Remix first. 
 
 ### Flattening your contract

@@ -47,7 +47,7 @@ This `appender` will output log messages to the screen. The supported configurat
 - `type` - "console"
 - `stream` - "std_out" or "std_err"
 - `level_colors` - maps a log level to a color, see the following two items as its sub-items:
-  - `level` - see [logging levels](20_logging-levels.md)
+  - `level` - may be one of ("debug", "info", "warn", "error", "all", "off")
   - `color` - may be one of ("red", "green", "brown", "blue", "magenta", "cyan", "white", "console_default")
 - `enabled` - bool value to enable/disable the appender
 
