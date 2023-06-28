@@ -22,9 +22,8 @@ Want some EOS tokens to play with? Click the button below to get some from the t
 
 <FaucetTokens />
 
-If you're on the testnet, you can get some EOS tokens using the [**testnet faucet**](https://faucet.testnet.evm.eosnetwork.com/).
 
-If you're on the EOS Mainnet, ]you can transfer your native EOS using a standard EOS transfer:
+If you're on the Mainnet, you can transfer your native EOS using a standard EOS transfer:
 - Send tokens to: `eosio.evm`
 - Set the `memo` to your EOS EVM address
 
