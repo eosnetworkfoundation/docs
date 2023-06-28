@@ -52,7 +52,7 @@ CONTRACT mycontract : public contract {
 
 Take a look at the code and see if you can figure out what it's doing. 
 
-If you're having trouble understanding the code, don't worry, you can head over to the [Smart Contract Basics](/docs/03_smart-contracts/01_-contract-anatomy.md)
+If you're having trouble understanding the code, don't worry, you can head over to the [Smart Contract Basics](/docs/03_smart-contracts/01_contract-anatomy.md)
 section to learn more about the various parts of a smart contract and how they work.
 
 Your screen should look like this now:
