@@ -2,8 +2,8 @@
 
 const getAllDocs = require('./get-all-docs');
 
-const checkNames = () => {
-    const docPaths = getAllDocs();
+const checkNames = (dir) => {
+    const docPaths = getAllDocs(dir);
     let filesWithUnderscores = [];
 
     for(let filePath of docPaths){
@@ -21,4 +21,5 @@ const checkNames = () => {
     // console.log(docPaths);
 }
 
-checkNames();
+checkNames('./native');
+checkNames('./evm');
