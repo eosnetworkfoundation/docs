@@ -20,5 +20,8 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install dependencies
+        run: yarn install
+
       - name: Run hyphen check script
         run: node scripts/contributor-check.js
