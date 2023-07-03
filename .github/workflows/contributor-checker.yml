@@ -1,0 +1,24 @@
+name: Hyphen Enforcer
+
+on:
+  pull_request:
+    branches:
+      - main
+      - staging
+
+jobs:
+  build:
+    name: "contributor-checker"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Run hyphen check script
+        run: node scripts/contributor-check.js
