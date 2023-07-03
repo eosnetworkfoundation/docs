@@ -1,4 +1,4 @@
-name: Hyphen Enforcer
+name: Contributor Checker
 
 on:
   pull_request:
