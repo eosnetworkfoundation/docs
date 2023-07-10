@@ -1,6 +1,5 @@
 ---
 title: Plugins
-sidebar_class_name: sidebarhidden
 ---
 
 `nodeos` uses plugins to enhance its core capabilities. While certain plugins like `chain_plugin`, `net_plugin`, and `producer_plugin` are essential and integral to the modular structure of `nodeos`, there are other optional plugins that offer additional features that extend the node's operation.
