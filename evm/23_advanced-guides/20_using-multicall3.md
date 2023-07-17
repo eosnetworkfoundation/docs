@@ -492,37 +492,32 @@ const test = async () => {
     const provider = new JsonRpcProvider(RPC_URL, undefined, {
         batchMaxCount: 1
     });
-    const multicall = new Contract(MULTICALL3_ADDRESS, MULTICALL3_ABI, provider);
-    const _interface = new Interface(MULTICALL3_ABI);
-
-    const blockNumber = await provider.getBlockNumber();
-    console.log('blockNumber', blockNumber);
-    const block = await provider.getBlock(blockNumber);
-    const blockHash = block?.hash;
+    const multicallContract = new Contract(MULTICALL3_ADDRESS, MULTICALL3_ABI, provider);
+    const multicallInterface = new Interface(MULTICALL3_ABI);
 
     const calls = [
         {
             target: MULTICALL3_ADDRESS,
             allowFailure: false,
-            callData: _interface.encodeFunctionData('getEthBalance', [MULTICALL3_ADDRESS]),
+            callData: multicallInterface.encodeFunctionData('getEthBalance', [MULTICALL3_ADDRESS]),
         },
         {
             target: MULTICALL3_ADDRESS,
             allowFailure: false,
             // WEOS address
-            callData: _interface.encodeFunctionData('getEthBalance', ['0xc00592aA41D32D137dC480d9f6d0Df19b860104F']),
+            callData: multicallInterface.encodeFunctionData('getEthBalance', ['0xc00592aA41D32D137dC480d9f6d0Df19b860104F']),
         }
     ];
 
     type Aggregate3Response = { success: boolean; returnData: string };
-    const results: Aggregate3Response[] = await multicall.aggregate3.staticCall(calls);
+    const results: Aggregate3Response[] = await multicallContract.aggregate3.staticCall(calls);
 
     for (const { success, returnData } of results) {
         console.log('success', success);
         console.log('returnData', returnData);
-        
+
         // Decode the returnData
-        const decoded = _interface.decodeFunctionResult('getEthBalance', returnData);
+        const decoded = multicallInterface.decodeFunctionResult('getEthBalance', returnData);
         console.log('decoded', decoded);
     }
 }
