@@ -10,7 +10,7 @@ you need to read data from multiple contracts, you can use Multicall3 to read al
 you can ensure: 
 
 - You pay the lowest cost possible for the transaction
-- You get the data form the same block
+- You get the data from the same block
 - You don't have to wait for multiple transactions to complete
 - You don't have to worry about the order of the transactions (race conditions)
 - You don't have to worry about **one** of the transactions failing (all or nothing)
