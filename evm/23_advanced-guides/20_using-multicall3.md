@@ -477,7 +477,7 @@ or in this expandable section:
 
 Once you've saved the JSON ABI, you can now use it with Ethers.
 
-```javascript
+```typescript title="multicall3.ts"
 import { Contract, Interface, JsonRpcProvider } from 'ethers';
 
 // Import the ABI you copied
