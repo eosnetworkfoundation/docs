@@ -1,3 +1,7 @@
+---
+title: test_control_api_plugin
+---
+
 See [Test Control API Reference](https://docs.eosnetwork.com/apis/leap/latest/test_control.api/)
 
 ## Overview

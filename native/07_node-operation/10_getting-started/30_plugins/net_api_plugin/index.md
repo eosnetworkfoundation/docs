@@ -1,3 +1,7 @@
+---
+title: net_api_plugin
+---
+
 See [Net API Reference](https://docs.eosnetwork.com/apis/leap/latest/net.api/).
 
 ## Overview

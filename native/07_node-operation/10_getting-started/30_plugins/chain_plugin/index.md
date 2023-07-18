@@ -1,3 +1,7 @@
+---
+title: chain_plugin
+---
+
 ## Overview
 
 The `chain_plugin` is an essential plugin that is necessary for the processing and consolidation of chain data on an EOS node. It implements the core functionality provided by the [Chain API plugin](../chain_api_plugin/index.md).

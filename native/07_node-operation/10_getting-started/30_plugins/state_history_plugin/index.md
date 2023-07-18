@@ -1,3 +1,7 @@
+---
+title: state_history_plugin
+---
+
 ## Overview
 
 The `state_history_plugin` is a valuable tool for capturing and storing historical information about the state of the blockchain. This plugin operates by receiving blockchain data from other interconnected nodes and then storing that data into files. Additionally, the plugin establishes a socket connection to listen for incoming connections from applications. Once connected, it can provide the requested blockchain data based on the specific options set for the plugin when initiating the `nodeos` instance.

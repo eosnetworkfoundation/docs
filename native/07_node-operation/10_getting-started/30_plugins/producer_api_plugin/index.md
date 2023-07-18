@@ -1,3 +1,7 @@
+---
+title: producer_api_plugin
+---
+
 See [Producer API Reference](https://docs.eosnetwork.com/apis/leap/latest/producer.api/).
 
 ## Overview

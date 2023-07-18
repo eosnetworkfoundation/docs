@@ -1,3 +1,7 @@
+---
+title: producer_plugin
+---
+
 ## Overview
 
 The `producer_plugin` contains functionality for a node to perform the task of block production. It also implements the core functionality provided by the [Producer API plugin](../producer_api_plugin/index.md).

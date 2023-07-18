@@ -1,3 +1,7 @@
+---
+title: http_plugin
+---
+
 ## Overview
 
 The `http_plugin` is essential for enabling the RPC API functionality provided by either a `nodeos` or `keosd` instance. Both `nodeos` and `keosd` support the `http_plugin` as a core plugin.

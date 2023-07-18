@@ -1,3 +1,7 @@
+---
+title: trace_api_plugin
+---
+
 See [Trace API Reference](https://docs.eosnetwork.com/apis/leap/latest/trace_api.api/).
 
 ## Overview

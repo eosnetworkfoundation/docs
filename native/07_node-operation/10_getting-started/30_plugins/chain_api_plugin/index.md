@@ -1,3 +1,7 @@
+---
+title: chain_api_plugin
+---
+
 See [Chain API Reference](https://docs.eosnetwork.com/apis/leap/latest/chain.api/).
 
 ## Overview
