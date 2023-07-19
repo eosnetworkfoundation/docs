@@ -59,11 +59,6 @@ like MetaMask and connect it to the EVM. Then, they are able to purchase EOS nat
 in and out of the EOS EVM through utilizing the trustless bridge. This makes for a seamless user experience, where the 
 end user is not required to interact with EOS native at all.
 
-The long term goal for EOS EVM is to enable functionality to support multiple tokens in the future besides EOS. In the 
-meantime, the Multichain bridge will make it easy for dApps to bring their tokens into the EOS EVM economy.
-
-![EOS EVM Bridge To EOS](/images/EOS-EVM_bridge_to_EOS.png)
-
 ## EOS EVM Gas Model
 
 The gas model is another important part of the EOS EVM economy. All EVMs require a native token to cover the transaction 
