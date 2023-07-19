@@ -8,3 +8,4 @@ title: Helpful Links
 - [Github: EOS Foundation](https://github.com/eosnetworkfoundation)
 - [Github: Antelope Framework](https://github.com/antelopeio)
 - [Twitter](https://twitter.com/EOSnFoundation)
+- [IBC Documentation](https://ibc-docs.uxnetwork.io/overview/)
