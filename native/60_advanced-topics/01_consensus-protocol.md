@@ -110,8 +110,8 @@ With the current defaults: P=21 elected producers, Bp=12 blocks created per prod
 
 Variable | Value
 -|-
-**Tp**: Production time per producer | Tp =  0.5 (s/block) x 12 (blocks/producer) ⇒ Tp = 6 (s/producer)
-**T**: Total production time | T = 6 (s/producer) x 21 (producers) ⇒ T = 126 (s)
+**Tp**: Production time per producer | Tp =  0.5 (s/block) x 12 (blocks/producer) ⇒<br>Tp = 6 (s/producer)
+**T**: Total production time | T = 6 (s/producer) x 21 (producers) ⇒<br>T = 126 (s)
 
 When a block is not produced by a given producer during its assigned time slot, a gap results in the blockchain.
 
