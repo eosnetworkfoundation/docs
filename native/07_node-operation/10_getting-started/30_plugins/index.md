@@ -14,9 +14,9 @@ To learn more about specific plugins, please choose from the following list:
 * [`net_plugin`](net_plugin/index.md)
 * [`producer_api_plugin`](producer_api_plugin/index.md)
 * [`producer_plugin`](producer_plugin/index.md)
-* prometheus_plugin
+* [`prometheus_plugin`](prometheus_plugin/index.md)
 * [`resource_monitor_plugin`](resource_monitor_plugin/index.md)
-* signature_provider_plugin
+* [`signature_provider_plugin`](signature_provider_plugin/index.md)
 * [`state_history_plugin`](state_history_plugin/index.md)
 * [`test_control_api_plugin`](test_control_api_plugin/index.md)
 * [`test_control_plugin`](test_control_plugin/index.md)
