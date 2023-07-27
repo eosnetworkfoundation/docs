@@ -110,8 +110,8 @@ With the current defaults: P=21 elected producers, Bp=12 blocks created per prod
 
 Variable | Value
 -|-
-**Tp**: Production time per producer | Tp =  0.5 (s/block) x 12 (blocks/producer) ⇒<br>Tp = 6 (s/producer)
-**T**: Total production time | T = 6 (s/producer) x 21 (producers) ⇒<br>T = 126 (s)
+**Tp**: Production time per producer | Tp =  0.5 (s/block) x 12 (blocks/producer) ⇒ Tp = 6 (s/producer)
+**T**: Total production time | T = 6 (s/producer) x 21 (producers) ⇒ T = 126 (s)
 
 When a block is not produced by a given producer during its assigned time slot, a gap results in the blockchain.
 
@@ -215,10 +215,10 @@ Currently, according to the above EOS consensus rules (see [3.1. Layer 1: Native
 
 Variable | Value
 -|-
-**Tp**: Production time per producer | Tp =  0.5 (s/block) x 12 (blocks/producer) ⇒<br>Tp = 6 (s/producer) (**\***)
-**SP**: Supermajority of producers | SP = int[ 2/3 * P (producers) ] + 1 ⇒ [P=21]<br>SP = int[ 2/3 * 21 (producers) ] + 1 = 14 + 1 (producers) ⇒<br>SP = 15 (producers)
+**Tp**: Production time per producer | Tp =  0.5 (s/block) x 12 (blocks/producer) ⇒ Tp = 6 (s/producer) (**\***)
+**SP**: Supermajority of producers | SP = int[ 2/3 * P (producers) ] + 1 ⇒ [P=21] SP = int[ 2/3 * 21 (producers) ] + 1 = 14 + 1 (producers) ⇒ SP = 15 (producers)
 **CR**: Confirmation Rounds | CR = 2 (rounds) (**\*\***)
-**FT**: Finality time | FT = SP x Tp (per round) x CR (rounds) ⇒ [SP=15, Tp=6, CR=2]<br>FT = 15 (producers) x 6 (s/producer) (per round) x 2 (rounds) ⇒<br>**FT = 180 (s) = 3 (mins)**
+**FT**: Finality time | FT = SP x Tp (per round) x CR (rounds) ⇒ [SP=15, Tp=6, CR=2] FT = 15 (producers) x 6 (s/producer) (per round) x 2 (rounds) ⇒ **FT = 180 (s) = 3 (mins)**
 
 (**\***): from section [4.2.2. Production Default Values](#422-production-default-values).  
 (**\*\***): number of schedule rounds required to validate a proposed LIB block.
