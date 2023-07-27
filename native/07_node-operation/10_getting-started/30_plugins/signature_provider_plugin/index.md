@@ -19,15 +19,13 @@ nodeos ... --plugin eosio::signature_provider_plugin
 
 ## Options
 
-These can be specified from both the `nodeos` command-line or the `config.ini` file:
+These can be specified from either the `nodeos` command-line or the `config.ini` file:
 
-```console
-Config Options for eosio::signature_provider_plugin:
-  --keosd-provider-timeout arg (=5)     Limits the maximum time (in
-                                        milliseconds) that is allowed for
-                                        sending requests to a keosd provider
-                                        for signing
-```
+### Config Options for `signature_provider_plugin`
+
+Option (=default) | Description
+-|-
+`--keosd-provider-timeout arg (=5)` | Limits the maximum time (in milliseconds) that is allowed for sending requests to a keosd provider for signing
 
 ## Dependencies
 

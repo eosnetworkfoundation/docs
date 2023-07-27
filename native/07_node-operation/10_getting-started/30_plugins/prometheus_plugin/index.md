@@ -46,15 +46,13 @@ nodeos ... --plugin eosio::prometheus_plugin
 
 ## Options
 
-These can be specified from both the `nodeos` command-line or the `config.ini` file:
+These can be specified from either the `nodeos` command-line or the `config.ini` file:
 
-```
-Config Options for eosio::prometheus_plugin:
-  --prometheus-exporter-address arg (=127.0.0.1:9101)
-                                        The local IP and port to listen for
-                                        incoming prometheus metrics http
-                                        request.
-```
+### Config Options for `prometheus_plugin`
+
+Option (=default) | Description
+-|-
+`--prometheus-exporter-address arg (=127.0.0.1:9101)` | The local IP and port to listen for incoming prometheus metrics http request.
 
 ## Dependencies
 

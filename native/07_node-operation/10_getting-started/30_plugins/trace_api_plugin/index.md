@@ -34,55 +34,18 @@ nodeos ... --plugin eosio::trace_api_plugin [options]
 
 ## Configuration Options
 
-These can be specified from both the `nodeos` command-line or the `config.ini` file:
+These can be specified from either the `nodeos` command-line or the `config.ini` file:
 
-```console
-Config Options for eosio::trace_api_plugin:
+### Config Options for `trace_api_plugin`
 
-  --trace-dir arg (="traces")           the location of the trace directory
-                                        (absolute path or relative to
-                                        application data dir)
-  --trace-slice-stride arg (=10000)     the number of blocks each "slice" of
-                                        trace data will contain on the
-                                        filesystem
-  --trace-minimum-irreversible-history-blocks arg (=-1)
-                                        Number of blocks to ensure are kept
-                                        past LIB for retrieval before "slice"
-                                        files can be automatically removed.
-                                        A value of -1 indicates that automatic
-                                        removal of "slice" files will be turned
-                                        off.
-  --trace-minimum-uncompressed-irreversible-history-blocks arg (=-1)
-                                        Number of blocks to ensure are
-                                        uncompressed past LIB. Compressed
-                                        "slice" files are still accessible but
-                                        may carry a performance loss on
-                                        retrieval
-                                        A value of -1 indicates that automatic
-                                        compression of "slice" files will be
-                                        turned off.
-  --trace-rpc-abi arg                   ABIs used when decoding trace RPC
-                                        responses.
-                                        There must be at least one ABI
-                                        specified OR the flag trace-no-abis
-                                        must be used.
-                                        ABIs are specified as "Key=Value" pairs
-                                        in the form <account-name>=<abi-def>
-                                        Where <abi-def> can be:
-                                           an absolute path to a file
-                                        containing a valid JSON-encoded ABI
-                                           a relative path from `data-dir` to a
-                                        file containing a valid JSON-encoded
-                                        ABI
-
-  --trace-no-abis                       Use to indicate that the RPC responses
-                                        will not use ABIs.
-                                        Failure to specify this option when
-                                        there are no trace-rpc-abi
-                                        configuations will result in an Error.
-                                        This option is mutually exclusive with
-                                        trace-rpc-api
-```
+Option (=default) | Description
+-|-
+`--trace-dir arg (="traces")` | the location of the trace directory (absolute path or relative to application data dir)
+`--trace-slice-stride arg (=10000)` | the number of blocks each "slice" of trace data will contain on the filesystem
+`--trace-minimum-irreversible-history-blocks arg (=-1)` | Number of blocks to ensure are kept past LIB for retrieval before "slice" files can be automatically removed. A value of -1 indicates that automatic removal of "slice" files will be turned off.
+`--trace-minimum-uncompressed-irreversible-history-blocks arg (=-1)` | Number of blocks to ensure are uncompressed past LIB. Compressed "slice" files are still accessible but may carry a performance loss on retrieval A value of -1 indicates that automatic compression of "slice" files will be turned off.
+`--trace-rpc-abi arg` | ABIs used when decoding trace RPC responses. There must be at least one ABI specified OR the flag trace-no-abis must be used. ABIs are specified as "Key=Value" pairs in the form ^account-name^=^abi-def^ Where ^abi-def^ can be: an absolute path to a file containing a valid JSON-encoded ABI a relative path from `data-dir` to a file containing a valid JSON-encoded ABI
+`--trace-no-abis` | Use to indicate that the RPC responses will not use ABIs. Failure to specify this option when there are no trace-rpc-abi configuations will result in an Error. This option is mutually exclusive with trace-rpc-api
 
 ## Dependencies
 
