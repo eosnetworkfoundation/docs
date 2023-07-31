@@ -7,7 +7,7 @@ See [Test Control API Reference](https://docs.eosnetwork.com/apis/leap/latest/te
 
 ## Overview
 
-The `test_control_api_plugin` allows to forward control messages to the [test_control_plugin](../test_control_plugin/index.md). The current endpoint instructs the plugin to initiate the graceful shutdown of the `nodeos` instance once a specific block is reached. This functionality is primarily designed for testing purposes.
+The `test_control_api_plugin` allows to forward control messages to the [test_control_plugin](./test-control-plugin.md). The current endpoint instructs the plugin to initiate the graceful shutdown of the `nodeos` instance once a specific block is reached. This functionality is primarily designed for testing purposes.
 
 ## Usage
 
@@ -32,9 +32,9 @@ curl %s/v1/test_control/kill_node_on_producer -d '{ \"producer\":\"%s\", \"where
 
 ## Dependencies
 
-* [`test_control_plugin`](../test_control_plugin/index.md)
-* [`chain_plugin`](../chain_plugin/index.md)
-* [`http_plugin`](../http_plugin/index.md)
+* [`test_control_plugin`](./test-control-plugin.md)
+* [`chain_plugin`](./chain-plugin.md)
+* [`http_plugin`](./http-plugin.md)
 
 ### Load Dependency Examples
 

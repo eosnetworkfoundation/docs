@@ -5,7 +5,7 @@ dont_translate_title: true
 
 ## Overview
 
-The `net_plugin` offers an authenticated peer-to-peer (p2p) protocol for continuous synchronization of nodes. It also implements the core functionality provided by the [Net API plugin](../net_api_plugin/index.md).
+The `net_plugin` offers an authenticated peer-to-peer (p2p) protocol for continuous synchronization of nodes. It also implements the core functionality provided by the [Net API plugin](./net-api-plugin.md).
 
 ## Usage
 

@@ -7,7 +7,7 @@ See [Chain API Reference](https://docs.eosnetwork.com/apis/leap/latest/chain.api
 
 ## Overview
 
-The `chain_api_plugin` exposes functionality from the [`chain_plugin`](../chain_plugin/index.md) to the RPC API interface managed by the [`http_plugin`](../http_plugin/index.md).
+The `chain_api_plugin` exposes functionality from the [`chain_plugin`](./chain-plugin.md) to the RPC API interface managed by the [`http_plugin`](../http_plugin/index.md).
 
 ## Usage
 
@@ -26,8 +26,8 @@ None
 
 ## Dependencies
 
-* [`chain_plugin`](../chain_plugin/index.md)
-* [`http_plugin`](../http_plugin/index.md)
+* [`chain_plugin`](./chain-plugin.md)
+* [`http_plugin`](./http-plugin.md)
 
 ### Load Dependency Examples
 
