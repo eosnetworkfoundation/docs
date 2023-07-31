@@ -7,7 +7,7 @@ See [Producer API Reference](https://docs.eosnetwork.com/apis/leap/latest/produc
 
 ## Overview
 
-The `producer_api_plugin` exposes various endpoints for the [`producer_plugin`](./producer-plugin.md) to the RPC API interface managed by the [`http_plugin`](../http_plugin/index.md).
+The `producer_api_plugin` exposes various endpoints for the [`producer_plugin`](./producer-plugin.md) to the RPC API interface managed by the [`http_plugin`](./http-plugin.md).
 
 ## Usage
 
