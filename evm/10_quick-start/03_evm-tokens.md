@@ -9,11 +9,15 @@ exchanges only support the native version of those tokens, you must *bridge* you
 
 ## Testnet faucet
 
-import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
-
 Want some EOS tokens to play with? Click the button below to get some from the testnet faucet.
 
+<!-- translation-ignore -->
+
+import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
+
 <FaucetTokens />
+
+<!-- end-translation-ignore -->
 
 ## Bridge from EOS to EOS EVM
 
@@ -32,7 +36,7 @@ Open your wallet and send **EOS** tokens to `eosio.evm` with your EVM address as
 
 To withdraw EOS tokens from a centralized exchange (CEX) to an EOS EVM address:
 
-1. Visit the withdraw screen of the Exchange's app
+1. Visit the withdrawal screen of the Exchange's app
 2. Select EOS as Coin
 3. Select EOS as Network
 4. Enter `eosio.evm` as Wallet Address
