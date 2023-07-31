@@ -1,5 +1,5 @@
 ---
-title: Anatomy
+title: Contract Basics
 ---
 
 The most used Smart Contract development language for EOS is C++, sometimes referred to as `EOS++`. 

@@ -1,21 +1,18 @@
 ---
-title: Beginner Concepts
+title: Web App Basics
 ---
 
 <head>
   <title>EOS dApps - Beginner Concepts</title>
 </head>
 
-A lot of tutorials for building decentralized web applications dive straight into the code but do not explain 
-the core conceptual differences between web2 development and web3 development. 
+A lot of tutorials for building decentralized web applications dive straight into the code but do not explain the core conceptual differences between web2 development and web3 development. 
 
-This guide will help you wrap your head around how decentralized applications work, what parts of the stack are
-different, and how to think about the architecture of your decentralized applications.
+This guide will help you wrap your head around how decentralized applications work, what parts of the stack are different, and how to think about the architecture of your decentralized applications.
 
 ## The blockchain comes packed with features
 
-In traditional web2 development you need to roll your entire stack alone. Even if you use cloud providers like AWS, 
-you still need to pick and choose which services you want to use and how to integrate them together.
+In traditional web2 development you need to roll your entire stack alone. Even if you use cloud providers like AWS, you still need to pick and choose which services you want to use and how to integrate them together.
 
 In web3 development, the blockchain comes packed with every feature you need to build most applications.
 
@@ -32,8 +29,7 @@ In web3 development, the blockchain comes packed with every feature you need to 
 
 In web2 development, you need to build a backend to store data and perform business logic. This might be a REST API or serverless functions.
 
-In web3 development, can interact directly with the blockchain. You don't need to run your own backend infrastructure, kube clusters, or serverless functions.
-It is very similar to serverless functions, except that the functions are run on a decentralized blockchain instead of a centralized cloud provider.
+In web3 development, you can interact directly with the blockchain. You don't need to run your own backend infrastructure, kube clusters, or serverless functions. It is very similar to serverless functions, except that the functions are run on a decentralized blockchain instead of a centralized cloud provider.
 
 > ❔ **You might still want to run infrastructure**
 > 
@@ -43,19 +39,16 @@ It is very similar to serverless functions, except that the functions are run on
 
 ### In some cases a backend helps
 
-There are some cases where you might want to run your own backend. For example, if you want to store data that is not on the blockchain, or if you want to
-perform business logic that is either too expensive to run on the blockchain, or takes too long and exceeds the maximum time allowed for smart contract execution.
+There are some cases where you might want to run your own backend. For example, if you want to store data that is not on the blockchain, or if you want to perform business logic that is either too expensive to run on the blockchain, or takes too long and exceeds the maximum time allowed for smart contract execution.
 
 You might also want to provide your applications with different ways to access the data stored on the blockchain that is easier for you 
 to work with, like GraphQL or SQL queries. In that case you might want to build a backend that listens to the blockchain and stores the data you care about in a way that suits your needs. 
 
 ## Get comfortable with wallets
 
-A blockchain wallet is a piece of software that manages private keys.
-Wallets do not store any blockchain data within them, instead they use the private keys they manage to sign transactions that manipulate the blockchain.
+A blockchain wallet is a piece of software that manages private keys. Wallets do not store any blockchain data within them, instead they use the private keys they manage to sign transactions that manipulate the blockchain.
 
-In web2 development, you need to build your own authentication system. You might use a third-party service like Auth0, or you might roll your own.
-Once your user logs in, you rely on their session to prove that they are who they say they are. 
+In web2 development, you need to build your own authentication system. You might use a third-party service like Auth0, or you might roll your own. Once your user logs in, you rely on their session to prove that they are who they say they are. 
 
 You might add in additional security measures like 2FA, IP-user pairing, and a variety of other techniques. 
 
