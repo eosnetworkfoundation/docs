@@ -6,21 +6,29 @@ This guide will teach you to deploy a smart contract to the EOS EVM using hardha
 
 ## Set up your MetaMask
 
+Click either of these buttons to instantly add EOS EVM to your MetaMask.
+
+<!-- translation-ignore -->
 
 import ConnectMetaMask from '@site/src/components/ConnectMetaMask/ConnectMetaMask';
 
-Click either of these buttons to instantly add EOS EVM to your MetaMask.
-
 <ConnectMetaMask />
+
+<!-- end-translation-ignore -->
 
 
 ## Getting EOS tokens
 
-import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
-
 Want some EOS tokens to play with? Click the button below to get some from the testnet faucet.
 
+
+<!-- translation-ignore -->
+
+import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
+
 <FaucetTokens />
+
+<!-- end-translation-ignore -->
 
 If you're on the testnet, you can get some EOS tokens using the [**testnet faucet**](https://faucet.testnet.evm.eosnetwork.com/).
 
