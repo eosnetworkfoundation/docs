@@ -1,5 +1,5 @@
 ---
-title: Web App Basics
+title: Basics
 ---
 
 <head>
