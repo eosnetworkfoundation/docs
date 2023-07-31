@@ -133,25 +133,25 @@ each action, expand the section below.
 The `mint` action is used to create a new NFT.
 
 It takes two parameters:
-- **to** - The account that will own the NFT
-- **token_id** - The ID of the NFT
+- `to` - The account that will own the NFT
+- `token_id` - The ID of the NFT
 
 ### Transfer
 
 The `transfer` action is used to transfer an NFT from one account to another.
 
 It takes four parameters:
-- **from** - The account that currently owns the NFT
-- **to** - The account that will own the NFT
-- **token_id** - The ID of the NFT
-- **memo** - A memo that will be included in the transaction
+- `from` - The account that currently owns the NFT
+- `to` - The account that will own the NFT
+- `token_id` - The ID of the NFT
+- `memo` - A memo that will be included in the transaction
 
 ### BalanceOf
 
 The `balanceof` action is used to get the balance of an account.
 
 It takes one parameter:
-- **owner** - The account that you want to get the balance of
+- `owner` - The account that you want to get the balance of
 
 It returns a `uint64_t` which is the balance of the account.
 
@@ -160,7 +160,7 @@ It returns a `uint64_t` which is the balance of the account.
 The `ownerof` action is used to get the owner of an NFT.
 
 It takes one parameter:
-- **token_id** - The ID of the NFT
+- `token_id` - The ID of the NFT
 
 It returns a `name` which is the account that owns the NFT.
 
@@ -169,24 +169,24 @@ It returns a `name` which is the account that owns the NFT.
 The `approve` action is used to approve an account to transfer an NFT on your behalf.
 
 It takes two parameters:
-- **to** - The account that will be approved to transfer the NFT
-- **token_id** - The ID of the NFT
+- `to` - The account that will be approved to transfer the NFT
+- `token_id` - The ID of the NFT
 
 ### ApproveAll
 
 The `approveall` action is used to approve an account to transfer all of your NFTs on your behalf.
 
 It takes three parameters:
-- **from** - The account that currently owns the NFTs
-- **to** - The account that will be approved to transfer the NFTs
-- **approved** - A boolean that determines if the account is approved or not
+- `from` - The account that currently owns the NFTs
+- `to` - The account that will be approved to transfer the NFTs
+- `approved` - A boolean that determines if the account is approved or not
 
 ### GetApproved
 
 The `getapproved` action is used to get the account that is approved to transfer an NFT on your behalf.
 
 It takes one parameter:
-- **token_id** - The ID of the NFT
+- `token_id` - The ID of the NFT
 
 It returns a `name` which is the account that is approved to transfer the NFT.
 
@@ -195,8 +195,8 @@ It returns a `name` which is the account that is approved to transfer the NFT.
 The `approved4all` action is used to get if an account is approved to transfer all of your NFTs on your behalf.
 
 It takes two parameters:
-- **owner** - The account that currently owns the NFTs
-- **approved_account** - The account that you want to check if it is approved to transfer the NFTs
+- `owner` - The account that currently owns the NFTs
+- `approved_account` - The account that you want to check if it is approved to transfer the NFTs
 
 It returns a `bool` which is `true` if the account is approved to transfer the NFTs, and `false` if it is not.
 
@@ -205,7 +205,7 @@ It returns a `bool` which is `true` if the account is approved to transfer the N
 The `gettokenuri` action is used to get the URI of the NFT's metadata.
 
 It takes one parameter:
-- **token_id** - The ID of the NFT
+- `token_id` - The ID of the NFT
 
 It returns a `std::string` which is the URI of the NFT's metadata.
 
@@ -214,7 +214,7 @@ It returns a `std::string` which is the URI of the NFT's metadata.
 The `setbaseuri` action is used to set the base URI of the NFT's metadata.
 
 It takes one parameter:
-- **base_uri** - The base URI of the NFT's metadata
+- `base_uri` - The base URI of the NFT's metadata
     
 </details>
 
@@ -244,11 +244,11 @@ Add the following code to your contract above the actions:
 ```
 
 We've created singleton tables for the following:
-- **_owners** - A mapping from token ID to the owner of the NFT
-- **_balances** - A mapping from owner to the amount of NFTs they own
-- **_approvals** - A mapping from token ID to an account approved to transfer that NFT
-- **_approvealls** - A mapping from owner to an account approved to transfer all their NFTs
-- **_base_uris** - A configuration table that stores the base URI of the NFT's metadata
+- `_owners` - A mapping from token ID to the owner of the NFT
+- `_balances` - A mapping from owner to the amount of NFTs they own
+- `_approvals` - A mapping from token ID to an account approved to transfer that NFT
+- `_approvealls` - A mapping from owner to an account approved to transfer all their NFTs
+- `_base_uris` - A configuration table that stores the base URI of the NFT's metadata
 
 > ❔ **Table Naming**
 > 
