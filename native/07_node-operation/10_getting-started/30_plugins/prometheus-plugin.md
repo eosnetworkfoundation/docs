@@ -1,5 +1,6 @@
 ---
 title: prometheus_plugin
+dont_translate_title: true
 ---
 
 ## Overview
@@ -26,7 +27,9 @@ The `prometheus_plugin` endpoint returns a string consisting of metric names and
 
 Given a metric name and a set of labels, data is collected chronologically and formatted using this notation:
 
-    <metric name> { <label name>= <label value>, ... }
+```
+<metric name> { <label name>= <label value>, ... }
+```
 
 Currently, two metric types are collected within `nodeos`:
 
