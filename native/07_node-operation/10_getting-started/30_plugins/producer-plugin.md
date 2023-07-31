@@ -5,7 +5,7 @@ dont_translate_title: true
 
 ## Overview
 
-The `producer_plugin` contains functionality for a node to perform the task of block production. It also implements the core functionality provided by the [Producer API plugin](../producer_api_plugin/index.md).
+The `producer_plugin` contains functionality for a node to perform the task of block production. It also implements the core functionality provided by the [Producer API plugin](./producer-api-plugin.md).
 
 > ℹ️ To enable block production, a particular `nodeos` configuration is necessary. Refer to the [Configuring Block Producing Node](https://docs.eosnetwork.com/manuals/leap/latest/nodeos/usage/node-setups/producing-node) guide for detailed instructions.
 
@@ -61,7 +61,7 @@ Option (=default) | Description
 
 ## Dependencies
 
-* [`chain_plugin`](../chain_plugin/index.md)
+* [`chain_plugin`](./chain-plugin.md)
 
 ## The priority of transaction
 

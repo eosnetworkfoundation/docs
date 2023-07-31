@@ -57,7 +57,7 @@ Option (=default) | Description
 
 ## Dependencies
 
-* [`chain_plugin`](../chain_plugin/index.md)
+* [`chain_plugin`](./chain-plugin.md)
 
 ### Load Dependency Examples
 

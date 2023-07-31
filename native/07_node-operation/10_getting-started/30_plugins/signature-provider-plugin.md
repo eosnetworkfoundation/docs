@@ -30,8 +30,8 @@ Option (=default) | Description
 
 ## Dependencies
 
-* [`chain_plugin`](../chain_plugin/index.md)
-* [`http_plugin`](../http_plugin/index.md)
+* [`chain_plugin`](./chain-plugin.md)
+* [`http_plugin`](./http-plugin.md)
 
 ### Load Dependency Examples
 

@@ -9,7 +9,7 @@ The `test_control_plugin` is designed to facilitate internal tests of a `nodeos`
 
 > ℹ️ The `test_control_plugin` can be utilized to initiate a shutdown either based on the **head block**, which refers to the most recent block, or the **last irreversible block**, which represents the block that has achieved irreversible finality.
 
-The `test_control_plugin` also implements the core functionality provided by the [Test Control API plugin](../test_control_api_plugin/index.md).
+The `test_control_plugin` also implements the core functionality provided by the [Test Control API plugin](./test-control-api-plugin.md).
 
 ## Usage
 
@@ -28,7 +28,7 @@ None
 
 ## Dependencies
 
-* [`chain_plugin`](../chain_plugin/index.md)
+* [`chain_plugin`](./chain-plugin.md)
 
 ### Load Dependency Examples
 
