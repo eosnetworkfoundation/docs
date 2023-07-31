@@ -7,7 +7,7 @@ See [Net API Reference](https://docs.eosnetwork.com/apis/leap/latest/net.api/).
 
 ## Overview
 
-The `net_api_plugin` exposes functionality from the [`net_plugin`](./net-plugin.md) to the RPC API interface managed by the [`http_plugin`](../http_plugin/index.md). The `net_api_plugin` allows node operators to manage the peer-to-peer (p2p) connections of an active node.
+The `net_api_plugin` exposes functionality from the [`net_plugin`](./net-plugin.md) to the RPC API interface managed by the [`http_plugin`](./http-plugin.md). The `net_api_plugin` allows node operators to manage the peer-to-peer (p2p) connections of an active node.
 
 The `net_api_plugin` provides four RPC API endpoints:
 * connect
