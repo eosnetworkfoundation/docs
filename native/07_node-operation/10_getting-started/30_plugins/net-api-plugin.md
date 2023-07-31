@@ -1,5 +1,6 @@
 ---
 title: net_api_plugin
+dont_translate_title: true
 ---
 
 See [Net API Reference](https://docs.eosnetwork.com/apis/leap/latest/net.api/).

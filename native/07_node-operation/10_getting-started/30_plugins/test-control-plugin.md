@@ -1,5 +1,6 @@
 ---
 title: test_control_plugin
+dont_translate_title: true
 ---
 
 ## Overview

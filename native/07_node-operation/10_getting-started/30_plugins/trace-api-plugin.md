@@ -1,5 +1,6 @@
 ---
 title: trace_api_plugin
+dont_translate_title: true
 ---
 
 See [Trace API Reference](https://docs.eosnetwork.com/apis/leap/latest/trace_api.api/).
@@ -95,7 +96,7 @@ In the context of the `trace_api_plugin`, a *slice* is defined as a collection o
 
 where `<S>` and `<E>` are the starting and ending block numbers for the slice padded with leading 0's to a stride. For instance if the start block is 5, the last is 15, and the stride is 10, then the resulting `<S>` is `0000000005` and `<E>` is `0000000015`.
 
-#### trace_&lt;S&gt;-&lt;E&gt;.log
+#### Log: `trace_<S>-<E>.log`
 
 The trace data log is an append only log that stores the actual binary serialized block data. The contents include the transaction and action trace data needed to service the RPC requests augmented by the per-action ABIs. Two block types are supported:
   
@@ -106,7 +107,7 @@ The data log begins with a basic header that includes versioning information abo
 
 The log may include blocks that have been forked out of the blockchain as part of the normal operations of the chain. The next entry in the file will always have a block number one higher than the previous one or the same number or less because of forking.  Every trace entry will have a corresponding entry in the corresponding slice file for trace indexes. Note that forked blocks can be avoided by running nodeos in `read-mode=irreversible`.
 
-#### trace_index&#95;&lt;S&gt;-&lt;E&gt;.log
+#### Log: `trace_index_<S>-<E>.log`
 
 The trace index log or metadata log is an append only log that stores a sequence of binary-serialized types. Currently two types are supported:
 
@@ -119,12 +120,12 @@ The index log begins with a basic header that includes versioning information ab
 
 Compressed trace log files have the `.clog` file extension (see [Compression of log files](#compression-of-log-files) below). The clog is a generic compressed file with an index of seek-able decompression points appended at the end. The clog format layout looks as follows:
 
-![](clog-format.png "clog format")
+![](/images/clog-format.png)
 
 The data is compressed into raw zlib form with full-flush *seek points* placed at regular intervals. A decompressor can start from any of these *seek points* without reading previous data and it can also traverse a seek point without issue if it appears within the data.
 
 > ℹ️ Size reduction of trace logs  
-Data compression can reduce the space growth of trace logs twentyfold! For instance, with 512 seek points and using the test dataset on the EOS public network, data compression reduces the growth of the trace directory from &#126;50 GiB/day to &#126;2.5 GiB/day for full data. Due to the high redundancy of the trace log contents, the compression is still comparable to `gzip -9`. The decompressed data is also made immediately available via the Trace RPC API without any service degradation.
+> Data compression can reduce the space growth of trace logs twentyfold! For instance, with 512 seek points and using the test dataset on the EOS public network, data compression reduces the growth of the trace directory from &#126;50 GiB/day to &#126;2.5 GiB/day for full data. Due to the high redundancy of the trace log contents, the compression is still comparable to `gzip -9`. The decompressed data is also made immediately available via the Trace RPC API without any service degradation.
 
 #### Role of seek points
 
@@ -155,7 +156,7 @@ The `trace_api_plugin` also supports an option to optimize disk space by applyin
 If the argument `N` is 0 or greater, the plugin automatically sets a background thread to compress the irreversible sections of the trace log files. The previous N irreversible blocks past the current LIB block are left uncompressed.
 
 > ℹ️ Trace API utility  
-The trace log files can also be compressed manually with the [trace_api_util](https://docs.eosnetwork.com/manuals/leap/latest/utilities/trace_api_util) utility.
+> The trace log files can also be compressed manually with the [trace_api_util](https://docs.eosnetwork.com/manuals/leap/latest/utilities/trace_api_util) utility.
 
 If resource usage cannot be effectively managed via the `trace-minimum-irreversible-history-blocks` and `trace-minimum-uncompressed-irreversible-history-blocks` options, then there might be a need for periodic manual maintenance. In that case, the user may opt to manage resources through an external system or recurrent process.
 
@@ -164,4 +165,4 @@ If resource usage cannot be effectively managed via the `trace-minimum-irreversi
 The `trace-dir` option defines the directory on the filesystem where the trace log files are stored by the `trace_api_plugin`. These files are stable once the LIB block has progressed past a given slice and then can be deleted at any time to reclaim filesystem space. The deployed Antelope system will tolerate any out-of-process management system that removes some or all of these files in this directory regardless of what data they represent, or whether there is a running `nodeos` instance accessing them or not.  Data which would nominally be available, but is no longer so due to manual maintenance, will result in a HTTP 404 response from the appropriate API endpoint(s).
 
 > ℹ️ For node operators  
-Node operators can take full control over the lifetime of the historical data available in their nodes via the `trace-api-plugin` and the `trace-minimum-irreversible-history-blocks` and `trace-minimum-uncompressed-irreversible-history-blocks` options in conjunction with any external filesystem resource manager.
+> Node operators can take full control over the lifetime of the historical data available in their nodes via the `trace-api-plugin` and the `trace-minimum-irreversible-history-blocks` and `trace-minimum-uncompressed-irreversible-history-blocks` options in conjunction with any external filesystem resource manager.

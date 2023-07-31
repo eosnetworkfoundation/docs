@@ -1,5 +1,6 @@
 ---
 title: chain_plugin
+dont_translate_title: true
 ---
 
 ## Overview

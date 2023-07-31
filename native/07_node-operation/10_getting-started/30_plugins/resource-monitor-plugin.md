@@ -1,5 +1,6 @@
 ---
 title: resource_monitor_plugin
+dont_translate_title: true
 ---
 
 ## Overview

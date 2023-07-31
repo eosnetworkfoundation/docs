@@ -1,5 +1,6 @@
 ---
 title: producer_api_plugin
+dont_translate_title: true
 ---
 
 See [Producer API Reference](https://docs.eosnetwork.com/apis/leap/latest/producer.api/).

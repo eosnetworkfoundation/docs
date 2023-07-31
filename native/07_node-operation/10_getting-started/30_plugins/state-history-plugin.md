@@ -1,5 +1,6 @@
 ---
 title: state_history_plugin
+dont_translate_title: true
 ---
 
 ## Overview
