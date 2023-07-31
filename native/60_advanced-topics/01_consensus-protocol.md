@@ -208,3 +208,17 @@ Block finality is the final outcome of EOS consensus. It is achieved after a sup
 #### 5.4.1. Goal of Finality
 
 The main point of finality is to give users confidence that transactions that were applied prior and up to the LIB block cannot be modified, rolled back, or dropped. The LIB block can also be useful for active nodes to determine quickly and efficiently which branch to build off from, regardless of which is the longest one. This is because a given branch might be longer without containing the most recent LIB, in which case a shorter branch with the most recent LIB must be selected.
+
+#### 5.4.2. EOS Finality
+
+Currently, according to the above EOS consensus rules (see [3.1. Layer 1: Native Consensus (aBFT)](#31-layer-1-native-consensus-abft)), each proposed LIB block requires two schedule rounds of BP validations to become final. Since a supermajority of 2/3+1 BPs are required to reach consensus within the EOS mainnet (which accounts for 15 BPs from a total of 21 BPs), it follows that each proposed LIB block becomes final in at least `3` minutes (`180` seconds), according to the calculations below:
+
+Variable | Value
+-|-
+**Tp**: Production time per producer | Tp =  0.5 (s/block) x 12 (blocks/producer) ⇒ Tp = 6 (s/producer) (**\***)
+**SP**: Supermajority of producers | SP = int[ 2/3 * P (producers) ] + 1 ⇒ [P=21] SP = int[ 2/3 * 21 (producers) ] + 1 = 14 + 1 (producers) ⇒ SP = 15 (producers)
+**CR**: Confirmation Rounds | CR = 2 (rounds) (**\*\***)
+**FT**: Finality time | FT = SP x Tp (per round) x CR (rounds) ⇒ [SP=15, Tp=6, CR=2] FT = 15 (producers) x 6 (s/producer) (per round) x 2 (rounds) ⇒ **FT = 180 (s) = 3 (mins)**
+
+(**\***): from section [4.2.2. Production Default Values](#422-production-default-values).  
+(**\*\***): number of schedule rounds required to validate a proposed LIB block.
