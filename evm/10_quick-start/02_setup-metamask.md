@@ -2,11 +2,15 @@
 title: Setup MetaMask
 ---
 
-import ConnectMetaMask from '@site/src/components/ConnectMetaMask/ConnectMetaMask';
-
 Click either of these buttons to instantly add EOS EVM to your MetaMask.
 
+<!-- translation-ignore -->
+
+import ConnectMetaMask from '@site/src/components/ConnectMetaMask/ConnectMetaMask';
+
 <ConnectMetaMask />
+
+<!-- end-translation-ignore -->
 
 
 ## Adding manually
