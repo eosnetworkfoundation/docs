@@ -4,7 +4,7 @@ sidebar_class_name: sidebarhidden
 ---
 
 
-## Core
+## Core Layer
 
 The `EOS Core` provides the basic building blocks for the `system` layer. However, since they are not implemented as smart contracts, they do not provide the same level of flexibility. Nevertheless, the `core` implementation is also open source, and thus it can be modified to suit custom business requirements.
 
@@ -14,7 +14,7 @@ The core protocols are:
 2. [Transactions Protocol](02_transactions-protocol.md)
 3. [Network or Peer to Peer Protocol](03_network-peer-protocol.md)
 
-## System
+## System Layer
 
 The EOS blockchain is unique in that the features and characteristics of the blockchain built on it are flexible, that is, they can be changed or be modified completely to suit each business case requirement. Core blockchain features such as consensus, fee schedules, account creation and modification, token economics, block producer registration, voting, multi-sig, etc., are implemented inside smart contracts which are deployed on the blockchain built on the EOS blockchain. These smart contracts are referred to as `system contracts` and the layer as the `EOS system` layer, or simply the `system` layer.
 
