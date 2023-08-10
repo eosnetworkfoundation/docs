@@ -66,3 +66,170 @@ For your API node, you would want to use the same Leap version most other API no
 
 After installing the Leap software, proceed to the Configuration section below.
 
+## Configuration
+
+An API node can be configured as a Push API node, a Chain API node, or a Pull API node. All API nodes must enable the `chain_api_plugin` to expose the API endpoints. The table below highlights the main differences between all API node types:
+
+API node type | Maintains blocks log | Accepts p2p transactions | Accepts API transactions
+-|-|-|-
+**Push API node** | No | No | Yes
+**Chain API node** | Yes | Yes | Yes
+**Pull API node** | Yes | Yes | No
+
+> ℹ️ **Plugins under the hood**  
+Client requests are received by the RPC API interface managed by the `http_plugin` and ultimately handled by the `chain_api_plugin`, which exposes functionality implemented by the `chain_plugin`. Since the `chain_plugin` is enabled by default, you only need to enable the `chain_api_plugin` explicitly, which will also auto-enable the `http_plugin`. Check the [chain_api_plugin](../10_getting-started/30_plugins/chain-api-plugin.md) documentation for more details.
+
+### Prerequisite Steps
+
+Your API node will run its own `nodeos` instance. If you haven't launched `nodeos` or have `data` and `config` folders yet, follow the instructions in this section:
+
+* Set the main `nodeos` data folder variable according to the EOS network you plan to deploy on:
+
+  For instance, if deploying on the EOS mainnet, you may select:
+  ```ini
+  EOSDIR=~/eos/mainnet
+  ```
+  Or, if deploying on the EOS Jungle testnet, you may select:
+  ```ini
+  EOSDIR=~/eos/jungle_testnet
+  ```
+  etc.
+
+* Create the default `config.ini` file - you will edit it in the steps below:
+
+  ```sh
+  mkdir -p $EOSDIR
+  nodeos --print-default-config >$EOSDIR/config.ini
+  ```
+
+Follow the instructions below to configure an API node as either a Push API, Chain API, or Pull API node. First start with the [Any API node configuration](#any-api-node-configuration), then continue with your selected API node:
+
+### Any API node configuration
+
+The following configuration settings apply to any API node.
+
+* Open the default `config.ini` with your text editor, for instance:
+
+  ```sh
+  vi $EOSDIR/config.ini
+  ```
+
+Edit the default `config.ini` and add/uncomment/modify the following fields:
+
+* Set the local IP and port to listen for incoming http requests:
+
+  ```ini
+  http-server-address = 0.0.0.0:8888
+  ```
+
+* Set Cross-Origin Resource Sharing (CORS) values:
+  ```ini
+  access-control-allow-origin = *
+  access-control-allow-headers = Origin, X-Requested-With, Content-Type, Accept
+  ```
+
+* Set the chain database maximum size in MB - make sure it is below your available RAM (value below is for 16 GB RAM):
+
+  ```ini
+  chain-state-db-size-mb = 16384
+  ```
+
+* Set or uncomment the following fields to the specified values:
+
+  ```ini
+  abi-serializer-max-time-ms = 2000
+  chain-state-db-size-mb = 16384
+  chain-threads = 8
+  contracts-console = true
+  eos-vm-oc-compile-threads = 4
+  verbose-http-errors = true
+  http-validate-host = false
+  http-threads = 6
+  ```
+
+* Enable the `chain_api_plugin`:
+
+  ```ini
+  plugin = eosio::chain_api_plugin
+  ```
+
+* Add/update the p2p endpoint list:
+
+  ```ini
+  p2p-peer-address = <host1>:<port1>
+  p2p-peer-address = <host2>:<port2>
+  etc.
+  ```
+
+  > ℹ️ **Peering**  
+  For information on peering, check the [Peering](../10_getting-started/40_peering.md) guide, especially the [How to locate peers](../10_getting-started/40_peering.md#how-to-locate-peers) section.
+
+  In short, replace the most recent p2p endpont list in the `config.ini` according to the EOS network you are deploying on:
+
+  - https://validate.eosnation.io/
+
+  For instance, for the most recent p2p endpoints on EOS mainnet, EOS Jungle testnet, or EOS Kylin testnet, you can visit, respectively:
+
+  - https://validate.eosnation.io/eos/reports/config.txt
+  - https://validate.eosnation.io/jungle4/reports/config.txt
+  - https://validate.eosnation.io/kylin/reports/config.txt
+
+### Push API node configuration
+
+Make sure to go over the [Any API node configuration](#any-api-node-configuration) section first. The following configuration settings apply to a Push API node only.
+
+Edit the default `config.ini` and add/uncomment/modify the following fields:
+
+  ```ini
+  p2p-accept-transactions = false
+  ```
+
+Now that the Push API node has been configured, proceed to the [Deployment](#deployment) section.
+
+### Full Chain API node configuration
+
+Make sure to go over the [Any API node configuration](#any-api-node-configuration) section first. The following configuration settings apply to any Full Chain API node.
+
+Edit the default `config.ini` and add/uncomment/modify the following fields:
+
+* Select the external IP and port to listen for incoming p2p connections:
+
+  ```ini
+  p2p-server-address = YOUR_EXTERNAL_IP_ADDRESS:9876
+  ```
+
+* Set or uncomment the following fields to the specified values:
+
+  ```ini
+  enable-account-queries = true
+  p2p-listen-endpoint = 0.0.0.0:9876
+  p2p-max-nodes-per-host = 100
+  sync-fetch-span = 2000
+  ```
+
+Now that the Chain API node has been configured, proceed to the [Deployment](#deployment) section.
+
+### Pull API node configuration
+
+Make sure to go over the [Any API node configuration](#any-api-node-configuration) section first. The following configuration settings apply to any Pull API node.
+
+Edit the default `config.ini` and add/uncomment/modify the following fields:
+
+* Select the external IP and port to listen for incoming p2p connections:
+
+  ```ini
+  p2p-server-address = YOUR_EXTERNAL_IP_ADDRESS:9876
+  ```
+
+* Set or uncomment the following fields to the specified values:
+
+  ```ini
+  api-accept-transactions = false
+  enable-account-queries = true
+  p2p-listen-endpoint = 0.0.0.0:9876
+  p2p-max-nodes-per-host = 100
+  sync-fetch-span = 2000
+  ```
+
+Now that the Pull API node has been configured, proceed to the [Deployment](#deployment) section.
+
