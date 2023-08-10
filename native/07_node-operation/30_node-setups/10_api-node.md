@@ -311,3 +311,6 @@ Follow the instructions below to restore/start your node from the most recent sn
 
 The above command will launch `nodeos` from the latest snapshot `latest.bin`, redirecting `stdout` and `stderr` to `stdout.log` and `stderr.log`, respectively. More importantly, it will sync the chain state of your to the chain state of the EOS network you are deploying on.
 
+## Summary
+
+In this guide, you configured and deployed an API node on a specific EOS network, such as EOS mainnet, EOS Jungle testnet, EOS Kylin testnet, etc. You can now get some native assets for that network, and use your API node to deploy EOS smart contracts and send transactions, get blockchain data, or both.
