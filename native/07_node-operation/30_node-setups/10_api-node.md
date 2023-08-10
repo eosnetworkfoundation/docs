@@ -33,3 +33,13 @@ API nodes can be public or private. Public nodes are open to the public and can 
 
 - **Load Balancing**: Due to the potential high demand for clients accessing the blockchain, many node operators use a cluster of API nodes for load balancing. This ensures that the network can handle a large number of requests without becoming overwhelmed.
 
+## Hardware requirements
+
+The actual hardware requirements for an API node differ based on the transaction throughput, client requests, available bandwidth, etc. However, the biggest factor depends mainly on whether the API node needs to maintain a blocks log file. For more information on the actual requirements for API nodes, visit the [hardware requirements](../10_getting-started/10_hardware-requirements.md) section, in particular:
+
+* [API node with blocks log](../10_getting-started/10_hardware-requirements#api-node-with-blocks-log)
+* [API node without blocks log](../10_getting-started/10_hardware-requirements#api-node-without-blocks-log)
+
+> ℹ️ **Chain API nodes maintain blocks log**  
+A Chain API node needs to maintain its own blocks log file to be able to pull data from the blockchain. Maintaining a blocks log file implies that your node replayed the blockchain from a snapshot or from genesis. This allows your API node to sync the blockchain state with other peers and serve client requests quickly by reading the blockchain state locally. A common task performed by a Chain API node is to get table data requested by a dApp or a deployed smart contract.
+
