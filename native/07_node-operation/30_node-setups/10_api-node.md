@@ -233,3 +233,81 @@ Edit the default `config.ini` and add/uncomment/modify the following fields:
 
 Now that the Pull API node has been configured, proceed to the [Deployment](#deployment) section.
 
+## Deployment
+
+After your API node has been configured, you can deploy your node by following the steps below:
+
+### Open TCP ports
+
+If your node will run behind a firewall/router:
+1. Open TCP port `8888` only, if setting up a **Push API** node  
+  OR
+2. Open TCP ports `8888` and `9876`, if setting up a **Chain API** or **Pull API** node
+
+If you are running a Docker container, remember also to open the applicable ports above.
+
+### Download a recent snapshot
+
+Next, you need to sync your node's blockchain state with the specific EOS blockchain you are deploying on. The easiest way to accomplish this is by restoring from a recent snapshot.
+
+> ℹ️ **Snapshots**  
+For information about Snapshots, visit the [Snapshots](../10_getting-started/50_snapshots.md) guide.
+
+There are various reputable sites to download snapshots. One such good source that maintains recent snapshots for various EOS networks is the **EOS Nation AntelopeIO Snapshots** site:
+
+* https://snapshots.eosnation.io/
+
+Visit the above site and select a recent snapshot for the EOS network you are deploying your node on. For instance, for EOS mainnet, Jungle testnet, or Kylin testnet, you would select snapshots from these sections on the site, respectively:
+
+* EOS Mainnet - v6
+* Jungle 4 Testnet - v6
+* Kylin Testnet - v6
+
+Follow the instructions below to download the most recent snapshot:
+
+* Install the `zstd` archiver - you will need it to decompress the compressed snapshot:
+
+  ```sh
+  sudo apt install zstd
+  ```
+
+* Download the latest compressed snapshot:
+
+#### For EOS mainnet
+
+  ```sh
+  wget https://snapshots.eosnation.io/eos-v6/latest -O $EOSDIR/snapshots/latest.bin.zst
+  ```
+
+#### For Jungle testnet
+
+  ```sh
+  wget https://snapshots.eosnation.io/jungle4-v6/latest -O $EOSDIR/snapshots/latest.bin.zst
+  ```
+
+#### For Kylin testnet
+
+  ```sh
+  wget https://snapshots.eosnation.io/kylin-v6/latest -O $EOSDIR/snapshots/latest.bin.zst
+  ```
+
+* Decompress the compressed snapshot:
+
+  ```sh
+  zstd -d $EOSDIR/snapshots/latest.bin.zst
+  ```
+
+The `snapshots` directory should now contain the uncompressed `latest.bin` snapshot.
+
+### Restore/start from recent snapshot
+
+Follow the instructions below to restore/start your node from the most recent snapshot that you downloaded.
+
+* Restore/start your node from the latest snapshot:
+
+  ```sh
+  nodeos --data-dir $EOSDIR --config-dir $EOSDIR --snapshot $EOSDIR/snapshots/latest.bin > $EOSDIR/stdout.log 2> $EOSDIR/stderr.log
+  ```
+
+The above command will launch `nodeos` from the latest snapshot `latest.bin`, redirecting `stdout` and `stderr` to `stdout.log` and `stderr.log`, respectively. More importantly, it will sync the chain state of your to the chain state of the EOS network you are deploying on.
+
