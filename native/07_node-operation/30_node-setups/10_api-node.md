@@ -43,3 +43,26 @@ The actual hardware requirements for an API node differ based on the transaction
 > ℹ️ **Chain API nodes maintain blocks log**  
 A Chain API node needs to maintain its own blocks log file to be able to pull data from the blockchain. Maintaining a blocks log file implies that your node replayed the blockchain from a snapshot or from genesis. This allows your API node to sync the blockchain state with other peers and serve client requests quickly by reading the blockchain state locally. A common task performed by a Chain API node is to get table data requested by a dApp or a deployed smart contract.
 
+## Software Requirements
+
+To setup an API node, first install the Antelope [Leap](https://github.com/AntelopeIO/leap) software. The Leap version to install depends on whether you will deploy your node on an EOS testnet or on the EOS mainnet.
+
+> ℹ️ **Leap software on mainnet vs. testnets**  
+EOS testnets typically run the most recent Leap versions, usually the latest one shortly after released. The EOS mainnet will typically use a previous stable release version of the Leap software for stability and security.
+
+To locate which version other API nodes are running for the EOS network you want to deploy on, select your EOS network of interest on the EOS Nation Validate site and navigate to the API report for that network:
+
+* https://validate.eosnation.io/
+
+For instance, for the most recent API nodes on EOS mainnet, EOS Jungle testnet, or EOS Kylin testnet, you can visit, respectively:
+
+* https://validate.eosnation.io/eos/reports/api_versions.txt
+* https://validate.eosnation.io/jungle4/reports/api_versions.txt
+* https://validate.eosnation.io/kylin/reports/api_versions.txt
+
+For your API node, you would want to use the same Leap version most other API nodes are using on the EOS network you want to deploy on. You can select the Leap binaries for a specific version here:
+
+* https://github.com/AntelopeIO/leap/tags
+
+After installing the Leap software, proceed to the Configuration section below.
+
