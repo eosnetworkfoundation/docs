@@ -116,6 +116,12 @@ The following configuration settings apply to any API node.
 
 Edit the default `config.ini` and add/uncomment/modify the following fields:
 
+* Set the chain database maximum size in MB - make sure it is below your available RAM (value below is for 16 GB RAM):
+
+  ```ini
+  chain-state-db-size-mb = 16384
+  ```
+
 * Set the local IP and port to listen for incoming http requests:
 
   ```ini
@@ -128,29 +134,16 @@ Edit the default `config.ini` and add/uncomment/modify the following fields:
   access-control-allow-headers = Origin, X-Requested-With, Content-Type, Accept
   ```
 
-* Set the chain database maximum size in MB - make sure it is below your available RAM (value below is for 16 GB RAM):
-
-  ```ini
-  chain-state-db-size-mb = 16384
-  ```
-
 * Set or uncomment the following fields to the specified values:
 
   ```ini
   abi-serializer-max-time-ms = 2000
-  chain-state-db-size-mb = 16384
   chain-threads = 8
   contracts-console = true
   eos-vm-oc-compile-threads = 4
   verbose-http-errors = true
   http-validate-host = false
   http-threads = 6
-  ```
-
-* Enable the `chain_api_plugin`:
-
-  ```ini
-  plugin = eosio::chain_api_plugin
   ```
 
 * Add/update the p2p endpoint list:
@@ -174,6 +167,12 @@ Edit the default `config.ini` and add/uncomment/modify the following fields:
   - https://validate.eosnation.io/jungle4/reports/config.txt
   - https://validate.eosnation.io/kylin/reports/config.txt
 
+* Enable the `chain_api_plugin`:
+
+  ```ini
+  plugin = eosio::chain_api_plugin
+  ```
+
 ### Push API node configuration
 
 Make sure to go over the [Any API node configuration](#any-api-node-configuration) section first. The following configuration settings apply to a Push API node only.
@@ -186,7 +185,7 @@ Edit the default `config.ini` and add/uncomment/modify the following fields:
 
 Now that the Push API node has been configured, proceed to the [Deployment](#deployment) section.
 
-### Full Chain API node configuration
+### Chain API node configuration
 
 Make sure to go over the [Any API node configuration](#any-api-node-configuration) section first. The following configuration settings apply to any Full Chain API node.
 
