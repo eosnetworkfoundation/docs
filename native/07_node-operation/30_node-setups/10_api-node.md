@@ -250,7 +250,7 @@ If you are running a Docker container, remember also to open the applicable port
 Next, you need to sync your node's blockchain state with the specific EOS blockchain you are deploying on. The easiest way to accomplish this is by restoring from a recent snapshot.
 
 > ℹ️ **Snapshots**  
-For information about Snapshots, visit the [Snapshots](../10_getting-started/50_snapshots.md) guide.
+For information about Snapshots, check the [Snapshots](../10_getting-started/50_snapshots.md) guide.
 
 There are various reputable sites to download snapshots. One such good source that maintains recent snapshots for various EOS networks is the **EOS Nation AntelopeIO Snapshots** site:
 
@@ -298,6 +298,9 @@ Follow the instructions below to download the most recent snapshot:
 
 The `snapshots` directory should now contain the uncompressed `latest.bin` snapshot.
 
+> ℹ️ **Past blockchain history**  
+If you want your API node to have past blockchain history, you need to replay the blockchain from a blocks log file. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
+
 ### Restore/start from recent snapshot
 
 Follow the instructions below to restore/start your node from the most recent snapshot that you downloaded.
@@ -305,10 +308,10 @@ Follow the instructions below to restore/start your node from the most recent sn
 * Restore/start your node from the latest snapshot:
 
   ```sh
-  nodeos --data-dir $EOSDIR --config-dir $EOSDIR --snapshot $EOSDIR/snapshots/latest.bin > $EOSDIR/stdout.log 2> $EOSDIR/stderr.log
+  nodeos --data-dir $EOSDIR --config-dir $EOSDIR --snapshot $EOSDIR/snapshots/latest.bin >> $EOSDIR/nodeos.log 2>&1 &
   ```
 
-The above command will launch `nodeos` from the latest snapshot `latest.bin`, redirecting `stdout` and `stderr` to `stdout.log` and `stderr.log`, respectively. More importantly, it will sync the chain state of your to the chain state of the EOS network you are deploying on.
+The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc., except the past transaction history. After the syncing is done, your API node will continue to receive the latest irreversible blocks being produced, including recent transaction history.
 
 ## Summary
 
