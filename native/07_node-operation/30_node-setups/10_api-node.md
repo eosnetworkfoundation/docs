@@ -314,10 +314,10 @@ If you are repeating the instructions above, you might have a ` blocks` director
   nodeos --data-dir $EOSDIR --config-dir $EOSDIR --snapshot $EOSDIR/snapshots/latest.bin >> $EOSDIR/nodeos.log 2>&1 &
   ```
 
-The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc., except past transaction history. After the syncing is done, your API node should continue to receive the latest irreversible blocks produced, which include recent transaction history.
+The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc. but not past transaction history, unless you sync from a `blocks.log` file. However, after the syncing is done, your API node should continue to receive the latest irreversible blocks produced, which will now include the recent transaction history.
 
 > ℹ️ **Past transaction history**  
-If you want your API node to have past blockchain history, you need to replay the blockchain from a blocks log file. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
+If you want your API node to have past blockchain history, you need to replay the blockchain from a `blocks.log` file. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
 
 ## Testing
 
@@ -332,10 +332,10 @@ info  2023-08-15T23:16:05.367 nodeos    producer_plugin.cpp:651       on_incomin
 ...
 ```
 
-Second, make sure your API node initialized successfully from the snapshot. Search for `snapshot` in the `nodeos` log:
+Second, make sure your API node initialized successfully from the snapshot. Search for `snapshot` in the `nodeos.log` file:
 
 ```sh
-cat  ~/eos/jungle_testnet/stderr.log | grep -i snapshot
+grep -i snapshot $EOSDIR/nodeos.log
 ```
 ```
 info  2023-08-15T23:15:55.395 nodeos    controller.cpp:603            startup              ] Starting initialization from snapshot and no block log, this may take a significant amount of time
