@@ -102,7 +102,7 @@ Your API node will run its own `nodeos` instance. If you haven't launched `nodeo
   nodeos --print-default-config >$EOSDIR/config.ini
   ```
 
-Follow the instructions below to configure an API node as either a Push API, Chain API, or Pull API node. First start with the [Any API node configuration](#any-api-node-configuration), then continue with your selected API node:
+Follow the instructions below to configure an API node as either a Push API, Chain API, or Pull API node. First start with the [Any API node configuration](#any-api-node-configuration), then continue with the API node configuration you selected to deploy:
 
 ### Any API node configuration
 
@@ -304,6 +304,9 @@ The `snapshots` directory should now contain the uncompressed `latest.bin` snaps
 ### Restore/start from recent snapshot
 
 Follow the instructions below to restore/start your node from the most recent snapshot that you downloaded.
+
+> i `blocks` directory  
+If you are repeating the instructions above, you might have a ` blocks` directory already in your `$EOSDIR` data directory. Unless you plan to use blocks log as well, which should at least contain blocks up the snapshot, it is recommended that all existing data in the `blocks` directory is removed: `rm -rf $EOSDIR/blocks` prior to restoring from a snapshot.
 
 * Restore/start your node from the latest snapshot:
 
