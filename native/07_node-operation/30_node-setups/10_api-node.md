@@ -4,7 +4,7 @@ title: API Node
 
 ## What is an API node?
 
-An API node is a critical component of the EOS blockchain network that serves as an interface between users, including dApps, and the EOS blockchain. API nodes serve one of the following roles when handling incoming client requests received through one of the `chain_api_plugin` endpoints:
+An API node is a critical component of the EOS blockchain network that serves as an interface between users, including dApps, and an EOS blockchain. API nodes serve one of the following roles when handling incoming client requests received through one of the `chain_api_plugin` endpoints:
 
 - **Push API node**: Accepts transactions from HTTP clients and relays them to other peers. Typically does not accept incoming p2p transactions. Upstream traffic only.
 - **Chain API node**: Provides access to blockchain data such as accounts, permissions, contract codes/ABIs, contract tables, etc. Takes API transactions too.
@@ -50,7 +50,7 @@ To setup an API node, first install the Antelope [Leap](https://github.com/Antel
 > ℹ️ **Leap software on mainnet vs. testnets**  
 EOS testnets typically run the most recent Leap versions, usually the latest one shortly after released. The EOS mainnet will typically use a previous stable release version of the Leap software for stability and security.
 
-To locate which version other API nodes are running for the EOS network you want to deploy on, select your EOS network of interest on the EOS Nation Validate site and navigate to the API report for that network:
+To locate which version other API nodes are running for the EOS network you want to deploy on, select your EOS network of choice on the EOS Nation Validate site and navigate to the API report for that network:
 
 * https://validate.eosnation.io/
 
@@ -111,7 +111,7 @@ The following configuration settings apply to any API node.
 * Open the default `config.ini` with your text editor, for instance:
 
   ```sh
-  vi $EOSDIR/config.ini
+  vim $EOSDIR/config.ini
   ```
 
 Edit the default `config.ini` and add/uncomment/modify the following fields:
@@ -121,6 +121,9 @@ Edit the default `config.ini` and add/uncomment/modify the following fields:
   ```ini
   chain-state-db-size-mb = 16384
   ```
+
+> ℹ️ Chain database maximum size  
+Be careful not to overestimate your chain database maximum size. The value you specify in `chain-state-db-size-mb` will get pre-allocated on disk as a memory-mapped file in `state/shared_memory.bin`.
 
 * Set the local IP and port to listen for incoming http requests:
 
@@ -298,9 +301,6 @@ Follow the instructions below to download the most recent snapshot:
 
 The `snapshots` directory should now contain the uncompressed `latest.bin` snapshot.
 
-> ℹ️ **Past blockchain history**  
-If you want your API node to have past blockchain history, you need to replay the blockchain from a blocks log file. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
-
 ### Restore/start from recent snapshot
 
 Follow the instructions below to restore/start your node from the most recent snapshot that you downloaded.
@@ -311,7 +311,80 @@ Follow the instructions below to restore/start your node from the most recent sn
   nodeos --data-dir $EOSDIR --config-dir $EOSDIR --snapshot $EOSDIR/snapshots/latest.bin >> $EOSDIR/nodeos.log 2>&1 &
   ```
 
-The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc., except the past transaction history. After the syncing is done, your API node will continue to receive the latest irreversible blocks being produced, including recent transaction history.
+The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc., except past transaction history. After the syncing is done, your API node should continue to receive the latest irreversible blocks produced, which include recent transaction history.
+
+> ℹ️ **Past transaction history**  
+If you want your API node to have past blockchain history, you need to replay the blockchain from a blocks log file. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
+
+## Testing
+
+First, make sure your API node launched successfully and it is still syncing or receiving blocks:
+```sh
+tail -f $EOSDIR/nodeos.log
+```
+```
+...
+info  2023-08-15T23:16:04.797 nodeos    producer_plugin.cpp:651       on_incoming_block    ] Received block b9dd3609f8194902... #92772000 @ 2023-08-15T23:01:02.000 signed by jumpingfrogs [trxs: 0, lib: 92771671, confirmed: 0, net: 0, cpu: 1, elapsed: 55, time: 98, latency: 902797 ms]
+info  2023-08-15T23:16:05.367 nodeos    producer_plugin.cpp:651       on_incoming_block    ] Received block 0966e24d95ef120f... #92773000 @ 2023-08-15T23:09:22.000 signed by ivote4eosusa [trxs: 1, lib: 92772667, confirmed: 0, net: 120, cpu: 1253, elapsed: 175, time: 272, latency: 403367 ms]
+...
+```
+
+Second, make sure your API node initialized successfully from the snapshot. Search for `snapshot` in the `nodeos` log:
+
+```sh
+cat  ~/eos/jungle_testnet/stderr.log | grep -i snapshot
+```
+```
+info  2023-08-15T23:15:55.395 nodeos    controller.cpp:603            startup              ] Starting initialization from snapshot and no block log, this may take a significant amount of time
+info  2023-08-15T23:15:55.707 nodeos    controller.cpp:610            startup              ] Snapshot loaded, lib: 92757487
+info  2023-08-15T23:15:55.707 nodeos    controller.cpp:613            startup              ] Finished initialization from snapshot
+...
+```
+
+### Local test
+
+Third, test the local `get_info` endpoint from the `chain_api_plugin` to request information about the blockchain you just deployed your API node on:
+
+```sh
+cleos get info
+curl -L http://localhost:8888/v1/chain/get_info
+```
+
+Or visit the following URL on your browser:
+
+* http://localhost:8888/v1/chain/get_info
+
+Your API node should return the following response:
+
+```
+{
+  "server_version": "7e1ad13e",
+  "chain_id": "73e4385a2708e6d7048834fbc1079f2fabb17b3c125b146af438971e90716c4d",
+  ...
+  "head_block_producer": "alohaeostest",
+  "virtual_block_cpu_limit": 200000000,
+  ...
+  "earliest_available_block_num": 92757488,
+  "last_irreversible_block_time": "2023-08-17T16:02:05.500"
+}
+```
+
+### Remote test
+
+Lastly, you should also test the public `get_info` endpoint if you intend to use your API node for public consumption:
+
+```sh
+cleos -u http://YOUR_EXTERNAL_IP_ADDRESS:8888 get info
+curl -L http://YOUR_EXTERNAL_IP_ADDRESS:8888/v1/chain/get_info
+```
+
+Or visit the following URL on your browser:
+
+* http://YOUR_EXTERNAL_IP_ADDRESS:8888/v1/chain/get_info
+
+Make sure to type the above commands/URL from outside your network. For instance, you can use your mobile device connection and disconnect temporarily from your Wi-Fi network.
+
+Your API node should return a similar response to the last output above. If you get an error, check your port forwarding settings on your Wi-Fi router and on your Docker container, if any.
 
 ## Summary
 
