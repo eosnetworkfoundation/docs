@@ -143,7 +143,11 @@ Besides the **endpoints report** URLs listed in the parent section [How to locat
 
 ## How to check peers health
 
-Some portals provide periodic reports and/or live monitoring to check the health of public P2P and API endpoints. Again, EOS Nation provides extensive reports on the status of various endpoints, including the health of block producing nodes, for both the EOS Mainnet and various EOS Testnets:
+Some web portals provide periodic reports and/or live monitoring to check the health of public P2P and API endpoints. Also, some real-time tools allow to estimate the proximity and/or response time of P2P or API endpoints.
+
+### EOS Nation Reports
+
+EOS Nation provides extensive reports on the status of various endpoints, including the health of block producing nodes, for both the EOS Mainnet and various EOS Testnets:
 
 * EOS Mainnet reports: https://validate.eosnation.io/eos/reports/
 * Jungle Testnet reports: https://validate.eosnation.io/jungle4/reports/
