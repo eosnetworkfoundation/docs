@@ -306,7 +306,7 @@ The `snapshots` directory should now contain the uncompressed `latest.bin` snaps
 Follow the instructions below to restore/start your node from the most recent snapshot that you downloaded.
 
 > i `blocks` directory  
-If you are repeating the instructions above, you might have a ` blocks` directory already in your `$EOSDIR` data directory. Unless you plan to use blocks log as well, which should at least contain blocks up the snapshot, it is recommended that all existing data in the `blocks` directory is removed: `rm -rf $EOSDIR/blocks` prior to restoring from a snapshot.
+If you are repeating the instructions above, you might have a ` blocks` directory already in your `$EOSDIR` data directory. Unless you plan to use a blocks log as well, which should at least contain blocks up the snapshot, it is recommended that all existing data in the `blocks` directory is removed: `rm -rf $EOSDIR/blocks` prior to restoring from a snapshot.
 
 * Restore/start your node from the latest snapshot:
 
@@ -314,10 +314,10 @@ If you are repeating the instructions above, you might have a ` blocks` director
   nodeos --data-dir $EOSDIR --config-dir $EOSDIR --snapshot $EOSDIR/snapshots/latest.bin >> $EOSDIR/nodeos.log 2>&1 &
   ```
 
-The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc. but not past transaction history, unless you sync from a `blocks.log` file. However, after the syncing is done, your API node should continue to receive the latest irreversible blocks produced, which will now include the recent transaction history.
+The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc. but not past transaction history, unless you sync from a blocks log. However, after the syncing is done, your API node should continue to receive the latest irreversible blocks produced, which will now include the recent transaction history.
 
 > ℹ️ **Past transaction history**  
-If you want your API node to have past blockchain history, you need to replay the blockchain from a `blocks.log` file. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
+If you want your API node to have past blockchain history, you need to replay the blockchain from a blocks log. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
 
 ## Testing
 
@@ -385,7 +385,8 @@ Or visit the following URL on your browser:
 
 * http://YOUR_EXTERNAL_IP_ADDRESS:8888/v1/chain/get_info
 
-Make sure to type the above commands/URL from outside your network. For instance, you can use your mobile device connection and disconnect temporarily from your Wi-Fi network.
+> ℹ️ **Remote Testing Tip**  
+Make sure to send/browse the endpoint requests/URL from outside your network. For instance, you may disconnect your mobile device temporarily from your Wi-Fi network and use mobile data/tethering.
 
 Your API node should return a similar response to the last output above. If you get an error, check your port forwarding settings on your Wi-Fi router and on your Docker container, if any.
 
