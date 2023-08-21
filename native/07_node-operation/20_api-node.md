@@ -1,8 +1,6 @@
 ---
-title: API Node
+title: Run an API Node
 ---
-
-## What is an API node?
 
 An API node is a critical component of the EOS blockchain network that serves as an interface between users, including dApps, and an EOS blockchain. API nodes serve one of the following roles when handling incoming client requests received through one of the `chain_api_plugin` endpoints:
 
@@ -11,12 +9,12 @@ An API node is a critical component of the EOS blockchain network that serves as
 - **Pull API node**: Similar to a Chain API node, but does not accept transactions from HTTP clients. This setup is not common but it is technically feasible.
 
 > ℹ️ **Blockchain Primitives**  
-A Chain API node also exposes access to read blockchain primitives, such as chain, blocks, transactions, producers, protocol features, etc. However, since these usually have a larger footprint in terms of disk, memory, and bandwidth, especially `get_block`, they are better suited for layer-2 history solutions that use the `state_history` plugin.
+> A Chain API node also exposes access to read blockchain primitives, such as chain, blocks, transactions, producers, protocol features, etc. However, since these usually have a larger footprint in terms of disk, memory, and bandwidth, especially `get_block`, they are better suited for layer-2 history solutions that use the `state_history` plugin.
 
 Push API nodes usually only listen to HTTP client requests, and do not accept incoming p2p transactions. This frees processing time for push nodes to process client requests quickly. In contrast, Chain API nodes benefit from receiving p2p transactions to sync their local blockchain state, which also speeds up response time back to clients.
 
 > ℹ️ **Chain API endpoints**  
-HTTP clients send requests through one of the `chain_api_plugin` endpoints. A push request will typically use the `send_transaction` endpoint or similar to write blockchain data or change the blockchain state. A common pull request will use the `get_table_rows` endpoint or similar to read blockchain data.
+> HTTP clients send requests through one of the `chain_api_plugin` endpoints. A push request will typically use the `send_transaction` endpoint or similar to write blockchain data or change the blockchain state. A common pull request will use the `get_table_rows` endpoint or similar to read blockchain data.
 
 ## Why would you use an API node?
 
@@ -27,7 +25,7 @@ As a developer, you can deploy your own API node to connect to an EOS blockchain
 - **Transaction Broadcasting**: When users or dApps want to execute a transaction on the EOS blockchain, they submit the transaction to an API node. The node then broadcasts the transaction to the network, ensuring that it reaches all the necessary block producers for inclusion in the blockchain.
 
 > ℹ️ **Public and Private Nodes**  
-API nodes can be public or private. Public nodes are open to the public and can be used by anyone, while private nodes are typically operated by developers, applications, or organizations to manage their interactions with the blockchain privately.
+> API nodes can be public or private. Public nodes are open to the public and can be used by anyone, while private nodes are typically operated by developers, applications, or organizations to manage their interactions with the blockchain privately.
 
 - **API Endpoints**: API nodes expose various endpoints that allow clients to interact with the blockchain. These endpoints are typically HTTP/HTTPS-based and follow the EOSIO API specifications, making it easier for developers to integrate EOS into their applications.
 
@@ -41,14 +39,14 @@ The actual hardware requirements for an API node differ based on the transaction
 * [API node without blocks log](../10_getting-started/10_hardware-requirements#api-node-without-blocks-log)
 
 > ℹ️ **Chain API nodes maintain blocks log**  
-A Chain API node needs to maintain its own blocks log file to be able to pull data from the blockchain. Maintaining a blocks log file implies that your node replayed the blockchain from a snapshot or from genesis. This allows your API node to sync the blockchain state with other peers and serve client requests quickly by reading the blockchain state locally. A common task performed by a Chain API node is to get table data requested by a dApp or a deployed smart contract.
+> A Chain API node needs to maintain its own blocks log file to be able to pull data from the blockchain. Maintaining a blocks log file implies that your node replayed the blockchain from a snapshot or from genesis. This allows your API node to sync the blockchain state with other peers and serve client requests quickly by reading the blockchain state locally. A common task performed by a Chain API node is to get table data requested by a dApp or a deployed smart contract.
 
 ## Software Requirements
 
 To setup an API node, first install the Antelope [Leap](https://github.com/AntelopeIO/leap) software. The Leap version to install depends on whether you will deploy your node on an EOS testnet or on the EOS mainnet.
 
 > ℹ️ **Leap software on mainnet vs. testnets**  
-EOS testnets typically run the most recent Leap versions, usually the latest one shortly after released. The EOS mainnet will typically use a previous stable release version of the Leap software for stability and security.
+> EOS testnets typically run the most recent Leap versions, usually the latest one shortly after released. The EOS mainnet will typically use a previous stable release version of the Leap software for stability and security.
 
 To locate which version other API nodes are running for the EOS network you want to deploy on, select your EOS network of choice on the EOS Nation Validate site and navigate to the API report for that network:
 
@@ -77,7 +75,7 @@ API node type | Maintains blocks log | Accepts p2p transactions | Accepts API tr
 **Pull API node** | Yes | Yes | No
 
 > ℹ️ **Plugins under the hood**  
-Client requests are received by the RPC API interface managed by the `http_plugin` and ultimately handled by the `chain_api_plugin`, which exposes functionality implemented by the `chain_plugin`. Since the `chain_plugin` is enabled by default, you only need to enable the `chain_api_plugin` explicitly, which will also auto-enable the `http_plugin`. Check the [chain_api_plugin](../10_getting-started/30_plugins/chain-api-plugin.md) documentation for more details.
+> Client requests are received by the RPC API interface managed by the `http_plugin` and ultimately handled by the `chain_api_plugin`, which exposes functionality implemented by the `chain_plugin`. Since the `chain_plugin` is enabled by default, you only need to enable the `chain_api_plugin` explicitly, which will also auto-enable the `http_plugin`. Check the [chain_api_plugin](../10_getting-started/30_plugins/chain-api-plugin.md) documentation for more details.
 
 ### Prerequisite Steps
 
@@ -123,7 +121,7 @@ Edit the default `config.ini` and add/uncomment/modify the following fields:
   ```
 
 > ℹ️ Chain database maximum size  
-Be careful not to overestimate your chain database maximum size. The value you specify in `chain-state-db-size-mb` will get pre-allocated on disk as a memory-mapped file in `state/shared_memory.bin`.
+> Be careful not to overestimate your chain database maximum size. The value you specify in `chain-state-db-size-mb` will get pre-allocated on disk as a memory-mapped file in `state/shared_memory.bin`.
 
 * Set the local IP and port to listen for incoming http requests:
 
@@ -158,7 +156,7 @@ Be careful not to overestimate your chain database maximum size. The value you s
   ```
 
   > ℹ️ **Peering**  
-  For information on peering, check the [Peering](../10_getting-started/40_peering.md) guide, especially the [How to locate peers](../10_getting-started/40_peering.md#how-to-locate-peers) section.
+  > For information on peering, check the [Peering](../10_getting-started/40_peering.md) guide, especially the [How to locate peers](../10_getting-started/40_peering.md#how-to-locate-peers) section.
 
   In short, replace the most recent p2p endpont list in the `config.ini` according to the EOS network you are deploying on:
 
@@ -253,7 +251,7 @@ If you are running a Docker container, remember also to open the applicable port
 Next, you need to sync your node's blockchain state with the specific EOS blockchain you are deploying on. The easiest way to accomplish this is by restoring from a recent snapshot.
 
 > ℹ️ **Snapshots**  
-For information about Snapshots, check the [Snapshots](../10_getting-started/50_snapshots.md) guide.
+> For information about Snapshots, check the [Snapshots](../10_getting-started/50_snapshots.md) guide.
 
 There are various reputable sites to download snapshots. One such good source that maintains recent snapshots for various EOS networks is the **EOS Nation AntelopeIO Snapshots** site:
 
@@ -305,8 +303,8 @@ The `snapshots` directory should now contain the uncompressed `latest.bin` snaps
 
 Follow the instructions below to restore/start your node from the most recent snapshot that you downloaded.
 
-> i `blocks` directory  
-If you are repeating the instructions above, you might have a ` blocks` directory already in your `$EOSDIR` data directory. Unless you plan to use a blocks log as well, which should at least contain blocks up the snapshot, it is recommended that all existing data in the `blocks` directory is removed: `rm -rf $EOSDIR/blocks` prior to restoring from a snapshot.
+> ℹ `blocks` directory  
+> If you are repeating the instructions above, you might have a ` blocks` directory already in your `$EOSDIR` data directory. Unless you plan to use a blocks log as well, which should at least contain blocks up the snapshot, it is recommended that all existing data in the `blocks` directory is removed: `rm -rf $EOSDIR/blocks` prior to restoring from a snapshot.
 
 * Restore/start your node from the latest snapshot:
 
@@ -317,7 +315,7 @@ If you are repeating the instructions above, you might have a ` blocks` director
 The above command will launch `nodeos`, redirecting `stdout` and `stderr` to `nodeos.log`. More importantly, the `--snapshot` option will sync the chain state of your API node to the state of the EOS network you are deploying on, starting from the latest snapshot. This includes accounts, balances, contract code, tables, etc. but not past transaction history, unless you sync from a blocks log. However, after the syncing is done, your API node should continue to receive the latest irreversible blocks produced, which will now include the recent transaction history.
 
 > ℹ️ **Past transaction history**  
-If you want your API node to have past blockchain history, you need to replay the blockchain from a blocks log. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
+> If you want your API node to have past blockchain history, you need to replay the blockchain from a blocks log. This is not common, however. For past blockchain history there are better solutions than API nodes, such as History nodes.
 
 ## Testing
 
@@ -386,7 +384,7 @@ Or visit the following URL on your browser:
 * http://YOUR_EXTERNAL_IP_ADDRESS:8888/v1/chain/get_info
 
 > ℹ️ **Remote Testing Tip**  
-Make sure to send/browse the endpoint requests/URL from outside your network. For instance, you may disconnect your mobile device temporarily from your Wi-Fi network and use mobile data/tethering.
+> Make sure to send/browse the endpoint requests/URL from outside your network. For instance, you may disconnect your mobile device temporarily from your Wi-Fi network and use mobile data/tethering.
 
 Your API node should return a similar response to the last output above. If you get an error, check your port forwarding settings on your Wi-Fi router and on your Docker container, if any.
 
