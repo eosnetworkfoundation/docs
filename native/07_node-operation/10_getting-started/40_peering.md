@@ -132,16 +132,16 @@ teamgreymass api_https2, v3.1.0, https://eos.greymass.com, ...
 
 ### For EOS Testnets
 
-Besides the **endpoints report** URLs listed in the parent section [How to locate peers](#how-to-locate-peers), the following endpoints are available to add directly to your `config.ini` for the EOS Testnets below:
+Besides the **endpoints report** URLs listed in the parent section [How to locate peers](#how-to-locate-peers), the following endpoints are available to add directly to your `config.ini` for the following EOS Testnets:
 
-#### EOS Kylin Testnet
+#### EOS Jungle Testnet
 
 * P2P Endpoints: https://validate.eosnation.io/jungle4/reports/config.txt
 * API Endpoints: https://validate.eosnation.io/jungle4/reports/api_versions.txt
 
-#### EOS Jungle Testnet
+#### EOS Kylin Testnet
 
-* P2P Endpoints: https://validate.eosnation.io/kylin/reports/endpoints.txt
+* P2P Endpoints: https://validate.eosnation.io/kylin/reports/config.txt
 * API Endpoints: https://validate.eosnation.io/kylin/reports/api_versions.txt
 
 ## How to check peers health
