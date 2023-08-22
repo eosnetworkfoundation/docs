@@ -4,13 +4,14 @@ title: Peering
 
 # Peering
 
-EOS blockchains can consist of one or many nodes. Although a single node can still run a fully functional blockchain, it cannot scale or grow. To grasp the full benefits of the EOS blockchain technology, more nodes need to be added. In this section, you will learn about "peering", the network feature that makes it possible. This is what allows to grow incrementally from a single node to a truly decentralized, geographically distributed, multi node EOS blockchain.
+EOS blockchains may consist of one or many nodes. Although a single node can still run a fully functional blockchain, it cannot scale or grow. To grasp the full benefits of the EOS blockchain technology, more nodes are needed. In this section, you will learn about "peering", the network feature that makes it possible. This is what allows to grow incrementally from a single node to a truly decentralized, geographically distributed, multi node EOS blockchain.
 
 ## What is Peering?
 
 Peering allows EOS nodes to propagate and synchronize the distributed blockchain state by receiving and relaying blocks and/or transactions to other nodes. Any node that is configured to send and receive data in a peer-to-peer fashion is considered a "peer". This adds redundancy and allows for faster response times to client queries and node requests. Therefore, peering is key to the decentralized operation and incremental growth of the EOS blockchain.
 
-> ℹ️ Peering is enabled through the EOS peer-to-peer (p2p) network protocol and it is what makes possible the decentralized operation of the blockchain.
+> ℹ️ EOS Network Protocol  
+Peering is enabled through the EOS peer-to-peer (p2p) network protocol and it is what allows the decentralized operation of the blockchain. For more information, check the [EOS Network Protocol](../../60_advanced-topics/03_network-peer-protocol.md).
 
 ## Why you need nodes/peers?
 
@@ -26,7 +27,8 @@ Therefore, when set up as peers, EOS nodes validate the blocks and transactions 
 
 ## How to set up peers
 
-> ℹ️ The peer connection process must be performed on the local environment of each peer. Therefore, peering involves planning and agreement among some of the nodes that will act as peers in the EOS network.
+> ℹ️ Peer Setup  
+The peer connection process must be performed on the local environment of each peer. Therefore, peering involves planning and agreement among some of the nodes that will act as peers in the EOS network.
 
 Peering can be set up by configuring the `net_plugin` of each `nodeos` instance whose node will act as a peer. The most important options are:
 
@@ -73,7 +75,8 @@ Check the previous section [Peer setup using `config.ini`](#peer-setup-using-con
 
 For the EOS Mainnet and various Testnets, some websites publish and maintain lists of P2P, API, and other endpoints for your nodes to connect to.
 
-> ℹ️ Endpoint lists are typically generated, validated, and combined from the standard `bp.json` files provided by Block Producers, including Standby Producers.
+> ℹ️ Endpoints and BP.json  
+Endpoint lists are typically generated, validated, and combined from the standard `bp.json` files provided by Block Producers, including Standby Producers.
 
 For a central portal that maintains the recent status of *all* active endpoints (P2P, API, History, etc.) for the EOS Mainnet and various EOS Testnets, you can visit the EOS Nation Validate Portal and select the **endpoints report** for the specific network:
 
@@ -129,21 +132,25 @@ teamgreymass api_https2, v3.1.0, https://eos.greymass.com, ...
 
 ### For EOS Testnets
 
-Besides the **endpoints report** URLs listed in the parent section [How to locate peers](#how-to-locate-peers), the following endpoints are available to add directly to your `config.ini` for the EOS Testnets below:
+Besides the **endpoints report** URLs listed in the parent section [How to locate peers](#how-to-locate-peers), the following endpoints are available to add directly to your `config.ini` for the following EOS Testnets:
 
-#### EOS Kylin Testnet
+#### EOS Jungle Testnet
 
 * P2P Endpoints: https://validate.eosnation.io/jungle4/reports/config.txt
 * API Endpoints: https://validate.eosnation.io/jungle4/reports/api_versions.txt
 
-#### EOS Jungle Testnet
+#### EOS Kylin Testnet
 
-* P2P Endpoints: https://validate.eosnation.io/kylin/reports/endpoints.txt
+* P2P Endpoints: https://validate.eosnation.io/kylin/reports/config.txt
 * API Endpoints: https://validate.eosnation.io/kylin/reports/api_versions.txt
 
 ## How to check peers health
 
-Some portals provide periodic reports and/or live monitoring to check the health of public P2P and API endpoints. Again, EOS Nation provides extensive reports on the status of various endpoints, including the health of block producing nodes, for both the EOS Mainnet and various EOS Testnets:
+Some web portals provide periodic reports and/or live monitoring to check the health of public P2P and API endpoints. Also, some real-time tools allow to estimate the proximity and/or response time of P2P or API endpoints.
+
+### EOS Nation Reports
+
+EOS Nation provides extensive reports on the status of various endpoints, including the health of block producing nodes, for both the EOS Mainnet and various EOS Testnets:
 
 * EOS Mainnet reports: https://validate.eosnation.io/eos/reports/
 * Jungle Testnet reports: https://validate.eosnation.io/jungle4/reports/
