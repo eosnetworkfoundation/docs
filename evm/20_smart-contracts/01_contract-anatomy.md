@@ -42,6 +42,10 @@ contract MyContract {
 }
 ```
 
+> ⚠ **PUSH0 opcode**
+> 
+> Currently the EOS EVM does not support the `PUSH0` opcode. This means you must use a version less than `0.8.20` for your Solidity compiler.
+
 ### License identifier
 
 In order to tell the world which license your contract is released under, you can use the `SPDX-License-Identifier` comment.

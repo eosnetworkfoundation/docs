@@ -33,10 +33,10 @@ As a developer, you can deploy your own API node to connect to an EOS blockchain
 
 ## Hardware requirements
 
-The actual hardware requirements for an API node differ based on the transaction throughput, client requests, available bandwidth, etc. However, the biggest factor depends mainly on whether the API node needs to maintain a blocks log file. For more information on the actual requirements for API nodes, visit the [hardware requirements](../10_getting-started/10_hardware-requirements.md) section, in particular:
+The actual hardware requirements for an API node differ based on the transaction throughput, client requests, available bandwidth, etc. However, the biggest factor depends mainly on whether the API node needs to maintain a blocks log file. For more information on the actual requirements for API nodes, visit the [hardware requirements](./10_getting-started/10_hardware-requirements.md) section, in particular:
 
-* [API node with blocks log](../10_getting-started/10_hardware-requirements#api-node-with-blocks-log)
-* [API node without blocks log](../10_getting-started/10_hardware-requirements#api-node-without-blocks-log)
+* [API node with blocks log](./10_getting-started/10_hardware-requirements#api-node-with-blocks-log)
+* [API node without blocks log](./10_getting-started/10_hardware-requirements#api-node-without-blocks-log)
 
 > ℹ️ **Chain API nodes maintain blocks log**  
 > A Chain API node needs to maintain its own blocks log file to be able to pull data from the blockchain. Maintaining a blocks log file implies that your node replayed the blockchain from a snapshot or from genesis. This allows your API node to sync the blockchain state with other peers and serve client requests quickly by reading the blockchain state locally. A common task performed by a Chain API node is to get table data requested by a dApp or a deployed smart contract.
@@ -75,7 +75,7 @@ API node type | Maintains blocks log | Accepts p2p transactions | Accepts API tr
 **Pull API node** | Yes | Yes | No
 
 > ℹ️ **Plugins under the hood**  
-> Client requests are received by the RPC API interface managed by the `http_plugin` and ultimately handled by the `chain_api_plugin`, which exposes functionality implemented by the `chain_plugin`. Since the `chain_plugin` is enabled by default, you only need to enable the `chain_api_plugin` explicitly, which will also auto-enable the `http_plugin`. Check the [chain_api_plugin](../10_getting-started/30_plugins/chain-api-plugin.md) documentation for more details.
+> Client requests are received by the RPC API interface managed by the `http_plugin` and ultimately handled by the `chain_api_plugin`, which exposes functionality implemented by the `chain_plugin`. Since the `chain_plugin` is enabled by default, you only need to enable the `chain_api_plugin` explicitly, which will also auto-enable the `http_plugin`. Check the [chain_api_plugin](./10_getting-started/30_plugins/chain-api-plugin.md) documentation for more details.
 
 ### Prerequisite Steps
 
@@ -156,7 +156,7 @@ Edit the default `config.ini` and add/uncomment/modify the following fields:
   ```
 
   > ℹ️ **Peering**  
-  > For information on peering, check the [Peering](../10_getting-started/40_peering.md) guide, especially the [How to locate peers](../10_getting-started/40_peering.md#how-to-locate-peers) section.
+  > For information on peering, check the [Peering](./10_getting-started/40_peering.md) guide, especially the [How to locate peers](./10_getting-started/40_peering.md#how-to-locate-peers) section.
 
   In short, replace the most recent p2p endpont list in the `config.ini` according to the EOS network you are deploying on:
 
@@ -251,7 +251,7 @@ If you are running a Docker container, remember also to open the applicable port
 Next, you need to sync your node's blockchain state with the specific EOS blockchain you are deploying on. The easiest way to accomplish this is by restoring from a recent snapshot.
 
 > ℹ️ **Snapshots**  
-> For information about Snapshots, check the [Snapshots](../10_getting-started/50_snapshots.md) guide.
+> For information about Snapshots, check the [Snapshots](./10_getting-started/50_snapshots.md) guide.
 
 There are various reputable sites to download snapshots. One such good source that maintains recent snapshots for various EOS networks is the **EOS Nation AntelopeIO Snapshots** site:
 
