@@ -240,6 +240,28 @@ the validity of the symbol within its own `is_valid` method.**
 bool valid = mySymbol.is_valid();
 ```
 
+#### Symbol limitations
+
+Symbols have a precision between 1 and 18. This means that you can have a maximum of 18 decimal places.
+
+```cpp
+// Valid
+symbol mySymbol = symbol("TKN", 4);
+
+// Invalid
+symbol mySymbol = symbol("TKN", 19);
+```
+
+Symbol codes are limited to 7 characters.
+
+```cpp
+// Valid
+symbol mySymbol = symbol("TKN", 4);
+
+// Invalid
+symbol mySymbol = symbol("ISTOOLONG", 4);
+```
+
 
 ## Structs
 
