@@ -215,11 +215,9 @@ users.modify(iterator, same_payer, [&](auto& row) {
 
 > ❔ **What is same_payer**
 > 
-> The `same_payer` variable is a special variable that is used to indicate that the RAM payer should be the same as the
-> original RAM payer. This is useful when you want to modify data in a table, but you don't have the original RAM payer's
-> authorization. This is often the case when you want to modify data in a table on your own contract that was inserted 
-> using another user's RAM. You will not be able to add any fields to the data, but if you are only modifying existing fields
-> then there is no delta in RAM usage, and therefore no need to pay for any additional RAM or refund any surplus RAM.
+> You can use `same_payer` to make the RAM payer the same as the original ram payer. This is useful if someone else has
+> paid for the RAM, but you want to modify the data. If you don't use `same_payer`, then you will have to pay for the RAM
+> yourself. You will also have to pay for the RAM if you are changing fields with mutable size, such as `string` or `vector`.
 
 
 ### Removing data
