@@ -93,7 +93,16 @@ Time types are used to represent time, specifically relating to blocks.
 | --- |-------------------------------|
 | `time_point` | Point in time in microseconds |
 | `time_point_sec` | Point in time in seconds      |
-| `block_timestamp_type` | Block timestamp               |
+| `block_timestamp` | Block timestamp               |
+
+#### Helpful functions
+
+| Function                                            | Description                          |
+|-----------------------------------------------------|--------------------------------------|
+| `time_point eosio::current_time_point()`            | Get the current time point           |
+| `const microseconds& time_point.time_since_epoch()` | Get the microseconds since the epoch |
+| `uint32_t time_point.sec_since_epoch()`             | Get the seconds since the epoch      |
+| `block_timestamp eosio::current_block_time()`       | Get the current block time           |
 
 
 ### Hash types
