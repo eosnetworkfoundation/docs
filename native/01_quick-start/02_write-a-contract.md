@@ -3,7 +3,7 @@ title: Write a Smart Contract
 --- 
 
 In this guide we're going to create a simple smart contract that will allow us to store a string in the blockchain.
-We'll be using a **[Web IDE](https://eos-web-ide.netlify.app/)** to write, and deploy our smart contract to the EOS Testnet.
+We'll be using a **[Web IDE](https://ide.eosnetwork.com/)** to write, and deploy our smart contract to the EOS Testnet.
 
 ## What is a Smart Contract?
 
@@ -18,7 +18,7 @@ deploy your smart contract to the blockchain, without ever leaving your browser 
 
 ## Enough talk, let's begin!
 
-Open up the [EOS Web IDE](https://eos-web-ide.netlify.app/) in your browser. You will be presented with a
+Open up the [EOS Web IDE](https://ide.eosnetwork.com/) in your browser. You will be presented with a
 dummy contract which shows you the basic structure of a smart contract.
 
 Go ahead and clear everything out of the editor, and copy and paste the following code:
