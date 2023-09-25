@@ -52,3 +52,7 @@ This opcode currently returns 1 (one) by default since there is no hash difficul
 ### `GASLIMIT (0x45)`
 
 This opcode currently returns `0x7FFFFFFFFFF` (2^43-1) as the maximum gas limit in EOS EVM.
+
+### `PUSH0` opcode
+
+The EOS EVM does not currently support `PUSH0`, so you need to use solidity version `0.8.19` or below. 
