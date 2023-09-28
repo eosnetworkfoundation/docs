@@ -43,13 +43,12 @@ triggered the event.
 
 The `*` character is a wildcard that will match any contract or action. So in the example above, the `watchtransfer` function
 will be called whenever any contract sends a `transfer` action to the `receiver` contract. 
-The wildcard is supported on both the contract and action side of the filter, so you can use it to match any contract, any action, or both.
+The wildcard is supported only on the contract and NOT on the action side of the filter.
 
 Examples:
-- `*::*` - Match any contract and any action
-- `yourcontract::*` - Match any action on `yourcontract`
 - `*::transfer` - Match any `transfer` action on any contract
-- `yourcontract::transfer` - Match only the `transfer` action on `yourcontract`
+- `*::refund` - Match any `refund` action on any contract
+- `yourcontract::transfer` - Match **only** the `transfer` action on `yourcontract`
 
 > ❔ **Who can send events?**
 > 
