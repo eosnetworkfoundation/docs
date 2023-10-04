@@ -4,4 +4,6 @@ title: Migration Guides
 
 Learn about EOS History Alternatives:
 
-- [V1 History Alternatives](01_v1-history-alternatives.md)
+- [General Upgrade Guide](01_general-upgrade-guide.md)
+- [V1 History Alternatives](02_v1-history-alternatives.md)
+- [5.0 Upgrade Guide](03_5.0-upgrade-guide.md)
