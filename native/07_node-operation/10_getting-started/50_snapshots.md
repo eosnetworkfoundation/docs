@@ -33,7 +33,6 @@ plugin = eosio::state_history_plugin
 Below are some sites where you can download a recent snapshot:
 
 - [EOS Nation](https://snapshots.eosnation.io/)
-- [EOS Sweden](https://snapshots-main.eossweden.org/)
 
 ### Before you start
 
