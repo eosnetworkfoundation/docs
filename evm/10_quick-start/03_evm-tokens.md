@@ -80,8 +80,40 @@ Most EOS exchanges also require a `memo` field, so make sure you enter it there 
 
 
 
-## Other known tokens
+## Important ERC-20 tokens
 
-| Symbol    | Token Name      | Address                                                                |
-|-----------|-----------------|------------------------------------------------------------------------|
-| WEOS | Wrapped EOS     | 0xc00592aA41D32D137dC480d9f6d0Df19b860104F |
+There are a few ERC-20 tokens that are available on the `EOS EVM` which serve as core components of apps and defi.
+
+### Wrapped EOS
+
+Wrapped EOS represents the core system token `EOS`, but in the form of an ERC-20.
+
+
+| Symbol    | Decimals | Address                                                                |
+|-----------|----------|------------------------------------------------------------------------|
+| WEOS | 18       | 0xc00592aA41D32D137dC480d9f6d0Df19b860104F |
+
+
+<!-- translation-ignore -->
+
+<AddTokenToMetaMask address="0xc00592aA41D32D137dC480d9f6d0Df19b860104F" symbol="WEOS" decimals="18" />
+
+<!-- end-translation-ignore -->
+
+### USDT
+
+The `USDT` token is an ERC-20 that represents the stable-coin `Tether`.
+
+
+| Symbol    | Decimals | Address                                                                |
+|-----------|----------|------------------------------------------------------------------------|
+| USDT | 18       | 0x4ea3b729669bf6c34f7b80e5d6c17db71f89f21f |
+
+
+<!-- translation-ignore -->
+
+import AddTokenToMetaMask from '@site/src/components/AddTokenToMetaMask/AddTokenToMetaMask';
+
+<AddTokenToMetaMask address="0x4ea3b729669bf6c34f7b80e5d6c17db71f89f21f" symbol="WEOS" decimals="18" />
+
+<!-- end-translation-ignore -->
