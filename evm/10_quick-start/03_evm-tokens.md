@@ -24,7 +24,7 @@ import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
 ### Bridge tokens yourself
 
 If you have **EOS** tokens on the `EOS Mainnet` or `Jungle Testnet`, you can send **EOS** directly to your EVM address.
-Open your wallet and send **EOS** tokens to `eosio.evm` with your EVM address as the `memo`.
+Open your wallet and send **EOS** tokens to `eosio.evmin` with your EVM address as the `memo`.
 
 
 ### Bridge tokens from an exchange
@@ -39,7 +39,7 @@ To withdraw EOS tokens from a centralized exchange (CEX) to an EOS EVM address:
 1. Visit the withdrawal screen of the Exchange's app
 2. Select EOS as Coin
 3. Select EOS as Network
-4. Enter `eosio.evm` as Wallet Address
+4. Enter `eosio.evmin` as Wallet Address
 5. Enter your EOS EVM public key as Memo
 
 ![EOS EVM Token Flow](/images/EOS-EVM_withdraw_from_CEX_to_wallet.png)
