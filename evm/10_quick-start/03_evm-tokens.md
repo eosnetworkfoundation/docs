@@ -109,7 +109,7 @@ The `USDT` token is an ERC-20 that represents the stable-coin `Tether`.
 
 | Symbol    | Decimals | Address                                                                |
 |-----------|----------|------------------------------------------------------------------------|
-| USDT | 18       | 0x33b57dc70014fd7aa6e1ed3080eed2b619632b8e |
+| USDT | 6        | 0x33b57dc70014fd7aa6e1ed3080eed2b619632b8e |
 
 
 <!-- translation-ignore -->
