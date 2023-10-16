@@ -114,6 +114,6 @@ The `USDT` token is an ERC-20 that represents the stable-coin `Tether`.
 
 <!-- translation-ignore -->
 
-<AddTokenToMetaMask address="0x33b57dc70014fd7aa6e1ed3080eed2b619632b8e" symbol="WEOS" decimals="18" />
+<AddTokenToMetaMask address="0x33b57dc70014fd7aa6e1ed3080eed2b619632b8e" symbol="USDT" decimals="6" />
 
 <!-- end-translation-ignore -->
