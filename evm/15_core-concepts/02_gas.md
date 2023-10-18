@@ -14,3 +14,5 @@ on [EVM Codes](https://www.evm.codes/).
 If the transaction runs out of gas before it completes, then the transaction will fail and all changes will be reverted,
 but the gas spent will not be refunded.
 
+> **Note**: EOS EVM's gas price is fixed. It is currently set at `150000000000`.
+> 

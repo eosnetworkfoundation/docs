@@ -24,7 +24,7 @@ import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
 ### Bridge tokens yourself
 
 If you have **EOS** tokens on the `EOS Mainnet` or `Jungle Testnet`, you can send **EOS** directly to your EVM address.
-Open your wallet and send **EOS** tokens to `eosio.evm` with your EVM address as the `memo`.
+Open your wallet and send **EOS** tokens to `eosio.evmin` with your EVM address as the `memo`.
 
 
 ### Bridge tokens from an exchange
@@ -39,7 +39,7 @@ To withdraw EOS tokens from a centralized exchange (CEX) to an EOS EVM address:
 1. Visit the withdrawal screen of the Exchange's app
 2. Select EOS as Coin
 3. Select EOS as Network
-4. Enter `eosio.evm` as Wallet Address
+4. Enter `eosio.evmin` as Wallet Address
 5. Enter your EOS EVM public key as Memo
 
 ![EOS EVM Token Flow](/images/EOS-EVM_withdraw_from_CEX_to_wallet.png)
@@ -80,8 +80,40 @@ Most EOS exchanges also require a `memo` field, so make sure you enter it there 
 
 
 
-## Other known tokens
+## Important ERC-20 tokens
 
-| Symbol    | Token Name      | Address                                                                |
-|-----------|-----------------|------------------------------------------------------------------------|
-| WEOS | Wrapped EOS     | 0xc00592aA41D32D137dC480d9f6d0Df19b860104F |
+There are a few ERC-20 tokens that are available on the `EOS EVM` which serve as core components of apps and defi.
+
+### Wrapped EOS
+
+Wrapped EOS represents the core system token `EOS`, but in the form of an ERC-20.
+
+
+| Symbol    | Decimals | Address                                                                |
+|-----------|----------|------------------------------------------------------------------------|
+| WEOS | 18       | 0xc00592aA41D32D137dC480d9f6d0Df19b860104F |
+
+
+<!-- translation-ignore -->
+
+import AddTokenToMetaMask from '@site/src/components/AddTokenToMetaMask/AddTokenToMetaMask';
+
+<AddTokenToMetaMask address="0xc00592aA41D32D137dC480d9f6d0Df19b860104F" symbol="WEOS" decimals="18" />
+
+<!-- end-translation-ignore -->
+
+### USDT
+
+The `USDT` token is an ERC-20 that represents the stable-coin `Tether`.
+
+
+| Symbol    | Decimals | Address                                                                |
+|-----------|----------|------------------------------------------------------------------------|
+| USDT | 6        | 0x33b57dc70014fd7aa6e1ed3080eed2b619632b8e |
+
+
+<!-- translation-ignore -->
+
+<AddTokenToMetaMask address="0x33b57dc70014fd7aa6e1ed3080eed2b619632b8e" symbol="USDT" decimals="6" />
+
+<!-- end-translation-ignore -->
