@@ -13,7 +13,7 @@ Other advantages include superior performance with multiple RPC endpoint configu
 
 # Getting Started
 
-Take a look at this SubQuery Starter Project that introduces SubQuery's EOS support by indexing [EOS](https://github.com/subquery/ethereum-subql-starter/tree/main/EOS/eos-starterConnect your Github account).
+Take a look at this SubQuery Starter Project that introduces SubQuery's EOS support by indexing [EOS](https://github.com/subquery/ethereum-subql-starter/tree/main/EOS/eos-starter).
 
 You can also follow along this [step by step guide](https://academy.subquery.network/quickstart/quickstart.html) to get familiar with SubQuery.
 
