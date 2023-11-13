@@ -2,6 +2,8 @@
 title: Leap 5.0 Upgrade Guide
 ---
 
+To see the 5.0 release notes, click [here](https://github.com/AntelopeIO/leap/releases/tag/v5.0.0-rc2).
+
 The 5.0 upgrade follows the general upgrade guide. You can find it [here](./01_general-upgrade-guide.md).
 
 The information below is specific to the 5.0 upgrade and outlines only configuration option changes.
