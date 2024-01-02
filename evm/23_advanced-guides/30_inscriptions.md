@@ -129,3 +129,13 @@ const tx = {
 
 wallet.sendTransaction(tx).then(...);
 ```
+
+## Rules that indexers abide by
+
+Indexers have built-in rules that they must abide by when indexing inscriptions. Any inscription that does not follow these
+rules will be ignored.
+
+- The first deployment of a ticker is the only one that has claim to the ticker 
+- Tickers are not case sensitive (orcs = ORCS = OrCs ...)
+- The last inscription of a ticker will get either the specified amount or what is left over of the max supply
+- Maximum supply cannot exceed the maximum value of `uint64`
