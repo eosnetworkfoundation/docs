@@ -107,7 +107,7 @@ An example of this using `ethers` would be:
 
 ```js
 const { ethers } = require('ethers');
-const provider = new ethers.providers.JsonRpcProvider('RPC_URL');
+const provider = new ethers.providers.JsonRpcProvider('https://api.evm.eosnetwork.com/');
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
 const json = {
