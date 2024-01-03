@@ -57,6 +57,14 @@ The format must be adhered to or third party tooling like indexers will not be a
 | `max` | The maximum supply of the token |
 | `lim` | The mint limit per inscription  |
 
+<!-- translation-ignore -->
+
+import Inscribe from '@site/src/components/Inscribe/Inscribe';
+
+<Inscribe type="deploy" />
+
+<!-- end-translation-ignore -->
+
 
 ### Mint
 
@@ -73,6 +81,12 @@ The format must be adhered to or third party tooling like indexers will not be a
 | --- |-------------|
 | `amt` | The amount to mint |
 
+<!-- translation-ignore -->
+
+<Inscribe type="mint" />
+
+<!-- end-translation-ignore -->
+
 
 ### Transfer
 
@@ -88,6 +102,12 @@ The format must be adhered to or third party tooling like indexers will not be a
 | Key | Description |
 | --- |-------------|
 | `amt` | The amount to transfer |
+
+<!-- translation-ignore -->
+
+<Inscribe type="transfer" />
+
+<!-- end-translation-ignore -->
 
 
 ## Sending inscriptions
