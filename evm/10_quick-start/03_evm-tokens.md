@@ -128,6 +128,9 @@ These are other third party tokens which are supported across chains.
 | USN    | 6        | 0x8d0258d6ccfb0ce394dc542c545566936b7974f9 |
 | SEOS   | 6        | 0xbfb10f85b889328e4a42507e31a07977ae00eec6 |
 | BOX    | 6        | 0x9b3754f036de42846e60c8d8c89b18764f168367 |
+| BANANA    | 4        | 0xc500c831af8a5d1f4f3b1fc3940175a8db68c3cb |
+| BRAM    | 4        | 0x102f21abc12ebd194259c1081b13916192e7cbe5 |
+| ZEOS    | 4        | 0x477f09a0bdb273c8933429109febd3c3b0388b8a |
 
 
 <!-- translation-ignore -->
@@ -135,5 +138,8 @@ These are other third party tokens which are supported across chains.
 <AddTokenToMetaMask address="0x8d0258d6ccfb0ce394dc542c545566936b7974f9" symbol="USN" decimals="6" />
 <AddTokenToMetaMask address="0xbfb10f85b889328e4a42507e31a07977ae00eec6" symbol="SEOS" decimals="6" />
 <AddTokenToMetaMask address="0x9b3754f036de42846e60c8d8c89b18764f168367" symbol="BOX" decimals="6" />
+<AddTokenToMetaMask address="0xc500c831af8a5d1f4f3b1fc3940175a8db68c3cb" symbol="BANANA" decimals="4" />
+<AddTokenToMetaMask address="0x102f21abc12ebd194259c1081b13916192e7cbe5" symbol="BRAM" decimals="4" />
+<AddTokenToMetaMask address="0x477f09a0bdb273c8933429109febd3c3b0388b8a" symbol="ZEOS" decimals="4" />
 
 <!-- end-translation-ignore -->
