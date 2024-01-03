@@ -15,6 +15,19 @@ On the majority of other EVM supporting chains, inscriptions has caused massive 
 degradation of throughput. However, on EOS EVM the gas fee is fixed, and the chain is more than capable of handling the
 load of inscriptions without any noticeable impact on throughput.
 
+### Want to test inscriptions?
+
+Each section here has a form you can use to trigger a MetaMask transaction with the inscription data.
+If you want to use them, you'll need to login with MetaMask first.
+
+<!-- translation-ignore -->
+
+import LoginMetaMask from '@site/src/components/LoginMetaMask/LoginMetaMask';
+
+<LoginMetaMask />
+
+<!-- end-translation-ignore -->
+
 ## The inscription format
 
 Inscriptions are a simple `JSON` format that can be embedded in the call data of a transaction.
@@ -150,10 +163,18 @@ const tx = {
 wallet.sendTransaction(tx).then(...);
 ```
 
-## Rules that indexers abide by
+## Rules you need to know
 
 Indexers have built-in rules that they must abide by when indexing inscriptions. Any inscription that does not follow these
 rules will be ignored.
+
+#### Owners / signers
+
+- The **mint receiver** is the signer of the transaction
+- The **transfer sender** (or `from`) is the signer of the transaction
+- The **transfer receiver** is the `to` address defined in the transaction data
+
+#### General rules
 
 - The first deployment of a ticker is the only one that has claim to the ticker
 - Tickers are not case sensitive (orcs = ORCS = OrCs ...)
