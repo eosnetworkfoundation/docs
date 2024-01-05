@@ -2,7 +2,7 @@
 title: Inscriptions
 ---
 
-Inscriptions on EVM chains are arbitrary data written into the chain's history using the `calldata` field. 
+Inscriptions on EVM chains are arbitrary data written into the chain's history using the `calldata` field.
 Because the data is only stored in the chain's history, and not within state itself, it lowers the cost of
 sending data to the chain.
 
@@ -11,9 +11,22 @@ This means that inscriptions are only useful for indexing and other off-chain pu
 
 ## Gas fees, throughput, and inscriptions
 
-On the majority of other EVM supporting chains, inscriptions has caused massive upward pressure on gas fees, as well as 
+On the majority of other EVM supporting chains, inscriptions has caused massive upward pressure on gas fees, as well as
 degradation of throughput. However, on EOS EVM the gas fee is fixed, and the chain is more than capable of handling the
 load of inscriptions without any noticeable impact on throughput.
+
+### Want to test inscriptions?
+
+Each section here has a form you can use to trigger a MetaMask transaction with the inscription data.
+If you want to use them, you'll need to login with MetaMask first.
+
+<!-- translation-ignore -->
+
+import LoginMetaMask from '@site/src/components/LoginMetaMask/LoginMetaMask';
+
+<LoginMetaMask />
+
+<!-- end-translation-ignore -->
 
 ## The inscription format
 
@@ -21,8 +34,8 @@ Inscriptions are a simple `JSON` format that can be embedded in the call data of
 The format must be adhered to or third party tooling like indexers will not be able to process the data.
 
 > ✔ **You can add other fields**
-> 
-> You are free to add fields to the `JSON` object that your specific project might benefit from, 
+>
+> You are free to add fields to the `JSON` object that your specific project might benefit from,
 > but every field below is required.
 
 ```json
@@ -57,6 +70,14 @@ The format must be adhered to or third party tooling like indexers will not be a
 | `max` | The maximum supply of the token |
 | `lim` | The mint limit per inscription  |
 
+<!-- translation-ignore -->
+
+import Inscribe from '@site/src/components/Inscribe/Inscribe';
+
+<Inscribe type="deploy" />
+
+<!-- end-translation-ignore -->
+
 
 ### Mint
 
@@ -72,6 +93,12 @@ The format must be adhered to or third party tooling like indexers will not be a
 | Key | Description |
 | --- |-------------|
 | `amt` | The amount to mint |
+
+<!-- translation-ignore -->
+
+<Inscribe type="mint" />
+
+<!-- end-translation-ignore -->
 
 
 ### Transfer
@@ -89,10 +116,16 @@ The format must be adhered to or third party tooling like indexers will not be a
 | --- |-------------|
 | `amt` | The amount to transfer |
 
+<!-- translation-ignore -->
+
+<Inscribe type="transfer" />
+
+<!-- end-translation-ignore -->
+
 
 ## Sending inscriptions
 
-When sending inscriptions to the chain you must specify the `mime-type` of the data, or leave it as `data:,` so that it 
+When sending inscriptions to the chain you must specify the `mime-type` of the data, or leave it as `data:,` so that it
 defaults to `text/plain`.
 
 For example:
@@ -130,12 +163,20 @@ const tx = {
 wallet.sendTransaction(tx).then(...);
 ```
 
-## Rules that indexers abide by
+## Rules you need to know
 
 Indexers have built-in rules that they must abide by when indexing inscriptions. Any inscription that does not follow these
 rules will be ignored.
 
-- The first deployment of a ticker is the only one that has claim to the ticker 
+#### Owners / signers
+
+- The **mint receiver** is the signer of the transaction
+- The **transfer sender** (or `from`) is the signer of the transaction
+- The **transfer receiver** is the `to` address defined in the transaction data
+
+#### General rules
+
+- The first deployment of a ticker is the only one that has claim to the ticker
 - Tickers are not case sensitive (orcs = ORCS = OrCs ...)
 - The last inscription of a ticker will get either the specified amount or what is left over of the max supply
 - Maximum supply cannot exceed the maximum value of `uint64`
