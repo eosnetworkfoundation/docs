@@ -4,8 +4,6 @@ contributors:
   - { name: Ross Dold, github: https://github.com/eosphere }
 ---
 
-# Introduction to Hyperion Full History
-
 _“Hyperion is a full history solution for indexing, storing and retrieving Antelope blockchain’s historical data.”_
 
 Hyperion was built by EOS RIO to be an enterprise grade, performant and highly scalable Antelope History Solution. Their  [documentation](https://hyperion.docs.eosrio.io/)  is excellent and certainly a worthwhile starting point, this Technical How To series will cover some of their same content and add operational nuances from a practical stand point and our experience.
