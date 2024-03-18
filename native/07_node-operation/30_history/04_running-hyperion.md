@@ -1,18 +1,11 @@
 ---
-title: Running Hyperion Full History
+title: Running Hyperion
 contributors:
-  - { name: Ross Dold, github: https://github.com/eosphere }
+  - { name: Ross Dold (EOSphere), github: eosphere }
 ---
 
-Following on from our Configure Hyperion Software Components article, this next guide in the series will walk through actually running a Hyperion Full History Service.
+Following on from our Configure Hyperion Software Components guide, this next guide in the series will walk through actually running a Hyperion Full History Service.
 
-EOS RIO have an excellent  [Hyperion Documentation Repository](https://hyperion.docs.eosrio.io/)  including details on how to run their Hyperion Full History product, however in this article the manual process for running Hyperion using Elasticsearch 8.x and associated software components will be covered.
-
-Once again this Technical How To series will cover some of EOS RIO’s same content and will add operational nuances from a practical stand point and our experience.
-
-[Learn more about EOS RIO Hyperion](https://eosrio.io/hyperion/)
-
-![image](https://github.com/eosphere/Antelope-Technical-How-To/assets/12730423/34e760f0-a199-4061-8fdf-ab47eda2c8d7)
 
 # Running Hyperion Full History
 
@@ -34,11 +27,11 @@ This phase transitions  the Indexer to an operational state,  **live reader is e
 
 This phase enables Hyperion  **API queries**.
 
-In the previous how to, the example configuration left the guide ready to start the ABI Scan Phase, which is where this article picks up.
+In the previous how to, the example configuration left the guide ready to start the ABI Scan Phase, which is where this guide picks up.
 
 I recommend running the Hyperion PM2 commands using  `screen`  in two windows for PM2 logs and Commands, this gives good visibility of the phases.
 
-```
+```bash
 #Create a new screen session
 > screen -US Hyperion
 
@@ -68,7 +61,7 @@ ctrl-a+d
 
 Below is the initial configuration used for  `eos.config.json` :
 
-```
+```bash
 > cd ~/hyperion-history-api/chains
 
 > cp example.config.json eos.config.json
@@ -217,7 +210,7 @@ It is highly recommended that the SHIP node is connected on LAN.
 
 Initiate the ABI Scan as below:
 
-```
+```bash
 > cd ~/hyperion-history-api
 
 > pm2 start --only eos-indexer --update-env
@@ -227,7 +220,7 @@ Check that the ABI Scan has started and all software components are reachable an
 
 Below is the legend for the Indexer logs output:
 
-```
+```text
 W (Workers) - Number of workers  
 R (Read) - Blocks read from the SHIP node and pushed to the queue  
 C (Consumed) - Blocks consumed from the blocks queue  
@@ -243,7 +236,7 @@ In this phase the  `eos.config.json`  needs to be amended to disable abi_scan_mo
 
 Make sure the following is configured or amended in the  `eos.config.json`  :
 
-```
+```bash
 "enable_caching": false, #DISABLED FOR BULK INDEXING#
 "disable_tx_cache": true, #DISABLED FOR BULK INDEXING#
     
@@ -264,7 +257,7 @@ Make sure the following is configured or amended in the  `eos.config.json`  :
 
 Start the Indexer as below:
 
-```
+```bash
 > cd ~/hyperion-history-api
 
 > pm2 start --only eos-indexer --update-env
@@ -276,14 +269,14 @@ Observe the pm2 logs to ensure documents are being indexed. Queues can be monito
 http://<SERVER IP ADDRESS>:15672
 ```
 
-![image](https://github.com/eosphere/Antelope-Technical-How-To/assets/12730423/fe31d0e4-b0f1-4618-aa26-4a4476893243)
+![image](/images/hyperion_rabbitmq.png)
 
 
 When the first 5000000 blocks are successfully indexed the indexer will stop and a message will be displayed in the pm2 logs advising  `BLOCK RANGE COMPLETED`.
 
 The indexer block range can now be adjusted in the  `eos.config.json`  for the next batch and then the indexer can be started as before. Depending on how your deployment has managed you may want to increase or decrease this range.
 
-```
+```bash
 "start_on": 5000001,#CONTINUE FROM FIRST BATCH#  
 "stop_on": 1100000, #SECOND BLOCK INDEX BATCH#
 ```
@@ -298,7 +291,7 @@ When indexing has been completed to as close to the current chain headblock as p
 
 Make sure the following is configured or amended in the  `eos.config.json`  :
 
-```
+```bash
 "enable_caching": true,
 "disable_tx_cache": false,
     
@@ -309,7 +302,7 @@ Make sure the following is configured or amended in the  `eos.config.json`  :
 
 Start the Indexer as below:
 
-```
+```bash
 > cd ~/hyperion-history-api
 
 > pm2 start --only eos-indexer --update-env
@@ -319,7 +312,7 @@ If your Hyperion indexer was near the headblock this phase shouldn’t take long
 
 If for any reason you need to stop the indexer use the  `pm2 trigger`  option to ensure the current queues are completed before stopping:
 
-```
+```bash
 > pm2 trigger eos-indexer stop
 ```
 
@@ -327,7 +320,7 @@ If for any reason you need to stop the indexer use the  `pm2 trigger`  option to
 
 This final phase is running the Hyperion API which has already been configured in this example’s previous configuration files:
 
-```
+```bash
 "api": {
     "enabled": true,
     "pm2_scaling": 1,
@@ -356,7 +349,7 @@ This final phase is running the Hyperion API which has already been configured i
 
 Start the Hyperion API as below, allowing queries on port :7000
 
-```
+```bash
 > pm2 start --only eos-api --update-env
 ```
 
@@ -364,9 +357,10 @@ Observe the pm2 logs to check for successful API startup, the API can then be qu
 
 In particular make sure  `last_indexed_block`  is equal to  `total_indexed_blocks`  showing that we have indexed all blocks to the current headblock.
 
-```
+```bash
 > curl [http://<SERVER IP ADDRESS>:7000/v2/health](https://eos-testnet.eosphere.io/v2/health)
 
 {"version":"3.3.9-8","version_hash":"b94f99d552a8fe85a3ab2c1cb5b84ccd6ded6af4","host":"eos-testnet.eosphere.io","health":[{"service":"RabbitMq","status":"OK","time":1695700845755},{"service":"NodeosRPC","status":"OK","service_data":{"head_block_num":268459315,"head_block_time":"2023-09-26T04:00:45.500","time_offset":210,"last_irreversible_block":268458983,"chain_id":"1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4"},"time":1695700845710},{"service":"Elasticsearch","status":"OK","service_data":{"active_shards":"100.0%","head_offset":2,"first_indexed_block":2,"last_indexed_block":268459313,"total_indexed_blocks":268459311,"missing_blocks":0,"missing_pct":"0.00%"},"time":1695700845712}],"features":{"streaming":{"enable":true,"traces":true,"deltas":true},"tables":{"proposals":true,"accounts":true,"voters":true},"index_deltas":true,"index_transfer_memo":true,"index_all_deltas":true,"deferred_trx":false,"failed_trx":false,"resource_limits":false,"resource_usage":false},"cached":true,"query_time_ms":0.158,"last_indexed_block":268459318,"last_indexed_block_time":"2023-09-26T04:00:47.000"}
 ```
+
 Congratulations you have now successfully built, configured and are running a **Hyperion Full History Service**, ready to be made publicly available from behind a SSL offloading Load Balancer such as HAProxy.
