@@ -1,28 +1,16 @@
 ---
-title: Build Hyperion Software Components
+title: Build Hyperion Components
 contributors:
-  - { name: Ross Dold, github: https://github.com/eosphere }
+  - { name: Ross Dold (EOSphere), github: eosphere }
 ---
-
-Following on from our Introduction to Hyperion Full History article, this next guide in this series will walk through the process of building each of the Hyperion Software Components.
-
-EOS RIO have an excellent  [Hyperion Documentation Repository](https://hyperion.docs.eosrio.io/)  as well as an  **installation script**  for all components, however in this article a  **manual build**  process will be covered.
-
-Once again this Technical How To series will cover some of the EOS RIO same content and will add operational nuances from a practical stand point and our experience.
-
-[Learn more about EOS RIO Hyperion](https://eosrio.io/hyperion/)
-
-![image](https://github.com/eosphere/Antelope-Technical-How-To/assets/12730423/34e760f0-a199-4061-8fdf-ab47eda2c8d7)
-
-# Build Hyperion Software Components
 
 The Hyperion Full History service is a collection of  **eight**  purpose built EOS RIO software and industry standard applications.
 
-This walk through will install all components excluding the SHIP node on a single Ubuntu 22.04 server, please reference  [Introduction to Hyperion Full History](https://github.com/eosphere/Antelope-Technical-How-To/blob/main/articles/hyperion/intro-to-hyperion-full-history.md) for infrastructure suggestions.
+This walk through will install all components excluding the SHIP node on a single Ubuntu 22.04 server, please reference  [Introduction to Hyperion Full History](./01_intro-to-hyperion-full-history.md) for infrastructure suggestions.
 
 The process for building each of these primary building blocks is covered below:
 
-## **State-History (SHIP) Node**
+## State-History (SHIP) Node
 
 The Hyperion deployment requires access to a fully sync’d State-History Node, the current SHIP recommend version is Leap `v5.0.2`.
 
@@ -32,7 +20,7 @@ To install the latest RabbitMQ currently  `3.13.0`  be sure to check their lates
 
 The summary process is below:
 
-```
+```bash
 > sudo apt update
 
 > sudo apt-get install curl gnupg apt-transport-https -y
@@ -79,7 +67,7 @@ EOF
 
 Our current Hyperion deployments are running on the latest Redis stable version  `v7.2.4`  which is built as below:
 
-```
+```bash
 > sudo apt install lsb-release curl gpg
 
 #Redis Signing Key#  
@@ -99,7 +87,7 @@ Our current Hyperion deployments are running on the latest Redis stable version 
 
 Hyperion requires Node.js v18 , our current Hyperion deployments are running the current LTS  `v18.19.1`  which is built below:
 
-```
+```bash
 #Download and import the Nodesource GPG key#
 > sudo apt update
 
@@ -127,7 +115,7 @@ Hyperion requires Node.js v18 , our current Hyperion deployments are running the
 
 The latest public version is  `5.3.1`  and is built as below:
 
-```
+```bash
 > sudo apt update
 
 #Install PM2#  
@@ -141,7 +129,7 @@ The latest public version is  `5.3.1`  and is built as below:
 
 Currently most of our Hyperion deployments are using Elasticsearch  `8.5-12.x`  with great results, however the current recommended Elasticsearch version is  `8.12.2`  which I expect will work just as well or better. Build the latest Elasticsearch  `8.x`  as below:
 
-```
+```bash
 > sudo apt update
 
 > sudo apt install apt-transport-https
@@ -164,7 +152,7 @@ Currently most of our Hyperion deployments are using Elasticsearch  `8.5-12.x`  
 
 The utilised Kibana version should be paired with the installed Elasticsearch version, the process below will install the current version:
 
-```
+```bash
 > sudo apt update
 
 > sudo apt-get install apt-transport-https
@@ -187,7 +175,7 @@ Currently (March 2024) the most robust and production ready version of Hyperion 
 
 Build Hyperion from  `main`  as below:
 
-```
+```bash
 > git clone https://github.com/eosrio/hyperion-history-api.git
 
 > cd hyperion-history-api
@@ -201,4 +189,4 @@ Build Hyperion from  `main`  as below:
 
 After all Hyperion Software Components are built and provisioned you can now proceed to configuration.
 
-The next  **Hyperion Full History**  guide will walk through the technical configuration of each component.
+The next guide will walk through the technical configuration of each component.

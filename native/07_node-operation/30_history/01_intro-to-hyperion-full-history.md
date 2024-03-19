@@ -1,50 +1,62 @@
 ---
-title: Introduction to Hyperion Full History
+title: Introduction to Hyperion
 contributors:
-  - { name: Ross Dold, github: https://github.com/eosphere }
+  - { name: Ross Dold (EOSphere), github: eosphere }
 ---
 
-_“Hyperion is a full history solution for indexing, storing and retrieving Antelope blockchain’s historical data.”_
+Hyperion is a full history solution for indexing, storing and retrieving Antelope blockchain’s historical data.
+It was built by EOS RIO to be an enterprise grade, performant and highly scalable Antelope History Solution. Their  [documentation](https://hyperion.docs.eosrio.io/)  is excellent and certainly a worthwhile starting point, this Technical How To series will cover some of their same content and add operational nuances from a practical stand point and EOSphere's experience.
 
-Hyperion was built by EOS RIO to be an enterprise grade, performant and highly scalable Antelope History Solution. Their  [documentation](https://hyperion.docs.eosrio.io/)  is excellent and certainly a worthwhile starting point, this Technical How To series will cover some of their same content and add operational nuances from a practical stand point and our experience.
+[Learn more about EOS RIO Hyperion](https://eosrio.io/hyperion/)
 
-## Hyperion Software Components
+![image](/images/hyperion.png)
+
+## Components
 
 The Hyperion Full History service is a collection of purpose built EOS RIO software and industry standard applications. The eight primary building blocks are the following:
 
-**EOS RIO Hyperion Indexer and API**\
-The  **Indexer**  processes data sourced from an Antelope Leap software State-History (SHIP) node and enables it to be indexed in Elasticsearch. The Hyperion Indexer also makes use of the Antelope Binary to JSON conversion functionality using ABI’s called  [abieos](https://github.com/EOSIO/abieos). Deserialisation performance is greatly improved by using abieos C++ code through EOS RIO’s own NPM package  [**node-abieos**](https://github.com/eosrio/node-abieos)  that provides a Node.js native binding.
+#### EOS RIO Hyperion Indexer and API
+
+The  **Indexer**  processes data sourced from an Antelope Leap software State-History (SHIP) node and enables it to be indexed in Elasticsearch. The Hyperion Indexer also makes use of the Antelope Binary to JSON conversion functionality using ABI’s called  [abieos](https://github.com/AntelopeIO/abieos). Deserialisation performance is greatly improved by using abieos C++ code through EOS RIO’s own NPM package  [**node-abieos**](https://github.com/eosrio/node-abieos)  that provides a Node.js native binding.
 
 The  **API**  is the front end for client queries, it responds to V2 or legacy V1 requests and finds data for these responses by directly querying the Elasticsearch cluster.
 
-**Antelope Leap Software State-History (SHIP) Node**\
+#### Antelope Leap Software State-History (SHIP) Node
+
 The State-History plugin is used by nodeos to capture historical data about the blockchain state and store this data in an externally readable flat file format. This readable file is accessed by the Hyperion Indexer.
 
-**RabbitMQ**\
+#### RabbitMQ
+
 [RabbitMQ](https://www.rabbitmq.com/)  is an open source message broker that is used by Hyperion to queue messages and transport data during the multiple stages of indexing to Elasticsearch.
 
-**Redis**\
+#### Redis
+
 [Redis](https://redis.io/)  is an in-memory data structure store and is used by Hyperion as a predictive temporary database cache for HTTP API client queries and as a Indexer transaction cache.
 
-**Node.js**\
+#### Node.js
+
 The Hyperion indexer and API are  [Node.js](https://nodejs.org/en/)  applications and of course then use Node.js as an open-sourced back-end JavaScript runtime environment.
 
-**PM2**\
+#### PM2
+
 [PM2](https://pm2.keymetrics.io/)  is a process manager for Node.js and used to launch and run the Hyperion Indexer and API.
 
-**Elasticsearch Cluster**\
+#### Elasticsearch Cluster
+
 [Elasticsearch](https://www.elastic.co/)  is a search engine based on the Lucene library, it is used by Hyperion to store and retrieve all indexed data in highly performant schema-free JSON document format.
 
-**Kibana**\
+#### Kibana
+
 [Kibana](https://www.elastic.co/kibana/)  is a component of the Elastic Stack, a dashboard that enables visualising data and simplified operation and insight of an Elasticsearch cluster. All Hyperion Indexed data resides in the Elasticsearch database, Kibana gives a direct view of this data and the health of the Elasticsearch cluster.
 
 ## Hyperion Topology
 
 The Topology of your Hyperion deployment depends on your history services requirement and the network you intend to index. Whether it’s Public/Private, Mainnet/Testnet or Full/Partial History.
 
-This article will discuss EOS Mainnet with Full History, in relation to what currently works in the EOSphere Public Service Offerings. Testnets and Private networks generally have far lower topology and resource requirements.
+This guide will discuss EOS Mainnet with Full History. Testnets and Private networks generally have far lower topology and resource requirements.
 
-**EOS Mainnet**\
+**EOS Mainnet**
+
 EOSphere originally started with a single server running all Hyperion Software Components except for the EOS State-History Node. However a challenge was discovered in relation to Elasticsearch JVM heap size when the EOS network utilisation grew and our API became well used.
 
 JVM Heap size is the amount of memory allocated to the Java Virtual Machine of an Elasticsearch node, the more heap available the more cache memory available for indexing and search operations. If it’s too low Hyperion Indexing will be slow and search queries will be very latent. If the JVM heap size is more than 32GB (usually lower than this) on an Elasticsearch node, the threshold for compressed ordinary object pointers (OOP) will be exceeded and JVM will stop using compression. This will be exceptionally inefficient in regards to memory management and the node will consume vastly more memory.
