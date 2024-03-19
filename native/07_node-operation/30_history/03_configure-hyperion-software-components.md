@@ -1,29 +1,13 @@
 ---
-title: Configure Hyperion Software Components
+title: Configure Hyperion Components
 contributors:
-  - { name: Ross Dold, github: https://github.com/eosphere }
+  - { name: Ross Dold (EOSphere), github: eosphere }
 ---
-
-Following on from our Build Hyperion Software Components article, this next guide in the series will walk through the configuration of each of these components.
-
-EOS RIO have an excellent  [Hyperion Documentation Repository](https://hyperion.docs.eosrio.io/)  including details on how to configure all Hyperion Software Components, however in this article the manual configuration process for Hyperion using Elasticsearch 8.x and associated software components will be covered.
-
-Once again this Technical How To series will cover some of EOS RIO’s same content and will add operational nuances from a practical stand point and our experience.
-
-[Learn more about EOS RIO Hyperion](https://eosrio.io/hyperion/)
-
-![image](https://github.com/eosphere/Antelope-Technical-How-To/assets/12730423/34e760f0-a199-4061-8fdf-ab47eda2c8d7)
-
-# Configure Hyperion Software Components
-
-The Hyperion Full History service is a collection of  **eight**  purpose built EOS RIO software and industry standard applications.
 
 This configuration walk through example has all software components excluding the SHIP node installed on a single Ubuntu 22.04 server as per "Build Hyperion Software Components".
 This example server is also equipped with 16GB of RAM and a modern 8 Core 4Ghz CPU, suitable for running Full History on a **Testnet**. It is also recommend to disable system Swap space.
 
-Please reference "Introduction to Hyperion Full History" for infrastructure suggestions especially when considering providing the service on an Antelope Mainnet.
-
-The configuration process for each of these primary building blocks is covered below:
+Please reference [Introduction to Hyperion](01_intro-to-hyperion-full-history.md) for infrastructure suggestions especially when considering providing the service on an Antelope Mainnet.
 
 ## State-History (SHIP) Node
 
@@ -33,7 +17,7 @@ The Hyperion deployment requires access to a fully sync’d State-History Node.
 
 Follow the configuration process below:
 
-```
+```bash
 #Enable the Web User Interface
 > sudo rabbitmq-plugins enable rabbitmq_management
 
@@ -64,7 +48,7 @@ To handle this challenge it is important to set the memory policy to  **allkeys-
 
 Configure as below:
 
-```
+```bash
 > sudo nano /etc/redis/redis.conf
 
 ###GENERAL###
@@ -82,14 +66,14 @@ maxmemory-policy allkeys-lru
 
 To view Redis memory config and statistics:
 
-```
+```bash
 > redis-cli  
 -> info memory
 ```
 
 Debug Redis issues in the logs:
 
-```
+```bash
 > sudo tail -f /var/log/redis/redis-server.log
 ```
 
@@ -97,7 +81,7 @@ Debug Redis issues in the logs:
 
 Nothing to configure here, however ensure you are running Node.js v18
 
-```
+```bash
 > node -v  
 v18.x.x
 ```
@@ -106,7 +90,7 @@ v18.x.x
 
 Nothing to configure here, check that you are running the latest PM2 version`5.3.1`
 
-```
+```bash
 > pm2 --version  
 5.3.1
 ```
@@ -115,7 +99,7 @@ Nothing to configure here, check that you are running the latest PM2 version`5.3
 
 Configure Elasticsearch 8.x as below:
 
-```
+```bash
 > sudo nano /etc/elasticsearch/elasticsearch.yml
 
 cluster.name: <YOUR CLUSTER NAME>
@@ -127,7 +111,7 @@ cluster.initial_master_nodes: ["<LAN IP ADDRESS>"]
 
 Additional to the above configuration it can also be advantageous to change the Elasticsearch disk usage watermark (80% is default high) and the maximum number of shards per node (1000 is the default shard maximum) depending on your deployment.
 
-```
+```bash
 > sudo nano /etc/elasticsearch/elasticsearch.yml  
   
 cluster.routing.allocation.disk.threshold_enabled: true  
@@ -139,7 +123,7 @@ cluster.max_shards_per_node: 3000
 
 Configure Java Virtual Machine settings as below, don’t exceed the OOP threshold of 31GB, this example will use 8GB suitable for Hyperion on an Antelope Testnet and 50% of the servers memory:
 
-```
+```bash
 > sudo nano /etc/elasticsearch/jvm.options
 
 -Xms8g  
@@ -148,16 +132,16 @@ Configure Java Virtual Machine settings as below, don’t exceed the OOP thresho
 
 Allow the Elasticsearch service to lock the required jvm memory on the server
 
-```
+```bash
 > sudo systemctl edit elasticsearch
 
 [Service]  
 LimitMEMLOCK=infinity
 ```
 
-Systemctrl configuration below:
+`Systemctrl` configuration below:
 
-```
+```bash
 #Reload Units
 > sudo systemctl daemon-reload
 
@@ -170,13 +154,13 @@ Systemctrl configuration below:
 
 Check that Elasticsearch is running:
 
-```
+```bash
 > sudo systemctl status elasticsearch.service
 ```
 
 Debug Elasticsearch issues in the logs:
 
-```
+```bash
 > sudo tail -f /var/log/elasticsearch/gc.log
 
 > sudo tail -f /var/log/elasticsearch/<YOUR CLUSTER NAME>.log
@@ -184,7 +168,7 @@ Debug Elasticsearch issues in the logs:
 
 Test the Rest API which by default will require access to the Elasticsearch cluster certificate and run as root for access to the cert:
 
-```
+```bash
 > sudo su -
 
 root@>  curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://<LAN IP Address>:9200
@@ -220,15 +204,15 @@ _Your results may vary, but it has been my experience that the surest way to ens
 
 Configure Kibana as below:
 
-```
+```bash
 > sudo nano /etc/kibana/kibana.yml
 
 server.host: "0.0.0.0"
 ```
 
-Systemctrl configuration below:
+`Systemctrl` configuration below:
 
-```
+```bash
 #Reload Units  
 > sudo systemctl daemon-reload#Start Kibana  
 
@@ -239,7 +223,7 @@ Systemctrl configuration below:
 
 Check that Kibana is running:
 
-```
+```bash
 > sudo systemctl status kibana.service
 ```
 
@@ -251,7 +235,7 @@ When xpack encryption for HTTP is disabled, it then becomes necessary to set a p
 
 Generate and copy an enrolment token on the  **Elasticsearch Server**  to be used for Kibana:
 
-```
+```bash
 > sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
 ```
 
@@ -261,13 +245,13 @@ Connect to the Kibana Web User Interface using a browser and paste the access to
 http://<SERVER IP ADDRESS>:5601/
 ```
 
-![image](https://github.com/eosphere/Antelope-Technical-How-To/assets/12730423/38a7b0c2-2a93-41db-abae-d3dfe28a94af)
+![image](/images/hyperion_kibana.png)
 
 Enter Kibana Enrollment Token
 
 Obtain the Kibana verification code from the Kibana server command line and enter in the Kibana GUI:
 
-```
+```bash
 > sudo /usr/share/kibana/bin/kibana-verification-code  
 Your verification code is:  XXX XXX
 ```
@@ -278,13 +262,13 @@ Kibana is now connected to Elasticsearch, you are able to log in with username �
 
 The kibana_system account will need to be enabled with a password in Elasticsearch, copy the password output:
 
-```
+```bash
 > sudo su - root@> /usr/share/elasticsearch/bin/elasticsearch-reset-password -u kibana_system
 ```
 
 Then add the credentials + host details to the Kibana config and if necessary HASH# out the SSL automatically generated config at the bottom of the .yml file:
 
-```
+```bash
 > sudo nano /etc/kibana/kibana.yml
 
 elasticsearch.hosts: ["http://<SERVER IP ADDRESS>:9200"]
@@ -295,7 +279,7 @@ elasticsearch.password: "<PASSWORD>"
 
 Disable xpack security for HTTP API Clients in Elasticsearch:
 
-```
+```bash
 #Enable encryption for HTTP API client connections, such as Kibana, Logstash, and Agents
 
 xpack.security.http.ssl:  
@@ -304,7 +288,7 @@ xpack.security.http.ssl:
 
 Finally restart Elasticsearch and Kibana:
 
-```
+```bash
 > sudo systemctl restart elasticsearch.service
 
 > sudo systemctl restart kibana.service
@@ -312,7 +296,7 @@ Finally restart Elasticsearch and Kibana:
 
 Debug Kibana issues in the system logs:
 
-```
+```bash
 > tail -f /var/log/syslog
 ```
 
@@ -326,7 +310,7 @@ There are two .json files necessary to run the Hyperion Indexer and API.  `conne
 
 The below example  `connections.json`  is configured for an Antelope Testnet, amend the config and network for your own deployment. This config is using a user and password to connect Elasticsearch with HTTP.
 
-```
+```bash
 > cd ~/hyperion-history-api
 
 > cp example-connections.json connections.json
@@ -377,11 +361,11 @@ The  `.config.json`  file is named to reflect the chains name in this case  `eos
 
 There are three phases when starting a new Hyperion Indexer, the first phase is what is called the “ABI Scan” which is the default mode in the software provided  `example.config.json`.
 
-The below config (an EOSphere server) will prepare this example to be ready to run the ABI Scan phase of Indexing which will be covered in the next article.
+The below config (an EOSphere server) will prepare this example to be ready to run the ABI Scan phase of Indexing which will be covered in the next guide.
 
 Configure as below, take note of the **#UPDATE#** parameters
 
-```
+```bash
 > cd ~/hyperion-history-api/chains
 
 > cp example.config.json eos.config.json
@@ -527,4 +511,4 @@ Configure as below, take note of the **#UPDATE#** parameters
 }
 ```
 
-All configuration is now ready to move onto running the Hyperion Indexer and API for the first time, this will be covered in the next  **Hyperion Full History**  guide.
+All configuration is now ready to move onto running the Hyperion Indexer and API for the first time, this will be covered in the next guide.
