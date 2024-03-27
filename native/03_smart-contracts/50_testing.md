@@ -2,13 +2,6 @@
 title: Testing
 ---
 
-<!-- translation-ignore -->
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<!-- end-translation-ignore -->
-
 The easiest way to test EOS Smart Contracts is using VeRT (VM emulation RunTime for WASM-based blockchain contracts).
 
 It is a JavaScript library that allows you to run EOS smart contracts in a Node.js environment.
