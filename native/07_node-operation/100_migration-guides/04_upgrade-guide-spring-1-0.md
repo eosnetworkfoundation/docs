@@ -3,7 +3,7 @@ title: Spring 1.0 Upgrade Guide
 ---
 
 ## Summary
-This upgrade guide covers the steps for upgrading the Spring binary from a Leap v5 binary. The Node Operator's guide [Switching Over To Savanna Consensus Algorithm](switch-to-savanna.md) covers the steps needed to upgrade the consensus algorithm. Node Producers will be interested in [Guide to Managing Finalizer Keys](/native/advanced-topics/managing-finalizer-keys.md)
+This upgrade guide covers the steps for upgrading the Spring binary from a Leap v5 binary. The Node Operator's guide [Switching Over To Savanna Consensus Algorithm](switch-to-savanna) covers the steps needed to upgrade the consensus algorithm. Node Producers will be interested in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
 
 ## HTTP Changes
 
@@ -88,7 +88,7 @@ State history log file compression has been disabled. Consumers with state histo
 ## New & Modified Options
 
 ### New config options
-- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](/native/advanced-topics/managing-finalizer-keys.md).
+- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
 - `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
 - `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
 
@@ -98,4 +98,4 @@ The Savanna Consensus algorithm utilized by Spring v1 separates the roles of pub
 - add `signature-provided` to configuration with the generated key(s)
 - register a single key on chain with the `regfinkey` action
 
-Additional Documentation may be found in [Guide to Managing Finalizer Keys](/native/advanced-topics/managing-finalizer-keys.md)
+Additional Documentation may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)

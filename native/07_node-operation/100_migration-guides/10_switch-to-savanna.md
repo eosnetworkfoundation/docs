@@ -38,7 +38,7 @@ The Savanna Consensus algorithm utilized by Spring v1 separates the roles of pub
 - restart nodeos with the new `signature-provided` config
 - register a single key on chain with the `regfinkey` action
 
-Additional information on Finalizer Keys may be found in [Guide to Managing Finalizer Keys](/native/advanced-topics/managing-finalizer-keys.md)
+Additional information on Finalizer Keys may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
 
 ### Confirmation of Consensus Algorithm
 The action `switchtosvnn`, initiates the change to the Savanna Consensus Algorithm, and must be called by the owner of the system contracts. On EOS Mainnet this would be the `eosio` user. This is event is called only once per chain.
