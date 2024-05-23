@@ -39,7 +39,7 @@ Proof of Possession: SIG_BLS_ZPZZbZIZukZksBbZ9Z9Zfysz9zZsy9z9S9V99Z-9rZZe99vZUzZ
 ```
 
 ### Add Finalizer Keys to Config
-You may add several finalizer keys to configuration. **NOTE** Instances of nodeos must be restarted to pick up the new configuration options. Keys are added to configuration with the `signature-provided` option. These keys may be added via the command line or placed into a configuration file. Placing the finalizer keys into a configuration file would look like this.
+You may add several finalizer keys to configuration. **NOTE** Instances of nodeos must be restarted to pick up the new configuration options. Keys are added to configuration with the `signature-provider` option. These keys may be added via the command line or placed into a configuration file. Placing the finalizer keys into a configuration file would look like this.
 `signature-provider = PUBLIC_KEY=KEY:PRIVATE_KEY`
 For example
 `signature-provider = PUB_BLS_SvLa9z9kZoT9bzZZZ-Zezlrst9Zb-Z9zZV9olZazZbZvzZzk9r9ZZZzzarUVzbZZ9Z9ZUzf9iZZ9P_kzZZzGLtezL-Z9zZ9zzZb9ZitZctzvSZ9G9SUszzcZzlZu-GsZnZ9I9Z=KEY:PVT_BLS_9-9ziZZzZcZZoiz-ZZzUtz9ZZ9u9Zo9aS9BZ-o9iznZfzUZU`

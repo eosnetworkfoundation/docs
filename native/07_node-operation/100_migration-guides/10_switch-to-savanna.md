@@ -34,8 +34,8 @@ The protocol feature `INSTANT_FINALITY` depends on the following protocol featur
 ### Generate and Registering Finalizer Keys
 The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers. There are three steps to creating finalizer keys
 - generate your key(s) using `spring-utils`
-- add `signature-provided` to configuration with the generated key(s)
-- restart nodeos with the new `signature-provided` config
+- add `signature-provider` to configuration with the generated key(s)
+- restart nodeos with the new `signature-provider` config
 - register a single key on chain with the `regfinkey` action
 
 Additional information on Finalizer Keys may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
