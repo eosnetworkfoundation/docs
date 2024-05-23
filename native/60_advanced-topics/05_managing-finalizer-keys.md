@@ -95,8 +95,8 @@ To see all finalizer keys including non-active keys check the `finalizers` table
 `cleos get table eosio eosio finalizers`
 
 ## New Configuration Options  
-The configuration options specific to managing finality. It is recommended to use the default values and not set custom configurations. 
+The configuration options specific to managing finality. It is recommended to use the default values and not set custom configurations.
 
-- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](/native/advanced-topics/managing-finalizer-keys.md).
+- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file.
 - `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
 - `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
