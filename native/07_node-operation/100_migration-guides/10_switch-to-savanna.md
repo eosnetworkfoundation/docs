@@ -24,7 +24,7 @@ Switching to Savanna will required the latest version of Spring Software and the
 
 ### Protocol Features Dependencies
 The reference for protocol features with their corresponding hashes may be found in [bios-boot-tutorial](https://github.com/AntelopeIO/spring/blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py).
-The protocol feature `INSTANT_FINALITY` depends on the following protocol features being active_schedule
+The protocol feature `SAVANNA` depends on the following protocol features being active_schedule
 - `WTMSIG_BLOCK_SIGNATURES`
 - `BLS_PRIMITIVES2`
 - `DISALLOW_EMPTY_PRODUCER_SCHEDULE`
