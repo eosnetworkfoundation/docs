@@ -7,6 +7,13 @@ Review [Introduction to Finalizers and Voting](introduction_finalizers_voting) f
 ## Recommended Setup
 The recommendation is to generate, and register several finalizer keys. It is recommended to have one finalizer key for each instance of a producer node. A producer may have only one active finalizer key. When the keys are generated ahead of time, and included in the configuration, only an on-chain action is needed to use a new finalizer key.
 
+### Takeaways
+- It is always safe to activate a new BLS finalizer key.
+- Do not reuse BLS finalizer keys between hosts.
+- Generate unique BLS finalizer keys for each nodeos instance.
+- Keys are activated with an on-chain action, *keys must be pre-generated and registered*.
+- `safety.dat` must contain the full voting history for the BLS finalizer key in use.  
+
 ### Multiple Instances of Nodeos
 Consider the scenario where there are two hosts running nodeos. One host contains the primary block producer, the other host has the backup block producer. The recommendation is each instance of nodeos (primary producer and backup-producer) have distinct BLS finalizer keys. This requires creating and registering two BLS finalizer key pairs. The signature provider for each nodeos will reference one and only one BLS key. It is recommended that the signature provider in the primary producer node reference a different BLS finalizer key from the signature provider on the backup producer node.
 
@@ -15,7 +22,7 @@ When switching to the backup node, run the usual scripts, and in addition activa
 If the same BLS finalizer key is used when switching between producers the voting history will not be complete. As a result the associated producer will vote for a different branch of the blockchain, out of sync with the correct state of the blockchain.
 
 ### Multiple Producers on a Single Instance
-Consider the scenario when there are multiple producers on a single instance of nodeos. The recommendation is to create, register, and activate unique and distinct finalizer keys for each producer.
+Consider the scenario when there are multiple producers on a single instance of nodeos. The recommendation is to create, register, and activate a single finalizer keys for the nodeos instance. Only one producer needs to register the finalizer key.
 
 ### Intermediate Relay Nodes
 Setting `vote-threads` on a nodeos instance is expensive, consuming CPU and adding to network traffic. For this reason, `vote-threads` is set to a non-zero on node producer instances, but set to zero on all other instances.
@@ -139,5 +146,5 @@ Review [Introduction to Finalizers and Voting](introduction_finalizers_voting) f
 - Q: When I want to switch producer hosts, can I keep using the same BLS Finalizer Key, and copy over my `safety.dat` to the new host?
 - A: Yes this would work, but it is not recommended. Voting is continuous, and using a new BLS key takes an on-chain action. Therefore, it is best to switch over to a new BLS key assuming that results in less voting downtime.
 
-- Q: Why use BLS keys, why not re-use the existing producer keys.
+- Q: Why use BLS keys, why not re-use the existing producer keys?
 - A: BLS signatures are very cheap to aggregate together into a single message, and this property makes them a good choice for aggregating together votes from many different finalizers.

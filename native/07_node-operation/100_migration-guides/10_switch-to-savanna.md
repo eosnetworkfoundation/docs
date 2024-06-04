@@ -16,7 +16,7 @@ There are four steps
 4. `eosio` user calls `switchtosvnn` action
 
 ### Antelope Software Requirements
-Switching to Savanna will required the latest version of Spring Software and the EOS System Contracts. The specific versions will be filled at a later date.
+Switching to Savanna will required the latest version of Spring Software and the EOS System Contracts.
 - [Spring v1.0.0](https://github.com/AntelopeIO/spring/releases)
 - [EOS System Contracts v3.5.0](https://github.com/eosnetworkfoundation/eos-system-contracts/releases)
 
@@ -38,7 +38,7 @@ The Savanna Consensus algorithm utilized by Spring v1 separates the roles of pub
 - restart nodeos with the new `signature-provider` config
 - register a single key on chain with the `regfinkey` action
 
-Additional information on Finalizer Keys may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
+Additional information on Finalizer Keys may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys) and [Introduction to Finalizers and Voting](introduction_finalizers_voting)
 
 ### Confirmation of Consensus Algorithm
 The action `switchtosvnn`, initiates the change to the Savanna Consensus Algorithm, and must be called by the owner of the system contracts. On EOS Mainnet this would be the `eosio` user. This is event is called only once per chain.
