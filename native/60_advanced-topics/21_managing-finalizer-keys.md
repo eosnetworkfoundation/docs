@@ -8,7 +8,7 @@ Review [Introduction to Finalizers and Voting](introduction_finalizers_voting) f
 The recommendation is to generate, and register several finalizer keys. It is recommended to have one finalizer key for each instance of a producer node. A producer may have only one active finalizer key. When the keys are generated ahead of time, and included in the configuration, only an on-chain action is needed to use a new finalizer key.
 
 ### Takeaways
-- It is always safe to activate a new BLS finalizer key. 
+- It is always safe to activate a new BLS finalizer key.
 - Do not reuse BLS finalizer keys between hosts.
 - Generate unique BLS finalizer keys for each nodeos instance.
 - Keys are activated with an on-chain action, *keys must be pre-generated and registered*.
