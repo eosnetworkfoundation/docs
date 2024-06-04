@@ -12,7 +12,7 @@ There are four steps
    - First activate protocol feature `BLS_PRIMITIVES2`
    - See section below on [Generate and Registering Finalizer Keys](#generate-and-registering-finalizer-keys)
 3. Activate required protocol features
-   - Activate `INSTANT_FINALITY` protocol feature
+   - Activate `SAVANNA` protocol feature
 4. `eosio` user calls `switchtosvnn` action
 
 ### Antelope Software Requirements

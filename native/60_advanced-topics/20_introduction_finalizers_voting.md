@@ -2,6 +2,13 @@
 title: Introduction to Finalizers and Voting
 ---
 
+## Takeaways
+- Do not share BLS keys between hosts
+- It is always safe to activate new, never used BLS keys
+- Voting is continuous, try to keep your producer active between rounds
+- Finality is a separate role tied to the authority of the top 21 block producers
+
+## Introduction to Finalizers and Voting
 The EOS blockchain bundles together transactions into blocks, and working across 21 producers comes to a consensus on those blocks before marking them as irreversible. EOS continues to advance its blockchain technology, and to improves liveness and safety of the EOS blockchain, has added Finalizers in Spring v1.0. Finalizers enable the blockchain to mark blocks as irreversible seconds after they are published. This improvement in time to finality does not come at the cost of safety. Marking a block as irreversible continues to require agreement from 15 out of the top 21 producers.
 
 ## Finalizer
@@ -36,8 +43,7 @@ Unlike block publishing, for the top 21 block producers, voting is continuous. T
 
 For this reason it is recommended that each producer instance uses its own unique BLS Key, and activates the BLS Key when going online. There are many strategies for [managing BLS Keys](managing-finalizer-keys).
 
-## Takeaways
-- Do not share BLS keys between hosts
-- It is always safe to activate new, never used BLS keys
-- Voting is continuous, try to keep your producer active between rounds
-- Finality is a separate role tied to the authority of the top 21 block producers
+### Voting and Peering
+All the nodeos instance from the source of the votes, to the receiver of the votes, along with any intermediate nodes must be configured to send, receive, and propagate votes. This is accomplished by enabling the vote-threading pools, configuring `vote-threads` to a value greater than zero. By default `vote-threads` is greater than zero on all block production nodes. Therefore, when two finalizers are directly peered, votes are sent and received with no additional configuration changes needed.
+
+When nodeos instances are not directly connected, and an intermediate nodeos instance is present, the intermediate nodes must update their configuration to enable vote-threading. Failure to enable vote-threading on intermediate nodes will prevent the finalizer votes associated your producer from reaching peers.
