@@ -12,7 +12,7 @@ There are four steps
    - First activate protocol feature `BLS_PRIMITIVES2`
    - See section below on [Generate and Registering Finalizer Keys](#generate-and-registering-finalizer-keys)
 3. Activate required protocol features
-   - Activate `INSTANT_FINALITY` protocol feature
+   - Activate `SAVANNA` protocol feature
 4. `eosio` user calls `switchtosvnn` action
 
 ### Antelope Software Requirements
@@ -24,7 +24,7 @@ Switching to Savanna will required the latest version of Spring Software and the
 
 ### Protocol Features Dependencies
 The reference for protocol features with their corresponding hashes may be found in [bios-boot-tutorial](https://github.com/AntelopeIO/spring/blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py).
-The protocol feature `INSTANT_FINALITY` depends on the following protocol features being active_schedule
+The protocol feature `SAVANNA` depends on the following protocol features being active_schedule
 - `WTMSIG_BLOCK_SIGNATURES`
 - `BLS_PRIMITIVES2`
 - `DISALLOW_EMPTY_PRODUCER_SCHEDULE`

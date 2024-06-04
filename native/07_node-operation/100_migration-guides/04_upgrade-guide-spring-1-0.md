@@ -92,6 +92,9 @@ State history log file compression has been disabled. Consumers with state histo
 - `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
 - `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
 
+### Set Vote-Threads
+Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have a value > 0 for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is 0 votes are not propagated.
+
 ### Finalizer Keys
 The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers. There are three steps to creating finalizer keys
 - generate your key(s) using `spring-utils`
