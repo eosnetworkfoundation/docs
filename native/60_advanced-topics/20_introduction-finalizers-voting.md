@@ -3,13 +3,14 @@ title: Introduction to Finalizers and Voting
 ---
 
 ## Takeaways
-- Do not share BLS keys between hosts
-- It is always safe to activate new, never used BLS keys
-- Voting is continuous, try to keep your producer active between rounds
-- Finality is a separate role tied to the authority of the top 21 block producers
+- Finality is a separate role tied to the authority of the top 21 block producers.
+- Voting is continuous, try to keep your producer active between rounds.
+- There is a voting history file.
+- It is always safe to activate new, never used BLS keys.
+- Be aware of vote routing topology and activate vote threads to relay votes.
 
 ## Introduction to Finalizers and Voting
-The EOS blockchain bundles together transactions into blocks, and working across 21 producers comes to a consensus on those blocks before marking them as irreversible. EOS continues to advance its blockchain technology, and to improves liveness and safety of the EOS blockchain, has added Finalizers in Spring v1.0. Finalizers enable the blockchain to mark blocks as irreversible seconds after they are published. This improvement in time to finality does not come at the cost of safety. Marking a block as irreversible continues to require agreement from 15 out of the top 21 producers.
+The EOS blockchain bundles together transactions into blocks, and working across 21 producers comes to a consensus on those blocks before marking them as irreversible. EOS continues to advance its blockchain technology, has added Finalizers in Spring v1.0. Finalizers enable the blockchain to mark blocks as irreversible seconds after they are published. This improvement in time to finality does not come at the cost of safety. Marking a block as irreversible continues to require agreement from 15 out of the top 21 producers.
 
 ## Finalizer
 In Spring v1.0, Finalizers are tightly coupled to the role of the block producer and publisher. Only the top 21 block producers may vote to advance finality. The top block producers are determined by the votes they receive from community members who stake their EOS. This distributed proof of stake remains unchanged and continues the distributed governance model that has worked so well for EOS. Starting with Spring v1.0, block producers have the authority to run two separate functions.
@@ -22,12 +23,12 @@ To lower the time to irreversible blocks, also know as time to finality, produce
 The top block producers alternate publishing blocks on a schedule determined by their accumulated votes. This publishing period is called a round. If a publisher is unavailable during its round, that publisher is skipped over and another publisher takes their place.
 
 ### Voting Overview
-Unlike the Block Publishing process, voting does not have a schedule. There are no rounds. The top 21 block producers submit votes on every block. Agreement on the state of the chain from 15 of the top 21 is required before a block may be marked as irreversible. Unlike the Block Publishing, there is no schedule for voting. Currently there is no penalty if a block producer's vote is not included as part of the finality calculation. If the EOS blockchain fails to get votes, or those votes disagree on the state of the chain, finality will not advance, and the last irreversible block will remain unchanged.
+Unlike the Block Publishing process, voting does not have a schedule. There are no rounds. The top 21 block producers submit votes on every block. Agreement on the state of the chain from 15 of the top 21 is required before a block may be marked as irreversible. Currently there is no penalty if a block producer's vote is not included as part of the finality calculation. If the EOS blockchain fails to get votes, or those votes disagree on the state of the chain, finality will not advance, and the last irreversible block will remain unchanged.
 
 Votes include a cryptographically signed digest for the Merkle tree representing the current state of the blockchain. As the chain adds transactions and changes those digest will change. To quickly and efficiently vote each Finalizer has a `safety.dat` file which stores this history of votes, and the digest that have been voted on. The digest stored in the history file is used as a reference point for calculating future digests from incoming blocks and transactions.
 
 ### BLS Keys and Signature
-Voting creates signed digests using BLS Keys. BLS signatures are very cheap to aggregate together into a single message, and this property makes them a good choice for aggregating together votes from many different finalizers. The property also makes it cheap to support a large set of BLS signatures, and allows block producers to leverage multiple BLS keys.
+Voting creates signed digests using BLS Keys. BLS signatures are very cheap to aggregate together into a single message, and this property makes them a good choice for aggregating together votes from many different finalizers. The property also makes it cheap to support a large set of BLS signatures.
 
 ### Keys and Voting History
 There is an implicit link between the BLS Key used to sign votes, and the voting history stored in `safety.dat`.
