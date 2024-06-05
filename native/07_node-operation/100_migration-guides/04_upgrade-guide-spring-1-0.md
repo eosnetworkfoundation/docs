@@ -5,6 +5,42 @@ title: Spring 1.0 Upgrade Guide
 ## Summary
 This upgrade guide covers the steps for upgrading the Spring binary from a Leap v5 binary. The Node Operator's guide [Switching Over To Savanna Consensus Algorithm](switch-to-savanna) covers the steps needed to upgrade the consensus algorithm. Node Producers will be interested in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
 
+## How To Upgrade 
+- do snapshot on old version of Leap
+- shutdown leap
+- build binaries or get deb
+- install binaries
+- start spring binaries from snapshot
+- wait to catchup to head
+  - to get head `cleos --url PEER get info`
+  - to get your current state `cleos --url ME get info`
+- take new v7 snapshot on spring 
+
+## Node Producers
+Ignore, these additions unless you are a block producer. Exchanges don't need to be concerned with with items.
+
+### Producer Threads Removed
+As of Spring v1, node operators MUST ensure the following parameters are NOT set in config.ini to allow nodeos to start:
+- `producer-threads`
+
+The configuration option `producer-threads` has been remove to enable greater efficiency and lower latencies. Some of the work has been offloaded to `chain-threads` and block producers may experiment with increasing the later threading configuration.
+
+### New config options
+- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
+- `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
+- `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
+
+### Set Vote-Threads
+Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have a value > 0 for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is 0 votes are not propagated.
+
+### Finalizer Keys
+The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers. There are three steps to creating finalizer keys
+- generate your key(s) using `spring-utils`
+- add `signature-provider` to configuration with the generated key(s)
+- register a single key on chain with the `regfinkey` action
+
+Additional Documentation may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
+
 ## HTTP Changes
 
 ### Updated Error Codes
@@ -69,36 +105,13 @@ An example response with the limited filled fields looks something like,
 }
 ```
 
-## Deprecations & Removals
-
-### Producer Threads Removed
-As of Spring v1, node operators MUST ensure the following parameters are NOT set in config.ini to allow nodeos to start:
-- `producer-threads`
-
-The configuration option `producer-threads` has been remove to enable greater efficiency and lower latencies. Some of the work has been offloaded to `chain-threads` and block producers may experiment with increasing the later threading configuration.
-
-## Updates and Changes
-
 ### Snapshot Format
 Spring v1 uses a new v7 snapshot format. The new v7 snapshot format is safe to use before, during, and after the switch to the Savanna Consensus Algorithm. Previous versions of Leap will not be able to use the v7 snapshot format.
 
 ### SHiP
 State history log file compression has been disabled. Consumers with state history will need to put together their own compression.
 
-## New & Modified Options
 
-### New config options
-- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
-- `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
-- `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
 
-### Set Vote-Threads
-Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have a value > 0 for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is 0 votes are not propagated.
 
-### Finalizer Keys
-The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers. There are three steps to creating finalizer keys
-- generate your key(s) using `spring-utils`
-- add `signature-provider` to configuration with the generated key(s)
-- register a single key on chain with the `regfinkey` action
 
-Additional Documentation may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
