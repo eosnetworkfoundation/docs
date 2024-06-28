@@ -13,6 +13,7 @@ This upgrade guide covers the steps for upgrading a node to the Spring binary fr
 - [State logs no longer compressed](#state-log-history-compression-disabled)
 - [Added BLS Finalizer Keys to support new consensus algorithm](#finalizer-keys)
 - [New Finalizer Configuration Options](#new-finalizer-configuration-options)
+- [New State History Configuration Options](#new-state-history-configuration-options)
 - [New Vote-Threads Configuration Option](#new-vote-threads-option)
 
 ## Upgrade Steps
@@ -128,10 +129,13 @@ Spring v1 uses a new v7 snapshot format. The new v7 snapshot format is safe to u
 ### State Log History Compression Disabled
 State history log file compression has been disabled. Consumers with state history will need to put together their own compression.
 
-### New Finalizer Configuration Options
-- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
+### New State History Configuration Options
+Most node operators will never need to set these configuration options. If you are running State History you will need to set `finality-data-history`.
 - `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
-- `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
+### New Finalizer Configuration Options
+Scripts that move or delete the ‘data’ directory need to protect the finalizer safety file, or utilize this option to set another location for the finalizer safety.dat file.
+- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
 
 ### New Vote-Threads Option
 Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have an integer value greater then for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is not an integer greater then zero votes are not propagated.
+- `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
