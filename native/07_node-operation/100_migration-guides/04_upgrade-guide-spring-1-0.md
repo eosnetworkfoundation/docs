@@ -122,23 +122,11 @@ An example response with the limited filled fields looks something like,
 }
 ```
 
-## Deprecations & Removals
-
-### Producer Threads Removed
-As of Spring v1, node operators MUST ensure the following parameters are NOT set in config.ini to allow nodeos to start:
-- `producer-threads`
-
-The configuration option `producer-threads` has been remove to enable greater efficiency and lower latencies. Some of the work has been offloaded to `chain-threads` and block producers may experiment with increasing the later threading configuration.
-
-## Updates and Changes
-
 ### Snapshot Format
 Spring v1 uses a new v7 snapshot format. The new v7 snapshot format is safe to use before, during, and after the switch to the Savanna Consensus Algorithm. Previous versions of Leap will not be able to use the v7 snapshot format.
 
 ### State Log History Compression Disabled
 State history log file compression has been disabled. Consumers with state history will need to put together their own compression.
-
-## New & Modified Options
 
 ### New Finalizer Configuration Options
 - `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
