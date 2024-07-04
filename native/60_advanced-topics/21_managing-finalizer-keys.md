@@ -2,7 +2,7 @@
 title: Managing Finalizer Keys
 ---
 
-Review [Introduction to Finalizers and Voting](introduction-finalizers-voting) for additional background. The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers.
+Review [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for additional background. The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers.
 
 ## Recommended Setup
 The recommendation is to generate, and register several finalizer keys. It is recommended to have one finalizer key for each instance of a producer node. A producer may have only one active finalizer key. When the keys are generated ahead of time, and included in the configuration, only an on-chain action is needed to use a new finalizer key.
@@ -48,7 +48,7 @@ A full recovery is more involved and it included using a different finalizer key
 ## Generating and Registering Finalizer Keys
 
 ### Importance of Finalizer Safety
-Savanna consensus introduces a new file that captures the history of finalizer voting. See [Introduction to Finalizers and Voting](introduction-finalizers-voting) for more background on voting history and the role of the `finalizers/safety.dat` file. By default the file `finalizers/safety.dat` is found under the data directory. `finalizers/safety.dat` must have the full voting history for the BLS finalizer key that is in use. If `finalizers/safety.dat` is corrupted, removed, or lacks the full voting history for the BLS finalizer key in use, a new BLS finalizer key must be used.
+Savanna consensus introduces a new file that captures the history of finalizer voting. See [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for more background on voting history and the role of the `finalizers/safety.dat` file. By default the file `finalizers/safety.dat` is found under the data directory. `finalizers/safety.dat` must have the full voting history for the BLS finalizer key that is in use. If `finalizers/safety.dat` is corrupted, removed, or lacks the full voting history for the BLS finalizer key in use, a new BLS finalizer key must be used.
 
 Spring v1 introduces a new configuration option `finalizers-dir` that can change the location of the `safety.dat` file. A node operator may want to change the location of `safety.dat`, if they want to move this important file out of the nodeos default data directory.
 
@@ -134,7 +134,7 @@ The configuration options specific to managing finality. It is recommended to us
 - `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
 
 ## Avoid
-Review [Introduction to Finalizers and Voting](introduction-finalizers-voting) for additional background. Each of the following is likely to lead to voting on a different branch of the blockchain, and therefore votes will not contribute to finality. For best results do **NOT** the following:
+Review [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for additional background. Each of the following is likely to lead to voting on a different branch of the blockchain, and therefore votes will not contribute to finality. For best results do **NOT** the following:
 - share `safety.dat` between hosts or producers
 - reuse BLS finalizer keys between hosts
 - backup and restore `safety.dat`

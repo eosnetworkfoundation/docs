@@ -42,7 +42,7 @@ Please take care when managing the `safety.dat` file. Please do not share BLS ke
 ### Continuous Voting
 Unlike block publishing, for the top 21 block producers, voting is continuous. Taking a producer offline would prevent that producer from voting to advance finality. To support continuous voting and manage various support scenarios the EOS blockchain provides on chain actions to register, activate, and delete BLS Keys. Using these actions, a producer can quickly rotate to a new BLS Key.
 
-For this reason it is recommended that each producer instance uses its own unique BLS Key, and activates the BLS Key when going online. There are many strategies for [managing BLS Keys](managing-finalizer-keys).
+For this reason it is recommended that each producer instance uses its own unique BLS Key, and activates the BLS Key when going online. There are many strategies for [managing BLS Keys](../managing-finalizer-keys).
 
 ### Voting and Peering
 All the nodeos instance from the source of the votes, to the receiver of the votes, along with any intermediate nodes must be configured to send, receive, and propagate votes. This is accomplished by enabling the vote-threading pools, configuring `vote-threads` to a value greater than zero. By default `vote-threads` is greater than zero on all block production nodes. Therefore, when two finalizers are directly peered, votes are sent and received with no additional configuration changes needed.
