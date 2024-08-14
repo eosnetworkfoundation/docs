@@ -35,7 +35,7 @@ Below are example steps for restarting from snapshot on ubuntu:
     - `apt-get install -y ./antelope-spring_1.0.0_amd64.deb`
 - Restart nodeos with the snapshot file returned from the `create_snapshot` request above. Add the `--snapshot` argument along with any other existing arguments.
     - `nodeos --snapshot snapshot-1323.....83c5.bin ...`
-      This `--snapshot` argument only needs to be given once on the first launch of a 5.x nodeos.
+      This `--snapshot` argument only needs to be given once on the first launch of a Spring v1.x nodeos.
 
 ### Upgrade Steps for Producer Nodes
 For producer nodes, in addition to the [Steps Above](#upgrade-steps-for-non-producer-nodes) there are a few other steps. Additional Documentation on BLS finalizer keys may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
