@@ -46,9 +46,9 @@ For producer nodes, in addition to the [Steps Above](#upgrade-steps-for-non-prod
 - Add `signature-provider` to configuration with the generated Public and Private keys.
    - You may configure multiple `signature-provider`, and have multiple name/value pairs for `signature-provider`. Example in your configuration file
    ```
-   signature-provider = PUB_BLS_S7aaZZ7ZdvnZ7Z7Za7SV7ZZZ-ZZtaa7ZaiLaaSPp7aZnaa7aZZnZd77BuS7ZZa7Zra7SU7ZZZZnaZaZZreZZZ7rraaZZZs7-i7Z7ive7aZZLZTas77VZtZL7a7aaZZaZL7sauZ=ZZZ:PVT_BLS_Z7tZLZZaZZ7o7LZ7aaa7uaBe7rLdPVZBpsZLrUaZZBUt-a7Z
-   signature-provider = PUB_BLS_7ZLauuZ777ZvSa_Z7ZTrZaZ7_eraa7a7aUanv7aZZ7ZaaZdZaaadaZr-agi7_aoZa77aZZZZZaZU7aB7a7TZ-ZZu777777gaSaarZ7udZs7S-aZ-ZZZ_SBa-iZZPaZZZ7Za7rg=ZZZ:PVT_BLS_Znsaa7uZ7iZZ7uZ7aZZe7raTaaZaauZZa7aapUtuaZB7saLS
-   signature-provider = PUB_BLS_ZZa-PZZZZaZZZZZZ7oae7_Z7a_UZsaZaLaaaSrZ7-Zaa7ada-ZaZZaZvppoSapgZd7aaouaZZZaZZZP7ZaavZdPaeZ7Zio77ZZaZLZZaZa7ZguaZpZ7raaPgZ77ZZUoZZ7Zeva=ZZZ:PVT_BLS_-oZ_ZZZPaae7TaaaZ7aZ7Zt7aaLZZat_7ZaVaraZLaaaaiga
+   signature-provider = PUB_BLS_S7aaZZ7ZdvnZ7Z7Za7SV7ZZZ-ZZtaa7ZaiLaaSPp7aZnaa7aZZnZd77BuS7ZZa7Zra7SU7ZZZZnaZaZZreZZZ7rraaZZZs7-i7Z7ive7aZZLZTas77VZtZL7a7aaZZaZL7sauZ=KEY:PVT_BLS_Z7tZLZZaZZ7o7LZ7aaa7uaBe7rLdPVZBpsZLrUaZZBUt-a7Z
+   signature-provider = PUB_BLS_7ZLauuZ777ZvSa_Z7ZTrZaZ7_eraa7a7aUanv7aZZ7ZaaZdZaaadaZr-agi7_aoZa77aZZZZZaZU7aB7a7TZ-ZZu777777gaSaarZ7udZs7S-aZ-ZZZ_SBa-iZZPaZZZ7Za7rg=KEY:PVT_BLS_Znsaa7uZ7iZZ7uZ7aZZe7raTaaZaauZZa7aapUtuaZB7saLS
+   signature-provider = PUB_BLS_ZZa-PZZZZaZZZZZZ7oae7_Z7a_UZsaZaLaaaSrZ7-Zaa7ada-ZaZZaZvppoSapgZd7aaouaZZZaZZZP7ZaavZdPaeZ7Zio77ZZaZLZZaZa7ZguaZpZ7raaPgZ77ZZUoZZ7Zeva=KEY:PVT_BLS_-oZ_ZZZPaae7TaaaZ7aZ7Zt7aaLZZat_7ZaVaraZLaaaaiga
    ```
 - For your producer account register at least one key on chain with the `regfinkey` action. When there are no registered BLS keys calling `regfinkey` will activate the provided key.
   - Here is an example for the producer account `NewBlockProducer`
