@@ -127,12 +127,15 @@ An example response with the limited filled fields looks something like,
 ### Snapshot Format
 Spring v1 uses a new v7 snapshot format. The new v7 snapshot format is safe to use before, during, and after the switch to the Savanna Consensus Algorithm. Previous versions of Leap will not be able to use the v7 snapshot format.
 
-### State Log History Compression Disabled
-State history log file compression has been disabled. Consumers with state history will need to put together their own compression.
+### State History Changes
+State history plugin has undergone many changes for Spring v1. Some of these are non-visible to improve reliability and performance, but there are important user facing changes to be aware of as well.
 
-### New State History Configuration Options
-Most node operators will never need to set these configuration options. If you are running State History you will need to set `finality-data-history`.
-- `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
+First, what hasn't changed: all prior state history clients will continue to work with Spring v1 unchanged. All prior state history logs can be used by Spring v1 as well.
+
+Some minor tweaks to the log files are notable. Prior to Spring v1 state history log entries were compressed. This is no longer the case with Spring v1. Users who desire minimal disk usage from state history logs should consider using a filesystem that offers transparent compression, or utilize the existing `state-history-stride`/`max-retained-history-files` or `state-history-log-retain-blocks` options to limit the number of log entries in the state history files. Also notable, in Spring v1 log files created by different nodeos instances may no longer be byte-identical. The data returned to clients will remain identical, but the hash of log files may not be identical.
+
+To accommodate new Savanna consensus information, a new `finality-data-history` option has been added that will create a third state history log which contains detailed Savanna state information that can be useful for some applications. Reading from this new log will require clients to use new `v1` state history messages such as `get_status_request_v1`, `get_blocks_request_v1`, `get_status_result_v1`, and `get_blocks_result_v1`. Clients may use these `v1` messages before Savanna is activated, but there will be no finality data returned until Savanna is activated even with `finality-data-history` enabled.
+
 ### New Finalizer Configuration Options
 Scripts that move or delete the ‘data’ directory need to protect the finalizer safety file, or utilize this option to set another location for the finalizer safety.dat file.
 - `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
