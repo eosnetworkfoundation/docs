@@ -3,7 +3,7 @@ title: Spring 1.0 Upgrade Guide
 ---
 
 ## Purpose
-This upgrade guide covers the steps for upgrading a node to the Spring binary from a Leap v5 binary. The Node Operator's guide [Switching Over To Savanna Consensus Algorithm](switch-to-savanna) covers the steps needed to upgrade the consensus algorithm. Node Producers will be interested in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
+This upgrade guide covers the steps for upgrading a node to Spring v1 from prior Leap versions. The Node Operator's guide [Switching Over To Savanna Consensus Algorithm](switch-to-savanna) covers the steps needed to upgrade the consensus algorithm. Node Producers will be interested in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
 
 ### Summary of Changes
 - [Exceeding number of in flight requests or Mb in flight now returns HTTP 503](#updated-error-codes)
@@ -18,31 +18,32 @@ This upgrade guide covers the steps for upgrading a node to the Spring binary fr
 
 ## Upgrade Steps
 
-### Upgrade Steps for Non-Producer Nodes
-Spring v1 must restart from a snapshot or recovered from a full transaction sync due to structural changes to the state memory storage. Snapshots from version 3.1 and higher of nodeos may be used to start a Spring node.
+### Upgrade Steps for All Nodes
+To quickly transition from Leap to Spring v1, nodeos must be restarted from a snapshot due to structural changes to the state memory storage. Snapshots from earlier versions of nodeos (including Leap v3 through v5) may be used to start a Spring node.
 
-Below are example steps for restarting from snapshot on ubuntu:
+Below are example steps for restarting from snapshot on Ubuntu:
 - Download latest release
     - Head to the [Spring Releases](https://github.com/AntelopeIO/spring/releases) to download the latest version
+- Restart existing nodeos with `producer_api_plugin` enabled if it isn't already enabled
+    - Pass `--plugin eosio::producer_api_plugin` on the command line, or `plugin = eosio::producer_api_plugin` in the config file
+    - This plugin only needs to be enabled for the following step. Furthermore, unless this plugin is already being used, it's recommended to disable it after the following step.
 - Create a new snapshot
     - `curl -X POST http://127.0.0.1:8888/v1/producer/create_snapshot`
-      Wait until curl returns with a JSON response containing the filename of the newly created snapshot file.
+      Wait until curl returns with a JSON response containing the filename of the newly created snapshot file. This step requires nodeos to continue receiving blocks from the p2p network, otherwise the `curl` command will never return.
 - Stop nodeos
-- Remove old package
-    - `sudo apt-get remove -y leap`
 - Remove the `shared_memory.bin` file located in nodeos' data directory. This is the only file that needs to be removed. The data directory will be the path passed to nodeos' `--data-dir` argument, or `$HOME/local/share/eosio/nodeos/data/state` by default.
 - Install new package
-    - `apt-get install -y ./antelope-spring_1.0.0_amd64.deb`
+    - `apt-get install ./antelope-spring_1.0.0_amd64.deb`
 - Restart nodeos with the snapshot file returned from the `create_snapshot` request above. Add the `--snapshot` argument along with any other existing arguments.
     - `nodeos --snapshot snapshot-1323.....83c5.bin ...`
-      This `--snapshot` argument only needs to be given once on the first launch of a 5.x nodeos.
+      This `--snapshot` argument only needs to be given once on the first launch of nodeos.
 
-### Upgrade Steps for Producer Nodes
+### Additional Upgrade Steps for Producer Nodes
 For producer nodes, in addition to the [Steps Above](#upgrade-steps-for-non-producer-nodes) there are a few other steps. Additional Documentation on BLS finalizer keys may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
 
 - Remove the unsupported `producer-threads` option from your configuration.
-- Generate your key(s) using `spring-utils`
-   - `spring-util bls create key --to-console > producer-name.finalizer.key`
+- Generate your key(s) using `spring-util`
+   - `spring-util bls create key --file producer-name.finalizer.key`
 - Add `signature-provider` to configuration with the generated Public and Private keys.
    - You may configure multiple `signature-provider`, and have multiple name/value pairs for `signature-provider`. Example in your configuration file
    ```
@@ -126,12 +127,15 @@ An example response with the limited filled fields looks something like,
 ### Snapshot Format
 Spring v1 uses a new v7 snapshot format. The new v7 snapshot format is safe to use before, during, and after the switch to the Savanna Consensus Algorithm. Previous versions of Leap will not be able to use the v7 snapshot format.
 
-### State Log History Compression Disabled
-State history log file compression has been disabled. Consumers with state history will need to put together their own compression.
+### State History Changes
+State history plugin has undergone many changes for Spring v1. Some of these are non-visible to improve reliability and performance, but there are important user facing changes to be aware of as well.
 
-### New State History Configuration Options
-Most node operators will never need to set these configuration options. If you are running State History you will need to set `finality-data-history`.
-- `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
+First, what hasn't changed: all prior state history clients will continue to work with Spring v1 unchanged. All prior state history logs can be used by Spring v1 as well.
+
+Some minor tweaks to the log files are notable. Prior to Spring v1 state history log entries were compressed. This is no longer the case with Spring v1. Users who desire minimal disk usage from state history logs should consider using a filesystem that offers transparent compression, or utilize the existing `state-history-stride`/`max-retained-history-files` or `state-history-log-retain-blocks` options to limit the number of log entries in the state history files. Also notable, in Spring v1 log files created by different nodeos instances may no longer be byte-identical. The data returned to clients will remain identical, but the hash of log files may not be identical.
+
+To accommodate new Savanna consensus information, a new `finality-data-history` option has been added that will create a third state history log which contains detailed Savanna state information that can be useful for some applications. Reading from this new log will require clients to use new `v1` state history messages such as `get_status_request_v1`, `get_blocks_request_v1`, `get_status_result_v1`, and `get_blocks_result_v1`. Clients may use these `v1` messages before Savanna is activated, but there will be no finality data returned until Savanna is activated even with `finality-data-history` enabled.
+
 ### New Finalizer Configuration Options
 Scripts that move or delete the ‘data’ directory need to protect the finalizer safety file, or utilize this option to set another location for the finalizer safety.dat file.
 - `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
