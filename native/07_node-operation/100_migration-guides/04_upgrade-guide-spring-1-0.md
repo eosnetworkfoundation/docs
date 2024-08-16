@@ -3,7 +3,7 @@ title: Spring 1.0 Upgrade Guide
 ---
 
 ## Purpose
-This upgrade guide covers the steps for upgrading a node to the Spring binary from a Leap v5 binary. The Node Operator's guide [Switching Over To Savanna Consensus Algorithm](https://docs.eosnetwork.com/docs/latest/node-operation/migration-guides/switch-to-savanna) covers the steps needed to upgrade the consensus algorithm. Node Producers will be interested in [Guide to Managing Finalizer Keys](https://docs.eosnetwork.com/docs/latest/advanced-topics/managing-finalizer-keys)
+This upgrade guide covers the steps for upgrading a node to Spring v1 from prior Leap versions. The Node Operator's guide [Switching Over To Savanna Consensus Algorithm](https://docs.eosnetwork.com/docs/latest/node-operation/migration-guides/switch-to-savanna) covers the steps needed to upgrade the consensus algorithm. Node Producers will be interested in [Guide to Managing Finalizer Keys](https://docs.eosnetwork.com/docs/latest/advanced-topics/managing-finalizer-keys)
 
 ### Summary of Changes
 - [Exceeding number of in flight requests or Mb in flight now returns HTTP 503](#updated-error-codes)
