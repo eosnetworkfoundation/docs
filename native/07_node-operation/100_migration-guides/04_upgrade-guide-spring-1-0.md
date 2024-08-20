@@ -18,6 +18,9 @@ This upgrade guide covers the steps for upgrading a node to Spring v1 from prior
 
 ## Upgrade Steps
 
+### Log File Compatibility
+The block log, state history logs, and trace logs from prior versions all remain compatible with Spring v1. There is no need to remove these files when performing the upgrade procedure documented below.
+
 ### Upgrade Steps for All Nodes
 To quickly transition from Leap to Spring v1, nodeos must be restarted from a snapshot due to structural changes to the state memory storage. Snapshots from earlier versions of nodeos (including Leap v3 through v5) may be used to start a Spring node.
 
