@@ -133,7 +133,7 @@ The configuration options specific to managing finality. It is recommended to us
 
 - `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file.
 - `finality-data-history` - When running SHiP to support Inter-Blockchain Communication (IBC) set `finality-data-history = true`. This will enable the new field, `get_blocks_request_v1`. The `get_blocks_request_v1` defaults to `null` before Savanna Consensus is activated.
-- `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
+- `vote-threads` - Sets the number of threads to handle voting. It is recommended to set to `vote-threads = 4` for all block producer and relay nodes. Pure API nodes or SHiP only nodes can remain with the default of 0 `vote-threads`
 
 ## Avoid
 Review [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for additional background. Each of the following is likely to lead to voting on a different branch of the blockchain, and therefore votes will not contribute to finality. For best results do **NOT** the following:
