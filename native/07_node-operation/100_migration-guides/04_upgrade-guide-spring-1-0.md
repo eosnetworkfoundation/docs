@@ -42,7 +42,7 @@ Below are example steps for restarting from snapshot on Ubuntu:
       This `--snapshot` argument only needs to be given once on the first launch of nodeos.
 
 ### Additional Upgrade Steps for Producer Nodes
-For producer nodes, in addition to the [Steps Above](#upgrade-steps-for-non-producer-nodes) there are a few other steps. Additional Documentation on BLS finalizer keys may be found in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys)
+For producer nodes, in addition to the [Steps Above](#upgrade-steps-for-non-producer-nodes) there are a few other steps. Additional Documentation on BLS finalizer keys may be found in [Guide to Managing Finalizer Keys](../../../advanced-topics/managing-finalizer-keys)
 
 - Remove the unsupported `producer-threads` option from your configuration.
 - Generate your key(s) using `spring-util`
@@ -59,7 +59,7 @@ For producer nodes, in addition to the [Steps Above](#upgrade-steps-for-non-prod
   ```
   cleos push action eosio regfinkey '{"finalizer_name":"NewBlockProducer",
         "finalizer_key":"PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA",
-        "proof_of_possession":"SIG_BLS_yenZIv6kbim2W1zntl73wxcSNWHFJS1DuMH7qAUFyCKOGBYWZXZYJb7MCr7503ULWiJTAwLUyjmSbXPw38BW9n6UE8r6MpjYKgxlSI2Ezuwzp-18sy_6StHbisSNLl0GtxmJ987ouO8gMvUDUO68cHhMbjRh9j2L790k4gCQS8gPON9OJgiIY9JgYraTB04FyAdpmc_3JCauU4nSwo3xYjS9NUVqgbuJR2lbQDjTPp5VR3z5OrOrNhaw2tewIkEJyxeZmg"}' 
+        "proof_of_possession":"SIG_BLS_yenZIv6kbim2W1zntl73wxcSNWHFJS1DuMH7qAUFyCKOGBYWZXZYJb7MCr7503ULWiJTAwLUyjmSbXPw38BW9n6UE8r6MpjYKgxlSI2Ezuwzp-18sy_6StHbisSNLl0GtxmJ987ouO8gMvUDUO68cHhMbjRh9j2L790k4gCQS8gPON9OJgiIY9JgYraTB04FyAdpmc_3JCauU4nSwo3xYjS9NUVqgbuJR2lbQDjTPp5VR3z5OrOrNhaw2tewIkEJyxeZmg"}'
         -p NewBlockProducer
   ```
 
@@ -141,8 +141,8 @@ To accommodate new Savanna consensus information, a new `finality-data-history` 
 
 ### New Finalizer Configuration Options
 Scripts that move or delete the ‘data’ directory need to protect the finalizer safety file, or utilize this option to set another location for the finalizer safety.dat file.
-- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
+- `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../../advanced-topics/managing-finalizer-keys).
 
 ### New `vote-threads` Option
-Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have an integer value greater than 0 for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is not an integer greater than 0, votes are not propagated. See [Voting and Peering](../../advanced-topics/introduction-finalizers-voting/#voting-and-peering) for more background and recomendations on configuring `vote-threads`.
+Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have an integer value greater than 0 for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is not an integer greater than 0, votes are not propagated. See [Voting and Peering](../../../advanced-topics/introduction-finalizers-voting/#voting-and-peering) for more background and recomendations on configuring `vote-threads`.
 - `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all known production setups, and the recommendation is to leave this value unchanged.

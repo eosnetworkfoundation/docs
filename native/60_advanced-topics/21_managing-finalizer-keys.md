@@ -2,7 +2,7 @@
 title: Managing Finalizer Keys
 ---
 
-Review [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for additional background. See How To [Rotate BLS Finalizer Keys](../../node-operation/tutorials/Rotate_BLS_Finalizer_Keys) for specific instructions on moving to new finalizer keys. The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers.
+Review [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for additional background. See How To [Rotate BLS Finalizer Keys](../../node-operation/tutorials/Rotate-BLS-Finalizer-Keys) for specific instructions on moving to new finalizer keys. The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers.
 
 ## Recommended Setup
 The recommendation is to generate, and register several finalizer keys. It is recommended to have one finalizer key for each instance of a producer node. A producer may have only one active finalizer key. When the keys are generated ahead of time, and included in the configuration, only an on-chain action is needed to use a new finalizer key.
@@ -31,6 +31,8 @@ Block Producers may have an intermediate nodeos instance sitting in between thei
 
 ### Rotating Keys
 The EOS blockchain, allows producers to activate new BLS finalizer keys at anytime with an on-chain action `actfinkey`. Before called the `actfinkey` action, the key must already exist in the `signature-provider` configuration when the instance of nodeos is started, and the key must be registered using the `regfinkey` action. Activating a new BLS finalizer key is always safe, and may be performed at anytime.
+
+See How To [Rotate BLS Finalizer Keys](../../node-operation/tutorials/Rotate-BLS-Finalizer-Keys) for specific instructions on moving to new finalizer keys
 
 ## Recovery
 If the database is dirty or corrupted the fastest way to re-start is from a snapshot with the same finalizer key and the same `finalizers/safety.dat`. This fast restart method is similar to previous versions of Leap software.
