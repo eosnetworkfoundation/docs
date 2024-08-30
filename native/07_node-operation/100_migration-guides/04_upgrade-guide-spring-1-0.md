@@ -14,7 +14,7 @@ This upgrade guide covers the steps for upgrading a node to Spring v1 from prior
 - [Added BLS Finalizer Keys to support new consensus algorithm](#finalizer-keys)
 - [New Finalizer Configuration Options](#new-finalizer-configuration-options)
 - [New State History Configuration Options](#new-state-history-configuration-options)
-- [New Vote-Threads Configuration Option](#new-vote-threads-option)
+- [New `vote-threads` Configuration Option](#new-vote-threads-option)
 
 ## Upgrade Steps
 
@@ -50,16 +50,16 @@ For producer nodes, in addition to the [Steps Above](#upgrade-steps-for-non-prod
 - Add `signature-provider` to configuration with the generated Public and Private keys.
    - You may configure multiple `signature-provider`, and have multiple name/value pairs for `signature-provider`. Example in your configuration file
    ```
-   signature-provider = PUB_BLS_S7aaZZ7ZdvnZ7Z7Za7SV7ZZZ-ZZtaa7ZaiLaaSPp7aZnaa7aZZnZd77BuS7ZZa7Zra7SU7ZZZZnaZaZZreZZZ7rraaZZZs7-i7Z7ive7aZZLZTas77VZtZL7a7aaZZaZL7sauZ=KEY:PVT_BLS_Z7tZLZZaZZ7o7LZ7aaa7uaBe7rLdPVZBpsZLrUaZZBUt-a7Z
-   signature-provider = PUB_BLS_7ZLauuZ777ZvSa_Z7ZTrZaZ7_eraa7a7aUanv7aZZ7ZaaZdZaaadaZr-agi7_aoZa77aZZZZZaZU7aB7a7TZ-ZZu777777gaSaarZ7udZs7S-aZ-ZZZ_SBa-iZZPaZZZ7Za7rg=KEY:PVT_BLS_Znsaa7uZ7iZZ7uZ7aZZe7raTaaZaauZZa7aapUtuaZB7saLS
-   signature-provider = PUB_BLS_ZZa-PZZZZaZZZZZZ7oae7_Z7a_UZsaZaLaaaSrZ7-Zaa7ada-ZaZZaZvppoSapgZd7aaouaZZZaZZZP7ZaavZdPaeZ7Zio77ZZaZLZZaZa7ZguaZpZ7raaPgZ77ZZUoZZ7Zeva=KEY:PVT_BLS_-oZ_ZZZPaae7TaaaZ7aZ7Zt7aaLZZat_7ZaVaraZLaaaaiga
+   signature-provider = PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA
+   signature-provider = PUB_BLS_vualvdZgUpFYVEOYQweTfSeHoOmj3IYysMFwGlifZndwClPIH2qaOxYibrcJ88sI_aA3LyaW5GhnOmgD9cocBUP3P9sSQrVLi_rPIZQMFF3OsSQZQBCiiV_V7ikDlVMMYdf5Ew
+   signature-provider = PUB_BLS_vRf3BzXJ64F4hV_XrfC0ooIehDUFVnobOUxEgb1JUai_tVfgp4tM0DnDNqza2kYKgrSJgXr1xWgt3dzn7VrzzwGH9QJYbvTWvcpDZ-sNpXVYhFUA6o3apUD3oRGRmwAZjIhxLg
    ```
 - For your producer account register at least one key on chain with the `regfinkey` action. When there are no registered BLS keys calling `regfinkey` will activate the provided key.
   - Here is an example for the producer account `NewBlockProducer`
   ```
-  cleos push action eosio regfinkey '{"finalizer_name":"NewBlockProducer", \
-        "finalizer_key":"PUB_BLS_SvLa9z9kZoT9bzZZZ-Zezlrst9Zb-Z9zZV9olZazZbZvzZzk9r9ZZZzzarUVzbZZ9Z9ZUzf9iZZ9P_kzZZzGLtezL-Z9zZ9zzZb9ZitZctzvSZ9G9SUszzcZzlZu-GsZnZ9I9Z", \
-        "proof_of_possession":"SIG_BLS_ZPZZbZIZukZksBbZ9Z9Zfysz9zZsy9z9S9V99Z-9rZZe99vZUzZPZZlzZszZiiZVzT9ZZZZBi99Z9kZzZ9zZPzzbZ99ZZzZP9zZrU-ZZuiZZzZUvZ9ZPzZbZ_yZi9ZZZ-yZPcZZe9SZZPz9Tc9ZaZ999voB99L9PzZ99I9Zu9Zo9ZZZzTtVZbcZ-Zck_ZZUZZtfTZGszUzzBTZZGrnIZ9Z9Z9zPznyZLZIavGzZunreVZ9zZZt_ZlZS9ZZIz9yUZa9Z9-Z"}' \
+  cleos push action eosio regfinkey '{"finalizer_name":"NewBlockProducer",
+        "finalizer_key":"PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA",
+        "proof_of_possession":"SIG_BLS_yenZIv6kbim2W1zntl73wxcSNWHFJS1DuMH7qAUFyCKOGBYWZXZYJb7MCr7503ULWiJTAwLUyjmSbXPw38BW9n6UE8r6MpjYKgxlSI2Ezuwzp-18sy_6StHbisSNLl0GtxmJ987ouO8gMvUDUO68cHhMbjRh9j2L790k4gCQS8gPON9OJgiIY9JgYraTB04FyAdpmc_3JCauU4nSwo3xYjS9NUVqgbuJR2lbQDjTPp5VR3z5OrOrNhaw2tewIkEJyxeZmg"}' 
         -p NewBlockProducer
   ```
 
@@ -143,6 +143,6 @@ To accommodate new Savanna consensus information, a new `finality-data-history` 
 Scripts that move or delete the ‘data’ directory need to protect the finalizer safety file, or utilize this option to set another location for the finalizer safety.dat file.
 - `finalizers-dir` - Specifies the directory path for storing voting history. Node Operators may want to specify a directory outside of their nodeos' data directory, and manage this as distinct file. More information in [Guide to Managing Finalizer Keys](../../advanced-topics/managing-finalizer-keys).
 
-### New Vote-Threads Option
-Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have an integer value greater then for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is not an integer greater then zero votes are not propagated.
-- `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all know production setups, and the recommendation is to leave this value unchanged.
+### New `vote-threads` Option
+Where there is a block producing node that connects to its peers through an intermediate nodeos, the intermediate nodeos will need to have an integer value greater than 0 for `vote-threads`. The default value for `vote-threads` is 4. When `vote-threads` is not an integer greater than 0, votes are not propagated. See [Voting and Peering](../../advanced-topics/introduction-finalizers-voting/#voting-and-peering) for more background and recomendations on configuring `vote-threads`.
+- `vote-threads` - Sets the number of threads to handle voting. The default is sufficient for all known production setups, and the recommendation is to leave this value unchanged.

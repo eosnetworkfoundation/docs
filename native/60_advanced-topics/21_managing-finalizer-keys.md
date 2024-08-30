@@ -2,7 +2,7 @@
 title: Managing Finalizer Keys
 ---
 
-Review [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for additional background. The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers.
+Review [Introduction to Finalizers and Voting](../introduction-finalizers-voting) for additional background. See How To [Rotate BLS Finalizer Keys](../../node-operation/tutorials/Rotate_BLS_Finalizer_Keys) for specific instructions on moving to new finalizer keys. The Savanna Consensus algorithm utilized by Spring v1 separates the roles of publishing blocks from signing and finalizing blocks. Finalizer Keys are needed to sign and finalize blocks. In Spring v1, all block producers are expected to be finalizers.
 
 ## Recommended Setup
 The recommendation is to generate, and register several finalizer keys. It is recommended to have one finalizer key for each instance of a producer node. A producer may have only one active finalizer key. When the keys are generated ahead of time, and included in the configuration, only an on-chain action is needed to use a new finalizer key.
@@ -66,15 +66,15 @@ spring-util bls create key --to-console > producer-name.finalizer.key
 The output will look like this
 ```
 Private key: PVT_BLS_9-9ziZZzZcZZoiz-ZZzUtz9ZZ9u9Zo9aS9BZ-o9iznZfzUZU
-Public key: PUB_BLS_SvLa9z9kZoT9bzZZZ-Zezlrst9Zb-Z9zZV9olZazZbZvzZzk9r9ZZZzzarUVzbZZ9Z9ZUzf9iZZ9P_kzZZzGLtezL-Z9zZ9zzZb9ZitZctzvSZ9G9SUszzcZzlZu-GsZnZ9I9Z
-Proof of Possession: SIG_BLS_ZPZZbZIZukZksBbZ9Z9Zfysz9zZsy9z9S9V99Z-9rZZe99vZUzZPZZlzZszZiiZVzT9ZZZZBi99Z9kZzZ9zZPzzbZ99ZZzZP9zZrU-ZZuiZZzZUvZ9ZPzZbZ_yZi9ZZZ-yZPcZZe9SZZPz9Tc9ZaZ999voB99L9PzZ99I9Zu9Zo9ZZZzTtVZbcZ-Zck_ZZUZZtfTZGszUzzBTZZGrnIZ9Z9Z9zPznyZLZIavGzZunreVZ9zZZt_ZlZS9ZZIz9yUZa9Z9-Z
+Public key: PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA
+Proof of Possession: SIG_BLS_yenZIv6kbim2W1zntl73wxcSNWHFJS1DuMH7qAUFyCKOGBYWZXZYJb7MCr7503ULWiJTAwLUyjmSbXPw38BW9n6UE8r6MpjYKgxlSI2Ezuwzp-18sy_6StHbisSNLl0GtxmJ987ouO8gMvUDUO68cHhMbjRh9j2L790k4gCQS8gPON9OJgiIY9JgYraTB04FyAdpmc_3JCauU4nSwo3xYjS9NUVqgbuJR2lbQDjTPp5VR3z5OrOrNhaw2tewIkEJyxeZmg
 ```
 
 ### Add Finalizer Keys to Config
 You may add several finalizer keys to configuration. **NOTE** Instances of nodeos must be restarted to pick up the new configuration options. Keys are added to configuration with the `signature-provider` option. These keys may be added via the command line or placed into a configuration file. Placing the finalizer keys into a configuration file would look like this.
 `signature-provider = PUBLIC_KEY=KEY:PRIVATE_KEY`
 For example
-`signature-provider = PUB_BLS_SvLa9z9kZoT9bzZZZ-Zezlrst9Zb-Z9zZV9olZazZbZvzZzk9r9ZZZzzarUVzbZZ9Z9ZUzf9iZZ9P_kzZZzGLtezL-Z9zZ9zzZb9ZitZctzvSZ9G9SUszzcZzlZu-GsZnZ9I9Z=KEY:PVT_BLS_9-9ziZZzZcZZoiz-ZZzUtz9ZZ9u9Zo9aS9BZ-o9iznZfzUZU`
+`signature-provider = PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA`
 
 ### Register Finalizer Key
 Each producer should register a finalizer key. This is done with the `regfinkey`. No other actions are needed when registering your first key.
@@ -86,9 +86,9 @@ Each producer should register a finalizer key. This is done with the `regfinkey`
 
 Here is an example
 ```
-cleos push action eosio regfinkey '{"finalizer_name":"NewBlockProducer", \
-      "finalizer_key":"PUB_BLS_SvLa9z9kZoT9bzZZZ-Zezlrst9Zb-Z9zZV9olZazZbZvzZzk9r9ZZZzzarUVzbZZ9Z9ZUzf9iZZ9P_kzZZzGLtezL-Z9zZ9zzZb9ZitZctzvSZ9G9SUszzcZzlZu-GsZnZ9I9Z", \
-      "proof_of_possession":"SIG_BLS_ZPZZbZIZukZksBbZ9Z9Zfysz9zZsy9z9S9V99Z-9rZZe99vZUzZPZZlzZszZiiZVzT9ZZZZBi99Z9kZzZ9zZPzzbZ99ZZzZP9zZrU-ZZuiZZzZUvZ9ZPzZbZ_yZi9ZZZ-yZPcZZe9SZZPz9Tc9ZaZ999voB99L9PzZ99I9Zu9Zo9ZZZzTtVZbcZ-Zck_ZZUZZtfTZGszUzzBTZZGrnIZ9Z9Z9zPznyZLZIavGzZunreVZ9zZZt_ZlZS9ZZIz9yUZa9Z9-Z"}' \
+cleos push action eosio regfinkey '{"finalizer_name":"NewBlockProducer",
+      "finalizer_key":"PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA",
+      "proof_of_possession":"SIG_BLS_yenZIv6kbim2W1zntl73wxcSNWHFJS1DuMH7qAUFyCKOGBYWZXZYJb7MCr7503ULWiJTAwLUyjmSbXPw38BW9n6UE8r6MpjYKgxlSI2Ezuwzp-18sy_6StHbisSNLl0GtxmJ987ouO8gMvUDUO68cHhMbjRh9j2L790k4gCQS8gPON9OJgiIY9JgYraTB04FyAdpmc_3JCauU4nSwo3xYjS9NUVqgbuJR2lbQDjTPp5VR3z5OrOrNhaw2tewIkEJyxeZmg"}'
       -p NewBlockProducer
 ```
 
@@ -101,8 +101,8 @@ First register your new key with `cleos push action eosio regfinkey ...`. Then c
 
 Example
 ```
-cleos push action eosio actfinkey '{"finalizer_name":"NewBlockProducer", \
-      "finalizer_key":"PUB_BLS_SvLa9z9kZoT9bzZZZ-Zezlrst9Zb-Z9zZV9olZazZbZvzZzk9r9ZZZzzarUVzbZZ9Z9ZUzf9iZZ9P_kzZZzGLtezL-Z9zZ9zzZb9ZitZctzvSZ9G9SUszzcZzlZu-GsZnZ9I9Z"}' \
+cleos push action eosio actfinkey '{"finalizer_name":"NewBlockProducer",
+      "finalizer_key":"PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA"}'
       -p NewBlockProducer
 ```
 
@@ -114,8 +114,8 @@ To remove a registered finalizer key, you no longer plan on using, call the `del
 
 Example
 ```
-cleos push action eosio delfinkey '{"finalizer_name":"NewBlockProducer", \
-      "finalizer_key":"PUB_BLS_SvLa9z9kZoT9bzZZZ-Zezlrst9Zb-Z9zZV9olZazZbZvzZzk9r9ZZZzzarUVzbZZ9Z9ZUzf9iZZ9P_kzZZzGLtezL-Z9zZ9zzZb9ZitZctzvSZ9G9SUszzcZzlZu-GsZnZ9I9Z"}' \
+cleos push action eosio delfinkey '{"finalizer_name":"NewBlockProducer",
+      "finalizer_key":"PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA"}'
       -p NewBlockProducer
 ```
 
