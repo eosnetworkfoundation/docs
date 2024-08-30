@@ -1,8 +1,8 @@
-# Rotate BLS Finalizer Keys
+---
+title: Rotate BLS Finalizer Keys
+---
 
 This document is a step by step guide to switching out your active on-chain finalizer keys. You may register as many finalizer keys as you would like.
-
-
 
 ### Create and Configure Additional Key
 Next we will create a new finalizer key, add it to nodoes' configuration, and register the key. In this example we are creating one key, you may create many keys.
