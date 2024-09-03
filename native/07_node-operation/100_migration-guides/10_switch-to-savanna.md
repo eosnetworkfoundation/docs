@@ -23,7 +23,7 @@ Switching to Savanna will required the latest version of Spring Software and the
 **Note:** [CDT v4.1.0](https://github.com/AntelopeIO/cdt/releases) is needed to compile the latest EOS System Contracts. This version of CDT contains both the needed host functions, and cryptography support needed to support managing finalizer keys.
 
 ### Protocol Features Dependencies
-The reference for protocol features with their corresponding hashes may be found in [bios-boot-tutorial](https://github.com/AntelopeIO/spring/blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py). The protocol feature `SAVANNA` depends all protocol features available in Spring v1.0.0 being in the active_schedule. This full list of protocol features in Spring v1.0.0 is listed below.
+The reference for protocol features with their corresponding hashes may be found in [bios-boot-tutorial](https://github.com/AntelopeIO/spring/blob/main/tutorials/bios-boot-tutorial/bios-boot-tutorial.py). Switching to the `SAVANNA` consensus algorithm, requires the activation of the `SAVANNA` protocol feature. This feature depends all protocol features available in Spring v1.0.0 being in the active_schedule. This full list of protocol features in Spring v1.0.0 is listed below.
 - DISABLE_DEFERRED_TRXS_STAGE_1
 - DISABLE_DEFERRED_TRXS_STAGE_2
 - WTMSIG_BLOCK_SIGNATURES
