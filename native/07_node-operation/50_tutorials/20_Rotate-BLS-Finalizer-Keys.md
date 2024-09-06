@@ -24,8 +24,7 @@ Create an **additional** configuration. You should have multiple `signature-prov
 Formate
 `signature-provider = PUBLIC_KEY=KEY:PRIVATE_KEY`
 For example
-`signature-provider = PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA`
-`signature-provider = PUB_BLS_vRf3BzXJ64F4hV_XrfC0ooIehDUFVnobOUxEgb1JUai_tVfgp4tM0DnDNqza2kYKgrSJgXr1xWgt3dzn7VrzzwGH9QJYbvTWvcpDZ-sNpXVYhFUA6o3apUD3oRGRmwAZjIhxLg`
+`signature-provider = PUB_BLS_Se0dH9PzeGQaYHJ1F44qVNcGR2XXTiF5HcAO5rXjYxDutIckoWjRPoY2gBTFfvAA7g8H0Ce7__7yQ0BUFMQUBBWX6Y4ERasyhh8QHxCVXK9JZOw0ICNWPxXIJD_UDmILQ0kouA=KEY:PVT_BLS_t2sZsoDWTQFIKg75bhJn8pBA0iDYcWyn3HlEfKIzTzKozgKO`
 
 ### Restart Nodeos
 Retart nodeos instance to load the key.
