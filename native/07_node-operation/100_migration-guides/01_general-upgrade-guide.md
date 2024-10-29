@@ -26,7 +26,7 @@ Follow these steps in order. If you have any questions, please ask in the [Teleg
 
 If you want to build and install from source, you can follow the instructions in the [README](https://github.com/AntelopeIO/leap#build-and-install-from-source).
 
-If you want to use the binaries, you can download them from the [releases page](https://github.com/AntelopeIO/leap/releases).
+If you want to use the binaries, you can download them from the [releases page](https://github.com/AntelopeIO/spring/releases).
 
 ### 2. Make a snapshot
 
