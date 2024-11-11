@@ -182,10 +182,66 @@ holds information about the return pool for REX tokens.
 
 ## eosio.reward
 
-The [reward contract](https://eosauthority.com/account/eosio.reward) is an intermediate contract that is responsible for 
-dispersing the rewards from the staking rewards pool to the various strategies aimed at rewarding the EOS community via 
-various mechanisms.
+The [reward contract](https://eosauthority.com/account/eosio.reward) ([see contract code](https://github.com/eosnetworkfoundation/eosio.reward)) is an intermediate contract 
+that is responsible for dispersing the rewards from the staking rewards tokenomics bucket to the various strategies 
+aimed at rewarding the EOS community.
+
+It allows the EOS Network to define a [set of receivers](https://eosauthority.com/account/eosio.reward?mode=contract&sub=tables&network=eos&scope=eosio.reward&table=strategies&limit=10&index_position=1&key_type=i64&reverse=0) 
+that will receive rewards, and a weight for each receiver.
+
+See the [inflows](./inflows) document for more information on how the reward contract is funded.
+
+> **Note**   
+> Modifying strategies is controlled by the block producers and requires a 15/21 multisig to change.
+
+### Adding or Updating Strategies
+
+```cpp
+void setstrategy( const name strategy, const uint16_t weight )
+```
+
+This action will set or update a strategy with a given weight. The weight is a percentage of the total rewards that
+will be allocated to this strategy. For instance, if there are three strategies with weights of 1000, 2000, and 7000, 
+then the first strategy will receive 10% of the rewards, the second 20%, and the third 70%.
+
+### Removing Strategies
+
+```cpp
+void delstrategy( const name strategy )
+```
+
+This will remove any strategy from the reward contract.
+
+
+
+### Distributing Rewards
+
+```cpp
+void distribute()
+```
+
+Funds that have flowed into this contract since the last distribution will be distributed to the strategies based on their
+weights. It is better to call this at a higher interval to make sure that any small amounts of funds are not lost to 
+rounding errors.
+
+> **Note**   
+> Any account can call this action.
 
 
 
 ## eosio.rex
+
+The [contract on the eosio.rex account](https://github.com/eosnetworkfoundation/eos-system-contracts/blob/8ecd1ac6d312085279cafc9c1a5ade6affc886da/contracts/eosio.system/src/rex.results.cpp#L1) is merely a record-keeping contract. Each of the actions
+does nothing (no implmentation) and is only there to provide an identifiable record within the transactions stack that
+can be tracked and filtered by external tooling such as history solutions or frontend SDKs that want more 
+information that normally would not be available (like the REX received for an amount of EOS in a `buyrex` action).
+
+```cpp
+void buyresult( const asset& rex_received ) { }
+void sellresult( const asset& proceeds ) { }
+void orderresult( const name& owner, const asset& proceeds ) { }
+void rentresult( const asset& rented_tokens ) { }
+```
+
+As different actions trigger results on the `eosio.rex` account, it will add one of these identifiable records to the 
+transaction stack based on the calling action. For instance, if you call `buyrex`, you will see a `buyresult` record.
