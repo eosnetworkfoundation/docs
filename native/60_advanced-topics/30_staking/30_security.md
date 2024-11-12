@@ -35,10 +35,12 @@ This multisig control ensures that no single entity or group can make changes to
 on-chain and very public approval of the majority of the block producers, who are elected by the token holders and
 have a vested interest in maintaining the security and integrity of the network.
 
+![BP Multisig](/images/diagram_bps_multisig.png)
+
 ## Token Ownership
 
 All funds that are staked into the staking protocol are deposited into the [`eosio.rex` account](https://eosauthority.com/account/eosio.rex)
-which is also controlled by the system contract. When a user first deposits their funds into the staking protocol,
+which is also controlled by the same quorum of BPs. When a user first deposits their funds into the staking protocol,
 they are effectively transferring ownership of those funds to the system contract in return for the REX token that
 represents their staked value.
 
@@ -46,7 +48,7 @@ In the same way that all tokens work on all blockchains, the contract is the ult
 and the user's ownership of tokens is represented as a row in the on-chain state database that records the user's
 balance and other relevant information.
 
-## Lockup periods
+## Lockup Periods
 
 When a user stakes EOS into the staking protocol, they are subject to a lockup period that prevents them from
 unstaking their tokens for a certain amount of time. This lockup period is infinite as long as a user is not 

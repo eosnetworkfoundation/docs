@@ -1,9 +1,9 @@
 ---
-title: Inflows
+title: Token Flows
 ---
 
 <head>
-    <title>Staking Inflows</title>
+    <title>Staking Token Flows</title>
 </head>
 
 The inflows to the EOS staking protocol travel through a few different contracts, each with their own responsibilities.
@@ -22,7 +22,7 @@ Inflation for the chain was also shut off during that change, and the various bu
 This means that instead of inflating the chain at a set rate of X% per year, the chain now distributes a percentage of the
 pre-allocated reserved supply to various parts of the network, like staking rewards.
 
-## Flow of Staking Funds
+## Flow of Staking Rewards
 
 Every time a block producer claims their rewards, they trigger a chain of events that results in the distribution of 
 various token allocations to target accounts. 
@@ -51,3 +51,14 @@ accounting purposes.
 These pathways and mechanisms allow all participants to clearly see the flow of EOS as it makes its way through the 
 chain's various contracts and accounts, and ensures that the funds are distributed according to the network's
 governance decisions instead of being hardcoded into smart contract logic with low visibility and flexibility.
+
+## Flow of User Tokens
+
+![User token flow](/images/diagram_user_token_flow.png)
+
+When a user stakes their EOS to the protocol staking system they are transferring their EOS tokens to the system 
+contract which then issues them REX tokens in return and forwards their EOS to the `eosio.rex` account for accounting 
+purposes.
+
+Since the value of REX can never go down, the user is guaranteed to receive _at least_ the same amount of EOS back when 
+they unstake, sell, and withdraw their REX tokens.

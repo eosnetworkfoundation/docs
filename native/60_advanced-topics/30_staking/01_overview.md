@@ -33,6 +33,9 @@ The rewards from staking originate from a pre-allocated bucket of EOS tokens tha
 designated for staking rewards and aimed at incentivizing users to stake their tokens, 
 growing and securing the network.
 
+## Liquid Staking
 
-
+EOS Staking is **not** a liquid staking protocol, meaning that you cannot trade your REX tokens or restake them 
+in other protocols. Once you stake your EOS tokens and receive REX tokens in return, you cannot trade them or
+use them in any other way than to unstake them and receive EOS tokens back directly from the EOS Staking protocol.
 

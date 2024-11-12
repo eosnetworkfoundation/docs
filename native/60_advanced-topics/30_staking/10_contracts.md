@@ -21,6 +21,8 @@ The staking portions of the system contract are responsible for managing the sta
 and unstaking of EOS tokens, as well as the distribution of rewards from the pre-allocated
 staking rewards pool.
 
+![Staking Contract Flow](/images/diagram_staking_contract_flow.png)
+
 ### Depositing Funds
 
 In order to use EOS inside the staking portion of the system contract, you need to deposit them first. 
