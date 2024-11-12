@@ -14,7 +14,7 @@ There are a few different contracts involved in EOS staking.
 
 ## eosio.system
 
-The system contract is wider than just staking and controls the entire EOS network with 
+The [system contract](https://eosauthority.com/account/eosio) is wider than just staking and controls the entire EOS network with 
 capabilities like account creation, chain governance, and resource management.
 
 The staking portions of the system contract are responsible for managing the staking
