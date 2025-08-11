@@ -3,7 +3,7 @@ title: chain_api_plugin
 dont_translate_title: true
 ---
 
-See [Chain API Reference](https://docs.vaulta.com/apis/leap/latest/chain.api/).
+See [Chain API Reference](https://docs.vaulta.com/apis/spring/latest/chain.api/).
 
 ## Overview
 

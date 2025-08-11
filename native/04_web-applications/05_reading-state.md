@@ -2,6 +2,12 @@
 title: Reading State
 ---
 
+Please note that this guide is for reading raw state data. It is preferable to 
+use `read-only` actions to read data so that it can be returned in a structured way 
+that is useful for your application.
+
+See [Read-only Actions](../03_smart-contracts/08_read-only-actions.md) for more information.
+
 ## Prerequisites
 
 To follow this guide, you will need:
