@@ -7,8 +7,8 @@ The Vaulta EVM implements a smart contract which runs on Vaulta, we shall call i
 The Vaulta EVM Contract is fully compatible with the Ethereum EVM except for some small differences which can be 
 consulted in the [EVM Compatibility](/evm/999_miscellaneous/20_evm-compatibility.md) section.
 
-To achieve the complete RPC compatibility, a full functioning Ethereum node is utilized. The Vaulta EVM testnet and mainnet 
-use an Ethereum node built on top of Silkworm node, we shall call it from this point forward the `Vaulta EVM Node`.
+To achieve the complete RPC compatibility, a full functioning Ethereum node is utilized. The Vaulta EVM mainnet 
+uses an Ethereum node built on top of Silkworm node, we shall call it from this point forward the `Vaulta EVM Node`.
 
 All the RPC requests, reads and writes, sent by the Vaulta EVM clients, are first processed by a proxy component, which 
 redirects the requests as follows:

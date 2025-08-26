@@ -15,9 +15,6 @@ You can use our hosted servers for any of these APIs.
 ```
 MAINNET:
 https://explorer.evm.eosnetwork.com/
-
-TESTNET:
-https://explorer.testnet.evm.eosnetwork.com/
 ```
 
 ## Get token balances

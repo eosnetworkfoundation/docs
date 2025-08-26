@@ -14,10 +14,6 @@ module.exports = {
             provider: new HDWalletProvider([process.env.PRIVATE_KEY], "https://api.evm.eosnetwork.com"),
             network_id: 17777,
         },
-        vaulta_evm_testnet: {
-            provider: new HDWalletProvider([process.env.PRIVATE_KEY], "https://api.testnet.evm.eosnetwork.com"),
-            network_id: 15557,
-        },
         // ... other networks
     },
     // ... other config

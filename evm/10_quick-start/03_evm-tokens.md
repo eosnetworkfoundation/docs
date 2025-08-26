@@ -5,18 +5,6 @@ title: EVM Tokens
 The `Vaulta EVM` uses EOS tokens as the gas token. 
 You can bridge those tokens from Vaulta to EOS and back again by using the `Vaulta EVM Bridge`.
 
-## Testnet faucet
-
-Want some Vaulta EVM tokens to play with? Click the button below to get some from the testnet faucet.
-
-<!-- translation-ignore -->
-
-import FaucetTokens from '@site/src/components/FaucetTokens/FaucetTokens';
-
-<FaucetTokens />
-
-<!-- end-translation-ignore -->
-
 ## Bridge from Vaulta to Vaulta EVM
 
 ### Bridge tokens yourself
@@ -66,8 +54,7 @@ To withdraw Vaulta tokens from a centralized exchange (CEX) to a Vaulta EVM addr
 
 ### Bridge tokens yourself
 
-To transfer tokens from an EVM address to a Vaulta account you must use the [Vaulta EVM Mainnet Bridge](https://bridge.evm.eosnetwork.com/)
-or the [Vaulta EVM Jungle Testnet Bridge](https://bridge.testnet.evm.eosnetwork.com/).
+To transfer tokens from an EVM address to a Vaulta account you must use the [Vaulta EVM Mainnet Bridge](https://bridge.evm.eosnetwork.com/).
 
 1. Select `Withdraw`
 2. Connect your wallet

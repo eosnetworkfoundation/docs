@@ -16,20 +16,13 @@ const config: HardhatUserConfig = {
         vaulta_evm: {
             url: "https://api.evm.eosnetwork.com",
             accounts:[process.env.PRIVATE_KEY],
-        },
-        vaulta_evm_testnet: {
-            url: "https://api.testnet.evm.eosnetwork.com",
-            accounts:[process.env.PRIVATE_KEY],
         }
     }
 };
 ```
 
-Now you can deploy your contract to either the mainnet or the testnet using:
+Now you can deploy your contract to either the mainnet using:
 
 ```bash
 npx hardhat run scripts/deploy.js --network vaulta_evm
-
-// or for testnet
-npx hardhat run scripts/deploy.js --network vaulta_evm_testnet
 ```

@@ -28,12 +28,3 @@ manually with the information below.
 * `Block Explorer URL (Optional)`: https://explorer.evm.eosnetwork.com/
 * `Token Bridge`: https://bridge.evm.eosnetwork.com/
 
-### Testnet
-
-* `Network Name`: Vaulta EVM Testnet
-* `Chain ID`: 15557
-* `New RPC URL`: https://api.testnet.evm.eosnetwork.com/
-* `Currency Symbol`: EOS
-* `Block Explorer URL (Optional)`: https://explorer.testnet.evm.eosnetwork.com/
-* `Token Bridge`: https://bridge.testnet.evm.eosnetwork.com/
-
