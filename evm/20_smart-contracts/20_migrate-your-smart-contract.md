@@ -4,19 +4,6 @@ title: Migrate your Smart Contract
 
 This guide will teach you to deploy a smart contract to the Vaulta EVM using hardhat on both the Vaulta EVM mainnet.
 
-## Set up your MetaMask
-
-Click either of these buttons to instantly add Vaulta EVM to your MetaMask.
-
-<!-- translation-ignore -->
-
-import ConnectMetaMask from '@site/src/components/ConnectMetaMask/ConnectMetaMask';
-
-<ConnectMetaMask />
-
-<!-- end-translation-ignore -->
-
-
 ## Getting EOS tokens
 
 If you're on the Vaulta Mainnet, ]you can transfer your native EOS using a standard EOS transfer:

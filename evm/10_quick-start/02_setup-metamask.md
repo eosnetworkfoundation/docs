@@ -2,17 +2,6 @@
 title: Setup MetaMask
 ---
 
-Click either of these buttons to instantly add Vaulta EVM to your MetaMask.
-
-<!-- translation-ignore -->
-
-import ConnectMetaMask from '@site/src/components/ConnectMetaMask/ConnectMetaMask';
-
-<ConnectMetaMask />
-
-<!-- end-translation-ignore -->
-
-
 ## Adding manually
 
 If you are using wallets that do not support the `wallet_addEthereumChain` protocol, you can add the network
